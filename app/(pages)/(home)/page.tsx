@@ -1,5 +1,5 @@
 import TypingAnimation from "@/app/UI/TypingAnimation"
-import HomeDescription from "@/app/UI/HomeDescription/HomeDescription"
+// import HomeDescription from "@/app/UI/HomeDescription/HomeDescription"
 import { NextPage } from "next"
 import HomeButtons from "@/app/components/HomeButtons/HomeButtons"
 
