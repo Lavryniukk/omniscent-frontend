@@ -63,7 +63,7 @@ const TypingAnimation: React.FC = () => {
   const displayedText = currentProfession.substring(0, currentCharacterIndex);
 
   return (
-    <h1 className="text-4xl text-text mt-40 sm:text-5xl md:text-6xl lg:text-7xl font-roboto font-bold text-center ">
+    <h1 className="text-md sm:text-lg md:text-xl mt-10 mx-auto font-roboto w-80 lg:w-1/3 font-light text-accent text-center ">
       I want to learn <span className='text-primary'>{displayedText}</span>
     </h1>
   );
