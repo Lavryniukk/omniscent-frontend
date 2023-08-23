@@ -1,10 +1,9 @@
-import Image from "next/image"
 let PageGradient = () => {
     return (
         <div>
-            <Image src="/images/left-grad.png" width={500} height={1000} alt="" className=" bg-transparent opacity-70 absolute left-0 top-0 select-none pointer-events-none h-full"/>
-            <Image src="/images/right-grad.png" width={500} height={1000}  alt="" className="bg-transparent opacity-70 absolute right-0 top-0 select-none pointer-events-none h-full "/>
-            </div>
+        <div className=" w-10lg h-80 rotate-45 -skew-x-12 top-72 absolute -left-80 opacity-60  bg-gradient-to-r from-blue-700 to-blue-950 to- -z-2 blur-mega rounded-full"/>
+        <div className=" w-10lg h-80 rotate-12 -skew-x-12 top-96 absolute -right-60 opacity-60  bg-gradient-to-r from-blue-950 to-blue-700 to- -z-2 blur-mega rounded-full"/>
+        </div>
     )
 }
 export default PageGradient

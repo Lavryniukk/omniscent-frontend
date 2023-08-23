@@ -8,6 +8,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      blur: {
+        mega: '160px',
+      },
+      width:{
+        '10lg': '1000px'
+      },
       maxWidth: {
         '10xl': '1600px',
       },
