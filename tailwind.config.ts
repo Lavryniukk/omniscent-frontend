@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       blur: {
-        mega: '160px',
+        mega: '200px',
       },
       width:{
         '10lg': '1000px'

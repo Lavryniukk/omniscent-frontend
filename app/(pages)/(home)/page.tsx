@@ -9,7 +9,7 @@ let HomePage: NextPage = () => {
             <PageGradient/>                    
             <h1 className="text-4xl tracking-wider text-text sm:text-5xl
                             md:text-6xl lg:text-7xl font-roboto font-bold text-center "
-            >Become <span className="text-primary">Omniscient</span>
+            >Become <span className="text-primary">Bogdan</span>
             </h1>
             <TypingAnimation />
             <HomeButtons />
