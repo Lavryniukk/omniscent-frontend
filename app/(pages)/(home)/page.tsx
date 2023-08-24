@@ -2,6 +2,7 @@ import TypingAnimation from "@/app/UI/TypingAnimation";
 import { NextPage } from "next";
 import HomeButtons from "@/app/components/HomeButtons/HomeButtons";
 import PageGradient from "@/app/UI/PageGradient";
+import Logo from "@/app/UI/OmniLogo";
 
 let HomePage: NextPage = () => {
   return (
