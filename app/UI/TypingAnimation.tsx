@@ -40,7 +40,7 @@ const TypingAnimation: React.FC = () => {
             setCurrentCharacterIndex(profession.length);
           }, 500); // Pause before erasing
         }
-      }, 250);
+      }, 175);
     } else {
       intervalId = setInterval(() => {
         setCurrentCharacterIndex((prevIndex) => prevIndex - 1);
@@ -53,7 +53,7 @@ const TypingAnimation: React.FC = () => {
             (prevIndex + 1) % professions.length
           );
         }
-      }, 150);
+      }, 100);
     }
 
     return () => clearInterval(intervalId);
@@ -64,7 +64,7 @@ const TypingAnimation: React.FC = () => {
 
   return (
     <h1 className="text-md sm:text-lg md:text-2xl mt-10 mx-auto font-roboto w-80 lg:w-1/3 font-light text-accent text-center ">
-      I want to learn {displayedText}
+      I want to learn <span className=''>{displayedText}</span>
     </h1>
   );
 };

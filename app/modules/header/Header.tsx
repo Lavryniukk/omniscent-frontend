@@ -1,4 +1,5 @@
 import HeaderAuth from "./components/HeaderAuthSection/HeaderAuth"
+import GitHubIco from '@/app/UI/GihubIco'
 import SidebarToggleButton from "./components/SidebarToggler"
 let Header = () => {
     return <div className="border-b h-14 flex w-full justify-center backdrop-blur-sm fixed top-0.5 z-10 border-accent box-border ">
@@ -8,6 +9,7 @@ let Header = () => {
                         box-border">
             <SidebarToggleButton />
             {/* <HeaderAuth /> */}
+            <GitHubIco />
          </div>
         </div>
 }
