@@ -9,8 +9,6 @@ let Header = () => {
                         items-center justify-between max-w-10xl z-0 px-5
                         box-border"
       >
-        {/* <SidebarToggleButton /> */}
-        {/* <HeaderAuth /> */}
         <Logo />
         <div className=" space-x-5">
           <Link
