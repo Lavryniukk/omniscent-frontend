@@ -14,6 +14,9 @@ const config: Config = {
       width:{
         '10lg': '1000px'
       },
+      height:{
+        '10lg': '1000px'
+      },
       maxWidth: {
         '10xl': '1600px',
       },
