@@ -11,7 +11,7 @@ let HomeButtons = () => {
             <Link href={'/'} className="flex items-center justify-center hover:bg-slate-800
                                         transition-colors duration-300 bg-secondary px-6
                                          rounded-lg text-text font-roboto shadow-lg"
-                >Other</Link>
+                ></Link>
         </div>
     )
 }
