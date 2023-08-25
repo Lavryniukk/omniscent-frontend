@@ -8,17 +8,6 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      borderWidth: {
-        15: "15px",
-        20: "20px",
-        30: "30px",
-      },
-      spacing: {
-        "85": "80px",
-      },
-      blur: {
-        mega: "200px",
-      },
       width: {
         "10lg": "1000px",
       },
