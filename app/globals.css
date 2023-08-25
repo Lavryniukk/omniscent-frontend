@@ -30,10 +30,15 @@
   --secondary: #1a1e28;
   --accent: #7685a2;
 }
-
-/* } */
+@layer components {
+  .inset-shadow {
+    box-shadow:
+      inset 7px 7px 14px #020304,
+      inset -7px -7px 14px #0a0b0e;
+  }
+}
 body {
-  background: var(--background)
+  background: var(--background);
 }
 
 .gradient {
