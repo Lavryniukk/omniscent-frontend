@@ -17,6 +17,11 @@ const config: Config = {
       maxWidth: {
         "10xl": "1600px",
       },
+      minHeight: {
+        sm: "100px",
+        md: "280px",
+        lg: "340px",
+      },
       colors: {
         primary: "var(--primary)",
         secondary: "var(--secondary)",
