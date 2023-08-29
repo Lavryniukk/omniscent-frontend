@@ -1,53 +1,87 @@
-import React from "react";
-import Tree from "react-d3-tree";
-interface RawNodeDatum {
-  name: string;
-  attributes?: Record<string, string | number | boolean>;
-  children?: RawNodeDatum[];
-}
-// This is a simplified example of an org chart with a depth of 2.
-// Note how deeper levels are defined recursively via the `children` property.
-const orgChart: RawNodeDatum = {
-  name: "CEO",
-  children: [
-    {
-      name: "Manager",
-      attributes: {
-        department: "Production",
-      },
-      children: [
-        {
-          name: "Foreman",
-          attributes: {
-            department: "Fabrication",
-          },
-          children: [
-            {
-              name: "Worker",
-            },
-          ],
-        },
-        {
-          name: "Foreman",
-          attributes: {
-            department: "Assembly",
-          },
-          children: [
-            {
-              name: "Worker",
-            },
-          ],
-        },
-      ],
-    },
-  ],
+"use client";
+
+import { Tree, TreeNode } from "react-organizational-chart";
+const GraphComponent = () => {
+  return (
+    <Tree
+      lineWidth={"1px"}
+      lineColor={"white"}
+      lineBorderRadius={"20px"}
+      label={
+        <div className=" text-text mt-60 w-20 border rounded-full mx-auto">
+          Root
+        </div>
+      }
+    >
+      <TreeNode
+        label={
+          <div className="text-text border rounded-full w-16 h-16 mx-auto p-2">
+            Child 1
+          </div>
+        }
+      >
+        <TreeNode
+          label={
+            <div className="text-text border rounded-full w-16 h-16 mx-auto p-2">
+              Grand Child
+            </div>
+          }
+        />
+      </TreeNode>
+      <TreeNode
+        label={
+          <div className="text-text border rounded-full w-16 h-16 mx-auto p-2">
+            Child 2
+          </div>
+        }
+      >
+        <TreeNode
+          label={
+            <div className="text-text border rounded-full w-16 h-16 mx-auto p-2">
+              Grand Child
+            </div>
+          }
+        >
+          <TreeNode
+            label={
+              <div className="text-text border rounded-full w-16 h-16 mx-auto p-2">
+                Great Grand Child 1
+              </div>
+            }
+          />
+          <TreeNode
+            label={
+              <div className="text-text border rounded-full w-16 h-16 mx-auto p-2">
+                Great Grand Child 2
+              </div>
+            }
+          />
+        </TreeNode>
+      </TreeNode>
+      <TreeNode
+        label={
+          <div className="text-text border rounded-full w-16 h-16 mx-auto p-2">
+            Child 3
+          </div>
+        }
+      >
+        <TreeNode
+          label={
+            <div className="text-text border rounded-full w-16 h-16 mx-auto p-2">
+              Grand Child 1
+            </div>
+          }
+        />
+        <TreeNode
+          label={
+            <div className="text-text border rounded-full w-16 h-16 mx-auto p-2">
+              Grand Child 2
+            </div>
+          }
+        />
+      </TreeNode>
+    </Tree>
+  );
 };
 
-export default function OrgChartTree() {
-  return (
-    // `<Tree />` will fill width/height of its container; in this case `#treeWrapper`.
-    <div id="treeWrapper" style={{ width: "50em", height: "20em" }}>
-      <Tree data={orgChart} />
-    </div>
-  );
-}
+export default GraphComponent;
