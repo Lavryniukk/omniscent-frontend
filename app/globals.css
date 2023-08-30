@@ -41,7 +41,7 @@ body {
   background: var(--background);
 }
 .node {
-  @apply text-text w-fit px-5 py-2 border rounded-full mx-auto;
+  @apply text-text w-36 rotate-180 py-2 border rounded-full mx-auto hover:bg-secondary transition-colors duration-150;
 }
 .gradient {
   background: -webkit-linear-gradient(right, #1d4ed8, #1e3a8a);
