@@ -10,7 +10,7 @@ import GraphComponent from "@/app/modules/TreeMap/TreeMap";
 const Home = () => {
   console.log("rendered");
   return (
-    <div className="w-1/2 mx-auto">
+    <div className="w-1/2 mx-auto mt-16">
       <DynamicComponentWithNoSSR />
     </div>
   );

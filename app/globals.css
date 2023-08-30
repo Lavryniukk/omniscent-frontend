@@ -40,7 +40,9 @@
 body {
   background: var(--background);
 }
-
+.node {
+  @apply text-text w-fit px-5 py-2 border rounded-full mx-auto;
+}
 .gradient {
   background: -webkit-linear-gradient(right, #1d4ed8, #1e3a8a);
   background: linear-gradient(to right, #1d4ed8, #1e3a8a);
