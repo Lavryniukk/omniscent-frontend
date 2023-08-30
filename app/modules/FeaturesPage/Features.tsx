@@ -7,10 +7,10 @@ import {
   FaVideo,
 } from "react-icons/fa";
 
-let Features = () => {
+const Features = () => {
   return (
     <div
-      className=" features overflow-x-hidden h-fit bg-transparent my-20 mx-auto box-border max-w-10xl
+      className=" overflow-x-hidden h-fit bg-transparent my-20 mx-auto box-border max-w-10xl
 	w-full"
     >
       <h2 className="text-text font-roboto font-medium mx-auto text-center text-5xl md:text-4xl">
