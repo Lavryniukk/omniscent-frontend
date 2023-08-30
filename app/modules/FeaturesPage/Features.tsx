@@ -6,7 +6,7 @@ import {
   FaBook,
   FaVideo,
 } from "react-icons/fa";
-let Features = () => {
+let Features: React.FC = () => {
   return (
     <div
       className=" overflow-x-hidden h-fit bg-transparent my-20 mx-auto box-border max-w-10xl
