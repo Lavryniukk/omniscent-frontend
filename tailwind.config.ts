@@ -32,6 +32,9 @@ const config: Config = {
       fontFamily: {
         roboto: "var(--roboto-font)",
       },
+      fontSize: {
+        xxs: "6px",
+      },
     },
   },
   plugins: [],

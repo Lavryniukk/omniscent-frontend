@@ -41,7 +41,10 @@ body {
   background: var(--background);
 }
 .node {
-  @apply text-text w-36 rotate-180 py-2 border rounded-full mx-auto hover:bg-secondary transition-colors duration-150;
+  @apply text-text font-light rotate-180 w-fit text-xs mx-auto sm:text-sm md:text-base lg:text-lg;
+}
+.node-circle {
+  @apply hover:bg-secondary transition-colors duration-150 rounded-full mx-auto border p-1 sm:p-2 md:p-4 lg:p-5;
 }
 .gradient {
   background: -webkit-linear-gradient(right, #1d4ed8, #1e3a8a);
