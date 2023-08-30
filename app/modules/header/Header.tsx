@@ -12,13 +12,13 @@ let Header = () => {
         <Logo />
         <div className=" space-x-5">
           <Link
-            href={""}
+            href={"/"}
             className="text-text hover:text-accent text-md font-roboto font-light transition-colors duration-200 "
           >
             Home
           </Link>
           <Link
-            href={""}
+            href={"/pricing"}
             className="text-text hover:text-accent text-md font-roboto font-light transition-colors duration-200 "
           >
             Pricing
