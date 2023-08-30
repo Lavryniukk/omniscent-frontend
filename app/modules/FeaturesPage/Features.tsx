@@ -7,7 +7,7 @@ import {
   FaVideo,
 } from "react-icons/fa";
 
-const Features = () => {
+export const Features = () => {
   return (
     <div
       className=" overflow-x-hidden h-fit bg-transparent my-20 mx-auto box-border max-w-10xl
@@ -98,4 +98,3 @@ const Features = () => {
     </div>
   );
 };
-export default Features;
