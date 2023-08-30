@@ -1,5 +1,5 @@
-import Features from "@/app/modules/featuresPage/Features";
-import Home from "@/app/modules/homePage/Home";
+import Features from "@/app/modules/FeaturesPage/Features";
+import Home from "@/app/modules/HomePage/Home";
 import { NextPage } from "next";
 
 let HomePage: NextPage = () => {
