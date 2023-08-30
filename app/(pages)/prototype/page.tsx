@@ -1,6 +1,5 @@
 "use client";
 import dynamic from "next/dynamic";
-
 const DynamicComponentTree = dynamic(
   () => import("@/app/modules/TreeMap/TreeMap"),
   { ssr: false }
