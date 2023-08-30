@@ -6,16 +6,13 @@ import {
   FaBook,
   FaVideo,
 } from "react-icons/fa";
-
-export const Features = () => {
+const Features = () => {
   return (
     <div
       className=" overflow-x-hidden h-fit bg-transparent my-20 mx-auto box-border max-w-10xl
-	w-full"
+	  w-full"
     >
-      <h2 className="text-text font-roboto font-medium mx-auto text-center text-5xl md:text-4xl">
-        What`s Omniscient?
-      </h2>
+      <h2 className="features-title">What`s Omniscient?</h2>
       <p className="font-roboto font-light mx-auto text-accent text-sm w-2/3 md:text-lg md:w-1/2 text-center mt-16">
         Omniscient Personal is an{" "}
         <span className=" underline-offset-4 under underline decoration-primary">
@@ -26,7 +23,7 @@ export const Features = () => {
         self-education using generative AI.
       </p>
       <div className="grid mt-10 w-full h-fit box-border px-10 gap-2 md:gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        <div className="p-5 shadow-md hover:border-accent h-fit md:min-h-md lg:min-h-lg xl:min-h-md transition-colors duration-300 bg-transparent border-2 border-secondary rounded-xl">
+        <div className="features-container">
           <h2 className="text-text font-roboto font-medium text-lg md:text-xl lg:text-2xl 2xl:text-3xl mb-2">
             <FaSearch className="mb-1 mr-2 inline-block" />
             Exploration
@@ -39,8 +36,8 @@ export const Features = () => {
             personalized lessons.
           </p>
         </div>
-        <div className="p-5 shadow-md hover:border-accent h-fit md:min-h-md lg:min-h-lg xl:min-h-md transition-colors duration-300 bg-transparent border-2 border-secondary rounded-xl">
-          <h2 className="text-text font-roboto font-medium text-lg md:text-xl lg:text-2xl 2xl:text-3xl mb-2">
+        <div className="features-container">
+          <h2 className="features-title">
             <FaBullseye className="mb-1 mr-2 inline-block" />
             AI-Powered Goal Setting and Time-Management
           </h2>
@@ -50,8 +47,8 @@ export const Features = () => {
             preferences, helps you with setting up a schedule.
           </p>
         </div>
-        <div className="p-5 shadow-md hover:border-accent h-fit md:min-h-md lg:min-h-lg xl:min-h-md transition-colors duration-300 bg-transparent border-2 border-secondary rounded-xl">
-          <h2 className="text-text font-roboto font-medium text-lg md:text-xl lg:text-2xl 2xl:text-3xl mb-2">
+        <div className="features-container">
+          <h2 className="features-title">
             <FaRoute className="mb-1 mr-2 inline-block" />
             AI-Powered Management of Learning Path and Progress
           </h2>
@@ -61,8 +58,8 @@ export const Features = () => {
             adjust preferences.
           </p>
         </div>
-        <div className="p-5 shadow-md hover:border-accent h-fit md:min-h-md lg:min-h-lg xl:min-h-md transition-colors duration-300 bg-transparent border-2 border-secondary rounded-xl">
-          <h2 className="text-text font-roboto font-medium text-lg md:text-xl lg:text-2xl 2xl:text-3xl mb-2">
+        <div className="features-container">
+          <h2 className="features-title">
             <FaChartLine className=" mb-1 mr-2 inline-block" />
             AI-Powered Personal Assessment, Evaluation, and Reflection
           </h2>
@@ -71,8 +68,8 @@ export const Features = () => {
             and generally adjust to your overall performance.
           </p>
         </div>
-        <div className="p-5 shadow-md hover:border-accent h-fit md:min-h-md lg:min-h-lg xl:min-h-md transition-colors duration-300 bg-transparent border-2 border-secondary rounded-xl">
-          <h2 className="text-text font-roboto font-medium text-lg md:text-xl lg:text-2xl 2xl:text-3xl mb-2">
+        <div className="features-container">
+          <h2 className="features-title">
             <FaBook className=" mb-1 mr-2 inline-block" />
             Search for Knowledge or Provide Your Custom Content
           </h2>
@@ -83,8 +80,8 @@ export const Features = () => {
             material, such as personal books, conspect, etc.
           </p>
         </div>
-        <div className="p-5 shadow-md hover:border-accent h-fit md:min-h-md lg:min-h-lg xl:min-h-md transition-colors duration-300 bg-transparent border-2 border-secondary rounded-xl">
-          <h2 className="text-text font-roboto font-medium text-lg md:text-xl lg:text-2xl 2xl:text-3xl mb-2">
+        <div className="features-container">
+          <h2 className="features-title">
             <FaVideo className=" mb-1 mr-2 inline-block" />
             Search for Content, Multimedia Learning Experience
           </h2>
@@ -98,3 +95,4 @@ export const Features = () => {
     </div>
   );
 };
+export default Features;
