@@ -14,5 +14,5 @@ const PrototypePage = () => {
     </div>
   );
 };
-
+("yes");
 export default PrototypePage;
