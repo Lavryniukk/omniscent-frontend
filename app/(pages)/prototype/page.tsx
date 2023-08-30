@@ -6,7 +6,6 @@ const DynamicComponentTree = dynamic(
   { ssr: false }
 );
 import React from "react";
-import GraphComponent from "@/app/modules/TreeMap/TreeMap";
 const Home = () => {
   return (
     <div className=" w-full mt-16">
