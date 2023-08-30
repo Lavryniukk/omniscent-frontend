@@ -2,6 +2,7 @@
 import { treenode } from "@/app/shared/types/node";
 import { Tree, TreeNode } from "react-organizational-chart";
 ("text commit");
+'commit got'
 const GraphComponent = () => {
   let nodes: Array<treenode> = [
     {
