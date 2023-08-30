@@ -1,6 +1,7 @@
 "use client";
 import { treenode } from "@/app/shared/types/node";
 import { Tree, TreeNode } from "react-organizational-chart";
+("text commit");
 const GraphComponent = () => {
   let nodes: Array<treenode> = [
     {
@@ -44,7 +45,7 @@ const GraphComponent = () => {
   ];
 
   // You can continue adding more nodes as needed
-
+  let createNode = (node: treenode) => {};
   let result = nodes.map((elem) => {
     let resultList = '<Tree label={<div className="node">Root</div>}>';
   });
