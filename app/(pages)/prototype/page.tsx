@@ -6,7 +6,7 @@ const DynamicComponentTree = dynamic(
   { ssr: false }
 );
 import React from "react";
-const PrototypePAge = () => {
+const PrototypePage = () => {
   return (
     <div className=" w-full mt-16">
       <DynamicComponentTree />
@@ -14,4 +14,4 @@ const PrototypePAge = () => {
   );
 };
 
-export default PrototypePAge;
+export default PrototypePage;
