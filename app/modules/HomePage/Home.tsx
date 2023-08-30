@@ -2,7 +2,7 @@ import PageGradient from "@/app/UI/PageGradient";
 import TypingAnimation from "@/app/UI/TypingAnimation";
 import HomeButtons from "@/app/components/HomeButtons/HomeButtons";
 
-const Home = () => {
+let Home = () => {
   return (
     <div
       className="home overflow-x-hidden h-fit bg-transparent mx-auto box-border max-w-10xl
