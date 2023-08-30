@@ -1,53 +1,76 @@
-import React from "react";
-import Tree from "react-d3-tree";
-interface RawNodeDatum {
-  name: string;
-  attributes?: Record<string, string | number | boolean>;
-  children?: RawNodeDatum[];
-}
-// This is a simplified example of an org chart with a depth of 2.
-// Note how deeper levels are defined recursively via the `children` property.
-const orgChart: RawNodeDatum = {
-  name: "CEO",
-  children: [
+"use client";
+import { treenode } from "@/app/shared/types/node";
+import { Tree, TreeNode } from "react-organizational-chart";
+const GraphComponent = () => {
+  let nodes: Array<treenode> = [
     {
-      name: "Manager",
-      attributes: {
-        department: "Production",
-      },
+      id: "1",
+      name: "John",
       children: [
         {
-          name: "Foreman",
-          attributes: {
-            department: "Fabrication",
-          },
+          id: "1.1",
+          name: "Alice",
           children: [
             {
-              name: "Worker",
+              id: "1.1.1",
+              name: "Emma",
+              children: [],
+            },
+            {
+              id: "1.1.2",
+              name: "Ben",
+              children: [],
             },
           ],
         },
         {
-          name: "Foreman",
-          attributes: {
-            department: "Assembly",
-          },
-          children: [
-            {
-              name: "Worker",
-            },
-          ],
+          id: "1.2",
+          name: "Bob",
+          children: [],
         },
       ],
     },
-  ],
+    {
+      id: "2",
+      name: "Mary",
+      children: [
+        {
+          id: "2.1",
+          name: "Eve",
+          children: [],
+        },
+      ],
+    },
+  ];
+
+  // You can continue adding more nodes as needed
+
+  let result = nodes.map((elem) => {
+    let resultList = '<Tree label={<div className="node">Root</div>}>';
+  });
+  return (
+    <Tree
+      lineWidth={"1px"}
+      lineColor={"white"}
+      lineHeight={"25px"}
+      lineBorderRadius={"20px"}
+      label={<div className="node">Root</div>}
+    >
+      <TreeNode label={<div className="node">Child 1</div>}>
+        <TreeNode label={<div className="node">Grand Child</div>} />
+      </TreeNode>
+      <TreeNode label={<div className="node">Child 2</div>}>
+        <TreeNode label={<div className="node">Grand Child</div>}>
+          <TreeNode label={<div className="node">Great Grand Child 1</div>} />
+          <TreeNode label={<div className="node">Great Grand Child 2</div>} />
+        </TreeNode>
+      </TreeNode>
+      <TreeNode label={<div className="node">Child 3</div>}>
+        <TreeNode label={<div className="node">Grand Child 1</div>} />
+        <TreeNode label={<div className="node">Grand Child 2</div>} />
+      </TreeNode>
+    </Tree>
+  );
 };
 
-export default function OrgChartTree() {
-  return (
-    // `<Tree />` will fill width/height of its container; in this case `#treeWrapper`.
-    <div id="treeWrapper" style={{ width: "50em", height: "20em" }}>
-      <Tree data={orgChart} />
-    </div>
-  );
-}
+export default GraphComponent;
