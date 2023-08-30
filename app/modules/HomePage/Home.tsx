@@ -1,6 +1,6 @@
 import PageGradient from "@/app/UI/PageGradient";
 import TypingAnimation from "@/app/UI/TypingAnimation";
-// import HomeButtons from "@/app/components/HomeButtons/HomeButtons";
+import HomeButtons from "@/app/components/HomeButtons/HomeButtons";
 
 const Home = () => {
   return (
@@ -16,7 +16,7 @@ const Home = () => {
         Become <span className="text-primary">Omniscient</span>
       </h1>
       <TypingAnimation />
-      {/* <HomeButtons /> */}
+      <HomeButtons />
     </div>
   );
 };
