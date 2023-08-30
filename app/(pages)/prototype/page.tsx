@@ -1,17 +1,16 @@
 "use client";
 import dynamic from "next/dynamic";
 
-const DynamicComponentWithNoSSR = dynamic(
+const DynamicComponentTree = dynamic(
   () => import("@/app/modules/TreeMap/TreeMap"),
   { ssr: false }
 );
 import React from "react";
 import GraphComponent from "@/app/modules/TreeMap/TreeMap";
 const Home = () => {
-  console.log("rendered");
   return (
-    <div className="w-1/2 mx-auto mt-16">
-      <DynamicComponentWithNoSSR />
+    <div className=" w-full mt-16">
+      <DynamicComponentTree />
     </div>
   );
 };

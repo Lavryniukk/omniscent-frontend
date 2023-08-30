@@ -1,89 +1,121 @@
 "use client";
 import { treenode } from "@/app/shared/types/node";
+import { useState } from "react";
 import { Tree, TreeNode } from "react-organizational-chart";
-("text commit");
-("commit got");
 const roadmap: treenode = {
-  id: "front-end-dev",
-  name: "Front-End Developer",
+  id: "programming",
+  name: "Programming",
+  displayChildren: true,
   children: [
     {
-      id: "html",
-      name: "HTML",
+      id: "tools",
+      name: "Tools",
+      displayChildren: true,
       children: [
         {
-          id: "css",
-          name: "CSS",
+          id: "git",
+          name: "Git",
+          displayChildren: true,
+        },
+        {
+          id: "vscode",
+          name: "VSCode",
+          displayChildren: true,
+        },
+      ],
+    },
+    {
+      id: "concepts",
+      name: "Concepts",
+      displayChildren: true,
+      children: [
+        {
+          id: "http",
+          name: "HTTP",
+          displayChildren: true,
+        },
+        {
+          id: "www",
+          name: "WWW",
+          displayChildren: true,
+        },
+        {
+          id: "development",
+          name: "Development",
+          displayChildren: true,
+        },
+      ],
+    },
+    {
+      id: "languages",
+      name: "Languages",
+      displayChildren: true,
+      children: [
+        {
+          id: "javascript",
+          name: "JavaScript",
+          displayChildren: true,
           children: [
             {
-              id: "css-tailwind",
-              name: "Tailwind CSS",
+              id: "DOM",
+              name: "DOM",
+              displayChildren: true,
             },
             {
-              id: "js",
-              name: "JavaScript",
+              id: "NodeJS",
+              name: "NodeJS",
+              displayChildren: true,
+            },
+            {
+              id: "syntax",
+              name: "Syntax",
+              displayChildren: true,
               children: [
                 {
-                  id: "ts",
-                  name: "TypeScript",
-                  children: [
-                    {
-                      id: "git",
-                      name: "Git",
-                      children: [
-                        {
-                          id: "vue",
-                          name: "Vue",
-                          children: [],
-                        },
-                        {
-                          id: "react",
-                          name: "React",
-                          children: [
-                            {
-                              id: "redux",
-                              name: "Redux",
-                              children: [
-                                {
-                                  id: "testing",
-                                  name: "Testing",
-                                  children: [
-                                    {
-                                      id: "api",
-                                      name: "API",
-                                      children: [
-                                        {
-                                          id: "deployment",
-                                          name: "Deployment",
-                                          children: [
-                                            {
-                                              id: "design",
-                                              name: "Design",
-                                            },
-                                          ],
-                                        },
-                                      ],
-                                    },
-                                  ],
-                                },
-                              ],
-                            },
-                          ],
-                        },
-                        {
-                          id: "angular",
-                          name: "Angular",
-                          children: [],
-                        },
-                      ],
-                    },
-                  ],
+                  id: "if/else",
+                  name: "if/else",
+                  displayChildren: true,
+                },
+                {
+                  id: "let",
+                  name: "let",
+                  displayChildren: true,
                 },
               ],
             },
+          ],
+        },
+        {
+          id: "typescript",
+          name: "TypeScript",
+          displayChildren: true,
+          children: [
             {
-              id: "css-scss",
-              name: "SCSS",
+              id: "syntax",
+              name: "Syntax",
+              displayChildren: true,
+            },
+            {
+              id: "frameworks",
+              name: "Frameworks",
+              displayChildren: true,
+              children: [
+                {
+                  id: "react",
+                  name: "React",
+                  displayChildren: true,
+                },
+                {
+                  id: "angular",
+                  name: "Angular",
+                  displayChildren: true,
+                },
+                {
+                  id: "vueJs",
+                  name: "VueJs",
+                  displayChildren: true,
+                },
+              ],
             },
           ],
         },
@@ -93,13 +125,45 @@ const roadmap: treenode = {
 };
 
 const GraphComponent = () => {
-  // You can continue adding more nodes as needed
-  const generateTree = (node: treenode) => {
-    const { id, name, children } = node;
+  let [tree, setTree] = useState<treenode>(roadmap);
+  const toggleChildren = (id: string) => {
+    const newTree = toggleNode(id, tree);
+    setTree(newTree);
+  };
 
+  const toggleNode = (id: string, node: treenode): treenode => {
+    if (node.id === id) {
+      return { ...node, displayChildren: !node.displayChildren };
+    }
+
+    if (node.children) {
+      return {
+        ...node,
+        children: node.children.map((child) => toggleNode(id, child)),
+      };
+    }
+
+    return node;
+  };
+  const generateTree = (treeNode: treenode) => {
+    const { id, name, displayChildren, children } = treeNode;
     return (
-      <TreeNode label={<div className="node">{name || "Unnamed Node"}</div>}>
+      <TreeNode
+        key={id}
+        label={
+          <div className="flex flex-col mx-auto">
+            <div
+              className="node-circle"
+              onClick={() => {
+                toggleChildren(id);
+              }}
+            />
+            <div className="node">{name || "Unnamed Node"}</div>
+          </div>
+        }
+      >
         {children &&
+          displayChildren &&
           children.map((child: treenode) => (
             <TreeNode key={child.id} label="">
               {generateTree(child)}
@@ -108,17 +172,18 @@ const GraphComponent = () => {
       </TreeNode>
     );
   };
+
   return (
-    <div className="rotate-180 w-1/2 mx-auto">
+    <div className="rotate-180 w-1/2 flex justify-center h-screen items-center mx-auto">
       <Tree
-        lineWidth={"1px"}
+        lineWidth={"2px"}
         lineColor={"white"}
         lineHeight={"15px"}
         lineStyle="solid"
         lineBorderRadius={"10px"}
         label={""}
       >
-        {generateTree(roadmap)}
+        {generateTree(tree)}
       </Tree>
     </div>
   );
