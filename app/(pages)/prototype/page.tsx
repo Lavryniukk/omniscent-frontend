@@ -1,11 +1,19 @@
-import OrgChartTree from "@/app/modules/TreeMap/TreeMap";
+"use client";
+import dynamic from "next/dynamic";
 
-const ChartPage = () => {
+const DynamicComponentWithNoSSR = dynamic(
+  () => import("@/app/modules/TreeMap/TreeMap"),
+  { ssr: false }
+);
+import React from "react";
+import GraphComponent from "@/app/modules/TreeMap/TreeMap";
+const Home = () => {
+  console.log("rendered");
   return (
-    <div className="flex justify-center items-center h-screen">
-      <OrgChartTree />
+    <div className="w-1/2 mx-auto mt-16">
+      <DynamicComponentWithNoSSR />
     </div>
   );
 };
 
-export default ChartPage;
+export default Home;
