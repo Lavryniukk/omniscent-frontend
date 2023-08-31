@@ -2,137 +2,83 @@
 import { treenode } from "@/app/shared/types/node";
 import { useState } from "react";
 import { Tree, TreeNode } from "react-organizational-chart";
+
 const roadmap: treenode = {
-  id: "programming",
-  name: "Programming",
+  id: "html",
+  name: "HTML",
   displayChildren: true,
   children: [
     {
-      id: "tools",
-      name: "Tools",
+      id: "tailwind",
+      name: "Tailwind",
       displayChildren: true,
-      children: [
-        {
-          id: "git",
-          name: "Git",
-          displayChildren: true,
-        },
-        {
-          id: "vscode",
-          name: "VSCode",
-          displayChildren: true,
-        },
-      ],
+      children: [],
     },
     {
-      id: "concepts",
-      name: "Concepts",
+      id: "css",
+      name: "CSS",
       displayChildren: true,
       children: [
         {
-          id: "http",
-          name: "HTTP",
-          displayChildren: true,
-        },
-        {
-          id: "www",
-          name: "WWW",
-          displayChildren: true,
-        },
-        {
-          id: "development",
-          name: "Development",
-          displayChildren: true,
-        },
-      ],
-    },
-    {
-      id: "languages",
-      name: "Languages",
-      displayChildren: true,
-      children: [
-        {
-          id: "javascript",
+          id: "js",
           name: "JavaScript",
           displayChildren: true,
           children: [
             {
-              id: "DOM",
-              name: "DOM",
-              displayChildren: true,
-            },
-            {
-              id: "NodeJS",
-              name: "NodeJS",
-              displayChildren: true,
-            },
-            {
-              id: "syntax",
-              name: "Syntax",
+              id: "npm",
+              name: "npm",
               displayChildren: true,
               children: [
                 {
-                  id: "if/else",
-                  name: "if/else",
+                  id: "git",
+                  name: "Git",
                   displayChildren: true,
-                },
-                {
-                  id: "let",
-                  name: "let",
-                  displayChildren: true,
+                  children: [
+                    {
+                      id: "angular",
+                      name: "Angular",
+                      displayChildren: true,
+                      children: [],
+                    },
+                    {
+                      id: "react",
+                      name: "React",
+                      displayChildren: true,
+                      children: [],
+                    },
+                    {
+                      id: "vue",
+                      name: "Vue",
+                      displayChildren: true,
+                      children: [],
+                    },
+                  ],
                 },
               ],
             },
           ],
         },
         {
-          id: "typescript",
+          id: "ts",
           name: "TypeScript",
           displayChildren: true,
-          children: [
-            {
-              id: "syntax",
-              name: "Syntax",
-              displayChildren: true,
-            },
-            {
-              id: "frameworks",
-              name: "Frameworks",
-              displayChildren: true,
-              children: [
-                {
-                  id: "react",
-                  name: "React",
-                  displayChildren: true,
-                },
-                {
-                  id: "angular",
-                  name: "Angular",
-                  displayChildren: true,
-                },
-                {
-                  id: "vueJs",
-                  name: "VueJs",
-                  displayChildren: true,
-                },
-              ],
-            },
-          ],
+          children: [],
         },
       ],
+    },
+    {
+      id: "scss",
+      name: "SCSS",
+      displayChildren: true,
+      children: [],
     },
   ],
 };
 
 const GraphComponent = () => {
   let [tree, setTree] = useState<treenode>(roadmap);
-  const toggleChildren = (id: string) => {
-    const newTree = toggleNode(id, tree);
-    setTree(newTree);
-  };
-
   const toggleNode = (id: string, node: treenode): treenode => {
-    if (node.id === id) {
+    if (node.id === id && node.children) {
       return { ...node, displayChildren: !node.displayChildren };
     }
 
@@ -145,42 +91,47 @@ const GraphComponent = () => {
 
     return node;
   };
+  const toggleChildren = (id: string) => {
+    const newTree = toggleNode(id, tree);
+    setTree(newTree);
+  };
+
   const generateTree = (treeNode: treenode) => {
     const { id, name, displayChildren, children } = treeNode;
     return (
       <TreeNode
+        className="overflow-hidden w-fit"
         key={id}
         label={
-          <div className="flex flex-col mx-auto">
+          <div className="flex flex-col w-fit mx-auto ">
             <div
               className="node-circle"
               onClick={() => {
                 toggleChildren(id);
               }}
             />
-            <div className="node">{name || "Unnamed Node"}</div>
+            <div className="node">{name}</div>
           </div>
         }
       >
         {children &&
           displayChildren &&
           children.map((child: treenode) => (
-            <TreeNode key={child.id} label="">
+            <TreeNode key={child.id} className=" mx-auto" label="">
               {generateTree(child)}
             </TreeNode>
           ))}
       </TreeNode>
     );
   };
-
   return (
-    <div className="rotate-180 w-1/2 flex justify-center h-screen items-center mx-auto">
+    <div className="rotate-180 overflow-hidden w-fit h-screen bir flex justify-center  items-center mx-auto">
       <Tree
         lineWidth={"2px"}
         lineColor={"white"}
         lineHeight={"15px"}
         lineStyle="solid"
-        lineBorderRadius={"10px"}
+        lineBorderRadius={"20px"}
         label={""}
       >
         {generateTree(tree)}
