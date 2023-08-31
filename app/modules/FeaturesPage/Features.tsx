@@ -9,11 +9,13 @@ import {
 let Features: React.FC = () => {
   return (
     <div
-      className=" overflow-x-hidden h-fit bg-transparent my-20 mx-auto box-border max-w-10xl
+      className="font-normal overflow-x-hidden h-fit bg-transparent my-20 mx-auto box-border max-w-10xl
 	  w-full"
     >
-      <h2 className="features-title">What`s Omniscient?</h2>
-      <p className="font-roboto font-light mx-auto text-accent text-sm w-2/3 md:text-lg md:w-1/2 text-center mt-16">
+      <h2 className="text-text text-4xl font-roboto mx-auto text-center">
+        What`s Omniscient?
+      </h2>
+      <p className="font-roboto font-light mx-auto text-accent text-sm w-2/3 md:text-lg md:w-1/2 text-center mt-10">
         Omniscient Personal is an{" "}
         <span className=" underline-offset-4 under underline decoration-primary">
           AI-driven
@@ -24,7 +26,7 @@ let Features: React.FC = () => {
       </p>
       <div className="grid mt-10 w-full h-fit box-border px-10 gap-2 md:gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         <div className="features-container">
-          <h2 className="text-text font-roboto font-medium text-lg md:text-xl lg:text-2xl 2xl:text-3xl mb-2">
+          <h2 className="features-title">
             <FaSearch className="mb-1 mr-2 inline-block" />
             Exploration
           </h2>

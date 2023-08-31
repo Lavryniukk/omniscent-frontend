@@ -18,10 +18,10 @@ let Header = () => {
             Home
           </Link>
           <Link
-            href={"/pricing"}
+            href={"/prototype/chat"}
             className="text-text hover:text-accent text-md font-roboto font-light transition-colors duration-200 "
           >
-            Pricing
+            Prototype
           </Link>
           <Link
             href={""}
