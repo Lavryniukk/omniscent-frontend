@@ -1,4 +1,4 @@
-import PricingCards from "@/app/modules/pricingPage/PricingCards";
+import PricingCards from "@/app/modules/PricingPage/PricingCards";
 
 let Pricing = () => {
   return (
