@@ -4,12 +4,11 @@ const DynamicComponentTree = dynamic(
   () => import("@/app/modules/TreeMap/TreeMap"),
   { ssr: false }
 );
-import React from "react";
-const PrototypePage = () => {
+const ChatPage = () => {
   return (
-    <div className=" w-full mt-16">
+    <div className="w-full mt-16 select-none">
       <DynamicComponentTree />
     </div>
   );
 };
-export default PrototypePage;
+export default ChatPage;

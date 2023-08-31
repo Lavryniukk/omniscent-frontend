@@ -21,6 +21,11 @@
   background-color: var(--accent);
   border-radius: 5px;
 }
+/* styles.css */
+.no-blink-cursor {
+  cursor: default; /* This will set the cursor to the default arrow cursor */
+}
+
 
 /* @media (prefers-color-scheme: dark) { */
 :root {
@@ -41,7 +46,7 @@ body {
   background: var(--background);
 }
 .node {
-  @apply text-text font-light rotate-180 w-fit text-xs mx-auto sm:text-sm md:text-base lg:text-lg;
+  @apply text-text font-light rotate-180 w-fit h-fit mx-auto text-xs sm:text-sm md:text-base lg:text-lg;
 }
 .node-circle {
   @apply hover:bg-secondary transition-colors duration-150 rounded-full mx-auto border p-1 sm:p-2 md:p-4 lg:p-5;
