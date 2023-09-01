@@ -14,6 +14,44 @@ const roadmap: treenode = {
       displayChildren: true,
       children: [
         {
+          id: "ts",
+          name: "TypeScript",
+          displayChildren: true,
+          children: [
+            {
+              id: "syntax",
+              name: "Syntax",
+              displayChildren: true,
+              children: [],
+            },
+            {
+              id: "frameworks",
+              name: "Frameworks",
+              displayChildren: true,
+              children: [
+                {
+                  id: "react",
+                  name: "React",
+                  displayChildren: true,
+                  children: [],
+                },
+                {
+                  id: "vue",
+                  name: "Vue",
+                  displayChildren: true,
+                  children: [],
+                },
+                {
+                  id: "angular",
+                  name: "Angular",
+                  displayChildren: true,
+                  children: [],
+                },
+              ],
+            },
+          ],
+        },
+        {
           id: "js",
           name: "JavaScript",
           displayChildren: true,
@@ -150,7 +188,7 @@ const GraphComponent = () => {
     );
   };
   return (
-    <div className="border h-fit mt-20 rotate-180 overflow-hidden w-fit flex justify-center  items-center mx-auto">
+    <div className=" h-fit mt-20 rotate-180 overflow-hidden w-fit flex justify-center  items-center mx-auto">
       <Tree
         lineWidth={"2px"}
         lineColor={"white"}
