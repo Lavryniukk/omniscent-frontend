@@ -6,7 +6,7 @@ const DynamicComponentTree = dynamic(
 );
 const ChatPage = () => {
   return (
-    <div className="w-full  select-none">
+    <div className="w-full select-none">
       <DynamicComponentTree />
     </div>
   );
