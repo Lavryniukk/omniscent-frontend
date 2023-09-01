@@ -150,7 +150,7 @@ const GraphComponent = () => {
     );
   };
   return (
-    <div className="border h-fit rotate-180 overflow-hidden w-fit flex justify-center  items-center mx-auto">
+    <div className="border h-fit mt-20 rotate-180 overflow-hidden w-fit flex justify-center  items-center mx-auto">
       <Tree
         lineWidth={"2px"}
         lineColor={"white"}
