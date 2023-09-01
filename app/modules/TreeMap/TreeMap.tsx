@@ -188,7 +188,7 @@ const GraphComponent = () => {
     );
   };
   return (
-    <div className=" h-fit mt-20 rotate-180 overflow-hidden w-fit flex justify-center  items-center mx-auto">
+    <div className=" h-fit mt-20 rotate-180 block">
       <Tree
         lineWidth={"2px"}
         lineColor={"white"}

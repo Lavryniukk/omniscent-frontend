@@ -5,7 +5,7 @@ import { NextPage } from "next";
 let HomePage: NextPage = () => {
   return (
     <>
-      <Home></Home>
+      <Home />
       <Features />
     </>
   );
