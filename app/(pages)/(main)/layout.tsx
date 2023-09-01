@@ -2,7 +2,6 @@ import "@/app/globals.css";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import Header from "../../modules/header/Header";
-
 const roboto = Roboto({
   variable: "--roboto-font",
   weight: ["100", "300", "400", "500", "700", "900"],

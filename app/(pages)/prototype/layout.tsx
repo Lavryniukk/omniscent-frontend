@@ -1,5 +1,6 @@
 import "@/app/globals.css";
 import HomeButton from "@/app/modules/homeButton/HomeButton";
+import SideBar from "@/app/modules/prototypeSideBar/SideBar";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 
@@ -24,6 +25,7 @@ export default function RootLayout({
       <body>
         <HomeButton />
         {children}
+        <SideBar />
       </body>
     </html>
   );
