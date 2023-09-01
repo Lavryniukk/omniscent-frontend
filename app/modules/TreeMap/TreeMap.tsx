@@ -4,19 +4,13 @@ import { useState } from "react";
 import { Tree, TreeNode } from "react-organizational-chart";
 
 const roadmap: treenode = {
-  id: "html",
-  name: "HTML",
+  id: "become",
+  name: "become a programmer",
   displayChildren: true,
   children: [
     {
-      id: "tailwind",
-      name: "Tailwind",
-      displayChildren: true,
-      children: [],
-    },
-    {
-      id: "css",
-      name: "CSS",
+      id: "languages",
+      name: "Languages",
       displayChildren: true,
       children: [
         {
@@ -25,52 +19,83 @@ const roadmap: treenode = {
           displayChildren: true,
           children: [
             {
-              id: "npm",
-              name: "npm",
+              id: "nodejs",
+              name: "NodeJs",
+              displayChildren: true,
+              children: [],
+            },
+            {
+              id: "syntax",
+              name: "Syntax",
               displayChildren: true,
               children: [
                 {
-                  id: "git",
-                  name: "Git",
+                  id: "ifelse",
+                  name: "if/else",
                   displayChildren: true,
-                  children: [
-                    {
-                      id: "angular",
-                      name: "Angular",
-                      displayChildren: true,
-                      children: [],
-                    },
-                    {
-                      id: "react",
-                      name: "React",
-                      displayChildren: true,
-                      children: [],
-                    },
-                    {
-                      id: "vue",
-                      name: "Vue",
-                      displayChildren: true,
-                      children: [],
-                    },
-                  ],
+                  children: [],
+                },
+                {
+                  id: "let",
+                  name: "Let",
+                  displayChildren: true,
+                  children: [],
                 },
               ],
             },
+            {
+              id: "dom",
+              name: "DOM",
+              displayChildren: true,
+              children: [],
+            },
           ],
         },
+      ],
+    },
+    {
+      id: "tools",
+      name: "Tools",
+      displayChildren: true,
+      children: [
         {
-          id: "ts",
-          name: "TypeScript",
+          id: "git",
+          name: "Git",
+          displayChildren: true,
+          children: [],
+        },
+        {
+          id: "vscode",
+          name: "VSCode",
           displayChildren: true,
           children: [],
         },
       ],
     },
     {
-      id: "scss",
-      name: "SCSS",
+      id: "concepts",
+      name: "Concepts",
       displayChildren: true,
-      children: [],
+      children: [
+        {
+          id: "http",
+          name: "HTTP",
+          displayChildren: true,
+          children: [],
+        },
+        {
+          id: "www",
+          name: "WWW",
+          displayChildren: true,
+          children: [],
+        },
+        {
+          id: "development",
+          name: "Development process",
+          displayChildren: true,
+          children: [],
+        },
+      ],
     },
   ],
 };
@@ -125,7 +150,7 @@ const GraphComponent = () => {
     );
   };
   return (
-    <div className="rotate-180 overflow-hidden w-fit h-screen bir flex justify-center  items-center mx-auto">
+    <div className="border h-fit rotate-180 overflow-hidden w-fit flex justify-center  items-center mx-auto">
       <Tree
         lineWidth={"2px"}
         lineColor={"white"}
