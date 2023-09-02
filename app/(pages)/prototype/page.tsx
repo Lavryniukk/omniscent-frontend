@@ -1,4 +1,4 @@
-import PageGradient from "@/app/UI/PageGradient";
+import PageGradient from "@/app/UI/PrototypePageGradient";
 import PrototypeMain from "@/app/modules/prototypePage/PrototypeHome";
 
 let PrototypePage = () => {
