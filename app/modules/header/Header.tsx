@@ -1,5 +1,5 @@
 import GitHubIco from "@/app/UI/GihubIco";
-import Link from "next/link";
+import HeaderLink from "@/app/components/headerLink/HeaderLink";
 import Logo from "@/app/UI/OmniLogo";
 let Header = () => {
   return (
@@ -11,30 +11,10 @@ let Header = () => {
       >
         <Logo />
         <div className=" space-x-5">
-          <Link
-            href={"/"}
-            className="text-text hover:text-accent text-md font-roboto font-light transition-colors duration-200 "
-          >
-            Home
-          </Link>
-          <Link
-            href={"/prototype/chat"}
-            className="text-text hover:text-accent text-md font-roboto font-light transition-colors duration-200 "
-          >
-            Prototype
-          </Link>
-          <Link
-            href={""}
-            className="text-text hover:text-accent text-md font-roboto font-light transition-colors duration-200 "
-          >
-            FAQ
-          </Link>
-          <Link
-            href={""}
-            className="text-text hover:text-accent text-md font-roboto font-light transition-colors duration-200 "
-          >
-            About us
-          </Link>
+          <HeaderLink url="/" name="Home" />
+          <HeaderLink url="/prototype" name="Prototype" />
+          <HeaderLink url="/faq" name="FAQ" />
+          <HeaderLink url="/about" name="About us" />
         </div>
         <GitHubIco />
       </div>
