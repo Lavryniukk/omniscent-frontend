@@ -1,13 +1,12 @@
 import Image from "next/image";
 type Props = {
-  left?: string;
-  right?: string;
-  url: string;
+  left: string;
+  right: string;
 };
-let PageGradient = ({ url }: Props) => {
+let PageGradient = ({ left, right }: Props) => {
   return (
     <div>
-      {/* <Image
+      <Image
         src={left}
         width={500}
         height={1000}
@@ -20,13 +19,6 @@ let PageGradient = ({ url }: Props) => {
         height={1000}
         className={`opacity-60 absolute h-10lg top-0 -z-5 pointer-events-none -right-0`}
         alt=""
-      /> */}
-      <Image
-        alt=""
-        src={url}
-        width={1000}
-        height={500}
-        className={`opacity-60 absolute top-0 mx-auto border select-none -z-5 pointer-events-none`}
       />
     </div>
   );
