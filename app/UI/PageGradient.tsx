@@ -1,19 +1,23 @@
 import Image from "next/image";
-let PageGradient = () => {
+type Props = {
+  left: string;
+  right: string;
+};
+let PageGradient = ({ left, right }: Props) => {
   return (
     <div>
       <Image
-        src={"/images/left-grad.png"}
+        src={left}
         width={500}
         height={1000}
-        className="opacity-50 absolute h-10lg w-1/2 top-0 -z-5 pointer-events-none left-0"
+        className={`opacity-60 absolute h-10lg w-1/2 top-0 -z-5 pointer-events-none -left-0`}
         alt=""
       />
       <Image
-        src={"/images/right-grad.png"}
+        src={right}
         width={500}
         height={1000}
-        className="opacity-50 absolute h-10lg w-1/2 top-0 -z-5 pointer-events-none -right-0"
+        className={`opacity-60 absolute h-10lg w-1/2 top-0 -z-5 pointer-events-none -right-0`}
         alt=""
       />
     </div>

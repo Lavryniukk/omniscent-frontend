@@ -1,4 +1,15 @@
+import PageGradient from "@/app/UI/PageGradient";
+import PrototypeMain from "@/app/modules/prototypePage/PrototypeHome";
+
 let PrototypePage = () => {
-  return <div className="text-text mt-16">This is prototype page</div>;
+  return (
+    <div className="">
+      <PageGradient
+        left="/images/prototypebg-left.png"
+        right="/images/prototypebg-right.png"
+      />
+      <PrototypeMain />
+    </div>
+  );
 };
 export default PrototypePage;
