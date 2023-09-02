@@ -3,11 +3,10 @@ import PrototypeMain from "@/app/modules/prototypePage/PrototypeHome";
 
 let PrototypePage = () => {
   return (
-    <div className="border">
+    <div className="">
       <PageGradient
-        // left="/images/prototypebg-left.png"
-        // right="/images/prototypebg-right.png"
-        url="/images/prototypeTopGrad.png"
+        left="/images/prototypebg-left.png"
+        right="/images/prototypebg-right.png"
       />
       <PrototypeMain />
     </div>
