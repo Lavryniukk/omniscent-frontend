@@ -1,4 +1,4 @@
-import PageGradient from "@/app/UI/PageGradient";
+import PageGradient from "@/app/UI/HomePageGradient";
 import TypingAnimation from "@/app/UI/TypingAnimation";
 import HomeButtons from "@/app/components/HomeButtons/HomeButtons";
 
