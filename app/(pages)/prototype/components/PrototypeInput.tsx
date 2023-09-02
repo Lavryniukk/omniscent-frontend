@@ -1,13 +1,29 @@
+"use client";
+import { ChangeEvent, useState } from "react";
+
 let Input = () => {
+  let [value, setValue] = useState<string>("");
+  type ClickEvent = React.MouseEvent<HTMLButtonElement, MouseEvent>;
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
+  };
+  // const handleSubmit = () => {};
   return (
-    <div className=" w-80 h-10 select-none mt-10  overflow-hidden border border-accent focus:border-text outline-none rounded-lg mx-auto ">
+    <div className=" w-8/12 h-10 select-none flex items-center mt-10  overflow-hidden border border-accent  outline-none rounded-lg mx-auto ">
       <input
+        onChange={(event) => {
+          handleInputChange(event);
+        }}
+        value={value}
         type="text"
         placeholder="I want to learn..."
-        className="bg-secondary w-9/12 h-full px-2 text-accent box-border outline-none "
+        className="bg-transparent w-9/12 h-full px-2 text-accent box-border outline-none focus:border-text"
       />
-      <button type="submit" className="text-text w-3/12 h-full box-border">
-        send
+      <button
+        type="submit"
+        className="text-text bg-secondary border border-accent opacity-70 hover:opacity-100 transition-opacity duration-100 w-2/12 h-2/3 rounded-xl box-border"
+      >
+        Send
       </button>
     </div>
   );
