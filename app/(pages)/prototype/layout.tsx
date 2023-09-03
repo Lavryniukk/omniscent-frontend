@@ -1,5 +1,5 @@
 import "@/app/globals.css";
-import HomeButton from "@/app/components/prototypeComponents/backButton/BackButton";
+import HomeButton from "@/app/UI/buttons/backBtn/BackButton";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 
