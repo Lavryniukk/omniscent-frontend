@@ -1,7 +1,7 @@
 "use client";
 import dynamic from "next/dynamic";
 const DynamicComponentTree = dynamic(
-  () => import("@/app/modules/TreeMap/TreeMap"),
+  () => import("@/app/modules/prototype/treeMap/TreeMap"),
   { ssr: false }
 );
 const ChatPage = () => {

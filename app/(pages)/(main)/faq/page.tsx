@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import Logo from "@/app/UI/OmniLogo";
+import Logo from "@/app/UI/icons/OmniLogo";
 let Faq: NextPage = () => {
   return (
     <div className="mt-96 mx-auto relative rounded-full w-56 h-56 border-30 border-primary ">

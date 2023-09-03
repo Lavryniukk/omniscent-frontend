@@ -1,6 +1,4 @@
 import HeaderLink from "@/app/components/headerLink/HeaderLink";
-import Link from "next/link";
-
 type Props = {
   isOpen: boolean;
 };

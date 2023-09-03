@@ -1,6 +1,6 @@
 import PageGradient from "@/app/UI/HomePageGradient";
 import TypingAnimation from "@/app/UI/TypingAnimation";
-import HomeButtons from "@/app/components/HomeButtons/HomeButtons";
+import HomeButtons from "@/app/UI/buttons/getStartedBtn/GetStartedBtn";
 
 let Home = () => {
   return (

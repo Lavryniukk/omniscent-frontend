@@ -1,5 +1,5 @@
 import PageGradient from "@/app/UI/PrototypePageGradient";
-import PrototypeMain from "@/app/modules/prototypePage/PrototypeHome";
+import PrototypeMain from "@/app/modules/prototype/PrototypeHome";
 
 let PrototypePage = () => {
   return (

@@ -1,5 +1,6 @@
-import Features from "@/app/modules/FeaturesPage/Features";
-import Home from "@/app/modules/HomePage/Home";
+import Features from "@/app/modules/home/FeaturesSection/Features";
+import Pricing from "@/app/modules/home/PricingSection/Pricing";
+import Home from "@/app/modules/home/WelcomeSection/Welcome";
 import { NextPage } from "next";
 
 let HomePage: NextPage = () => {
@@ -7,6 +8,7 @@ let HomePage: NextPage = () => {
     <>
       <Home />
       <Features />
+      <Pricing />
     </>
   );
 };

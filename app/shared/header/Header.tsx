@@ -1,9 +1,9 @@
 "use client";
 import Burger from "@/app/components/burgerNav/BurgerNavigation";
 import HeaderLink from "@/app/components/headerLink/HeaderLink";
-import Logo from "@/app/UI/OmniLogo";
+import Logo from "@/app/UI/icons/OmniLogo";
 import { useState } from "react";
-import Popup from "../BurgerPopup/BurgerPopup";
+import Popup from "./burgerPopup/BurgerPopup";
 
 let Header = () => {
   let [isOpen, setIsOpen] = useState(false);
