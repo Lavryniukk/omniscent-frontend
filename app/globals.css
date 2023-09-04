@@ -21,6 +21,10 @@
   background-color: var(--accent);
   border-radius: 5px;
 }
+/* styles.css */
+.no-blink-cursor {
+  cursor: default; /* This will set the cursor to the default arrow cursor */
+}
 
 /* @media (prefers-color-scheme: dark) { */
 :root {
@@ -41,7 +45,16 @@ body {
   background: var(--background);
 }
 .node {
-  @apply text-text w-fit px-5 py-2 border rounded-full mx-auto;
+  @apply text-text font-light rotate-180 w-fit h-fit mx-auto text-xs sm:text-sm md:text-base lg:text-lg;
+}
+.node-circle {
+  @apply hover:bg-secondary transition-colors duration-150 rounded-full mx-auto border p-1 sm:p-2 md:p-4 lg:p-5;
+}
+.features-title {
+  @apply text-text font-roboto font-medium text-lg md:text-xl lg:text-2xl 2xl:text-3xl mb-2;
+}
+.features-container {
+  @apply p-5 shadow-md hover:border-accent h-fit md:min-h-md lg:min-h-lg xl:min-h-md transition-colors duration-300 bg-transparent border-2 border-secondary rounded-xl;
 }
 .gradient {
   background: -webkit-linear-gradient(right, #1d4ed8, #1e3a8a);

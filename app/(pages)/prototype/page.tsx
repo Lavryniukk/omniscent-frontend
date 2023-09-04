@@ -1,19 +1,15 @@
-"use client";
-import dynamic from "next/dynamic";
+import PageGradient from "@/app/UI/PrototypePageGradient";
+import PrototypeMain from "@/app/modules/prototype/PrototypeHome";
 
-const DynamicComponentWithNoSSR = dynamic(
-  () => import("@/app/modules/TreeMap/TreeMap"),
-  { ssr: false }
-);
-import React from "react";
-import GraphComponent from "@/app/modules/TreeMap/TreeMap";
-const Home = () => {
-  console.log("rendered");
+let PrototypePage = () => {
   return (
-    <div className="w-1/2 mx-auto mt-16">
-      <DynamicComponentWithNoSSR />
+    <div className="">
+      <PageGradient
+        left="/images/prototypebg-left.png"
+        right="/images/prototypebg-right.png"
+      />
+      <PrototypeMain />
     </div>
   );
 };
-
-export default Home;
+export default PrototypePage;
