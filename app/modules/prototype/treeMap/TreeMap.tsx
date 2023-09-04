@@ -137,8 +137,11 @@ const roadmap: treenode = {
     },
   ],
 };
-
-const GraphComponent = () => {
+type Props = {
+  toggleSideBar: () => void;
+  showSideBar: boolean;
+};
+const GraphComponent = ({ toggleSideBar, showSideBar }: Props) => {
   let [tree, setTree] = useState<treenode>(roadmap);
   const toggleNode = (id: string, node: treenode): treenode => {
     if (node.id === id && node.children) {
@@ -154,9 +157,11 @@ const GraphComponent = () => {
 
     return node;
   };
-  const toggleChildren = (id: string) => {
-    const newTree = toggleNode(id, tree);
-    setTree(newTree);
+  const toggleChildren = (id: string, children: Array<treenode>) => {
+    if (children) {
+      const newTree = toggleNode(id, tree);
+      setTree(newTree);
+    }
   };
 
   const generateTree = (treeNode: treenode) => {
@@ -170,7 +175,8 @@ const GraphComponent = () => {
             <div
               className="node-circle"
               onClick={() => {
-                toggleChildren(id);
+                toggleSideBar();
+                children && toggleChildren(id, children);
               }}
             />
             <div className="node">{name}</div>
@@ -180,7 +186,7 @@ const GraphComponent = () => {
         {children &&
           displayChildren &&
           children.map((child: treenode) => (
-            <TreeNode key={child.id} className=" mx-auto" label="">
+            <TreeNode key={child.id} className="mx-auto" label="">
               {generateTree(child)}
             </TreeNode>
           ))}
@@ -188,7 +194,11 @@ const GraphComponent = () => {
     );
   };
   return (
-    <div className=" h-fit mt-20 rotate-180 block">
+    <div
+      className={` h-fit border ${
+        showSideBar ? "-translate-x-1/4" : "translate-x-0"
+      } transition-all duration-300 w-fit mx-auto rotate-180 block`}
+    >
       <Tree
         lineWidth={"2px"}
         lineColor={"white"}
