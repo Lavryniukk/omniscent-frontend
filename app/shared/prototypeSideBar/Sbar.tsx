@@ -1,4 +1,5 @@
 import { treenode } from "../types/node";
+import BiArrowToRight from "react-icons/bi"; // Replace with the correct path
 
 type Props = {
   showSideBar: boolean;
@@ -23,18 +24,25 @@ let SideBar = ({
     <div
       className={`border-l-2 fixed top-0 transition-all duration-300 ${res} text-text h-screen w-1/4 `}
     >
-      <div className="flex flex-row m-2">
-        <div className="border w-20 h-8  top-1/2 left-0"></div>
+      <div className="flex flex-row justify-evenly w-full px-2 my-4">
+        <div
+          className="border py-2 px-4 rounded-lg border-accent"
+          onClick={() => {
+            toggleSideBar();
+          }}
+        >
+          Close sidebar
+        </div>
         <div
           onClick={() => {
-            toggleChildren(selectedNode.id);
+            selectedNode.children && toggleChildren(selectedNode.id);
           }}
           className="w-fit flex items-center justify-center px-4 py-2 hover:border-text rounded-lg  border border-accent h-fit"
         >
           {hideBtnText}
         </div>
       </div>
-      <h1 className=" text-2xl text-center">{selectedNode.name}</h1>
+      <h1 className="text-2xl text-center">{selectedNode.name}</h1>
     </div>
   );
 };
