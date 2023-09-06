@@ -141,7 +141,6 @@ const DynamicComponentTree = dynamic(
   () => import("@/app/modules/prototype/treeMap/TreeMap"),
   { ssr: false }
 );
-type treeOrNull = treenode | null;
 const ChatPage = () => {
   let [tree, setTree] = useState<treenode>(roadmap);
   let [showSideBar, setShowSideBar] = useState<boolean>(false);
@@ -160,8 +159,23 @@ const ChatPage = () => {
   let toggleSideBar = () => {
     setShowSideBar(!showSideBar);
   };
+  const findNode = (id: string, node: treenode): treenode => {
+    if (node.id === id && node.children) {
+      return node;
+    }
+
+    if (node.children) {
+      return {
+        ...node,
+        children: node.children.map((child) => toggleNode(id, child)),
+      };
+    }
+
+    return node;
+  };
   const toggleNode = (id: string, node: treenode): treenode => {
     if (node.id === id && node.children) {
+      console.log("this is node from tree", node);
       return { ...node, displayChildren: !node.displayChildren };
     }
 
@@ -175,8 +189,11 @@ const ChatPage = () => {
     return node;
   };
   const toggleChildren = (id: string) => {
-    const newTree = toggleNode(id, tree);
-    setNewTree(newTree);
+    let copy = selectedNode;
+    copy.displayChildren = !copy.displayChildren;
+    setSelectedNode(copy);
+    const copyTree = toggleNode(id, tree);
+    setNewTree(copyTree);
   };
   return (
     <div className="w-full h-screen select-none">
