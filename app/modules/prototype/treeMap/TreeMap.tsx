@@ -9,13 +9,7 @@ type Props = {
   setNewTree: (node: treenode) => void;
   selectNode: (node: treenode) => void;
 };
-const GraphComponent = ({
-  toggleSideBar,
-  showSideBar,
-  setNewTree,
-  selectNode,
-  tree,
-}: Props) => {
+const GraphComponent = ({ showSideBar, selectNode, tree }: Props) => {
   const generateTree = (treeNode: treenode) => {
     const { id, name, displayChildren, children } = treeNode;
     return (
