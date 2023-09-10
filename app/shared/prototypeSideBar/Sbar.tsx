@@ -2,13 +2,11 @@ import { treenode } from "../types/node";
 
 type Props = {
   showSideBar: boolean;
-  tree: treenode;
   toggleChildren: (id: string) => void;
   toggleSideBar: () => void;
   selectedNode: treenode;
 };
 let SideBar = ({
-  tree,
   showSideBar,
   toggleSideBar,
   toggleChildren,

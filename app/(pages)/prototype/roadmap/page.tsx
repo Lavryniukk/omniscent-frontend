@@ -139,12 +139,6 @@ const roadmap: treenode = {
 };
 let rdmap: Array<treenode> = [
   {
-    id: "start",
-    name: "tech name",
-    displayChildren: true,
-    children: [],
-  },
-  {
     id: "advcss",
     name: "Advanced CSS",
     displayChildren: true,
@@ -202,21 +196,26 @@ let rdmap: Array<treenode> = [
       },
     ],
   },
+  {
+    id: "start",
+    name: "tech name",
+    displayChildren: true,
+    children: [],
+  },
 ];
 const DynamicComponentTree = dynamic(
   () => import("@/app/modules/prototype/treeMap/TreeMap"),
   { ssr: false }
 );
-const ChatPage = () => {
-  let [tree, setTree] = useState<treenode>(roadmap);
+const RoadmapPage = () => {
+  let [tree, setTree] = useState<Array<treenode>>(rdmap);
   let [showSideBar, setShowSideBar] = useState<boolean>(false);
   let [selectedNode, setSelectedNode] = useState<treenode>({
-    id: "starter",
-    name: "starter",
-    displayChildren: true,
-    children: [],
+    id: "fake",
+    name: "fake",
+    displayChildren: false,
   });
-  let setNewTree = (node: treenode) => {
+  let setNewTree = (node: Array<treenode>) => {
     setTree(node);
   };
   let selectNode = (node: treenode) => {
@@ -227,39 +226,46 @@ const ChatPage = () => {
     setShowSideBar(!showSideBar);
   };
 
-  const toggleNode = (id: string, node: treenode): treenode => {
-    if (node.id === id && node.children) {
-      console.log("this is node from tree", node);
-      return { ...node, displayChildren: !node.displayChildren };
-    }
+  function toggleDisplayChildren(
+    nodeId: string,
+    tree: Array<treenode>
+  ): Array<treenode> {
+    return tree.map((node) => {
+      if (node.id === nodeId) {
+        // Toggle the displayChildren property for the matching node
+        return {
+          ...node,
+          displayChildren: !node.displayChildren,
+        };
+      } else if (node.children && node.children.length > 0) {
+        // Recursively call the function on child nodes
+        return {
+          ...node,
+          children: toggleDisplayChildren(nodeId, node.children),
+        };
+      }
+      return node;
+    });
+  }
 
-    if (node.children) {
-      return {
-        ...node,
-        children: node.children.map((child) => toggleNode(id, child)),
-      };
-    }
-
-    return node;
-  };
   const toggleChildren = (id: string) => {
     let copy = selectedNode;
-    copy.displayChildren = !copy.displayChildren;
-    setSelectedNode(copy);
-    const copyTree = toggleNode(id, tree);
-    setNewTree(copyTree);
+    if (copy) {
+      copy.displayChildren = !copy.displayChildren;
+      setSelectedNode(copy);
+      const copyTree = toggleDisplayChildren(id, tree);
+      setNewTree(copyTree);
+    }
   };
   return (
     <div className="w-full h-screen select-none">
       <DynamicComponentTree
         showSideBar={showSideBar}
-        toggleSideBar={toggleSideBar}
         tree={tree}
         setNewTree={setNewTree}
         selectNode={selectNode}
       />
       <SideBar
-        tree={tree}
         showSideBar={showSideBar}
         toggleChildren={toggleChildren}
         selectedNode={selectedNode}
@@ -268,4 +274,4 @@ const ChatPage = () => {
     </div>
   );
 };
-export default ChatPage;
+export default RoadmapPage;
