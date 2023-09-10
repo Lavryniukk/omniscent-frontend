@@ -47,6 +47,7 @@ const GraphComponent = ({ showSideBar, selectNode, tree }: Props) => {
         lineWidth={"2px"}
         lineColor={"white"}
         lineHeight={"15px"}
+        nodePadding="50px"
         lineStyle="solid"
         lineBorderRadius={"20px"}
         label={""}
