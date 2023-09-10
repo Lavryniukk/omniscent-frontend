@@ -137,6 +137,72 @@ const roadmap: treenode = {
     },
   ],
 };
+let rdmap: Array<treenode> = [
+  {
+    id: "start",
+    name: "tech name",
+    displayChildren: true,
+    children: [],
+  },
+  {
+    id: "advcss",
+    name: "Advanced CSS",
+    displayChildren: true,
+    children: [
+      {
+        id: "tailwind",
+        name: "TailwindCSS",
+        displayChildren: true,
+        children: [],
+      },
+      {
+        id: "bootstrap",
+        name: "bootstrap",
+        displayChildren: true,
+        children: [],
+      },
+    ],
+  },
+  {
+    id: "language",
+    name: "Language",
+    displayChildren: true,
+    children: [
+      {
+        id: "js",
+        name: "JavaScript",
+        displayChildren: true,
+        children: [
+          {
+            id: "ts",
+            name: "TypeScript",
+            displayChildren: true,
+            children: [],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "layout",
+    name: "layout",
+    displayChildren: true,
+    children: [
+      {
+        id: "html",
+        name: "HTML",
+        displayChildren: true,
+        children: [],
+      },
+      {
+        id: "css",
+        name: "CSS",
+        displayChildren: true,
+        children: [],
+      },
+    ],
+  },
+];
 const DynamicComponentTree = dynamic(
   () => import("@/app/modules/prototype/treeMap/TreeMap"),
   { ssr: false }
@@ -145,9 +211,10 @@ const ChatPage = () => {
   let [tree, setTree] = useState<treenode>(roadmap);
   let [showSideBar, setShowSideBar] = useState<boolean>(false);
   let [selectedNode, setSelectedNode] = useState<treenode>({
-    name: "fake",
-    id: "fake",
+    id: "starter",
+    name: "starter",
     displayChildren: true,
+    children: [],
   });
   let setNewTree = (node: treenode) => {
     setTree(node);
@@ -159,20 +226,7 @@ const ChatPage = () => {
   let toggleSideBar = () => {
     setShowSideBar(!showSideBar);
   };
-  const findNode = (id: string, node: treenode): treenode => {
-    if (node.id === id && node.children) {
-      return node;
-    }
 
-    if (node.children) {
-      return {
-        ...node,
-        children: node.children.map((child) => toggleNode(id, child)),
-      };
-    }
-
-    return node;
-  };
   const toggleNode = (id: string, node: treenode): treenode => {
     if (node.id === id && node.children) {
       console.log("this is node from tree", node);
