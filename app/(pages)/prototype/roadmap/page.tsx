@@ -2,7 +2,7 @@
 import SideBar from "@/app/shared/prototypeSideBar/Sbar";
 import { treenode } from "@/app/shared/types/node";
 import dynamic from "next/dynamic";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 const roadmap: treenode = {
   id: "become",
   name: "become a programmer",
@@ -215,15 +215,31 @@ const RoadmapPage = () => {
     name: "fake",
     displayChildren: false,
   });
+  useEffect(() => {
+    function handleDocumentClick(event: MouseEvent) {
+      const target = event.target as HTMLElement | null;
+      console.log(target);
+      if (showSideBar && target && !target.closest(".sidebar")) {
+        closeSidebar();
+      }
+    }
+
+    document.addEventListener("click", handleDocumentClick);
+
+    return () => {
+      document.removeEventListener("click", handleDocumentClick);
+    };
+  }, [showSideBar]);
+
   let setNewTree = (node: Array<treenode>) => {
     setTree(node);
+  };
+  let closeSidebar = () => {
+    setShowSideBar(false);
   };
   let selectNode = (node: treenode) => {
     setShowSideBar(true);
     setSelectedNode(node);
-  };
-  let toggleSideBar = () => {
-    setShowSideBar(!showSideBar);
   };
 
   function toggleDisplayChildren(
@@ -254,7 +270,7 @@ const RoadmapPage = () => {
       copy.displayChildren = !copy.displayChildren;
       setSelectedNode(copy);
       const copyTree = toggleDisplayChildren(id, tree);
-      setNewTree(copyTree);
+      setTree(copyTree);
     }
   };
   return (
@@ -269,7 +285,7 @@ const RoadmapPage = () => {
         showSideBar={showSideBar}
         toggleChildren={toggleChildren}
         selectedNode={selectedNode}
-        toggleSideBar={toggleSideBar}
+        closeSideBar={closeSidebar}
       />
     </div>
   );

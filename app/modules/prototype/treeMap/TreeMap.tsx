@@ -43,16 +43,15 @@ const GraphComponent = ({ showSideBar, selectNode, tree }: Props) => {
     //function that generates the whole tree
     return tree.map((nodeTreeBranch) => generateTreeBranch(nodeTreeBranch));
   };
-  let res = showSideBar ? "-translate-x-1/4" : "translate-x-0";
   return (
     <div
-      className={`h-fit ${res} transition-all relative duration-300 w-fit mx-auto rotate-180 block`}
+      className={`h-fit transition-all relative w-fit mx-auto rotate-180 block`}
     >
       <Tree
-        lineWidth={"2px"}
+        lineWidth={"2.5px"}
         lineColor={"white"}
         lineHeight={"15px"}
-        nodePadding="20px"
+        nodePadding="30px"
         lineStyle="solid"
         lineBorderRadius={"0px"}
         label={""}
