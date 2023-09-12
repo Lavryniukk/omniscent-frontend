@@ -1,23 +1,45 @@
-"use client";
+import { useState } from "react";
 import { treenode } from "@/app/shared/types/node";
 import { Tree, TreeNode } from "react-organizational-chart";
-
+import { FiMove } from "react-icons/fi";
 type Props = {
   showSideBar: boolean;
   tree: Array<treenode>;
   setNewTree: (node: Array<treenode>) => void;
   selectNode: (node: treenode) => void;
 };
+
 const GraphComponent = ({ showSideBar, selectNode, tree }: Props) => {
-  let generateTreeBranch = (treeBranch: treenode) => {
-    //function that generates one branch of tree
+  const [zoomLevel, setZoomLevel] = useState(100); // Initial zoom level
+  const handleMouseDown = (event: MouseEvent) => {
+    let click = event.clientY;
+    let clientX = event.clientX;
+  };
+  const handleScroll = (e: React.WheelEvent<HTMLDivElement>) => {
+    const minZoom = 50; // Minimum zoom level
+    const maxZoom = 150; // Maximum zoom level
+    const delta = e.deltaY;
+    delta > 0 ? console.log("delta up") : console.log("delta down");
+    const zoomFactor = delta > 0 ? -10 : 10; // Adjust the zoom factor based on scroll direction
+
+    if (
+      zoomLevel + zoomFactor >= minZoom &&
+      zoomLevel + zoomFactor <= maxZoom
+    ) {
+      setZoomLevel((prevZoom) => prevZoom + zoomFactor);
+    }
+  };
+
+  // Function to generate a tree branch with the current zoom level applied
+  const generateTreeBranch = (treeBranch: treenode) => {
     const { id, name, displayChildren, children } = treeBranch;
-    let result = (
+
+    const result = (
       <TreeNode
         className="overflow-hidden w-fit"
         key={id}
         label={
-          <div className="flex flex-col w-fit mx-auto">
+          <div className="flex flex-col rotate-180 w-fit mx-auto">
             <div
               className="node-circle"
               onClick={() => {
@@ -37,28 +59,37 @@ const GraphComponent = ({ showSideBar, selectNode, tree }: Props) => {
           ))}
       </TreeNode>
     );
+
     return result;
   };
+  const nodeStyle = {
+    transform: `scale(${zoomLevel / 100})`,
+  };
+  // Function to generate the whole tree with the current zoom level
   const generateTree = (tree: Array<treenode>) => {
-    //function that generates the whole tree
     return tree.map((nodeTreeBranch) => generateTreeBranch(nodeTreeBranch));
   };
   return (
-    <div
-      className={`h-fit transition-all relative w-fit mx-auto rotate-180 block`}
-    >
-      <Tree
-        lineWidth={"2.5px"}
-        lineColor={"white"}
-        lineHeight={"15px"}
-        nodePadding="30px"
-        lineStyle="solid"
-        lineBorderRadius={"0px"}
-        label={""}
+    <div style={nodeStyle} className="h-fit border absolute top-1/4 left-1/4">
+      <div
+        className={`overflow-hiddend rotate-180 w-fit transform mx-auto block`}
+        onWheel={(e) => {
+          handleScroll(e);
+        }} // Listen for wheel events on the container for scroll-based zoom
       >
-        {generateTree(tree)}
-      </Tree>
-      <div className="w-full bg-background absolute bottom-full translate-y-4 z-10 h-4" />
+        <Tree
+          lineWidth={"2.5px"}
+          lineColor={"white"}
+          lineHeight={"15px"}
+          nodePadding="30px"
+          lineStyle="solid"
+          lineBorderRadius={"10px"}
+          label={""}
+        >
+          {generateTree(tree)} {/* Render the generated tree structure */}
+        </Tree>
+        <div className="w-full bg-background absolute bottom-full translate-y-4 z-10 h-4" />
+      </div>
     </div>
   );
 };

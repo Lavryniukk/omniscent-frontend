@@ -45,7 +45,7 @@ body {
   background: var(--background);
 }
 .node {
-  @apply text-text font-light rotate-180 w-fit h-fit mx-auto text-xs sm:text-sm md:text-base lg:text-lg;
+  @apply text-text font-light w-fit h-fit mx-auto text-xs sm:text-sm md:text-base lg:text-lg;
 }
 .node-circle {
   @apply hover:bg-secondary transition-colors duration-150 rounded-full mx-auto border p-1 sm:p-2 md:p-4 lg:p-5;
@@ -55,6 +55,9 @@ body {
 }
 .features-container {
   @apply p-5 shadow-md hover:border-accent h-fit md:min-h-md lg:min-h-lg xl:min-h-md transition-colors duration-300 bg-transparent border-2 border-secondary rounded-xl;
+}
+.rotated {
+  tranform: rotate(180deg);
 }
 .gradient {
   background: -webkit-linear-gradient(right, #1d4ed8, #1e3a8a);
