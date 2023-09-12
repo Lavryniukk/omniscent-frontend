@@ -139,6 +139,16 @@ const roadmap: treenode = {
 };
 let rdmap: Array<treenode> = [
   {
+    id: "frontendframework",
+    name: "Front-end framework",
+    displayChildren: true,
+    children: [
+      { id: "vue", name: "Vue", displayChildren: true },
+      { id: "react", name: "React", displayChildren: true },
+      { id: "angular", name: "Angular", displayChildren: true },
+    ],
+  },
+  {
     id: "advcss",
     name: "Advanced CSS",
     displayChildren: true,
@@ -198,27 +208,32 @@ let rdmap: Array<treenode> = [
   },
   {
     id: "start",
-    name: "tech name",
+    name: "Front-end",
     displayChildren: true,
     children: [],
   },
 ];
+// Dynamically import the TreeMap component using Next.js dynamic import
 const DynamicComponentTree = dynamic(
-  () => import("@/app/modules/prototype/treeMap/TreeMap"),
-  { ssr: false }
+  () => import("@/app/modules/prototype/treeMap/TreeMap"), // Import path
+  { ssr: false } // Disable server-side rendering for this component
 );
+
+// Define the RoadmapPage functional component
 const RoadmapPage = () => {
-  let [tree, setTree] = useState<Array<treenode>>(rdmap);
-  let [showSideBar, setShowSideBar] = useState<boolean>(false);
+  // Define state variables using React hooks
+  let [tree, setTree] = useState<Array<treenode>>(rdmap); // State for the roadmap tree
+  let [showSideBar, setShowSideBar] = useState<boolean>(false); // State for showing/hiding the sidebar
   let [selectedNode, setSelectedNode] = useState<treenode>({
     id: "fake",
     name: "fake",
     displayChildren: false,
-  });
+  }); // State for the currently selected node in the tree
+
+  // Add a click event listener to the document to close the sidebar when clicking outside of it
   useEffect(() => {
     function handleDocumentClick(event: MouseEvent) {
       const target = event.target as HTMLElement | null;
-      console.log(target);
       if (showSideBar && target && !target.closest(".sidebar")) {
         closeSidebar();
       }
@@ -231,17 +246,23 @@ const RoadmapPage = () => {
     };
   }, [showSideBar]);
 
+  // Define a function to set a new tree structure
   let setNewTree = (node: Array<treenode>) => {
     setTree(node);
   };
+
+  // Define a function to close the sidebar
   let closeSidebar = () => {
     setShowSideBar(false);
   };
+
+  // Define a function to select a node in the tree
   let selectNode = (node: treenode) => {
     setShowSideBar(true);
     setSelectedNode(node);
   };
 
+  // Recursive function to toggle the displayChildren property for a given node ID
   function toggleDisplayChildren(
     nodeId: string,
     tree: Array<treenode>
@@ -264,6 +285,7 @@ const RoadmapPage = () => {
     });
   }
 
+  // Function to toggle the displayChildren property for the selected node
   const toggleChildren = (id: string) => {
     let copy = selectedNode;
     if (copy) {
@@ -273,8 +295,10 @@ const RoadmapPage = () => {
       setTree(copyTree);
     }
   };
+
+  // Render the RoadmapPage component
   return (
-    <div className="w-full h-screen select-none">
+    <div className="w-full h-screen overflow-hidden select-none">
       <DynamicComponentTree
         showSideBar={showSideBar}
         tree={tree}
@@ -290,4 +314,5 @@ const RoadmapPage = () => {
     </div>
   );
 };
+
 export default RoadmapPage;
