@@ -227,7 +227,7 @@ const RoadmapPage = () => {
   let [selectedNode, setSelectedNode] = useState<treenode>({
     id: "fake",
     name: "fake",
-    displayChildren: false,
+    displayChildren: true,
   }); // State for the currently selected node in the tree
 
   // Add a click event listener to the document to close the sidebar when clicking outside of it
@@ -260,25 +260,25 @@ const RoadmapPage = () => {
   let selectNode = (node: treenode) => {
     setShowSideBar(true);
     setSelectedNode(node);
+    console.log(selectedNode);
   };
 
   // Recursive function to toggle the displayChildren property for a given node ID
-  function toggleDisplayChildren(
-    nodeId: string,
-    tree: Array<treenode>
-  ): Array<treenode> {
+  function toggleDisplayChildren(tree: Array<treenode>): Array<treenode> {
+    let nodeId = selectedNode.id;
     return tree.map((node) => {
       if (node.id === nodeId) {
-        // Toggle the displayChildren property for the matching node
-        return {
-          ...node,
-          displayChildren: !node.displayChildren,
-        };
+        let copy = node;
+        console.log("found node before:", copy.displayChildren);
+        node.displayChildren = !node.displayChildren;
+        console.log("found node after:", copy.displayChildren);
+
+        return copy;
       } else if (node.children && node.children.length > 0) {
         // Recursively call the function on child nodes
         return {
           ...node,
-          children: toggleDisplayChildren(nodeId, node.children),
+          children: toggleDisplayChildren(node.children),
         };
       }
       return node;
@@ -286,14 +286,19 @@ const RoadmapPage = () => {
   }
 
   // Function to toggle the displayChildren property for the selected node
-  const toggleChildren = (id: string) => {
+  const toggleChildren = () => {
+    console.log(
+      "toggle children pressed. status before change:",
+      selectedNode.displayChildren ? "Show" : "hidden"
+    );
     let copy = selectedNode;
-    if (copy) {
-      copy.displayChildren = !copy.displayChildren;
-      setSelectedNode(copy);
-      const copyTree = toggleDisplayChildren(id, tree);
-      setTree(copyTree);
-    }
+    copy.displayChildren = !copy.displayChildren;
+    setSelectedNode(copy);
+    setTree(toggleDisplayChildren(tree));
+    console.log(
+      "toggle children pressed. status after change:",
+      selectedNode.displayChildren ? "Show" : "hidden"
+    );
   };
 
   // Render the RoadmapPage component
