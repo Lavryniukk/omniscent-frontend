@@ -3,13 +3,12 @@ import { treenode } from "@/app/shared/types/node";
 import { Tree, TreeNode } from "react-organizational-chart";
 
 type Props = {
-  showSideBar: boolean;
+  setShowSideBar: (e: boolean) => void;
   tree: Array<treenode>;
-  setNewTree: (node: Array<treenode>) => void;
-  selectNode: (node: treenode) => void;
+  setSelectedNode: (node: treenode) => void;
 };
 
-const GraphComponent = ({ showSideBar, selectNode, tree }: Props) => {
+const GraphComponent = ({ setShowSideBar, setSelectedNode, tree }: Props) => {
   const [zoomLevel, setZoomLevel] = useState(100);
   const [coordinates, setCoordinates] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState<boolean>(false);
@@ -65,7 +64,8 @@ const GraphComponent = ({ showSideBar, selectNode, tree }: Props) => {
             <div
               className="node-circle"
               onClick={() => {
-                selectNode(treeBranch);
+                setShowSideBar(true);
+                setSelectedNode(treeBranch);
               }}
             />
             <div className="node">{name}</div>
@@ -90,7 +90,7 @@ const GraphComponent = ({ showSideBar, selectNode, tree }: Props) => {
     left: `${coordinates.x}px`,
   };
   // Function to generate the whole tree with the current zoom level
-  const generateTree = (tree: Array<treenode>) => {
+  const generateTree = () => {
     return tree.map((nodeTreeBranch) => generateTreeBranch(nodeTreeBranch));
   };
   return (
@@ -116,7 +116,7 @@ const GraphComponent = ({ showSideBar, selectNode, tree }: Props) => {
           lineBorderRadius={"10px"}
           label={""}
         >
-          {generateTree(tree)} {/* Render the generated tree structure */}
+          {generateTree()} {/* Render the generated tree structure */}
         </Tree>
         <div className="w-full bg-background absolute bottom-full translate-y-4 z-10 h-4" />
       </div>
