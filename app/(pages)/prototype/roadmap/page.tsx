@@ -268,20 +268,11 @@ const RoadmapPage = () => {
 
   // Function to toggle the displayChildren property for the selected node
   const toggleChildren = () => {
-    console.log("this is what we set selectedNode", selectedNode);
     setSelectedNode({
       ...selectedNode,
       displayChildren: !selectedNode.displayChildren,
     });
-    console.log("this is what it becomes", selectedNode);
-
-    console.log(
-      "selected node children is now",
-      selectedNode.displayChildren ? "shown" : "hidden"
-    );
-    console.log("this is tree before changes:", tree);
     setTree(toggleDisplayChildren(tree, selectedNode.id));
-    console.log("this is tree after changes:", tree);
   };
 
   // Render the RoadmapPage component
