@@ -28,7 +28,7 @@ let SideBar = ({
       />
       {/* Sidebar container */}
       <div
-        className={`sidebar border-l-2 fixed top-0  ${res} text-text h-screen w-1/4 `}
+        className={`sidebar border-l-2 bg-background fixed top-0  ${res} text-text h-screen w-1/4 `}
       >
         {/* Close button */}
         <div

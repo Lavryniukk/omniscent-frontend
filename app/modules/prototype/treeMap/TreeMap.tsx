@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { treenode } from "@/app/shared/types/node";
 import { Tree, TreeNode } from "react-organizational-chart";
-import { FiMove } from "react-icons/fi";
+
 type Props = {
   showSideBar: boolean;
   tree: Array<treenode>;
@@ -10,15 +10,31 @@ type Props = {
 };
 
 const GraphComponent = ({ showSideBar, selectNode, tree }: Props) => {
-  const [zoomLevel, setZoomLevel] = useState(100); // Initial zoom level
+  const [zoomLevel, setZoomLevel] = useState(100);
   const [coordinates, setCoordinates] = useState({ x: 600, y: 600 });
-  const handleMouseDown = (
+  const [isDragging, setIsDragging] = useState<boolean>(false);
+  const initialMousePos = useRef({ x: 0, y: 0 });
+  const mainDivRef = useRef(null);
+
+  const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    setIsDragging(!isDragging);
+    initialMousePos.current = { x: event.clientX, y: event.clientY };
+  };
+
+  const handleMouseMove = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {
-    let clickY = event.clientY;
-    let clickX = event.clientX;
-    console.log(clickX, ":", clickY);
+    if (isDragging) {
+      const deltaX = event.clientX - initialMousePos.current.x;
+      const deltaY = event.clientY - initialMousePos.current.y;
+      setCoordinates((prevCoordinates) => ({
+        x: prevCoordinates.x + deltaX,
+        y: prevCoordinates.y + deltaY,
+      }));
+      initialMousePos.current = { x: event.clientX, y: event.clientY };
+    }
   };
+
   const handleScroll = (e: React.WheelEvent<HTMLDivElement>) => {
     const minZoom = 50; // Minimum zoom level
     const maxZoom = 150; // Maximum zoom level
@@ -65,8 +81,10 @@ const GraphComponent = ({ showSideBar, selectNode, tree }: Props) => {
 
     return result;
   };
-  const nodeStyle = {
+  const treeStyle = {
     transform: `scale(${zoomLevel / 100})`,
+    top: `${coordinates.y}px`,
+    left: `${coordinates.x}px`,
   };
   // Function to generate the whole tree with the current zoom level
   const generateTree = (tree: Array<treenode>) => {
@@ -74,19 +92,14 @@ const GraphComponent = ({ showSideBar, selectNode, tree }: Props) => {
   };
   return (
     <div
-      style={nodeStyle}
-      className={`w-fit absolute top-[${coordinates.y}px] left-[${coordinates.x}px]`}
+      style={treeStyle}
+      onClick={(e) => handleClick(e)}
+      onMouseMove={(e) => handleMouseMove(e)}
+      className={`w-fit absolute`}
+      ref={mainDivRef}
     >
       <div
-        className="m-2 w-fit"
-        onClick={(e) => {
-          handleMouseDown(e);
-        }}
-      >
-        <FiMove color="white" size="20px" />
-      </div>
-      <div
-        className={`overflow-hiddend rotate-180 w-fit transform mx-auto block`}
+        className={`overflow-hidden rotate-180 w-fit transform mx-auto block`}
         onWheel={(e) => {
           handleScroll(e);
         }} // Listen for wheel events on the container for scroll-based zoom
