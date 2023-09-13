@@ -11,15 +11,18 @@ type Props = {
 
 const GraphComponent = ({ showSideBar, selectNode, tree }: Props) => {
   const [zoomLevel, setZoomLevel] = useState(100); // Initial zoom level
-  const handleMouseDown = (event: MouseEvent) => {
-    let click = event.clientY;
-    let clientX = event.clientX;
+  const [coordinates, setCoordinates] = useState({ x: 600, y: 600 });
+  const handleMouseDown = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    let clickY = event.clientY;
+    let clickX = event.clientX;
+    console.log(clickX, ":", clickY);
   };
   const handleScroll = (e: React.WheelEvent<HTMLDivElement>) => {
     const minZoom = 50; // Minimum zoom level
     const maxZoom = 150; // Maximum zoom level
     const delta = e.deltaY;
-    delta > 0 ? console.log("delta up") : console.log("delta down");
     const zoomFactor = delta > 0 ? -10 : 10; // Adjust the zoom factor based on scroll direction
 
     if (
@@ -70,7 +73,18 @@ const GraphComponent = ({ showSideBar, selectNode, tree }: Props) => {
     return tree.map((nodeTreeBranch) => generateTreeBranch(nodeTreeBranch));
   };
   return (
-    <div style={nodeStyle} className="h-fit border absolute top-1/4 left-1/4">
+    <div
+      style={nodeStyle}
+      className={`w-fit absolute top-[${coordinates.y}px] left-[${coordinates.x}px]`}
+    >
+      <div
+        className="m-2 w-fit"
+        onClick={(e) => {
+          handleMouseDown(e);
+        }}
+      >
+        <FiMove color="white" size="20px" />
+      </div>
       <div
         className={`overflow-hiddend rotate-180 w-fit transform mx-auto block`}
         onWheel={(e) => {
@@ -79,7 +93,7 @@ const GraphComponent = ({ showSideBar, selectNode, tree }: Props) => {
       >
         <Tree
           lineWidth={"2.5px"}
-          lineColor={"white"}
+          lineColor={"gray"}
           lineHeight={"15px"}
           nodePadding="30px"
           lineStyle="solid"
