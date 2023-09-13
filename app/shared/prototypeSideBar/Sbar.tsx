@@ -41,7 +41,7 @@ let SideBar = ({
         <div className="flex flex-row justify-between w-full px-2 my-4">
           <div
             onClick={() => {
-              selectedNode.children && toggleChildren();
+              toggleChildren();
             }}
             className="w-fit flex items-center justify-center px-4 py-2 hover:border-text rounded-lg  border border-accent h-fit"
           >

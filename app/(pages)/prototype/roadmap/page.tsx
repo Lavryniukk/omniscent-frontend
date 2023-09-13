@@ -224,11 +224,7 @@ const RoadmapPage = () => {
   // Define state variables using React hooks
   let [tree, setTree] = useState<Array<treenode>>(rdmap); // State for the roadmap tree
   let [showSideBar, setShowSideBar] = useState<boolean>(false); // State for showing/hiding the sidebar
-  let [selectedNode, setSelectedNode] = useState<treenode>({
-    id: "fake",
-    name: "fake",
-    displayChildren: true,
-  }); // State for the currently selected node in the tree
+  let [selectedNode, setSelectedNode] = useState<treenode>(tree[0]); // State for the currently selected node in the tree
 
   // Add a click event listener to the document to close the sidebar when clicking outside of it
   useEffect(() => {
@@ -246,39 +242,24 @@ const RoadmapPage = () => {
     };
   }, [showSideBar]);
 
-  // Define a function to set a new tree structure
-  let setNewTree = (node: Array<treenode>) => {
-    setTree(node);
-  };
-
   // Define a function to close the sidebar
   let closeSidebar = () => {
     setShowSideBar(false);
   };
 
-  // Define a function to select a node in the tree
-  let selectNode = (node: treenode) => {
-    setShowSideBar(true);
-    setSelectedNode(node);
-    console.log(selectedNode);
-  };
-
   // Recursive function to toggle the displayChildren property for a given node ID
-  function toggleDisplayChildren(tree: Array<treenode>): Array<treenode> {
-    let nodeId = selectedNode.id;
-    return tree.map((node) => {
+  function toggleDisplayChildren(
+    treee: Array<treenode>,
+    nodeId: string
+  ): Array<treenode> {
+    return treee.map((node) => {
       if (node.id === nodeId) {
-        let copy = node;
-        console.log("found node before:", copy.displayChildren);
-        node.displayChildren = !node.displayChildren;
-        console.log("found node after:", copy.displayChildren);
-
-        return copy;
-      } else if (node.children && node.children.length > 0) {
+        return { ...node, displayChildren: !node.displayChildren };
+      } else if (node.children) {
         // Recursively call the function on child nodes
         return {
           ...node,
-          children: toggleDisplayChildren(node.children),
+          children: toggleDisplayChildren(node.children, nodeId),
         };
       }
       return node;
@@ -287,28 +268,29 @@ const RoadmapPage = () => {
 
   // Function to toggle the displayChildren property for the selected node
   const toggleChildren = () => {
+    console.log("this is what we set selectedNode", selectedNode);
+    setSelectedNode({
+      ...selectedNode,
+      displayChildren: !selectedNode.displayChildren,
+    });
+    console.log("this is what it becomes", selectedNode);
+
     console.log(
-      "toggle children pressed. status before change:",
-      selectedNode.displayChildren ? "Show" : "hidden"
+      "selected node children is now",
+      selectedNode.displayChildren ? "shown" : "hidden"
     );
-    let copy = selectedNode;
-    copy.displayChildren = !copy.displayChildren;
-    setSelectedNode(copy);
-    setTree(toggleDisplayChildren(tree));
-    console.log(
-      "toggle children pressed. status after change:",
-      selectedNode.displayChildren ? "Show" : "hidden"
-    );
+    console.log("this is tree before changes:", tree);
+    setTree(toggleDisplayChildren(tree, selectedNode.id));
+    console.log("this is tree after changes:", tree);
   };
 
   // Render the RoadmapPage component
   return (
     <div className="w-full h-screen overflow-hidden select-none">
       <DynamicComponentTree
-        showSideBar={showSideBar}
+        setShowSideBar={setShowSideBar}
         tree={tree}
-        setNewTree={setNewTree}
-        selectNode={selectNode}
+        setSelectedNode={setSelectedNode}
       />
       <SideBar
         showSideBar={showSideBar}
