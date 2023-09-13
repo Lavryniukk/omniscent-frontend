@@ -3,7 +3,7 @@ import { MdOutlineClose } from "react-icons/md";
 // Define the Props type for the SideBar component
 type Props = {
   showSideBar: boolean; // Boolean prop to show/hide the sidebar
-  toggleChildren: (id: string) => void; // Function to toggle the display of children for a node
+  toggleChildren: () => void; // Function to toggle the display of children for a node
   closeSideBar: () => void; // Function to close the sidebar
   selectedNode: treenode; // The currently selected node in the tree
 };
@@ -41,11 +41,11 @@ let SideBar = ({
         <div className="flex flex-row justify-between w-full px-2 my-4">
           <div
             onClick={() => {
-              selectedNode.children && toggleChildren(selectedNode.id);
+              selectedNode.children && toggleChildren();
             }}
             className="w-fit flex items-center justify-center px-4 py-2 hover:border-text rounded-lg  border border-accent h-fit"
           >
-            {selectedNode.displayChildren ? "Hide children" : "Show children"}{" "}
+            {selectedNode.displayChildren ? "Hide children" : "Show children"}
             {/* Button label */}
           </div>
         </div>

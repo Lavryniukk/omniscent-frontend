@@ -75,7 +75,7 @@ const GraphComponent = ({ showSideBar, selectNode, tree }: Props) => {
         {children &&
           displayChildren &&
           children.map((child: treenode) => (
-            <TreeNode key={child.id} className="" label="">
+            <TreeNode key={child.id} label="">
               {generateTreeBranch(child)}
             </TreeNode>
           ))}
