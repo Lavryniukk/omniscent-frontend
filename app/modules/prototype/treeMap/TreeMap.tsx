@@ -11,14 +11,17 @@ type Props = {
 
 const GraphComponent = ({ showSideBar, selectNode, tree }: Props) => {
   const [zoomLevel, setZoomLevel] = useState(100);
-  const [coordinates, setCoordinates] = useState({ x: 600, y: 600 });
+  const [coordinates, setCoordinates] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const initialMousePos = useRef({ x: 0, y: 0 });
   const mainDivRef = useRef(null);
 
   const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    setIsDragging(!isDragging);
-    initialMousePos.current = { x: event.clientX, y: event.clientY };
+    let target = event.target as HTMLElement;
+    if (!target.closest(".node-circle")) {
+      setIsDragging(!isDragging);
+      initialMousePos.current = { x: event.clientX, y: event.clientY };
+    }
   };
 
   const handleMouseMove = (
@@ -55,10 +58,10 @@ const GraphComponent = ({ showSideBar, selectNode, tree }: Props) => {
 
     const result = (
       <TreeNode
-        className="overflow-hidden w-fit"
+        className="overflow-hidden w-fit mx-auto"
         key={id}
         label={
-          <div className="flex flex-col rotate-180 w-fit mx-auto">
+          <div className="flex flex-col rotate-180 w-fit p-1 mx-auto">
             <div
               className="node-circle"
               onClick={() => {
@@ -72,7 +75,7 @@ const GraphComponent = ({ showSideBar, selectNode, tree }: Props) => {
         {children &&
           displayChildren &&
           children.map((child: treenode) => (
-            <TreeNode key={child.id} className="mx-auto" label="">
+            <TreeNode key={child.id} className="" label="">
               {generateTreeBranch(child)}
             </TreeNode>
           ))}
@@ -93,13 +96,13 @@ const GraphComponent = ({ showSideBar, selectNode, tree }: Props) => {
   return (
     <div
       style={treeStyle}
-      onClick={(e) => handleClick(e)}
       onMouseMove={(e) => handleMouseMove(e)}
-      className={`w-fit absolute`}
+      className={`w-full h-screen overflow-hidden flex items-center  absolute`}
       ref={mainDivRef}
     >
       <div
-        className={`overflow-hidden rotate-180 w-fit transform mx-auto block`}
+        onClick={(e) => handleClick(e)}
+        className={`overflow-hidden rotate-180 w-fit mx-auto block`}
         onWheel={(e) => {
           handleScroll(e);
         }} // Listen for wheel events on the container for scroll-based zoom
