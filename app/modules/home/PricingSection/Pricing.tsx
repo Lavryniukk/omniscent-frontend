@@ -7,7 +7,7 @@ let Pricing = () => {
   w-full my-32 h-fit justify-around items-center"
     >
       <h2 className="text-text text-4xl font-roboto mx-auto text-center">
-        What about pricing?
+        What`s about pricing?
       </h2>
       <p className="font-roboto font-light mx-auto text-accent text-sm w-2/3 md:text-lg md:w-1/2 text-center mt-10">
         Our pricing is flexible, transparent, and tailored to your needs. Get
