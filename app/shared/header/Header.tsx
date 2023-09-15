@@ -29,9 +29,9 @@ let Header = () => {
             <HeaderLink url="/about" name="About us" />
           </div>
           <div className="hidden w-36  sm:flex justify-around space-x-3 items-center">
-            <HeaderLink url="/login" name="Sign in" />
+            <HeaderLink url="/signin" name="Sign in" />
             <div className="h-5 w-0.5 bg-accent" />
-            <HeaderLink url="/register" name="Sign up" />
+            <HeaderLink url="/signup" name="Sign up" />
           </div>
         </div>
       </div>
