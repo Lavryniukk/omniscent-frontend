@@ -25,8 +25,8 @@ let Header = () => {
           <div className=" space-x-5 hidden sm:block">
             <HeaderLink url="/" name="Home" />
             <HeaderLink url="/prototype" name="Prototype" />
+            <HeaderLink url="/memberships" name="Memberships" />
             <HeaderLink url="/faq" name="FAQ" />
-            <HeaderLink url="/about" name="About us" />
           </div>
           <div className="hidden w-36  sm:flex justify-around space-x-3 items-center">
             <HeaderLink url="/signin" name="Sign in" />
