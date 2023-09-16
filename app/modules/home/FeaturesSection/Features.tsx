@@ -9,7 +9,7 @@ import {
 let Features: React.FC = () => {
   return (
     <div
-      className="font-normal overflow-x-hidden h-fit bg-transparent space-y-10  mx-auto box-border max-w-10xl
+      className="font-normal overflow-x-hidden h-fit my-10 lg:my-40 bg-transparent space-y-10  mx-auto box-border max-w-10xl
 	  w-full"
     >
       <h2 className="text-text text-4xl font-roboto mx-auto text-center">
