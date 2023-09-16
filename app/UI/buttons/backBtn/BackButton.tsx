@@ -33,7 +33,7 @@ let HomeButton = () => {
     <Link
       href={linkPath}
       title="Back to home page"
-      className="fixed select-none cursor-pointer top-10 border overflow-hidden text-sm border-accent hover:border-primary transition-colors duration-300 group left-10 bg-secondary box-content rounded-lg w-16 h-9"
+      className="z-10 fixed select-none cursor-pointer top-10 border overflow-hidden text-sm border-accent hover:border-primary transition-colors duration-300 group left-10 bg-secondary box-content rounded-lg w-16 h-9"
     >
       <div className="w-32 h-full flex bg-secondary transition-transform duration-300 hover:-translate-x-16 rounded-lg">
         <div className="w-1/2 h-full flex items-center justify-center rounded-lg bg-secondary">
