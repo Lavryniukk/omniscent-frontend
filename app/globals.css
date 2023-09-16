@@ -40,6 +40,16 @@
       inset 7px 7px 14px #020304,
       inset -7px -7px 14px #0a0b0e;
   }
+  .gradient {
+    background: radial-gradient(
+      circle at center,
+      var(--primary) 0,
+      transparent 100%
+    );
+  }
+  .center-align {
+    left: calc(50% - 500px);
+  }
 }
 body {
   background: var(--background);
@@ -54,12 +64,9 @@ body {
   @apply text-text font-roboto font-medium text-lg md:text-xl lg:text-2xl 2xl:text-3xl mb-2;
 }
 .features-container {
-  @apply p-5 shadow-md hover:border-accent h-fit md:min-h-md lg:min-h-lg xl:min-h-md transition-colors duration-300 bg-transparent border-2 border-secondary rounded-xl;
+  @apply w-full flex flex-row justify-center space-x-10 items-end mx-auto h-2/3 max-h-[600px];
 }
+
 .rotated {
   tranform: rotate(180deg);
-}
-.gradient {
-  background: -webkit-linear-gradient(right, #1d4ed8, #1e3a8a);
-  background: linear-gradient(to right, #1d4ed8, #1e3a8a);
 }
