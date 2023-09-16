@@ -64,7 +64,7 @@ body {
   @apply text-text font-roboto font-medium text-lg md:text-xl lg:text-2xl 2xl:text-3xl mb-2;
 }
 .features-container {
-  @apply w-full flex flex-row justify-center space-x-10 items-end mx-auto h-2/3 max-h-[600px];
+  @apply p-5 shadow-md hover:border-accent h-fit md:min-h-md lg:min-h-lg xl:min-h-md transition-colors duration-300 bg-transparent border-2 border-secondary rounded-xl;
 }
 
 .rotated {
