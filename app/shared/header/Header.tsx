@@ -13,7 +13,7 @@ let Header = () => {
   return (
     <>
       <Popup isOpen={isOpen} />
-      <div className="border-b h-14 flex w-full justify-center backdrop-blur-sm fixed top-0.5 z-10 border-accent box-border ">
+      <div className="border-b h-14 flex w-full justify-center backdrop-blur-sm fixed top-0 z-10 border-accent box-border ">
         <div
           className="w-full h-14 fixed top-0  flex
                           items-center justify-between max-w-10xl z-0 px-10 sm:px-5
