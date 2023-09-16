@@ -1,66 +1,39 @@
-import Purchase from "@/app/UI/buttons/purchaseBtn/purchaseBtn";
-import Line from "@/app/components/pricingFeature/PricingLine";
 let Pricing = () => {
   return (
-    <div
-      className="space-y-10 select-none pricing overflow-x-hidden px-10 bg-transparent mx-auto box-border max-w-10xl
-  w-full my-32 h-fit justify-around items-center"
-    >
-      <h2 className="text-text text-4xl font-roboto mx-auto text-center">
-        What`s about pricing?
-      </h2>
-      <p className="font-roboto font-light mx-auto text-accent text-sm w-2/3 md:text-lg md:w-1/2 text-center mt-10">
-        Our pricing is flexible, transparent, and tailored to your needs. Get
-        the most value from our services without overstretching your budget.
-        Choose the plan that suits you best and start your learning adventure
-        today!
-      </p>
-      <div className="mx-auto flex lg:flex-row  flex-col space-y-10  lg:space-y-0 items-center lg:justify-around w-full h-fit">
-        <div className="border-2 rounded-xl border-accent h-full md:min-h-[400px] lg:min-h-[500px] min-w-[300px] w-1/2 md:w-1/3 lg:w-1/4 py-10">
-          <h2 className="text-text text-3xl font-roboto xl:text-4xl mx-auto text-center">
-            Trial edition
-          </h2>
-          <h3 className="pl-6 text-text mt-5 text-xl xl:text-2xl ">Free</h3>
-          <ul className="mt-5 text-md h-52 space-y-1 pl-6">
-            <Line text="10 api calls" />
-            <Line text="1 roadmap generation" />
-            <Line text="Some feature" />
-          </ul>
-          <Purchase />
-        </div>
-        <div className="border-2 rounded-xl border-accent md:min-h-[400px] lg:min-h-[500px] min-w-[300px] w-1/2 md:w-1/3 lg:w-1/4 py-10">
-          <h2 className="text-text text-3xl font-roboto xl:text-4xl mx-auto text-center">
-            Classic edition
-          </h2>
-          <h3 className="pl-6 text-text mt-5 text-xl xl:text-2xl ">
-            7.99$/monthly
-          </h3>
-          <ul className="mt-5 text-md h-52  space-y-1 pl-6">
-            <Line text="Some feature" />
-            <Line text="Some feature" />
-            <Line text="Some feature" />
-            <Line text="Some feature" />
-            <Line text="Some feature" />
-          </ul>
-          <Purchase />
-        </div>
-        <div className="border-2 rounded-xl border-accent md:min-h-[400px] lg:min-h-[500px] min-w-[300px] w-1/2 md:w-1/3 lg:w-1/4 py-10">
-          <h2 className="text-text text-3xl font-roboto xl:text-4xl mx-auto text-center">
-            Omniscient edition
-          </h2>
-          <h3 className="pl-6 text-text mt-5 text-xl xl:text-2xl ">
-            14.99$/monthly
-          </h3>
-          <ul className="mt-5 text-md h-52 space-y-1 pl-6">
-            <Line text="Some feature" />
-            <Line text="Some feature" />
-            <Line text="Some feature" />
-            <Line text="Some feature" />
-            <Line text="Some feature" />
-            <Line text="Some feature" />
-            <Line text="Some feature" />
-          </ul>
-          <Purchase />
+    <div className=" border-b-2 border-secondary w-full from-slate-950 to-background">
+      <div className="gradient h-[1000px] hidden xl:block center-align top-[230px] -z-10 blur-[160px] opacity-70 w-[1000px] absolute" />
+      <div
+        className=" select-none overflow-x-hidden px-10 bg-transparent mx-auto box-border max-w-10xl
+  w-full my-32 h-screen justify-around items-end"
+      >
+        <h2 className="text-text my-20 text-7xl font-bold font-roboto mx-auto text-center">
+          Mermberships
+        </h2>
+        <div className=" w-full flex flex-row relative justify-center space-x-10 items-end mx-auto h-2/3 min-h-[550px] max-h-[550px]">
+          <div className="h-4/6 w-1/4 p-8 border-2 bg-background bg-opacity-90 rounded-xl border-secondary">
+            <h1 className="text-2xl mb-2 text-left text-text font-light">
+              Trial
+            </h1>
+            <h1 className="text-4xl font-bold text-left text-text ">
+              $0
+              <span className="text-xl text-slate-500"> /month</span>
+            </h1>
+          </div>
+          <div className="h-full w-1/4 p-8 border-2 bg-background bg-opacity-90 rounded-xl border-secondary">
+            <h1 className="text-2xl mb-2 text-left text-text font-light">
+              Pro
+            </h1>
+            <h1 className="text-4xl font-bold text-left text-text ">
+              $13,99
+              <span className="text-xl text-slate-500"> /month</span>
+            </h1>
+          </div>
+          <div className="h-5/6 w-1/4 p-8 border-2 bg-background bg-opacity-90 rounded-xl border-secondary">
+            <h1 className="text-2xl mb-2 text-left text-text font-light">
+              Enterprise
+            </h1>
+            <h1 className="text-4xl font-bold text-left text-text ">Custom</h1>
+          </div>
         </div>
       </div>
     </div>
