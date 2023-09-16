@@ -13,9 +13,9 @@ let PricingFAQItem = ({ question, answer }: Props) => {
 
   return (
     <div
-      className={`border-x-[1.5px] border-accent w-4/6 text-text mx-auto ${
-        !isOpen ? "h-12" : "h-32"
-      } px-2 transition-all duration-500 overflow-hidden`}
+      className={`border-x-[1.5px] border-accent lg:w-4/6 sm:w-5/6  text-text mx-auto ${
+        !isOpen ? "h-12" : "sm:h-32 h-36"
+      } sm:px-2 px-1 transition-all duration-500 overflow-hidden sm:text-base text-[13px]`}
       onClick={handleClick}
     >
       <div className="flex justify-between items-center mb-4 h-12">
@@ -28,7 +28,7 @@ let PricingFAQItem = ({ question, answer }: Props) => {
       <div
         className={`py-1 ${
           isOpen ? "opacity-80" : "opacity-0"
-        } transition-opacity duration-500 text-text`}
+        } transition-opacity duration-500 text-text font-light`}
       >
         {answer}
       </div>
