@@ -58,10 +58,10 @@ const GraphComponent = ({ showSideBar, selectNode, tree }: Props) => {
 
     const result = (
       <TreeNode
-        className="overflow-hidden w-fit mx-auto"
+        className="w-fit mx-auto text-center"
         key={id}
         label={
-          <div className="flex flex-col rotate-180 w-fit p-1 mx-auto">
+          <div className="flex flex-col rotate-180 w-24 p-1 h-24 mx-auto text-center justify-between">
             <div
               className="node-circle"
               onClick={() => {
@@ -97,28 +97,28 @@ const GraphComponent = ({ showSideBar, selectNode, tree }: Props) => {
     <div
       style={treeStyle}
       onMouseMove={(e) => handleMouseMove(e)}
-      className={`w-full h-screen overflow-hidden flex items-center  absolute`}
+      className={`w-full h-screen  flex items-center absolute`}
       ref={mainDivRef}
     >
       <div
         onClick={(e) => handleClick(e)}
-        className={`overflow-hidden rotate-180 w-fit mx-auto block`}
+        className={`rotate-180 w-fit mx-auto block`}
         onWheel={(e) => {
           handleScroll(e);
         }} // Listen for wheel events on the container for scroll-based zoom
       >
         <Tree
-          lineWidth={"2.5px"}
+          lineWidth={"1.5px"}
           lineColor={"gray"}
-          lineHeight={"15px"}
-          nodePadding="30px"
+          lineHeight={"20px"}
+          nodePadding="5px"
           lineStyle="solid"
           lineBorderRadius={"10px"}
-          label={""}
+          label={"Become investor"}
         >
           {generateTree(tree)} {/* Render the generated tree structure */}
         </Tree>
-        <div className="w-full bg-background absolute bottom-full translate-y-4 z-10 h-4" />
+        {/* <div className="w-full bg-background absolute bottom-full translate-y-4 z-10 h-4" /> */}
       </div>
     </div>
   );
