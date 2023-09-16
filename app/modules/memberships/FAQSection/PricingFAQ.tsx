@@ -10,7 +10,7 @@ let PricingFAQ = () => {
         FAQ
       </h2>
 
-      <div className="p-8 space-y-5">
+      <div className="sm:p-8 p-4 space-y-5">
         <PricingFAQItem
           question="How much does your product/service cost?"
           answer="Our pricing varies depending on the plan you choose. Please visit our pricing page for detailed information."
