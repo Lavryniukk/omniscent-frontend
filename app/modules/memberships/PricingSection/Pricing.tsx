@@ -10,7 +10,7 @@ let Pricing = () => {
           <br /> fits your style
         </h2>
         <div className="w-full flex 2xl:flex-nowrap flex-wrap flex-col gap-5 max-w-[1400px] 2xl:h-[500px] lg:h-[1000px] h-[1600px] lg:flex-row relative 2xl:items-end mx-auto">
-          <div className="2xl:w-1/4 mx-auto lg:w-4/12  w-[350px] p-8 border-2 bg-background bg-opacity-90  2xl:h-[80%] lg:h-[45%] h-[30%]rounded-xl border-secondary ">
+          <div className="2xl:w-1/4 mx-auto lg:w-4/12  w-[350px] p-8 border-2 bg-background bg-opacity-90  2xl:h-[80%] lg:h-[45%] h-[30%] rounded-xl border-secondary ">
             <h1 className="mb-2 text-2xl font-light text-left text-text">
               Trial
             </h1>
