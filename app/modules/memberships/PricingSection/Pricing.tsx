@@ -1,15 +1,16 @@
 let Pricing = () => {
   return (
     <div className=" border-secondary w-full from-slate-950 to-background">
-      <div className="gradient h-[1000px] hidden xl:block center-align top-[230px] -z-10 blur-[160px] opacity-70 w-[1000px] absolute" />
+      <div className="gradient h-[1000px] hidden lg:block center-align top-[230px] -z-10 blur-[160px] opacity-70 w-[1000px] absolute" />
       <div
         className=" select-none overflow-x-hidden px-10 bg-transparent mx-auto box-border max-w-10xl
-  w-full my-32 h-[800px] justify-around items-end"
+  w-full my-32 h-fit justify-around items-end"
       >
         <h2 className="text-text my-20 text-7xl font-bold font-roboto mx-auto text-center">
-          Mermberships
+          Choose a plan that
+          <br /> fits your style
         </h2>
-        <div className=" w-full flex flex-row relative justify-center space-x-10 items-end mx-auto h-2/3 min-h-[550px] max-h-[550px]">
+        <div className=" w-full flex flex-row relative justify-center space-x-10 items-end mx-auto h-[500px] min-h-[550px] max-h-[550px]">
           <div className="h-4/6 w-1/4 p-8 border-2 bg-background bg-opacity-90 rounded-xl border-secondary">
             <h1 className="text-2xl mb-2 text-left text-text font-light">
               Trial
@@ -19,7 +20,7 @@ let Pricing = () => {
               <span className="text-xl text-slate-500"> /month</span>
             </h1>
           </div>
-          <div className="h-full w-1/4 p-8 border-2 bg-background bg-opacity-90 rounded-xl border-secondary">
+          <div className="h-full w-1/4 p-8 border-2 bg-background bg-opacity-90 rounded-xl border-slate-500">
             <h1 className="text-2xl mb-2 text-left text-text font-light">
               Pro
             </h1>
