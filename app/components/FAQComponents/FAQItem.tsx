@@ -4,7 +4,7 @@ import { BsChevronDown } from "react-icons/bs";
 import { useState } from "react";
 type Props = { question: string; answer: string };
 
-let PricingFAQItem = ({ question, answer }: Props) => {
+let FAQItem = ({ question, answer }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {
@@ -36,4 +36,4 @@ let PricingFAQItem = ({ question, answer }: Props) => {
   );
 };
 
-export default PricingFAQItem;
+export default FAQItem;
