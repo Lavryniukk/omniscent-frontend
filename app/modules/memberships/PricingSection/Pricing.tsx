@@ -1,10 +1,10 @@
 let Pricing = () => {
   return (
-    <div className=" border-b-2 border-secondary w-full from-slate-950 to-background">
+    <div className=" border-secondary w-full from-slate-950 to-background">
       <div className="gradient h-[1000px] hidden xl:block center-align top-[230px] -z-10 blur-[160px] opacity-70 w-[1000px] absolute" />
       <div
         className=" select-none overflow-x-hidden px-10 bg-transparent mx-auto box-border max-w-10xl
-  w-full my-32 h-screen justify-around items-end"
+  w-full my-32 h-[800px] justify-around items-end"
       >
         <h2 className="text-text my-20 text-7xl font-bold font-roboto mx-auto text-center">
           Mermberships
