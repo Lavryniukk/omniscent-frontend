@@ -1,27 +1,24 @@
 let Pricing = () => {
   return (
-    <div className=" border-secondary w-full from-slate-950 to-background">
-      <div className="gradient h-[1000px] hidden lg:block center-align top-[230px] -z-10 blur-[160px] opacity-70 w-[1000px] absolute" />
-      <div
-        className=" select-none overflow-x-hidden px-10 bg-transparent mx-auto box-border max-w-10xl
-  w-full my-32 h-fit justify-around items-end"
-      >
-        <h2 className="text-text my-20 text-7xl font-bold font-roboto mx-auto text-center">
+    <div className="w-full border-secondary from-slate-950 to-background">
+      <div className="gradient h-[1000px] hidden 2xl:block center-align top-[230px] -z-10 blur-[160px] opacity-70 w-[1000px] absolute" />
+      <div className="box-border items-end justify-around w-full px-10 mx-auto my-32 overflow-x-hidden bg-transparent border select-none max-w-10xl h-fit">
+        <h2 className="mx-auto my-20 font-bold text-center text-text text-7xl font-roboto">
           Choose a plan that
           <br /> fits your style
         </h2>
-        <div className=" w-full flex flex-row relative justify-center space-x-10 items-end mx-auto h-[500px] min-h-[550px] max-h-[550px]">
-          <div className="h-4/6 w-1/4 p-8 border-2 bg-background bg-opacity-90 rounded-xl border-secondary">
-            <h1 className="text-2xl mb-2 text-left text-text font-light">
+        <div className=" w-full flex 2xl:flex-nowrap flex-wrap flex-col border gap-5 max-w-[1400px] 2xl:h-[500px] lg:h-[1000px] h-[1600px] lg:flex-row relative 2xl:items-end mx-auto">
+          <div className="2xl:w-1/4 mx-auto lg:w-4/12 w-[350px] p-8 border-2 bg-background 2xl:h-[80%] lg:h-[45%] h-[30%] bg-opacity-90 rounded-xl border-secondary">
+            <h1 className="mb-2 text-2xl font-light text-left text-text">
               Trial
             </h1>
-            <h1 className="text-4xl font-bold text-left text-text ">
+            <h1 className="text-4xl font-bold text-left text-text">
               $0
-              <span className="text-xl text-slate-500"> /month</span>
+              <span className="text-xl text-slate-500">/month</span>
             </h1>
           </div>
-          <div className="h-full w-1/4 p-8 border-2 bg-background bg-opacity-90 rounded-xl border-slate-500">
-            <h1 className="text-2xl mb-2 text-left text-text font-light">
+          <div className="2xl:w-1/4 mx-auto lg:w-4/12 w-[350px] p-8 border-2 bg-background 2xl:h-full lg:h-[45%] h-[30%] bg-opacity-90 rounded-xl border-secondary 2xl:border-slate-500">
+            <h1 className="mb-2 text-2xl font-light text-left text-text">
               Pro
             </h1>
             <h1 className="text-4xl font-bold text-left text-text ">
@@ -29,8 +26,8 @@ let Pricing = () => {
               <span className="text-xl text-slate-500"> /month</span>
             </h1>
           </div>
-          <div className="h-5/6 w-1/4 p-8 border-2 bg-background bg-opacity-90 rounded-xl border-secondary">
-            <h1 className="text-2xl mb-2 text-left text-text font-light">
+          <div className="2xl:w-1/4 mx-auto lg:w-4/12 w-[350px] p-8  border-2 bg-background 2xl:h-[90%] lg:h-[45%] h-[30%] bg-opacity-90 rounded-xl border-secondary">
+            <h1 className="mb-2 text-2xl font-light text-left text-text">
               Enterprise
             </h1>
             <h1 className="text-4xl font-bold text-left text-text ">Custom</h1>
