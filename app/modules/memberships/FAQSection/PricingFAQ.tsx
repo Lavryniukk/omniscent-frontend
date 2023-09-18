@@ -4,7 +4,7 @@ let PricingFAQ = () => {
   return (
     <div
       className="space-y-10 select-none pricing overflow-x-hidden px-10 bg-transparent mx-auto box-border max-w-10xl
-  w-full my-60 h-fit justify-around items-center "
+  w-full my-32 h-fit justify-around items-center "
     >
       <h2 className="text-4xl sm:text-5xl  font-roboto mx-auto font-bold text-center text-text">
         FAQ
