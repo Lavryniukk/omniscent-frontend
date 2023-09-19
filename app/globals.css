@@ -40,6 +40,22 @@
       inset 7px 7px 14px #020304,
       inset -7px -7px 14px #0a0b0e;
   }
+  .gradient {
+    background: radial-gradient(
+      circle at center,
+      var(--primary) 0,
+      transparent 100%
+    );
+  }
+  .center-align {
+    left: calc(50% - 500px);
+  }
+  .glow-effect {
+    box-shadow:
+      0 0 5px var(--primary),
+      0 0 10px var(--primary),
+      0 0 20px var(--primary);
+  }
 }
 body {
   background: var(--background);
@@ -56,10 +72,7 @@ body {
 .features-container {
   @apply p-5 shadow-md hover:border-accent h-fit md:min-h-md lg:min-h-lg xl:min-h-md transition-colors duration-300 bg-transparent border-2 border-secondary rounded-xl;
 }
+
 .rotated {
   tranform: rotate(180deg);
-}
-.gradient {
-  background: -webkit-linear-gradient(right, #1d4ed8, #1e3a8a);
-  background: linear-gradient(to right, #1d4ed8, #1e3a8a);
 }
