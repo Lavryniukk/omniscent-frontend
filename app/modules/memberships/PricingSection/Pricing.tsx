@@ -1,3 +1,4 @@
+import Line from "@/app/components/pricingComponents/PricingLine";
 import Link from "next/link";
 import { HiCheck } from "react-icons/hi";
 let Pricing = () => {
@@ -20,14 +21,10 @@ let Pricing = () => {
             </h1>
             <p className="text-accent text-right">Try everything for free</p>
             <ul className=" mt-5 text-accent space-y-2">
-              <li>
-                <div className="flex items-center space-x-2">
-                  <HiCheck /> <p className="ml-2">1 Free roadmap generation</p>
-                </div>
-              </li>
-              <li>- 10 Free api calls</li>
-              <li>- All learning features available</li>
-              <li>- No credit card info required</li>
+              <Line text={"1 Free roadmap generation"} />
+              <Line text={"10 Free api calls"} />
+              <Line text={"All learning features available"} />
+              <Line text={"No credit card info required"} />
             </ul>
             <Link
               href="/"
@@ -47,6 +44,15 @@ let Pricing = () => {
             <p className="text-accent text-right">
               Best choice for consistent learners
             </p>
+            <ul className=" mt-5 text-accent space-y-2">
+              <Line text={"Unlimited roadmap generations"} />
+              <Line text={"200 Api calls monthly"} />
+              <Line text={"'Top learners' section unlocked"} />
+              <Line text={"Unlocked achievments"} />
+              <Line text={"Unlocked statistics"} />
+              <Line text={"Private chat with other learners"} />
+              <Line text={"All experimental features available"} />
+            </ul>
             <Link
               href="/"
               className=" text-center absolute right-8 bottom-7 w-[82%] text-lg text-background bg-text font-bold border border-text hover:text-text hover:bg-opacity-90  transition-all duration-200 hover:border-text hover:bg-background  mx-auto p-4 py-2 block rounded-lg glow-effect"
@@ -62,6 +68,11 @@ let Pricing = () => {
             <p className="text-accent text-right">
               Big needs for big companies
             </p>
+            <ul className="mt-5 text-accent space-y-2">
+              <Line text={"Everything included in pro"} />
+              <Line text={"Custom requirements"} />
+            </ul>
+
             <Link
               href="/"
               className=" text-center absolute right-8 bottom-7 w-[82%] text-lg text-text bg-background font-bold border hover:text-background hover:bg-opacity-90  transition-all duration-200 border-text hover:bg-text  mx-auto p-4 py-2 block rounded-lg "
