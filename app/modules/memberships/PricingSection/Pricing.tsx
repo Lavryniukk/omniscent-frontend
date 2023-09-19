@@ -11,7 +11,7 @@ let Pricing = () => {
           <br /> fits your style
         </h2>
         <div className="w-full flex 2xl:flex-nowrap flex-wrap flex-col gap-5 max-w-[1400px] 2xl:h-[500px] lg:h-[1000px] h-[1600px] lg:flex-row relative 2xl:items-end mx-auto">
-          <div className="2xl:w-1/4 mx-auto lg:w-4/12 relative w-[350px] p-8 border-2 bg-background bg-opacity-90  2xl:h-[80%] lg:h-[45%] h-[30%] rounded-xl border-secondary ">
+          <div className="2xl:w-1/4 mx-auto shadow-sm 2xl:shadow-none shadow-white lg:w-4/12 relative w-[350px] p-8 border-2 bg-background bg-opacity-90  2xl:h-[80%] lg:h-[47%] h-[30%] rounded-xl border-secondary ">
             <h1 className="mb-2 text-2xl font-light text-left text-text">
               Trial
             </h1>
@@ -20,7 +20,7 @@ let Pricing = () => {
               <span className="text-xl text-slate-500">/month</span>
             </h1>
             <p className="text-accent text-right">Try everything for free</p>
-            <ul className=" mt-5 text-accent space-y-2">
+            <ul className=" mt-5 text-accent space-y-1 xl:space-y-2">
               <Line text={"1 Free roadmap generation"} />
               <Line text={"10 Free api calls"} />
               <Line text={"All learning features available"} />
@@ -33,7 +33,7 @@ let Pricing = () => {
               Get started
             </Link>
           </div>
-          <div className="2xl:w-1/4 shadow-md shadow-secondary mx-auto lg:w-4/12 w-[350px] p-8 border-2 relative bg-background 2xl:h-full lg:h-[45%] h-[30%] bg-opacity-90 rounded-xl border-secondary 2xl:border-slate-500 ">
+          <div className="2xl:w-1/4 shadow-sm 2xl:shadow-none shadow-white mx-auto lg:w-4/12 w-[350px] p-8 border-2 relative bg-background 2xl:h-full lg:h-[47%] h-[30%] bg-opacity-90 rounded-xl border-secondary 2xl:border-slate-500 ">
             <h1 className="mb-2 text-2xl font-light text-left text-text">
               Pro
             </h1>
@@ -44,7 +44,7 @@ let Pricing = () => {
             <p className="text-accent text-right">
               Best choice for consistent learners
             </p>
-            <ul className=" mt-5 text-accent space-y-2">
+            <ul className=" mt-5 text-accent space-y-1 xl:space-y-2">
               <Line text={"Unlimited roadmap generations"} />
               <Line text={"200 Api calls monthly"} />
               <Line text={"'Top learners' section unlocked"} />
@@ -60,7 +60,7 @@ let Pricing = () => {
               Purchase
             </Link>
           </div>
-          <div className="2xl:w-1/4 mx-auto lg:w-4/12 w-[350px] p-8 relative border-2 bg-background 2xl:h-[90%] lg:h-[45%] h-[30%] bg-opacity-90 rounded-xl border-secondary ">
+          <div className="2xl:w-1/4 shadow-sm 2xl:shadow-none shadow-white mx-auto lg:w-4/12 w-[350px] p-8 relative border-2 bg-background 2xl:h-[90%] lg:h-[47%] h-[30%] bg-opacity-90 rounded-xl border-secondary ">
             <h1 className="mb-2 text-2xl font-light text-left text-text">
               Enterprise
             </h1>
@@ -68,7 +68,7 @@ let Pricing = () => {
             <p className="text-accent text-right">
               Big needs for big companies
             </p>
-            <ul className="mt-5 text-accent space-y-2">
+            <ul className="mt-5 text-accent space-y-1 xl:space-y-2">
               <Line text={"Everything included in pro"} />
               <Line text={"Custom requirements"} />
             </ul>
