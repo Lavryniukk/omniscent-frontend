@@ -43,14 +43,15 @@ let GraphTree = ({
   setSelectedNode: (trnode: treenode) => void;
   setShowSideBar: (v: boolean) => void;
 }) => {
+  let [coordinates, setCoordinates] = useState({ x: 200, y: 200 });
   let generateTreeGraph = (tree: Array<treenode>) => {
     let result = tree.map((node) => {
       let arrowTopAfter =
         "after:absolute after:right-1/2 after:-top-5  after:bg-accent after:h-6 after:w-0.5";
       let after = getAfter(node, tree);
       let before = getBefore(node, tree);
-      return node.children ? (
-        <ul
+      return (
+        <div
           key={node.id}
           className={`w-fit ${after} ${before} flex-col-reverse pb-5 flex relative text-center text-accent`}
         >
@@ -64,25 +65,20 @@ let GraphTree = ({
                 setSelectedNode(node);
               }}
               className={`w-10 hover:bg-secondary aspect-square mt-2 rounded-full ${
-                node.children.length ? arrowTopAfter : ""
+                node.children && node.children.length ? arrowTopAfter : ""
               } border-2 mx-auto border-accent`}
             />
           </div>
           <div className="flex flex-row h-fit w-fit">
-            {generateTreeGraph(node.children)}
+            {node.children && generateTreeGraph(node.children)}
           </div>
-        </ul>
-      ) : (
-        <li
-          key={node.id}
-          className={`h-32  border w-fit ${after} ${before} relative text-center text-accent`}
-        ></li>
+        </div>
       );
     });
     return result;
   };
   return (
-    <div className="w-fit border h-fit flex flex-row">
+    <div className="w-fit h-fit flex flex-row">
       {generateTreeGraph(treeObjectArray)}
     </div>
   );
