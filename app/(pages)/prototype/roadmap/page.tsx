@@ -3,7 +3,7 @@ import SideBar from "@/app/shared/prototypeSideBar/Sbar";
 import { treenode } from "@/app/shared/types/node";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
-
+import GraphTree from "@/app/modules/graph/GraphTree";
 let rdmap: Array<treenode> = [
   {
     id: "frontendframework",
@@ -260,8 +260,8 @@ let test: Array<treenode> = [
 ];
 
 // Dynamically import the TreeMap component using Next.js dynamic import
-const DynamicComponentTree = dynamic(
-  () => import("@/app/modules/prototype/treeMap/TreeMap"), // Import path
+const DynamicGraphTree = dynamic(
+  () => import("@/app/modules/graph/GraphTree"), // Import path
   { ssr: false } // Disable server-side rendering for this component
 );
 
@@ -324,11 +324,7 @@ const RoadmapPage = () => {
   // Render the RoadmapPage component
   return (
     <div className="w-full h-screen overflow-hidden select-none">
-      <DynamicComponentTree
-        setShowSideBar={setShowSideBar}
-        tree={tree}
-        setSelectedNode={setSelectedNode}
-      />
+      <DynamicGraphTree treeObjectArray={tree} />
       <SideBar
         showSideBar={showSideBar}
         toggleChildren={toggleChildren}
