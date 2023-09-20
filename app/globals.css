@@ -63,9 +63,7 @@ body {
 .node {
   @apply text-text font-light w-fit h-fit mx-auto text-xs sm:text-sm md:text-base lg:text-lg;
 }
-.node-circle {
-  @apply hover:bg-secondary transition-colors duration-150 rounded-full mx-auto border p-1 sm:p-2 md:p-4 lg:p-5;
-}
+
 .features-title {
   @apply text-text font-roboto font-medium text-lg md:text-xl lg:text-2xl 2xl:text-3xl mb-2;
 }

@@ -324,7 +324,11 @@ const RoadmapPage = () => {
   // Render the RoadmapPage component
   return (
     <div className="w-full h-screen overflow-hidden select-none">
-      <DynamicGraphTree treeObjectArray={tree} />
+      <DynamicGraphTree
+        setShowSideBar={setShowSideBar}
+        treeObjectArray={tree}
+        setSelectedNode={setSelectedNode}
+      />
       <SideBar
         showSideBar={showSideBar}
         toggleChildren={toggleChildren}

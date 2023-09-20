@@ -1,6 +1,8 @@
+"use client";
 "Разраб даун - не трогать код";
 import { treenode } from "@/app/shared/types/node";
-let getAfter = (node: treenode, nodeArray: Array<treenode>, height: string) => {
+import { useRef, useState } from "react";
+let getAfter = (node: treenode, nodeArray: Array<treenode>) => {
   let firstEl: treenode = nodeArray[0];
   let lastEl: treenode = nodeArray[nodeArray.length - 1];
   let rounded = "";
@@ -16,11 +18,7 @@ let getAfter = (node: treenode, nodeArray: Array<treenode>, height: string) => {
 
   return after;
 };
-let getBefore = (
-  node: treenode,
-  nodeArray: Array<treenode>,
-  height: string
-) => {
+let getBefore = (node: treenode, nodeArray: Array<treenode>) => {
   let firstEl: treenode = nodeArray[0];
   let lastEl: treenode = nodeArray[nodeArray.length - 1];
   let rounded = "";
@@ -36,14 +34,21 @@ let getBefore = (
 
   return before;
 };
-let GraphTree = ({ treeObjectArray }: { treeObjectArray: Array<treenode> }) => {
-  let heightOfSpacing = "20";
+let GraphTree = ({
+  treeObjectArray,
+  setShowSideBar,
+  setSelectedNode,
+}: {
+  treeObjectArray: Array<treenode>;
+  setSelectedNode: (trnode: treenode) => void;
+  setShowSideBar: (v: boolean) => void;
+}) => {
   let generateTreeGraph = (tree: Array<treenode>) => {
     let result = tree.map((node) => {
       let arrowTopAfter =
         "after:absolute after:right-1/2 after:-top-5  after:bg-accent after:h-6 after:w-0.5";
-      let after = getAfter(node, tree, heightOfSpacing);
-      let before = getBefore(node, tree, heightOfSpacing);
+      let after = getAfter(node, tree);
+      let before = getBefore(node, tree);
       return node.children ? (
         <ul
           key={node.id}
@@ -54,7 +59,11 @@ let GraphTree = ({ treeObjectArray }: { treeObjectArray: Array<treenode> }) => {
           >
             {node.name}
             <div
-              className={`w-10 aspect-square mt-2 rounded-full ${
+              onClick={() => {
+                setShowSideBar(true);
+                setSelectedNode(node);
+              }}
+              className={`w-10 hover:bg-secondary aspect-square mt-2 rounded-full ${
                 node.children.length ? arrowTopAfter : ""
               } border-2 mx-auto border-accent`}
             />
@@ -66,14 +75,14 @@ let GraphTree = ({ treeObjectArray }: { treeObjectArray: Array<treenode> }) => {
       ) : (
         <li
           key={node.id}
-          className={`h-32 w-fit ${after} ${before} relative text-center text-accent`}
+          className={`h-32  border w-fit ${after} ${before} relative text-center text-accent`}
         ></li>
       );
     });
     return result;
   };
   return (
-    <div className="w-fit h-fit flex flex-row">
+    <div className="w-fit border h-fit flex flex-row">
       {generateTreeGraph(treeObjectArray)}
     </div>
   );
