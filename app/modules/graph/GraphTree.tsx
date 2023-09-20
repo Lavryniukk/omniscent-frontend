@@ -1,3 +1,4 @@
+"Разраб даун - не трогать код";
 import { treenode } from "@/app/shared/types/node";
 let getAfter = (node: treenode, nodeArray: Array<treenode>, height: string) => {
   let firstEl: treenode = nodeArray[0];
@@ -10,7 +11,7 @@ let getAfter = (node: treenode, nodeArray: Array<treenode>, height: string) => {
     rounded = "after:border-l";
   }
   if (lastEl !== node) {
-    after = `after:absolute after:right-0 ${rounded} after:h-[${height}px] after:border-b-2 after:border-accent after:w-1/2 after:bottom-0 `;
+    after = `after:absolute after:right-0 ${rounded} after:h-[20px] after:border-b-2 after:border-accent after:w-1/2 after:bottom-0 `;
   }
 
   return after;
@@ -30,7 +31,7 @@ let getBefore = (
     rounded = "before:border-r";
   }
   if (firstEl !== node) {
-    before = `before:absolute before:left-0 ${rounded}  before:h-[${height}px] before:border-b-2  before:border-accent before:w-1/2 before:bottom-0 `;
+    before = `before:absolute before:left-0 ${rounded}  before:h-[20px] before:border-b-2  before:border-accent before:w-1/2 before:bottom-0 `;
   }
 
   return before;
@@ -46,9 +47,11 @@ let GraphTree = ({ treeObjectArray }: { treeObjectArray: Array<treenode> }) => {
       return node.children ? (
         <ul
           key={node.id}
-          className={`w-fit ${after} ${before} p-3 flex-col-reverse pb-5 flex relative text-center text-accent`}
+          className={`w-fit ${after} ${before} flex-col-reverse pb-5 flex relative text-center text-accent`}
         >
-          <div className={` w-full mx-auto pt-2 mt-5 relative text-center `}>
+          <div
+            className={` w-full min-w-[100px] mx-auto pt-2 mt-5 relative text-center `}
+          >
             {node.name}
             <div
               className={`w-10 aspect-square mt-2 rounded-full ${
