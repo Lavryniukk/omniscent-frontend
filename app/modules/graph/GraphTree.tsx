@@ -34,16 +34,54 @@ let getBefore = (node: treenode, nodeArray: Array<treenode>) => {
 
   return before;
 };
+type PropsType = {
+  treeObjectArray: Array<treenode>;
+  setSelectedNode: (trnode: treenode) => void;
+  setShowSideBar: (v: boolean) => void;
+  isDragging: boolean;
+  setIsDragging: (v: boolean) => void;
+  setCoordinates: ({ x, y }: { x: number; y: number }) => void;
+  coordinates: { x: number; y: number };
+  initialMousePos: { x: number; y: number };
+  setInitialMousePos: ({ x, y }: { x: number; y: number }) => void;
+};
 let GraphTree = ({
   treeObjectArray,
   setShowSideBar,
   setSelectedNode,
-}: {
-  treeObjectArray: Array<treenode>;
-  setSelectedNode: (trnode: treenode) => void;
-  setShowSideBar: (v: boolean) => void;
-}) => {
-  let [coordinates, setCoordinates] = useState({ x: 200, y: 200 });
+  isDragging,
+  setIsDragging,
+  setCoordinates,
+  coordinates,
+  initialMousePos,
+  setInitialMousePos,
+}: PropsType) => {
+  const [zoomLevel, setZoomLevel] = useState(100);
+  const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    let target = event.target as HTMLElement;
+    if (!target.closest(".node-circle")) {
+      setIsDragging(true);
+      setInitialMousePos({ x: event.clientX, y: event.clientY });
+    }
+  };
+  const handleScroll = (e: React.WheelEvent) => {
+    const minZoom = 50; // Minimum zoom level
+    const maxZoom = 150; // Maximum zoom level
+    const delta = e.deltaY;
+    const zoomFactor = delta > 0 ? -10 : 10; // Adjust the zoom factor based on scroll direction
+
+    if (
+      zoomLevel + zoomFactor >= minZoom &&
+      zoomLevel + zoomFactor <= maxZoom
+    ) {
+      setZoomLevel((prevZoom) => prevZoom + zoomFactor);
+    }
+  };
+  const treeStyle = {
+    transform: `scale(${zoomLevel / 100})`,
+    top: `${coordinates.y}px`,
+    left: `${coordinates.x}px`,
+  };
   let generateTreeGraph = (tree: Array<treenode>) => {
     let result = tree.map((node) => {
       let arrowTopAfter =
@@ -53,6 +91,7 @@ let GraphTree = ({
       return (
         <div
           key={node.id}
+          // style={treeStyle}
           className={`w-fit ${after} ${before} flex-col-reverse pb-5 flex relative text-center text-accent`}
         >
           <div
@@ -64,7 +103,7 @@ let GraphTree = ({
                 setShowSideBar(true);
                 setSelectedNode(node);
               }}
-              className={`w-10 hover:bg-secondary aspect-square mt-2 rounded-full ${
+              className={`w-10 hover:bg-secondary node-circle aspect-square mt-2 rounded-full ${
                 node.children && node.children.length ? arrowTopAfter : ""
               } border-2 mx-auto border-accent`}
             />
@@ -78,7 +117,15 @@ let GraphTree = ({
     return result;
   };
   return (
-    <div className="w-fit h-fit flex flex-row">
+    <div
+      onMouseDown={(e) => handleClick(e)}
+      style={treeStyle}
+      onWheel={(e) => handleScroll(e)}
+      onMouseUp={() => {
+        setIsDragging(false);
+      }}
+      className="w-fit  relative h-fit flex flex-row"
+    >
       {generateTreeGraph(treeObjectArray)}
     </div>
   );

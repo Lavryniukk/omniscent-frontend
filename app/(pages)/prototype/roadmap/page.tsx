@@ -2,7 +2,7 @@
 import SideBar from "@/app/shared/prototypeSideBar/Sbar";
 import { treenode } from "@/app/shared/types/node";
 import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import GraphTree from "@/app/modules/graph/GraphTree";
 let rdmap: Array<treenode> = [
   {
@@ -271,13 +271,33 @@ const RoadmapPage = () => {
   let [tree, setTree] = useState<Array<treenode>>(test); // State for the roadmap tree
   let [showSideBar, setShowSideBar] = useState<boolean>(false); // State for showing/hiding the sidebar
   let [selectedNode, setSelectedNode] = useState<treenode>(tree[0]); // State for the currently selected node in the tree
+  let [coordinates, setCoordinates] = useState<{ x: number; y: number }>({
+    x: 100,
+    y: 200,
+  });
+  let [isDragging, setIsDragging] = useState<boolean>(false);
+  const [initialMousePos, setInitialMousePos] = useState({ x: 0, y: 0 });
+
+  let handleMouseMove = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    if (isDragging) {
+      const deltaX = event.clientX - initialMousePos.x;
+      const deltaY = event.clientY - initialMousePos.y;
+      setCoordinates((prevCoordinates) => ({
+        x: prevCoordinates.x + deltaX,
+        y: prevCoordinates.y + deltaY,
+      }));
+      setInitialMousePos({ x: event.clientX, y: event.clientY });
+    }
+  };
 
   // Add a click event listener to the document to close the sidebar when clicking outside of it
   useEffect(() => {
     function handleDocumentClick(event: MouseEvent) {
       const target = event.target as HTMLElement | null;
       if (showSideBar && target && !target.closest(".sidebar")) {
-        closeSidebar();
+        setShowSideBar(false);
       }
     }
 
@@ -288,52 +308,28 @@ const RoadmapPage = () => {
     };
   }, [showSideBar]);
 
-  // Define a function to close the sidebar
-  let closeSidebar = () => {
-    setShowSideBar(false);
-  };
-
-  // Recursive function to toggle the displayChildren property for a given node ID
-  function toggleDisplayChildren(
-    treee: Array<treenode>,
-    nodeId: string
-  ): Array<treenode> {
-    return treee.map((node) => {
-      if (node.id === nodeId) {
-        return { ...node, displayChildren: !node.displayChildren };
-      } else if (node.children) {
-        // Recursively call the function on child nodes
-        return {
-          ...node,
-          children: toggleDisplayChildren(node.children, nodeId),
-        };
-      }
-      return node;
-    });
-  }
-
-  // Function to toggle the displayChildren property for the selected node
-  const toggleChildren = () => {
-    setSelectedNode({
-      ...selectedNode,
-      displayChildren: !selectedNode.displayChildren,
-    });
-    setTree(toggleDisplayChildren(tree, selectedNode.id));
-  };
-
-  // Render the RoadmapPage component
   return (
-    <div className="w-full h-screen overflow-hidden select-none">
+    <div
+      onMouseMove={(e) => {
+        handleMouseMove(e);
+      }}
+      className="w-full h-screen overflow-hidden select-none"
+    >
       <DynamicGraphTree
         setShowSideBar={setShowSideBar}
         treeObjectArray={tree}
         setSelectedNode={setSelectedNode}
+        setIsDragging={setIsDragging}
+        isDragging={isDragging}
+        coordinates={coordinates}
+        setCoordinates={setCoordinates}
+        initialMousePos={initialMousePos}
+        setInitialMousePos={setInitialMousePos}
       />
       <SideBar
         showSideBar={showSideBar}
-        toggleChildren={toggleChildren}
         selectedNode={selectedNode}
-        closeSideBar={closeSidebar}
+        closeSideBar={setShowSideBar}
       />
     </div>
   );
