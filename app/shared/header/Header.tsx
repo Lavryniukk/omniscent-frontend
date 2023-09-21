@@ -4,6 +4,7 @@ import HeaderLink from "@/app/components/headerLink/HeaderLink";
 import Logo from "@/app/UI/icons/OmniLogo";
 import { useState } from "react";
 import Popup from "./burgerPopup/BurgerPopup";
+import Link from "next/link";
 
 let Header = () => {
   let [isOpen, setIsOpen] = useState(false);
@@ -19,14 +20,16 @@ let Header = () => {
                           items-center justify-between max-w-10xl z-0 px-10 sm:px-5
                           box-border"
         >
-          <Logo />
+          <Link href="/">
+            <Logo />
+          </Link>
           <Burger isOpen={isOpen} toggleMenu={toggleMenu} />
 
           <div className=" space-x-5 hidden sm:block">
             <HeaderLink url="/" name="Home" />
             <HeaderLink url="/prototype" name="Prototype" />
             <HeaderLink url="/memberships" name="Memberships" />
-            <HeaderLink url="/faq" name="FAQ" />
+
           </div>
           <div className="hidden w-36  sm:flex justify-around space-x-3 items-center">
             <HeaderLink url="/signin" name="Sign in" />
