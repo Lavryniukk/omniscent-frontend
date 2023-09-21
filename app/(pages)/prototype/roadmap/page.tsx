@@ -2,141 +2,8 @@
 import SideBar from "@/app/shared/prototypeSideBar/Sbar";
 import { treenode } from "@/app/shared/types/node";
 import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
-const roadmap: treenode = {
-  id: "become",
-  name: "become a programmer",
-  displayChildren: true,
-  children: [
-    {
-      id: "languages",
-      name: "Languages",
-      displayChildren: true,
-      children: [
-        {
-          id: "ts",
-          name: "TypeScript",
-          displayChildren: true,
-          children: [
-            {
-              id: "syntax",
-              name: "Syntax",
-              displayChildren: true,
-              children: [],
-            },
-            {
-              id: "frameworks",
-              name: "Frameworks",
-              displayChildren: true,
-              children: [
-                {
-                  id: "react",
-                  name: "React",
-                  displayChildren: true,
-                  children: [],
-                },
-                {
-                  id: "vue",
-                  name: "Vue",
-                  displayChildren: true,
-                  children: [],
-                },
-                {
-                  id: "angular",
-                  name: "Angular",
-                  displayChildren: true,
-                  children: [],
-                },
-              ],
-            },
-          ],
-        },
-        {
-          id: "js",
-          name: "JavaScript",
-          displayChildren: true,
-          children: [
-            {
-              id: "nodejs",
-              name: "NodeJs",
-              displayChildren: true,
-              children: [],
-            },
-            {
-              id: "syntax",
-              name: "Syntax",
-              displayChildren: true,
-              children: [
-                {
-                  id: "ifelse",
-                  name: "if/else",
-                  displayChildren: true,
-                  children: [],
-                },
-                {
-                  id: "let",
-                  name: "Let",
-                  displayChildren: true,
-                  children: [],
-                },
-              ],
-            },
-            {
-              id: "dom",
-              name: "DOM",
-              displayChildren: true,
-              children: [],
-            },
-          ],
-        },
-      ],
-    },
-    {
-      id: "tools",
-      name: "Tools",
-      displayChildren: true,
-      children: [
-        {
-          id: "git",
-          name: "Git",
-          displayChildren: true,
-          children: [],
-        },
-        {
-          id: "vscode",
-          name: "VSCode",
-          displayChildren: true,
-          children: [],
-        },
-      ],
-    },
-    {
-      id: "concepts",
-      name: "Concepts",
-      displayChildren: true,
-      children: [
-        {
-          id: "http",
-          name: "HTTP",
-          displayChildren: true,
-          children: [],
-        },
-        {
-          id: "www",
-          name: "WWW",
-          displayChildren: true,
-          children: [],
-        },
-        {
-          id: "development",
-          name: "Development process",
-          displayChildren: true,
-          children: [],
-        },
-      ],
-    },
-  ],
-};
+import { useEffect, useRef, useState } from "react";
+import GraphTree from "@/app/modules/graph/GraphTree";
 let rdmap: Array<treenode> = [
   {
     id: "frontendframework",
@@ -393,8 +260,8 @@ let test: Array<treenode> = [
 ];
 
 // Dynamically import the TreeMap component using Next.js dynamic import
-const DynamicComponentTree = dynamic(
-  () => import("@/app/modules/prototype/treeMap/TreeMap"), // Import path
+const DynamicGraphTree = dynamic(
+  () => import("@/app/modules/graph/GraphTree"), // Import path
   { ssr: false } // Disable server-side rendering for this component
 );
 
@@ -404,13 +271,33 @@ const RoadmapPage = () => {
   let [tree, setTree] = useState<Array<treenode>>(test); // State for the roadmap tree
   let [showSideBar, setShowSideBar] = useState<boolean>(false); // State for showing/hiding the sidebar
   let [selectedNode, setSelectedNode] = useState<treenode>(tree[0]); // State for the currently selected node in the tree
+  let [coordinates, setCoordinates] = useState<{ x: number; y: number }>({
+    x: 100,
+    y: 200,
+  });
+  let [isDragging, setIsDragging] = useState<boolean>(false);
+  const [initialMousePos, setInitialMousePos] = useState({ x: 0, y: 0 });
+
+  let handleMouseMove = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    if (isDragging) {
+      const deltaX = event.clientX - initialMousePos.x;
+      const deltaY = event.clientY - initialMousePos.y;
+      setCoordinates((prevCoordinates) => ({
+        x: prevCoordinates.x + deltaX,
+        y: prevCoordinates.y + deltaY,
+      }));
+      setInitialMousePos({ x: event.clientX, y: event.clientY });
+    }
+  };
 
   // Add a click event listener to the document to close the sidebar when clicking outside of it
   useEffect(() => {
     function handleDocumentClick(event: MouseEvent) {
       const target = event.target as HTMLElement | null;
       if (showSideBar && target && !target.closest(".sidebar")) {
-        closeSidebar();
+        setShowSideBar(false);
       }
     }
 
@@ -421,52 +308,28 @@ const RoadmapPage = () => {
     };
   }, [showSideBar]);
 
-  // Define a function to close the sidebar
-  let closeSidebar = () => {
-    setShowSideBar(false);
-  };
-
-  // Recursive function to toggle the displayChildren property for a given node ID
-  function toggleDisplayChildren(
-    treee: Array<treenode>,
-    nodeId: string
-  ): Array<treenode> {
-    return treee.map((node) => {
-      if (node.id === nodeId) {
-        return { ...node, displayChildren: !node.displayChildren };
-      } else if (node.children) {
-        // Recursively call the function on child nodes
-        return {
-          ...node,
-          children: toggleDisplayChildren(node.children, nodeId),
-        };
-      }
-      return node;
-    });
-  }
-
-  // Function to toggle the displayChildren property for the selected node
-  const toggleChildren = () => {
-    setSelectedNode({
-      ...selectedNode,
-      displayChildren: !selectedNode.displayChildren,
-    });
-    setTree(toggleDisplayChildren(tree, selectedNode.id));
-  };
-
-  // Render the RoadmapPage component
   return (
-    <div className="w-full h-screen overflow-hidden select-none">
-      <DynamicComponentTree
+    <div
+      onMouseMove={(e) => {
+        handleMouseMove(e);
+      }}
+      className="w-full h-screen overflow-hidden select-none"
+    >
+      <DynamicGraphTree
         setShowSideBar={setShowSideBar}
-        tree={tree}
+        treeObjectArray={tree}
         setSelectedNode={setSelectedNode}
+        setIsDragging={setIsDragging}
+        isDragging={isDragging}
+        coordinates={coordinates}
+        setCoordinates={setCoordinates}
+        initialMousePos={initialMousePos}
+        setInitialMousePos={setInitialMousePos}
       />
       <SideBar
         showSideBar={showSideBar}
-        toggleChildren={toggleChildren}
         selectedNode={selectedNode}
-        closeSideBar={closeSidebar}
+        closeSideBar={setShowSideBar}
       />
     </div>
   );
