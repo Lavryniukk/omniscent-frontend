@@ -7,6 +7,7 @@ let PricingFAQ = () => {
   w-full my-32 h-fit justify-around items-center "
     >
       <h2 className="text-4xl sm:text-5xl font-roboto mx-auto font-bold text-center text-text">
+
         FAQ
       </h2>
 
