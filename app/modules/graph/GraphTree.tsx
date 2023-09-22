@@ -44,16 +44,15 @@ type PropsType = {
   coordinates: { x: number; y: number };
   initialMousePos: { x: number; y: number };
   setInitialMousePos: ({ x, y }: { x: number; y: number }) => void;
+  selectedNode: treenode | null;
 };
 let GraphTree = ({
   treeObjectArray,
   setShowSideBar,
   setSelectedNode,
-  isDragging,
   setIsDragging,
-  setCoordinates,
   coordinates,
-  initialMousePos,
+  selectedNode,
   setInitialMousePos,
 }: PropsType) => {
   const [zoomLevel, setZoomLevel] = useState(100);
@@ -103,7 +102,9 @@ let GraphTree = ({
                 setShowSideBar(true);
                 setSelectedNode(node);
               }}
-              className={`w-10 hover:bg-secondary node-circle aspect-square mt-2 rounded-full ${
+              className={`w-10 hover:bg-secondary node-circle ${
+                node === selectedNode ? "shadow-lg" : ""
+              } shadow-white aspect-square mt-2 rounded-full ${
                 node.children && node.children.length ? arrowTopAfter : ""
               } border-2 mx-auto border-accent`}
             />

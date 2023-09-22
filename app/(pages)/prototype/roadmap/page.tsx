@@ -306,7 +306,7 @@ const RoadmapPage = () => {
   // Define state variables using React hooks
   let [tree, setTree] = useState<Array<treenode>>(rdmap); // State for the roadmap tree
   let [showSideBar, setShowSideBar] = useState<boolean>(false); // State for showing/hiding the sidebar
-  let [selectedNode, setSelectedNode] = useState<treenode>(tree[0]); // State for the currently selected node in the tree
+  let [selectedNode, setSelectedNode] = useState<treenode | null>(tree[0]); // State for the currently selected node in the tree
   let [coordinates, setCoordinates] = useState<{ x: number; y: number }>({
     x: 100,
     y: 200,
@@ -333,6 +333,7 @@ const RoadmapPage = () => {
     function handleDocumentClick(event: MouseEvent) {
       const target = event.target as HTMLElement | null;
       if (showSideBar && target && !target.closest(".sidebar")) {
+        setSelectedNode(null);
         setShowSideBar(false);
       }
     }
@@ -354,6 +355,7 @@ const RoadmapPage = () => {
       <DynamicGraphTree
         setShowSideBar={setShowSideBar}
         treeObjectArray={tree}
+        selectedNode={selectedNode}
         setSelectedNode={setSelectedNode}
         setIsDragging={setIsDragging}
         isDragging={isDragging}
@@ -364,6 +366,7 @@ const RoadmapPage = () => {
       />
       <SideBar
         showSideBar={showSideBar}
+        setSelectedNode={setSelectedNode}
         selectedNode={selectedNode}
         closeSideBar={setShowSideBar}
       />
