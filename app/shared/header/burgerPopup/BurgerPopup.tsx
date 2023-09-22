@@ -13,6 +13,7 @@ let Popup = ({ isOpen }: Props) => {
         <HeaderLink url="/" name="Home" />
         <HeaderLink url="/prototype" name="Prototype" />
         <HeaderLink url="/memberships" name="Memberships" />
+
       </div>
       <div className="w-10 h-0.5 bg-accent " />
       <div className="mt-5 flex flex-col space-y-5 items-center">
