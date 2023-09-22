@@ -6,78 +6,115 @@ import { useEffect, useRef, useState } from "react";
 import GraphTree from "@/app/modules/graph/GraphTree";
 let rdmap: Array<treenode> = [
   {
-    id: "frontendframework",
-    name: "Front-end framework",
-    displayChildren: true,
-    children: [
-      { id: "vue", name: "Vue", displayChildren: true },
-      { id: "react", name: "React", displayChildren: true },
-      { id: "angular", name: "Angular", displayChildren: true },
-    ],
-  },
-  {
-    id: "advcss",
-    name: "Advanced CSS",
+    id: "1",
+    name: "HTML",
     displayChildren: true,
     children: [
       {
-        id: "tailwind",
-        name: "TailwindCSS",
+        id: "1.1",
+        name: "Semantic HTML",
         displayChildren: true,
-        children: [],
       },
       {
-        id: "bootstrap",
-        name: "bootstrap",
+        id: "1.2",
+        name: "HTML5 APIs",
         displayChildren: true,
-        children: [],
       },
     ],
   },
   {
-    id: "language",
-    name: "Language",
+    id: "2",
+    name: "CSS",
     displayChildren: true,
     children: [
       {
-        id: "js",
-        name: "JavaScript",
+        id: "2.1",
+        name: "CSS Selectors",
         displayChildren: true,
-        children: [
-          {
-            id: "ts",
-            name: "TypeScript",
-            displayChildren: true,
-            children: [],
-          },
-        ],
+      },
+      {
+        id: "2.2",
+        name: "Box Model",
+        displayChildren: true,
+      },
+      {
+        id: "2.3",
+        name: "Flexbox",
+        displayChildren: true,
+      },
+      {
+        id: "2.4",
+        name: "Grid Layout",
+        displayChildren: true,
+      },
+      {
+        id: "2.5",
+        name: "CSS Transitions and Animations",
+        displayChildren: true,
+      },
+      {
+        id: "2.6",
+        name: "Responsive Design",
+        displayChildren: true,
+      },
+      {
+        id: "2.7",
+        name: "CSS Preprocessors (e.g., Sass or Less)",
+        displayChildren: true,
+      },
+      {
+        id: "2.8",
+        name: "CSS Frameworks (e.g., Bootstrap or Foundation)",
+        displayChildren: true,
       },
     ],
   },
   {
-    id: "layout",
-    name: "layout",
+    id: "3",
+    name: "JavaScript",
     displayChildren: true,
     children: [
       {
-        id: "html",
-        name: "HTML",
+        id: "3.1",
+        name: "Basic Syntax",
         displayChildren: true,
-        children: [],
       },
       {
-        id: "css",
-        name: "CSS",
+        id: "3.2",
+        name: "DOM Manipulation",
         displayChildren: true,
-        children: [],
+      },
+      {
+        id: "3.3",
+        name: "Fetch API",
+        displayChildren: true,
+      },
+      {
+        id: "3.4",
+        name: "ES6+ Features",
+        displayChildren: true,
+      },
+      {
+        id: "3.5",
+        name: "JavaScript Libraries (e.g., jQuery)",
+        displayChildren: true,
+      },
+      {
+        id: "3.6",
+        name: "Asynchronous JavaScript (e.g., Promises or Async/Await)",
+        displayChildren: true,
+      },
+      {
+        id: "3.7",
+        name: "JavaScript Frameworks (e.g., React, Angular, or Vue.js)",
+        displayChildren: true,
+      },
+      {
+        id: "3.8",
+        name: "Module Bundlers (e.g., Webpack or Parcel)",
+        displayChildren: true,
       },
     ],
-  },
-  {
-    id: "start",
-    name: "Front-end",
-    displayChildren: true,
-    children: [],
   },
 ];
 
@@ -264,11 +301,10 @@ const DynamicGraphTree = dynamic(
   () => import("@/app/modules/graph/GraphTree"), // Import path
   { ssr: false } // Disable server-side rendering for this component
 );
-
 // Define the RoadmapPage functional component
 const RoadmapPage = () => {
   // Define state variables using React hooks
-  let [tree, setTree] = useState<Array<treenode>>(test); // State for the roadmap tree
+  let [tree, setTree] = useState<Array<treenode>>(rdmap); // State for the roadmap tree
   let [showSideBar, setShowSideBar] = useState<boolean>(false); // State for showing/hiding the sidebar
   let [selectedNode, setSelectedNode] = useState<treenode>(tree[0]); // State for the currently selected node in the tree
   let [coordinates, setCoordinates] = useState<{ x: number; y: number }>({

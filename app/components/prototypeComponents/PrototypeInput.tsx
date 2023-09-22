@@ -9,7 +9,7 @@ let Input = () => {
   };
   // const handleSubmit = () => {};
   return (
-    <div className=" w-8/12 h-10 select-none flex items-center mt-10  overflow-hidden border border-accent outline-none rounded-lg mx-auto ">
+    <div className=" w-8/12 max-w-[400px] h-10 select-none flex items-center mt-10  overflow-hidden border border-accent outline-none rounded-lg mx-auto ">
       <input
         onChange={(event) => {
           handleInputChange(event);
@@ -21,7 +21,7 @@ let Input = () => {
       />
       <button
         type="submit"
-        className="text-text bg-secondary border border-accent opacity-70 hover:opacity-100 transition-opacity duration-100 w-2/12 h-2/3 rounded-lg box-border"
+        className="text-text bg-secondary duration-200 border border-accent opacity-70 hover:opacity-100 transition-all w-2/12 h-2/3 rounded-lg box-border"
       >
         Send
       </button>
