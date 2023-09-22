@@ -1,7 +1,6 @@
 "use client";
 import { ChangeEvent, useState } from "react";
-import axios from "axios";
-let Input = async () => {
+let Input = () => {
   let [value, setValue] = useState<string>("");
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
