@@ -1,4 +1,5 @@
 "use client";
+// ads
 type Chat = { answer: string; question: string };
 import { useState, Fragment } from "react";
 const Chat = () => {
