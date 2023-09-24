@@ -7,23 +7,22 @@ import { useState } from "react";
 
 const Chat = () => {
   const [inputValue, setInputValue] = useState<string>("");
+  const [userInput, setUserInput] = useState<string>("");
+
   const [chat, setChat] = useState<Array<message>>([
     { role: "system", content: "Speak italiano" },
     { role: "user", content: "Speak italiano" },
     { role: "assistant", content: "Ok, bozo" },
   ]);
 
-  const addUserMessage = (content: string) => {
-    setChat([...chat, { role: "user", content: content }]);
-    console.log("Added user message: ", content);
+  const addMessagePair = (user: string, assistant: string) => {
+    let userMessage: message = { role: "user", content: user };
+    let assistantMessage: message = { role: "assistant", content: assistant };
+    setChat((prevChat) => [...prevChat, userMessage, assistantMessage]);
+    setUserInput("");
   };
-  const addAssistantMessage = (assData: string) => {
-    setChat([...chat, { role: "assistant", content: assData }]);
-    console.log("Added ass message: ", assData);
-  };
-  const sendChatData = async () => {
-    let question = inputValue;
-    addUserMessage(question);
+  const sendChatData = async (userMessage: string) => {
+    addMessagePair(userInput, inputValue);
 
     let res = await fetch("https://model-prototype.onrender.com/model", {
       method: "POST",
@@ -32,26 +31,28 @@ const Chat = () => {
     });
 
     if (res.body) {
-      let data: string = "";
-
       const reader = res.body.pipeThrough(new TextDecoderStream()).getReader();
-      while (true) {
-        const { value, done } = await reader.read();
-        if (done) {
-          addAssistantMessage(data);
 
-          break;
+      const readChunk = async () => {
+        while (true) {
+          const { value, done } = await reader.read();
+          if (done) {
+            let chatCopy = [...chat];
+            chatCopy[-1].content = inputValue;
+            setChat(chatCopy);
+            break;
+          }
+          console.log(value);
+
+          // Accumulate the received data
+          setInputValue((prev: string) => prev + value);
         }
-        data += value;
-        console.log(data);
-        setInputValue(data);
-      }
+
+        readChunk(); // Start reading the stream
+      };
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
-  };
   let result = chat.map((message: message, index: number) => {
     switch (message.role) {
       case "user":
@@ -69,7 +70,7 @@ const Chat = () => {
             key={index}
             className="w-3/4 border rounded-lg text-accent py-4 pl-8 flex items-center justify-start"
           >
-            Assistant: {message.content}
+            Assistant: {message === chat[-1] ? inputValue : message.content}
           </div>
         );
     }
@@ -85,14 +86,16 @@ w-full my-32 h-fit"
       <div className="w-10/12 h-10 select-none flex items-center mt-10 overflow-hidden border border-accent outline-none rounded-lg mx-auto ">
         <input
           onChange={(e) => {
-            handleChange(e);
+            setUserInput(e.target.value);
           }}
-          value={inputValue}
+          value={userInput}
           placeholder="I want to learn..."
           className="bg-transparent w-10/12 h-full px-2 text-accent box-border outline-none focus:border-text"
         />
         <button
-          onClick={sendChatData}
+          onClick={() => {
+            sendChatData(userInput);
+          }}
           type="submit"
           className="text-text bg-secondary duration-200 border border-accent opacity-70 hover:opacity-100 transition-all w-1/12 h-2/3 rounded-lg box-border"
         >
