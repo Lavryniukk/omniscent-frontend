@@ -2,18 +2,19 @@
 import { ChangeEvent, useState } from "react";
 let Input = () => {
   let [value, setValue] = useState<string>("");
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
-  };
+  let dataYES = { data: value };
   const handleSubmit = async () => {
-    let res = await fetch("/api/chatStreamApi", {
-      body: value,
+    let res = await fetch("/chat", {
       method: "POST",
+      body: JSON.stringify(dataYES),
       headers: {
         "Content-Type": "application/json",
       },
     });
     console.log(res);
+  };
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
   };
   return (
     <div className=" w-8/12 max-w-[400px] h-10 select-none flex items-center mt-10  overflow-hidden border border-accent outline-none rounded-lg mx-auto ">
@@ -27,7 +28,7 @@ let Input = () => {
         className="bg-transparent w-9/12 h-full px-2 text-accent box-border outline-none focus:border-text"
       />
       <button
-        onClick={handleSubmit}
+        onClick={() => handleSubmit()}
         type="submit"
         className="text-text bg-secondary duration-200 border border-accent opacity-70 hover:opacity-100 transition-all w-2/12 h-2/3 rounded-lg box-border"
       >
