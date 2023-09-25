@@ -44,11 +44,10 @@ const Chat = () => {
           }
           console.log(value);
 
-          // Accumulate the received data
           setInputValue((prev: string) => prev + value);
         }
 
-        readChunk(); // Start reading the stream
+        readChunk();
       };
     }
   };
