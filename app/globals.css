@@ -34,11 +34,20 @@
   --secondary: #1a1e28;
   --accent: #7685a2;
 }
+@keyframes spiner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @layer components {
   .inset-shadow {
     box-shadow:
       inset 7px 7px 14px #020304,
       inset -7px -7px 14px #0a0b0e;
+  }
+  .spinner {
+    animation: spiner 4s linear infinite 1.2s;
   }
   .gradient {
     background: radial-gradient(
