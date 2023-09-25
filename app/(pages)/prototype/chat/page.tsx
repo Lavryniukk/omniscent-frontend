@@ -7,6 +7,7 @@ import { useRef, useState } from "react";
 const Chat = () => {
   const [inputData, setInputData] = useState<string>("");
   const assistantDataRef = useRef<string>("");
+  const [rerender, setRerender] = useState<boolean>(false);
   const chatRef = useRef<Array<message>>([
     { role: "system", content: "Speak italiano" },
   ]);
@@ -32,11 +33,16 @@ const Chat = () => {
     });
 
     if (res.body) {
+      let rerender = setInterval(() => {
+        setRerender((prev) => !prev);
+      }, 75);
       addMessage("assistant", assistantDataRef.current);
       const reader = res.body.pipeThrough(new TextDecoderStream()).getReader();
       while (true) {
         const { value, done } = await reader.read();
         if (done) {
+          setInputData("");
+          clearInterval(rerender);
           break;
         }
 
@@ -47,7 +53,6 @@ const Chat = () => {
   };
 
   let result = chatRef.current.map((message: message, index: number) => {
-    console.log("rendered this message:", message);
     switch (message.role) {
       case "user":
         return (
