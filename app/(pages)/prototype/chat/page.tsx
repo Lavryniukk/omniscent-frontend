@@ -3,56 +3,51 @@ type message = {
   role: "user" | "assistant" | "system";
   content: string;
 };
-import { useState } from "react";
-
+import { useRef, useState } from "react";
 const Chat = () => {
-  const [inputValue, setInputValue] = useState<string>("");
-  const [userInput, setUserInput] = useState<string>("");
-
-  const [chat, setChat] = useState<Array<message>>([
+  const [inputData, setInputData] = useState<string>("");
+  const assistantDataRef = useRef<string>("");
+  const chatRef = useRef<Array<message>>([
     { role: "system", content: "Speak italiano" },
-    { role: "user", content: "Speak italiano" },
-    { role: "assistant", content: "Ok, bozo" },
   ]);
 
-  const addMessagePair = (user: string, assistant: string) => {
-    let userMessage: message = { role: "user", content: user };
-    let assistantMessage: message = { role: "assistant", content: assistant };
-    setChat((prevChat) => [...prevChat, userMessage, assistantMessage]);
-    setUserInput("");
+  const addMessage = (
+    messageRole: "user" | "assistant" | "system",
+    messageContent: string
+  ) => {
+    chatRef.current.push({ role: messageRole, content: messageContent });
   };
-  const sendChatData = async (userMessage: string) => {
-    addMessagePair(userInput, inputValue);
+  let updateLastMessage = (messageContent: string) => {
+    let lastMessage = chatRef.current[chatRef.current.length - 1];
+    lastMessage.content = messageContent;
+    chatRef.current[chatRef.current.length - 1] = lastMessage;
+  };
+  const sendChatData = async () => {
+    addMessage("user", inputData);
 
     let res = await fetch("https://model-prototype.onrender.com/model", {
       method: "POST",
-      body: JSON.stringify({ messages: chat }),
+      body: JSON.stringify({ messages: chatRef.current }),
       headers: { "Content-Type": "application/json" },
     });
 
     if (res.body) {
+      addMessage("assistant", assistantDataRef.current);
       const reader = res.body.pipeThrough(new TextDecoderStream()).getReader();
-
-      const readChunk = async () => {
-        while (true) {
-          const { value, done } = await reader.read();
-          if (done) {
-            let chatCopy = [...chat];
-            chatCopy[-1].content = inputValue;
-            setChat(chatCopy);
-            break;
-          }
-          console.log(value);
-
-          setInputValue((prev: string) => prev + value);
+      while (true) {
+        const { value, done } = await reader.read();
+        if (done) {
+          break;
         }
 
-        readChunk();
-      };
+        assistantDataRef.current += value;
+        updateLastMessage(assistantDataRef.current);
+      }
     }
   };
 
-  let result = chat.map((message: message, index: number) => {
+  let result = chatRef.current.map((message: message, index: number) => {
+    console.log("rendered this message:", message);
     switch (message.role) {
       case "user":
         return (
@@ -69,11 +64,15 @@ const Chat = () => {
             key={index}
             className="w-3/4 border rounded-lg text-accent py-4 pl-8 flex items-center justify-start"
           >
-            Assistant: {message === chat[-1] ? inputValue : message.content}
+            Assistant:{" "}
+            {chatRef.current[chatRef.current.length - 1] === message
+              ? assistantDataRef.current
+              : message.content}
           </div>
         );
     }
   });
+
   return (
     <div
       className="space-y-10 select-none overflow-x-hidden px-10 bg-transparent mx-auto box-border max-w-10xl
@@ -85,15 +84,15 @@ w-full my-32 h-fit"
       <div className="w-10/12 h-10 select-none flex items-center mt-10 overflow-hidden border border-accent outline-none rounded-lg mx-auto ">
         <input
           onChange={(e) => {
-            setUserInput(e.target.value);
+            setInputData(e.target.value);
           }}
-          value={userInput}
+          value={inputData}
           placeholder="I want to learn..."
           className="bg-transparent w-10/12 h-full px-2 text-accent box-border outline-none focus:border-text"
         />
         <button
           onClick={() => {
-            sendChatData(userInput);
+            sendChatData();
           }}
           type="submit"
           className="text-text bg-secondary duration-200 border border-accent opacity-70 hover:opacity-100 transition-all w-1/12 h-2/3 rounded-lg box-border"
