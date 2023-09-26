@@ -4,7 +4,7 @@ import { ImTree } from "react-icons/im";
 
 let Boxes = () => {
   return (
-    <div className=" flex justify-center space-x-20 md:space-x-40 py-5 mt-10 select-none">
+    <div className="flex justify-center space-x-20 md:space-x-40 py-5 select-none">
       <div className="border-[0.5px] border-secondary w-1/4  flex relative  items-center group justify-center max-w-[200px] rounded-[20px] max-h-[200px]">
         <div className="w-[40%] h-[40%] group-hover:w-[120%] blur-3xl group-hover:h-[120%] rounded-full border overflow-hidden  group-hover:spinner opacity-75 transition-all transi duration-[1s] z-[15]  bg-gradient-to-t from-sky-800 via-indigo-900 to-rose-700  absolute rotate-45"></div>
 

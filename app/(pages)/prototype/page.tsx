@@ -4,7 +4,7 @@ import PrototypeMain from "@/app/modules/prototype/PrototypeHome";
 import Image from "next/image";
 let PrototypePage = () => {
   return (
-    <div className="">
+    <div className="flex items-center">
       <PageGradient
         left="/images/prototypebg-left.png"
         right="/images/prototypebg-right.png"
