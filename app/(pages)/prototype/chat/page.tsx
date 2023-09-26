@@ -58,7 +58,7 @@ const Chat = () => {
         return (
           <div
             key={index}
-            className="w-3/4 border rounded-lg text-text py-4 pl-8 flex items-center justify-start"
+            className="w-`full border border-accent rounded-lg text-accent py-4 lg:pl-8 pl-3 flex items-center justify-start"
           >
             User: {message.content}
           </div>
@@ -67,7 +67,7 @@ const Chat = () => {
         return (
           <div
             key={index}
-            className="w-3/4 border rounded-lg text-accent py-4 pl-8 flex items-center justify-start"
+            className="w-full rounded-lg border border-accent text-accent py-4 lg:pl-8 pl-3 flex items-center justify-start bg-secondary"
           >
             Assistant:{" "}
             {chatRef.current[chatRef.current.length - 1] === message
@@ -83,24 +83,24 @@ const Chat = () => {
       className="space-y-10 select-none overflow-x-hidden px-10 bg-transparent mx-auto box-border max-w-10xl
 w-full my-32 h-fit"
     >
-      <div className="text-accent border flex-col w-full">
-        <div className=" rounded-lg space-y-4 border"> {result}</div>
+      <div className="text-accent flex-col w-full">
+        <div className="rounded-lg space-y-4">{result}</div>
       </div>
-      <div className="w-10/12 h-10 select-none flex items-center mt-10 overflow-hidden border border-accent outline-none rounded-lg mx-auto ">
+      <div className="w-10/12 h-10 select-none flex items-center overflow-hidden border border-accent outline-none rounded-lg absolute bottom-[10%] right-[8.3%]">
         <input
           onChange={(e) => {
             setInputData(e.target.value);
           }}
           value={inputData}
           placeholder="I want to learn..."
-          className="bg-transparent w-10/12 h-full px-2 text-accent box-border outline-none focus:border-text"
+          className="bg-transparent xl:w-10/12 md:w-[80%] lgw-10/12 sm:w-9/12 w-8/12 h-full px-2 text-accent box-border outline-none focus:border-text"
         />
         <button
           onClick={() => {
             sendChatData();
           }}
           type="submit"
-          className="text-text bg-secondary duration-200 border border-accent opacity-70 hover:opacity-100 transition-all w-1/12 h-2/3 rounded-lg box-border"
+          className="text-text bg-secondary duration-200 border border-accent opacity-70 hover:opacity-100 transition-all w-[100px] xl:ml-6 lg:ml-4 md:ml-4 sm:text-sm h-2/3 rounded-lg box-border"
         >
           Send
         </button>
