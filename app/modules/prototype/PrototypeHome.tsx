@@ -3,9 +3,7 @@ import Title from "@/app//components/prototypeComponents/PrototypeTItle";
 import Boxes from "@/app/components/prototypeComponents/PrototypeBoxes";
 let PrototypeMain = () => {
   return (
-    <div className=" w-full  mx-auto mt-60">
-      <Title />
-      <Input />
+    <div className="w-full mx-auto mt-60">
       <Boxes />
     </div>
   );
