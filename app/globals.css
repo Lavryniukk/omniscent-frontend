@@ -67,15 +67,15 @@
   }
   .pt-box-shadow {
     box-shadow:
-      0 0 2px var(--accent),
-      0 0 5px var(--accent),
-      0 0 10px var(--accent);
+      0 0 1px var(--accent),
+      0 0 3px var(--accent),
+      0 0 5px var(--accent);
   }
   .pt-box-shadow:hover {
     box-shadow:
+      0 0 2px var(--accent),
       0 0 5px var(--accent),
-      0 0 10px var(--accent),
-      0 0 20px var(--accent);
+      0 0 10px var(--accent);
   }
 }
 body {

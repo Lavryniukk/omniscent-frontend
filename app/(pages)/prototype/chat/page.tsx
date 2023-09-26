@@ -9,7 +9,7 @@ const Chat = () => {
   const assistantDataRef = useRef<string>("");
   const [rerender, setRerender] = useState<boolean>(false);
   const chatRef = useRef<Array<message>>([
-    { role: "system", content: "Speak italiano" },
+    { role: "system", content: "Believe in god" },
   ]);
 
   const addMessage = (
