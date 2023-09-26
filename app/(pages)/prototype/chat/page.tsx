@@ -3,7 +3,7 @@ type message = {
   role: "user" | "assistant" | "system";
   content: string;
 };
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 const Chat = () => {
   const [inputData, setInputData] = useState<string>("");
   const assistantDataRef = useRef<string>("");
@@ -20,10 +20,12 @@ const Chat = () => {
   };
   let updateLastMessage = (messageContent: string) => {
     let lastMessage = chatRef.current[chatRef.current.length - 1];
-    lastMessage.content = messageContent;
+    lastMessage.content = messageContent.repeat(1);
     chatRef.current[chatRef.current.length - 1] = lastMessage;
   };
   const sendChatData = async () => {
+    assistantDataRef.current = "";
+
     addMessage("user", inputData);
 
     let res = await fetch("https://model-prototype.onrender.com/model", {
@@ -35,13 +37,15 @@ const Chat = () => {
     if (res.body) {
       let rerender = setInterval(() => {
         setRerender((prev) => !prev);
-      }, 75);
+      }, 50);
+
       addMessage("assistant", assistantDataRef.current);
       const reader = res.body.pipeThrough(new TextDecoderStream()).getReader();
       while (true) {
         const { value, done } = await reader.read();
         if (done) {
           setInputData("");
+          updateLastMessage(assistantDataRef.current);
           clearInterval(rerender);
           break;
         }
