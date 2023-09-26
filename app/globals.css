@@ -47,7 +47,7 @@
       inset -7px -7px 14px #0a0b0e;
   }
   .spinner {
-    animation: spiner 4s linear infinite 1.2s;
+    animation: spiner 4s linear alternate infinite 1.2s;
   }
   .gradient {
     background: radial-gradient(
