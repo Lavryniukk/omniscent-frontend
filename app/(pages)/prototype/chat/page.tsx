@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from "react";
 const Chat = () => {
   const [inputData, setInputData] = useState<string>("");
   const assistantDataRef = useRef<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [rerender, setRerender] = useState<boolean>(false);
   const chatRef = useRef<Array<message>>([
     { role: "system", content: "Believe in god" },
@@ -27,7 +28,7 @@ const Chat = () => {
     assistantDataRef.current = "";
 
     addMessage("user", inputData);
-
+    setInputData("");
     let res = await fetch("https://model-prototype.onrender.com/model", {
       method: "POST",
       body: JSON.stringify({ messages: chatRef.current }),
@@ -35,6 +36,7 @@ const Chat = () => {
     });
 
     if (res.body) {
+      setIsLoading(true);
       let rerender = setInterval(() => {
         setRerender((prev) => !prev);
       }, 50);
@@ -46,6 +48,7 @@ const Chat = () => {
         if (done) {
           setInputData("");
           updateLastMessage(assistantDataRef.current);
+          setIsLoading(false);
           clearInterval(rerender);
           break;
         }
@@ -62,7 +65,7 @@ const Chat = () => {
         return (
           <div
             key={index}
-            className="w-`full border border-accent rounded-lg text-accent py-4 lg:pl-8 pl-3 flex items-center justify-start"
+            className="w-`full  border-accent rounded-lg text-accent py-4 lg:pl-8 pl-3 "
           >
             User: {message.content}
           </div>
@@ -71,7 +74,7 @@ const Chat = () => {
         return (
           <div
             key={index}
-            className="w-full rounded-lg border border-accent text-accent py-4 lg:pl-8 pl-3 flex items-center justify-start bg-secondary"
+            className="w-full rounded-lg  border-accent text-accent py-4 lg:pl-8 pl-3  bg-secondary"
           >
             Assistant:{" "}
             {chatRef.current[chatRef.current.length - 1] === message
@@ -84,13 +87,13 @@ const Chat = () => {
 
   return (
     <div
-      className="space-y-10 select-none overflow-x-hidden px-10 bg-transparent mx-auto box-border max-w-10xl
+      className="space-y-10 select-none overflow-x-hidden  overflow-y-scroll px-10 bg-transparent mx-auto box-border max-w-10xl
 w-full my-32 h-fit"
     >
-      <div className="text-accent flex-col w-full">
-        <div className="rounded-lg space-y-4">{result}</div>
+      <div className="text-accent flex-col  overflow-y-scroll w-full">
+        {result}
       </div>
-      <div className="w-10/12 h-10 select-none flex items-center overflow-hidden border border-accent outline-none rounded-lg absolute bottom-[10%] right-[8.3%]">
+      <div className="w-10/12 h-10 select-none border backdrop-blur-md flex items-center overflow-hidden  border-accent outline-none rounded-lg absolute bottom-[10%] right-[8.3%]">
         <input
           onChange={(e) => {
             setInputData(e.target.value);
@@ -101,10 +104,10 @@ w-full my-32 h-fit"
         />
         <button
           onClick={() => {
-            sendChatData();
+            !isLoading && sendChatData();
           }}
           type="submit"
-          className="text-text bg-secondary duration-200 border border-accent opacity-70 hover:opacity-100 transition-all w-[100px] xl:ml-6 lg:ml-4 md:ml-4 sm:text-sm h-2/3 rounded-lg box-border"
+          className="text-text bg-secondary  duration-200 border border-accent opacity-70 hover:opacity-100 transition-all w-[100px] xl:ml-6 lg:ml-4 md:ml-4 sm:text-sm h-2/3 rounded-lg box-border"
         >
           Send
         </button>
