@@ -34,11 +34,20 @@
   --secondary: #1a1e28;
   --accent: #7685a2;
 }
+@keyframes spiner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @layer components {
   .inset-shadow {
     box-shadow:
       inset 7px 7px 14px #020304,
       inset -7px -7px 14px #0a0b0e;
+  }
+  .spinner {
+    animation: spiner 4s linear alternate infinite 1.2s;
   }
   .gradient {
     background: radial-gradient(
@@ -56,6 +65,18 @@
       0 0 10px var(--primary),
       0 0 20px var(--primary);
   }
+  .pt-box-shadow {
+    box-shadow:
+      0 0 1px var(--accent),
+      0 0 3px var(--accent),
+      0 0 5px var(--accent);
+  }
+  .pt-box-shadow:hover {
+    box-shadow:
+      0 0 2px var(--accent),
+      0 0 5px var(--accent),
+      0 0 10px var(--accent);
+  }
 }
 body {
   background: var(--background);
@@ -63,12 +84,34 @@ body {
 .node {
   @apply text-text font-light w-fit h-fit mx-auto text-xs sm:text-sm md:text-base lg:text-lg;
 }
-
 .features-title {
   @apply text-text font-roboto font-medium text-lg md:text-xl lg:text-2xl 2xl:text-3xl mb-2;
 }
 .features-container {
   @apply p-5 shadow-md hover:border-accent h-fit md:min-h-md lg:min-h-lg xl:min-h-md transition-colors duration-300 bg-transparent border-2 border-secondary rounded-xl;
+}
+
+/* CSS class to reset basic input styles */
+.clear-input {
+  /* Reset padding and margin */
+  margin: 0;
+
+  /* Reset border */
+
+  /* Reset outline (removes the default blue outline when focused) */
+  outline: none;
+
+  /* Reset background color */
+
+  /* Reset font styles */
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+
+  /* Reset text color */
+
+  /* Reset box-shadow (removes any box shadows) */
 }
 
 .rotated {
