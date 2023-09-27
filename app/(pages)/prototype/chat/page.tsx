@@ -93,7 +93,7 @@ const Chat = () => {
       className="space-y-10 select-none overflow-x-hidden  overflow-y-scroll px-10 bg-transparent mx-auto box-border max-w-10xl
 w-full my-32 h-fit"
     >
-      <div className="text-accent flex-col  overflow-y-scroll w-full">
+      <div className="text-accent flex-col w-3/4 overflow-y-scroll mx-auto">
         {result}
       </div>
       <div className="w-10/12 h-10 select-none border backdrop-blur-md flex items-center overflow-hidden  border-accent outline-none rounded-lg absolute bottom-[10%] right-[8.3%]">
