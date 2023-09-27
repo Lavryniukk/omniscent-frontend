@@ -84,7 +84,10 @@ const Chat = () => {
         );
     }
   });
-
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault(); // Prevent the form from actually submitting and reloading the page
+    !isLoading && sendChatData(); // Trigger the sendChatData function
+  };
   return (
     <div
       className="space-y-10 select-none overflow-x-hidden  overflow-y-scroll px-10 bg-transparent mx-auto box-border max-w-10xl
@@ -94,23 +97,22 @@ w-full my-32 h-fit"
         {result}
       </div>
       <div className="w-10/12 h-10 select-none border backdrop-blur-md flex items-center overflow-hidden  border-accent outline-none rounded-lg absolute bottom-[10%] right-[8.3%]">
-        <input
-          onChange={(e) => {
-            setInputData(e.target.value);
-          }}
-          value={inputData}
-          placeholder="I want to learn..."
-          className="bg-transparent xl:w-10/12 md:w-[80%] lgw-10/12 sm:w-9/12 w-8/12 h-full px-2 text-accent box-border outline-none focus:border-text"
-        />
-        <button
-          onClick={() => {
-            !isLoading && sendChatData();
-          }}
-          type="submit"
-          className="text-text bg-secondary  duration-200 border border-accent opacity-70 hover:opacity-100 transition-all w-[100px] xl:ml-6 lg:ml-4 md:ml-4 sm:text-sm h-2/3 rounded-lg box-border"
-        >
-          Send
-        </button>
+        <form className=" w-full h-full" onSubmit={(e) => handleSubmit(e)}>
+          <input
+            onChange={(e) => {
+              setInputData(e.target.value);
+            }}
+            value={inputData}
+            placeholder="I want to learn..."
+            className="bg-transparent xl:w-10/12 md:w-[80%] lg:w-10/12 sm:w-9/12 w-8/12 h-full px-2 text-accent box-border outline-none focus:border-text"
+          />
+          <button
+            type="submit"
+            className="text-text bg-secondary  duration-200 border border-accent opacity-70 hover:opacity-100 transition-all w-[100px] xl:ml-6 lg:ml-4 md:ml-4 sm:text-sm h-2/3 rounded-lg box-border"
+          >
+            Send
+          </button>
+        </form>
       </div>
     </div>
   );
