@@ -20,7 +20,7 @@ let Header = () => {
                           items-center justify-between max-w-10xl z-0 px-10 sm:px-5
                           box-border"
         >
-          <Link href="/">
+          <Link className="mt-2" href="/">
             <Logo />
           </Link>
           <Burger isOpen={isOpen} toggleMenu={toggleMenu} />
@@ -29,7 +29,6 @@ let Header = () => {
             <HeaderLink url="/" name="Home" />
             <HeaderLink url="/prototype" name="Prototype" />
             <HeaderLink url="/memberships" name="Memberships" />
-
           </div>
           <div className="hidden w-36  sm:flex justify-around space-x-3 items-center">
             <HeaderLink url="/signin" name="Sign in" />
