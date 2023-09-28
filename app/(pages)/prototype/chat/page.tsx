@@ -1,65 +1,15 @@
 "use client";
-type message = {
-  role: "user" | "assistant" | "system";
-  content: string;
-};
-import { useEffect, useRef, useState } from "react";
+import { message } from "@/app/shared/types/message";
+import useChatStore from "@/app/shared/storages/chatStorage";
 const Chat = () => {
-  const [inputData, setInputData] = useState<string>("");
-  const assistantDataRef = useRef<string>("");
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [rerender, setRerender] = useState<boolean>(false);
-  const chatRef = useRef<Array<message>>([
-    { role: "system", content: "Believe in god" },
-  ]);
+  const setInputData = useChatStore((state) => state.setInputData);
+  const assistantData = useChatStore((state) => state.assistantData);
+  const userInputData = useChatStore((state) => state.userInputData);
+  const isLoading = useChatStore((state) => state.isLoading);
+  const chat = useChatStore((state) => state.chat);
+  const sendData = useChatStore((state) => state.sendData);
 
-  const addMessage = (
-    messageRole: "user" | "assistant" | "system",
-    messageContent: string
-  ) => {
-    chatRef.current.push({ role: messageRole, content: messageContent });
-  };
-  let updateLastMessage = (messageContent: string) => {
-    let lastMessage = chatRef.current[chatRef.current.length - 1];
-    lastMessage.content = messageContent.repeat(1);
-    chatRef.current[chatRef.current.length - 1] = lastMessage;
-  };
-  const sendChatData = async () => {
-    assistantDataRef.current = "";
-
-    addMessage("user", inputData);
-    setInputData("");
-    let res = await fetch("https://model-prototype.onrender.com/model", {
-      method: "POST",
-      body: JSON.stringify({ messages: chatRef.current }),
-      headers: { "Content-Type": "application/json" },
-    });
-
-    if (res.body) {
-      setIsLoading(true);
-      let rerender = setInterval(() => {
-        setRerender((prev) => !prev);
-      }, 50);
-
-      addMessage("assistant", assistantDataRef.current);
-      const reader = res.body.pipeThrough(new TextDecoderStream()).getReader();
-      while (true) {
-        const { value, done } = await reader.read();
-        if (done) {
-          setInputData("");
-          updateLastMessage(assistantDataRef.current);
-          setIsLoading(false);
-          clearInterval(rerender);
-          break;
-        }
-
-        assistantDataRef.current += value;
-        updateLastMessage(assistantDataRef.current);
-      }
-    }
-  };
-
-  let result = chatRef.current.map((message: message, index: number) => {
+  let result = chat.map((message: message, index: number) => {
     switch (message.role) {
       case "user":
         return (
@@ -77,8 +27,8 @@ const Chat = () => {
             className="w-full rounded-lg h-fit border-accent text-accent py-4 lg:pl-8 pl-3 bg-secondary"
           >
             Assistant:{" "}
-            {chatRef.current[chatRef.current.length - 1] === message
-              ? assistantDataRef.current
+            {chat[chat.length - 1] === message
+              ? assistantData
               : message.content}
           </div>
         );
@@ -86,7 +36,7 @@ const Chat = () => {
   });
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); // Prevent the form from actually submitting and reloading the page
-    !isLoading && sendChatData(); // Trigger the sendChatData function
+    !isLoading && sendData(); // Trigger the sendChatData function
   };
   return (
     <div
@@ -102,7 +52,7 @@ w-full my-32 h-fit"
             onChange={(e) => {
               setInputData(e.target.value);
             }}
-            value={inputData}
+            value={userInputData}
             placeholder="I want to learn..."
             className="bg-transparent xl:w-10/12 md:w-[80%] lg:w-10/12 sm:w-9/12 w-8/12 h-full px-2 text-accent box-border outline-none focus:border-text"
           />
