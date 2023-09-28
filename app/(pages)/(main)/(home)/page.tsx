@@ -5,10 +5,10 @@ import { NextPage } from "next";
 
 let HomePage: NextPage = () => {
   return (
-    <>
+    <main className="mb-10">
       <Home />
       <Features />
-    </>
+    </main>
   );
 };
 export default HomePage;

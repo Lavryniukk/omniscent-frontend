@@ -4,11 +4,17 @@ import { MdOutlineClose } from "react-icons/md";
 type Props = {
   showSideBar: boolean; // Boolean prop to show/hide the sidebar
   closeSideBar: (v: boolean) => void; // Function to close the sidebar
-  selectedNode: treenode; // The currently selected node in the tree
+  selectedNode: treenode | null; // The currently selected node in the tree
+  setSelectedNode: (v: treenode | null) => void;
 };
 
 // Define the SideBar functional component
-let SideBar = ({ showSideBar, closeSideBar, selectedNode }: Props) => {
+let SideBar = ({
+  showSideBar,
+  closeSideBar,
+  selectedNode,
+  setSelectedNode,
+}: Props) => {
   // Calculate the CSS class for the sidebar position
   let res = showSideBar ? "right-0" : "-right-full";
 
@@ -27,12 +33,17 @@ let SideBar = ({ showSideBar, closeSideBar, selectedNode }: Props) => {
         {/* Close button */}
         <div
           className=" w-fit ml-auto m-1 cursor-pointer"
-          onClick={() => closeSideBar(false)}
+          onClick={() => {
+            closeSideBar(false);
+            setSelectedNode(null);
+          }}
         >
           <MdOutlineClose size={"30px"} color={"white"} /> {/* Close icon */}
         </div>
         {/* Node name */}
-        <h1 className="text-2xl text-center">{selectedNode.name}</h1>
+        <h1 className="text-2xl text-center">
+          {selectedNode && selectedNode.name}
+        </h1>
       </div>
     </div>
   );
