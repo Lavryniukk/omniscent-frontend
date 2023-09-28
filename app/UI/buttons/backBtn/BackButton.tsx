@@ -33,14 +33,14 @@ let HomeButton = () => {
     <Link
       href={linkPath}
       title="Back to home page"
-      className="z-10 fixed select-none cursor-pointer top-10 border overflow-hidden text-sm border-accent hover:border-primary transition-colors duration-300 group left-10 bg-secondary box-content rounded-lg w-16 h-9"
+      className="z-10 fixed select-none cursor-pointer top-10 border overflow-hidden text-sm border-accent hover:border-primary transition-colors duration-300 group left-10 bg-transparent backdrop-blur-lg box-content rounded-lg w-16 h-9"
     >
-      <div className="w-32 h-full flex bg-secondary transition-transform duration-300 hover:-translate-x-16 rounded-lg">
-        <div className="w-1/2 h-full flex items-center justify-center rounded-lg bg-secondary">
+      <div className="w-32 h-full flex bg-transparent transition-transform duration-300 hover:-translate-x-16 rounded-lg">
+        <div className="w-1/2 h-full flex items-center justify-center rounded-lg bg-transparent">
           <FaArrowLeft size={25} className="w-4 text-accent box-content" />
         </div>
-        <div className="w-1/2  h-full flex items-center justify-center rounded-lg bg-secondary">
-          <p className="text-sm text-center  text-accent">{getText()}</p>
+        <div className="w-1/2  h-full flex items-center justify-center rounded-lg bg-transparent">
+          <p className="text-sm text-center text-accent">{getText()}</p>
         </div>
       </div>
     </Link>
