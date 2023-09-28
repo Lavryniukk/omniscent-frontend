@@ -22,7 +22,7 @@ let ChatInput = () => {
         />
         <button
           type="submit"
-          className="text-text bg-secondary duration-200 border border-accent opacity-70 hover:opacity-100 transition-all w-[10%] mx-2 sm:text-sm h-2/3 rounded-lg box-border"
+          className="text-text bg-secondary duration-200 border border-accent opacity-70 hover:opacity-100 transition-all w-[15%] mx-2 sm:text-sm text-xs h-2/3 rounded-lg box-border"
         >
           Send
         </button>
