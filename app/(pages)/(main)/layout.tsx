@@ -1,7 +1,9 @@
 import "@/app/globals.css";
+import Footer from "@/app/modules/footer/Footer";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import Header from "../../shared/header/Header";
+
 const roboto = Roboto({
   variable: "--roboto-font",
   weight: ["100", "300", "400", "500", "700", "900"],
@@ -23,6 +25,7 @@ export default function RootLayout({
       <body>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

@@ -10,4 +10,3 @@ let Logo = () => {
   );
 };
 export default Logo;
-//320 //224 //96
