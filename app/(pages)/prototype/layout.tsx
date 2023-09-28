@@ -20,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${roboto.variable} overflow-hidden`}>
+    <html lang="en" className={`${roboto.variable} overflow-auto`}>
       <body>
         <HomeButton />
         {children}
