@@ -1,29 +1,26 @@
-import { treenode } from "../types/node";
+import useGraphStore from "../storages/graphStorage";
+import { graphNode } from "../types/node";
 import { MdOutlineClose } from "react-icons/md";
 // Define the Props type for the SideBar component
 type Props = {
   showSideBar: boolean; // Boolean prop to show/hide the sidebar
   closeSideBar: (v: boolean) => void; // Function to close the sidebar
-  selectedNode: treenode | null; // The currently selected node in the tree
-  setSelectedNode: (v: treenode | null) => void;
+  selectedNode: graphNode | null; // The currently selected node in the tree
+  setSelectedNode: (v: graphNode | null) => void;
 };
 
 // Define the SideBar functional component
-let SideBar = ({
-  showSideBar,
-  closeSideBar,
-  selectedNode,
-  setSelectedNode,
-}: Props) => {
-  // Calculate the CSS class for the sidebar position
-  let res = showSideBar ? "right-0" : "-right-full";
+let SideBar = () => {
+  const { showSidebar, setShowSidebar, selectNode, selectedNode } =
+    useGraphStore();
+  let res = showSidebar ? "right-0" : "-right-full";
 
   return (
     <div>
       {/* Background overlay when the sidebar is open */}
       <div
         className={`w-3/4 bg-background opacity-60 h-screen fixed top-0 ${
-          showSideBar ? "left-0" : "-left-full"
+          showSidebar ? "left-0" : "-left-full"
         }`}
       />
       {/* Sidebar container */}
@@ -32,10 +29,10 @@ let SideBar = ({
       >
         {/* Close button */}
         <div
-          className=" w-fit ml-auto m-1 cursor-pointer"
+          className=" w-fit ml-auto closer m-1 cursor-pointer"
           onClick={() => {
-            closeSideBar(false);
-            setSelectedNode(null);
+            setShowSidebar(false);
+            selectNode(null);
           }}
         >
           <MdOutlineClose size={"30px"} color={"white"} /> {/* Close icon */}

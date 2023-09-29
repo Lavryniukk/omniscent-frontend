@@ -1,6 +1,6 @@
-export type treenode = {
+export type graphNode = {
   id: string;
   name: string;
   displayChildren: boolean;
-  children?: Array<treenode>;
+  children?: Array<graphNode>;
 };
