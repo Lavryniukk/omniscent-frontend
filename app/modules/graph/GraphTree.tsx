@@ -1,10 +1,11 @@
 "use client";
 "Разраб даун - не трогать код";
-import { treenode } from "@/app/shared/types/node";
-import { useRef, useState } from "react";
-let getAfter = (node: treenode, nodeArray: Array<treenode>) => {
-  let firstEl: treenode = nodeArray[0];
-  let lastEl: treenode = nodeArray[nodeArray.length - 1];
+import useGraphStore from "@/app/shared/storages/graphStorage";
+import { graphNode } from "@/app/shared/types/node";
+import { useState } from "react";
+let getAfter = (node: graphNode, nodeArray: Array<graphNode>) => {
+  let firstEl: graphNode = nodeArray[0];
+  let lastEl: graphNode = nodeArray[nodeArray.length - 1];
   let rounded = "";
   let after: string = "";
   if (node == firstEl) {
@@ -18,9 +19,9 @@ let getAfter = (node: treenode, nodeArray: Array<treenode>) => {
 
   return after;
 };
-let getBefore = (node: treenode, nodeArray: Array<treenode>) => {
-  let firstEl: treenode = nodeArray[0];
-  let lastEl: treenode = nodeArray[nodeArray.length - 1];
+let getBefore = (node: graphNode, nodeArray: Array<graphNode>) => {
+  let firstEl: graphNode = nodeArray[0];
+  let lastEl: graphNode = nodeArray[nodeArray.length - 1];
   let rounded = "";
   let before: string = "";
   if (node == lastEl) {
@@ -34,33 +35,23 @@ let getBefore = (node: treenode, nodeArray: Array<treenode>) => {
 
   return before;
 };
-type PropsType = {
-  treeObjectArray: Array<treenode>;
-  setSelectedNode: (trnode: treenode) => void;
-  setShowSideBar: (v: boolean) => void;
-  isDragging: boolean;
-  setIsDragging: (v: boolean) => void;
-  setCoordinates: ({ x, y }: { x: number; y: number }) => void;
-  coordinates: { x: number; y: number };
-  initialMousePos: { x: number; y: number };
-  setInitialMousePos: ({ x, y }: { x: number; y: number }) => void;
-  selectedNode: treenode | null;
-};
-let GraphTree = ({
-  treeObjectArray,
-  setShowSideBar,
-  setSelectedNode,
-  setIsDragging,
-  coordinates,
-  selectedNode,
-  setInitialMousePos,
-}: PropsType) => {
+
+let GraphTree = () => {
+  const {
+    setIsDragging,
+    updateInitalMouseCoords,
+    graph,
+    selectNode,
+    setShowSidebar,
+    graphCoordinates,
+    selectedNode,
+  } = useGraphStore();
   const [zoomLevel, setZoomLevel] = useState(100);
   const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     let target = event.target as HTMLElement;
     if (!target.closest(".node-circle")) {
       setIsDragging(true);
-      setInitialMousePos({ x: event.clientX, y: event.clientY });
+      updateInitalMouseCoords(event.clientX, event.clientY);
     }
   };
   const handleScroll = (e: React.WheelEvent) => {
@@ -78,10 +69,10 @@ let GraphTree = ({
   };
   const treeStyle = {
     transform: `scale(${zoomLevel / 100})`,
-    top: `${coordinates.y}px`,
-    left: `${coordinates.x}px`,
+    top: `${graphCoordinates.y}px`,
+    left: `${graphCoordinates.x}px`,
   };
-  let generateTreeGraph = (tree: Array<treenode>) => {
+  let generateTreeGraph = (tree: Array<graphNode>) => {
     let result = tree.map((node) => {
       let arrowTopAfter =
         "after:absolute after:right-1/2 after:-top-5  after:bg-accent after:h-6 after:w-0.5";
@@ -99,8 +90,8 @@ let GraphTree = ({
             {node.name}
             <div
               onClick={() => {
-                setShowSideBar(true);
-                setSelectedNode(node);
+                setShowSidebar(true);
+                selectNode(node);
               }}
               className={`w-10 hover:bg-secondary node-circle ${
                 node === selectedNode ? "shadow-lg" : ""
@@ -127,7 +118,7 @@ let GraphTree = ({
       }}
       className="w-fit  relative h-fit flex flex-row"
     >
-      {generateTreeGraph(treeObjectArray)}
+      {generateTreeGraph(graph)}
     </div>
   );
 };
