@@ -1,185 +1,9 @@
 import { create } from "zustand";
 import { graphNode } from "../types/node";
-let test: Array<graphNode> = [
-  {
-    id: "Finance & Economics",
-    name: "Finance & Economics",
-    displayChildren: true,
-    children: [
-      {
-        id: "Corporate Finance",
-        name: "Corporate Finance",
-        displayChildren: true,
-        children: [],
-      },
-      {
-        id: "Valuation Methods",
-        name: "Valuation Methods",
-        displayChildren: true,
-        children: [],
-      },
-      {
-        id: "Economic Indicators",
-        name: "Economic Indicators",
-        displayChildren: true,
-        children: [
-          {
-            id: "Interest Rate",
-            name: "Interest Rate",
-            displayChildren: true,
-            children: [],
-          },
-          {
-            id: "GDP",
-            name: "GDP",
-            displayChildren: true,
-            children: [],
-          },
-          {
-            id: "Inflation",
-            name: "Inflation",
-            displayChildren: true,
-            children: [],
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: "Investment Basics",
-    name: "Investment Basics",
-    displayChildren: true,
-    children: [
-      {
-        id: "Asset Classes",
-        name: "Asset Classes",
-        displayChildren: true,
-        children: [],
-      },
-      {
-        id: "Investment Strategies",
-        name: "Investment Strategies",
-        displayChildren: true,
-        children: [],
-      },
-      {
-        id: "Risk Management",
-        name: "Risk Management",
-        displayChildren: true,
-        children: [],
-      },
-    ],
-  },
-  {
-    id: "Legal Framework",
-    name: "Legal Framework",
-    displayChildren: true,
-    children: [
-      {
-        id: "Intellectual Property",
-        name: "Intellectual Property",
-        displayChildren: true,
-        children: [],
-      },
-      {
-        id: "Term Sheets",
-        name: "Term Sheets",
-        displayChildren: true,
-        children: [],
-      },
-      {
-        id: "Due Diligence",
-        name: "Due Diligence",
-        displayChildren: true,
-        children: [],
-      },
-      {
-        id: "Investment Structures",
-        name: "Investment Structures",
-        displayChildren: true,
-        children: [
-          {
-            id: "Priced Rounds",
-            name: "Priced Rounds",
-            displayChildren: true,
-            children: [],
-          },
-          {
-            id: "Convertible Notes",
-            name: "Convertible Notes",
-            displayChildren: true,
-            children: [],
-          },
-          {
-            id: "SAFEs",
-            name: "SAFEs",
-            displayChildren: true,
-            children: [],
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: "Venture Capital & Angel Investing",
-    name: "Venture Capital & Angel Investing",
-    displayChildren: true,
-    children: [
-      {
-        id: "VC vs Angel Investors",
-        name: "VC vs Angel Investors",
-        displayChildren: true,
-        children: [],
-      },
-      {
-        id: "Investment Rounds",
-        name: "Investment Rounds",
-        displayChildren: true,
-        children: [
-          {
-            id: "Pre-Seed",
-            name: "Pre-Seed",
-            displayChildren: true,
-            children: [],
-          },
-          {
-            id: "Seed",
-            name: "Seed",
-            displayChildren: true,
-            children: [],
-          },
-          {
-            id: "Series A",
-            name: "Series A",
-            displayChildren: true,
-            children: [],
-          },
-          {
-            id: "Series B",
-            name: "Series B",
-            displayChildren: true,
-            children: [],
-          },
-          {
-            id: "Series C+",
-            name: "Series C+",
-            displayChildren: true,
-            children: [],
-          },
-        ],
-      },
-      {
-        id: "Role of an Investor",
-        name: "Role of an Investor",
-        displayChildren: true,
-        children: [],
-      },
-    ],
-  },
-];
+
 type SelectedNodeType = graphNode | null;
 interface GraphState {
-  graph: Array<graphNode>;
+  graph: graphNode;
   selectedNode: graphNode | null;
   showSidebar: boolean;
   graphCoordinates: { x: number; y: number };
@@ -187,23 +11,52 @@ interface GraphState {
   initialMouseCoords: { x: number; y: number };
 }
 interface GraphAction {
-  setGraph: (newValue: Array<graphNode>) => void;
+  setGraph: (newValue: graphNode) => void;
   selectNode: (value: graphNode | null) => void;
   setShowSidebar: (value: boolean) => void;
   setIsDragging: (value: boolean) => void;
   updateInitalMouseCoords: (x: number, y: number) => void;
   drag: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
   closeSidebar: (event: MouseEvent) => void;
+  getGraph: (prompt: string | undefined) => void;
 }
 const useGraphStore = create<GraphAction & GraphState>((set, get) => ({
-  graph: test,
+  graph: {},
   setGraph: (value) => set({ graph: value }),
   selectedNode: null,
   selectNode: (newNode) => set({ selectedNode: newNode }),
   showSidebar: false,
   setShowSidebar: (value) => set({ showSidebar: value }),
   graphCoordinates: { x: 100, y: 100 },
-
+  getGraph: async (userPrompt) => {
+    try {
+      let response = await fetch(
+        "https://omniscient-backend.onrender.com/graph/generate",
+        {
+          method: "POST",
+          headers: {
+            accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            temperature: 0,
+            user_context: userPrompt,
+            json_syllabus: {
+              title: "",
+              curriculum:
+                "This is a first introductory lesson, where overview is given.",
+              subtopics: [],
+            },
+            instruction: 'Generate subtopics for "root node".',
+          }),
+        }
+      );
+      let parsedResponse = await response.json();
+      set({ graph: parsedResponse });
+    } catch (e) {
+      console.log("An error occured at fetch:", e);
+    }
+  },
   isDragging: false,
   setIsDragging: (value) => set({ isDragging: value }),
   initialMouseCoords: { x: 0, y: 0 },

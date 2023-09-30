@@ -6,10 +6,10 @@
   --text: #060709;
   --background: #e6e9ef;
   --primary: #356bdf;
-  --secondary: #e9ebf1;
+  --secondary: #d5d7dd;
   --accent: #333b4c;
 }
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
   :root {
     --text: #e6e9ef;
     --background: #060709;
@@ -17,7 +17,7 @@
     --secondary: #1a1e28;
     --accent: #7685a2;
   }
-} */
+}
 ::-webkit-scrollbar {
   width: 8px;
 }
