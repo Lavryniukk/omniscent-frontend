@@ -72,22 +72,23 @@ let GraphTree = () => {
     top: `${graphCoordinates.y}px`,
     left: `${graphCoordinates.x}px`,
   };
+  let mappingArray = [graph];
   let generateTreeGraph = (tree: Array<graphNode>) => {
-    let result = tree.map((node) => {
+    let result = tree.map((node, index) => {
       let arrowTopAfter =
         "after:absolute after:right-1/2 after:-top-5  after:bg-accent after:h-6 after:w-0.5";
       let after = getAfter(node, tree);
       let before = getBefore(node, tree);
       return (
         <div
-          key={node.id}
+          key={index}
           // style={treeStyle}
           className={`w-fit ${after} ${before} flex-col-reverse pb-5 flex relative text-center text-accent`}
         >
           <div
             className={` w-full min-w-[100px] mx-auto pt-2 mt-5 relative text-center `}
           >
-            {node.name}
+            {node.title}
             <div
               onClick={() => {
                 setShowSidebar(true);
@@ -96,12 +97,12 @@ let GraphTree = () => {
               className={`w-10 hover:bg-secondary node-circle ${
                 node === selectedNode ? "shadow-lg" : ""
               } shadow-white aspect-square mt-2 rounded-full ${
-                node.children && node.children.length ? arrowTopAfter : ""
+                node.subtopics && node.subtopics.length ? arrowTopAfter : ""
               } border-2 mx-auto border-accent`}
             />
           </div>
           <div className="flex flex-row h-fit w-fit">
-            {node.children && generateTreeGraph(node.children)}
+            {node.subtopics && generateTreeGraph(node.subtopics)}
           </div>
         </div>
       );
@@ -118,7 +119,7 @@ let GraphTree = () => {
       }}
       className="w-fit  relative h-fit flex flex-row"
     >
-      {generateTreeGraph(graph)}
+      {generateTreeGraph(mappingArray)}
     </div>
   );
 };
