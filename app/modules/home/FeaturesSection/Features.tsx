@@ -8,7 +8,7 @@ import {
 } from "react-icons/fa";
 let Features: React.FC = () => {
   return (
-    <div className="box-border w-full mx-auto space-y-10 overflow-x-hidden font-normal bg-transparent h-fit max-w-10xl">
+    <div className="box-border w-full mx-auto space-y-10 overflow-x-hidden font-normal p-8 bg-transparent h-fit max-w-10xl">
       <h2 className="mx-auto text-4xl text-center text-text font-roboto">
         What`s Omniscient?
       </h2>
