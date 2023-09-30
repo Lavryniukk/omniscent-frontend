@@ -6,6 +6,7 @@ import {
   FaBook,
   FaVideo,
 } from "react-icons/fa";
+import { BsGear } from "react-icons/bs";
 let Features: React.FC = () => {
   return (
     <div className="box-border w-full mx-auto space-y-10 overflow-x-hidden font-normal p-8 bg-transparent h-fit max-w-10xl">
@@ -36,26 +37,27 @@ let Features: React.FC = () => {
           </p> */}
         </div>
         <div className="lg:features-container--2 features-container">
-          {/* <h2 className="features-title">
-            <FaBullseye className="inline-block mb-1 mr-2" />
-            AI-Powered Goal Setting and Time-Management
-          </h2>
-          <p className="font-light text-accent lg:text-md 2xl:text-lg font-roboto">
-            At the beginning and during your self-learning project, AI helps you
-            determine the specific goals to achieve, determines your context and
-            preferences, helps you with setting up a schedule.
-          </p> */}
+          <div className=" w-8/12 border-accent">
+            <h2 className="font-roboto  text-3xl text-text">
+              Personalized education
+            </h2>
+            <p className="mt-5 text-base text-accent  font-light font-roboto border-accent text">
+              Omniscient Personal provides an AI tutor that is personalized to
+              each user's context and goals. This acts as a mentor to guide
+              users through their learning journey and provide feedback.
+            </p>
+          </div>
+          <BsGear
+            size={"40%"}
+            className="text-accent opacity-80 animate-spin-slow "
+          />
         </div>
         <div className="lg:features-container--3 features-container">
-          {/* <h2 className="features-title">
-            <FaRoute className="inline-block mb-1 mr-2" />
-            AI-Powered Management of Learning Path and Progress
-          </h2>
-          <p className="font-light text-accent lg:text-md 2xl:text-lg font-roboto">
-            You can chat with AI about your entire self-education path, your
-            progress, you can ask to assist you with creating a unique path, or
-            adjust preferences.
-          </p> */}
+          <div className="border-accent">
+            <h2 className="font-roboto text-3xl text-text">
+              Flexible learning path
+            </h2>
+          </div>
         </div>
         <div className="lg:features-container--4 features-container">
           {/* <h2 className="features-title">

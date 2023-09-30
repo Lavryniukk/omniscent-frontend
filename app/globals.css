@@ -31,7 +31,7 @@
 }
 /* styles.css */
 .no-blink-cursor {
-  cursor: default; /* This will set the cursor to the default arrow cursor */
+  cursor: default;
 }
 
 @keyframes spiner {
@@ -123,7 +123,7 @@ body {
   @apply text-text font-roboto opacity-80 font-medium text-lg md:text-xl lg:text-2xl 2xl:text-3xl mb-2;
 }
 .features-container {
-  @apply p-5 shadow-md h-full md:min-h-md lg:min-h-lg xl:min-h-md bg-transparent border-2 border-secondary rounded-xl overflow-hidden;
+  @apply p-5 shadow-lg h-full flex items-center justify-start md:min-h-md lg:min-h-lg xl:min-h-md bg-transparent border-2 border-secondary rounded-xl overflow-hidden;
 }
 
 /* CSS class to reset basic input styles */
