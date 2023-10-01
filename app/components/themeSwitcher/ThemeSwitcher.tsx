@@ -29,7 +29,7 @@ let Switcher = () => {
       className=" border-accent border select-none flex items-center relative justify-around rounded-full w-24 h-8"
     >
       <div
-        className={`aspect-square -z-10 w-6 ${position} bg-secondary rounded-full absolute`}
+        className={`aspect-square -z-10 w-6 ${position} transition-all duration-150 bg-secondary rounded-full absolute`}
       />
       <BsSun
         onClick={() => {
