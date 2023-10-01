@@ -3,15 +3,13 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
+  :root[data-theme="system"] {
     --text: #060709;
     --background: #e6e9ef;
     --primary: #356bdf;
     --secondary: #d5d7dd;
     --accent: #333b4c;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
+    @media (prefers-color-scheme: dark) {
       --text: #e6e9ef;
       --background: #060709;
       --primary: #395eb4;

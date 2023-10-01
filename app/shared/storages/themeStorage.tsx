@@ -1,38 +1,21 @@
 "use client";
 import { create } from "zustand";
+import Cookies from "js-cookie";
 type theme = "light" | "dark" | "system";
 interface ThemeTypes {
-  theme: theme | null | string | undefined;
+  theme: string;
   setTheme: (newTheme: theme) => void;
-  getTheme: () => theme | undefined;
 }
-let getSessionTheme = () => {
-  try {
-    if (sessionStorage.getItem("theme")) {
-      return sessionStorage.getItem("theme");
-    } else {
-      return "system";
-    }
-  } catch (e) {
-    console.log("An error occured", e);
-  }
+const getTheme = () => {
+  return Cookies.get("theme") || "system";
 };
+
 let useTheme = create<ThemeTypes>((set, get) => ({
-  theme: getSessionTheme(),
-  getTheme: () => {
-    let res = sessionStorage.getItem("theme") as theme;
-    if (res === "light" || res === "dark" || res === "system") return res;
-  },
+  theme: getTheme(),
   setTheme: (newTheme) => {
-    sessionStorage.setItem("theme", newTheme);
-    if (newTheme === "dark") {
-      document.documentElement.setAttribute("data-theme", "dark");
-    } else if (newTheme === "light") {
-      document.documentElement.setAttribute("data-theme", "light");
-    } else {
-      document.documentElement.removeAttribute("data-theme");
-    }
+    Cookies.set("theme", newTheme);
     set({ theme: newTheme });
+    // document.documentElement.setAttribute("data-theme", newTheme);
   },
 }));
 

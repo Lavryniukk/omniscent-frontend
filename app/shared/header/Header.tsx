@@ -33,7 +33,17 @@ let Header = () => {
           <div className="hidden w-36  sm:flex justify-around space-x-3 items-center">
             <HeaderLink url="/signin" name="Sign in" />
             <div className="h-5 w-0.5 bg-accent" />
-            <HeaderLink url="/signup" name="Sign up" />
+            <HeaderLink
+              url="https://omniscient-backend.onrender.com/user/login"
+              name="Sign up"
+            />
+            {/* <Link
+              href={"/user/login"}
+              onClick={()=>}
+              className="text-text hover:text-accent text-md font-roboto font-light transition-colors duration-200 "
+            >
+              Sign up
+            </Link> */}
           </div>
         </div>
       </div>

@@ -6,10 +6,10 @@ let Features = () => {
         What`s Omniscient?
       </h2>
       <p className="w-2/3 mx-auto text-sm font-light text-center font-roboto text-accent md:text-lg md:w-1/2">
-        Omniscient Personal is an
+        Omniscient Personal is an{" "}
         <span className="underline underline-offset-4 under decoration-primary">
           AI-driven
-        </span>
+        </span>{" "}
         platform, which assists with self-education and serves as a personal
         tutor. Omniscient ensures personalized, consistent, and effective
         self-education using generative AI.
