@@ -5,15 +5,12 @@ import Footer from "@/app/modules/footer/Footer";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import Header from "../../shared/header/Header";
+import { AuthProvider } from "@/app/shared/providers/authProvider/authProvider";
 const roboto = Roboto({
   variable: "--roboto-font",
   weight: ["100", "300", "400", "500", "700", "900"],
   subsets: ["latin"],
 });
-export const metadata: Metadata = {
-  title: "Omniscient",
-  description: "Omniscient Personal",
-};
 
 export default function RootLayout({
   children,
@@ -24,9 +21,11 @@ export default function RootLayout({
   return (
     <html data-theme={theme} lang="en" className={`${roboto.variable}`}>
       <body>
-        <Header />
-        {children}
-        <Footer />
+        <AuthProvider>
+          <Header />
+          {children}
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   );
