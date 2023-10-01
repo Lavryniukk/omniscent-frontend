@@ -1,4 +1,4 @@
-import Switcher from "@/app/components/themeSwitcher/ThemeSwitcher";
+import Switcher from "@/app/components/footerComponents/themeSwitcher/ThemeSwitcher";
 
 const Footer = () => {
   return (
