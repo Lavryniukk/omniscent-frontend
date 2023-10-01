@@ -1,3 +1,5 @@
+"use client";
+import useTheme from "@/app/shared/storages/themeStorage";
 import "@/app/globals.css";
 import Footer from "@/app/modules/footer/Footer";
 import type { Metadata } from "next";
@@ -20,6 +22,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const theme = useTheme((state) => state.theme);
   return (
     <html lang="en" className={`${roboto.variable}`}>
       <body>
