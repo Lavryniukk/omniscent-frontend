@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import Header from "../../shared/header/Header";
 import { AuthProvider } from "@/app/shared/providers/authProvider/authProvider";
+import { UserProvider, useUser } from "@auth0/nextjs-auth0/client";
 const roboto = Roboto({
   variable: "--roboto-font",
   weight: ["100", "300", "400", "500", "700", "900"],
@@ -18,14 +19,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const theme = useTheme((state) => state.theme);
+
   return (
     <html data-theme={theme} lang="en" className={`${roboto.variable}`}>
       <body>
-        <AuthProvider>
+        <UserProvider>
           <Header />
           {children}
           <Footer />
-        </AuthProvider>
+        </UserProvider>
       </body>
     </html>
   );
