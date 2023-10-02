@@ -33,7 +33,7 @@ let Header = () => {
             <HeaderLink url="/memberships" name="Memberships" />
           </div>
           <div className="hidden w-36  sm:flex justify-around space-x-3 items-center">
-            <HeaderLink url="/signin" name="Sign in" />
+            <HeaderLink url="/api/auth/logout" name="Sign in" />
             <div className="h-5 w-0.5 bg-accent" />
             <HeaderLink url="/api/auth/login" name="Sign up" />
             {/* <Link

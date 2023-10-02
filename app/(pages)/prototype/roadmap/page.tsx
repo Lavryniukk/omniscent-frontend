@@ -1,5 +1,5 @@
 "use client";
-import SideBar from "@/app/shared/prototypeSideBar/Sbar";
+import SideBar from "@/app/modules/sidebar/Sbar";
 import useGraphStore from "@/app/shared/storages/graphStorage";
 import dynamic from "next/dynamic";
 import { useEffect } from "react";
