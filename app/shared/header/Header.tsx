@@ -5,11 +5,14 @@ import Logo from "@/app/UI/icons/OmniLogo";
 import { useState } from "react";
 import Popup from "./burgerPopup/BurgerPopup";
 import Link from "next/link";
+import { useUser } from "@auth0/nextjs-auth0/client";
 let Header = () => {
   let [isOpen, setIsOpen] = useState(false);
   let toggleMenu: () => void = () => {
     setIsOpen(!isOpen);
   };
+  let { user } = useUser();
+  console.log(user);
   return (
     <>
       <Popup isOpen={isOpen} />
