@@ -1,5 +1,5 @@
-import useGraphStore from "../storages/graphStorage";
-import { graphNode } from "../types/node";
+import useGraphStore from "../../shared/storages/graphStorage";
+import { graphNode } from "../../shared/types/node";
 import { MdOutlineClose } from "react-icons/md";
 // Define the Props type for the SideBar component
 type Props = {
@@ -39,7 +39,7 @@ let SideBar = () => {
         </div>
         {/* Node name */}
         <h1 className="text-2xl text-center">
-          {selectedNode && selectedNode.name}
+          {selectedNode && selectedNode.title}
         </h1>
       </div>
     </div>

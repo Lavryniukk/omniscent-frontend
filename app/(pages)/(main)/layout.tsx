@@ -2,11 +2,9 @@
 import useTheme from "@/app/shared/storages/themeStorage";
 import "@/app/globals.css";
 import Footer from "@/app/modules/footer/Footer";
-import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
-import Header from "../../shared/header/Header";
-import { AuthProvider } from "@/app/shared/providers/authProvider/authProvider";
-import { UserProvider, useUser } from "@auth0/nextjs-auth0/client";
+import Header from "../../modules/header/Header";
+import { UserProvider } from "@auth0/nextjs-auth0/client";
 const roboto = Roboto({
   variable: "--roboto-font",
   weight: ["100", "300", "400", "500", "700", "900"],
