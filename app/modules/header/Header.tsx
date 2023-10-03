@@ -5,14 +5,13 @@ import Logo from "@/app/UI/icons/OmniLogo";
 import { useState } from "react";
 import Popup from "./burgerPopup/BurgerPopup";
 import Link from "next/link";
-import { useUser } from "@auth0/nextjs-auth0/client";
+import Switcher from "@/app/components/footerComponents/themeSwitcher/ThemeSwitcher";
 let Header = () => {
   let [isOpen, setIsOpen] = useState(false);
   let toggleMenu: () => void = () => {
     setIsOpen(!isOpen);
   };
-  let { user } = useUser();
-  console.log(user);
+
   return (
     <>
       <Popup isOpen={isOpen} />
@@ -32,7 +31,8 @@ let Header = () => {
             <HeaderLink url="/prototype" name="Prototype" />
             <HeaderLink url="/memberships" name="Memberships" />
           </div>
-          <div className="hidden w-36  sm:flex justify-around space-x-3 items-center">
+          <div className="hidden w-fit  sm:flex justify-around space-x-3 items-center">
+            <Switcher />
             <HeaderLink url="/api/auth/logout" name="Sign in" />
             <div className="h-5 w-0.5 bg-accent" />
             <HeaderLink url="/api/auth/login" name="Sign up" />
