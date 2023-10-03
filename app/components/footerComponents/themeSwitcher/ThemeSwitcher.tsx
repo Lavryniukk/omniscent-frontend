@@ -1,9 +1,10 @@
 "use client";
-import useTheme from "@/app/shared/storages/themeStorage";
+import { useTheme } from "@/app/shared/providers/ThemeProvider";
 import { BsSun, BsMoon } from "react-icons/bs";
 import { FiMonitor } from "react-icons/fi";
 let Switcher = () => {
-  const { theme, setTheme } = useTheme();
+  const { theme, updateTheme } = useTheme();
+
   let position;
   switch (theme) {
     case "light":
@@ -16,6 +17,7 @@ let Switcher = () => {
       position = "left-[70.4%]";
       break;
   }
+  console.log(position);
   return (
     <div className=" border-accent border select-none flex items-center relative justify-around rounded-full w-24 h-8">
       <div
@@ -23,7 +25,7 @@ let Switcher = () => {
       />
       <BsSun
         onClick={() => {
-          setTheme("light");
+          updateTheme("light");
         }}
         className={`text-accent cursor-pointer  ${
           theme === "light" && "text-text"
@@ -31,7 +33,7 @@ let Switcher = () => {
       />
       <BsMoon
         onClick={() => {
-          setTheme("dark");
+          updateTheme("dark");
         }}
         className={`text-accent cursor-pointer ${
           theme === "dark" && "text-text"
@@ -39,7 +41,7 @@ let Switcher = () => {
       />
       <FiMonitor
         onClick={() => {
-          setTheme("system");
+          updateTheme("system");
         }}
         className={`text-accent cursor-pointer bg-transparent ${
           theme === "system" && "text-text"
