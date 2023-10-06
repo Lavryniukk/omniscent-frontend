@@ -1,7 +1,66 @@
 import { create } from "zustand";
 import { graphNode } from "../types/node";
-
-type SelectedNodeType = graphNode | null;
+let fakeG = {
+  title: "Become a Full-Stack Web Developer",
+  curriculum: "This is a first introductory lesson, where overview is given.",
+  subtopics: [
+    {
+      title: "Introduction to Web Development",
+      curriculum:
+        "In this lesson, you will learn the basics of web development and its different components.",
+      subtopics: [],
+    },
+    {
+      title: "Frontend Development",
+      curriculum:
+        "In this lesson, you will focus on frontend development and learn the necessary skills and technologies.",
+      subtopics: [
+        {
+          title: "HTML",
+          curriculum:
+            "In this lesson, you will learn the fundamentals of HTML and how to structure web pages.",
+          subtopics: [],
+        },
+        {
+          title: "CSS",
+          curriculum:
+            "In this lesson, you will learn how to style web pages using CSS.",
+          subtopics: [],
+        },
+        {
+          title: "JavaScript",
+          curriculum:
+            "In this lesson, you will learn the basics of JavaScript and how to add interactivity to web pages.",
+          subtopics: [],
+        },
+        {
+          title: "Frontend Frameworks",
+          curriculum:
+            "In this lesson, you will explore different frontend frameworks and their benefits.",
+          subtopics: [],
+        },
+      ],
+    },
+    {
+      title: "Backend Development",
+      curriculum:
+        "In this lesson, you will focus on backend development and learn the necessary skills and technologies.",
+      subtopics: [],
+    },
+    {
+      title: "Databases",
+      curriculum:
+        "In this lesson, you will learn about databases and how to work with them in web development.",
+      subtopics: [],
+    },
+    {
+      title: "Deployment and DevOps",
+      curriculum:
+        "In this lesson, you will learn about deployment and DevOps practices to deploy and maintain web applications.",
+      subtopics: [],
+    },
+  ],
+};
 interface GraphState {
   graph: graphNode;
   selectedNode: graphNode | null;
@@ -21,7 +80,7 @@ interface GraphAction {
   getGraph: (prompt: string | undefined) => void;
 }
 const useGraphStore = create<GraphAction & GraphState>((set, get) => ({
-  graph: {},
+  graph: fakeG,
   setGraph: (value) => set({ graph: value }),
   selectedNode: null,
   selectNode: (newNode) => set({ selectedNode: newNode }),

@@ -82,11 +82,10 @@ let GraphTree = () => {
       return (
         <div
           key={index}
-          // style={treeStyle}
-          className={`w-fit ${after} ${before} flex-col-reverse pb-5 flex relative text-center text-accent`}
+          className={`w-fit ${after} ${before}  justify-start items-center flex-col-reverse pb-5 flex relative text-center text-accent`}
         >
           <div
-            className={` w-full min-w-[100px] mx-auto pt-2 mt-5 relative text-center `}
+            className={` w-full min-w-[100px]  mx-auto pt-2 mt-5 relative text-center `}
           >
             {node.title}
             <div
@@ -117,7 +116,7 @@ let GraphTree = () => {
       onMouseUp={() => {
         setIsDragging(false);
       }}
-      className="w-fit  relative h-fit flex flex-row"
+      className="w-fit relative h-fit flex flex-row"
     >
       {generateTreeGraph(mappingArray)}
     </div>

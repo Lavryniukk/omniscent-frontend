@@ -30,7 +30,7 @@ const RoadmapPage = () => {
       onMouseMove={(e) => {
         handleMouseMove(e);
       }}
-      className="w-full h-screen overflow-hidden select-none"
+      className="w-full bg-neutral-900 h-screen overflow-hidden select-none"
     >
       <DynamicGraphTree />
       <SideBar />
