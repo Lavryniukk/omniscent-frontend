@@ -10,7 +10,7 @@ let Messages = () => {
         return (
           <div
             key={index}
-            className="w-full text-sm md:text-base lg:text-lg border-accent h-fit rounded-lg pr-2 text-accent py-4 lg:pl-8 pl-3 "
+            className="w-full text-sm md:text-base lg:text-lg border-accent bg-background h-fit rounded-lg pr-2 text-accent py-4 lg:pl-8 pl-3 "
           >
             User: {message.content}
           </div>
@@ -19,7 +19,7 @@ let Messages = () => {
         return (
           <div
             key={index}
-            className="w-full text-sm md:text-base lg:text-lg rounded-lg h-fit border-accent pr-2  text-accent py-4 lg:pl-8 pl-3 bg-secondary"
+            className="w-full text-sm md:text-base lg:text-lg rounded-lg h-fit border-secondary dark:bg-secondary pr-2 bg-secondary text-accent py-4 lg:pl-8 pl-3 border"
           >
             Assistant:{" "}
             {chat[chat.length - 1] === message

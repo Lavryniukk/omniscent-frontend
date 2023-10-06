@@ -5,12 +5,13 @@ import Logo from "@/app/UI/icons/OmniLogo";
 import { useState } from "react";
 import Popup from "./burgerPopup/BurgerPopup";
 import Link from "next/link";
-
+import Switcher from "@/app/components/footerComponents/themeSwitcher/ThemeSwitcher";
 let Header = () => {
   let [isOpen, setIsOpen] = useState(false);
   let toggleMenu: () => void = () => {
     setIsOpen(!isOpen);
   };
+
   return (
     <>
       <Popup isOpen={isOpen} />
@@ -30,10 +31,18 @@ let Header = () => {
             <HeaderLink url="/prototype" name="Prototype" />
             <HeaderLink url="/memberships" name="Memberships" />
           </div>
-          <div className="hidden w-36  sm:flex justify-around space-x-3 items-center">
-            <HeaderLink url="/signin" name="Sign in" />
+          <div className="hidden w-fit  sm:flex justify-around space-x-3 items-center">
+            <Switcher />
+            <HeaderLink url="/api/auth/logout" name="Sign in" />
             <div className="h-5 w-0.5 bg-accent" />
-            <HeaderLink url="/signup" name="Sign up" />
+            <HeaderLink url="/api/auth/login" name="Sign up" />
+            {/* <Link
+              href={"/user/login"}
+              onClick={()=>}
+              className="text-text hover:text-accent text-md font-roboto font-light transition-colors duration-200 "
+            >
+              Sign up
+            </Link> */}
           </div>
         </div>
       </div>

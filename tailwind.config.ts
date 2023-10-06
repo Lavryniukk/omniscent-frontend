@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      animation: {
+        "spin-slow": "spin 10s linear infinite",
+      },
       width: {
         "10lg": "1000px",
       },
