@@ -56,11 +56,18 @@ const useChatStore = create<StoreState & StorageActions>((set, get) => ({
     clearAssistantData();
     get().addMessage("user", get().userInputData);
     clearInputData();
-    let res = await fetch("https://model-prototype.onrender.com/model", {
-      method: "POST",
-      body: JSON.stringify({ messages: get().chat }),
-      headers: { "Content-Type": "application/json" },
-    });
+    let res = await fetch(
+      "https://omniscient-backend.onrender.com/chat/inference",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          model: "gpt-3.5-turbo",
+          temperature: 0,
+          messages: get().chat,
+        }),
+        headers: { "Content-Type": "application/json" },
+      }
+    );
     if (res.ok && res.body) {
       clearInputData();
 
