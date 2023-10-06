@@ -1,5 +1,4 @@
 "use client";
-import useTheme from "@/app/shared/storages/themeStorage";
 import "@/app/globals.css";
 import HomeButton from "@/app/UI/buttons/backBtn/BackButton";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
@@ -16,11 +15,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const theme = useTheme((state) => state.theme);
   return (
     <html
       lang="en"
-      data-theme={theme}
+      data-theme={"system"}
       className={`${roboto.variable} overflow-auto `}
     >
       <body>
