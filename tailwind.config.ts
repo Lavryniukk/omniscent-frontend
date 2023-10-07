@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-
+import colors from "tailwindcss/colors";
 const config: Config = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -26,11 +26,11 @@ const config: Config = {
         lg: "340px",
       },
       colors: {
-        primary: "var(--primary)",
-        secondary: "var(--secondary)",
-        accent: "var(--accent)",
-        text: "var(--text)",
-        background: "var(--background)",
+        primary: { ...colors.blue, DEFAULT: colors.blue[900] },
+        secondary: { ...colors.neutral, DEFAULT: colors.neutral[800] },
+        accent: { ...colors.neutral, DEFAULT: colors.neutral[400] },
+        text: { ...colors.neutral, DEFAULT: colors.neutral[200] },
+        background: { ...colors.neutral, DEFAULT: colors.neutral[950] },
       },
       fontFamily: {
         roboto: "var(--roboto-font)",
