@@ -42,7 +42,7 @@
   }
 
   .center-align {
-    left: calc(50% - 500px);
+    left: calc(50% - 200px);
   }
   .glow-effect {
     box-shadow:

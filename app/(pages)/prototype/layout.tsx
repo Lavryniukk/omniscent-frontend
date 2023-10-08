@@ -18,8 +18,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      data-theme={"system"}
-      className={`${roboto.variable} overflow-auto `}
+      className={`${roboto.variable} overflow-auto bg-background`}
     >
       <body>
         <UserProvider>

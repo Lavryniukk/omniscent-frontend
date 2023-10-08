@@ -63,8 +63,8 @@ const TypingAnimation: React.FC = () => {
   const displayedText = currentProfession.substring(0, currentCharacterIndex);
 
   return (
-    <h1 className="text-md sm:text-lg md:text-2xl mt-10 mx-auto font-roboto w-80 lg:w-1/3 font-light text-accent text-center ">
-      I want to learn <span className="">{displayedText}</span>
+    <h1 className="text-md sm:text-lg md:text-xl mt-10 tracking-tight mx-auto font-roboto w-80 lg:w-1/3 font-light text-accent text-center ">
+      I want to learn {displayedText}
     </h1>
   );
 };

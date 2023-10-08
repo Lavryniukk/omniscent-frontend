@@ -1,6 +1,7 @@
-import PageGradient from "@/app/UI/HomePageGradient";
+import PageGradient from "@/app/UI/gradients/HomePageGradient";
 import TypingAnimation from "@/app/UI/TypingAnimation";
 import HomeButtons from "@/app/UI/buttons/getStartedBtn/GetStartedBtn";
+import Gradient from "@/app/UI/gradients/bgGradient";
 
 let Home = () => {
   return (
@@ -8,15 +9,16 @@ let Home = () => {
       className="home overflow-x-hidden h-fit bg-transparent mx-auto box-border max-w-10xl
 					  w-full py-40 sm:py-52 md:py-64"
     >
-      <PageGradient
+      {/* <PageGradient
         left="/images/left-grad.png"
         right="/images/right-grad.png"
-      />
+      /> */}
+      <Gradient />
       <h1
-        className="text-5xl tracking-wider text-text sm:text-6xl
-					  md:text-7xl lg:text-8xl font-roboto font-bold text-center "
+        className="text-5xl bg-gradient-to-t from-text antialiased to-accent-400 w-fit mx-auto sm:text-6xl
+					  md:text-7xl lg:text-8xl font-roboto tracking-tight text-transparent bg-clip-text font-bold text-center "
       >
-        Become <span className="text-primary">Omniscient</span>
+        Become <span className="text-primary-800">Omniscient</span>
       </h1>
       <TypingAnimation />
       <HomeButtons />
