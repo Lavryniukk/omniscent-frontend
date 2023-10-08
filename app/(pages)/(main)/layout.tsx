@@ -15,7 +15,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${roboto.variable} bg-background`}>
+    <html
+      lang="en"
+      className={`${roboto.variable} overflow-x-hidden bg-background`}
+    >
       <body>
         <UserProvider>
           <Header />
