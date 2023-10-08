@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html data-theme={"light"} lang="en" className={`${roboto.variable}`}>
+    <html lang="en" className={`${roboto.variable} bg-background`}>
       <body>
         <UserProvider>
           <Header />

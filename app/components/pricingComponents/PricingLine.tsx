@@ -6,8 +6,7 @@ let Line = ({ text }: Props) => {
   return (
     <li>
       <div className="flex items-center space-x-2">
-        <HiCheck color="white" className="opacity-80" />{" "}
-        <p className="ml-2">{text}</p>
+        <HiCheck className=" text-accent-400" /> <p className="ml-2">{text}</p>
       </div>
     </li>
   );
