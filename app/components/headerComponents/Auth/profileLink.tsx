@@ -9,7 +9,7 @@ let ProfileLink = () => {
   return (
     <div className="w-32">
       <Link href={"api/auth/logout"}>
-        <Image
+        <img
           src={`${pic}`}
           alt=""
           width={50}
