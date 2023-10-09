@@ -6,17 +6,13 @@ import Gradient from "@/app/UI/gradients/bgGradient";
 let Home = () => {
   return (
     <div
-      className="home overflow-x-hidden h-fit bg-transparent mx-auto box-border max-w-10xl
+      className="home overflow-hidden h-fit bg-transparent mx-auto box-border max-w-10xl
 					  w-full py-40 sm:py-52 md:py-64"
     >
-      {/* <PageGradient
-        left="/images/left-grad.png"
-        right="/images/right-grad.png"
-      /> */}
       <Gradient />
       <h1
-        className="text-5xl bg-gradient-to-t from-text antialiased to-accent-400 w-fit mx-auto sm:text-6xl
-					  md:text-7xl lg:text-8xl font-roboto tracking-tight text-transparent bg-clip-text font-bold text-center "
+        className="text-6xl bg-gradient-to-t from-text antialiased to-accent-400 w-fit mx-auto sm:text-7xl
+					  md:text-8xl  font-roboto tracking-tight text-transparent bg-clip-text font-bold text-center "
       >
         Become <span className="text-primary-800">Omniscient</span>
       </h1>
