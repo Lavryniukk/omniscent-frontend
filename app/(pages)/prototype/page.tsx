@@ -1,5 +1,4 @@
 import Projects from "@/app/modules/prototype/(projects)/Projects";
-import Providers from "./providers";
 
 let PrototypePage = () => {
   return (
