@@ -30,7 +30,7 @@ let Header = () => {
           <Burger isOpen={isOpen} toggleMenu={toggleMenu} />
           <div className=" space-x-5 hidden sm:block">
             <HeaderLink url="/" name="Home" />
-            <HeaderLink url="/prototype" name="Prototype" />
+            <HeaderLink url="/projects" name="Prototype" />
             <HeaderLink url="/memberships" name="Memberships" />
           </div>
           {user ? <ProfileLink /> : <SignIn />}

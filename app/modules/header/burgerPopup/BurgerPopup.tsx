@@ -1,8 +1,13 @@
+"use client";
+import ProfileLink from "@/app/components/headerComponents/Auth/profileLink";
+import SignIn from "@/app/components/headerComponents/noAuth/SignIn";
 import HeaderLink from "@/app/components/headerLink/HeaderLink";
+import { useUser } from "@auth0/nextjs-auth0/client";
 type Props = {
   isOpen: boolean;
 };
 let Popup = ({ isOpen }: Props) => {
+  let { user } = useUser();
   return (
     <div
       className={`top-14 sm:hidden ${
@@ -11,14 +16,12 @@ let Popup = ({ isOpen }: Props) => {
     >
       <div className="flex flex-col space-y-5 items-center">
         <HeaderLink url="/" name="Home" />
-        <HeaderLink url="/prototype" name="Prototype" />
+        <HeaderLink url="/projects" name="Prototype" />
         <HeaderLink url="/memberships" name="Memberships" />
-
       </div>
       <div className="w-10 h-0.5 bg-accent " />
       <div className="mt-5 flex flex-col space-y-5 items-center">
-        <HeaderLink url="/login" name="Sign in" />
-        <HeaderLink url="/register" name="Sign up" />
+        {user ? <ProfileLink /> : <SignIn />}
       </div>
     </div>
   );
