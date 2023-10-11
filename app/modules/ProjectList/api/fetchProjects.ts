@@ -1,6 +1,6 @@
 "use server";
 
-import { Project } from "@/app/shared/types/projects";
+import { Project } from "@/app/modules/ProjectList/types/project";
 import { getSession } from "@auth0/nextjs-auth0";
 
 export let fetchProjects = async () => {
@@ -17,6 +17,10 @@ export let fetchProjects = async () => {
       }
     );
     if (!response.ok) {
+      let parsed = await response.json();
+
+      console.log(parsed);
+
       throw new Error("You fucked up with fetch projects");
     }
     let parsed = await response.json();

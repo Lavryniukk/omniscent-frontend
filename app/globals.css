@@ -41,6 +41,10 @@
     );
   }
 
+  .project {
+    @apply w-full flex items-center relative justify-around px-2 text-xl  text-accent select-none border h-20 rounded-lg border-dashed border-accent;
+  }
+
   .center-align {
     left: calc(50% - 200px);
   }
