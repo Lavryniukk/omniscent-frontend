@@ -15,7 +15,7 @@ let ProjectList = () => {
   let result;
   if (isLoading) {
     result = (
-      <Link className="project" href={`.`}>
+      <Link className="project" href={`/`}>
         <div className="w-10 h-10 rounded-full border-2 border-secondary-700 border-t-accent animate-spin"></div>
       </Link>
     );
@@ -31,11 +31,11 @@ let ProjectList = () => {
   } else {
     if (data && data.length > 0) {
       result = data?.map((project: Project) => {
-        return <ProjectContainer project={project} />;
+        return <ProjectContainer key={project._id} project={project} />;
       });
 
       result.push(
-        <Link className="project" href="/projects/new">
+        <Link key={"add"} className="project" href="/projects/new">
           <GoPlus className="animate-pulse" />
         </Link>
       );

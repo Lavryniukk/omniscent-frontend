@@ -3,10 +3,14 @@ import { createProject } from "./api/createProject";
 import TitleInput from "./components/TitleInput/TitleInput";
 import ContextInput from "./components/ContextInput/ContextInput";
 import SubmitButton from "./components/SubmitButton/SubmitButton";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 let NewProjectForm = () => {
+  let router = useRouter();
   let [title, setTitle] = useState<string>("");
   let [context, setContext] = useState<string>("");
+  let setRemoved = () => {
+    setTitle("Removing...");
+  };
   let handleTitleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setTitle(e.target.value);
   };
@@ -15,7 +19,7 @@ let NewProjectForm = () => {
   };
   let handleSubmit = () => {
     createProject(title, context);
-    redirect("/projects");
+    router.push("/projects");
   };
   return (
     <div
