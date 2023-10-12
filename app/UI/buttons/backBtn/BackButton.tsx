@@ -2,31 +2,28 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa";
+
+const REG_EXP = {
+  PROJECTS: /\/projects(\/\w+)/,
+};
+
 let HomeButton = () => {
   let path = usePathname();
   let getLink = () => {
-    switch (path) {
-      case "/prototype":
-        return "/";
-      case "/prototype/chat":
-        return "/prototype";
-      case "/prototype/roadmap":
-        return "/prototype";
-      default:
-        return "/";
+    if (path === "projects") {
+      return "/";
+    } else if (REG_EXP.PROJECTS.test(path)) {
+      return "/projects";
     }
+    return "/";
   };
   let getText = () => {
-    switch (path) {
-      case "/prototype":
-        return "Home";
-      case "/prototype/chat":
-        return "Prototype";
-      case "/prototype/roadmap":
-        return "Prototype";
-      default:
-        return "/";
+    if (path === "projects") {
+      return "Home";
+    } else if (REG_EXP.PROJECTS.test(path)) {
+      return "Projects";
     }
+    return "Home";
   };
   let linkPath = getLink();
   return (

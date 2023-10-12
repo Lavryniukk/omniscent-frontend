@@ -2,7 +2,6 @@
 import { GoPlus } from "react-icons/go";
 import { useQuery } from "@tanstack/react-query";
 import { Project } from "@/app/modules/ProjectList/types/project";
-import { AiOutlineEllipsis } from "react-icons/ai";
 import Link from "next/link";
 import { fetchProjects } from "./api/fetchProjects";
 import ProjectContainer from "./components/ProjectContainer/ProjectContainer";
@@ -39,14 +38,13 @@ let ProjectList = () => {
           <GoPlus className="animate-pulse" />
         </Link>
       );
+    } else if (data?.length === 0) {
+      result = (
+        <Link className="project" href="/projects/new">
+          <GoPlus className="animate-pulse" />
+        </Link>
+      );
     }
-    //  else if (data?.length === 0) {
-    //   result = (
-    //     <Link className="project" href="/projects/new">
-    //       <GoPlus className="animate-pulse" />
-    //     </Link>
-    //   );
-    // }
   }
   return <>{result}</>;
 };
