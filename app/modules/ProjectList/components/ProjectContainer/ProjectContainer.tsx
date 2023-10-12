@@ -4,7 +4,6 @@ import { Project } from "../../types/project";
 import {
   MdOutlineSettings,
   MdDeleteOutline,
-  MdEdit,
   MdInfoOutline,
 } from "react-icons/md";
 import { removeProject } from "../../api/removeProject";
