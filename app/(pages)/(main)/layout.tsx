@@ -1,7 +1,7 @@
 "use client";
 import "@/app/globals.css";
 import { Roboto } from "next/font/google";
-import Header from "../../modules/Header/Header";
+import Header from "../../modules/header/Header";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 const roboto = Roboto({
   variable: "--roboto-font",
