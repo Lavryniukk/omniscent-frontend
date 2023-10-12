@@ -1,5 +1,7 @@
 import type { Config } from "tailwindcss";
 import colors from "tailwindcss/colors";
+console.log("yesyesy");
+let hello = "fsf";
 const config: Config = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -26,7 +28,7 @@ const config: Config = {
         lg: "340px",
       },
       colors: {
-        primary: { ...colors.blue, DEFAULT: colors.blue[900] },
+        primary: { ...colors.fuchsia, DEFAULT: colors.fuchsia[900] },
         secondary: { ...colors.neutral, DEFAULT: colors.neutral[800] },
         accent: { ...colors.neutral, DEFAULT: colors.neutral[400] },
         text: { ...colors.neutral, DEFAULT: colors.neutral[200] },
