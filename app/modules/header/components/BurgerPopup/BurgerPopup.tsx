@@ -1,8 +1,8 @@
 "use client";
-import ProfileLink from "@/app/components/headerComponents/Auth/profileLink";
-import SignIn from "@/app/components/headerComponents/noAuth/SignIn";
-import HeaderLink from "@/app/components/headerLink/HeaderLink";
+import SignIn from "@/app/modules/Header/components/SignIn/SignIn";
+import HeaderLink from "@/app/modules/Header/components/HeaderLink/HeaderLink";
 import { useUser } from "@auth0/nextjs-auth0/client";
+import ProfileLink from "../ProfileLink/ProfileLink";
 type Props = {
   isOpen: boolean;
 };
