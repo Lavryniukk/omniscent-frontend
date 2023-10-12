@@ -2,7 +2,7 @@
 import "@/app/globals.css";
 import HomeButton from "@/app/UI/buttons/backBtn/BackButton";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { QueryClient } from "@tanstack/react-query";
 import { Roboto } from "next/font/google";
 import Providers from "./Providers";
 
@@ -17,7 +17,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const queryClient = new QueryClient();
   return (
     <html
       lang="en"
