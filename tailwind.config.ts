@@ -28,7 +28,7 @@ const config: Config = {
         lg: "340px",
       },
       colors: {
-        primary: { ...colors.fuchsia, DEFAULT: colors.fuchsia[900] },
+        primary: { ...colors.gray, DEFAULT: colors.gray[900] },
         secondary: { ...colors.neutral, DEFAULT: colors.neutral[800] },
         accent: { ...colors.neutral, DEFAULT: colors.neutral[400] },
         text: { ...colors.neutral, DEFAULT: colors.neutral[200] },

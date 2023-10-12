@@ -1,10 +1,10 @@
-import Pricing from "@/app/modules/memberships/PricingSection/Pricing";
-import PricingFAQ from "@/app/modules/memberships/FAQSection/PricingFAQ";
-//
+import PricingFAQ from "@/app/modules/Faq/Faq";
+import PricingCards from "@/app/modules/PricingCards/PricingCards";
+
 let MembershipsPage = () => {
   return (
     <>
-      <Pricing />
+      <PricingCards />
       <PricingFAQ />
     </>
   );

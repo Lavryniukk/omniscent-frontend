@@ -1,4 +1,5 @@
-import FAQItem from "@/app/components/FAQComponents/FAQItem";
+"use client";
+import FAQItem from "@/app/modules/Faq/components/FAQItem";
 
 let PricingFAQ = () => {
   return (
@@ -7,10 +8,8 @@ let PricingFAQ = () => {
   w-full my-32 h-fit justify-around items-center "
     >
       <h2 className="text-4xl sm:text-5xl font-roboto mx-auto font-bold text-center text-text">
-
         FAQ
       </h2>
-
       <div className="sm:p-8 p-4 space-y-5">
         <FAQItem
           question="How much does your product/service cost?"

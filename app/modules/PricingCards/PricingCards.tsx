@@ -1,6 +1,8 @@
-import Cards from "@/app/components/pricingComponents/PricingCards";
+import EnterpriseCard from "./components/EnterpriceCard/EnterpriceCard";
+import ProCard from "./components/ProCard/ProCard";
+import TrialCard from "./components/TrialCard/TrialCard";
 
-let Pricing = () => {
+let PricingCards = () => {
   return (
     <div className="w-full border-secondary h-fit from-slate-950 to-background">
       <div className="box-border items-end justify-around w-full lg:px-10 mx-auto my-10 md:my-20 xl:my-32 bg-transparent select-none max-w-10xl h-fit">
@@ -8,9 +10,13 @@ let Pricing = () => {
           Choose a plan that
           <br /> fits your style
         </h2>
-        <Cards />
+        <div className="w-full select-text flex 2xl:flex-nowrap flex-wrap flex-col gap-5 max-w-[1400px] 2xl:h-[500px] lg:h-[1000px] h-[1600px] lg:flex-row relative 2xl:items-end mx-auto">
+          <TrialCard />
+          <ProCard />
+          <EnterpriseCard />
+        </div>
       </div>
     </div>
   );
 };
-export default Pricing;
+export default PricingCards;

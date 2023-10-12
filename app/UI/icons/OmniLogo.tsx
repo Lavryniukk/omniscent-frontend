@@ -8,7 +8,13 @@ let Logo = () => {
             <div className="absolute top-1 left-1 rounded-full rotate-45 h-3 group-hover:-rotate-[315deg]  w-3 transition-transform duration-500  border-l-2 border-t-2 border-primary" />
           </div>
         </div> */}
-      <Image src="/images/logo-svg.svg" alt="" width={48} height={48} />
+      <Image
+        src="/images/logo-svg.svg"
+        alt=""
+        className="mx-auto"
+        width={48}
+        height={48}
+      />
     </div>
   );
 };
