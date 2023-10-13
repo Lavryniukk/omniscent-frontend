@@ -1,7 +1,6 @@
-import PageGradient from "@/app/UI/gradients/HomePageGradient";
-import TypingAnimation from "@/app/UI/TypingAnimation";
-import HomeButtons from "@/app/UI/buttons/getStartedBtn/GetStartedBtn";
-import Gradient from "@/app/UI/gradients/bgGradient";
+import TypingAnimation from "@/app/modules/Hero/components/TypingAnimation/TypingAnimation";
+import GetStartedButton from "@/app/modules/Hero/components/GetStartedButton/GetStartedButton";
+import Gradient from "@/app/modules/Hero/components/Gradient/Gradient";
 
 let Home = () => {
   return (
@@ -12,12 +11,12 @@ let Home = () => {
       <Gradient />
       <h1
         className="text-6xl bg-gradient-to-t from-text antialiased to-accent-400 w-fit mx-auto sm:text-7xl
-					  md:text-8xl  font-roboto tracking-tight text-transparent bg-clip-text font-bold text-center "
+					  md:text-8xl font-roboto tracking-tight text-transparent bg-clip-text font-bold text-center "
       >
         Become <span className="text-primary-800">Omniscient</span>
       </h1>
       <TypingAnimation />
-      <HomeButtons />
+      <GetStartedButton />
     </div>
   );
 };
