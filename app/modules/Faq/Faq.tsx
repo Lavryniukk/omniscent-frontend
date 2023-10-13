@@ -1,7 +1,8 @@
 "use client";
 import FAQItem from "@/app/modules/Faq/components/FAQItem";
+import { FAQProps } from "./consts/FaqProps";
 
-let PricingFAQ = () => {
+let FAQ: React.FC<FAQProps> = ({ faqArray }) => {
   return (
     <div
       className="space-y-10 select-none pricing overflow-x-hidden px-10 bg-transparent mx-auto box-border max-w-10xl
@@ -11,33 +12,20 @@ let PricingFAQ = () => {
         FAQ
       </h2>
       <div className="sm:p-8 p-4 space-y-5">
-        <FAQItem
-          question="How much does your product/service cost?"
-          answer="Our pricing varies depending on the plan you choose. Please visit our pricing page for detailed information."
-        />
-
-        <FAQItem
-          question="Do you offer a free trial?"
-          answer="Yes, we provide a free trial for 14 days so you can explore our features before committing."
-        />
-
-        <FAQItem
-          question="Is there a discount for annual subscriptions?"
-          answer="Absolutely! We offer significant discounts for annual subscriptions compared to monthly plans."
-        />
-
-        <FAQItem
-          question="Can I change my plan later?"
-          answer="Yes, you can upgrade or downgrade your plan at any time to suit your changing needs."
-        />
-
-        <FAQItem
-          question="What payment methods do you accept?"
-          answer="We accept major credit cards, PayPal, and other secure payment options for your convenience."
-        />
+        {faqArray.length > 0 ? (
+          faqArray.map((item, index) => (
+            <FAQItem
+              key={index}
+              question={item.question}
+              answer={item.answer}
+            />
+          ))
+        ) : (
+          <div className="text-text">List is empty</div>
+        )}
       </div>
     </div>
   );
 };
 
-export default PricingFAQ;
+export default FAQ;
