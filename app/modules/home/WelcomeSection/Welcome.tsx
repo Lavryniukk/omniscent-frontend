@@ -12,9 +12,12 @@ let Home = () => {
       <Gradient />
       <h1
         className="text-6xl bg-gradient-to-t from-text antialiased to-accent-400 w-fit mx-auto sm:text-7xl
-					  md:text-8xl  font-roboto tracking-tight text-transparent bg-clip-text font-bold text-center "
+					  md:text-7xl  font-roboto tracking-tight text-transparent bg-clip-text font-bold text-center "
       >
-        Become <span className="text-primary-800">Omniscient</span>
+        <p>
+          A modern web solution for
+          <br /> educational purposes
+        </p>
       </h1>
       <TypingAnimation />
       <HomeButtons />
