@@ -7,15 +7,15 @@ export let fetchProjects = async () => {
   try {
     const session = await getSession();
     const token = session?.idToken;
-    let response = await fetch(
-      "https://omniscient-backend.onrender.com/projects/all",
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        cache: "no-store",
-      }
-    );
+    let response = await fetch("https://veritech.onrender.com/authorized", {
+      method: "POST",
+
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+
+      cache: "no-store",
+    });
     if (!response.ok) {
       let parsed = await response.json();
 
@@ -24,7 +24,8 @@ export let fetchProjects = async () => {
       throw new Error("You fucked up with fetch projects");
     }
     let parsed = await response.json();
-    return (await parsed) as Project[];
+    console.log(parsed);
+    return await parsed;
   } catch (e) {
     console.log(e);
   }

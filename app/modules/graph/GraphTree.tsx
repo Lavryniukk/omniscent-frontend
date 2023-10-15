@@ -82,10 +82,10 @@ let GraphTree = () => {
       return (
         <div
           key={index}
-          className={`w-fit ${after} ${before}  justify-start items-center flex-col-reverse pb-5 flex relative text-center text-accent`}
+          className={`w-fit ${after} ${before} justify-start items-center flex-col-reverse pb-5 flex relative text-center text-accent`}
         >
           <div
-            className={` w-full min-w-[100px]  mx-auto pt-2 mt-5 relative text-center `}
+            className={` w-full min-w-[100px] mx-auto pt-2 mt-5 relative text-center `}
           >
             {node.title}
             <div
