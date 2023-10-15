@@ -1,5 +1,5 @@
-import getAfter from "./helpers/getAfter";
-import getBefore from "./helpers/getBefore";
+import getAfter from "./helpers/getBefore";
+import getBefore from "./helpers/getAfter";
 import { RoadmapObjectArray } from "./types/RoadmapObjectArray";
 
 const testArray: RoadmapObjectArray = [
