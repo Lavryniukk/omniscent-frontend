@@ -10,6 +10,7 @@ let ProjectList = () => {
     queryKey: ["userProjects"],
     queryFn: fetchProjects,
   });
+  console.log(error, "fetched error");
 
   let result;
   if (isLoading) {
