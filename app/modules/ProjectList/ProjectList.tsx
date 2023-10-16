@@ -15,7 +15,7 @@ let ProjectList = () => {
   if (isLoading) {
     result = (
       <Link className="project" href={`/`}>
-        <div className="w-10 h-10 rounded-full border-2 border-secondary-700 border-t-accent animate-spin"></div>
+        <div className="w-10 h-10 rounded-full border-2 border-secondary-700 border-t-accent animate-spin" />
       </Link>
     );
   } else if (isError) {
