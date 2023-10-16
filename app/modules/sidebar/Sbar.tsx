@@ -1,13 +1,14 @@
 import useGraphStore from "../../shared/storages/graphStorage";
-import { graphNode } from "../../shared/types/node";
+// import { graphNode } from "../../shared/types/node";
 import { MdOutlineClose } from "react-icons/md";
 // Define the Props type for the SideBar component
-type Props = {
-  showSideBar: boolean; // Boolean prop to show/hide the sidebar
-  closeSideBar: (v: boolean) => void; // Function to close the sidebar
-  selectedNode: graphNode | null; // The currently selected node in the tree
-  setSelectedNode: (v: graphNode | null) => void;
-};
+
+// type Props = {
+//   showSideBar: boolean; // Boolean prop to show/hide the sidebar
+//   closeSideBar: (v: boolean) => void; // Function to close the sidebar
+//   selectedNode: graphNode | null; // The currently selected node in the tree
+//   setSelectedNode: (v: graphNode | null) => void;
+// };
 
 // Define the SideBar functional component
 let SideBar = () => {
@@ -25,11 +26,11 @@ let SideBar = () => {
       />
       {/* Sidebar container */}
       <div
-        className={`sidebar border-l-2 bg-background fixed top-0  ${res} text-text h-screen w-1/4 `}
+        className={`sidebar border-l-2 bg-background fixed top-0 ${res} text-text h-screen w-1/4 `}
       >
         {/* Close button */}
         <div
-          className=" w-fit ml-auto closer m-1 cursor-pointer"
+          className="w-fit ml-auto closer m-1 cursor-pointer"
           onClick={() => {
             setShowSidebar(false);
             selectNode(null);

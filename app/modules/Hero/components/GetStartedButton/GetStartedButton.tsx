@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-let HomeButtons = () => {
+let GetStartedButton = () => {
   return (
     <div className="w-fit h-12 flex mx-auto mt-10 space-x-5 ">
       <Link
@@ -14,4 +14,5 @@ let HomeButtons = () => {
     </div>
   );
 };
-export default HomeButtons;
+
+export default GetStartedButton;
