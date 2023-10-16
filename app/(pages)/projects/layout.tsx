@@ -4,7 +4,6 @@ import HomeButton from "@/app/UI/buttons/backBtn/BackButton";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 import { QueryClient } from "@tanstack/react-query";
 import { Roboto } from "next/font/google";
-import Providers from "./Providers";
 
 const roboto = Roboto({
   variable: "--roboto-font",
@@ -24,10 +23,8 @@ export default function RootLayout({
     >
       <body>
         <UserProvider>
-          <Providers>
-            <HomeButton />
-            {children}
-          </Providers>
+          <HomeButton />
+          {children}
         </UserProvider>
       </body>
     </html>
