@@ -28,11 +28,11 @@ const config: Config = {
         lg: "340px",
       },
       colors: {
-        primary: { ...colors.indigo, DEFAULT: colors.indigo[900] },
+        primary: { ...colors.emerald, DEFAULT: colors.emerald[900] },
         secondary: { ...colors.neutral, DEFAULT: colors.neutral[800] },
         accent: { ...colors.neutral, DEFAULT: colors.neutral[400] },
         text: { ...colors.neutral, DEFAULT: colors.neutral[200] },
-        background: { ...colors.neutral, DEFAULT: colors.neutral[950] },
+        background: "rgb(0,0,0)",
       },
       fontFamily: {
         roboto: "var(--roboto-font)",

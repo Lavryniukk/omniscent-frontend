@@ -7,7 +7,7 @@ let ProfileLink = () => {
   console.log(user);
   let pic: string = user.user?.picture as string;
   return (
-    <div className="w-32">
+    <div className="mx-auto">
       <Link href={"api/auth/logout"}>
         <img
           src={`${pic}`}

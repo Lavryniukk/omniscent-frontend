@@ -24,7 +24,7 @@ let Header = () => {
                           items-center justify-between max-w-10xl z-0 px-10 sm:px-5
                           box-border"
         >
-          <Link className="" href="/">
+          <Link className=" w-52" href="/">
             <Logo />
           </Link>
           <Burger isOpen={isOpen} toggleMenu={toggleMenu} />
@@ -33,13 +33,15 @@ let Header = () => {
             <HeaderLink url="/projects" name="Prototype" />
             <HeaderLink url="/memberships" name="Memberships" />
           </div>
-          {isLoading ? (
-            <div className="w-10 h-10 rounded-full border-2 border-secondary-700 border-t-accent animate-spin" />
-          ) : user ? (
-            <ProfileLink />
-          ) : (
-            <SignIn />
-          )}
+          <div className=" sm:flex hidden">
+            {isLoading ? (
+              <div className="w-10 mx-auto h-10 rounded-full border-2 border-secondary-700 border-t-accent animate-spin" />
+            ) : user ? (
+              <ProfileLink />
+            ) : (
+              <SignIn />
+            )}
+          </div>
         </div>
       </div>
     </>

@@ -6,7 +6,7 @@ let CardSection = () => {
       <div className="lg:features-container--1 features-container"></div>
       <div className="lg:features-container--2 features-container">
         <div className="w-8/12 border-accent">
-          <h2 className="font-roboto  text-3xl text-text">
+          <h2 className="font-roboto text-3xl text-text">
             Personalized education
           </h2>
           <p className="mt-5 text-base text-accent  font-light font-roboto border-accent text">
