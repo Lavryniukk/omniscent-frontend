@@ -5,47 +5,49 @@ import { Project } from "@/app/modules/ProjectList/types/project";
 import Link from "next/link";
 import { fetchProjects } from "./api/fetchProjects";
 import ProjectContainer from "./components/ProjectContainer/ProjectContainer";
+import healthCheck from "./api/healthCheck";
 let ProjectList = () => {
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["userProjects"],
-    queryFn: fetchProjects,
+    queryFn: healthCheck,
   });
 
   let result;
-  if (isLoading) {
-    result = (
-      <Link className="project" href={`/`}>
-        <div className="w-10 h-10 rounded-full border-2 border-secondary-700 border-t-accent animate-spin" />
-      </Link>
-    );
-  } else if (isError) {
-    console.log("This is error", error);
-    result = (
-      <Link className="project" href={``}>
-        <p className="text-lg ml-2 text-accent-300 font-light text-left ">
-          An error occured during project loading, check console
-        </p>
-      </Link>
-    );
-  } else {
-    if (data && data.length > 0) {
-      result = data?.map((project: Project) => {
-        return <ProjectContainer key={project._id} project={project} />;
-      });
+  result = data?.data;
+  // if (isLoading) {
+  //   result = (
+  //     <Link className="project" href={`/`}>
+  //       <div className="w-10 h-10 rounded-full border-2 border-secondary-700 border-t-accent animate-spin" />
+  //     </Link>
+  //   );
+  // } else if (isError) {
+  //   console.log("This is error", error);
+  //   result = (
+  //     <Link className="project" href={``}>
+  //       <p className="text-lg ml-2 text-accent-300 font-light text-left ">
+  //         An error occured during project loading, check console
+  //       </p>
+  //     </Link>
+  //   );
+  // } else {
+  //   if (data && data.length > 0) {
+  //     result = data?.map((project: Project) => {
+  //       return <ProjectContainer key={project._id} project={project} />;
+  //     });
 
-      result.push(
-        <Link key={"add"} className="project" href="/projects/new">
-          <GoPlus className="animate-pulse" />
-        </Link>
-      );
-    } else if (data?.length === 0) {
-      result = (
-        <Link className="project" href="/projects/new">
-          <GoPlus className="animate-pulse" />
-        </Link>
-      );
-    }
-  }
+  //     result.push(
+  //       <Link key={"add"} className="project" href="/projects/new">
+  //         <GoPlus className="animate-pulse" />
+  //       </Link>
+  //     );
+  //   } else if (data?.length === 0) {
+  //     result = (
+  //       <Link className="project" href="/projects/new">
+  //         <GoPlus className="animate-pulse" />
+  //       </Link>
+  //     );
+  //   }
+  // }
   return <>{result}</>;
 };
 export default ProjectList;
