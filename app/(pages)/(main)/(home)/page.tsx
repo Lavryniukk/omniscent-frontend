@@ -8,6 +8,7 @@ let HomePage: NextPage = () => {
     <main className="mb-10">
       <Home />
       <Features />
+      <div className="h-[1px] bg-secondary mt-40" />
       <Reviews />
     </main>
   );

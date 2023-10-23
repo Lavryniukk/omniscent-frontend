@@ -3,6 +3,9 @@ import ReviewCard from "./components/ReviewCard/ReveiwCard";
 let Reviews = () => {
   return (
     <div className="box-border mt-40 w-full mx-auto space-y-10 overflow-x-hidden font-normal p-4 bg-transparent h-fit max-w-10xl">
+      <h2 className="text-center text-text text-4xl font-medium font">
+        Reviews
+      </h2>
       <div className="max-w-[1200px] w-full sm:w-3/4 md:w-1/2 lg:w-full mx-auto gap-2 flex lg:flex-row flex-col">
         <ReviewCard
           rating={5}
