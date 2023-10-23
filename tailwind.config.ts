@@ -40,6 +40,11 @@ const config: Config = {
       fontSize: {
         xxs: "6px",
       },
+      backgroundImage: {
+        masha: "url('/images/masha.png')",
+        kauch: "url('/images/nikolauchuk.jpg')",
+        kros: "url('/images/legend.png')",
+      },
     },
   },
   plugins: [],
