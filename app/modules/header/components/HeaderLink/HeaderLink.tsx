@@ -7,7 +7,7 @@ let HeaderLink = ({ url, name }: Props) => {
   return (
     <Link
       href={url}
-      className="text-text hover:text-accent text-md font-roboto font-light transition-colors duration-200 "
+      className="text-text hover:text-accent text-md font-inter font-light transition-colors duration-200 "
     >
       {name}
     </Link>
