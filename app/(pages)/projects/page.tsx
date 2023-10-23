@@ -7,9 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 function PrototypePage() {
   return (
     <div className="flex h-screen border-accent items-center">
-      <div className="mx-auto w-1/4 min-w-[300px] p-2 rounded-xl space-y-3 bg-secondary border-2 border-accent ">
-        <ProjectList />
-      </div>
+      <ProjectList />
     </div>
   );
 }

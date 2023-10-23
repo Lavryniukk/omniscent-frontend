@@ -6,10 +6,10 @@ let CardSection = () => {
     //   <div className="lg:features-container--1 features-container"></div>
     //   <div className="lg:features-container--2 features-container">
     //     <div className="w-8/12 border-accent">
-    //       <h2 className="font-roboto  text-3xl text-text-300">
+    //       <h2 className="font-inter  text-3xl text-text-300">
     //         Customizable learning path
     //       </h2>
-    //       <p className="mt-5  text-base text-accent font-light font-roboto border-accent text">
+    //       <p className="mt-5  text-base text-accent font-light font-inter border-accent text">
     //         Pro plan allowes you to add custom-made technologies to your
     //         learning path.
     //       </p>
@@ -21,7 +21,7 @@ let CardSection = () => {
     //   </div>
     //   <div className="lg:features-container--3 features-container">
     //     <div className="border-accent">
-    //       <h2 className="font-roboto text-3xl text-text">
+    //       <h2 className="font-inter text-3xl text-text">
     //         Flexible learning path
     //       </h2>
     //     </div>
