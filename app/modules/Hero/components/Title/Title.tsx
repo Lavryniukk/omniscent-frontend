@@ -10,7 +10,7 @@ let Title = () => {
 
       <h1
         className=" bg-gradient-to-t from-text flex items-center w-10/12 justify-center antialiased px-5 to-text-500  mx-auto leading-none
-				   font-roboto  tracking-tight hyphens-none  text-transparent bg-clip-text font-extrabold text-center text-[max(32px,min(5vw,76px))] "
+				   font-inter  tracking-tight hyphens-none  text-transparent bg-clip-text font-extrabold text-center text-[max(32px,min(5vw,76px))] "
       >
         The AI solution for self-education
       </h1>

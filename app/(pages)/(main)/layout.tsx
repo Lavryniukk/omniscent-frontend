@@ -3,8 +3,8 @@ import "@/app/globals.css";
 import { Roboto, Raleway, Inter } from "next/font/google";
 import Header from "../../modules/header/Header";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
-const roboto = Inter({
-  variable: "--roboto-font",
+const inter = Inter({
+  variable: "--inter-font",
   weight: ["100", "300", "400", "500", "700", "900"],
   subsets: ["latin"],
 });
@@ -22,9 +22,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${roboto.variable} overflow-x-hidden bg-background`}
+      className={`${inter.variable} overflow-x-hidden bg-background`}
     >
-      <body className="font-roboto">
+      <body className="font-inter">
         <UserProvider>
           <Header />
           {children}

@@ -107,12 +107,7 @@
 body {
   background: var(--background);
 }
-.node {
-  @apply text-text font-light w-fit h-fit mx-auto text-xs sm:text-sm md:text-base lg:text-lg;
-}
-.features-title {
-  @apply text-text font-roboto opacity-80 font-medium text-lg md:text-xl lg:text-2xl 2xl:text-3xl mb-2;
-}
+
 .features-container {
   @apply w-[20vw] rounded-lg border-[1.5px] sm:min-w-[320px] min-w-[350px] max-w-[450px] border-secondary;
 }

@@ -35,7 +35,7 @@ const config: Config = {
         background: "rgb(0,0,0)",
       },
       fontFamily: {
-        roboto: "var(--roboto-font)",
+        inter: "var(--inter-font)",
       },
       fontSize: {
         xxs: "6px",
