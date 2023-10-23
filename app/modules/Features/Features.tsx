@@ -2,9 +2,9 @@ import CardSection from "./components/CardSection/CardSection";
 
 let Features = () => {
   return (
-    <div className="box-border mt-40 w-full mx-auto space-y-10 overflow-x-hidden font-normal p-8 bg-transparent h-fit max-w-10xl">
+    <div className="box-border mt-40 w-full mx-auto space-y-10 overflow-x-hidden font-normal p-4 bg-transparent h-fit max-w-10xl">
       <h2 className="mx-auto text-4xl text-center text-text font-roboto">
-        What`s Omniscient?
+        Suck my nuts
       </h2>
       {/* <p className="w-2/3 mx-auto text-sm font-light text-center font-roboto text-accent md:text-lg md:w-1/2">
         Omniscient Personal is an{" "}

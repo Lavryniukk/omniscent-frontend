@@ -12,7 +12,7 @@ let Logo = () => {
         src="/images/veritech.png"
         className="mx-auto"
         alt=""
-        width={250}
+        width={220}
         height={48}
       />
     </div>
