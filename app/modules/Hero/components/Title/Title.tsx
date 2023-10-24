@@ -2,7 +2,7 @@ import GetStartedButton from "../GetStartedButton/GetStartedButton";
 
 let Title = () => {
   return (
-    <div className="  mx-2 overflow-visible overflow-x-clip my-16   py-10  items-center relative flex-col justify-center space-y-10  mt-40 lg:mt-52 xl:mt-60  ">
+    <div className="  mx-2 overflow-visible overflow-x-clip py-20 items-center relative flex-col justify-center space-y-10   ">
       {/* <div className=" border-r rotate-45 w-10 h-20 absolute -top-[84px] -left-1 border-dashed border-secondary-700"></div>
       <div className=" rotate-45 border-b w-20 h-10 absolute -top-[104px] -right-[26px] border-dashed border-secondary-700"></div>
       <div className=" border-r -rotate-45 w-10 h-20 absolute -bottom-[84px] -left-1 border-dashed border-secondary-700"></div>
