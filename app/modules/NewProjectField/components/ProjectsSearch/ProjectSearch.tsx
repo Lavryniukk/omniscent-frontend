@@ -11,7 +11,7 @@ let arr = [
   { title: "DevOps", _id: "6" },
 ];
 export default function ProjectSearch() {
-  const [text, setText] = useState("");
+  const [text, setText] = useState("Front-end");
   const [filteredArray, setFilteredArray] = useState(arr);
 
   let handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,15 +36,15 @@ export default function ProjectSearch() {
   };
 
   return (
-    <div>
-      <div className="relative h-10 w-full mx-auto items-center mt-20 flex">
+    <div className=" py-20">
+      <div className="relative h-10 w-full mx-auto items-center flex">
         <input
           type="text"
           value={text}
           onChange={(e) => {
             handleChange(e);
           }}
-          className=" bg-secondary focus:outline-none h-full focus:border-text w-full rounded-lg border-accent text-accent pl-3 border mx-auto "
+          className=" bg-secondary focus:outline-none h-full focus:border-text w-full rounded-lg border-accent-600 text-accent pl-3 border mx-auto "
         />
         <AiOutlineSearch
           size={20}
@@ -64,7 +64,7 @@ export default function ProjectSearch() {
           )
         ) : (
           <div className="text-accent text-lg  mx-auto text-center ">
-            Oops, seems like nothing was found
+            Whoops, seems like nothing was found
           </div>
         )}
       </div>

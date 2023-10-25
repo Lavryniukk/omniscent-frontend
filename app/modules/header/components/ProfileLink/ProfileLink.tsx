@@ -1,14 +1,13 @@
 "use client";
 import { useUser } from "@auth0/nextjs-auth0/client";
-import Image from "next/image";
 import Link from "next/link";
 let ProfileLink = () => {
   let user = useUser();
-  console.log(user);
   let pic: string = user.user?.picture as string;
+
   return (
     <div className="mx-auto">
-      <Link href={"api/auth/logout"}>
+      <Link href={`/profile/${user.user?.sub}`}>
         <img
           src={`${pic}`}
           alt=""
