@@ -1,5 +1,4 @@
 import Features from "@/app/modules/Features/Features";
-import Home from "@/app/modules/Hero/Hero";
 import Title from "@/app/modules/Hero/components/Title/Title";
 import Reviews from "@/app/modules/Reviews/Reviews";
 import { NextPage } from "next";
