@@ -3,7 +3,7 @@ import Line from "../FeatureLine/FeatureLine";
 
 let EnterpriseCard = () => {
   return (
-    <div className="2xl:w-1/4 shadow-sm 2xl:shadow-none shadow-white mx-auto lg:w-4/12 w-[350px] p-8 relative border-2 bg-background 2xl:h-[90%] lg:h-[47%] h-[30%] bg-opacity-90 rounded-xl border-secondary ">
+    <div className="2xl:w-1/4 shadow-sm 2xl:shadow-none shadow-white observe duration-500 transition delay-150 mx-auto lg:w-4/12 w-[350px] p-8 relative border-2 bg-background 2xl:h-[90%] lg:h-[47%] h-[30%] bg-opacity-90 rounded-xl border-secondary ">
       <h1 className="mb-2 text-2xl font-light text-left text-text">
         Enterprise
       </h1>

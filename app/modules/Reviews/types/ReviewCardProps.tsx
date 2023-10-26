@@ -4,4 +4,5 @@ export default interface ReviewCard {
   nickname: string;
   content: string;
   imageUrl: string;
+  className?: string;
 }
