@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Line from "../FeatureLine/FeatureLine";
 
+// EnterpriseCard component
 let EnterpriseCard = () => {
   return (
     <div className="2xl:w-1/4 shadow-sm 2xl:shadow-none shadow-white mx-auto lg:w-4/12 w-[350px] p-8 relative border-2 bg-background 2xl:h-[90%] lg:h-[47%] h-[30%] bg-opacity-90 rounded-xl border-secondary ">
@@ -16,11 +17,12 @@ let EnterpriseCard = () => {
 
       <Link
         href="/"
-        className="text-center absolute right-8 bottom-7 w-[82%] text-lg text-text bg-background font-bold border hover:text-background hover:bg-opacity-90  transition-all duration-200 border-text hover:bg-text  mx-auto p-4 py-2 block rounded-lg "
+        className="text-center absolute right-8 bottom-7 w-[82%] text-lg text-text bg-background font-bold border hover:text-background hover:bg-opacity-90 transition-all duration-200 border-text hover:bg-text mx-auto p-4 py-2 block rounded-lg "
       >
         Contact sales
       </Link>
     </div>
   );
 };
+
 export default EnterpriseCard;
