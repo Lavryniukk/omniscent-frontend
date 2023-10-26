@@ -51,6 +51,11 @@
   .center-align {
     left: calc(50% - 200px);
   }
+
+  .right-align {
+    left: calc(72% - 250px);
+  }
+
   .glow-effect {
     box-shadow:
       0 0 5px primary,
