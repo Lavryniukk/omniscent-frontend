@@ -26,8 +26,9 @@ export default function RootLayout({
     >
       <body className="font-inter">
         <UserProvider>
-          <Header />
-          {children}
+          {/* Auth0's UserProvider for user authentication. */}
+          <Header /> {/* Render the Header component. */}
+          {children} {/* Render the children components passed as props. */}
           {/* <Footer /> */}
         </UserProvider>
       </body>
