@@ -2,6 +2,7 @@
 import FAQItem from "@/app/modules/Faq/components/FAQItem";
 import { FAQProps } from "./consts/FaqProps";
 
+// FAQ component
 let FAQ: React.FC<FAQProps> = ({ faqArray }) => {
   return (
     <div
@@ -12,7 +13,9 @@ let FAQ: React.FC<FAQProps> = ({ faqArray }) => {
         FAQ
       </h2>
       <div className="sm:p-8 p-4 space-y-5">
+        {/* Check if there are FAQs in the array */}
         {faqArray.length > 0 ? (
+          // If there are FAQs, map through the array to render each FAQItem
           faqArray.map((item, index) => (
             <FAQItem
               key={index}
@@ -21,6 +24,7 @@ let FAQ: React.FC<FAQProps> = ({ faqArray }) => {
             />
           ))
         ) : (
+          // If the array is empty, display a message
           <div className="text-text">List is empty</div>
         )}
       </div>
