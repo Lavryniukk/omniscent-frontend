@@ -1,6 +1,6 @@
 import useChatStore from "@/app/shared/storages/chatStorage";
 import { message } from "@/app/shared/types/message";
-
+//delete afterwards
 let Messages = () => {
   const chat = useChatStore((state) => state.chat);
   const assistantData = useChatStore((state) => state.assistantData);
