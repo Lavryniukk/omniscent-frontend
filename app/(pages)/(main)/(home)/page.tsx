@@ -1,8 +1,8 @@
+"use client";
 import Features from "@/app/modules/Features/Features";
 import Title from "@/app/modules/Hero/components/Title/Title";
 import Reviews from "@/app/modules/Reviews/Reviews";
 import { NextPage } from "next";
-
 let HomePage: NextPage = () => {
   return (
     <main
@@ -11,7 +11,6 @@ let HomePage: NextPage = () => {
     >
       <Title />
       <Features />
-
       <Reviews />
     </main>
   );
