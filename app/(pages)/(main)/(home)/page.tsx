@@ -1,8 +1,8 @@
+"use client";
 import Features from "@/app/modules/Features/Features";
 import Title from "@/app/modules/Hero/components/Title/Title";
 import Reviews from "@/app/modules/Reviews/Reviews";
 import { NextPage } from "next";
-
 // HomePage is a Next.js page component representing the main landing page of the application.
 // It includes the Title component, Features component, and Reviews component.
 let HomePage: NextPage = () => {

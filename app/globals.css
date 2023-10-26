@@ -62,6 +62,14 @@
       0 0 10px primary,
       0 0 20px primary;
   }
+  .observe {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+  .observe-show {
+    transform: none;
+    opacity: 1;
+  }
   .pt-box-shadow {
     box-shadow:
       0 0 1px var(--accent),
@@ -114,7 +122,7 @@ body {
 }
 
 .features-container {
-  @apply w-[20vw] rounded-lg border-[1.5px] sm:min-w-[320px] min-w-[350px] max-w-[450px] border-secondary;
+  @apply w-[20vw] rounded-lg border-[1.5px]  transition-all delay-150 duration-500 sm:min-w-[320px] min-w-[350px] max-w-[450px] border-secondary;
 }
 
 /* CSS class to reset basic input styles */

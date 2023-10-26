@@ -16,7 +16,7 @@ let FAQItem = ({ question, answer }: Props) => {
 
   return (
     <div
-      className={`border-x-[1.5px] border-accent font-inter font-light lg:w-4/6 sm:w-5/6  text-text-300 mx-auto ${
+      className={`border-x-[1.5px] observe duration-200 transition border-accent font-inter font-light lg:w-4/6 sm:w-5/6  text-text-300 mx-auto ${
         // Dynamically set the height and transition effect based on the 'isOpen' state
         !isOpen ? "h-12" : "sm:h-32 h-36"
       } sm:px-2 px-1 transition-all duration-500 overflow-hidden lg:text-lg sm:text-base text-[13px]`}
