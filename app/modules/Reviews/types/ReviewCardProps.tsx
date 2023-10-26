@@ -4,4 +4,5 @@ export default interface ReviewCard {
   nickname: string; // The reviewer's nickname or username
   content: string; // The content of the review
   imageUrl: string; // URL to the reviewer's profile picture
+  className?: string;
 }
