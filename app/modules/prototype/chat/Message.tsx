@@ -1,9 +1,12 @@
 import useChatStore from "@/app/shared/storages/chatStorage";
 import { message } from "@/app/shared/types/message";
-//delte
+
 let Messages = () => {
+  // Retrieve chat and assistantData from the chat storage.
   const chat = useChatStore((state) => state.chat);
   const assistantData = useChatStore((state) => state.assistantData);
+
+  // Map through chat messages and render based on the message role.
   let result = chat.map((message: message, index: number) => {
     switch (message.role) {
       case "user":
@@ -12,7 +15,8 @@ let Messages = () => {
             key={index}
             className="w-full text-sm md:text-base lg:text-lg border-accent bg-background h-fit rounded-lg pr-2 text-accent py-4 lg:pl-8 pl-3 "
           >
-            User: {message.content}
+            User: {message.content}{" "}
+            {/* Render user messages with their content. */}
           </div>
         );
       case "assistant":
@@ -23,16 +27,19 @@ let Messages = () => {
           >
             Assistant:{" "}
             {chat[chat.length - 1] === message
-              ? assistantData
-              : message.content}
+              ? assistantData // Render assistant's response or assistantData if it's the last message in the chat.
+              : message.content}{" "}
+            {/* Render assistant's message content. */}
           </div>
         );
     }
   });
+
   return (
     <div className="text-accent flex-col mb-32 bg-transparent w-full h-fit max-w-[800px] mx-auto">
-      {result}
+      {result} {/* Render the chat messages here. */}
     </div>
   );
 };
+
 export default Messages;
