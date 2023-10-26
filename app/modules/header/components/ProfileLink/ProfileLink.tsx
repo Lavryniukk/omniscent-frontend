@@ -1,14 +1,15 @@
-"use client";
+"use client"; // An environment-specific directive or comment, not part of the logic.
+
 import { useUser } from "@auth0/nextjs-auth0/client";
-import Image from "next/image";
 import Link from "next/link";
+
 let ProfileLink = () => {
-  let user = useUser();
-  console.log(user);
-  let pic: string = user.user?.picture as string;
+  let user = useUser(); // Use the useUser hook to retrieve user information.
+  let pic: string = user.user?.picture as string; // Extract the user's profile picture URL.
+
   return (
-    <div className="w-32">
-      <Link href={"api/auth/logout"}>
+    <div className="mx-auto">
+      <Link href={`/profile/${user.user?.sub}`}>
         <img
           src={`${pic}`}
           alt=""
@@ -20,4 +21,5 @@ let ProfileLink = () => {
     </div>
   );
 };
+
 export default ProfileLink;

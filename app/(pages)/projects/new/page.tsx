@@ -1,13 +1,15 @@
-"use client";
-import NewProjectForm from "@/app/modules/NewProjectForm/NewProjectForm";
+"use client"; // An environment-specific directive or comment, not part of the logic.
+
+import NewProjectField from "@/app/modules/NewProjectField/NewProjectField";
 import { withPageAuthRequired } from "@auth0/nextjs-auth0/client";
-import { useState } from "react";
 
 function NewProject() {
   return (
     <div className="max-w-7xl select-none flex items-center justify-center h-screen mx-auto">
-      <NewProjectForm />
+      <NewProjectField />{" "}
+      {/* Rendering the NewProjectField component for creating a new project. */}
     </div>
   );
 }
+
 export default withPageAuthRequired(NewProject);
