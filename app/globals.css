@@ -30,6 +30,9 @@
       inset 7px 7px 14px #020304,
       inset -7px -7px 14px #0a0b0e;
   }
+  .font-title {
+    font-size: max(32px, min(5vw, 76px));
+  }
   .spinner {
     animation: spiner 4s linear alternate infinite 1.2s;
   }
@@ -48,11 +51,24 @@
   .center-align {
     left: calc(50% - 200px);
   }
+
+  .right-align {
+    left: calc(72% - 250px);
+  }
+
   .glow-effect {
     box-shadow:
-      0 0 5px var(--primary),
-      0 0 10px var(--primary),
-      0 0 20px var(--primary);
+      0 0 5px primary,
+      0 0 10px primary,
+      0 0 20px primary;
+  }
+  .observe {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+  .observe-show {
+    transform: none;
+    opacity: 1;
   }
   .pt-box-shadow {
     box-shadow:
@@ -104,14 +120,9 @@
 body {
   background: var(--background);
 }
-.node {
-  @apply text-text font-light w-fit h-fit mx-auto text-xs sm:text-sm md:text-base lg:text-lg;
-}
-.features-title {
-  @apply text-text font-roboto opacity-80 font-medium text-lg md:text-xl lg:text-2xl 2xl:text-3xl mb-2;
-}
+
 .features-container {
-  @apply p-5 shadow-lg h-full flex items-center justify-start md:min-h-md lg:min-h-lg xl:min-h-md bg-transparent border-2 border-secondary rounded-xl overflow-hidden;
+  @apply w-[20vw] rounded-lg border-[1.5px]  transition-all delay-150 duration-500 sm:min-w-[320px] min-w-[350px] max-w-[450px] border-secondary;
 }
 
 /* CSS class to reset basic input styles */

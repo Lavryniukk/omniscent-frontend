@@ -1,15 +1,15 @@
 import Link from "next/link";
 
+// Component for rendering the "Get Started" button with a link
 let GetStartedButton = () => {
   return (
-    <div className="w-fit h-12 flex mx-auto mt-10 space-x-5 ">
+    <div className="delay-200 observe transition-all duration-500">
       <Link
-        href={"/"}
-        className="flex items-center from-primary to-primary-600 bg-gradient-to-r justify-center text-lg  w-36 rounded-xl text-text transition-all font-roboto shadow-lg"
+        // Styling for the button
+        className="w-fit hover:border-accent tracking-tight border-[0.2px] hover:text-text border-accent text-md font-medium hover:bg-background transition-all duration-500  box-border mx-auto text-background bg-text  px-5 py-1  rounded-lg block  text-[min(2vw,20px)]"
+        href="/"
       >
-        <div className="w-[97%] h-[91%] bg-background hover:bg-transparent duration-200 transition-all flex items-center justify-center rounded-xl  ">
-          Get started
-        </div>
+        Get started
       </Link>
     </div>
   );

@@ -1,4 +1,5 @@
 "use client";
+<<<<<<< HEAD
 import { GoPlus } from "react-icons/go";
 import { useQuery } from "@tanstack/react-query";
 import { Project } from "@/app/modules/ProjectList/types/project";
@@ -11,42 +12,26 @@ let ProjectList = () => {
     queryFn: fetchProjects,
   });
   console.log(error, "fetched error");
+=======
+import ProjectsList from "./components/ProjectsList/ProjectsList";
+// import { AiOutlineQuestion } from "react-icons/ai";
+import ProjectsNotFound from "./components/ProjectsNotFound/ProjectsNotFound";
+>>>>>>> pre-main
 
-  let result;
-  if (isLoading) {
-    result = (
-      <Link className="project" href={`/`}>
-        <div className="w-10 h-10 rounded-full border-2 border-secondary-700 border-t-accent animate-spin"></div>
-      </Link>
-    );
-  } else if (isError) {
-    console.log("This is error", error);
-    result = (
-      <Link className="project" href={``}>
-        <p className="text-lg ml-2 text-accent-300 font-light text-left ">
-          An error occured during project loading, check console
-        </p>
-      </Link>
-    );
-  } else {
-    if (data && data.length > 0) {
-      result = data?.map((project: Project) => {
-        return <ProjectContainer key={project._id} project={project} />;
-      });
+// Initialize an array 'arr' containing an example project.
+let arr: Array<any> = [{ title: "Node.js", _id: "1" }];
 
-      result.push(
-        <Link key={"add"} className="project" href="/projects/new">
-          <GoPlus className="animate-pulse" />
-        </Link>
-      );
-    } else if (data?.length === 0) {
-      result = (
-        <Link className="project" href="/projects/new">
-          <GoPlus className="animate-pulse" />
-        </Link>
-      );
-    }
-  }
-  return <>{result}</>;
-};
-export default ProjectList;
+export default function UserProjects() {
+  return (
+    <div className="mx-auto w-1/3 max-w-[600px] min-w-[500px] px-5 py-16 font-inter h-fit border-2 border-secondary rounded-2xl">
+      <h1 className="text-4xl text-center font-bold mx-auto text-text tracking-tight font-inter">
+        Your learning projects
+      </h1>
+      {arr.length !== 0 ? (
+        <ProjectsList projects={arr} /> // Render the ProjectsList component with projects from 'arr'.
+      ) : (
+        <ProjectsNotFound /> // Render the ProjectsNotFound component if 'arr' is empty.
+      )}
+    </div>
+  );
+}

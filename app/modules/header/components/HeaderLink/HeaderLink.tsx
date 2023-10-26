@@ -1,16 +1,19 @@
 import Link from "next/link";
+
 type Props = {
-  url: string;
-  name: string;
+  url: string; // Define a prop for the URL to navigate to.
+  name: string; // Define a prop for the link name or label.
 };
+
 let HeaderLink = ({ url, name }: Props) => {
   return (
-    <Link
-      href={url}
-      className="text-text hover:text-accent text-md font-roboto font-light transition-colors duration-200 "
+    <a
+      href={url} // Set the URL to navigate to based on the prop.
+      className="text-text hover:text-accent text-md font-inter font-light transition-colors duration-200"
     >
-      {name}
-    </Link>
+      {name} {/* Display the link name or label as the link text. */}
+    </a>
   );
 };
+
 export default HeaderLink;
