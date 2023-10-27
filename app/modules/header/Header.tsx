@@ -2,7 +2,7 @@
 
 import Burger from "@/app/modules/header/components/BurgerMenuButton/BurgerNavigation";
 import HeaderLink from "@/app/modules/header/components/HeaderLink/HeaderLink";
-import Logo from "@/app/UI/icons/OmniLogo";
+import Logo from "@/app/UI/icons/CleverizeLogo";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { useState } from "react";
 import Popup from "./components/BurgerPopup/BurgerPopup";
