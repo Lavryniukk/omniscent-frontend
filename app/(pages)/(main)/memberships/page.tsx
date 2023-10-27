@@ -1,11 +1,16 @@
-import Pricing from "@/app/modules/memberships/PricingSection/Pricing";
-import PricingFAQ from "@/app/modules/memberships/FAQSection/PricingFAQ";
-//
+import FAQ from "@/app/modules/Faq/Faq";
+import PricingCards from "@/app/modules/PricingCards/PricingCards";
+
 let MembershipsPage = () => {
   return (
     <>
-      <Pricing />
-      <PricingFAQ />
+      <PricingCards />
+      <FAQ
+        faqArray={[
+          { question: "card", answer: "card" },
+          { question: "card", answer: "card" },
+        ]}
+      />
     </>
   );
 };
