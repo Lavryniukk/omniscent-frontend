@@ -7,7 +7,7 @@ import { NextPage } from "next";
 // It includes the Title component, Features component, and Reviews component.
 let HomePage: NextPage = () => {
   return (
-    <main className="mb-10 mt-14 overflow-hidden pt-40  h-fit bg-transparent mx-auto box-border w-full">
+    <main className="mb-10 mt-14 overflow-hidden lg:pt-20 pt-10 h-fit bg-transparent mx-auto box-border w-full">
       <Title /> {/* Renders the title section of the landing page. */}
       <Features /> {/* Renders the features section of the landing page. */}
       <Reviews /> {/* Renders the reviews section of the landing page. */}
