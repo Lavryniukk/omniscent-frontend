@@ -2,7 +2,7 @@ import ReviewCard from "./components/ReviewCard/ReveiwCard";
 
 let Reviews = () => {
   return (
-    <div className="box-border py-20 w-full mx-auto space-y-10 overflow-x-hidden font-normal p-4 bg-transparent h-fit max-w-10xl">
+    <div className="box-border relative observe duration-500 transtition before:absolute before:top-0 before:w-full before:right-0 before:h-16 before:bg-gradient-to-t before:from-background before:to-primary-950 before:blur-3xl py-40 w-full mx-auto space-y-10 overflow-x-hidden font-normal p-4 bg-transparent h-fit max-w-10xl border-t border-secondary">
       <h2 className="text-center text-text observe duration-500 transition text-4xl font-medium font">
         Reviews
       </h2>
