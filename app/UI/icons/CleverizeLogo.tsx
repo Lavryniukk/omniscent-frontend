@@ -9,11 +9,11 @@ let Logo = () => {
           </div>
         </div> */}
       <Image
-        src="/images/veritech.png"
+        src="/images/logo-cleverize-white.svg"
         className="mx-auto"
         alt=""
-        width={220}
-        height={48}
+        width={40}
+        height={40}
       />
     </div>
   );
