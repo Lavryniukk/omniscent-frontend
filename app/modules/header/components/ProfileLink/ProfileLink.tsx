@@ -10,13 +10,15 @@ let ProfileLink = () => {
   return (
     <div className="mx-auto">
       <Link href={`/profile/${user.user?.sub}`}>
-        <img
-          src={`${pic}`}
-          alt=""
-          width={50}
-          height={50}
-          className="h-11 w-11 mx-auto rounded-full border-2 border-accent-700 hover:border-accent transition-colors duration-200"
-        />
+        <picture>
+          <img
+            src={`${pic}`}
+            alt=""
+            width={50}
+            height={50}
+            className="h-11 w-11 mx-auto rounded-full border-2 border-accent-700 hover:border-accent transition-colors duration-200"
+          />
+        </picture>
       </Link>
     </div>
   );
