@@ -7,6 +7,23 @@ module.exports = {
   },
   reactStrictMode: true,
   images: {
-    domains: ["s.gravatar.com", "vatars.githubusercontent.com"],
+    domains: [
+      "s.gravatar.com",
+      "vatars.githubusercontent.com",
+      "avatars.githubusercontent.com",
+    ],
   },
+};
+module.exports = {
+  headers: () => [
+    {
+      source: "/",
+      headers: [
+        {
+          key: "Cache-Control",
+          value: "no-store",
+        },
+      ],
+    },
+  ],
 };
