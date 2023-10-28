@@ -1,5 +1,5 @@
 import { BsChevronDown } from "react-icons/bs";
-import { useState } from "react";
+import { MouseEventHandler, useState } from "react";
 
 // Define the 'Props' type to specify the expected properties for the 'FAQItem' component
 type Props = { question: string; answer: string };
@@ -16,11 +16,12 @@ let FAQItem = ({ question, answer }: Props) => {
 
   return (
     <div
-      className={`border-x-[1.5px] observe duration-200 transition border-accent font-inter font-light lg:w-4/6 sm:w-5/6  text-text-300 mx-auto ${
+      onClick={handleClick}
+      className={`border-x-[1.5px] border-accent font-inter font-light lg:w-4/6 sm:w-5/6  text-text-300 mx-auto ${
         // Dynamically set the height and transition effect based on the 'isOpen' state
         !isOpen ? "h-12" : "sm:h-32 h-36"
       } sm:px-2 px-1 transition-all duration-500 overflow-hidden lg:text-lg sm:text-base text-[13px]`}
-      onClick={handleClick} // Attach the 'handleClick' function to the 'onClick' event of the container
+      // Attach the 'handleClick' function to the 'onClick' event of the container
     >
       <div className="flex justify-between items-center mb-4 h-12">
         <div>{question}</div> {/* Display the question */}
