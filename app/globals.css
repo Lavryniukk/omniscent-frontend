@@ -2,17 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* :root {
-  --text: #060709;
-  --background: #e6e9ef;
-  --primary: #1c408d;
-  --secondary: #e9ebf1;
-  --accent: #333b4c;
-} */
 ::-webkit-scrollbar {
   width: 8px;
 }
-
 ::-webkit-scrollbar-track {
   background-color: var(--secondary);
 }
@@ -23,43 +15,139 @@
 }
 /* styles.css */
 .no-blink-cursor {
-  cursor: default; /* This will set the cursor to the default arrow cursor */
+  cursor: default;
 }
 
-/* @media (prefers-color-scheme: dark) { */
-:root {
-  --text: #e6e9ef;
-  --background: #060709;
-  --primary: #395eb4;
-  --secondary: #1a1e28;
-  --accent: #7685a2;
+@keyframes spiner {
+  to {
+    transform: rotate(360deg);
+  }
 }
+
 @layer components {
   .inset-shadow {
     box-shadow:
       inset 7px 7px 14px #020304,
       inset -7px -7px 14px #0a0b0e;
   }
+  .font-title {
+    font-size: max(32px, min(5vw, 76px));
+  }
+  .spinner {
+    animation: spiner 4s linear alternate infinite 1.2s;
+  }
+  .gradient {
+    background: radial-gradient(
+      circle at center,
+      var(--primary) 0,
+      transparent 100%
+    );
+  }
+
+  .project {
+    @apply w-full flex items-center relative justify-around px-2 text-xl  text-accent select-none border h-20 rounded-lg border-dashed border-accent;
+  }
+
+  .center-align {
+    left: calc(50% - 200px);
+  }
+
+  .right-align {
+    left: calc(72% - 250px);
+  }
+
+  .glow-effect {
+    box-shadow:
+      0 0 5px primary,
+      0 0 10px primary,
+      0 0 20px primary;
+  }
+  .observe {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+  .observe-show {
+    transform: none;
+    opacity: 1;
+  }
+  .pt-box-shadow {
+    box-shadow:
+      0 0 1px var(--accent),
+      0 0 3px var(--accent),
+      0 0 5px var(--accent);
+  }
+  .pt-box-shadow:hover {
+    box-shadow:
+      0 0 2px var(--accent),
+      0 0 5px var(--accent),
+      0 0 10px var(--accent);
+  }
+
+  .features {
+    display: grid;
+    grid-template-areas:
+      "one two two"
+      "one three four"
+      "six three five";
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto auto;
+  }
+
+  .features-container--1 {
+    grid-area: one;
+  }
+
+  .features-container--2 {
+    grid-area: two;
+  }
+
+  .features-container--3 {
+    grid-area: three;
+  }
+
+  .features-container--4 {
+    grid-area: four;
+  }
+
+  .features-container--5 {
+    grid-area: five;
+  }
+
+  .features-container--6 {
+    grid-area: six;
+  }
 }
 body {
   background: var(--background);
 }
-.node {
-  @apply text-text font-light w-fit h-fit mx-auto text-xs sm:text-sm md:text-base lg:text-lg;
-}
-.node-circle {
-  @apply hover:bg-secondary transition-colors duration-150 rounded-full mx-auto border p-1 sm:p-2 md:p-4 lg:p-5;
-}
-.features-title {
-  @apply text-text font-roboto font-medium text-lg md:text-xl lg:text-2xl 2xl:text-3xl mb-2;
-}
+
 .features-container {
-  @apply p-5 shadow-md hover:border-accent h-fit md:min-h-md lg:min-h-lg xl:min-h-md transition-colors duration-300 bg-transparent border-2 border-secondary rounded-xl;
+  @apply w-[20vw] rounded-lg border-[1.5px]  transition-all delay-150 duration-500 sm:min-w-[320px] min-w-[350px] max-w-[450px] border-secondary;
 }
+
+/* CSS class to reset basic input styles */
+.clear-input {
+  /* Reset padding and margin */
+  margin: 0;
+
+  /* Reset border */
+
+  /* Reset outline (removes the default blue outline when focused) */
+  outline: none;
+
+  /* Reset background color */
+
+  /* Reset font styles */
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+
+  /* Reset text color */
+
+  /* Reset box-shadow (removes any box shadows) */
+}
+
 .rotated {
   tranform: rotate(180deg);
-}
-.gradient {
-  background: -webkit-linear-gradient(right, #1d4ed8, #1e3a8a);
-  background: linear-gradient(to right, #1d4ed8, #1e3a8a);
 }

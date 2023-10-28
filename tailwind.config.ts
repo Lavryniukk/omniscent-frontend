@@ -1,5 +1,7 @@
 import type { Config } from "tailwindcss";
-
+import colors from "tailwindcss/colors";
+console.log("yesyesy");
+let hello = "fsf";
 const config: Config = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -8,6 +10,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      animation: {
+        "spin-slow": "spin 10s linear infinite",
+      },
       width: {
         "10lg": "1000px",
       },
@@ -23,17 +28,22 @@ const config: Config = {
         lg: "340px",
       },
       colors: {
-        primary: "var(--primary)",
-        secondary: "var(--secondary)",
-        accent: "var(--accent)",
-        text: "var(--text)",
-        background: "var(--background)",
+        primary: { ...colors.fuchsia, DEFAULT: colors.fuchsia[900] },
+        secondary: { ...colors.neutral, DEFAULT: colors.neutral[800] },
+        accent: { ...colors.neutral, DEFAULT: colors.neutral[400] },
+        text: { ...colors.neutral, DEFAULT: colors.neutral[200] },
+        background: "rgb(0,0,0)",
       },
       fontFamily: {
-        roboto: "var(--roboto-font)",
+        inter: "var(--inter-font)",
       },
       fontSize: {
         xxs: "6px",
+      },
+      backgroundImage: {
+        masha: "url('/images/masha.png')",
+        kauch: "url('/images/nikolauchuk.jpg')",
+        kros: "url('/images/legend.png')",
       },
     },
   },
