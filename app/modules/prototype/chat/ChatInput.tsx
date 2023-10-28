@@ -1,4 +1,4 @@
-import useChatStore from "@/app/shared/storages/chatStorage";
+import useChatStore from "@/app/modules/prototype/chat/chatStorage";
 
 let ChatInput = () => {
   // Access state and actions from the useChatStore hook.

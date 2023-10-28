@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { message, roleType } from "@/app/shared/types/message";
+import { message, roleType } from "@/app/modules/prototype/chat/types/message";
 
 // Define the state structure of the store.
 interface StoreState {
