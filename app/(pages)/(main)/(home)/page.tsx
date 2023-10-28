@@ -11,7 +11,6 @@ let HomePage: NextPage = () => {
     >
       <Title />
       <Features />
-
       <Reviews />
     </main>
   );
