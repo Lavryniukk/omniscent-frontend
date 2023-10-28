@@ -24,7 +24,7 @@ let Title = () => {
       </h1>
 
       {/* Description text */}
-      <p className="observe transition delay-100 duration-500 text-accent hyphens-auto leading-relaxed mt-40 mx-auto font-light flex items-center justify-center w-1/3 text-[max(15px,min(2vw,20px))] text-center ">
+      <p className="observe transition delay-100 duration-500 text-accent hyphens-auto leading-relaxed mt-40 mx-auto font-light flex items-center justify-center w-1/2 lg:w-1/3 text-[max(15px,min(2vw,20px))] text-center ">
         Clverize is online educational platform, that allows You to learn any
         digital technology.
       </p>
