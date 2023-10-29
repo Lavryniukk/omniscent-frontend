@@ -1,9 +1,10 @@
 "use client";
 import { useUser } from "@auth0/nextjs-auth0/client";
+import Link from "next/link";
 export default function Profile() {
   const { user } = useUser();
   let pic: string = user?.picture as string;
-
+  console.log(user);
   return (
     <div className="mx-auto w-full font-inter max-w-10xl h-screen text-lg text-text text-center mt-20">
       <div className="flex h-full">
@@ -27,6 +28,12 @@ export default function Profile() {
               </p>
             </div>
           </div>
+          <Link
+            href="/api/auth/logout"
+            className=" bg-secondary rounded-md py-4 border block p-1 text-accent"
+          >
+            Logout
+          </Link>
         </div>
         <div className="w-3/4 h-full border"></div>
       </div>
