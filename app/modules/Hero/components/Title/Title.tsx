@@ -1,25 +1,35 @@
 import GetStartedButton from "../GetStartedButton/GetStartedButton";
-
+import Image from "next/image";
+// Component for rendering the title section
 let Title = () => {
   return (
-    <div className="  mx-2 overflow-visible overflow-x-clip py-20 items-center relative flex-col justify-center space-y-10   ">
-      {/* <div className=" border-r rotate-45 w-10 h-20 absolute -top-[84px] -left-1 border-dashed border-secondary-700"></div>
-      <div className=" rotate-45 border-b w-20 h-10 absolute -top-[104px] -right-[26px] border-dashed border-secondary-700"></div>
-      <div className=" border-r -rotate-45 w-10 h-20 absolute -bottom-[84px] -left-1 border-dashed border-secondary-700"></div>
-      <div className=" border-b -rotate-45  w-20 h-10 absolute -bottom-[36px] right-0.5 border-dashed border-secondary-700"></div> */}
-
+    <div className="  overflow-visible overflow-x-clip py-10 items-center relative flex-col justify-center space-y-10 max-w-10xl mx-auto">
+      {/* Main title */}
+      <div className="mx-auto border relative  xl:p-5 lg:p-4 md:p-3 p-2 w-fit h-fit flex items-center justify-center rounded-xl  border-secondary bg-secondary-950">
+        <Image
+          src="/images/logo-cleverize-white.svg"
+          alt="cleverize logo icon svg"
+          className="aspect-square xl:w-20 lg:w-16 w-12"
+          width={80}
+          height={80}
+        />
+        <div className="absolute rounded-full bg-primary aspect-square xl:w-40 lg:w-36 md:w-32 sm:w-28 w-24 -z-10 blur-2xl"></div>
+      </div>
       <h1
-        className=" bg-gradient-to-t from-text flex items-center w-10/12 justify-center antialiased px-5 to-text-500  mx-auto leading-none
+        className="observe transition delay-0 duration-500 bg-gradient-to-t from-text flex items-center w-10/12 justify-center antialiased px-5 to-text-500  mx-auto leading-none
 				   font-inter  tracking-tight hyphens-none  text-transparent bg-clip-text font-extrabold text-center text-[max(32px,min(5vw,76px))] "
       >
-        The AI solution for self-education
+        The AI solution
+        <br /> for self-education
       </h1>
-      {/* <div className="w-full border-t border-secondary-700 border-dashed h-1 g-gradient-to-t " /> */}
-      <p className=" text-accent hyphens-auto leading-relaxed mt-40 mx-auto font-light flex items-center justify-center w-3/4 text-[max(15px,min(2vw,20px))] text-center ">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec
-        erat erat. Integer blandit, nulla quis fermentum hendrerit, nisi leo
-        tincidunt ante, non tincidunt augue magna sed velit.
+
+      {/* Description text */}
+      <p className="observe transition delay-100 duration-500 text-accent hyphens-auto leading-relaxed mt-40 mx-auto font-light flex items-center justify-center w-1/2 lg:w-1/3 text-[max(15px,min(2vw,20px))] text-center ">
+        Clverize is online educational platform, that allows You to learn any
+        digital technology.
       </p>
+
+      {/* Get Started Button Component */}
       <GetStartedButton />
     </div>
   );

@@ -7,6 +7,7 @@ import ProjectsList from "./components/ProjectsList/ProjectsList";
 import ProjectsNotFound from "./components/ProjectsNotFound/ProjectsNotFound";
 import ProjectSkeleton from "../../UI/loading/ProjectSkeleton/ProjectSkeleton";
 
+// Initialize an array 'arr' containing an example project.
 let arr: Array<any> = [{ title: "Node.js", _id: "1" }];
 
 export default function UserProjects() {
@@ -37,9 +38,9 @@ export default function UserProjects() {
           </p>
         </>
       ) : arr.length !== 0 ? (
-        <ProjectsList projects={arr} />
+        <ProjectsList projects={arr} /> // Render the ProjectsList component with projects from 'arr'.
       ) : (
-        <ProjectsNotFound />
+        <ProjectsNotFound /> // Render the ProjectsNotFound component if 'arr' is empty.
       )}
     </div>
   );
