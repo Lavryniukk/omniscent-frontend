@@ -1,4 +1,6 @@
+import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
+import { createContext, useEffect, useState } from "react";
 import ProjectSearch from "./components/ProjectsSearch/ProjectSearch";
 
 export default function NewProjectField() {
@@ -10,7 +12,7 @@ export default function NewProjectField() {
       <ProjectSearch />
       <div className=" w-fit ml-auto opacity-70  border-secondary rounded-lg  text-accent text-right text-md whitespace-nowrap ">
         <p>
-          Not satisfied with templates?{" "}
+          Not satisfied with templates?
           <Link
             href="/projects/create"
             className="underline hover:text-accent-300"

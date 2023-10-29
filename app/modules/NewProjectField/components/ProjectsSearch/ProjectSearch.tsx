@@ -1,5 +1,7 @@
 "use client";
 import ProjectContainer from "@/app/modules/ProjectList/components/ProjectContainer/ProjectContainer";
+import ProjectSkeleton from "@/app/UI/loading/ProjectSkeleton/ProjectSkeleton";
+import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 let arr = [
@@ -13,6 +15,11 @@ let arr = [
 export default function ProjectSearch() {
   const [text, setText] = useState("Front-end");
   const [filteredArray, setFilteredArray] = useState(arr);
+
+  const { data, isLoading } = useQuery({
+    queryKey: ["communityRoadmaps"],
+    queryFn: () => fetch("/api/"),
+  });
 
   let handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
@@ -52,21 +59,32 @@ export default function ProjectSearch() {
         />
       </div>
       <div className="w-full h-fit space-y-3 overflow-hidden mt-10">
-        {filteredArray.length ? (
-          filteredArray.map(
-            (item, index) =>
-              index <= 4 && (
-                <ProjectContainer
-                  title={highlightText(item.title, text)}
-                  key={item._id}
-                ></ProjectContainer>
-              )
+        {!isLoading ? (
+          filteredArray.length ? (
+            filteredArray.map(
+              (item, index) =>
+                index <= 4 && (
+                  <ProjectContainer
+                    title={highlightText(item.title, text)}
+                    key={item._id}
+                  ></ProjectContainer>
+                )
+            )
+          ) : (
+            <div className="text-accent text-lg  mx-auto text-center ">
+              Whoops, seems like nothing was found
+            </div>
           )
         ) : (
-          <div className="text-accent text-lg  mx-auto text-center ">
-            Whoops, seems like nothing was found
+          <div className="w-full h-fit space-y-3 overflow-hidden mt-10">
+            <ProjectSkeleton />
+            <ProjectSkeleton />
+            <ProjectSkeleton />
+            <ProjectSkeleton />
+            <ProjectSkeleton />
           </div>
         )}
+        {}
       </div>
     </div>
   );

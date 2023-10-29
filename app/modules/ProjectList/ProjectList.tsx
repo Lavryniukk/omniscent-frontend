@@ -5,7 +5,7 @@ import Link from "next/link";
 import ProjectsList from "./components/ProjectsList/ProjectsList";
 // import { AiOutlineQuestion } from "react-icons/ai";
 import ProjectsNotFound from "./components/ProjectsNotFound/ProjectsNotFound";
-import ProjectSkeleton from "./components/ProjectSkeleton/ProjectSkeleton";
+import ProjectSkeleton from "../../UI/loading/ProjectSkeleton/ProjectSkeleton";
 
 let arr: Array<any> = [{ title: "Node.js", _id: "1" }];
 
