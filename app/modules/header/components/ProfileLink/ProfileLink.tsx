@@ -8,7 +8,7 @@ let ProfileLink = () => {
   let pic: string = user.user?.picture as string; // Extract the user's profile picture URL.
 
   return (
-    <div className="mx-auto">
+    <div className="mx-auto h-fit">
       <Link href={`/profile/${user.user?.sub}`}>
         <picture>
           <img
