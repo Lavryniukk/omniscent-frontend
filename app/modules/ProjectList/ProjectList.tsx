@@ -30,7 +30,7 @@ export default function UserProjects() {
           </div>
           <p className="mx-auto text-center underline-offset-2 select-none underline text-accent-600">
             <Link
-              href="/projects/new"
+              href="/projects/chat"
               className="hover:text-accent transition-colors duration-200"
             >
               Create new project
