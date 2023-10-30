@@ -23,12 +23,10 @@ let ProCard = () => {
         <Line text={"Private chat with other learners"} />
         <Line text={"All experimental features available"} />
       </ul>
-      <Link
-        href="/"
-        className="text-center absolute right-8 bottom-7 w-[82%] text-lg text-background bg-text font-bold border border-text hover:text-text hover:bg-opacity-90 transition-all duration-200 hover:border-text hover:bg-background mx-auto p-4 py-2 block rounded-lg glow-effect"
-      >
-        Purchase
-      </Link>
+
+      <div className="text-center absolute cursor-ponter right-8 bottom-7 w-[82%] text-lg text-background bg-text font-bold border border-text hover:text-text hover:bg-opacity-90 transition-all duration-200 hover:border-text hover:bg-background mx-auto p-4 py-2 block rounded-lg glow-effect">
+        <Link href="/">Purchase</Link>
+      </div>
     </div>
   );
 };
