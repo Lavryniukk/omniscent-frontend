@@ -24,7 +24,7 @@ let Header = () => {
       {/* Render the mobile menu popup with open state. */}
       <div className="border-b h-14 flex w-full justify-center items-center backdrop-blur-sm fixed top-0 z-10 border-accent box-border">
         <div className="w-full h-14 fixed top-0 flex items-center justify-between max-w-10xl z-0 px-10 sm:px-5 box-border">
-          <Link className="w-1/4" href="/">
+          <Link className="w-24" href="/">
             {/* Render a link to the homepage with the Logo. */}
             <Logo />
           </Link>
@@ -36,10 +36,10 @@ let Header = () => {
             <HeaderLink url="/projects" name="Prototype" />
             <HeaderLink url="/memberships" name="Memberships" />
           </div>
-          <div className="sm:flex w-1/4 hidden">
+          <div className="sm:flex w-24 h-fit hidden">
             {/* Render user-related components based on user authentication state. */}
             {isLoading ? ( // If loading, display a loading spinner.
-              <div className="w-10 mx-auto h-10 rounded-full border-2 border-secondary-700 border-t-accent animate-spin" />
+              <div className="w-10 mx-auto h-fit rounded-full border-2 border-secondary-700 border-t-accent animate-spin" />
             ) : user ? ( // If a user is authenticated, display the user profile link.
               <ProfileLink />
             ) : (
