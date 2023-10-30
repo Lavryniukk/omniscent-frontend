@@ -12,7 +12,7 @@ let FAQ: React.FC<FAQProps> = ({ faqArray }) => {
       <h2 className="text-4xl sm:text-5xl observe duration-500 transition-all font-inter mx-auto font-bold text-center text-text">
         FAQ
       </h2>
-      <div className="sm:p-8 p-4 space-y-5 ">
+      <div className="sm:p-8 p-4 space-y-5 observe duration-500 transition">
         {/* Check if there are FAQs in the array */}
         {faqArray.length > 0 ? (
           // If there are FAQs, map through the array to render each FAQItem
