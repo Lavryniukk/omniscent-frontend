@@ -44,6 +44,10 @@
     );
   }
 
+  .discover-chat-left {
+    left: calc((100% - 91.6%) / 2);
+  }
+
   .project {
     @apply w-full flex items-center relative justify-around px-2 text-xl  text-accent select-none border h-20 rounded-lg border-dashed border-accent;
   }
