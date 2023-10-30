@@ -2,8 +2,8 @@ import Image from "next/image";
 let CardSection = () => {
   return (
     <div>
-      <div className=" max-w-[1200px] lg:flex h-fit hidden items-start justify-center gap-5  mx-auto">
-        <div className="flex gap-5 flex-col">
+      <div className=" max-w-[1200px] lg:flex h-fit hidden items-start justify-center gap-2  mx-auto">
+        <div className="flex gap-2 flex-col">
           {/* Feature 1: Strong foundation */}
           <div className="features-container observe h-fit observe p-6">
             <p className="text-text-300 text-2xl whitespace-nowrap font-bold tracking-tighter">
@@ -29,7 +29,7 @@ let CardSection = () => {
             </p>
           </div>
         </div>
-        <div className="flex gap-5 flex-col">
+        <div className="flex gap-2 flex-col">
           {/* Feature 3: Any topic, anytime. Dive in. */}
           <div className="features-container observe h-fit p-6">
             <p className="text-text-300 text-2xl whitespace-nowrap font-bold tracking-tighter">
@@ -55,7 +55,7 @@ let CardSection = () => {
             </p>
           </div>
         </div>
-        <div className="flex gap-5 flex-col">
+        <div className="flex gap-2 flex-col">
           {/* Feature 5: Real-world Application */}
           <div className="features-container observe h-fit p-6">
             <p className="text-text-300 text-2xl whitespace-nowrap font-bold tracking-tighter">
@@ -83,8 +83,8 @@ let CardSection = () => {
         </div>
       </div>
 
-      <div className=" max-w-[1200px]  lg:hidden h-fit sm:flex hidden items-start justify-center gap-3  mx-auto">
-        <div className="flex gap-3 flex-col">
+      <div className=" max-w-[1200px]  lg:hidden h-fit sm:flex hidden items-start justify-center gap-2  mx-auto">
+        <div className="flex gap-2 flex-col">
           {/* Feature 1: Strong foundation */}
           <div className="features-container observe h-fit p-6">
             <p className="text-text-300 text-2xl whitespace-nowrap font-bold tracking-tighter">
@@ -125,7 +125,7 @@ let CardSection = () => {
           </div>
         </div>
 
-        <div className="flex gap-3 flex-col">
+        <div className="flex gap-2 flex-col">
           {/* Feature 4: Personalized Pathways */}
           <div className="features-container observe h-fit p-6">
             <p className="text-text-300 text-2xl whitespace-nowrap font-bold tracking-tighter">
