@@ -15,12 +15,9 @@ let EnterpriseCard = () => {
         <Line text={"Custom requirements"} />
       </ul>
 
-      <Link
-        href="/"
-        className="text-center absolute right-8 bottom-7 w-[82%] text-lg text-text bg-background font-bold border hover:text-background hover:bg-opacity-90 transition-all duration-200 border-text hover:bg-text mx-auto p-4 py-2 block rounded-lg "
-      >
-        Contact sales
-      </Link>
+      <div className="text-center cursor-pointer absolute right-8 bottom-7 w-[82%] text-lg text-text bg-background font-bold border hover:text-background hover:bg-opacity-90 transition-all duration-200 border-text hover:bg-text mx-auto p-4 py-2 block rounded-lg ">
+        <Link href="/">Contact sales</Link>
+      </div>
     </div>
   );
 };
