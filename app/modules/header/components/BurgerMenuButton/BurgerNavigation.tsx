@@ -7,7 +7,7 @@ type BurgerProps = {
 let Burger = ({ toggleMenu, isOpen }: BurgerProps) => {
   return (
     <div className="sm:hidden">
-      <label className={`${styles.container} `}>
+      <label className={`${styles.container}`}>
         <input
           type="checkbox"
           checked={isOpen} // Set the checked state based on the isOpen prop.
@@ -16,7 +16,7 @@ let Burger = ({ toggleMenu, isOpen }: BurgerProps) => {
         />
         <div className={`${styles.checkmark}`}>
           {/* Apply the CSS styles defined in Burger.module.css to the checkmark. */}
-          <span className="bg-text"></span>{" "}
+          <span className="bg-text"></span>
           {/* Display three spans as background elements. */}
           <span className="bg-text"></span>
           <span className="bg-text"></span>

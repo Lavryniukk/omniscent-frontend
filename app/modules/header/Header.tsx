@@ -25,7 +25,6 @@ let Header = () => {
       <div className="border-b h-14 flex w-full justify-center items-center backdrop-blur-sm fixed top-0 z-10 border-accent box-border">
         <div className="w-full h-14 fixed top-0 flex items-center justify-between max-w-10xl z-0 px-10 sm:px-5 box-border">
           <Link className="w-1/4" href="/">
-            {" "}
             {/* Render a link to the homepage with the Logo. */}
             <Logo />
           </Link>
