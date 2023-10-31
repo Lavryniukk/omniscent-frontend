@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import { BiSolidSend } from "react-icons/bi";
 import useDiscoverChat from "../../storage/DiscoverChatStorage";
 
@@ -6,13 +8,23 @@ export default function DiscoverInput() {
   const { userInputData, setInputData } = useDiscoverChat();
   const [isDisabled, setisDisabled] = useState<boolean>(true);
 
-  useEffect(() => {
-    if (userInputData.length > 0) {
+  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
+
+  const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    if (e.target.value) {
       setisDisabled(false);
     } else {
       setisDisabled(true);
     }
-  }, [userInputData]);
+    const textarea = textareaRef.current;
+    if (textarea) {
+      !e.target.value && (textarea.style.height = `70px`);
+
+      textarea.style.height = `${textarea.scrollHeight}px`;
+    }
+    setInputData(e.target.value);
+  };
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -24,27 +36,28 @@ export default function DiscoverInput() {
   };
   return (
     <form
-      className="w-11/12 box-border h-[50px] absolute bottom-5 discover-chat-left bg-secondary rounded-xl flex"
+      className="w-11/12 box-border h-fit absolute bottom-5 bg-secondary left-[calc((100%-91.6%)/2)] rounded-xl flex items-center overflow-visible"
       onSubmit={(e) => handleSubmit(e)}
     >
-      <input
-        className="w-11/12 h-full box-border bg-transparent rounded-l-xl p-4 placeholder:text-lg text-accent text-lg focus:outline-none"
-        placeholder="Start typing..."
-        onChange={(e) => setInputData(e.target.value)}
-        name="discoverInput"
+      <textarea
+        ref={textareaRef}
+        className={`w-full h-[70px] box-border bg-secondary rounded-xl p-5 pr-16 aspect-none placeholder:text-lg text-accent text-lg
+         focus:outline-none focus:bg-secondary resize-none relative max-h-[200px] overflow-y-scroll `}
+        placeholder="Send a message"
+        onChange={(e) => handleInput(e)}
       />
-      <div className="w-1/12 h-full rounded-r-xl flex justify-center items-center">
-        <button
-          className={`px-2 py-3 ${
-            isDisabled
-              ? "bg-secondary cursor-default"
-              : "bg-primary hover:opacity-70"
-          } rounded-lg h-3/4 m-auto flex justify-center items-center transition duration-200`}
-          type="submit"
-        >
-          <BiSolidSend className="w-[24px] h-[24px] text-accent " />
-        </button>
-      </div>
+      <button
+        className={`p-2 ${
+          isDisabled ? "bg-secondary cursor-default" : "bg-accent"
+        } rounded-lg h-fit flex justify-center items-center  absolute right-4 bottom-[13px]`}
+        type="submit"
+      >
+        <BiSolidSend
+          className={`w-[24px] h-[24px] ${
+            isDisabled ? "text-accent" : "text-secondary"
+          }`}
+        />
+      </button>
     </form>
   );
 }
