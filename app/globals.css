@@ -6,11 +6,11 @@
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background-color: var(--secondary);
+  background-color: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--accent);
+  background-color: #a1a1a1;
   border-radius: 5px;
 }
 /* styles.css */
@@ -42,10 +42,6 @@
       var(--primary) 0,
       transparent 100%
     );
-  }
-
-  .discover-chat-left {
-    left: calc((100% - 91.6%) / 2);
   }
 
   .project {
