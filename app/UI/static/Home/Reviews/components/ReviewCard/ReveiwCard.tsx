@@ -1,6 +1,6 @@
 import Image from "next/image";
 import RatingAssembler from "../RatingAssebler/RatingAssembler";
-import ReviewCardProps from "../../../../UI/static/Home/Reviews/types/ReviewCardProps";
+import ReviewCardProps from "../../types/ReviewCardProps";
 
 let ReviewCard: React.FC<ReviewCardProps> = ({
   name,
