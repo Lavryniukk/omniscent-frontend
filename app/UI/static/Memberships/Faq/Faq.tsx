@@ -1,9 +1,9 @@
 "use client";
-import FAQItem from "@/app/modules/Faq/components/FAQItem";
-import { FAQProps } from "./consts/FaqProps";
+import FAQItem from "@/app/UI/static/Memberships/Faq/components/FaqItem/FAQItem";
+import { FaqItem } from "./types/FaqProps";
 
 // FAQ component
-let FAQ: React.FC<FAQProps> = ({ faqArray }) => {
+let FAQ = ({ faqArray }: { faqArray: Array<FaqItem> }) => {
   return (
     <div
       className="space-y-10 select-none pricing overflow-x-hidden px-10 bg-transparent mx-auto box-border max-w-10xl
