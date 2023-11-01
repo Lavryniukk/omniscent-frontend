@@ -1,11 +1,9 @@
 import { BsChevronDown } from "react-icons/bs";
-import { MouseEventHandler, useState } from "react";
-
-// Define the 'Props' type to specify the expected properties for the 'FAQItem' component
-type Props = { question: string; answer: string };
+import { useState } from "react";
+import { FaqItem } from "../../types/FaqProps";
 
 // Define the 'FAQItem' functional component that displays a FAQ item
-let FAQItem = ({ question, answer }: Props) => {
+let FAQItem = ({ question, answer }: FaqItem) => {
   // Define a state variable 'isOpen' and a function 'setIsOpen' to manage the open/closed state of the FAQ item
   const [isOpen, setIsOpen] = useState(false);
 

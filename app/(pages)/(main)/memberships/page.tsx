@@ -1,5 +1,5 @@
-import FAQ from "@/app/modules/Faq/Faq";
-import PricingCards from "@/app/modules/PricingCards/PricingCards";
+import FAQ from "@/app/UI/static/Memberships/Faq/Faq";
+import PricingCards from "@/app/UI/static/Memberships/PricingCards/PricingCards";
 
 let MembershipsPage = () => {
   return (
