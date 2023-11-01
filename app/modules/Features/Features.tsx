@@ -7,7 +7,7 @@ let Features = () => {
       <h2 className="mx-auto text-4xl text-center observe transition-all duration-500 text-text font-inter">
         What do you obtain?
       </h2>
-      <p className="text-lg text-accent w-3/4 md:w-1/2 lg:w-1/3 text-center">
+      <p className="text-lg text-accent w-3/4 md:w-1/2 lg:w-1/3 text-center observe transition-all duration-500">
         Clverize is online educational platform, that allows You to learn any
         digital technology.
       </p>
