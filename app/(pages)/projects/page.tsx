@@ -13,4 +13,5 @@ function PrototypePage() {
   );
 }
 
-export default withPageAuthRequired(PrototypePage);
+export default PrototypePage;
+//withPageAuthRequired(
