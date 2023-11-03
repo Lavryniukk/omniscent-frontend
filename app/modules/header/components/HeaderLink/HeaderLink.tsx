@@ -9,7 +9,7 @@ let HeaderLink = ({ url, name }: Props) => {
   return (
     <a
       href={url} // Set the URL to navigate to based on the prop.
-      className="text-text hover:text-accent text-md font-inter font-light transition-colors duration-200"
+      className="text-text hover:text-accent text-md font-inter font-normal transition-colors duration-200 text-2xl"
     >
       {name} {/* Display the link name or label as the link text. */}
     </a>
