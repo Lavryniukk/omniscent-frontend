@@ -11,7 +11,7 @@ export default function NewProjectField() {
       <div className="w-fit ml-auto opacity-70 border-secondary rounded-lg text-accent text-right text-md whitespace-nowrap">
         <p>
           Not satisfied with templates?{" "}
-          <Link href="/projects/chat">Create your own!</Link>
+          <Link href="/projects/create">Create your own!</Link>
         </p>
       </div>
     </div>
