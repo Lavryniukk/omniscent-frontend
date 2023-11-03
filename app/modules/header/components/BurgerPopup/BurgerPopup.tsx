@@ -14,11 +14,11 @@ let Popup = ({ isOpen }: Props) => {
 
   return (
     <div
-      className={`top-14 sm:hidden ${
-        isOpen ? "right-0" : "-right-36"
-      } fixed h-full border-l max-[500px]:w-1/3 min-[500px]:w-1/4  transition-all py-10 backdrop-blur-md duration-200 flex flex-col space-y-5 justify-start items-center z-10`}
+      className={`top-14 sm:hidden bg-background ${
+        isOpen ? "left-0" : "-left-[40rem]"
+      } fixed h-full border-l w-full transition-all py-10 border-transparent duration-200 flex flex-col space-y-10 justify-start items-center z-10`}
     >
-      <div className="flex flex-col space-y-5 items-center">
+      <div className="flex flex-col space-y-10 items-center">
         {" "}
         {/* Render navigation links. */}
         <HeaderLink url="/" name="Home" />
