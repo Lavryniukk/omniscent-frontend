@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { PiCaretUpDownFill } from "react-icons/pi";
 
 export default function NewProjectForm() {
