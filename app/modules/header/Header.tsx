@@ -21,31 +21,33 @@ let Header = () => {
   return (
     <>
       <Popup isOpen={isOpen} />{" "}
-      {/* Render the mobile menu popup with open state. */}
-      <div className="border-b h-14 flex w-full justify-center items-center backdrop-blur-sm fixed top-0 z-10 border-accent box-border">
+      <div
+        className={`border-b h-14 flex w-full justify-center items-center backdrop-blur-md fixed top-0 z-10 border-secondary box-border`}
+      >
         <div className="w-full h-14 fixed top-0 flex items-center justify-between max-w-10xl z-0 px-10 sm:px-5 box-border">
-          <Link className="w-24" href="/">
-            {/* Render a link to the homepage with the Logo. */}
+          <a className="" href="/">
             <Logo />
-          </Link>
-          <Burger isOpen={isOpen} toggleMenu={toggleMenu} />{" "}
-          {/* Render the mobile menu button. */}
-          <div className="space-x-5 hidden sm:block">
-            {/* Render navigation links. */}
-            <HeaderLink url="/" name="Home" />
-            <HeaderLink url="/projects" name="Prototype" />
-            <HeaderLink url="/memberships" name="Memberships" />
-          </div>
-          <div className="sm:flex w-24 h-fit hidden">
-            {/* Render user-related components based on user authentication state. */}
-            {isLoading ? ( // If loading, display a loading spinner.
-              <div className="w-10 mx-auto h-fit rounded-full border-2 border-secondary-700 border-t-accent animate-spin" />
-            ) : user ? ( // If a user is authenticated, display the user profile link.
-              <ProfileLink />
-            ) : (
-              // If no user is authenticated, display the Sign In component.
-              <SignIn />
-            )}
+          </a>
+          <Burger isOpen={isOpen} toggleMenu={toggleMenu} />
+
+          <div className="hidden md:flex items-center">
+            <div className="space-x-3 mx-5 hidden md:block">
+              <HeaderLink url="/projects" name="Projects" />
+              <HeaderLink url="/memberships" name="Memberships" />
+              <HeaderLink url="/guide" name="Info" />
+            </div>
+
+            <div className="md:flex w-24 h-fit hidden">
+              {/* Render user-related components based on user authentication state. */}
+              {isLoading ? ( // If loading, display a loading spinner.
+                <div className="w-10 mx-auto h-fit rounded-full border-2 border-secondary-700 border-t-accent animate-spin" />
+              ) : user ? ( // If a user is authenticated, display the user profile link.
+                <ProfileLink />
+              ) : (
+                // If no user is authenticated, display the Sign In component.
+                <SignIn />
+              )}
+            </div>
           </div>
         </div>
       </div>
