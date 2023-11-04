@@ -5,7 +5,7 @@ import { BiSolidSend } from "react-icons/bi";
 import useDiscoverChat from "../../storage/DiscoverChatStorage";
 
 export default function DiscoverInput() {
-  const { userInputData, setInputData } = useDiscoverChat();
+  const { userInputData, setInputData, sendData } = useDiscoverChat();
   const [isDisabled, setisDisabled] = useState<boolean>(true);
 
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
@@ -35,7 +35,18 @@ export default function DiscoverInput() {
     if (isDisabled) {
       return;
     }
+    const textarea = textareaRef.current;
+    if (textarea) {
+      textarea.style.height = `70px`;
+
+      textarea.style.height = `${textarea.scrollHeight}px`;
+
+      textarea.value = "";
+    }
+
+    sendData();
   };
+
   return (
     <div className="w-full absolute bottom-0 z-10 py-4 bg-background">
       <form

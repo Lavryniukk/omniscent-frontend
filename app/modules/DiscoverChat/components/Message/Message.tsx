@@ -2,7 +2,7 @@ export default function Message({
   type,
   content,
 }: {
-  type: "user" | "ai";
+  type: "user" | "assistant" | "system";
   content: string;
 }) {
   return (
