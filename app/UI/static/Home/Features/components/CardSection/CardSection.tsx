@@ -2,7 +2,7 @@ import Image from "next/image";
 let CardSection = () => {
   return (
     <div>
-      <div className=" max-w-[1200px] lg:flex h-fit hidden items-start justify-center gap-2  mx-auto">
+      <div className=" max-w-[1200px] lg:flex h-fit hidden items-start justify-center gap-2 mx-auto">
         <div className="flex gap-2 flex-col">
           {/* Feature 1: Strong foundation */}
           <div className="features-container observe h-fit observe p-6">
@@ -83,7 +83,7 @@ let CardSection = () => {
         </div>
       </div>
 
-      <div className=" max-w-[1200px]  lg:hidden h-fit sm:flex hidden items-start justify-center gap-2  mx-auto">
+      <div className=" max-w-[1200px] lg:hidden h-fit sm:flex hidden items-start justify-center gap-2  mx-auto">
         <div className="flex gap-2 flex-col">
           {/* Feature 1: Strong foundation */}
           <div className="features-container observe h-fit p-6">
@@ -173,10 +173,10 @@ let CardSection = () => {
         </div>
       </div>
 
-      <div className=" max-w-[1200px]  sm:hidden h-fit flex items-start justify-center gap-3  mx-auto">
+      <div className=" max-w-[1200px] sm:hidden h-fit flex items-start justify-center gap-3 mx-auto">
         <div className="flex gap-3 flex-col">
           {/* Feature 1: Strong foundation */}
-          <div className="features-container observe h-fit p-6">
+          <div className="features-container observe h-fit p-6 w-full">
             <p className="text-text-300 text-2xl whitespace-nowrap font-bold tracking-tighter">
               Strong foundation
             </p>
