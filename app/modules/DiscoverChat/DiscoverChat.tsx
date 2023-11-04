@@ -14,7 +14,9 @@ export default function DiscoverChat() {
             <Message key={index} type={item.role} content={item.content} />
           ))
         ) : (
-          <div></div>
+          <div className="text-accent italic text-lg text-center mt-[32vh]">
+            {"Don't be afraid, ask questions!"}
+          </div>
         )}
       </div>
       <DiscoverInput />
