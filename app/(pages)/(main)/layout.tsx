@@ -1,9 +1,9 @@
 "use client";
 import "@/app/globals.css";
 import { Roboto, Raleway, Inter } from "next/font/google";
-import Header from "../../modules/header/Header";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 import { useEffect } from "react";
+import Header from "@/app/modules/Header/Header";
 const inter = Inter({
   variable: "--inter-font",
   weight: ["100", "300", "400", "500", "700", "900"],
