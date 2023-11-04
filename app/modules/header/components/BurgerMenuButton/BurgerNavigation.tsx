@@ -6,7 +6,7 @@ type BurgerProps = {
 
 let Burger = ({ toggleMenu, isOpen }: BurgerProps) => {
   return (
-    <div className="sm:hidden w-24 flex justify-end sm:justify-center items-center">
+    <div className="md:hidden w-24 flex justify-end md:justify-center items-center">
       <label className={`${styles.container}`}>
         <input
           type="checkbox"
