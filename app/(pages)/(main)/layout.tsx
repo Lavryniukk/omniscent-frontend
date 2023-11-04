@@ -1,7 +1,7 @@
 "use client";
 import "@/app/globals.css";
 import { Roboto, Raleway, Inter } from "next/font/google";
-import Header from "../../modules/header/Header";
+import Header from "../../modules/Header/Header";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 import { useEffect } from "react";
 const inter = Inter({

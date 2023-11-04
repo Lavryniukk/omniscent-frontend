@@ -1,14 +1,13 @@
 "use client";
 
-import Burger from "@/app/modules/header/components/BurgerMenuButton/BurgerNavigation";
-import HeaderLink from "@/app/modules/header/components/HeaderLink/HeaderLink";
-import Logo from "@/app/modules/header/components/CleverizeLogo/CleverizeLogo";
+import Burger from "@/app/modules/Header/components/BurgerMenuButton/BurgerNavigation";
+import HeaderLink from "@/app/modules/Header/components/HeaderLink/HeaderLink";
+import Logo from "@/app/modules/Header/components/CleverizeLogo/CleverizeLogo";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { useState } from "react";
-import Popup from "./components/BurgerPopup/BurgerPopup";
-import Link from "next/link";
-import SignIn from "@/app/modules/header/components/SignIn/SignIn";
-import ProfileLink from "./components/ProfileLink/ProfileLink";
+import Popup from "@/app/modules/Header/components/BurgerPopup/BurgerPopup";
+import SignIn from "@/app/modules/Header/components/SignIn/SignIn";
+import ProfileLink from "@/app/modules/Header/components/ProfileLink/ProfileLink";
 
 let Header = () => {
   let [isOpen, setIsOpen] = useState(false); // Initialize state for mobile menu open/close.

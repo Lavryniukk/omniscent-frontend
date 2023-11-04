@@ -1,9 +1,9 @@
 "use client";
 
-import SignIn from "@/app/modules/header/components/SignIn/SignIn";
-import HeaderLink from "@/app/modules/header/components/HeaderLink/HeaderLink";
+import SignIn from "@/app/modules/Header/components/SignIn/SignIn";
+import HeaderLink from "@/app/modules/Header/components/HeaderLink/HeaderLink";
 import { useUser } from "@auth0/nextjs-auth0/client";
-import ProfileLink from "../ProfileLink/ProfileLink";
+import ProfileLink from "@/app/modules/Header/components/ProfileLink/ProfileLink";
 
 type Props = {
   isOpen: boolean; // Define a prop for the mobile menu open state.
