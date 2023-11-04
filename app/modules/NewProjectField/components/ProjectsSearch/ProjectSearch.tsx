@@ -1,6 +1,8 @@
 "use client";
 
 import ProjectContainer from "@/app/modules/ProjectList/components/ProjectContainer/ProjectContainer";
+import ProjectSkeleton from "@/app/UI/loading/ProjectSkeleton/ProjectSkeleton";
+import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 
@@ -17,6 +19,11 @@ let arr = [
 export default function ProjectSearch() {
   const [text, setText] = useState("Front-end"); // Initialize state variable for user input text.
   const [filteredArray, setFilteredArray] = useState(arr); // Initialize state variable for the filtered array.
+
+  const { data, isLoading } = useQuery({
+    queryKey: ["communityRoadmaps"],
+    queryFn: () => fetch("/api/"),
+  });
 
   // Handler function for input change.
   let handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -69,23 +76,34 @@ export default function ProjectSearch() {
         />
       </div>
       <div className="w-full h-fit space-y-3 overflow-hidden mt-10">
-        {filteredArray.length ? (
-          // Map and display the filtered projects with highlighted text.
-          filteredArray.map(
-            (item, index) =>
-              index <= 4 && (
-                <ProjectContainer
-                  title={highlightText(item.title, text)}
-                  key={item._id}
-                ></ProjectContainer>
-              )
+        {!isLoading ? (
+          filteredArray.length ? (
+            // Map and display the filtered projects with highlighted text.
+            filteredArray.map(
+              (item, index) =>
+                index <= 4 && (
+                  <ProjectContainer
+                    title={highlightText(item.title, text)}
+                    key={item._id}
+                  ></ProjectContainer>
+                )
+            )
+          ) : (
+            // Display a message if no results were found.
+            <div className="text-accent text-lg mx-auto text-center">
+              Whoops, seems like nothing was found
+            </div>
           )
         ) : (
-          // Display a message if no results were found.
-          <div className="text-accent text-lg mx-auto text-center">
-            Whoops, seems like nothing was found
+          <div className="w-full h-fit space-y-3 overflow-hidden mt-10">
+            <ProjectSkeleton />
+            <ProjectSkeleton />
+            <ProjectSkeleton />
+            <ProjectSkeleton />
+            <ProjectSkeleton />
           </div>
         )}
+        {}
       </div>
     </div>
   );

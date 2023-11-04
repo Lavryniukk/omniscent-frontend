@@ -1,5 +1,5 @@
-import useChatStore from "@/app/shared/storages/chatStorage";
-import { message } from "@/app/shared/types/message";
+import useChatStore from "@/app/modules/prototype/chat/chatStorage";
+import { message } from "@/app/modules/prototype/chat/types/message";
 
 let Messages = () => {
   // Retrieve chat and assistantData from the chat storage.

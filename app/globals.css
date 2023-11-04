@@ -6,11 +6,11 @@
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background-color: var(--secondary);
+  background-color: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--accent);
+  background-color: #a1a1a1;
   border-radius: 5px;
 }
 /* styles.css */
@@ -122,7 +122,7 @@ body {
 }
 
 .features-container {
-  @apply w-[20vw] rounded-lg border-[1.5px]  transition-all delay-150 duration-500 sm:min-w-[320px] min-w-[350px] max-w-[450px] border-secondary;
+  @apply sm:w-[20vw] w-full rounded-lg border-[1.5px] transition-all delay-150 duration-500 sm:min-w-[320px] min-w-[350px] sm:max-w-[450px] border-secondary;
 }
 
 /* CSS class to reset basic input styles */
