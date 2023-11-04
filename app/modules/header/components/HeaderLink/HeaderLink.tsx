@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 type Props = {
   url: string; // Define a prop for the URL to navigate to.
   name: string; // Define a prop for the link name or label.

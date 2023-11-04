@@ -3,9 +3,7 @@ import Features from "@/app/UI/static/Home/Features/Features";
 import Hero from "@/app/UI/static/Home/Hero/Hero";
 import Reviews from "@/app/UI/static/Home/Reviews/Reviews";
 import api from "@/app/modules/ProjectList/api/healthCheck";
-import { useQuery } from "@tanstack/react-query";
 import { NextPage } from "next";
-import { useEffect } from "react";
 // HomePage is a Next.js page component representing the main landing page of the application.
 // It includes the Title component, Features component, and Reviews component.
 let HomePage: NextPage = () => {
