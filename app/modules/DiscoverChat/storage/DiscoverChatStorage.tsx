@@ -1,6 +1,5 @@
 import { create } from "zustand";
 import { message, roleType } from "../../prototype/chat/types/message";
-import { useQuery } from "@tanstack/react-query";
 
 interface DiscoverChatState {
   userInputData: string;
