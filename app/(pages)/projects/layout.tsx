@@ -1,11 +1,11 @@
 "use client";
 
 import "@/app/globals.css";
-
+import { useLayoutEffect } from "react";
 import HomeButton from "@/app/UI/buttons/backBtn/BackButton";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Inter, Raleway, Roboto } from "next/font/google";
+import { Inter } from "next/font/google";
 
 // Define the 'inter' font with specific configurations.
 const inter = Inter({
@@ -20,7 +20,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const client = new QueryClient(); // Create a new instance of QueryClient.
-
+  useLayoutEffect(() => {
+    let h = window.innerHeight;
+    document.documentElement.style.setProperty("--section-height", `${h}px`);
+  }, []);
   return (
     <html lang="en" className={`${inter.variable} overflow-auto bg-background`}>
       <body>

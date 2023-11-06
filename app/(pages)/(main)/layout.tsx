@@ -1,8 +1,8 @@
 "use client";
 import "@/app/globals.css";
-import { Roboto, Raleway, Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import Header from "@/app/modules/Header/Header";
 const inter = Inter({
   variable: "--inter-font",
@@ -15,6 +15,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  useLayoutEffect(() => {
+    let h = window.innerHeight;
+    document.documentElement.style.setProperty("--section-height", `${h}px`);
+  }, []);
   useEffect(() => {
     const animated_elems = document.querySelectorAll(".observe");
     const observer = new IntersectionObserver((entries) => {
