@@ -12,9 +12,9 @@ export default function NewProjectForm() {
     sendData();
   };
   return (
-    <div className="w-1/3 h-[50vh] border mx-auto font-inter rounded-lg border-secondary px-8 min-w-[500px] max-w-[600px] py-12 ">
+    <div className="w-fit h-fit container border mx-auto font-inter rounded-lg border-secondary px-8 max-w-[600px] py-12 ">
       <form
-        className="flex flex-col justify-between h-full"
+        className="flex flex-col space-y-16 h-full"
         onSubmit={(e) => handleSubmit(e)}
       >
         <h2 className="text-text text-center text-3xl font-bold">

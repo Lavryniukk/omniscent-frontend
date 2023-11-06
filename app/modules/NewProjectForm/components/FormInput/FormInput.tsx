@@ -10,7 +10,7 @@ export default function FormInput() {
   };
 
   return (
-    <div className="flex justify-between items-center">
+    <div className="flex justify-between space-x-5 md:space-x-8  lg:space-x-10 xl:space-x-16 2xl:space-x-20 md:flex-row flex-col items-start md:items-center">
       <label className="text-text text-lg">Tech name</label>
       <div
         className={`flex relative flex-col max-w-[220px] after:text-xs after:italic after:absolute after:right-0 after:top-[110%] after:text-accent 
