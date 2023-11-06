@@ -2,7 +2,9 @@ import { PiCaretUpDownFill } from "react-icons/pi";
 import useProjectFormStorage from "../../storage/ProjectFormStorage";
 
 export default function FormSelect() {
-  const { setProjectFormSelect } = useProjectFormStorage();
+  const setProjectFormSelect = useProjectFormStorage(
+    (state) => state.setProjectFormSelect
+  );
 
   const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setProjectFormSelect(e.target.value);

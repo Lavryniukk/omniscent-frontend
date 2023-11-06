@@ -1,7 +1,9 @@
 import useProjectFormStorage from "../../storage/ProjectFormStorage";
 
 export default function FormInput() {
-  const { setProjectFormInput } = useProjectFormStorage();
+  const setProjectFormInput = useProjectFormStorage(
+    (state) => state.setProjectFormInput
+  );
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setProjectFormInput(e.target.value);
