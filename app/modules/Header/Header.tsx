@@ -30,7 +30,7 @@ let Header = () => {
           <Burger isOpen={isOpen} toggleMenu={toggleMenu} />
 
           <div className="hidden md:flex items-center">
-            <div className="space-x-3 mx-5 hidden md:block">
+            <div className="space-x-7 mx-10 hidden md:block">
               <HeaderLink url="/projects" name="Projects" />
               <HeaderLink url="/memberships" name="Memberships" />
               <HeaderLink url="/guide" name="Info" />
@@ -39,7 +39,7 @@ let Header = () => {
             <div className="md:flex w-24 h-fit hidden">
               {/* Render user-related components based on user authentication state. */}
               {isLoading ? ( // If loading, display a loading spinner.
-                <div className="w-10 mx-auto h-fit rounded-full border-2 border-secondary-700 border-t-accent animate-spin" />
+                <div className="w-10 mx-auto aspect-square rounded-full border-2 border-secondary-700 border-t-accent animate-spin" />
               ) : user ? ( // If a user is authenticated, display the user profile link.
                 <ProfileLink />
               ) : (
