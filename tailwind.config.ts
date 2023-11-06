@@ -32,7 +32,7 @@ const config: Config = {
         secondary: { ...colors.neutral, DEFAULT: colors.neutral[800] },
         accent: { ...colors.neutral, DEFAULT: colors.neutral[400] },
         text: { ...colors.neutral, DEFAULT: colors.neutral[200] },
-        background: "rgb(0,0,0)",
+        background: "rgb(5,5,5)",
       },
       fontFamily: {
         inter: "var(--inter-font)",
