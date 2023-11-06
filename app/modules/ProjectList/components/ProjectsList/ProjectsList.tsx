@@ -1,7 +1,11 @@
 import Link from "next/link";
 import ProjectContainer from "../ProjectContainer/ProjectContainer";
-
-export default function ProjectsList({ projects }: { projects: Array<any> }) {
+import { Project } from "../../types/project";
+export default function ProjectsList({
+  projects,
+}: {
+  projects: Array<Project>;
+}) {
   return (
     <>
       <div className="w-3/4 mx-auto space-y-5 p-5 h-fit py-20">

@@ -1,32 +1,24 @@
 "use server";
 
-import { Project } from "@/app/modules/ProjectList/types/project";
-import { getSession } from "@auth0/nextjs-auth0";
+import { getAccessToken } from "@auth0/nextjs-auth0";
+import { Project } from "../types/project";
 
-export let fetchProjects = async () => {
+export let fetchProjects = async (): Promise<Project[] | [] | undefined> => {
   try {
-    const session = await getSession();
-    const token = session?.idToken;
-    let response = await fetch("https://veritech.onrender.com/authorized", {
-      method: "POST",
+    const { accessToken } = await getAccessToken();
 
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-
-      cache: "no-store",
-    });
-    if (!response.ok) {
-      let parsed = await response.json();
-
-      console.log(parsed);
-
-      throw new Error("You fucked up with fetch projects");
-    }
+    let response = await fetch(
+      "https://cleverize.onrender.com/api/users/me/roadmaps",
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        cache: "no-store",
+      }
+    );
     let parsed = await response.json();
-    console.log(parsed);
-    return await parsed;
+    return parsed;
   } catch (e) {
-    console.log(e);
+    console.log("Error", e);
   }
 };
