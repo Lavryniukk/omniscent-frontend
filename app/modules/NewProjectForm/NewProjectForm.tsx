@@ -6,10 +6,9 @@ import FormSubmit from "./components/FormSubmit/FormSubmit";
 import useProjectFormStorage from "./storage/ProjectFormStorage";
 
 export default function NewProjectForm() {
-  const { sendData } = useProjectFormStorage();
+  const sendData = useProjectFormStorage((state) => state.sendData);
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     sendData();
   };
   return (
