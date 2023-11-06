@@ -1,16 +1,34 @@
 "use client";
 
+import { useState } from "react";
 import FormInput from "./components/FormInput/FormInput";
 import FormSelect from "./components/FormSelect/FormSelect";
 import FormSubmit from "./components/FormSubmit/FormSubmit";
-import useProjectFormStorage from "./storage/ProjectFormStorage";
+import sendData from "./helpers/SendFormData";
+import { FormState } from "./types/FormProps";
 
 export default function NewProjectForm() {
-  const sendData = useProjectFormStorage((state) => state.sendData);
+  const [formData, setFormData] = useState<FormState>({
+    inputData: null,
+    selectData: null,
+  });
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    sendData();
+
+    console.log("fetching");
+
+    sendData({ data: formData });
   };
+
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData((prev) => ({ ...prev, inputData: e.target.value }));
+  };
+
+  const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setFormData((prev) => ({ ...prev, selectData: e.target.value }));
+  };
+
   return (
     <div className="w-fit h-fit container border mx-auto font-inter rounded-lg border-secondary px-8 max-w-[600px] py-12 ">
       <form
@@ -21,9 +39,9 @@ export default function NewProjectForm() {
           Help us, help you!
         </h2>
 
-        <FormInput />
+        <FormInput handleFunction={handleInput} />
 
-        <FormSelect />
+        <FormSelect handleFunction={handleSelect} />
 
         <FormSubmit />
       </form>

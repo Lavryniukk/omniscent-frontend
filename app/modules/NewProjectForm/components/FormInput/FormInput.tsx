@@ -1,14 +1,10 @@
-import useProjectFormStorage from "../../storage/ProjectFormStorage";
+import { HandleFunctionProps } from "../../types/FormProps";
 
-export default function FormInput() {
-  const setProjectFormInput = useProjectFormStorage(
-    (state) => state.setProjectFormInput
-  );
-
-  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setProjectFormInput(e.target.value);
-  };
-
+export default function FormInput({
+  handleFunction,
+}: {
+  handleFunction: HandleFunctionProps["inputHandleFunction"];
+}) {
   return (
     <div className="flex justify-between space-x-5 md:space-x-8  lg:space-x-10 xl:space-x-16 2xl:space-x-20 md:flex-row flex-col items-start md:items-center">
       <label className="text-text text-lg">Tech name</label>
@@ -17,7 +13,7 @@ export default function FormInput() {
 			    after:content-["Note:_If_your_tech_don't_fall_under_type,_you_choose,_you_won't_be_able_to_create_your_roadmap."]`}
       >
         <input
-          onChange={(e) => handleInput(e)}
+          onChange={(e) => handleFunction(e)}
           type="text"
           placeholder="Provide tech"
           className={`relative overflow-visible 
