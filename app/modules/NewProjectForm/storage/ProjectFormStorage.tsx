@@ -1,4 +1,5 @@
 import { create } from "zustand";
+// import { getAccessToken } from "@auth0/nextjs-auth0";
 
 interface ProjectFormState {
   ProjectFormInput: string;
@@ -25,15 +26,17 @@ const useProjectFormStorage = create<ProjectFormState & ProjectFormAction>(
       const ProjectFormInput = get().ProjectFormInput;
       const ProjectFormSelect = get().ProjectFormSelect;
 
+      // const { accessToken } = await getAccessToken();
+
       //   try {
       //     const res = await fetch("/create", {
       //       method: "POST",
       //       headers: {
       //         "Content-Type": "application/json",
+      //          Authorization: `Bearer ${accessToken}`,
       //       },
       //       body: JSON.stringify({
-      //         inputValue: ProjectFormInput,
-      //         selectValue: ProjectFormSelect,
+      //         title: ProjectFormInput,
       //       }),
       //     });
 
