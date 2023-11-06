@@ -4,8 +4,8 @@ import { useState } from "react";
 import FormInput from "./components/FormInput/FormInput";
 import FormSelect from "./components/FormSelect/FormSelect";
 import FormSubmit from "./components/FormSubmit/FormSubmit";
-import sendData from "./helpers/SendFormData";
 import { FormState } from "./types/FormProps";
+import sendData from "./helpers/sendData";
 
 export default function NewProjectForm() {
   const [formData, setFormData] = useState<FormState>({
@@ -16,9 +16,7 @@ export default function NewProjectForm() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    console.log("fetching");
-
-    sendData({ data: formData });
+    sendData(formData);
   };
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {

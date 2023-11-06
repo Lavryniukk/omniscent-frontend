@@ -1,8 +1,11 @@
 export type Project = {
   title: string;
-  user_context: string;
   _id: string;
-  user_id: string;
+  node_list: {
+    title: string;
+    subroadmap_id?: string;
+  };
+  owner_id: string;
   created_at: string;
-  last_interaction_at: string;
+  // last_interaction_at: string;
 };
