@@ -1,7 +1,8 @@
 import Link from "next/link";
 import ProjectContainer from "../ProjectContainer/ProjectContainer";
 import { Project } from "../../types/project";
-export default function ProjectsList({
+
+export default function FetchedRoadmaps({
   projects,
 }: {
   projects: Array<Project>;
