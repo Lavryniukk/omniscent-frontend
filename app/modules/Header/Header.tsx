@@ -4,7 +4,7 @@ import Burger from "@/app/modules/Header/components/BurgerMenuButton/BurgerNavig
 import HeaderLink from "@/app/modules/Header/components/HeaderLink/HeaderLink";
 import Logo from "@/app/modules/Header/components/CleverizeLogo/CleverizeLogo";
 import { useUser } from "@auth0/nextjs-auth0/client";
-import { useState } from "react";
+import { memo, useState } from "react";
 import Popup from "@/app/modules/Header/components/BurgerPopup/BurgerPopup";
 import SignIn from "@/app/modules/Header/components/SignIn/SignIn";
 import ProfileLink from "@/app/modules/Header/components/ProfileLink/ProfileLink";
@@ -54,4 +54,4 @@ let Header = () => {
   );
 };
 
-export default Header;
+export default memo(Header);
