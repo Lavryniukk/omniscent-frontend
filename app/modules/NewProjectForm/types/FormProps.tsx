@@ -4,6 +4,6 @@ export interface HandleFunctionProps {
 }
 
 export interface FormState {
-  inputData: string | null;
+  inputData: string;
   selectData: string | null;
 }
