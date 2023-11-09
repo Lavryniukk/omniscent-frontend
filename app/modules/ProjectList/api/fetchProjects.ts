@@ -17,6 +17,7 @@ export let fetchProjects = async (): Promise<Project[] | [] | undefined> => {
       }
     );
     let parsed = await response.json();
+    console.log(parsed);
     return parsed;
   } catch (e) {
     console.log("Error", e);
