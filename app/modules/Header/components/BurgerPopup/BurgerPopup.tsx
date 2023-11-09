@@ -21,7 +21,7 @@ let Popup = ({ isOpen }: Props) => {
       <div className="flex flex-col space-y-10 items-center">
         {/* Render navigation links. */}
         <HeaderLink url="/" name="Home" />
-        <HeaderLink url="/projects" name="Projects" />
+        <HeaderLink url="/workspace" name="Workspace" />
         <HeaderLink url="/memberships" name="Memberships" />
         <HeaderLink url="/info" name="Info" />
       </div>

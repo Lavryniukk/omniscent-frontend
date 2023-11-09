@@ -1,9 +1,9 @@
 "use server";
 
 import { getAccessToken } from "@auth0/nextjs-auth0";
-import { Project } from "../types/project";
+import Roadmap from "../types/Roadmap";
 
-export let fetchProjects = async (): Promise<Project[] | [] | undefined> => {
+export let fetchProjects = async (): Promise<Roadmap[] | [] | undefined> => {
   try {
     const { accessToken } = await getAccessToken();
 

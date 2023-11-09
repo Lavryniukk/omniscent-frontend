@@ -1,24 +1,24 @@
 import Link from "next/link";
 import ProjectContainer from "../ProjectContainer/ProjectContainer";
-import { Project } from "../../types/project";
+import Roadmap from "../../types/Roadmap";
 
 export default function FetchedRoadmaps({
-  projects,
+  roadmaps,
 }: {
-  projects: Array<Project>;
+  roadmaps: Array<Roadmap>;
 }) {
   return (
     <>
       <div className="w-3/4 mx-auto space-y-5 p-5 h-fit py-20">
         {/* Map through the 'projects' array and render each project using the 'ProjectContainer' component. */}
-        {projects.map((elem) => (
-          <ProjectContainer key={elem._id} title={elem.title} />
+        {roadmaps.map((roadmap: Roadmap) => (
+          <ProjectContainer key={roadmap._id} roadmap={roadmap} />
         ))}
       </div>
 
       <p className="mx-auto text-center underline-offset-2 select-none underline text-accent-600">
         <Link
-          href="/projects/new"
+          href="/workspace/new"
           className="hover:text-accent transition-colors duration-200"
         >
           Create new project
