@@ -2,7 +2,7 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { fetchProjects } from "./api/fetchProjects";
-import { Project } from "./types/Project";
+import { Project } from "./types/project";
 
 export default function ProfilePage() {
   const [projects, setProjects] = useState<Project[] | undefined>(undefined);
