@@ -19,7 +19,7 @@ export default function FormInput({
 				 text-accent placeholder:text-accent outline-none focus:border-accent w-full peer `}
       />
       <label
-        className={`text-accent text-lg h-fit block absolute top-1.5 left-3 px-2 transition duration-500 rounded-full 
+        className={`text-accent text-lg h-fit block absolute top-2 left-3 px-2 transition duration-500 rounded-full 
         peer-focus:-translate-y-[87.7%] peer-focus:scale-90 bg-background select-none pointer-events-none ${
           inputData ? "-translate-y-[87.7%] scale-90" : ""
         }`}
