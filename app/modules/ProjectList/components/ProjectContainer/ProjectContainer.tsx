@@ -9,10 +9,10 @@ export default function ProjectContainer({ roadmap }: { roadmap: Roadmap }) {
   let url: string = "";
   if (!isLoading && user) {
     if (user.sub === owner_id) {
-      url = `/roadmap/${_id}`;
+      url = `/workspace/roadmap/${_id}`;
     }
   } else {
-    url = "/roadmap/restricted";
+    url = "/workspace/restricted";
   }
   return (
     <Link

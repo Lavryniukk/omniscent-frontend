@@ -3,6 +3,7 @@
 import Roadmap from "@/app/modules/ProjectList/types/Roadmap";
 import { useEffect, useState } from "react";
 import fetchRoadmap from "../fetchRoadmap";
+import { useQuery } from "@tanstack/react-query";
 let arr = [
   { title: "HTML" },
   { title: "CSS" },
@@ -17,19 +18,16 @@ let arr = [
 ];
 
 export default function RoadmapPage({ params }: { params: { id: string } }) {
-  const [roadmap, setRoadmap] = useState<Roadmap>();
-  useEffect(() => {
-    console.log("render");
-    fetchRoadmap(params.id).then((data) => {
-      setRoadmap(data);
-    });
-  }, []);
+  const { data, error } = useQuery(
+    ["haha"],
+    async () => await fetchRoadmap(params.id)
+  );
   return (
     <div className="h-full min-h-screen w-auto ">
       <div className=" w-fit mx-auto">
         <ul className="text-text mx-auto  w-fit py-20 h-fit  flex items-center justify-center flex-col ">
-          {roadmap ? (
-            roadmap.node_list.map(
+          {!error ? (
+            data.node_list.map(
               (tech: { title: string; _id: string }, index: number) => {
                 return (
                   <li

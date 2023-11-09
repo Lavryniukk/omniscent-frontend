@@ -6,7 +6,7 @@ import { getAccessToken } from "@auth0/nextjs-auth0";
 const sendData = async (data: FormState) => {
   const { accessToken } = await getAccessToken();
   try {
-    let response = await axios({
+    await axios({
       url: "https://cleverize.onrender.com/api/users/me/roadmaps",
       data: { title: data.inputData },
       method: "POST",
@@ -14,8 +14,6 @@ const sendData = async (data: FormState) => {
         Authorization: `Bearer ${accessToken}`,
       },
     });
-
-    return response;
   } catch (err) {
     console.log(err);
   }

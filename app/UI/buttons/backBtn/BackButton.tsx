@@ -4,24 +4,24 @@ import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa";
 
 const REG_EXP = {
-  PROJECTS: /\/projects(\/\w+)/,
+  WORKSPACE: /\/workspace(\/\w+)/,
 };
 
 let HomeButton = () => {
   let path = usePathname();
   let getLink = () => {
-    if (path === "projects") {
+    if (path === "workspace") {
       return "/";
-    } else if (REG_EXP.PROJECTS.test(path)) {
-      return "/projects";
+    } else if (REG_EXP.WORKSPACE.test(path)) {
+      return "/workspace";
     }
     return "/";
   };
   let getText = () => {
-    if (path === "projects") {
+    if (path === "workspace") {
       return "Home";
-    } else if (REG_EXP.PROJECTS.test(path)) {
-      return "Projects";
+    } else if (REG_EXP.WORKSPACE.test(path)) {
+      return "Workspace";
     }
     return "Home";
   };

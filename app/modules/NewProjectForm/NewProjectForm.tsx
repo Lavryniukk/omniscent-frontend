@@ -16,11 +16,8 @@ export default function NewProjectForm() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    setFormData((prev) => ({ ...prev, inputData: "" }));
-
-    console.log("Submit");
-
     sendData(formData);
+    setFormData((prev) => ({ ...prev, inputData: "" }));
   };
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {

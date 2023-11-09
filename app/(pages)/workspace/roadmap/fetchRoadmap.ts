@@ -6,11 +6,17 @@ import axios from "axios";
 
 export default async function fetchRoadmap(id: string) {
   const token = await getAccessToken();
-  let response = await axios({
-    url: `https://cleverize.onrender.com/api/users/me/roadmaps/${id}`,
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-  return response.data;
+  console.log(token);
+  let response = await fetch(
+    `https://cleverize.onrender.com/api/users/me/roadmaps/ObjectId('${id}')`,
+    {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+  let parsed = await response.json();
+  console.log(parsed);
+  return await parsed;
 }
