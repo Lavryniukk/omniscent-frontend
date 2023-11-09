@@ -9,12 +9,16 @@ import sendData from "./helpers/sendData";
 
 export default function NewProjectForm() {
   const [formData, setFormData] = useState<FormState>({
-    inputData: null,
+    inputData: "",
     selectData: null,
   });
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    setFormData((prev) => ({ ...prev, inputData: "" }));
+
+    console.log("Submit");
 
     sendData(formData);
   };
@@ -23,26 +27,26 @@ export default function NewProjectForm() {
     setFormData((prev) => ({ ...prev, inputData: e.target.value }));
   };
 
-  const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setFormData((prev) => ({ ...prev, selectData: e.target.value }));
-  };
+  // const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  //   setFormData((prev) => ({ ...prev, selectData: e.target.value }));
+  // };
 
   return (
-    <div className="w-fit h-fit container border mx-auto font-inter rounded-lg border-secondary px-8 max-w-[600px] py-12 ">
-      <form
-        className="flex flex-col space-y-16 h-full"
-        onSubmit={(e) => handleSubmit(e)}
-      >
-        <h2 className="text-text text-center text-3xl font-bold">
-          Help us, help you!
-        </h2>
+    <form
+      className="flex flex-col items-center space-y-16 xs:space-y-24 w-full h-fit max-w-[500px] container xs:border justify-center xs:mx-auto font-inter rounded-lg xs:border-secondary px-4 py-8 xs:px-8 xs:py-12 mx-3"
+      onSubmit={(e) => handleSubmit(e)}
+    >
+      <h2 className="text-text text-center text-4xl sm:text-5xl font-bold">
+        Create roadmap
+      </h2>
 
-        <FormInput handleFunction={handleInput} />
+      {/* <div className="flex flex-col gap-16"> */}
+      <FormInput handleFunction={handleInput} inputData={formData.inputData} />
 
-        <FormSelect handleFunction={handleSelect} />
+      {/* <FormSelect handleFunction={handleSubmit} /> */}
+      {/* </div> */}
 
-        <FormSubmit />
-      </form>
-    </div>
+      <FormSubmit />
+    </form>
   );
 }
