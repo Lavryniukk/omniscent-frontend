@@ -31,7 +31,7 @@ let Header = () => {
 
           <div className="hidden md:flex items-center">
             <div className="space-x-7 mx-10 hidden md:block">
-              <HeaderLink url="/projects" name="Projects" />
+              <HeaderLink url="/workspace" name="Workspace" />
               <HeaderLink url="/memberships" name="Memberships" />
               <HeaderLink url="/guide" name="Info" />
             </div>

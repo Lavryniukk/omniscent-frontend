@@ -11,7 +11,7 @@ export default function UserRoadmapsLoading() {
       </div>
       <p className="mx-auto text-center underline-offset-2 select-none underline text-accent-600">
         <Link
-          href="/projects/create"
+          href="/workspace/create"
           className="hover:text-accent transition-colors duration-200"
         >
           Create new project

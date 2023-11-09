@@ -1,10 +1,20 @@
 "use client";
 
-import ProjectContainer from "@/app/modules/ProjectList/components/ProjectContainer/ProjectContainer";
 import ProjectSkeleton from "@/app/UI/loading/ProjectSkeleton/ProjectSkeleton";
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import Link from "next/link";
+import { ReactNode, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
+function ProjectContainer({ title }: { title: string | ReactNode }) {
+  return (
+    <Link
+      href={"/"}
+      className="py-5 border block border-secondary rounded-lg text-lg text-center text-accent px-3"
+    >
+      {title}
+    </Link>
+  );
+}
 
 // Create an array of project objects for search.
 let arr = [
@@ -85,7 +95,7 @@ export default function ProjectSearch() {
                   <ProjectContainer
                     title={highlightText(item.title, text)}
                     key={item._id}
-                  ></ProjectContainer>
+                  />
                 )
             )
           ) : (

@@ -7,7 +7,6 @@ function NewProject() {
   return (
     <div className="max-w-7xl select-none flex items-center justify-center h-screen mx-auto">
       <NewProjectField />{" "}
-      {/* Rendering the NewProjectField component for creating a new project. */}
     </div>
   );
 }
