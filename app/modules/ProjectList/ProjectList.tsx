@@ -7,7 +7,6 @@ import UserRoadmapsLoading from "./components/UserRoadmapsLoading/UserRoadmapsLo
 import ErrorAlert from "@/app/UI/alerts/ErrorAlert/ErrorAlert";
 
 // Initialize an array 'arr' containing an example project.
-let arr: Array<any> = [{ title: "Node.js", _id: "1" }];
 
 export default function UserProjects() {
   const { data, isLoading, error } = useQuery({
