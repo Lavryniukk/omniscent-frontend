@@ -14,6 +14,7 @@ export default function UserProjects() {
     queryKey: ["userProjects"],
     queryFn: async () => await fetchProjects(),
   });
+  console.log("Projects", data);
   return (
     <div className="mx-auto w-1/3 max-w-[600px] min-w-[500px] px-5 py-16 font-inter h-fit border-2 border-secondary rounded-2xl">
       <h1 className="text-4xl text-center font-bold mx-auto text-text trancking-tight font-inter"></h1>
