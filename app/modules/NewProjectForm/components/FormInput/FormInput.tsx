@@ -2,25 +2,30 @@ import { HandleFunctionProps } from "../../types/FormProps";
 
 export default function FormInput({
   handleFunction,
+  inputData,
 }: {
   handleFunction: HandleFunctionProps["inputHandleFunction"];
+  inputData: string;
 }) {
   return (
-    <div className="flex justify-between space-x-5 md:space-x-8  lg:space-x-10 xl:space-x-16 2xl:space-x-20 md:flex-row flex-col items-start md:items-center">
-      <label className="text-text text-lg">Tech name</label>
-      <div
-        className={`flex relative flex-col max-w-[220px] after:text-xs after:italic after:absolute after:right-0 after:top-[110%] after:text-accent 
-			    after:content-["Note:_If_your_tech_don't_fall_under_type,_you_choose,_you_won't_be_able_to_create_your_roadmap."]`}
+    <div className="flex space-y-1 rounded-xl justify-center items-center w-3/4 relative">
+      <input
+        required
+        value={inputData}
+        onChange={(e) => handleFunction(e)}
+        type="text"
+        className={`relative overflow-visible 
+          bg-transparent box-border border-2 pl-2 rounded-md border-accent transition-all duration-200 p-3 text-base
+				 text-accent placeholder:text-accent outline-none focus:border-accent w-full peer `}
+      />
+      <label
+        className={`text-accent text-lg h-fit block absolute top-1.5 left-3 px-2 transition duration-500 rounded-full 
+        peer-focus:-translate-y-[87.7%] peer-focus:scale-90 bg-background select-none pointer-events-none ${
+          inputData ? "-translate-y-[87.7%] scale-90" : ""
+        }`}
       >
-        <input
-          onChange={(e) => handleFunction(e)}
-          type="text"
-          placeholder="Provide tech"
-          className={`relative overflow-visible 
-			   bg-background box-border border-b-2 pl-1 border-accent transition-all duration-200 p-2 text-base
-				 text-accent placeholder:text-accent outline-none focus:border-accent w-full`}
-        />
-      </div>
+        Tech name
+      </label>
     </div>
   );
 }

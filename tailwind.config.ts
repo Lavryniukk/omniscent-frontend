@@ -1,7 +1,9 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from "tailwindcss/defaultTheme";
 import colors from "tailwindcss/colors";
-console.log("yesyesy");
-let hello = "fsf";
+
+console.log("lev pidrila");
+
 const config: Config = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -45,6 +47,10 @@ const config: Config = {
         kauch: "url('/images/nikolauchuk.jpg')",
         kros: "url('/images/legend.png')",
       },
+    },
+    screens: {
+      xs: "464px",
+      ...defaultTheme.screens,
     },
   },
   plugins: [],
