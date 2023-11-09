@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import FormInput from "./components/FormInput/FormInput";
 import FormSelect from "./components/FormSelect/FormSelect";
 import FormSubmit from "./components/FormSubmit/FormSubmit";
@@ -20,7 +20,7 @@ export default function NewProjectForm() {
 
     console.log("Submit");
 
-    // sendData(formData);
+    sendData(formData);
   };
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
