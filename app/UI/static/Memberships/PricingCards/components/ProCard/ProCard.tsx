@@ -5,7 +5,6 @@ import Line from "../FeatureLine/FeatureLine";
 let ProCard = () => {
   return (
     <div className="2xl:w-1/4 shadow-sm 2xl:shadow-none observe duration-500 transition delay-75 shadow-white  mx-auto lg:w-4/12 w-[350px] p-8 border-2 relative bg-background 2xl:h-full lg:h-[47%] h-[30%] bg-opacity-90 rounded-xl border-secondary 2xl:border-slate-500 ">
-      <div className="w-[400px] overflow-visible h-[400px] absolute observe transition-all delay-500 duration-500 -z-10 center-align blur-[120px] top-[10%] bg-primary-500"></div>
       <h1 className="mb-2 text-2xl font-light text-left text-text">Pro</h1>
       <h1 className="text-4xl font-bold text-left text-text">
         $13.99

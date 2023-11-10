@@ -26,7 +26,7 @@ export default function RoadmapPage({ params }: { params: { id: string } }) {
     <div className="h-full min-h-screen w-auto ">
       <div className=" w-fit mx-auto">
         <ul className="text-text mx-auto  w-fit py-20 h-fit  flex items-center justify-center flex-col ">
-          {!error ? (
+          {!error && data ? (
             data.node_list.map(
               (tech: { title: string; _id: string }, index: number) => {
                 return (
@@ -35,7 +35,7 @@ export default function RoadmapPage({ params }: { params: { id: string } }) {
                     className="w-full flex items-center justify-center flex-col min-w-[200px] "
                   >
                     <div className="roadmap-node">{tech.title}</div>
-                    {index != arr.length - 1 && (
+                    {index != data.node_list.length - 1 && (
                       <div className="roadmap-arrow" />
                     )}
                   </li>

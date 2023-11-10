@@ -1,7 +1,7 @@
 "use client";
 import { useUser } from "@auth0/nextjs-auth0/client";
-import Roadmap from "../../types/Roadmap";
 import Link from "next/link";
+import Roadmap from "../../types/Roadmap";
 
 export default function ProjectContainer({ roadmap }: { roadmap: Roadmap }) {
   const { title, _id, owner_id, node_list } = roadmap;
