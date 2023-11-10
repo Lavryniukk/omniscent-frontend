@@ -1,11 +1,12 @@
 "use server";
 
-import { getAccessToken, getSession } from "@auth0/nextjs-auth0";
+import { getAccessToken } from "@auth0/nextjs-auth0";
 
 let api = async () => {
-  const getSessio = await getSession();
-  const { accessToken } = await getAccessToken();
-  console.log(accessToken);
+  try {
+    const { accessToken } = await getAccessToken();
+    console.log(accessToken);
+  } catch (e) {}
   //   let res = await fetch("http://localhost:8000/api/health", {
   //     headers: {
   //       Authorization: `Bearer ${accessToken}`,
