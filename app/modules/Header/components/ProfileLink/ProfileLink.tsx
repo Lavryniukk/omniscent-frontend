@@ -6,7 +6,8 @@ import ProfileLinkSkeleton from "../ProfileLinkSkeleton/ProfileLinkSkeleton";
 
 let ProfileLink = () => {
   let { user, isLoading } = useUser(); // Use the useUser hook to retrieve user information.
-  let pic: string = user?.picture ?? ""; // Extract the user's profile picture URL.
+  let pic = user?.picture ?? ""; // Extract the user's profile picture URL.
+  let picture = pic;
   console.log(user);
   return isLoading ? (
     <ProfileLinkSkeleton />
@@ -14,8 +15,8 @@ let ProfileLink = () => {
     <div className="mx-auto h-fit">
       <a href={`/profile/${user.sub}`}>
         <picture>
-          <Image
-            src={`${pic}`}
+          <img
+            src={pic}
             alt=""
             width={50}
             height={50}
