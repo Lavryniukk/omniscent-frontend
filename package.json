@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "@types/js-cookie": "^3.0.4",
+    "@types/prop-types": "^15.7.10",
     "eslint-plugin-tailwindcss": "^3.13.0",
     "prettier": "^3.0.2"
   }

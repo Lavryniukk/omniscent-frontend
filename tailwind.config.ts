@@ -30,7 +30,7 @@ const config: Config = {
         lg: "340px",
       },
       colors: {
-        primary: { ...colors.teal, DEFAULT: colors.teal[900] },
+        primary: { ...colors.emerald, DEFAULT: colors.emerald[900] },
         secondary: { ...colors.neutral, DEFAULT: colors.neutral[800] },
         accent: { ...colors.neutral, DEFAULT: colors.neutral[400] },
         text: { ...colors.neutral, DEFAULT: colors.neutral[200] },

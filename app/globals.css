@@ -9,13 +9,16 @@
   background-color: transparent;
 }
 
-* {
+/* * {
   border: 1px solid white;
-}
+} */
 ::root {
   --section-height: `100vh`;
 }
 
+.section {
+  height: var(--section-height);
+}
 ::-webkit-scrollbar-thumb {
   background-color: #a1a1a1;
   border-radius: 5px;
