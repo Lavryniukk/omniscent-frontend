@@ -7,24 +7,24 @@ import ProfileLinkSkeleton from "../ProfileLinkSkeleton/ProfileLinkSkeleton";
 let ProfileLink = () => {
   let { user, isLoading } = useUser(); // Use the useUser hook to retrieve user information.
   let pic = user?.picture ?? ""; // Extract the user's profile picture URL.
-  let picture = pic;
   console.log(user);
   return isLoading ? (
     <ProfileLinkSkeleton />
   ) : user ? (
-    <div className="mx-auto h-fit">
-      <a href={`/profile/${user.sub}`}>
-        <picture>
-          <img
-            src={pic}
-            alt=""
-            width={50}
-            height={50}
-            className="h-11 w-11 mx-auto rounded-full border-2 border-accent-700 hover:border-accent transition-colors duration-200"
-          />
-        </picture>
-      </a>
-    </div>
+    <a
+      href={`/profile/${user.sub}`}
+      className=" items-center justify-center flex box-border"
+    >
+      <picture>
+        <img
+          src={pic}
+          alt=""
+          width={40}
+          height={40}
+          className="h-11 w-11 mx-auto rounded-full border-2 border-accent-700 hover:border-accent transition-colors duration-200"
+        />
+      </picture>
+    </a>
   ) : (
     <Link
       href="/api/auth/login" // Create a link to the authentication login endpoint.

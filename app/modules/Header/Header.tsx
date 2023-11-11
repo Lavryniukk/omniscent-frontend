@@ -34,7 +34,7 @@ let Header = () => {
               <HeaderLink url="/guide" name="Info" />
             </div>
 
-            <div className="md:flex w-24 h-fit hidden">
+            <div className="md:flex w-fit h-full hidden">
               <ProfileLink />
             </div>
           </div>
