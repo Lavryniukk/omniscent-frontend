@@ -31,9 +31,8 @@ let Header = () => {
 
           <Burger isOpen={isOpen} toggleMenu={toggleMenu} />
 
-            <div className="md:flex w-fit h-full hidden">
-              <ProfileLink />
-            </div>
+          <div className="md:flex w-fit h-full hidden">
+            <ProfileLink />
           </div>
         </div>
       </div>
