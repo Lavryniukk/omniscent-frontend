@@ -3,7 +3,7 @@ import Image from "next/image";
 // Component for rendering the title section
 let Title = () => {
   return (
-    <div className="pt-40 overflow-visible overflow-x-clip py-10 items-center relative flex-col gap-7 flex max-w-10xl mx-auto">
+    <div className=" overflow-visible overflow-x-clip py-10 items-center relative flex-col gap-7 flex max-w-10xl mx-auto">
       {/* Main title */}
       <div className="mx-auto observe duration-500 border relative xl:p-5 lg:p-4 p-3 w-fit h-fit flex items-center justify-center rounded-xl border-secondary bg-secondary-950">
         <Image
