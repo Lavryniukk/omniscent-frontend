@@ -19,11 +19,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  useLayoutEffect(() => {
-    let h = window.innerHeight;
-    document.documentElement.style.setProperty("--section-height", `${h}px`);
-  }, []);
-
   useEffect(() => {
     const animated_elems = document.querySelectorAll(".observe");
     const observer = new IntersectionObserver((entries) => {
