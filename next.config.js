@@ -7,11 +7,7 @@ module.exports = {
   },
   reactStrictMode: true,
   images: {
-    domains: [
-      "s.gravatar.com",
-      "vatars.githubusercontent.com",
-      "avatars.githubusercontent.com",
-    ],
+    domains: ["*"],
   },
 };
 module.exports = {
