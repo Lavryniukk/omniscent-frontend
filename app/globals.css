@@ -9,9 +9,6 @@
   background-color: transparent;
 }
 
-* {
-  border: 1px solid white;
-}
 ::root {
   --section-height: `100vh`;
 }
