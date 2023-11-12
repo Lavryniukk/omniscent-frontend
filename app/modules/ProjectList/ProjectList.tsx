@@ -10,7 +10,6 @@ import Roadmap from "./types/Roadmap";
 // Initialize an array 'arr' containing an example project.
 
 export default function UserProjects() {
-  const test = true;
   const { data, isLoading, error } = useQuery({
     queryKey: ["userProjects"],
     queryFn: async () => await fetchProjects(),
@@ -32,7 +31,7 @@ export default function UserProjects() {
           </button>
           <ErrorAlert message="An error occurred while loading your projects. Please try again later." />
         </>
-      ) : test ? (
+      ) : isLoading ? (
         <UserRoadmapsLoading />
       ) : data?.length ? (
         <FetchedRoadmaps roadmaps={data} />
