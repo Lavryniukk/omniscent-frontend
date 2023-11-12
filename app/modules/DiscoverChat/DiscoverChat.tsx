@@ -5,7 +5,7 @@ import useDiscoverChat from "./storage/DiscoverChatStorage";
 export default function DiscoverChat() {
   const { chat } = useDiscoverChat();
   return (
-    <div className="w-8/12 mx-auto border min-h-[80vh] max-h-[950px] h-full border-accent rounded-3xl relative overflow-hidden pt-[5vh]">
+    <div className="mx-auto border container  min-h-[80vh] max-h-[950px] h-full border-accent rounded-2xl max-w-[1200px] relative overflow-hidden pt-[5vh]">
       <div className="w-full absolute h-[5vh] bg-secondary-900 top-0 left-0" />
 
       <div className="overflow-y-auto max-h-[63vh] w-full p-0 m-0">
