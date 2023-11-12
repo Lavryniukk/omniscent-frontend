@@ -6,7 +6,6 @@ import axios from "axios";
 
 export default async function fetchRoadmap(id: string) {
   const token = await getAccessToken();
-  console.log(token);
   let response = await fetch(
     `https://cleverize.onrender.com/api/users/me/roadmaps/${id}`,
     {
@@ -17,6 +16,5 @@ export default async function fetchRoadmap(id: string) {
     }
   );
   let parsed = await response.json();
-  console.log(parsed);
   return await parsed;
 }

@@ -132,13 +132,13 @@ body {
   @apply sm:w-[20vw] w-full rounded-lg border-[1.5px] transition-all delay-150 duration-500 sm:min-w-[320px] min-w-[350px] sm:max-w-[450px] border-secondary;
 }
 .roadmap-node {
-  @apply text-center px-5 w-full relative  flex items-center justify-center  h-12 bg-secondary rounded-lg;
+  @apply text-center px-5 w-full cursor-pointer relative hover:text-background hover:bg-text duration-200 transition-colors font-semibold flex items-center justify-center border h-12 bg-background border-accent rounded-lg;
 }
 .roadmap-arrow {
-  @apply block w-1 select-none h-20 bg-secondary;
+  @apply block w-0.5 select-none h-20 bg-accent;
 }
 .roadmap-done {
-  @apply opacity-60;
+  @apply opacity-60 bg-secondary hover:bg-background hover:text-accent;
 }
 
 /* CSS class to reset basic input styles */
