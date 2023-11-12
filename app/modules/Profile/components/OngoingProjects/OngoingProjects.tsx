@@ -82,8 +82,6 @@ export default function OngoingProjects() {
     // },
   ];
 
-  const test = true;
-
   const { data, isLoading, error } = useQuery({
     queryKey: ["profileProjects"],
     queryFn: async () => fetchProjects(),
@@ -95,7 +93,7 @@ export default function OngoingProjects() {
         <p className="font-semibold text-text text-4xl sm:text-3xl">{`Learning projects`}</p>
       </div>
 
-      {!test ? (
+      {!isLoading ? (
         data && data.length > 0 ? (
           <div className="h-fit grid grid-cols-1 lg:grid-cols-2 p-1 gap-4">
             {data.map((item, index, array) => {
