@@ -1,7 +1,6 @@
 "use client";
 
 import HeaderLink from "@/app/modules/Header/components/HeaderLink/HeaderLink";
-import { useUser } from "@auth0/nextjs-auth0/client";
 import ProfileLink from "@/app/modules/Header/components/ProfileLink/ProfileLink";
 import { Suspense } from "react";
 import ProfileLinkSkeleton from "../ProfileLinkSkeleton/ProfileLinkSkeleton";
@@ -11,8 +10,6 @@ type Props = {
 };
 
 let Popup = ({ isOpen }: Props) => {
-  let { user } = useUser(); // Use the useUser hook to retrieve user information.
-
   return (
     <div
       className={`top-14 md:hidden backdrop-blur-md ${
