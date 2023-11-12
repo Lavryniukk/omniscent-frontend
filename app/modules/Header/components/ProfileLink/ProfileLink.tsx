@@ -10,7 +10,7 @@ let ProfileLink = () => {
   console.log(user);
 
   return isLoading ? (
-    <ProfileLinkSkeleton />
+    <div className="w-16 rounded-lg h-8 bg-secondary animate-pulse"></div>
   ) : user ? (
     <a
       href={`/profile/${user.sub}`}

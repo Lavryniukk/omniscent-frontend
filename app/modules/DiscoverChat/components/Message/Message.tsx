@@ -14,7 +14,7 @@ export default function Message({
       <div>
         <div className="w-[32px] h-[32px] bg-accent rounded-full" />
       </div>
-      <div className="break-normal">{content}</div>
+      <div className="break-all">{content}</div>
     </div>
   );
 }
