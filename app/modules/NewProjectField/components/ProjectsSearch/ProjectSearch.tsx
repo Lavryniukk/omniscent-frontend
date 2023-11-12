@@ -1,6 +1,6 @@
 "use client";
 
-import ProjectSkeleton from "@/app/UI/loading/ProjectSkeleton/ProjectSkeleton";
+import Skeleton from "@/app/UI/loading/Skeleton/Skeleton";
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 import { ReactNode, useState } from "react";
@@ -27,7 +27,7 @@ let arr = [
 ];
 
 export default function ProjectSearch() {
-  const [text, setText] = useState("Front-end"); // Initialize state variable for user input text.
+  const [text, setText] = useState(""); // Initialize state variable for user input text.
   const [filteredArray, setFilteredArray] = useState(arr); // Initialize state variable for the filtered array.
 
   const { data, isLoading } = useQuery({
@@ -105,15 +105,24 @@ export default function ProjectSearch() {
             </div>
           )
         ) : (
-          <div className="w-full h-fit space-y-3 overflow-hidden mt-10">
-            <ProjectSkeleton />
-            <ProjectSkeleton />
-            <ProjectSkeleton />
-            <ProjectSkeleton />
-            <ProjectSkeleton />
+          <div className="w-full h-fit space-y-3 overflow-hidden">
+            <div className="border border-secondary p-4 rounded min-h-[70px] flex items-center justify-center">
+              <Skeleton width="75%" height="24px" rounded="4px" />
+            </div>
+            <div className="border border-secondary p-4 rounded min-h-[70px] flex items-center justify-center">
+              <Skeleton width="75%" height="24px" rounded="4px" />
+            </div>
+            <div className="border border-secondary p-4 rounded min-h-[70px] flex items-center justify-center">
+              <Skeleton width="75%" height="24px" rounded="4px" />
+            </div>
+            <div className="border border-secondary p-4 rounded min-h-[70px] flex items-center justify-center">
+              <Skeleton width="75%" height="24px" rounded="4px" />
+            </div>
+            <div className="border border-secondary p-4 rounded min-h-[70px] flex items-center justify-center">
+              <Skeleton width="75%" height="24px" rounded="4px" />
+            </div>
           </div>
         )}
-        {}
       </div>
     </div>
   );

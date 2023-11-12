@@ -10,15 +10,11 @@ export default function ErrorAlert({ message }: { message: string }) {
     setTimeout(() => {
       errorElem?.classList.add("translate-x-[200%]");
     }, 3000);
-
-    setTimeout(() => {
-      errorElem?.remove();
-    }, 4000);
   }, []);
   return (
     <div
       ref={errorRef}
-      className={`bg-red-100 border-l-4 border-red-500 text-red-700 p-4 fixed bottom-6 right-6 transalte-x-full
+      className={`bg-red-100 border-l-4 border-red-500 text-red-700 p-4 fixed bottom-6 right-6 
 	transition duration-300`}
       role="alert"
     >

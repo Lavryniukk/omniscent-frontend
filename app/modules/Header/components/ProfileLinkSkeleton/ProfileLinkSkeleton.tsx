@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
+import Skeleton from "@/app/UI/loading/Skeleton/Skeleton";
 
 export default function ProfileLinkSkeleton(): ReactNode {
-  return <div className="w-16 rounded-lg h-8 bg-secondary animate-pulse"></div>;
+  return <Skeleton width="64px" height="32px" />;
 }
