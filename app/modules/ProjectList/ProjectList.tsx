@@ -5,10 +5,12 @@ import { fetchProjects } from "./api/fetchProjects";
 import FetchedRoadmaps from "./components/FetchedRoadmaps/FetchedRoadmaps";
 import UserRoadmapsLoading from "./components/UserRoadmapsLoading/UserRoadmapsLoading";
 import ErrorAlert from "@/app/UI/alerts/ErrorAlert/ErrorAlert";
+import Roadmap from "./types/Roadmap";
 
 // Initialize an array 'arr' containing an example project.
 
 export default function UserProjects() {
+  const test = true;
   const { data, isLoading, error } = useQuery({
     queryKey: ["userProjects"],
     queryFn: async () => await fetchProjects(),
@@ -30,7 +32,7 @@ export default function UserProjects() {
           </button>
           <ErrorAlert message="An error occurred while loading your projects. Please try again later." />
         </>
-      ) : isLoading ? (
+      ) : test ? (
         <UserRoadmapsLoading />
       ) : data?.length ? (
         <FetchedRoadmaps roadmaps={data} />

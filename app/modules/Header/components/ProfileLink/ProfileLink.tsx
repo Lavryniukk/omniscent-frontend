@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import Link from "next/link";
-import ProfileLinkSkeleton from "../ProfileLinkSkeleton/ProfileLinkSkeleton";
+import Skeleton from "@/app/UI/loading/Skeleton/Skeleton";
 
 let ProfileLink = () => {
   let { user, isLoading } = useUser(); // Use the useUser hook to retrieve user information.
@@ -10,7 +10,7 @@ let ProfileLink = () => {
   console.log(user);
 
   return isLoading ? (
-    <ProfileLinkSkeleton />
+    <Skeleton width={"80px"} height={"32px"} rounded={"10px"} />
   ) : user ? (
     <a
       href={`/profile/${user.sub}`}

@@ -12,7 +12,21 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      keyframes: {
+        skeleton: {
+          "0%": {
+            backgroundColor: "#262626",
+            transform: "translateX(-100%)",
+          },
+          "50%": { backgroundColor: "#404040", transform: "translateX(25%)" },
+          "100%": {
+            backgroundColor: "#262626",
+            transform: "translateX(100%)",
+          },
+        },
+      },
       animation: {
+        skeleton: "skeleton 1.5s linear infinite",
         "spin-slow": "spin 10s linear infinite",
       },
       width: {
