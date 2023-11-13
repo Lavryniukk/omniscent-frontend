@@ -1,36 +1,38 @@
 "use client";
 
+import Roadmap from "@/app/modules/ProjectList/types/Roadmap";
 import fetchRoadmap from "../fetchRoadmap";
 import { useQuery } from "@tanstack/react-query";
 
-let arr = [
-  { _id: "1", title: "HTML", isCompleted: true },
-  { _id: "2", title: "CSS", isCompleted: false },
-  { _id: "3", title: "JavaScript", isCompleted: false },
-  { _id: "4", title: "React", isCompleted: false },
-  { _id: "5", title: "Redux", isCompleted: false },
-  { _id: "6", title: "SASS", isCompleted: false },
-  { _id: "7", title: "NPM", isCompleted: false },
-  { _id: "8", title: "Webpack", isCompleted: false },
-  { _id: "9", title: "Babel", isCompleted: false },
-  { _id: "10", title: "Jest", isCompleted: false },
-];
+// let arr = [
+//   { _id: "1", title: "HTML", isCompleted: true },
+//   { _id: "2", title: "CSS", isCompleted: false },
+//   { _id: "3", title: "JavaScript", isCompleted: false },
+//   { _id: "4", title: "React", isCompleted: false },
+//   { _id: "5", title: "Redux", isCompleted: false },
+//   { _id: "6", title: "SASS", isCompleted: false },
+//   { _id: "7", title: "NPM", isCompleted: false },
+//   { _id: "8", title: "Webpack", isCompleted: false },
+//   { _id: "9", title: "Babel", isCompleted: false },
+//   { _id: "10", title: "Jest", isCompleted: false },
+// ];
 
 export default function RoadmapPage({ params }: { params: { id: string } }) {
   const { data, error } = useQuery(
     ["roadmap"],
     async () => await fetchRoadmap(params.id)
   );
+  console.log(data);
   return (
     <div className="h-full min-h-screen w-auto ">
       <div className=" w-fit mx-auto">
         <ul className="text-text mx-auto  w-fit py-20 h-fit  flex items-center justify-center flex-col ">
           {!error && data ? (
-            arr.map(
+            data.node_list.map(
               (
-                tech: { title: string; _id: string; isCompleted: boolean },
+                tech: { title: string; isCompleted: boolean },
                 index: number,
-                array
+                array: Roadmap[]
               ) => {
                 let current;
                 const prevTech = array[index - 1];
@@ -44,7 +46,7 @@ export default function RoadmapPage({ params }: { params: { id: string } }) {
                 }
                 return (
                   <li
-                    key={tech._id}
+                    key={index}
                     className="w-full flex items-center justify-center flex-col min-w-[200px]"
                   >
                     <div
@@ -58,7 +60,7 @@ export default function RoadmapPage({ params }: { params: { id: string } }) {
                     >
                       {tech.title}
                     </div>
-                    {index != arr.length - 1 && (
+                    {index != data.node_list.length - 1 && (
                       <div
                         className={`block w-0.5 select-none h-20 bg-accent ${
                           tech.isCompleted && "opacity-60"

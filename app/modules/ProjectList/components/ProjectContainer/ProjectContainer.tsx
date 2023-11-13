@@ -9,20 +9,20 @@ import fetchDelete from "./fetchDelete";
 
 export default function ProjectContainer({ roadmap }: { roadmap: Roadmap }) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [timer, setTImer] = useState<number>(5);
+  const [timer, setTimer] = useState<number>(5);
   const { title, _id, owner_id, node_list } = roadmap;
 
   const { user, isLoading } = useUser();
 
   let url: string = "/";
 
-  // if (!isLoading && user) {
-  //   if (user.sub === owner_id) {
-  //     url = `/workspace/roadmap/${_id}`;
-  //   }
-  // } else {
-  //   url = "/workspace/restricted";
-  // }
+  if (!isLoading && user) {
+    if (user.sub === owner_id) {
+      url = `/workspace/roadmap/${_id}`;
+    }
+  } else {
+    url = "/workspace/restricted";
+  }
 
   const handleClick = (e: React.MouseEvent<SVGElement, MouseEvent>) => {
     e.preventDefault();
@@ -31,9 +31,9 @@ export default function ProjectContainer({ roadmap }: { roadmap: Roadmap }) {
   };
 
   useEffect(() => {
-    setTImer(5); // Assuming you have a state variable [countdown, setCountdown] defined
+    setTimer(5); // Assuming you have a state variable [countdown, setCountdown] defined
     const intervalId = setInterval(() => {
-      setTImer((prev) => {
+      setTimer((prev) => {
         if (prev <= 1) {
           // If countdown is at 1, next tick will be 0, so clear interval
           clearInterval(intervalId);
