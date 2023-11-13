@@ -3,7 +3,7 @@
 import Roadmap from "@/app/modules/ProjectList/types/Roadmap";
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import fetchRoadmap from "../../fetchRoadmap";
+import fetchRoadmap from "../../../../../modules/Roadmap/api/fetchRoadmap";
 let arr = [
   { title: "HTML" },
   { title: "CSS" },
