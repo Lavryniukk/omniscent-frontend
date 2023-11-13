@@ -70,7 +70,7 @@ export default function ProjectContainer({ roadmap }: { roadmap: Roadmap }) {
         } absolute text-text border flex-col gap-4 left-[calc(50%-250px)]
          w-[500px] border-accent top-[45%] h-fit p-4 rounded-lg bg-background z-10`}
       >
-        <p className="text-accent text-base text-center">{`Are you sure you want to delete ${title}?`}</p>
+        <p className="text-accent text-base text-center">{`Are you sure you want to delete '${title}'?`}</p>
 
         <button
           onClick={() => fetchDelete(_id)}
