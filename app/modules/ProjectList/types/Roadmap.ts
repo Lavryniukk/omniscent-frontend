@@ -3,5 +3,6 @@ export default interface Roadmap {
   _id: string;
   node_list: [];
   owner_id: string;
+  isCompleted: boolean;
   // last_interaction_at: string;
 }
