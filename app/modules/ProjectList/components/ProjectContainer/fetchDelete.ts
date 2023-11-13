@@ -9,7 +9,7 @@ const fetchDelete = async (roadmapId: string) => {
 
     await axios({
       method: "DELETE",
-      url: `https://cleverize.onrender.com/api/users/me/roadmaps/:${roadmapId}`,
+      url: `${process.env.SERVER_URL}/api/users/me/roadmaps/:${roadmapId}`,
       headers: {
         Authorization: `Bearer ${token.accessToken}`,
       },

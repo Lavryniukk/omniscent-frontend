@@ -1,24 +1,24 @@
 "use server";
 
+import RoadmapInterface from "@/app/shared/entities/Roadmap";
 import { getAccessToken } from "@auth0/nextjs-auth0";
-import Roadmap from "../types/Roadmap";
+import axios from "axios";
 
-export let fetchProjects = async (): Promise<Roadmap[] | [] | undefined> => {
+export let fetchProjects = async (): Promise<
+  RoadmapInterface[] | [] | undefined
+> => {
   try {
     const { accessToken } = await getAccessToken();
 
-    let response = await fetch(
-      "https://cleverize.onrender.com/api/users/me/roadmaps",
-      {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-        cache: "no-store",
-      }
-    );
-    let parsed = await response.json();
-    console.log(parsed);
-    return parsed;
+    const response = await axios({
+      method: "GET",
+      url: `${process.env.SERVER_URL}/api/users/me/roadmaps`,
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+
+    return await response.data;
   } catch (e) {
     console.log("Error", e);
   }

@@ -141,7 +141,7 @@ body {
   @apply opacity-60 bg-secondary hover:bg-background hover:text-accent;
 }
 
-.roadmap__node-shadow {
+.roadmap__node--current {
   @apply drop-shadow-[0px_5px_5px_#f5f5f5];
 }
 

@@ -4,10 +4,14 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { BiTrashAlt } from "react-icons/bi";
-import Roadmap from "../../types/Roadmap";
 import fetchDelete from "./fetchDelete";
+import RoadmapInterface from "@/app/shared/entities/Roadmap";
 
-export default function ProjectContainer({ roadmap }: { roadmap: Roadmap }) {
+export default function ProjectContainer({
+  roadmap,
+}: {
+  roadmap: RoadmapInterface;
+}) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [timer, setTimer] = useState<number>(5);
   const { title, _id, owner_id, node_list } = roadmap;
@@ -73,7 +77,7 @@ export default function ProjectContainer({ roadmap }: { roadmap: Roadmap }) {
         <p className="text-accent text-base text-center">{`Are you sure you want to delete '${title}'?`}</p>
 
         <button
-          onClick={() => fetchDelete(_id)}
+          onClick={async () => await fetchDelete(_id)}
           className={`block w-1/2 mx-auto rounded p-1 ${
             timer
               ? "cursor-default bg-red-900 pointer-events-none"
