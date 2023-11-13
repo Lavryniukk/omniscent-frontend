@@ -132,18 +132,7 @@ body {
 .features-container {
   @apply sm:w-[20vw] w-full rounded-lg border-[1.5px] transition-all delay-150 duration-500 sm:min-w-[320px] min-w-[350px] sm:max-w-[450px] border-secondary;
 }
-.roadmap-node {
-  @apply text-center px-5 w-full relative  flex items-center justify-center  h-12 bg-secondary rounded-lg;
-}
-.roadmap-arrow {
-  @apply block w-1 select-none h-20 bg-secondary;
-}
-.roadmap-done {
-  @apply opacity-60;
-}
-.conversation-hint {
-  @apply w-60 text-left px-2 text-base text-accent py-3 bg-secondary rounded-md;
-}
+
 /* CSS class to reset basic input styles */
 .clear-input {
   /* Reset padding and margin */
