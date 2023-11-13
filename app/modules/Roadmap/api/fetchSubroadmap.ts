@@ -1,11 +1,12 @@
 "use server";
 
 import RoadmapInterface from "@/app/shared/entities/Roadmap";
+import SubroadmapInterface from "@/app/shared/entities/Subroadmap";
 import { getAccessToken } from "@auth0/nextjs-auth0";
 
 import axios from "axios";
 
-export default async function fetchRoadmap(id: string) {
+export default async function fetchSubroadmap(id: string, title: string) {
   const token = await getAccessToken();
   let response = await axios({
     method: "GET",
@@ -14,6 +15,8 @@ export default async function fetchRoadmap(id: string) {
       Authorization: `Bearer ${token.accessToken}`,
     },
   });
-  const roadmaps = (await response.data) as RoadmapInterface;
-  return roadmaps;
+  const roadmap = (await response.data) as RoadmapInterface;
+  return roadmap.node_list.find(
+    (subroadmap) => subroadmap.title === title
+  ) as SubroadmapInterface;
 }
