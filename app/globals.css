@@ -133,6 +133,22 @@ body {
   @apply sm:w-[20vw] w-full rounded-lg border-[1.5px] transition-all delay-150 duration-500 sm:min-w-[320px] min-w-[350px] sm:max-w-[450px] border-secondary;
 }
 
+.roadmap__node {
+  @apply text-center px-5 w-full cursor-pointer relative hover:text-background hover:bg-text duration-200 transition-colors font-semibold flex items-center justify-center border h-12 bg-background border-accent rounded-lg;
+}
+
+.roadmap__node--complete {
+  @apply opacity-60 bg-secondary hover:bg-background hover:text-accent;
+}
+
+.roadmap__node-shadow {
+  @apply drop-shadow-[0px_5px_5px_#f5f5f5];
+}
+
+.roadmap__arrow {
+  @apply block w-0.5 select-none h-20 bg-accent;
+}
+
 /* CSS class to reset basic input styles */
 .clear-input {
   /* Reset padding and margin */

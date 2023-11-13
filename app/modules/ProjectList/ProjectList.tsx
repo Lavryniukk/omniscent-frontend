@@ -52,10 +52,10 @@ export default function UserProjects() {
           </button>
           <ErrorAlert message="An error occurred while loading your projects. Please try again later." />
         </>
-      ) : testIsLoading ? (
+      ) : isLoading ? (
         <UserRoadmapsLoading />
-      ) : testRoadmap?.length ? (
-        <FetchedRoadmaps roadmaps={testRoadmap} />
+      ) : data?.length ? (
+        <FetchedRoadmaps roadmaps={data} />
       ) : (
         <ProjectsNotFound /> // Render the ProjectsNotFound component if 'arr' is empty.
       )}

@@ -16,13 +16,13 @@ export default function ProjectContainer({ roadmap }: { roadmap: Roadmap }) {
 
   let url: string = "/";
 
-  // if (!isLoading && user) {
-  //   if (user.sub === owner_id) {
-  //     url = `/workspace/roadmap/${_id}`;
-  //   }
-  // } else {
-  //   url = "/workspace/restricted";
-  // }
+  if (!isLoading && user) {
+    if (user.sub === owner_id) {
+      url = `/workspace/roadmap/${_id}`;
+    }
+  } else {
+    url = "/workspace/restricted";
+  }
 
   const handleClick = (e: React.MouseEvent<SVGElement, MouseEvent>) => {
     e.preventDefault();
