@@ -9,9 +9,7 @@ import { useEffect } from "react";
 // It includes the Title component, Features component, and Reviews component.
 
 let HomePage: NextPage = () => {
-  useEffect(() => {
-    api();
-  }, []);
+
   return (
     <main className="mb-10  overflow-hidden  h-fit bg-transparent mx-auto box-border w-full">
       <Hero /> {/* Renders the title section of the landing page. */}
