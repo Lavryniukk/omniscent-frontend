@@ -141,7 +141,9 @@ body {
 .roadmap-done {
   @apply opacity-60;
 }
-
+.conversation-hint {
+  @apply w-60 text-left px-2 text-base text-accent py-3 bg-secondary rounded-md;
+}
 /* CSS class to reset basic input styles */
 .clear-input {
   /* Reset padding and margin */

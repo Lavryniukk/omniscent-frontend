@@ -17,7 +17,8 @@ const useDiscoverChat = create<DiscoverChatActions & DiscoverChatState>(
   (set, get) => ({
     chat: [],
     userInputData: "",
-    assistantData: "Yes yes yes",
+    assistantData:
+      "wadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadw",
     setInputData: (newInputData) => set({ userInputData: newInputData }),
     pushMessage: ({ role, content }: { role: roleType; content: string }) => {
       const newMessage = { role: role, content: content };

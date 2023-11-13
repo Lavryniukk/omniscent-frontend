@@ -48,9 +48,9 @@ export default function DiscoverInput() {
   };
 
   return (
-    <div className="w-full absolute bottom-0 z-10 py-4 bg-background">
+    <div className="w-full absolute bottom-0 z-10 p-3 bg-background">
       <form
-        className="w-11/12 box-border h-fit bg-secondary rounded-xl flex items-center overflow-visible mx-auto relative"
+        className="w-full box-border h-fit bg-secondary rounded-xl flex items-center overflow-visible mx-auto relative"
         onSubmit={(e) => handleSubmit(e)}
       >
         <textarea
