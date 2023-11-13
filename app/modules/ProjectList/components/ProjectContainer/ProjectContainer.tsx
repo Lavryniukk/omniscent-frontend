@@ -53,7 +53,7 @@ export default function ProjectContainer({ roadmap }: { roadmap: Roadmap }) {
     <>
       <Link
         href={url}
-        className={`py-5 border block border-secondary rounded-lg text-lg text-center text-accent px-3 relative ${
+        className={`py-5 border block border-secondary rounded-lg text-base text-center text-accent px-7 relative ${
           isOpen ? "pointer-events-none" : "pointer-events-auto"
         }`}
       >
