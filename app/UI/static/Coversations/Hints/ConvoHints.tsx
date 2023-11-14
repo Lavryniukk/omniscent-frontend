@@ -20,7 +20,7 @@ export default function Hints() {
         If anything strange occurs, you can always tell us!
       </div>
       <div
-        className={`border-y h-14 px-2 space-y-4 border-accent transition-all duration-200 py-2 bg-secondary-950 h-${
+        className={`border-y px-2 space-y-4 border-accent transition-all duration-200 py-2 bg-secondary-950 h-${
           isOpen ? "60" : "14"
         } overflow-hidden`}
       >

@@ -1,3 +1,4 @@
+import Node from "@/app/shared/entities/Node";
 import SubroadmapInterface from "@/app/shared/entities/Subroadmap";
 import Link from "next/link";
 
@@ -5,16 +6,20 @@ export default function RoadmapNode({
   current,
   tech,
   isLast,
+  roadmap_id,
+  subroadmap_title,
 }: {
   current: boolean;
-  tech: { title: string; isCompleted: boolean };
+  tech: Node;
   isLast: boolean;
+  roadmap_id: string;
+  subroadmap_title: string;
 }) {
-  console.log(tech);
+  console.log(subroadmap_title, roadmap_id);
   return (
     <li className="w-full flex items-center  justify-center flex-col min-w-[200px]">
       <Link
-        href={`/workspace/roadmap/`}
+        href={`/workspace/conversation/${roadmap_id}/${subroadmap_title}/${tech.conversation_id}/${tech.title}`}
         className={`roadmap__node ${
           tech.isCompleted && "roadmap__node--complete"
         } ${current && "roadmap__node--current"}
