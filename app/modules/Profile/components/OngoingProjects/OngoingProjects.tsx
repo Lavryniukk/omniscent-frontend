@@ -143,7 +143,7 @@ export default function OngoingProjects() {
           </div>
         )
       ) : (
-        <div className="h-fit grid grid-cols-1 lg:grid-cols-2 p-1 gap-4">
+        <div className="h-fit grid grid-cols-1 lg:grid-cols-2 p-4 gap-4">
           <div className="w-full p-6 border border-secondary rounded">
             <Skeleton width="75%" height="24px" rounded="0.4vw" />
           </div>

@@ -15,7 +15,7 @@ export default function Bio() {
         rows={3}
         onChange={(e) => setInputData(e.target.value, "bioInputData")}
         value={bioInputData ? bioInputData : ""}
-        className="w-full p-2 rounded min-h-[50px] border border-secondary text-lg sm:text-base h-fit max-h-[150px] bg-background text-text"
+        className="p-2 rounded min-h-[50px] border w-3/4 sm:w-full border-secondary text-lg sm:text-base h-fit max-h-[150px] bg-background text-text"
         placeholder="Tell us your story"
       />
     </div>

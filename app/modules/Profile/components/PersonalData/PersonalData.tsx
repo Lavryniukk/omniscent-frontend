@@ -37,7 +37,7 @@ export default function PersonalData() {
             type={"text"}
             value={nameInputData ? nameInputData : ""}
             onChange={(e) => setInputData(e.target.value, "nameInputData")}
-            className="mt-2 bg-background border border-secondary text-base rounded w-full outline-none text-text block p-2"
+            className="mt-2 bg-background border border-secondary text-base rounded w-3/4 sm:w-full outline-none text-text block p-2"
           />
           <input
             required
