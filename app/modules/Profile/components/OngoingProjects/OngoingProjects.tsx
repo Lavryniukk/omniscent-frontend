@@ -95,14 +95,14 @@ export default function OngoingProjects() {
 
       {!isLoading ? (
         data && data.length > 0 ? (
-          <div className="h-fit grid grid-cols-1 lg:grid-cols-2 p-1 gap-4">
+          <div className="h-fit grid grid-cols-1 lg:grid-cols-2 p-4 gap-4">
             {data.map((item, index, array) => {
               if (index !== array.length - 1) {
                 return (
                   <Link
                     href={"/"}
                     key={item._id}
-                    className="border rounded border-accent p-6"
+                    className="border rounded border-accent p-4"
                   >
                     <div className="text-accent text-2xl text-center">
                       {item.title}
@@ -114,7 +114,7 @@ export default function OngoingProjects() {
                   <Fragment key={item._id}>
                     <Link
                       href={"/"}
-                      className="border rounded border-accent p-6 hover:border-accent-300 transition duration-200"
+                      className="border rounded border-accent p-4 hover:border-accent-300 transition duration-200"
                     >
                       <div className="text-accent text-2xl text-center">
                         {item.title}
@@ -122,7 +122,7 @@ export default function OngoingProjects() {
                     </Link>
                     <Link
                       href={"/create"}
-                      className="border rounded bg-text text-background p-6 hover:bg-background hover:text-text transition duration-300"
+                      className="border border-accent rounded bg-secondary-900 text-accent p-4 hover:bg-background hover:text-text transition duration-300"
                     >
                       <div className="text-inherit text-2xl text-center font-medium">
                         Create new
@@ -145,22 +145,22 @@ export default function OngoingProjects() {
       ) : (
         <div className="h-fit grid grid-cols-1 lg:grid-cols-2 p-1 gap-4">
           <div className="w-full p-6 border border-secondary rounded">
-            <Skeleton width="75%" height="24px" rounded="16px" />
+            <Skeleton width="75%" height="24px" rounded="0.4vw" />
           </div>
           <div className="w-full p-6 border border-secondary rounded">
-            <Skeleton width="75%" height="24px" rounded="16px" />
+            <Skeleton width="75%" height="24px" rounded="0.4vw" />
           </div>
           <div className="w-full p-6 border border-secondary rounded">
-            <Skeleton width="75%" height="24px" rounded="16px" />
+            <Skeleton width="75%" height="24px" rounded="0.4vw" />
           </div>
           <div className="w-full p-6 border border-secondary rounded">
-            <Skeleton width="75%" height="24px" rounded="16px" />
+            <Skeleton width="75%" height="24px" rounded="0.4vw" />
           </div>
           <div className="w-full p-6 border border-secondary rounded">
-            <Skeleton width="75%" height="24px" rounded="16px" />
+            <Skeleton width="75%" height="24px" rounded="0.4vw" />
           </div>
           <div className="w-full p-6 border border-secondary rounded">
-            <Skeleton width="75%" height="24px" rounded="16px" />
+            <Skeleton width="75%" height="24px" rounded="0.4vw" />
           </div>
         </div>
       )}

@@ -60,7 +60,7 @@ const useProfileStorage = create<profilePageStates & profilePageActions>(
 
       setUserData(data.name, "userDataName");
       setUserData(data.nickname, "userDataNickname");
-      setUserData(data.bio, "userDataBio");
+      setUserData(data.user_metadata.bio.bio, "userDataBio");
 
       return data ? true : false;
     },
