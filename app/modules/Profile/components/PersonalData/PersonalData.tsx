@@ -33,14 +33,16 @@ export default function PersonalData() {
       ) : (
         <>
           <input
+            required
             type={"text"}
-            value={nameInputData as string}
+            value={nameInputData ? nameInputData : ""}
             onChange={(e) => setInputData(e.target.value, "nameInputData")}
             className="mt-2 bg-background border border-secondary text-base rounded w-full outline-none text-text block p-2"
           />
           <input
+            required
             type={"text"}
-            value={nicknameInputData as string}
+            value={nicknameInputData ? nicknameInputData : ""}
             onChange={(e) => setInputData(e.target.value, "nicknameInputData")}
             className="mt-2 bg-background border border-secondary rounded max-w-[calc(300px-8rem)] w-full outline-none text-text block p-2 text-sm"
           />
