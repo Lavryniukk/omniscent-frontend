@@ -4,29 +4,31 @@ import Link from "next/link";
 import SubroadmapInterface from "@/app/shared/entities/Subroadmap";
 import SubroadmapNode from "./components/SubroadmapNode";
 import fetchSubroadmap from "../api/fetchSubroadmap";
+import Node from "@/app/shared/entities/Node";
 
 export default function Roadmap({ id, title }: { id: string; title: string }) {
   const { data, error } = useQuery(
     ["roadmap"],
     async () => await fetchSubroadmap(id, title)
   );
-  console.log(data);
+  console.log(id, title);
   return (
     <div className="w-fit mx-auto">
       <ul className="text-text mx-auto w-fit py-20 h-fit flex items-center justify-center flex-col ">
         {!error && data ? (
           data.node_list.map(
             (
-              tech: { title: string; isCompleted: boolean },
+              tech: Node,
+
               index: number,
-              array: { title: string; isCompleted: boolean }[]
+              array: Node[]
             ) => {
               let current;
               let isLast: boolean = false;
               if (array[array.length - 1] == tech) {
-                console.log("found last:", tech);
                 isLast = true;
               }
+              console.log(tech);
               const prevTech = array[index - 1];
 
               if (index === 0 && !tech.isCompleted) {
@@ -42,6 +44,8 @@ export default function Roadmap({ id, title }: { id: string; title: string }) {
                   current={current}
                   tech={tech}
                   isLast={isLast}
+                  roadmap_id={id}
+                  subroadmap_title={title}
                 />
               );
             }
