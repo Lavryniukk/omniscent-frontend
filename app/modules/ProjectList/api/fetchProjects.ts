@@ -9,7 +9,7 @@ export let fetchProjects = async (): Promise<
 > => {
   try {
     const { accessToken } = await getAccessToken();
-
+    console.log(accessToken);
     const response = await axios({
       method: "GET",
       url: `${process.env.SERVER_URL}/api/users/me/roadmaps`,
