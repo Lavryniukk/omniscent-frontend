@@ -15,7 +15,6 @@ export default function RoadmapNode({
   roadmap_id: string;
   subroadmap_title: string;
 }) {
-  console.log(subroadmap_title, roadmap_id);
   return (
     <li className="w-full flex items-center  justify-center flex-col min-w-[200px]">
       <Link

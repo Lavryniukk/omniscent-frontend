@@ -1,12 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { BiSolidSend } from "react-icons/bi";
 import useDiscoverChat from "../../storage/DiscoverChatStorage";
 
 export default function DiscoverInput() {
-  const { userInputData, setInputData, sendData } = useDiscoverChat();
-  const [isDisabled, setisDisabled] = useState<boolean>(true);
+  const { userInputData, setInputData, locked, setLocked } = useDiscoverChat();
 
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
@@ -23,16 +22,16 @@ export default function DiscoverInput() {
 
   useEffect(() => {
     if (userInputData) {
-      setisDisabled(false);
+      setLocked(false);
     } else {
-      setisDisabled(true);
+      setLocked(true);
     }
-  }, [userInputData]);
+  }, [userInputData, setLocked]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (isDisabled) {
+    if (locked) {
       return;
     }
     const textarea = textareaRef.current;
@@ -43,8 +42,6 @@ export default function DiscoverInput() {
 
       textarea.value = "";
     }
-
-    sendData();
   };
 
   return (
@@ -62,13 +59,13 @@ export default function DiscoverInput() {
         />
         <button
           className={`p-2 absolute ${
-            isDisabled ? "bg-secondary cursor-default" : "bg-accent"
+            locked ? "bg-secondary cursor-default" : "bg-accent"
           } rounded-lg h-fit flex justify-center items-center right-4 bottom-4  `}
           type="submit"
         >
           <BiSolidSend
             className={`w-[24px] h-[24px] ${
-              isDisabled ? "text-accent" : "text-secondary"
+              locked ? "text-accent" : "text-secondary"
             }`}
           />
         </button>
