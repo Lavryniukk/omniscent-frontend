@@ -17,7 +17,7 @@ export default function DiscoverChat({
   const { data, isLoading, error } = useQuery(["conversation"], async () => {
     return getChatData(conversation_id);
   });
-  console.log(data);
+  console.log(error);
   const messages = chat?.messages as ConversationMessage[];
   return (
     <div className="mx-auto border container min-h-[80vh] max-h-[950px] h-full border-accent rounded-2xl max-w-[1200px] relative overflow-hidden pt-[5vh]">
