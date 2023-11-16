@@ -14,7 +14,11 @@ interface ConversationPageProps {
 const Chat = ({ params }: ConversationPageProps) => {
   return (
     <div className="select-none  overflow-x-hidden gap-5 flex lg:flex-row flex-col overflow-y-auto px-1 md:px-10 bg-transparent mx-auto box-border max-w-10xl w-full my-20 h-fit">
-      <DiscoverChat conversation_id={params.conversation_id} />
+      <DiscoverChat
+        roadmap_id={params.roadmap_id}
+        conversation_id={params.conversation_id}
+        tech_title={params.tech_title}
+      />
       <Hints />
     </div>
   );

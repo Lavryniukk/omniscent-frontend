@@ -3,7 +3,7 @@ import Subroadmap from "./Subroadmap";
 export default interface RoadmapInterface {
   title: string;
   _id: string;
-  node_list: Subroadmap[];
+  sub_roadmap_list: Subroadmap[];
   owner_id: string;
   isCompleted: boolean;
   created_at: Date;

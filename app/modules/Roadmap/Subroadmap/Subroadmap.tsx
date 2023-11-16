@@ -11,7 +11,6 @@ export default function Roadmap({ id, title }: { id: string; title: string }) {
     ["roadmap"],
     async () => await fetchSubroadmap(id, title)
   );
-  console.log(id, title);
   return (
     <div className="w-fit mx-auto">
       <ul className="text-text mx-auto w-fit py-20 h-fit flex items-center justify-center flex-col ">
