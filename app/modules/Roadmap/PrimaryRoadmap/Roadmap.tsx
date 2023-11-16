@@ -13,7 +13,7 @@ export default function Roadmap({ id }: { id: string }) {
     <div className="w-fit mx-auto">
       <ul className="text-text mx-auto w-fit py-20 h-fit flex items-center justify-center flex-col ">
         {!error && data ? (
-          data.node_list.map(
+          data.sub_roadmap_list.map(
             (
               tech: SubroadmapInterface,
               index: number,

@@ -40,6 +40,7 @@ const useDiscoverChat = create<DiscoverChatActions & DiscoverChatState>(
       set({ conversation: chat });
       const newChat = get().conversation;
       set({ locked: newChat?.messages.length ? false : true });
+
       return chat;
     },
     initConversation: () => {},

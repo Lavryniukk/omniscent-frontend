@@ -16,7 +16,7 @@ export default async function fetchSubroadmap(id: string, title: string) {
     },
   });
   const roadmap = (await response.data) as RoadmapInterface;
-  return roadmap.node_list.find(
+  return roadmap.sub_roadmap_list.find(
     (subroadmap) => subroadmap.title === title
   ) as SubroadmapInterface;
 }

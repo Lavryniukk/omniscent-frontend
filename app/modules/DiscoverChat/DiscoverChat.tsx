@@ -1,4 +1,3 @@
-"use client";
 import ConversationMessage from "@/app/shared/entities/ConversationMessage";
 import DiscoverInput from "./components/DiscoverInput/DiscoverInput";
 import useDiscoverChat from "./storage/DiscoverChatStorage";
@@ -8,9 +7,13 @@ import Messages from "./components/Messages/Messages";
 import InitConversationButton from "./components/InitConversationButton/InitConversationButton";
 interface CoversationChatProps {
   conversation_id: string;
+  roadmap_id: string;
+  tech_title: string;
 }
 export default function DiscoverChat({
   conversation_id,
+  roadmap_id,
+  tech_title,
 }: CoversationChatProps) {
   const { conversation, getChatData } = useDiscoverChat();
 
@@ -30,6 +33,8 @@ export default function DiscoverChat({
       />
       {!messages?.length && (
         <InitConversationButton
+          node_title={tech_title}
+          user_roadmap_id={roadmap_id}
           isLoading={isLoading}
           conversation_id={conversation_id}
         />

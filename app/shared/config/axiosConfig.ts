@@ -4,13 +4,11 @@ import { getAccessToken } from "@auth0/nextjs-auth0";
 
 import axios from "axios";
 
-export const axiosWithAuth = axios.create({
-  baseURL: "http://example.com", // Your API base URL
-  // other custom settings
-});
+export const axiosWithAuth = axios.create();
 axiosWithAuth.interceptors.request.use(async (config) => {
   try {
     const { accessToken } = await getAccessToken();
+    console.log(accessToken);
     if (accessToken) {
       config.headers.Authorization = `Bearer ${accessToken}`;
     } else {
