@@ -1,17 +1,17 @@
 import { create } from "zustand";
-import { message, roleType } from "../../prototype/chat/types/message";
 import { getChatData } from "@/app/shared/api/conversations/getChatData";
 import Conversation from "@/app/shared/entities/Conversation";
+import ConversationMessage from "@/app/shared/entities/ConversationMessage";
 interface DiscoverChatState {
   userInputData: string;
   assistantData: string;
-  chat: Conversation | null;
+  conversation: Conversation | null;
   locked: boolean;
 }
 
 interface DiscoverChatActions {
   setInputData: (newInputData: string) => void;
-  pushMessage: ({ role, content }: { role: roleType; content: string }) => void;
+  pushMessage: (newMessage: ConversationMessage) => void;
   initConversation: () => void;
   getChatData: (id: string) => Promise<Conversation | undefined>;
   setLocked: (newValue: boolean) => void;
@@ -19,7 +19,7 @@ interface DiscoverChatActions {
 
 const useDiscoverChat = create<DiscoverChatActions & DiscoverChatState>(
   (set, get) => ({
-    chat: null,
+    conversation: null,
     userInputData: "",
     locked: true,
     setLocked(newValue) {
@@ -28,7 +28,7 @@ const useDiscoverChat = create<DiscoverChatActions & DiscoverChatState>(
     assistantData:
       "wadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadw",
     setInputData: (newInputData) => set({ userInputData: newInputData }),
-    pushMessage: ({ role, content }: { role: roleType; content: string }) => {
+    pushMessage: ({ role, content }) => {
       const newMessage = { role: role, content: content };
       // set((state) => ({
       //   chat: [...state.chat, newMessage],
@@ -37,8 +37,8 @@ const useDiscoverChat = create<DiscoverChatActions & DiscoverChatState>(
 
     async getChatData(id) {
       const chat = await getChatData(id);
-      set({ chat: chat });
-      const newChat = get().chat;
+      set({ conversation: chat });
+      const newChat = get().conversation;
       set({ locked: newChat?.messages.length ? false : true });
       return chat;
     },

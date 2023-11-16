@@ -1,14 +1,14 @@
 export default function Message({
-  type,
+  role,
   content,
 }: {
-  type: "user" | "assistant" | "system";
+  role: "user" | "assistant" | "system";
   content: string;
 }) {
   return (
     <div
       className={`text-accent text-lg p-4 flex justify-start items-start gap-4 w-full ${
-        type === "user" ? "bg-background" : "bg-secondary"
+        role === "user" ? "bg-background" : "bg-secondary"
       }`}
     >
       <div>
