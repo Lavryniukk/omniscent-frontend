@@ -16,7 +16,7 @@ let Header = () => {
 
   return (
     <>
-      <Popup isOpen={isOpen} />{" "}
+      <Popup isOpen={isOpen} />
       <div
         className={`border-b h-14 flex w-full justify-center items-center backdrop-blur-md fixed top-0 z-10 border-secondary box-border`}
       >
