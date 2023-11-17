@@ -15,7 +15,6 @@ let HomeButton = () => {
     return currentPath;
   };
 
-  console.log(links);
   return (
     <nav className="absolute top-2 left-2 w-fit p-2 rounded bg-secondary">
       <ul>
