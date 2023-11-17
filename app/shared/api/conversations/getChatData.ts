@@ -8,7 +8,7 @@ export const getChatData = async (
   try {
     const response = await axiosWithAuth({
       method: "GET",
-      url: `http://localhost:8000/api/users/me/conversations/${id}`,
+      url: `/users/me/conversations/${id}`,
     });
     return response.data;
   } catch (e) {

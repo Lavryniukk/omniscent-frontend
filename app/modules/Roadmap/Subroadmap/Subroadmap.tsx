@@ -27,7 +27,6 @@ export default function Roadmap({ id, title }: { id: string; title: string }) {
               if (array[array.length - 1] == tech) {
                 isLast = true;
               }
-              console.log(tech);
               const prevTech = array[index - 1];
 
               if (index === 0 && !tech.isCompleted) {

@@ -1,20 +1,15 @@
 "use server";
 
+import { axiosWithAuth } from "@/app/shared/config/axiosConfig";
 import RoadmapInterface from "@/app/shared/entities/Roadmap";
-import { getAccessToken } from "@auth0/nextjs-auth0";
-import axios from "axios";
 
 export let fetchProjects = async (): Promise<
   RoadmapInterface[] | [] | undefined
 > => {
   try {
-    const { accessToken } = await getAccessToken();
-    const response = await axios({
+    const response = await axiosWithAuth({
       method: "GET",
-      url: `${process.env.SERVER_URL}/api/users/me/roadmaps`,
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
+      url: `/users/me/roadmaps`,
     });
 
     return await response.data;

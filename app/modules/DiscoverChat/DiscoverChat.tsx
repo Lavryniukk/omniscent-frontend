@@ -17,7 +17,7 @@ export default function DiscoverChat({
 }: CoversationChatProps) {
   const { conversation, getChatData } = useDiscoverChat();
 
-  const { data, isLoading, error } = useQuery(["conversation"], async () => {
+  const { isLoading, error } = useQuery(["conversation"], async () => {
     return getChatData(conversation_id);
   });
   const messages = conversation?.messages as ConversationMessage[];

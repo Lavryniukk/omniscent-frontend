@@ -1,18 +1,14 @@
 "use server";
-import axios from "axios";
 import { FormState } from "../types/FormProps";
 import { getAccessToken } from "@auth0/nextjs-auth0";
+import { axiosWithAuth } from "@/app/shared/config/axiosConfig";
 
 const sendData = async (data: FormState) => {
-  const { accessToken } = await getAccessToken();
   try {
-    await axios({
-      url: "https://cleverize.onrender.com/api/users/me/roadmaps",
+    await axiosWithAuth({
+      url: "/users/me/roadmaps",
       data: { title: data.inputData },
       method: "POST",
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
     });
   } catch (err) {
     console.log(err);
