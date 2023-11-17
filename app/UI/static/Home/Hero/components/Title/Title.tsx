@@ -1,5 +1,6 @@
-import GetStartedButton from "../GetStartedButton/GetStartedButton";
 import Image from "next/image";
+import PrimaryButton from "@/app/UI/buttons/primaryBtn/primaryBtn";
+import PrimaryBlackButton from "@/app/UI/buttons/PrimaryBlackBtn/PrimaryBlackBtn";
 // Component for rendering the title section
 let Title = () => {
   return (
@@ -25,12 +26,18 @@ let Title = () => {
 
       {/* Description text */}
       <p className="observe transition delay-100 duration-500 text-accent hyphens-auto leading-relaxed mx-auto flex items-center justify-center w-1/2 lg:w-1/3 text-[max(15px,min(2vw,20px))] text-center ">
-        Clverize is online educational platform, that allows You to learn any
+        Cleverize is online educational platform, that allows You to learn any
         digital technology.
       </p>
 
       {/* Get Started Button Component */}
-      <GetStartedButton />
+      <PrimaryButton
+        width="200px"
+        height="50px"
+        text="Get started"
+        href="/"
+        observed
+      />
     </div>
   );
 };
