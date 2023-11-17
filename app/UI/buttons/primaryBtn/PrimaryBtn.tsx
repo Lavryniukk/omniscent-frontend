@@ -11,7 +11,7 @@ type ButtonType = {
   callbackFn?: () => void;
 };
 
-export default function primaryBlackBtn({
+export default function PrimaryBtn({
   text,
   observed = false,
   width,

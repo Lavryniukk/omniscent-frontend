@@ -8,7 +8,7 @@ let Features = () => {
         What do you obtain?
       </h2>
       <p className="text-lg text-accent w-3/4 md:w-1/2 lg:w-1/3 text-center observe transition-all duration-500">
-        Clverize is online educational platform, that allows You to learn any
+        Cleverize is online educational platform, that allows You to learn any
         digital technology.
       </p>
       <CardSection /> {/* Render the CardSection component */}
