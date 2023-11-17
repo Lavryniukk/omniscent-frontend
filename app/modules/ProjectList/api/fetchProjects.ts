@@ -1,12 +1,14 @@
 "use server";
 
 import { axiosWithAuth } from "@/app/shared/config/axiosConfig";
+import { axiosWithAuth } from "@/app/shared/config/axiosConfig";
 import RoadmapInterface from "@/app/shared/entities/Roadmap";
 
 export let fetchProjects = async (): Promise<
   RoadmapInterface[] | [] | undefined
 > => {
   try {
+    const response = await axiosWithAuth({
     const response = await axiosWithAuth({
       method: "GET",
       url: `/users/me/roadmaps`,
