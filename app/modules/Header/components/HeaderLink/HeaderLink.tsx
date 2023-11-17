@@ -17,7 +17,6 @@ let HeaderLink = ({ url, name }: Props) => {
     } else {
       setIsActive(false);
     }
-    console.log("render");
   }, [path, name]);
 
   return (

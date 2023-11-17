@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { getChatData } from "@/app/shared/api/conversations/getChatData";
 import Conversation from "@/app/shared/entities/Conversation";
 import ConversationMessage from "@/app/shared/entities/ConversationMessage";
+import initConversation from "../helpers/initConversationById";
 interface DiscoverChatState {
   userInputData: string;
   assistantData: string;
@@ -11,10 +12,15 @@ interface DiscoverChatState {
 
 interface DiscoverChatActions {
   setInputData: (newInputData: string) => void;
-  pushMessage: (newMessage: ConversationMessage) => void;
-  initConversation: () => void;
+  addUserMessage: (newMessage: ConversationMessage) => void;
+  initConversation: (
+    conversation_id: string,
+    user_roadmap_id: string,
+    node_title: string
+  ) => void;
   getChatData: (id: string) => Promise<Conversation | undefined>;
   setLocked: (newValue: boolean) => void;
+  updateLastAssistantMessage: (newValue: string) => void;
 }
 
 const useDiscoverChat = create<DiscoverChatActions & DiscoverChatState>(
@@ -25,14 +31,27 @@ const useDiscoverChat = create<DiscoverChatActions & DiscoverChatState>(
     setLocked(newValue) {
       set({ locked: newValue });
     },
-    assistantData:
-      "wadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadwwadfawdawdadw",
+    assistantData: "g",
     setInputData: (newInputData) => set({ userInputData: newInputData }),
-    pushMessage: ({ role, content }) => {
-      const newMessage = { role: role, content: content };
-      // set((state) => ({
-      //   chat: [...state.chat, newMessage],
-      // }));
+    addUserMessage(content) {
+      const conversation = get().conversation;
+    },
+    updateLastAssistantMessage(newValue) {
+      let conversation = get().conversation;
+      const lastMessage = conversation?.messages.pop();
+      if (lastMessage?.role === "assistant") {
+        conversation?.messages.push({
+          role: "assistant",
+          content: newValue,
+        });
+      } else {
+        conversation?.messages.push(lastMessage as ConversationMessage);
+        conversation?.messages.push({
+          role: "assistant",
+          content: newValue,
+        });
+      }
+      set({ conversation: conversation });
     },
 
     async getChatData(id) {
@@ -43,7 +62,9 @@ const useDiscoverChat = create<DiscoverChatActions & DiscoverChatState>(
 
       return chat;
     },
-    initConversation: () => {},
+    initConversation: async (conversation_id, user_roadmap_id, node_title) => {
+      await initConversation(conversation_id, user_roadmap_id, node_title);
+    },
   })
 );
 

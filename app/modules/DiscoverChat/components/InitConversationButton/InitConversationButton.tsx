@@ -1,4 +1,5 @@
-import initConversation from "../../helpers/formRoadmapByConversationId";
+import initConversation from "../../helpers/initConversationById";
+import useDiscoverChat from "../../storage/DiscoverChatStorage";
 interface InitConversationButtonProps {
   isLoading: boolean;
   conversation_id: string;
@@ -12,6 +13,7 @@ export default function InitConversationButton({
   user_roadmap_id,
   node_title,
 }: InitConversationButtonProps) {
+  const initConversation = useDiscoverChat((state) => state.initConversation);
   return (
     !isLoading && (
       <button

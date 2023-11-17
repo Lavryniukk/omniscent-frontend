@@ -8,6 +8,8 @@ import axios from "axios";
 
 export default async function fetchSubroadmap(id: string, title: string) {
   const token = await getAccessToken();
+  title = title.replaceAll("%20", " ");
+
   let response = await axios({
     method: "GET",
     url: `${process.env.SERVER_URL}/api/users/me/roadmaps/${id}`,
