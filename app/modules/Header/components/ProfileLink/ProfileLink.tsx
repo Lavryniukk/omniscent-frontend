@@ -7,7 +7,6 @@ import Skeleton from "@/app/UI/loading/Skeleton/Skeleton";
 let ProfileLink = () => {
   let { user, isLoading } = useUser(); // Use the useUser hook to retrieve user information.
   let pic = user?.picture ?? ""; // Extract the user's profile picture URL.
-  console.log(user);
 
   return isLoading ? (
     <Skeleton width={"80px"} height={"32px"} rounded={"10px"} />

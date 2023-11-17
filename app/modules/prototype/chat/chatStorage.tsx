@@ -46,11 +46,9 @@ const useChatStore = create<StoreState & StorageActions>((set, get) => ({
   },
   addMessage: (role, message) => {
     let newMessage = { role: role, content: message };
-    console.log(get().chat);
     set((state) => ({
       chat: [...state.chat, newMessage], // Add a new message to the chat.
     }));
-    console.log(get().chat);
   },
   sendData: async () => {
     const clearAssistantData = get().clearAssistantData;

@@ -56,8 +56,6 @@ const useProfileStorage = create<profilePageStates & profilePageActions>(
 
       const data = await fetchUserData();
 
-      console.log(data);
-
       setUserData(data.name, "userDataName");
       setUserData(data.nickname, "userDataNickname");
       setUserData(data.user_metadata.bio.bio, "userDataBio");
