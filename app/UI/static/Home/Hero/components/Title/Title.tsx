@@ -1,7 +1,5 @@
+import PrimaryBtn from "@/app/UI/buttons/primaryBtn/PrimaryBtn";
 import Image from "next/image";
-import PrimaryButton from "@/app/UI/buttons/primaryBtn/primaryBtn";
-import PrimaryBlackButton from "@/app/UI/buttons/PrimaryBlackBtn/PrimaryBlackBtn";
-// Component for rendering the title section
 let Title = () => {
   return (
     <div className=" overflow-visible overflow-x-clip py-10 items-center relative flex-col gap-7 flex max-w-10xl mx-auto">
@@ -31,7 +29,7 @@ let Title = () => {
       </p>
 
       {/* Get Started Button Component */}
-      <PrimaryButton
+      <PrimaryBtn
         width="200px"
         height="50px"
         text="Get started"
