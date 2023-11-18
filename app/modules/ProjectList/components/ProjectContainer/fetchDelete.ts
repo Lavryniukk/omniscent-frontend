@@ -1,18 +1,12 @@
 "use server";
 
-import { getAccessToken } from "@auth0/nextjs-auth0";
-import axios from "axios";
+import { axiosWithAuth } from "@/app/shared/config/axiosConfig";
 
 const fetchDelete = async (roadmapId: string) => {
   try {
-    const token = await getAccessToken();
-
-    await axios({
+    await axiosWithAuth({
       method: "DELETE",
-      url: `${process.env.SERVER_URL}/api/users/me/roadmaps/:${roadmapId}`,
-      headers: {
-        Authorization: `Bearer ${token.accessToken}`,
-      },
+      url: `/users/me/roadmaps/:${roadmapId}`,
     });
   } catch (e) {
     console.log(e);

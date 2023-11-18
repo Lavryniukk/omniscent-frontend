@@ -12,7 +12,7 @@ let ReviewCard: React.FC<ReviewCardProps> = ({
 }) => {
   return (
     <div
-      className={`lg:w-1/3 md:w-full max-h-54 border ${className} border-secondary-600 text-text p-5 rounded-lg space-y-5`}
+      className={`lg:w-1/3 md:w-full max-h-54  ${className}  text-text p-5 rounded-lg space-y-5`}
     >
       <div className="flex justify-between items-center">
         <div>

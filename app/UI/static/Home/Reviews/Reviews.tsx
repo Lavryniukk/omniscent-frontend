@@ -7,7 +7,7 @@ let Reviews = () => {
         <h2 className="text-center text-text observe duration-500 transition text-4xl font-medium font">
           Reviews
         </h2>
-        <div className="max-w-[1200px] w-full sm:w-3/4 md:w-1/2 lg:w-full mx-auto gap-2 flex lg:flex-row flex-col">
+        <div className="max-w-[1200px] w-full space-y-2 lg:space-x-2 sm:w-3/4 md:w-1/2 lg:w-full mx-auto gap-2 flex lg:flex-row flex-col">
           <ReviewCard
             rating={5}
             name={"Masha"}
@@ -16,6 +16,7 @@ let Reviews = () => {
             imageUrl={"/images/masha.png"}
             className="observe duration-500 delay-0 transition"
           />
+          <div className="lg:w-0.5 lg:h-auto w-full h-0.5  bg-secondary block " />
           <ReviewCard
             rating={5}
             name={"Jordan"}
@@ -24,6 +25,7 @@ let Reviews = () => {
             content={`I'm genuinely impressed with the depth and breadth of content available. It's opened up a world of exploration for me, and I've delved into topics I didn't even realize I was curious about.`}
             className="observe duration-500 delay-75 transition"
           />
+          <div className="lg:w-0.5 lg:h-auto w-full h-0.5  bg-secondary block " />
           <ReviewCard
             rating={4}
             name={"Aisha"}
