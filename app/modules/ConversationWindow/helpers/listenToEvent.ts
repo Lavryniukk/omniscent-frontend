@@ -1,15 +1,17 @@
+"use client";
+
 import EventSource from "eventsource";
-import useChatStore from "../../prototype/chat/chatStorage";
 export default function listenForUpdates(
   conversationId: string,
-  token: string
+  token: string,
+  callback: (value: string) => void
 ) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const updateLastAssistantMessage = useChatStore(
-    (state) => state.updateAssistantData
-  );
+
+  const url = process.env.SERVER_URL ?? "http://localhost:8000";
+
   const eventSource = new EventSource(
-    `${process.env.SERVER_URL}/api/users/me/conversations/${conversationId}/stream`,
+    `${url}/api/users/me/conversations/${conversationId}/stream`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -18,12 +20,17 @@ export default function listenForUpdates(
   );
 
   eventSource.onmessage = (event) => {
-    updateLastAssistantMessage(event.data);
     console.log("New update:", event.data);
+
+    callback(event.data);
   };
   eventSource.onerror = (error) => {
     eventSource.close();
+    console.log("event closed");
 
-    console.error("EventSource error:", error);
+    console.error(
+      `Event source listener failed on ${process.env.SERVER_URL}/api/users/me/conversations/${conversationId}/stream`,
+      error
+    );
   };
 }

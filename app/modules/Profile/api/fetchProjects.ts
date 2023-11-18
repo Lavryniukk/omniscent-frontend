@@ -10,6 +10,6 @@ export let fetchProjects = async (): Promise<Project[] | [] | undefined> => {
     });
     return response.data;
   } catch (e) {
-    console.log("Error", e);
+    console.log("Error with GET /users/me/roadmaps", e);
   }
 };

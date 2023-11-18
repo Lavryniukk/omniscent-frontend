@@ -2,7 +2,7 @@
 import { axiosWithAuth } from "../../config/axiosConfig";
 import Conversation from "../../entities/Conversation";
 
-export const getChatData = async (
+export const getConversationData = async (
   id: string
 ): Promise<Conversation | undefined> => {
   try {
@@ -10,8 +10,10 @@ export const getChatData = async (
       method: "GET",
       url: `/users/me/conversations/${id}`,
     });
-    return response.data;
+    if ((response.status = 200)) {
+      return response.data as Conversation;
+    }
   } catch (e) {
-    console.log(e);
+    console.log(`Error with GET /users/me/conversations/${id}`, e);
   }
 };

@@ -1,3 +1,4 @@
+"use client";
 import Skeleton from "@/app/UI/loading/Skeleton/Skeleton";
 import { useQuery } from "@tanstack/react-query";
 import Achivements from "./components/Achivements/Achivements";
@@ -6,13 +7,11 @@ import OngoingProjects from "./components/OngoingProjects/OngoingProjects";
 import PersonalData from "./components/PersonalData/PersonalData";
 import ProfileButtons from "./components/ProfileButtons/ProfileButtons";
 import useProfileStorage from "./storage/ProfileStorage";
-
-export default function ProfilePage() {
+export default function ProfilePage({ id }: { id: string }) {
   const { fetchData, setisEditMode, sendData } = useProfileStorage();
-
   const { isLoading } = useQuery({
     queryKey: ["profileData"],
-    queryFn: async () => fetchData(),
+    queryFn: async () => fetchData(id),
   });
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {

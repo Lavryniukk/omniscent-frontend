@@ -50,7 +50,7 @@ export default function RootLayout({
       <body>
         <QueryClientProvider client={client}>
           <UserProvider>
-            <HomeButton /> {/* Render the HomeButton component. */}
+            {/* <HomeButton /> Render the HomeButton component. */}
             {children} {/* Render the children components passed as props. */}
           </UserProvider>
         </QueryClientProvider>
