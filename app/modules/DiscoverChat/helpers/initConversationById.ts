@@ -7,8 +7,6 @@ export default async function initConversation(
   user_roadmap_id: string,
   node_title: string
 ) {
-  console.log("this", process.env.SERVER_URL);
-
   node_title = node_title.replaceAll("%20", " ");
   const { accessToken } = await getAccessToken();
   try {
