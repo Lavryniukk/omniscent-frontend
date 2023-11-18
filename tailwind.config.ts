@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from "tailwindcss/defaultTheme";
 import colors from "tailwindcss/colors";
-console.log("yesyesy");
-let hello = "fsf";
+
 const config: Config = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -10,7 +10,21 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      keyframes: {
+        skeleton: {
+          "0%": {
+            backgroundColor: "#262626",
+            transform: "translateX(-100%)",
+          },
+          "50%": { backgroundColor: "#404040", transform: "translateX(25%)" },
+          "100%": {
+            backgroundColor: "#262626",
+            transform: "translateX(100%)",
+          },
+        },
+      },
       animation: {
+        skeleton: "skeleton 1.5s linear infinite",
         "spin-slow": "spin 10s linear infinite",
       },
       width: {
@@ -28,11 +42,11 @@ const config: Config = {
         lg: "340px",
       },
       colors: {
-        primary: { ...colors.fuchsia, DEFAULT: colors.fuchsia[900] },
+        primary: { ...colors.emerald, DEFAULT: colors.emerald[900] },
         secondary: { ...colors.neutral, DEFAULT: colors.neutral[800] },
-        accent: { ...colors.neutral, DEFAULT: colors.neutral[400] },
-        text: { ...colors.neutral, DEFAULT: colors.neutral[200] },
-        background: "rgb(0,0,0)",
+        accent: { ...colors.neutral, DEFAULT: colors.neutral[300] },
+        text: { ...colors.neutral, DEFAULT: colors.neutral[100] },
+        background: "rgb(5,5,5)",
       },
       fontFamily: {
         inter: "var(--inter-font)",
@@ -45,6 +59,10 @@ const config: Config = {
         kauch: "url('/images/nikolauchuk.jpg')",
         kros: "url('/images/legend.png')",
       },
+    },
+    screens: {
+      xs: "464px",
+      ...defaultTheme.screens,
     },
   },
   plugins: [],

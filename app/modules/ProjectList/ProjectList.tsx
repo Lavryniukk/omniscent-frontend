@@ -1,19 +1,39 @@
 "use client";
-import ProjectsList from "./components/ProjectsList/ProjectsList";
-// import { AiOutlineQuestion } from "react-icons/ai";
+import { useQuery } from "@tanstack/react-query";
 import ProjectsNotFound from "./components/ProjectsNotFound/ProjectsNotFound";
+import { fetchProjects } from "./api/fetchProjects";
+import FetchedRoadmaps from "./components/FetchedRoadmaps/FetchedRoadmaps";
+import UserRoadmapsLoading from "./components/UserRoadmapsLoading/UserRoadmapsLoading";
+import ErrorAlert from "@/app/UI/alerts/ErrorAlert/ErrorAlert";
 
 // Initialize an array 'arr' containing an example project.
-let arr: Array<any> = [{ title: "Node.js", _id: "1" }];
 
 export default function UserProjects() {
+  const { data, isLoading, error } = useQuery({
+    queryKey: ["userProjects"],
+    queryFn: async () => await fetchProjects(),
+  });
+
   return (
     <div className="mx-auto w-1/3 max-w-[600px] min-w-[500px] px-5 py-16 font-inter h-fit border-2 border-secondary rounded-2xl">
-      <h1 className="text-4xl text-center font-bold mx-auto text-text tracking-tight font-inter">
+      <h1 className="text-4xl text-center font-bold mx-auto text-text trancking-tight font-inter">
         Your learning projects
       </h1>
-      {arr.length !== 0 ? (
-        <ProjectsList projects={arr} /> // Render the ProjectsList component with projects from 'arr'.
+
+      {error ? (
+        <>
+          <button
+            onClick={() => location.reload()}
+            className="text-text bg-background border w-fit mx-auto px-12 py-3 block rounded lg hover:text-background hover:bg-text duration-200 transition-colors"
+          >
+            Retry
+          </button>
+          <ErrorAlert message="An error occurred while loading your projects. Please try again later." />
+        </>
+      ) : isLoading ? (
+        <UserRoadmapsLoading />
+      ) : data?.length ? (
+        <FetchedRoadmaps roadmaps={data} />
       ) : (
         <ProjectsNotFound /> // Render the ProjectsNotFound component if 'arr' is empty.
       )}
