@@ -1,4 +1,4 @@
-import useChatStore from "@/app/shared/storages/chatStorage";
+import useChatStore from "@/app/modules/prototype/chat/chatStorage";
 
 let ChatInput = () => {
   // Access state and actions from the useChatStore hook.
@@ -12,7 +12,7 @@ let ChatInput = () => {
   };
 
   return (
-    <div className="w-3/4 max-w-[500px] fixed bottom-[8%] h-10 select-none border backdrop-blur-md flex items-center overflow-hidden border-accent outline-none rounded-lg">
+    <div className="w-3/4 max-w-[500px] absolute bottom-[8%] h-10 select-none border backdrop-blur-md flex items-center overflow-hidden border-accent outline-none rounded-lg">
       <form
         className="w-full h-full flex items-center"
         onSubmit={(e) => handleSubmit(e)}

@@ -5,12 +5,20 @@
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
-  background-color: var(--secondary);
+  background-color: transparent;
 }
 
+::root {
+  --section-height: `100vh`;
+}
+
+.section {
+  height: var(--section-height);
+}
 ::-webkit-scrollbar-thumb {
-  background-color: var(--accent);
+  background-color: #a1a1a1;
   border-radius: 5px;
 }
 /* styles.css */
@@ -122,9 +130,29 @@ body {
 }
 
 .features-container {
-  @apply w-[20vw] rounded-lg border-[1.5px]  transition-all delay-150 duration-500 sm:min-w-[320px] min-w-[350px] max-w-[450px] border-secondary;
+  @apply sm:w-[20vw] w-full rounded-lg border-[1.5px] transition-all delay-150 duration-500 sm:min-w-[320px] min-w-[350px] sm:max-w-[450px] border-secondary;
 }
 
+.roadmap__node {
+  @apply text-center px-5 w-full cursor-pointer relative hover:text-background hover:bg-text duration-200 transition-colors font-semibold flex items-center justify-center border h-12 bg-background border-accent rounded-lg;
+}
+
+.roadmap__node--complete {
+  @apply opacity-60 bg-secondary hover:bg-background hover:text-accent;
+}
+
+.roadmap__node--current {
+  @apply drop-shadow-[0px_5px_5px_#f5f5f5];
+}
+.chat-output {
+  @apply tracking-normal;
+}
+.roadmap__arrow {
+  @apply block w-0.5 select-none h-20 bg-accent;
+}
+.conversation-hint {
+  @apply w-full text-left px-2 text-base sm:text-lg lg:text-base text-accent-300 py-3 bg-secondary rounded-md;
+}
 /* CSS class to reset basic input styles */
 .clear-input {
   /* Reset padding and margin */
