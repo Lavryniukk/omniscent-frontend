@@ -14,7 +14,7 @@ export default function ProjectContainer({
 }) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [timer, setTimer] = useState<number>(5);
-  const { title, _id, owner_id, node_list } = roadmap;
+  const { title, _id, owner_id, sub_roadmap_list } = roadmap;
 
   const { user, isLoading } = useUser();
 
