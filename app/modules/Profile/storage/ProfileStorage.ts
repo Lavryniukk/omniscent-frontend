@@ -3,7 +3,7 @@ import { create } from "zustand";
 import fetchUserData from "../api/fetchUserData";
 import { getAccessToken } from "@auth0/nextjs-auth0";
 import sendUserData from "../api/sendUserData";
-
+import { useUser } from "@auth0/nextjs-auth0/client";
 interface profilePageStates {
   isEditMode: boolean;
 
@@ -29,7 +29,7 @@ interface profilePageActions {
     subject: "nameInputData" | "nicknameInputData" | "bioInputData"
   ) => void;
 
-  fetchData: () => Promise<boolean>;
+  fetchData: (userId: string) => Promise<boolean>;
   sendData: () => void;
 }
 
@@ -51,10 +51,10 @@ const useProfileStorage = create<profilePageStates & profilePageActions>(
 
     setisEditMode: (newValue) => set({ isEditMode: newValue }),
 
-    fetchData: async () => {
+    fetchData: async (userId: string) => {
       const setUserData = get().setUserData;
 
-      const data = await fetchUserData();
+      const data = await fetchUserData(userId);
 
       setUserData(data.name, "userDataName");
       setUserData(data.nickname, "userDataNickname");

@@ -1,12 +1,9 @@
-/* eslint-disable @next/next/no-img-element */
-"use client";
-
 import ProfilePage from "@/app/modules/Profile/Profile";
 
-export default function Profile() {
+export default function Profile({ params }: { params: { id: string } }) {
   return (
     <>
-      <ProfilePage />
+      <ProfilePage id={params.id} />
     </>
   );
 }
