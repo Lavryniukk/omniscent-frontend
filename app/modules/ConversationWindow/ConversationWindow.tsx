@@ -41,7 +41,7 @@ export default function ConversationWindow({
               conversation_id={conversation_id}
             />
           )}
-          <ConversationInput />
+          <ConversationInput conversation_id={conversation_id} />
         </>
       ) : (
         <div className="border-accent border rounded-lg mx-auto text-text h-fit space-y-2 py-2 text-lg text-center mt-20 w-80">

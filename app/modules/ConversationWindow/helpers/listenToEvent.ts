@@ -1,14 +1,12 @@
 "use client";
 
 import EventSource from "eventsource";
-export default function listenForUpdates(
+export default function listenToSse(
   conversationId: string,
   token: string,
   callback: (value: string) => void
 ) {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-
-  const url = process.env.SERVER_URL ?? "http://localhost:8000";
+  const url = process.env.SERVER_URL ?? "https://cleverize.onrender.com:";
 
   const eventSource = new EventSource(
     `${url}/api/users/me/conversations/${conversationId}/stream`,
