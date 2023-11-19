@@ -11,7 +11,6 @@ export let fetchProjects = async (): Promise<
       method: "GET",
       url: `/users/me/roadmaps`,
     });
-
     return await response.data;
   } catch (e) {
     console.log("Error", e);
