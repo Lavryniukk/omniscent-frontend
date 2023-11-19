@@ -13,8 +13,8 @@ export default function ProjectContainer({
   roadmap: RoadmapInterface;
 }) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [timer, setTimer] = useState<number>(5);
-  const { title, _id, owner_id, sub_roadmap_list } = roadmap;
+  const [timer, setTimer] = useState<number>(3);
+  const { title, _id, owner_id } = roadmap;
 
   const { user, isLoading } = useUser();
 
@@ -34,8 +34,16 @@ export default function ProjectContainer({
     setIsOpen((prev) => !prev);
   };
 
+  const handleDelete = async ({ id }: { id: string }) => {
+    setIsOpen(false);
+
+    await fetchDelete(_id);
+
+    location.reload();
+  };
+
   useEffect(() => {
-    setTimer(5); // Assuming you have a state variable [countdown, setCountdown] defined
+    setTimer(3); // Assuming you have a state variable [countdown, setCountdown] defined
     const intervalId = setInterval(() => {
       setTimer((prev) => {
         if (prev <= 1) {
@@ -77,8 +85,8 @@ export default function ProjectContainer({
         <p className="text-accent text-base text-center">{`Are you sure you want to delete '${title}'?`}</p>
 
         <button
-          onClick={async () => await fetchDelete(_id)}
-          className={`block w-1/2 mx-auto rounded p-1 ${
+          onClick={async () => handleDelete({ id: _id })}
+          className={`block w-1/3 mx-auto rounded p-1 ${
             timer
               ? "cursor-default bg-red-900 pointer-events-none"
               : "cursor-pointer bg-red-800 pointer-events-auto hover:opacity-80 duration-300 transition"
