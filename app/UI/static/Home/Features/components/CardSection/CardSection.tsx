@@ -160,16 +160,6 @@ let CardSection = () => {
               and support throughout the learning journey.
             </p>
           </div>
-          {/* Duplicate Feature 4: Personalized Pathways */}
-          <div className="features-container observe h-fit p-6">
-            <p className="text-text-300 text-2xl whitespace-nowrap font-bold tracking-tighter">
-              Personalized Pathways
-            </p>
-            <p className="text-accent-500 font-normal mt-3 text-md tracking-tight">
-              Experience tailor-made learning journeys designed specifically
-              around individual goals and preferred learning styles.
-            </p>
-          </div>
         </div>
       </div>
 
@@ -237,16 +227,7 @@ let CardSection = () => {
               around individual goals and preferred learning styles.
             </p>
           </div>
-          {/* Duplicate Feature 5: Personalized Pathways */}
-          <div className="features-container observe h-fit p-6">
-            <p className="text-text-300 text-2xl whitespace-nowrap font-bold tracking-tighter">
-              Personalized Pathways
-            </p>
-            <p className="text-accent-500 font-normal mt-3 text-md tracking-tight">
-              Experience tailor-made learning journeys designed specifically
-              around individual goals and preferred learning styles.
-            </p>
-          </div>
+
           {/* Feature 6: Access to Artificial Mentor */}
           <div className="features-container observe h-fit p-6">
             <p className="text-text-300 text-2xl whitespace-nowrap font-bold tracking-tighter">
