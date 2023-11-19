@@ -1,10 +1,20 @@
 "use client";
 
-import ProjectContainer from "@/app/modules/ProjectList/components/ProjectContainer/ProjectContainer";
-import ProjectSkeleton from "@/app/UI/loading/ProjectSkeleton/ProjectSkeleton";
+import Skeleton from "@/app/UI/loading/Skeleton/Skeleton";
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import Link from "next/link";
+import { ReactNode, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
+function ProjectContainer({ title }: { title: string | ReactNode }) {
+  return (
+    <Link
+      href={"/"}
+      className="py-5 border block border-secondary rounded-lg text-lg text-center text-accent px-3"
+    >
+      {title}
+    </Link>
+  );
+}
 
 // Create an array of project objects for search.
 let arr = [
@@ -17,7 +27,7 @@ let arr = [
 ];
 
 export default function ProjectSearch() {
-  const [text, setText] = useState("Front-end"); // Initialize state variable for user input text.
+  const [text, setText] = useState(""); // Initialize state variable for user input text.
   const [filteredArray, setFilteredArray] = useState(arr); // Initialize state variable for the filtered array.
 
   const { data, isLoading } = useQuery({
@@ -85,7 +95,7 @@ export default function ProjectSearch() {
                   <ProjectContainer
                     title={highlightText(item.title, text)}
                     key={item._id}
-                  ></ProjectContainer>
+                  />
                 )
             )
           ) : (
@@ -95,15 +105,24 @@ export default function ProjectSearch() {
             </div>
           )
         ) : (
-          <div className="w-full h-fit space-y-3 overflow-hidden mt-10">
-            <ProjectSkeleton />
-            <ProjectSkeleton />
-            <ProjectSkeleton />
-            <ProjectSkeleton />
-            <ProjectSkeleton />
+          <div className="w-full h-fit space-y-3 overflow-hidden">
+            <div className="border border-secondary p-4 rounded min-h-[70px] flex items-center justify-center">
+              <Skeleton width="75%" height="24px" rounded="4px" />
+            </div>
+            <div className="border border-secondary p-4 rounded min-h-[70px] flex items-center justify-center">
+              <Skeleton width="75%" height="24px" rounded="4px" />
+            </div>
+            <div className="border border-secondary p-4 rounded min-h-[70px] flex items-center justify-center">
+              <Skeleton width="75%" height="24px" rounded="4px" />
+            </div>
+            <div className="border border-secondary p-4 rounded min-h-[70px] flex items-center justify-center">
+              <Skeleton width="75%" height="24px" rounded="4px" />
+            </div>
+            <div className="border border-secondary p-4 rounded min-h-[70px] flex items-center justify-center">
+              <Skeleton width="75%" height="24px" rounded="4px" />
+            </div>
           </div>
         )}
-        {}
       </div>
     </div>
   );
