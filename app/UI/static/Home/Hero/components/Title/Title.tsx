@@ -12,10 +12,14 @@ let Title = () => {
           width={80}
           height={80}
         />
-        <div className="absolute border-red-500 rounded-full observe transition duration-500 delay-500 bg-primary aspect-square xl:w-40 lg:w-36 w-32 -z-10 blur-2xl"></div>
+        <div className="absolute rounded-full observe transition duration-500 delay-500 bg-primary aspect-square xl:w-40 lg:w-36 w-32 -z-10 blur-2xl"></div>
       </div>
+      <h2 className="text-xl sm:text-2xl text-text  tracking-widest font-semibold">
+        CLEVERIZE
+      </h2>
+
       <h1
-        className="observe transition border-red-500 duration-500 bg-gradient-to-t from-text w-full md:w-10/12  antialiased px-3 sm:px-5 to-text-500  mx-auto leading-none
+        className="observe transition duration-500 bg-gradient-to-t from-text w-full md:w-10/12  antialiased px-3 sm:px-5 to-text-500  mx-auto leading-none
 				   font-inter  tracking-tight hyphens-none  text-transparent bg-clip-text font-extrabold text-center text-[max(40px,min(8vw,100px))] "
       >
         The AI solution
@@ -34,7 +38,7 @@ let Title = () => {
         text="Get started"
         href="/"
         observed
-        classname="md:w-[200px] w-10/12"
+        classname="w-10/12 xs:w-2/3 md:w-1/3 lg:w-[200px]"
       />
     </div>
   );
