@@ -2,16 +2,18 @@
 
 import { getAccessToken } from "@auth0/nextjs-auth0";
 
-let api = async () => {
-  const { accessToken } = await getAccessToken();
-  let res = await fetch("http://localhost:5000/protected", {
+import axios from "axios";
+import Roadmap from "../../ProjectList/types/Roadmap";
+
+export default async function fetchRoadmap(id: string) {
+  const token = await getAccessToken();
+  let response = await axios({
+    method: "GET",
+    url: `${process.env.SERVER_URL}/api/users/me/roadmaps/${id}`,
     headers: {
-      Authorization: `Bearer ${accessToken}`,
+      Authorization: `Bearer ${token.accessToken}`,
     },
   });
-  let data = await res.json();
-  console.log(data);
-  return data;
-  console.log("Yes", data);
-};
-export default api;
+  const roadmaps = (await response.data) as Roadmap;
+  return roadmaps;
+}
