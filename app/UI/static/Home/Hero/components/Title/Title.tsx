@@ -14,7 +14,7 @@ let Title = () => {
         />
         <div className="absolute rounded-full observe transition duration-500 delay-500 bg-primary aspect-square xl:w-40 lg:w-36 w-32 -z-10 blur-2xl"></div>
       </div>
-      <h2 className="text-xl sm:text-2xl text-text  tracking-widest font-semibold">
+      <h2 className="text-xl sm:text-2xl text-text  tracking-widest font-semibold observe duration-500">
         CLEVERIZE
       </h2>
 
