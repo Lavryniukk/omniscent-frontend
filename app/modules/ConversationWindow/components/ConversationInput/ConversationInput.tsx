@@ -4,8 +4,12 @@ import { useEffect, useRef } from "react";
 import { BiSolidSend } from "react-icons/bi";
 import useConversationStorage from "../../storage/ConversationStorage";
 
-export default function ConversationInput() {
-  const { userInputData, setInputData, locked, setLocked } =
+export default function ConversationInput({
+  conversation_id,
+}: {
+  conversation_id: string;
+}) {
+  const { userInputData, setInputData, locked, setLocked, addUserMessage } =
     useConversationStorage();
 
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
@@ -35,6 +39,8 @@ export default function ConversationInput() {
     if (locked) {
       return;
     }
+    addUserMessage(userInputData, conversation_id);
+
     const textarea = textareaRef.current;
     if (textarea) {
       textarea.style.height = `70px`;

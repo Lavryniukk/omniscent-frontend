@@ -5,6 +5,8 @@ import ConversationMessage from "@/app/shared/entities/ConversationMessage";
 import initConversation from "../helpers/initConversationById";
 import listenForUpdates from "../helpers/listenToEvent";
 import { getAccessToken } from "@auth0/nextjs-auth0";
+import sendUserMessage from "../api/sendUserMessage";
+import listenToSse from "../helpers/listenToEvent";
 interface ConversationStorageState {
   userInputData: string;
   assistantData: string;
@@ -14,7 +16,7 @@ interface ConversationStorageState {
 
 interface ConversationStorageActions {
   setInputData: (newInputData: string) => void;
-  addUserMessage: (newMessage: ConversationMessage) => void;
+  addUserMessage: (newMessage: string, conversation_id: string) => void;
   initConversation: (
     conversation_id: string,
     user_roadmap_id: string,
@@ -36,17 +38,32 @@ const useConversationStorage = create<
   //   node_title: "hi",
   // },
   userInputData: "",
+
   locked: true,
+
   setLocked(newValue) {
     set({ locked: newValue });
   },
+
   assistantData: "g",
+
   setInputData: (newInputData) => set({ userInputData: newInputData }),
-  addUserMessage(content) {
-    const conversation = get().conversation;
+
+  async addUserMessage(content, conversation_id) {
+    let conversation = get().conversation as Conversation;
+    conversation.messages.push({
+      role: "user",
+      content: content,
+    });
+    set({
+      conversation: conversation,
+    });
+    const res = await sendUserMessage(content, conversation_id);
+    const callback = get().updateLastAssistantMessage;
+    listenToSse(conversation_id, res as string, callback);
   },
+
   updateLastAssistantMessage(newValue) {
-    console.log("updated last message with", newValue);
     let conversation = get().conversation;
     const lastMessage = conversation?.messages.pop();
     if (lastMessage?.role === "assistant") {
@@ -73,7 +90,6 @@ const useConversationStorage = create<
 
   initConversation: async (conversation_id, user_roadmap_id, node_title) => {
     let newconversation = get().conversation as Conversation;
-    console.log(newconversation);
     newconversation.messages.push({
       role: "assistant",
       content: "",
