@@ -1,8 +1,9 @@
+import PrimaryBlackBtn from "@/app/UI/buttons/PrimaryBlackBtn/PrimaryBlackBtn";
 import PrimaryBtn from "@/app/UI/buttons/primaryBtn/PrimaryBtn";
 import Image from "next/image";
 let Title = () => {
   return (
-    <div className="overflow-visible overflow-x-clip py-10 items-center relative flex-col gap-10 sm:gap-7 flex max-w-10xl mx-auto">
+    <div className="overflow-visible overflow-x-clip py-10 items-center relative flex-col gap-7 flex max-w-10xl mx-auto">
       {/* Main title */}
       <div className="mx-auto observe duration-500 border relative xl:p-6 lg:p-5 p-4 w-fit h-fit flex items-center justify-center rounded-xl border-secondary bg-secondary-950">
         <Image
@@ -14,7 +15,7 @@ let Title = () => {
         />
         <div className="absolute rounded-full observe transition duration-500 delay-500 bg-primary aspect-square xl:w-40 lg:w-36 w-32 -z-10 blur-2xl"></div>
       </div>
-      <h2 className="text-xl sm:text-2xl text-text  tracking-widest font-semibold observe duration-500">
+      <h2 className="text-xl text-center mx-auto sm:text-2xl text-accent pl-1 tracking-[10px] font-extrabold  duration-500 flex justify-center items- w-fit">
         CLEVERIZE
       </h2>
 
@@ -40,6 +41,13 @@ let Title = () => {
         observed
         classname="w-10/12 xs:w-2/3 md:w-1/3 lg:w-[200px]"
       />
+      {/* <PrimaryBlackBtn
+        height="50px"
+        text="Workspace"
+        href="/workspace"
+        observed
+        classname="w-10/12 xs:w-2/3 md:w-1/3 lg:w-[200px]"
+      /> */}
     </div>
   );
 };
