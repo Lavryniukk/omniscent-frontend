@@ -9,7 +9,7 @@ export default function FetchedRoadmaps({
 }) {
   return (
     <>
-      <div className="w-3/4 mx-auto space-y-5 p-5 h-fit py-20">
+      <div className="container xs:mx-auto space-y-5 p-5 h-fit py-20 flex flex-col items-center">
         {/* Map through the 'projects' array and render each project using the 'ProjectContainer' component. */}
         {roadmaps.map((roadmap: RoadmapInterface) => (
           <ProjectContainer key={roadmap._id} roadmap={roadmap} />
