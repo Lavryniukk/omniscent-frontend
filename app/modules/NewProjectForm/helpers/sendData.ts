@@ -11,7 +11,7 @@ const sendData = async (data: FormState) => {
       method: "POST",
     });
   } catch (err) {
-    console.log(err);
+    console.log("Error POST /users/me/roadmaps", err);
   }
 };
 
