@@ -3,7 +3,7 @@ import CardSection from "./components/CardSection";
 // Component for rendering the "Features" section
 let FeaturesSection = () => {
   return (
-    <div className="box-border w-full flex items-center justify-center flex-col py-20 mx-auto space-y-10 overflow-x-hidden font-normal px-4 bg-transparent relative min-h-screen max-w-10xl">
+    <div className="box-border w-full  lg:max-h-[1200px] min-h-fit h-fit lg:h-screen flex items-center justify-center flex-col py-20 mx-auto space-y-10 overflow-x-hidden font-normal px-4 bg-transparent relative max-w-10xl">
       <h2 className="mx-auto text-4xl text-center observe transition-all duration-500 text-text font-inter">
         What do you obtain?
       </h2>
