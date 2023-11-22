@@ -6,6 +6,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { BiTrashAlt } from "react-icons/bi";
 import fetchDelete from "./fetchDelete";
 import RoadmapInterface from "@/app/shared/entities/Roadmap";
+import PrimaryBlackBtn from "@/app/UI/buttons/PrimaryBlackBtn/PrimaryBlackBtn";
 
 export default function ProjectContainer({
   roadmap,
@@ -13,7 +14,6 @@ export default function ProjectContainer({
   roadmap: RoadmapInterface;
 }) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [timer, setTimer] = useState<number>(3);
   const { title, _id, owner_id } = roadmap;
 
   const { user, isLoading } = useUser();
@@ -31,41 +31,37 @@ export default function ProjectContainer({
   const handleClick = (e: React.MouseEvent<SVGElement, MouseEvent>) => {
     e.preventDefault();
 
+    e.stopPropagation();
+
     setIsOpen((prev) => !prev);
   };
 
   const handleDelete = async ({ id }: { id: string }) => {
     setIsOpen(false);
 
-    await fetchDelete(_id);
+    await fetchDelete(id);
 
     location.reload();
   };
 
   useEffect(() => {
-    setTimer(3); // Assuming you have a state variable [countdown, setCountdown] defined
-    const intervalId = setInterval(() => {
-      setTimer((prev) => {
-        if (prev <= 1) {
-          // If countdown is at 1, next tick will be 0, so clear interval
-          clearInterval(intervalId);
-          return 0; // Set countdown to 0 and stop
-        } else {
-          return prev - 1; // Otherwise, decrement countdown
-        }
-      });
-    }, 1000);
+    const handleClick = (event: MouseEvent) => {
+      if (event.target && !(event.target as Element).closest(".popup")) {
+        isOpen && setIsOpen(false);
+      }
+    };
 
-    // Clear interval on component unmount or if isOpen changes to false
-    // to prevent memory leaks
-    return () => clearInterval(intervalId);
+    window.addEventListener("click", handleClick);
+
+    return () => {
+      window.removeEventListener("click", handleClick);
+    };
   }, [isOpen]);
-
   return (
     <>
       <Link
         href={url}
-        className={`py-5 border block border-secondary rounded-lg text-base text-center text-accent px-7 relative ${
+        className={`py-5 border block border-secondary rounded-lg text-base text-center text-accent px-7 relative w-full ${
           isOpen ? "pointer-events-none" : "pointer-events-auto"
         }`}
       >
@@ -79,25 +75,30 @@ export default function ProjectContainer({
       <div
         className={`${
           isOpen ? "flex" : "hidden"
-        } absolute text-text border flex-col gap-4 left-[calc(50%-250px)]
-         w-[500px] border-accent top-[45%] h-fit p-4 rounded-lg bg-background z-10`}
+        } absolute text-text border flex-col gap-4
+          border-accent top-[45%] h-fit p-5 rounded-lg z-10 w-fit backdrop-blur-lg popup`}
       >
         <p className="text-accent text-base text-center">{`Are you sure you want to delete '${title}'?`}</p>
 
-        <button
-          onClick={async () => handleDelete({ id: _id })}
-          className={`block w-1/3 mx-auto rounded p-1 ${
-            timer
-              ? "cursor-default bg-red-900 pointer-events-none"
-              : "cursor-pointer bg-red-800 pointer-events-auto hover:opacity-80 duration-300 transition"
-          }`}
-        >
-          {`${timer ? `(${timer}) ` : ""}Confirm`}
-        </button>
+        <div className="flex items-center justify-between mx-auto gap-4 w-11/12">
+          <button
+            onClick={() => setIsOpen(false)}
+            className={`block w-full mx-auto rounded box-border cursor-pointer text-sm font-medium py-1 h-fit text-text border bg-background pointer-events-auto hover:opacity-80 duration-300 transition `}
+          >
+            {`Cancel`}
+          </button>
+
+          <button
+            onClick={async () => handleDelete({ id: _id })}
+            className={`block w-full mx-auto rounded box-border cursor-pointer text-sm font-medium py-1 h-fit bg-red-800 pointer-events-auto hover:opacity-80 duration-300 transition `}
+          >
+            {`Confirm`}
+          </button>
+        </div>
 
         <AiOutlineClose
           onClick={(e) => handleClick(e)}
-          className="absolute top-2 right-2 cursor-pointer"
+          className="absolute top-1 right-1 cursor-pointer"
         />
       </div>
     </>
