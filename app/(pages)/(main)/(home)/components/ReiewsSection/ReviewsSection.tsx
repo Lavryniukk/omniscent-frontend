@@ -1,6 +1,6 @@
 import ReviewCard from "./components/ReviewCard/ReveiwCard";
 
-let Reviews = () => {
+const ReviewsSection = () => {
   return (
     <div className="section relative overflow-hidden border-t border-secondary w-full mx-auto before:absolute before:top-0 before:w-full before:right-0 before:h-16 before:bg-gradient-to-t before:from-background before:to-primary-950 before:blur-3xl">
       <div className="box-border relative py-40 w-full mx-auto space-y-10 overflow-x-hidden font-normal p-4 bg-transparent h-fit max-w-10xl ">
@@ -16,7 +16,7 @@ let Reviews = () => {
             imageUrl={"/images/masha.png"}
             className="observe duration-500 delay-0 transition"
           />
-          <div className="lg:w-0.5 lg:h-auto w-full h-0.5  bg-secondary block " />
+          <div className="lg:w-0.5 lg:h-auto w-full h-0.5 bg-secondary block " />
           <ReviewCard
             rating={5}
             name={"Jordan"}
@@ -25,7 +25,7 @@ let Reviews = () => {
             content={`I'm genuinely impressed with the depth and breadth of content available. It's opened up a world of exploration for me, and I've delved into topics I didn't even realize I was curious about.`}
             className="observe duration-500 delay-75 transition"
           />
-          <div className="lg:w-0.5 lg:h-auto w-full h-0.5  bg-secondary block " />
+          <div className="lg:w-0.5 lg:h-auto w-full h-0.5 bg-secondary block " />
           <ReviewCard
             rating={4}
             name={"Aisha"}
@@ -40,4 +40,4 @@ let Reviews = () => {
   );
 };
 
-export default Reviews;
+export default ReviewsSection;
