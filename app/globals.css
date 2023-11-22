@@ -129,6 +129,34 @@ body {
   background: var(--background);
 }
 
+.chat-output {
+  @apply flex flex-col gap-4;
+}
+
+.chat-output h3 {
+  @apply text-lg font-bold;
+}
+
+.chat-output ul {
+  @apply ml-4 flex flex-col gap-4;
+}
+
+.chat-output ul li {
+  @apply flex items-center before:w-1 before:h-1 before:bg-accent before:rounded-full gap-1 break-keep;
+}
+
+.chat-output ol {
+  @apply ml-4 flex flex-col gap-4;
+}
+
+.chat-output pre {
+  @apply pt-6;
+}
+
+.chat-output pre code {
+  @apply w-fit bg-background inline-block border border-accent pr-10 rounded-lg p-4;
+}
+
 .features-container {
   @apply sm:w-[20vw] w-full rounded-lg border-[1.5px] transition-all delay-150 duration-500 sm:min-w-[320px] min-w-[350px] sm:max-w-[450px] border-secondary;
 }

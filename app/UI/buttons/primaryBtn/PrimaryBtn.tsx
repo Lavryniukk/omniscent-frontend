@@ -1,15 +1,5 @@
 import Link from "next/link";
-
-type ButtonType = {
-  text: string;
-  width?: string;
-  height: string;
-  href?: string;
-  rounded?: string;
-  classname?: string;
-  observed?: boolean;
-  callbackFn?: () => void;
-};
+import ButtonProps from "../types/ButtonProps";
 
 export default function PrimaryBtn({
   text,
@@ -20,7 +10,7 @@ export default function PrimaryBtn({
   classname,
   rounded,
   callbackFn,
-}: ButtonType) {
+}: ButtonProps) {
   return (
     <div
       style={{
