@@ -20,8 +20,11 @@ export default function Message({
         <div className="w-[20px] lg:w-[32px] aspect-square border bg-accent rounded-full" />
         <p className="ml-1 text-accent">{role === "user" ? "You" : "John"}</p>
       </div>
-      <div className="break-words w-full ">
-        <article dangerouslySetInnerHTML={createMarkup(content)} />
+      <div className="break-words w-full">
+        <article
+          dangerouslySetInnerHTML={createMarkup(content)}
+          className="mt-[5px]"
+        />
       </div>
     </div>
   );

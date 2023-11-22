@@ -42,10 +42,11 @@ export default function ConversationInput({
     addUserMessage(userInputData, conversation_id);
 
     const textarea = textareaRef.current;
+
     if (textarea) {
       textarea.style.height = `70px`;
 
-      textarea.style.height = `${textarea.scrollHeight}px`;
+      // textarea.style.height = `${textarea.scrollHeight}px`;
 
       textarea.value = "";
     }
