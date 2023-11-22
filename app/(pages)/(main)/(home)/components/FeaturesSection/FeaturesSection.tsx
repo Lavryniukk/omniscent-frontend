@@ -1,7 +1,7 @@
-import CardSection from "./components/CardSection/CardSection";
+import CardSection from "./components/CardSection";
 
 // Component for rendering the "Features" section
-let Features = () => {
+let FeaturesSection = () => {
   return (
     <div className="box-border w-full flex items-center justify-center flex-col py-20 mx-auto space-y-10 overflow-x-hidden font-normal px-4 bg-transparent relative min-h-screen max-w-10xl">
       <h2 className="mx-auto text-4xl text-center observe transition-all duration-500 text-text font-inter">
@@ -16,4 +16,4 @@ let Features = () => {
   );
 };
 
-export default Features;
+export default FeaturesSection;
