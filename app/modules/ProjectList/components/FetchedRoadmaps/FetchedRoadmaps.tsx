@@ -18,7 +18,7 @@ export default function FetchedRoadmaps({
 
       <p className="mx-auto text-center underline-offset-2 select-none underline text-accent-600">
         <Link
-          href="/workspace/new"
+          href="/workspace/create"
           className="hover:text-accent transition-colors duration-200"
         >
           Create new project
