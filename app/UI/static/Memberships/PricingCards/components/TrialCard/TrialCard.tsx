@@ -12,13 +12,10 @@ let TrialCard = () => {
       </h1>
       <p className="text-accent text-right">Try everything for free</p>
       <ul className="mt-5 text-accent space-y-1 xl:space-y-2">
-        <Line text={"1 Free roadmap generation"} />
-        {/* Feature: Free roadmap generation */}
-        <Line text={"10 Free api calls"} /> {/* Feature: 10 Free API calls */}
-        <Line text={"All learning features available"} />
-        {/* Feature: All learning features available */}
+        <Line text={"1 free roadmap"} />
+        <Line text={"Every feature available"} />
+        <Line text={"Access to 'Monday' AI-mentor model(gpt-3.5 powered)"} />
         <Line text={"No credit card info required"} />
-        {/* Feature: No credit card info required */}
       </ul>
       <div className="text-center cursor-pointer absolute right-8 bottom-7 w-[82%] rounded-lg text-lg text-text bg-background font-bold border hover:text-background hover:bg-opacity-90  transition-all duration-200 border-text hover:bg-text mx-auto p-4 py-2 block">
         <Link href="/">Get started</Link>

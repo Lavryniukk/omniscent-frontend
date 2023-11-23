@@ -15,11 +15,12 @@ let ProCard = () => {
       </p>
       <ul className="mt-5 text-accent space-y-1 xl:space-y-2">
         <Line text={"Unlimited roadmap generations"} />
-        <Line text={"200 Api calls monthly"} />
-        <Line text={"'Top learners' section unlocked"} />
-        <Line text={"Unlocked achievements"} />
-        <Line text={"Unlocked statistics"} />
-        <Line text={"Private chat with other learners"} />
+        <Line text={"Up to 3 roadmap slots available"} />
+        <Line
+          text={"Access to 'Friday' AI-mentor model(gpt-4-turbo powered)"}
+        />
+        <Line text={"Unlocked achievements(WIP)"} />
+        <Line text={"Unlocked statistics(WIP"} />
         <Line text={"All experimental features available"} />
       </ul>
 
