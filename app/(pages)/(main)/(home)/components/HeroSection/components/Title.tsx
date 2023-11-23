@@ -15,7 +15,7 @@ let Title = () => {
         />
         <div className="absolute rounded-full observe transition duration-500 delay-500 bg-primary aspect-square xl:w-40 lg:w-36 w-32 -z-10 blur-2xl"></div>
       </div>
-      <h2 className="text-xl text-center mx-auto sm:text-2xl text-accent pl-1 tracking-[10px] font-extrabold  duration-500 flex justify-center items- w-fit">
+      <h2 className="text-xl text-center mx-auto sm:text-2xl text-accent pl-1 tracking-[10px] font-extrabold  duration-500 flex justify-center observe duration-500 w-fit">
         CLEVERIZE
       </h2>
 
@@ -37,7 +37,7 @@ let Title = () => {
       <PrimaryBtn
         height="50px"
         text="Get started"
-        href="/"
+        href="/workspace"
         observed
         classname="w-10/12 xs:w-2/3 md:w-1/3 lg:w-[200px]"
       />
