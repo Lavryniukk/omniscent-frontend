@@ -9,7 +9,7 @@ export default function ProjectsNotFound() {
       </h2>
       <button className="mx-auto border-2 box-border hover:text-text hover:bg-background hover:border-text overflow-hidden transition-all duration-300 block rounded-lg py-3 px-8 text-background bg-text ">
         <Link
-          href="/workspace/new"
+          href="/workspace/create"
           className="text-accent z-10 relative text-inherit text-lg"
         >
           Create new!
