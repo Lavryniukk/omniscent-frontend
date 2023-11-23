@@ -48,7 +48,7 @@ export default function RoadmapNode({
         animate={isOpen ? "open" : "closed"}
         className={`absolute  ${
           isOpen ? "block" : "hidden"
-        } -right-[80%] w-3/4 bg-secondary  h-fit top-0 border rounded-md border-secondary p-2   `}
+        } md:-right-[80%] right-0 w-full md:w-3/4 bg-secondary  h-fit top-1/3 z-10 md:top-0 border rounded-md border-secondary p-2   `}
       >
         <motion.div
           animate={isOpen ? "open" : "closed"}
@@ -87,12 +87,6 @@ export default function RoadmapNode({
             classname=" text-md border "
           />
         </motion.div>
-        {/* <Link
-          href={`/workspace/roadmap/${id}/${tech.title}`}
-          className="w-full rounded-md  bg-text flex items-center mt-2 h-8 justify-center  text-center border border-text  text-sm text-background"
-        >
-          Start learning
-        </Link> */}
       </motion.div>
       {!isLast && (
         <div className={`roadmap__arrow ${tech.isCompleted && "opacity-60"}`} />
