@@ -6,7 +6,7 @@ export default function Navigation() {
       <div className="space-x-7 mx-10 hidden md:block">
         <HeaderLink url="/workspace" name="Workspace" />
         <HeaderLink url="/memberships" name="Memberships" />
-        <HeaderLink url="/guide" name="Info" />
+        <HeaderLink url="/blog" name="Blog" />
       </div>
     </div>
   );
