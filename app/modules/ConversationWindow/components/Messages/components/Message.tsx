@@ -10,7 +10,7 @@ export default function Message({
   };
   return (
     <div
-      className={`text-text-300 text-md ${
+      className={`text-text-300 select-text flex-col text-md ${
         role === "system" && "hidden"
       }  flex justify-start items-start gap-3 p-2 w-full ${
         role === "user" ? "bg-background" : "bg-secondary"

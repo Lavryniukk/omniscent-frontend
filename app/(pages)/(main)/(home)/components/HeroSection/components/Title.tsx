@@ -3,7 +3,7 @@ import PrimaryBtn from "@/app/UI/buttons/primaryBtn/PrimaryBtn";
 import Image from "next/image";
 let Title = () => {
   return (
-    <div className="overflow-visible overflow-x-clip py-10 items-center relative flex-col gap-7 flex max-w-10xl mx-auto">
+    <div className="overflow-visible overflow-x-clip items-center relative flex-col gap-7 flex max-w-10xl mx-auto">
       {/* Main title */}
       <div className="mx-auto observe duration-500 border relative xl:p-6 lg:p-5 p-4 w-fit h-fit flex items-center justify-center rounded-xl border-secondary bg-secondary-950">
         <Image
@@ -38,7 +38,7 @@ let Title = () => {
         height="50px"
         text="Get started"
         href="/workspace"
-        observed
+        observed={true}
         classname="w-10/12 xs:w-2/3 md:w-1/3 lg:w-[200px]"
       />
       {/* <PrimaryBlackBtn

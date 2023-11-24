@@ -8,7 +8,7 @@ import { NextPage } from "next";
 
 let HomePage: NextPage = () => {
   return (
-    <main className="mb-10 overflow-hidden h-fit bg-transparent mx-auto box-border w-full">
+    <main className="mb-10 space-y-20 overflow-hidden h-fit bg-transparent mx-auto box-border w-full">
       <HeroSection /> {/* Renders the title section of the landing page. */}
       <FeaturesSection />{" "}
       {/* Renders the features section of the landing page. */}
