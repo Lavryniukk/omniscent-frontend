@@ -3,7 +3,7 @@ import ReviewCard from "./components/ReviewCard/ReveiwCard";
 const ReviewsSection = () => {
   return (
     <div className="section relative overflow-hidden border-t border-secondary w-full mx-auto before:absolute before:top-0 before:w-full before:right-0 before:h-16 before:bg-gradient-to-t before:from-background before:to-primary-950 before:blur-3xl">
-      <div className="box-border relative py-40 w-full mx-auto space-y-10 overflow-x-hidden font-normal p-4 bg-transparent h-fit max-w-10xl ">
+      <div className="box-border overflow-hidden relative  w-full mx-auto space-y-10 overflow-x-hidden font-normal p-4 bg-transparent h-fit max-w-10xl ">
         <h2 className="text-center text-text observe duration-500 transition text-4xl font-medium font">
           Reviews
         </h2>
