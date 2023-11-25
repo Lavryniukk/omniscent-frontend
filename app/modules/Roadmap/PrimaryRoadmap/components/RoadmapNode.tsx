@@ -4,8 +4,7 @@ import PrimaryBtn from "@/app/UI/buttons/primaryBtn/PrimaryBtn";
 import SubroadmapInterface from "@/app/shared/entities/Subroadmap";
 import { BiTrashAlt } from "react-icons/bi";
 import { motion, Variants } from "framer-motion";
-import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 export default function RoadmapNode({
   id,
   current,
