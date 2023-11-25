@@ -121,7 +121,7 @@ export default function OngoingProjects() {
                       </div>
                     </Link>
                     <Link
-                      href={"/create"}
+                      href={"/workspace/create"}
                       className="border border-accent rounded bg-secondary-900 text-accent p-4 hover:bg-background hover:text-text transition duration-300"
                     >
                       <div className="text-inherit text-2xl text-center font-medium">
