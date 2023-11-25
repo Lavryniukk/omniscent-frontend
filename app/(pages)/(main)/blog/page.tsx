@@ -6,7 +6,7 @@ export default function Blog() {
       <h1 className="text-5xl mt-20 text-text font-inter font-bold ">
         Here you will find our latest updates
       </h1>
-      <div className="w-full flex  mt-20">
+      <div className="w-full flex items-center justify-center mt-20">
         <div className="w-[350px] p-5 relative border-accent h-[350px] border rounded-lg">
           <Link
             href="/blog/v0.1.0"

@@ -12,7 +12,7 @@ let HomePage: NextPage = () => {
       <HeroSection /> {/* Renders the title section of the landing page. */}
       <FeaturesSection />{" "}
       {/* Renders the features section of the landing page. */}
-      <ReviewsSection />{" "}
+      {/* <ReviewsSection />{" "} */}
       {/* Renders the reviews section of the landing page. */}
     </main>
   );
