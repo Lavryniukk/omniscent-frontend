@@ -21,7 +21,7 @@ let Popup = ({ isOpen }: Props) => {
         <HeaderLink url="/" name="Home" />
         <HeaderLink url="/workspace" name="Workspace" />
         <HeaderLink url="/memberships" name="Memberships" />
-        <HeaderLink url="/info" name="Info" />
+        <HeaderLink url="/blog" name="Blog" />
       </div>
       <div className="w-10 h-0.5 bg-accent " />
       {/* Render a horizontal separator. */}
