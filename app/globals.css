@@ -162,11 +162,15 @@ body {
 }
 
 .roadmap__node {
-  @apply text-center px-5 w-full cursor-pointer relative hover:text-background hover:bg-text duration-200 transition-colors font-semibold flex items-center justify-center border h-12 bg-background border-accent rounded-lg;
+  @apply text-center px-5 text-text w-full cursor-pointer relative hover:text-background hover:bg-text duration-200 transition-colors font-semibold flex items-center justify-center border h-12 bg-background border-accent rounded-lg;
 }
 
-.roadmap__node--complete {
-  @apply opacity-60 bg-secondary hover:bg-background hover:text-accent;
+.conversation_roadmap__node {
+  @apply text-center py-2 text-accent w-full cursor-pointer relative  duration-200 transition-colors font-semibold flex items-center justify-center  text-sm    rounded-lg;
+}
+
+.roadmap__node--completed {
+  @apply line-through;
 }
 
 .roadmap__node--current {
@@ -178,6 +182,7 @@ body {
 .roadmap__arrow {
   @apply block w-0.5 select-none h-20 bg-accent;
 }
+
 .conversation-hint {
   @apply w-full text-left px-2 text-base sm:text-lg lg:text-base text-accent-300 py-3 bg-secondary rounded-md;
 }

@@ -9,12 +9,12 @@ import { useEffect, useState } from "react";
 export default function RoadmapNode({
   id,
   current,
-  tech,
+  subroadmap,
   isLast,
 }: {
   id: string;
   current: boolean;
-  tech: SubroadmapInterface;
+  subroadmap: SubroadmapInterface;
   isLast: boolean;
 }) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -37,18 +37,18 @@ export default function RoadmapNode({
           setIsOpen((prev) => !prev);
         }}
         className={`roadmap__node ${
-          tech.isCompleted && "roadmap__node--complete"
+          subroadmap.isCompleted && "roadmap__node--complete"
         } ${current && "roadmap__node--current"}
 		  `}
       >
-        {tech.title}
+        {subroadmap.title}
       </motion.div>
       <motion.div
         variants={itemVariants}
         animate={isOpen ? "open" : "closed"}
         className={`absolute  ${
           isOpen ? "block" : "hidden"
-        } md:-right-[80%] right-0 w-full md:w-3/4 bg-secondary  h-fit top-1/3 z-10 md:top-0 border rounded-md border-secondary p-2   `}
+        } lg:-right-[80%] min-w-[200px] right-0 w-full lg:w-3/4 bg-secondary  h-fit top-1/3 z-10 lg:top-0 border rounded-md border-secondary p-2   `}
       >
         <motion.div
           animate={isOpen ? "open" : "closed"}
@@ -68,7 +68,9 @@ export default function RoadmapNode({
           <div className="flex items-center">
             <MdDone className="mr-1" />{" "}
             <p>
-              {tech.isCompleted ? "Mark as uncomplited" : "Mark as completed"}
+              {subroadmap.isCompleted
+                ? "Mark as uncomplited"
+                : "Mark as completed"}
             </p>
           </div>
         </motion.div>
@@ -83,13 +85,15 @@ export default function RoadmapNode({
             text="Start learning"
             width="100%"
             height="40px"
-            href={`/workspace/roadmap/${id}/${tech.title}`}
+            href={`/workspace/conversation/${id}/${subroadmap.title}/${subroadmap.node_list[0].conversation_id}/${subroadmap.node_list[0].title}`}
             classname=" text-md border "
           />
         </motion.div>
       </motion.div>
       {!isLast && (
-        <div className={`roadmap__arrow ${tech.isCompleted && "opacity-60"}`} />
+        <div
+          className={`roadmap__arrow ${subroadmap.isCompleted && "opacity-60"}`}
+        />
       )}
     </motion.li>
   );

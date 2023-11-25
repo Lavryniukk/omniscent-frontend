@@ -3,8 +3,8 @@ import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 import SubroadmapInterface from "@/app/shared/entities/Subroadmap";
 import SubroadmapNode from "./components/SubroadmapNode";
-import fetchSubroadmap from "../api/fetchSubroadmap";
-import Node from "@/app/shared/entities/Node";
+import fetchSubroadmap from "../../ConversationRoadmap/api/fetchSubroadmap";
+import Node from "@/app/shared/entities/RoadmapNode";
 
 export default function Roadmap({ id, title }: { id: string; title: string }) {
   const { data, error } = useQuery(
