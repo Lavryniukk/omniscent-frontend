@@ -39,7 +39,7 @@ export default function Roadmap({ id }: { id: string }) {
                   isLast={isLast}
                   key={index}
                   current={current}
-                  tech={tech}
+                  subroadmap={tech}
                 />
               );
             }

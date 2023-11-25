@@ -43,7 +43,7 @@ const config: Config = {
       },
       colors: {
         primary: { ...colors.emerald, DEFAULT: colors.emerald[900] },
-        secondary: { ...colors.neutral, DEFAULT: colors.neutral[900] },
+        secondary: { ...colors.neutral, DEFAULT: colors.neutral[800] },
         accent: { ...colors.neutral, DEFAULT: colors.neutral[400] },
         text: { ...colors.neutral, DEFAULT: colors.neutral[100] },
         background: "rgb(5,5,5)",

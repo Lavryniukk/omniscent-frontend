@@ -1,4 +1,4 @@
-export default interface Node {
+export default interface RoadmapNodeInterface {
   title: string;
   isCompleted: boolean;
   conversation_id: string;
