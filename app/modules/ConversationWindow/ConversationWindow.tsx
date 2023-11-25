@@ -25,7 +25,7 @@ export default function ConversationWindow({
   );
   const messages = conversation?.messages as ConversationMessage[];
   return (
-    <div className="mx-auto container  min-h-[80vh] max-h-[950px] h-full  border-accent bg-secondary  w-[80vw] relative overflow-hidden ">
+    <div className="mx-auto container  min-h-[80vh] w-auto max-h-[950px] h-full  border-accent bg-secondary  w-[80vw] relative overflow-hidden ">
       <div className="w-full  text-text tracking-widest py-4 text-xl font-bold text-center bg-secondary-900 top-0 left-0">
         {!error && conversation?.node_title}
       </div>
