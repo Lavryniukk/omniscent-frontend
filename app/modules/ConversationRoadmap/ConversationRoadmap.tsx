@@ -48,7 +48,6 @@ export default function ConversationRoadmap({
               <RoadmapNode
                 key={index}
                 tech={tech}
-                index={index}
                 array={array}
                 current_tech_title={current_tech_title}
                 href={`/workspace/conversation/${roadmap_id}/${subroadmap_title}/${tech.conversation_id}/${tech.title}`}
