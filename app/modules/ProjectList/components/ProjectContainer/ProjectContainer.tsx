@@ -61,7 +61,7 @@ export default function ProjectContainer({
     <>
       <Link
         href={url}
-        className={`py-5 border block border-secondary rounded-lg text-base text-center text-accent px-7 relative w-full ${
+        className={`py-5 border block border-accent bg-secondary rounded-lg text-base text-center text-accent px-7 relative w-full ${
           isOpen ? "pointer-events-none" : "pointer-events-auto"
         }`}
       >
