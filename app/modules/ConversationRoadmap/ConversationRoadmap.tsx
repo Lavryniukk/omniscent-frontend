@@ -22,7 +22,7 @@ export default function ConversationRoadmap({
   });
 
   return (
-    <div className="w-[20vw] min-w-[250px] space-y-5 py-4 bg-background border-r-2 px-3 border-accent flex flex-col h-screen">
+    <div className="w-[20%] min-w-[270px] max-w-[500px] space-y-5 py-4 bg-background border-r-2 px-3 border-accent flex flex-col h-screen">
       <Link
         href={`/workspace/roadmap/${roadmap_id}`}
         className=" w-fit mx-auto relative group overflow-hidden before:w-0 before:left-0 before:-z-0  before:absolute before:bg-secondary before:h-full hover:before:w-full before:transition-all before:duration-200 before:bottom-0 before:ease-in-out hover:before:rounded-lg hover:text-text  text-accent space-x-2  rounded-lg flex items-center justify-center"
@@ -48,7 +48,6 @@ export default function ConversationRoadmap({
               <RoadmapNode
                 key={index}
                 tech={tech}
-                index={index}
                 array={array}
                 current_tech_title={current_tech_title}
                 href={`/workspace/conversation/${roadmap_id}/${subroadmap_title}/${tech.conversation_id}/${tech.title}`}

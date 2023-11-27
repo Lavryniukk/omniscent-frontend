@@ -1,25 +1,26 @@
 import Link from "next/link";
 import Line from "../FeatureLine/FeatureLine";
+import PrimaryBlackBtn from "@/app/UI/buttons/PrimaryBlackBtn/PrimaryBlackBtn";
 
 // TrialCard component represents a pricing card for the trial plan.
 let TrialCard = () => {
   return (
-    <div className="2xl:w-1/4 mx-auto shadow-sm 2xl:shadow-none observe duration-500 transition delay-0 shadow-white lg:w-4/12 relative w-[350px] p-8 border-2 bg-background bg-opacity-90  2xl:h-[80%] lg:h-[47%] h-[30%] rounded-xl border-secondary ">
+    <div className="  font-inter shadow-sm observe duration-500 transition delay-0 shadow-white relative md:w-[350px] w-[400px] p-8 border-2 bg-background bg-opacity-90  h-fit rounded-xl border-secondary ">
+      <div className="absolute whitespace-nowrap -top-[5%] bg-background bg-opacity-70 backdrop-blur w-fit left-[calc(50%-125px)] p-2 px-5 rounded-full z-10 bg-opacity- text-text">
+        No credit card info required
+      </div>
       <h1 className="mb-2 text-2xl font-light text-left text-text">Trial</h1>
       <h1 className="text-4xl font-bold text-left text-text">
         $0
         <span className="text-xl text-accent-600">/month</span>
       </h1>
       <p className="text-accent text-right">Try everything for free</p>
-      <ul className="mt-5 text-accent space-y-1 xl:space-y-2">
+      <ul className="mt-5 mb-10 text-accent space-y-1 xl:space-y-2">
         <Line text={"1 free roadmap"} />
         <Line text={"Every feature available"} />
         <Line text={"Access to 'Monday' AI-mentor model(gpt-3.5 powered)"} />
-        <Line text={"No credit card info required"} />
       </ul>
-      <div className="text-center cursor-pointer absolute right-8 bottom-7 w-[82%] rounded-lg text-lg text-text bg-background font-bold border hover:text-background hover:bg-opacity-90  transition-all duration-200 border-text hover:bg-text mx-auto p-4 py-2 block">
-        <Link href="/">Get started</Link>
-      </div>
+      <PrimaryBlackBtn text={"Activate trial"} height={"50px"} />
     </div>
   );
 };

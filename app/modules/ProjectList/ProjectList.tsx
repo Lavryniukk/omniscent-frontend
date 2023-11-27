@@ -17,7 +17,7 @@ export default function UserProjects() {
   return (
     <div className="mx-auto w-full sm:w-1/3 max-w-[600px] sm:min-w-[500px] sm:px-5 sm:py-16 font-inter h-fit sm:border-2 border-secondary rounded-2xl">
       <h1 className="text-4xl text-center font-bold mx-auto text-text trancking-tight font-inter">
-        Your learning projects
+        {data?.length ? "Your learning projects" : "Create your first project"}
       </h1>
 
       {error ? (

@@ -5,13 +5,11 @@ import Link from "next/link";
 export default function RoadmapNode({
   tech,
   array,
-  index,
   href,
   current_tech_title,
 }: {
   tech: Node;
   array: RoadmapNodeInterface[];
-  index: number;
   href: string;
   current_tech_title: string;
 }) {
@@ -19,9 +17,7 @@ export default function RoadmapNode({
   if (array[array.length - 1] == tech) {
     isLast = true;
   }
-  const prevTech = array[index - 1];
   current_tech_title = current_tech_title.replaceAll("%20", " ");
-  console.log(tech.title, "and", current_tech_title);
   return (
     <li className="w-full flex items-center  justify-center flex-col min-w-[200px]">
       <Link
