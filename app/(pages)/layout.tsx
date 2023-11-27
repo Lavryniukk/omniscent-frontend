@@ -1,6 +1,5 @@
 "use client";
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
+
 import "@/app/globals.css";
 import { useEffect, useLayoutEffect } from "react";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
@@ -45,21 +44,17 @@ export default function RootLayout({
       });
     };
   }, []);
-  const stripePromise = loadStripe(
-    "pk_test_51OEFinCCMdYQSDIPeyIDLaczM18F5PKwdNpylgrvorfKCfcx11BFZGT79dPQ9QAqVQT5XHNgSkUKjsnnGPq752AI00rVIvbw6X"
-  );
+
   const client = new QueryClient(); // Create a new instance of QueryClient.
 
   return (
     <html lang="en" className={`${inter.variable} overflow-auto bg-background`}>
       <body>
         <QueryClientProvider client={client}>
-          <Elements stripe={stripePromise}>
-            <UserProvider>
-              <AuthPopup />
-              {children} {/* Render the children components passed as props. */}
-            </UserProvider>
-          </Elements>
+          <UserProvider>
+            <AuthPopup />
+            {children} {/* Render the children components passed as props. */}
+          </UserProvider>
         </QueryClientProvider>
       </body>
     </html>
