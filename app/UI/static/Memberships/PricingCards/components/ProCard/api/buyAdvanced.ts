@@ -8,6 +8,6 @@ export default async function buyAdvanced() {
   });
   console.log(response);
 
-  //   redirect(response.data.url as string);
+  redirect(response.data.url as string);
   //   console.log(response);
 }
