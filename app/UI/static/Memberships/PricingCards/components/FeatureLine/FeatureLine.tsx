@@ -9,8 +9,8 @@ type Props = {
 let Line = ({ text }: Props) => {
   return (
     <li>
-      <div className="flex items-center space-x-2">
-        <HiCheck className="text-accent-400" /> {/* Checkmark icon */}
+      <div className="flex font-inter items-center text-text space-x-2">
+        <HiCheck size={20} className="text-text" /> {/* Checkmark icon */}
         <p className="ml-2">{text}</p> {/* Text content */}
       </div>
     </li>

@@ -1,32 +1,37 @@
+"use client";
 import Link from "next/link";
 import Line from "../FeatureLine/FeatureLine";
+import PrimaryBtn from "@/app/UI/buttons/primaryBtn/PrimaryBtn";
+import buyAdvanced from "./api/buyAdvanced";
 
 // ProCard component
 let ProCard = () => {
   return (
-    <div className="2xl:w-1/4 shadow-sm 2xl:shadow-none observe duration-500 transition delay-75 shadow-white  mx-auto lg:w-4/12 w-[350px] p-8 border-2 relative bg-background 2xl:h-full lg:h-[47%] h-[30%] bg-opacity-90 rounded-xl border-secondary 2xl:border-slate-500 ">
-      <h1 className="mb-2 text-2xl font-light text-left text-text">Pro</h1>
+    <div className=" -translate-x-5 z-20 shadow-[-2px_2px_40px_0px_white] border-t border-r observe duration-500 transition delay-75  w-[350px]  md:w-[450px] p-8  relative bg-background h-fit bg-opacity-90 rounded-xl border-secondary ">
+      <h1 className="mb-2 text-2xl font-light text-left text-text">Advanced</h1>
       <h1 className="text-4xl font-bold text-left text-text">
-        $13.99
+        $14.99
         <span className="text-xl text-accent-600"> /month</span>
       </h1>
       <p className="text-accent text-right">
         Best choice for consistent learners
       </p>
-      <ul className="mt-5 text-accent space-y-1 xl:space-y-2">
+      <ul className="mt-5 mb-10 text-accent space-y-1 xl:space-y-2">
         <Line text={"Unlimited roadmap generations"} />
-        <Line text={"Up to 3 roadmap slots available"} />
+        <Line text={"Up to 4 roadmap slots available"} />
         <Line
           text={"Access to 'Friday' AI-mentor model(gpt-4-turbo powered)"}
         />
         <Line text={"Unlocked achievements(WIP)"} />
-        <Line text={"Unlocked statistics(WIP"} />
+        <Line text={"Unlocked statistics(WIP)"} />
         <Line text={"All experimental features available"} />
       </ul>
-
-      <div className="text-center absolute cursor-ponter right-8 bottom-7 w-[82%] text-lg text-background bg-text font-bold border border-text hover:text-text hover:bg-opacity-90 transition-all duration-200 hover:border-text hover:bg-background mx-auto p-4 py-2 block rounded-lg glow-effect">
-        <Link href="/">Purchase</Link>
-      </div>
+      <PrimaryBtn
+        callbackFn={buyAdvanced}
+        classname="text-xl"
+        text={"Upgrade"}
+        height={"50px"}
+      />
     </div>
   );
 };
