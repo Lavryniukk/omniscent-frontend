@@ -3,11 +3,15 @@ import { axiosWithAuth } from "@/app/shared/config/axiosConfig";
 import { redirect } from "next/navigation";
 
 export default async function buyAdvanced() {
-  const response = await axiosWithAuth({
-    url: "/pay",
-  });
-  console.log(response);
+  try {
+    const response = await axiosWithAuth({
+      url: "/pay",
+    });
+    // console.log(response);
 
-  redirect(response.data.url as string);
+    return response.data.url;
+  } catch (e) {
+    console.log(e);
+  }
   //   console.log(response);
 }
