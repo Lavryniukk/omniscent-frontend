@@ -18,13 +18,10 @@ export default function listenToSse(
   );
 
   eventSource.onmessage = (event) => {
-    console.log("New update:", event.data);
-
     callback(event.data);
   };
   eventSource.onerror = (error) => {
     eventSource.close();
-    console.log("event closed");
 
     console.error(
       `Event source listener failed on ${process.env.SERVER_URL}/api/users/me/conversations/${conversationId}/stream`,

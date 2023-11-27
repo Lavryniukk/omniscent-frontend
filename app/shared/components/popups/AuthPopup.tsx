@@ -3,7 +3,6 @@ import { usePopupStore } from "../../storage/popupStorage";
 
 export default function AuthPopup() {
   const { isPopupOpen } = usePopupStore();
-  console.log("monunted");
   return (
     <div
       className={`w-screen ${

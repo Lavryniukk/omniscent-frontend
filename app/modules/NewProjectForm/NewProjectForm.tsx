@@ -8,6 +8,7 @@ import { FormState } from "./types/FormProps";
 import sendData from "./helpers/sendData";
 
 import { useRouter } from "next/navigation";
+import CreatingAnimation from "./components/CreatingAnimation/CreatingAnimation";
 
 export default function NewProjectForm() {
   const router = useRouter();
@@ -25,8 +26,6 @@ export default function NewProjectForm() {
     await sendData(formData);
 
     setFormData((prev) => ({ ...prev, inputData: "" }));
-
-    router.push("/workspace");
   };
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,7 +44,7 @@ export default function NewProjectForm() {
       {!isLoading ? (
         <>
           <h2 className="text-text text-center text-4xl sm:text-5xl font-bold">
-            Create roadmap
+            Create project
           </h2>
           {/* <div className="flex flex-col gap-16"> */}
           <FormInput
@@ -57,7 +56,7 @@ export default function NewProjectForm() {
           <FormSubmit />
         </>
       ) : (
-        <div className="text-text border w-1/2 aspect-square rounded-full border-secondary border-t-accent animate-spin my-[92px]"></div>
+        <CreatingAnimation />
       )}
     </form>
   );
