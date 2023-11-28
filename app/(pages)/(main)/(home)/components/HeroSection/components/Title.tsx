@@ -6,6 +6,7 @@ let Title = () => {
     <div className="overflow-visible font-inter overflow-x-clip items-center relative flex-col gap-5 flex max-w-10xl mx-auto">
       <div className="mx-auto observe duration-500 border relative xl:p-6 lg:p-5 p-4 w-fit h-fit flex items-center justify-center rounded-xl border-secondary bg-background">
         <Image
+          priority
           src="/images/logo-cleverize-white.svg"
           alt="cleverize logo icon svg"
           className="aspect-square w-20"
@@ -14,13 +15,13 @@ let Title = () => {
         />
         <div className="absolute rounded-full observe transition duration-500 delay-500 bg-primary aspect-square xl:w-40 lg:w-36 w-32 -z-10 blur-2xl"></div>
       </div>
-      <h2 className="text-xl text-center mx-auto md:text-3xl sm:text-2xl text-accent pl-1 tracking-[10px] font-extrabold  flex justify-center observe duration-500 w-fit">
+      <h2 className="text-xl text-center mx-auto md:text-3xl sm:text-2xl text-accent pl-1 tracking-[6px] font-extrabold  flex justify-center observe duration-500 w-fit">
         CLEVERIZE
       </h2>
 
       <h1
         className="observe transition duration-500 bg-gradient-to-t from-text w-full md:w-10/12  antialiased  to-text-500  mx-auto leading-none
-				   font-inter  tracking-tighter hyphens-none  text-transparent bg-clip-text font-extrabold text-center text-[40px] xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl 2xl:text-9xl"
+				   font-inter  tracking-tight hyphens-none  text-transparent bg-clip-text font-extrabold text-center text-[40px] xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl 2xl:text-9xl"
       >
         The AI solution
         <br /> for self-education

@@ -174,7 +174,7 @@ body {
 }
 
 .roadmap__node--current {
-  @apply drop-shadow-[0px_5px_5px_#f5f5f5];
+  @apply shadow-[0px_0px_15px_0px_#f5f5f5];
 }
 .chat-output {
   @apply tracking-normal;

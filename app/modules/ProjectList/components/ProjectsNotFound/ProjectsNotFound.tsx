@@ -7,6 +7,7 @@ export default function ProjectsNotFound() {
       <PrimaryBtn
         text={"Create"}
         height={"70px"}
+        href="/workspace/create"
         classname="text-xl"
         width="100%"
       />

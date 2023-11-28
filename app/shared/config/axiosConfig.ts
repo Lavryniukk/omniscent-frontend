@@ -6,6 +6,7 @@ config();
 
 import axios from "axios";
 import { usePopupStore } from "../storage/popupStorage";
+import { redirect } from "next/navigation";
 
 if (!process.env.SERVER_URL) {
   console.log("This is your serverurl:", process.env.SERVER_URL);
@@ -21,7 +22,9 @@ axiosWithAuth.interceptors.request.use(async (config) => {
     config.headers.Authorization = `Bearer ${accessToken}`;
   } catch (error) {
     console.error("Error getting access token:", error);
-    usePopupStore.getState().openPopup(); // Open the popup using Zustand
+    const openPopup = usePopupStore((state) => state.openPopup);
+    openPopup();
+    redirect("/api/auth/login");
   }
   return config;
 });

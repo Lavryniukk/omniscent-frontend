@@ -2,16 +2,13 @@
 
 import { useState } from "react";
 import FormInput from "./components/FormInput/FormInput";
-import FormSelect from "./components/FormSelect/FormSelect";
 import FormSubmit from "./components/FormSubmit/FormSubmit";
 import { FormState } from "./types/FormProps";
 import sendData from "./helpers/sendData";
 
-import { useRouter } from "next/navigation";
 import CreatingAnimation from "./components/CreatingAnimation/CreatingAnimation";
 
 export default function NewProjectForm() {
-  const router = useRouter();
   const [formData, setFormData] = useState<FormState>({
     inputData: "",
     selectData: null,

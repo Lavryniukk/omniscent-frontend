@@ -11,7 +11,7 @@ interface ConversationStorageState {
   userInputData: string;
   assistantData: string;
   conversation: Conversation | null;
-  locked: boolean;
+  responseLoading: boolean;
 }
 
 interface ConversationStorageActions {
@@ -39,10 +39,10 @@ const useConversationStorage = create<
   // },
   userInputData: "",
 
-  locked: true,
+  responseLoading: true,
 
   setLocked(newValue) {
-    set({ locked: newValue });
+    set({ responseLoading: newValue });
   },
 
   assistantData: "g",
@@ -84,7 +84,7 @@ const useConversationStorage = create<
   async getConversation(id) {
     const conversation = (await getConversationData(id)) as Conversation;
     set({ conversation: conversation });
-    set({ locked: conversation.messages.length ? false : true });
+    set({ responseLoading: conversation.messages.length ? false : true });
     return conversation;
   },
 
@@ -104,7 +104,12 @@ const useConversationStorage = create<
       user_roadmap_id,
       node_title
     );
-    const callback = get().updateLastAssistantMessage;
+    const callback = () => {
+      get().updateLastAssistantMessage;
+      set({
+        responseLoading: true,
+      });
+    };
 
     listenForUpdates(conversation_id, token as string, callback);
   },
