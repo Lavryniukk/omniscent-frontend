@@ -6,7 +6,7 @@ export default function listenToSse(
   token: string,
   callback: (value: string) => void
 ) {
-  const url = process.env.SERVER_URL ?? "https://cleverize.onrender.com:";
+  const url = "https://cleverize.onrender.com";
 
   const eventSource = new EventSource(
     `${url}/api/users/me/conversations/${conversationId}/stream`,
@@ -19,7 +19,9 @@ export default function listenToSse(
 
   eventSource.onmessage = (event) => {
     callback(event.data);
+    eventSource.readyState === EventSource.CLOSED && console.log(100);
   };
+
   eventSource.onerror = (error) => {
     eventSource.close();
 
