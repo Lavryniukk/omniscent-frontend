@@ -36,9 +36,6 @@ export default function ConversationInput({
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (locked) {
-      return;
-    }
     addUserMessage(userInputData, conversation_id);
 
     const textarea = textareaRef.current;
@@ -66,7 +63,7 @@ export default function ConversationInput({
       />
       <button
         className={`p-2 absolute ${
-          locked ? " cursor-default" : "bg-accent"
+          locked ? " cursor-default pointer-events-none" : "bg-accent"
         } rounded-lg h-fit flex justify-center items-center right-7`}
         type="submit"
       >
