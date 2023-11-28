@@ -20,7 +20,7 @@ export default function RoadmapNode({
   current_tech_title = current_tech_title.replaceAll("%20", " ");
   return (
     <li className="w-full flex items-center  justify-center flex-col min-w-[200px]">
-      <Link
+      <a
         href={href}
         className={`conversation_roadmap__node ${
           tech.isCompleted && "roadmap__node--completed"
@@ -28,7 +28,7 @@ export default function RoadmapNode({
 		  `}
       >
         {tech.title}
-      </Link>
+      </a>
 
       {!isLast && (
         <div
