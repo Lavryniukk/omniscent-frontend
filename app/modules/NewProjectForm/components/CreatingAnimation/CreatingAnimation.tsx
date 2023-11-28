@@ -7,9 +7,8 @@ export default function CreatingAnimation() {
   }, 15000);
   return (
     <div
-      className={`w-80 bg-secondary flex flex-col text-text text-xl items-center justify-center rounded-md border-secondary border-2 h-20`}
+      className={`w-80 bg-secondary flex  text-accent space-y-5 text-xl  rounded-md border-secondary border-2 h-20`}
     >
-      Loading...
       <motion.div
         initial={{
           width: 0,
