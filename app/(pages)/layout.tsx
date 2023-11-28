@@ -15,7 +15,6 @@ import AuthPopup from "../shared/components/popups/AuthPopup";
 // Define the 'inter' font with specific configurations.
 const inter = Inter({
   variable: "--inter-font",
-  weight: ["100", "300", "400", "500", "700", "900"],
   subsets: ["latin"],
 });
 
