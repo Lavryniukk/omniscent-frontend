@@ -1,6 +1,5 @@
 import fetchRoadmap from "@/app/modules/Roadmap/api/fetchRoadmap";
 import { useQuery } from "@tanstack/react-query";
-import Link from "next/link";
 import SubroadmapInterface from "@/app/shared/entities/Subroadmap";
 import RoadmapNode from "./components/RoadmapNode";
 
@@ -23,7 +22,6 @@ export default function Roadmap({ id }: { id: string }) {
               const prevTech = array[index - 1];
               let isLast: boolean = false;
               if (array[array.length - 1] == tech) {
-                console.log("found last:", tech);
                 isLast = true;
               }
               if (index === 0 && !tech.isCompleted) {

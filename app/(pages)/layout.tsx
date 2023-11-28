@@ -1,18 +1,11 @@
 "use client";
 
 import "@/app/globals.css";
-import { useEffect, useLayoutEffect } from "react";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
-import {
-  QueryClient,
-  QueryClientProvider,
-  useQuery,
-} from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Inter } from "next/font/google";
-import checkToken from "@/app/api/auth/[auth0]/healthCheck";
-import AuthPopup from "../shared/components/popups/AuthPopup";
 
-// Define the 'inter' font with specific configurations.
+import { ObserverProvider } from "../shared/providers/ObserverProvider";
 const inter = Inter({
   variable: "--inter-font",
   subsets: ["latin"],
@@ -23,38 +16,17 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  useEffect(() => {
-    const animated_elems = document.querySelectorAll(".observe");
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((elem) => {
-        elem.isIntersecting && elem.target.classList.add("observe-show");
-      });
-    });
-
-    // Observe the elements
-    animated_elems.forEach((elem) => {
-      observer.observe(elem);
-    });
-
-    // Cleanup observer on unmount
-    return () => {
-      animated_elems.forEach((elem) => {
-        observer.unobserve(elem);
-      });
-    };
-  }, []);
-
-  const client = new QueryClient(); // Create a new instance of QueryClient.
+  const client = new QueryClient();
 
   return (
-    <html lang="en" className={`${inter.variable} overflow-auto bg-background`}>
+    <html lang="en" className={`${inter.variable} bg-background`}>
       <body>
-        <QueryClientProvider client={client}>
-          <UserProvider>
-            <AuthPopup />
-            {children} {/* Render the children components passed as props. */}
-          </UserProvider>
-        </QueryClientProvider>
+        <UserProvider>
+          <QueryClientProvider client={client}>
+            {/* <AuthPopup /> */}
+            <ObserverProvider>{children}</ObserverProvider>
+          </QueryClientProvider>
+        </UserProvider>
       </body>
     </html>
   );
