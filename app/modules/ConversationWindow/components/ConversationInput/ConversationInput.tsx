@@ -57,9 +57,16 @@ export default function ConversationInput({
       <textarea
         ref={textareaRef}
         className={`w-full h-[70px] box-border border-accent border bg-opacity-70 backdrop-blur-sm  bg-secondary  rounded-xl p-5 pr-16 aspect-none placeholder:text-lg text-accent text-lg
-           focus:outline-none focus:border-text resize-none max-h-[200px] overflow-y-scroll  `}
+           focus:outline-none focus:border-text resize-none max-h-[200px] overflow-y-scroll`}
         placeholder="Send a message"
+        autoFocus
         onChange={(e) => handleInput(e)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" && !e.shiftKey) {
+            e.preventDefault();
+            handleSubmit(e as unknown as React.FormEvent<HTMLFormElement>);
+          }
+        }}
       />
       <button
         className={`p-2 absolute ${
