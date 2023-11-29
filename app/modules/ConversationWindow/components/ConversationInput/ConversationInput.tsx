@@ -59,7 +59,14 @@ export default function ConversationInput({
         className={`w-full h-full box-border border-accent border bg-opacity-70 backdrop-blur-sm  bg-secondary  rounded-xl p-5 pr-16 aspect-none placeholder:text-lg text-accent text-lg
            focus:outline-none focus:border-text resize-none max-h-[200px] overflow-y-auto  `}
         placeholder="Send a message"
+        autoFocus
         onChange={(e) => handleInput(e)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" && !e.shiftKey) {
+            e.preventDefault();
+            handleSubmit(e as unknown as React.FormEvent<HTMLFormElement>);
+          }
+        }}
       />
       <button
         className={`p-2 absolute ${

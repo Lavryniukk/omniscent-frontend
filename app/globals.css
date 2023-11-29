@@ -142,7 +142,11 @@ body {
 }
 
 .chat-output ul li {
-  @apply flex items-center before:w-1 before:h-1 before:bg-accent before:rounded-full gap-1 break-keep;
+  @apply gap-1 break-keep;
+}
+
+.chat-output ul li strong {
+  @apply whitespace-nowrap inline;
 }
 
 .chat-output ol {
@@ -166,7 +170,7 @@ body {
 }
 
 .conversation_roadmap__node {
-  @apply text-center py-2 text-accent w-full cursor-pointer relative  duration-200 transition-colors font-semibold flex items-center justify-center  text-sm    rounded-lg;
+  @apply text-center py-2 text-accent w-full cursor-pointer relative  duration-200 transition-colors font-semibold flex items-center justify-center  text-sm rounded-lg;
 }
 
 .roadmap__node--completed {
