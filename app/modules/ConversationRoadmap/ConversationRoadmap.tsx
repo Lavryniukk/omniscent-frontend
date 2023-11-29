@@ -43,7 +43,7 @@ export default function ConversationRoadmap({
       >
         <Link
           href={`/workspace/roadmap/${roadmap_id}`}
-          className=" w-fit mx-auto relative group overflow-hidden before:w-0 before:left-0 before:-z-0  before:absolute before:bg-secondary before:h-full hover:before:w-full before:transition-all before:duration-200 before:bottom-0 before:ease-in-out hover:before:rounded-lg hover:text-text  text-accent space-x-2  rounded-lg flex items-center justify-center"
+          className=" w-fit mx-auto relative h-[5%] group overflow-hidden before:w-0 before:left-0 before:-z-0  before:absolute before:bg-secondary before:h-full hover:before:w-full before:transition-all before:duration-200 before:bottom-0 before:ease-in-out hover:before:rounded-lg hover:text-text  text-accent space-x-2  rounded-lg flex items-center justify-center"
         >
           <MdOutlineArrowBack
             size={30}
