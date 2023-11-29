@@ -9,7 +9,7 @@ export default function ConversationInput({
 }: {
   conversation_id: string;
 }) {
-  const { userInputData, setInputData, locked, setLocked, addUserMessage } =
+  const { userInputData, setInputData, isLocked, setLocked, addUserMessage } =
     useConversationStorage();
 
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
@@ -24,14 +24,6 @@ export default function ConversationInput({
 
     setInputData(e.target.value);
   };
-
-  useEffect(() => {
-    if (userInputData) {
-      setLocked(false);
-    } else {
-      setLocked(true);
-    }
-  }, [userInputData, setLocked]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -63,13 +55,13 @@ export default function ConversationInput({
       />
       <button
         className={`p-2 absolute ${
-          locked ? " cursor-default pointer-events-none" : "bg-accent"
+          isLocked ? " cursor-default pointer-events-none" : "bg-accent"
         } rounded-lg h-fit flex justify-center items-center right-7`}
         type="submit"
       >
         <BiSolidSend
           className={`w-[24px] h-[24px] ${
-            locked ? "text-accent" : "text-secondary"
+            isLocked ? "text-accent" : "text-secondary"
           }`}
         />
       </button>

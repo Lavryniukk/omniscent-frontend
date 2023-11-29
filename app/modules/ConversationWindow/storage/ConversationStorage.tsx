@@ -11,7 +11,7 @@ interface ConversationStorageState {
   userInputData: string;
   assistantData: string;
   conversation: Conversation | null;
-  responseLoading: boolean;
+  isLocked: boolean;
 }
 
 interface ConversationStorageActions {
@@ -39,10 +39,10 @@ const useConversationStorage = create<
   // },
   userInputData: "",
 
-  responseLoading: true,
+  isLocked: true,
 
   setLocked(newValue) {
-    set({ responseLoading: newValue });
+    set({ isLocked: newValue });
   },
 
   assistantData: "g",
@@ -84,7 +84,7 @@ const useConversationStorage = create<
   async getConversation(id) {
     const conversation = (await getConversationData(id)) as Conversation;
     set({ conversation: conversation });
-    set({ responseLoading: conversation.messages.length ? false : true });
+    set({ isLocked: conversation.messages.length ? false : true });
     return conversation;
   },
 
@@ -107,7 +107,7 @@ const useConversationStorage = create<
     const callback = () => {
       get().updateLastAssistantMessage;
       set({
-        responseLoading: true,
+        isLocked: true,
       });
     };
 
