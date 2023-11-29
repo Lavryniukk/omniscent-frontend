@@ -10,9 +10,9 @@ export default function Message({
   };
   return (
     <div
-      className={`text-text-300 px-5 w-auto mx-auto select-text flex-col text-md ${
+      className={`text-text-300 px-5 w-full mx-auto select-text flex-col text-md ${
         role === "system" && "hidden"
-      }  flex justify-start items-center gap-3 p-2 w-full ${
+      }  flex justify-start items-center gap-3 p-2 ${
         role === "user" ? "bg-background" : "bg-secondary"
       }`}
     >

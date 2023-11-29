@@ -25,9 +25,9 @@ export default function ConversationInput({
   const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const textarea = textareaRef.current;
     if (textarea) {
-      !e.target.value && (textarea.style.height = `70px`);
+      !e.target.value && (textarea.style.height = `72px`);
 
-      textarea.style.height = `${textarea.scrollHeight}px`;
+      textarea.style.height = `${textarea.scrollHeight + 2}px`;
     }
 
     setInputData(e.target.value);
@@ -51,13 +51,13 @@ export default function ConversationInput({
 
   return (
     <form
-      className="w-full  box-border absolute bottom-0 z-10 p-3  rounded-xl flex items-center overflow-visible mx-auto "
+      className="w-full lg:w-3/4  box-border absolute bottom-0 z-10 p-3  rounded-xl flex items-center overflow-hidden "
       onSubmit={(e) => !isLocked && handleSubmit(e)}
     >
       <textarea
         ref={textareaRef}
-        className={`w-full h-[70px] box-border border-accent border bg-opacity-70 backdrop-blur-sm  bg-secondary  rounded-xl p-5 pr-16 aspect-none placeholder:text-lg text-accent text-lg
-           focus:outline-none focus:border-text resize-none max-h-[200px] overflow-y-scroll  `}
+        className={`w-full h-full box-border border-accent border bg-opacity-70 backdrop-blur-sm  bg-secondary  rounded-xl p-5 pr-16 aspect-none placeholder:text-lg text-accent text-lg
+           focus:outline-none focus:border-text resize-none max-h-[200px] overflow-y-auto  `}
         placeholder="Send a message"
         onChange={(e) => handleInput(e)}
       />
