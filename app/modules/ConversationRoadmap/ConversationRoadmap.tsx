@@ -37,7 +37,7 @@ export default function ConversationRoadmap({
   return (
     <>
       <div
-        className={`w-[20%] min-w-[270px] max-w-[500px]  space-y-5 py-4 bg-background max-h-full border-r-2 px-3 border-accent flex-col h-screen z-20 ${
+        className={`w-[20%] min-w-[270px] max-w-[500px]  space-y-5 py-4 bg-background max-h-full border-r-2 px-3 border-accent flex-col h-hull z-20 ${
           isOpen ? "translate-x-0" : "translate-x-[-100%] lg:translate-x-0"
         } duration-500 transition absolute lg:relative`}
       >

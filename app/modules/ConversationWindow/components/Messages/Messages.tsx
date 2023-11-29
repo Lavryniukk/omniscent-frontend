@@ -9,7 +9,10 @@ export default function Messages({
   const messages = conversation && conversation.messages;
 
   return (
-    <div className="overflow-y-auto relative w-full  items-center justify-center h-[calc(100%-132px)] py-5   flex-col">
+    <div
+      role="presentation"
+      className=" overflow-y-auto  w-full  py-10   flex-col"
+    >
       {messages?.map((message, index) => (
         <Message content={message.content} role={message.role} key={index} />
       ))}
