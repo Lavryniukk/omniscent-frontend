@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Inter } from "next/font/google";
 
 import { ObserverProvider } from "../shared/providers/ObserverProvider";
+import AuthPopup from "../shared/components/popups/AuthPopup";
 const inter = Inter({
   variable: "--inter-font",
   subsets: ["latin"],
@@ -23,7 +24,7 @@ export default function RootLayout({
       <body>
         <UserProvider>
           <QueryClientProvider client={client}>
-            {/* <AuthPopup /> */}
+            <AuthPopup />
             <ObserverProvider>{children}</ObserverProvider>
           </QueryClientProvider>
         </UserProvider>

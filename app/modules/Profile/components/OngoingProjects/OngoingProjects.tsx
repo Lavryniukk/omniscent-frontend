@@ -7,81 +7,6 @@ import { fetchProjects } from "../../api/fetchProjects";
 import { Project } from "../../types/project";
 
 export default function OngoingProjects() {
-  const arr: [] | Project[] = [
-    // {
-    //   _id: "new_id_0",
-    //   owner_id: "google-oauth2|116000322186574711788",
-    //   title: "New Title 1",
-    //   node_list: [
-    //     { title: "HTML" },
-    //     { title: "CSS" },
-    //     { title: "JavaScript" },
-    //     { title: "Vue" },
-    //     { title: "Vuex" },
-    //     { title: "Vue" },
-    //     { title: "Axios" },
-    //     { title: "ESLint" },
-    //     { title: "Jest" },
-    //     { title: "Npm" },
-    //   ],
-    //   __v: 0,
-    // },
-    // {
-    //   _id: "new_id_1",
-    //   owner_id: "google-oauth2|116000322186574711788",
-    //   title: "New Title 2",
-    //   node_list: [
-    //     { title: "HTML" },
-    //     { title: "CSS" },
-    //     { title: "JavaScript" },
-    //     { title: "Vue" },
-    //     { title: "Vuex" },
-    //     { title: "Vue" },
-    //     { title: "Axios" },
-    //     { title: "ESLint" },
-    //     { title: "Jest" },
-    //     { title: "Npm" },
-    //   ],
-    //   __v: 0,
-    // },
-    // {
-    //   _id: "new_id_2",
-    //   owner_id: "google-oauth2|116000322186574711788",
-    //   title: "New Title 3",
-    //   node_list: [
-    //     { title: "HTML" },
-    //     { title: "CSS" },
-    //     { title: "JavaScript" },
-    //     { title: "Vue" },
-    //     { title: "Vuex" },
-    //     { title: "Vue" },
-    //     { title: "Axios" },
-    //     { title: "ESLint" },
-    //     { title: "Jest" },
-    //     { title: "Npm" },
-    //   ],
-    //   __v: 0,
-    // },
-    // {
-    //   _id: "new_id_3",
-    //   owner_id: "google-oauth2|116000322186574711788",
-    //   title: "New Title 4",
-    //   node_list: [
-    //     { title: "HTML" },
-    //     { title: "CSS" },
-    //     { title: "JavaScript" },
-    //     { title: "Vue" },
-    //     { title: "Vuex" },
-    //     { title: "Vue" },
-    //     { title: "Axios" },
-    //     { title: "ESLint" },
-    //     { title: "Jest" },
-    //     { title: "Npm" },
-    //   ],
-    //   __v: 0,
-    // },
-  ];
-
   const { data, isLoading, error } = useQuery({
     queryKey: ["profileProjects"],
     queryFn: async () => fetchProjects(),
@@ -100,7 +25,7 @@ export default function OngoingProjects() {
               if (index !== array.length - 1) {
                 return (
                   <Link
-                    href={"/"}
+                    href={`/workspace/roadmap /${item._id}`}
                     key={item._id}
                     className="border rounded border-accent p-4"
                   >
