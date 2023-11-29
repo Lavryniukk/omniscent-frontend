@@ -32,7 +32,7 @@ export default function ConversationRoadmap({
     }
   }, [isLoading]);
 
-  const [isOpen, setIsOpen] = useState<boolean>(true);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
     <>
@@ -86,7 +86,7 @@ export default function ConversationRoadmap({
       <BsChevronDown
         onClick={() => setIsOpen(!isOpen)}
         size={30}
-        className={`font-semibold text-text absolute left-2 block z-50 top-[calc(47%-15px)] duration-500 rotate-90 transition-transform lg:hidden ${
+        className={`font-semibold text-text absolute left-2 block z-50 top-[17px] duration-500 rotate-90 transition-transform lg:hidden ${
           isOpen ? "translate-x-[220px]" : "translate-x-0 scale-y-[-1]"
         }`}
       />
