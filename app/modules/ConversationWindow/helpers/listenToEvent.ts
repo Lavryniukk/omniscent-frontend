@@ -1,11 +1,14 @@
 "use client";
-
 import EventSource from "eventsource";
+
 export default function listenToSse(
   conversationId: string,
   token: string,
-  callback: (value: string) => void
+  callback: (value: string) => void,
+  onStartFn: () => void,
+  onCloseFn: () => void
 ) {
+  onStartFn();
   const url = "https://cleverize.onrender.com";
 
   const eventSource = new EventSource(
@@ -24,6 +27,7 @@ export default function listenToSse(
 
   eventSource.onerror = (error) => {
     eventSource.close();
+    onCloseFn();
 
     console.error(
       `Event source listener failed on ${process.env.SERVER_URL}/api/users/me/conversations/${conversationId}/stream`,

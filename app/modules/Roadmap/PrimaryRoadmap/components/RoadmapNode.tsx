@@ -89,8 +89,8 @@ export default function RoadmapNode({
             text="Start learning"
             width="100%"
             height="40px"
-            callbackFn={async () => {
-              await selectConversation(
+            callbackFn={() => {
+              selectConversation(
                 subroadmap.node_list[0].conversation_id,
                 subroadmap.node_list[0].title
               );

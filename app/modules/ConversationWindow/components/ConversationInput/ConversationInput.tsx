@@ -9,11 +9,19 @@ export default function ConversationInput({
 }: {
   conversation_id: string;
 }) {
-  const { userInputData, setInputData, isLocked, lock, addUserMessage } =
-    useConversationStorage();
+  const {
+    userInputData,
+    setInputData,
+    isLocked,
+    lock,
+    unlock,
+    addUserMessage,
+  } = useConversationStorage();
 
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
-
+  useEffect(() => {
+    !userInputData ? lock() : unlock();
+  }, [userInputData]);
   const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const textarea = textareaRef.current;
     if (textarea) {
@@ -44,7 +52,7 @@ export default function ConversationInput({
   return (
     <form
       className="w-full  box-border absolute bottom-0 z-10 p-3  rounded-xl flex items-center overflow-visible mx-auto "
-      onSubmit={(e) => handleSubmit(e)}
+      onSubmit={(e) => !isLocked && handleSubmit(e)}
     >
       <textarea
         ref={textareaRef}
