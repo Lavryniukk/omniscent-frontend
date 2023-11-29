@@ -41,7 +41,7 @@ export default function ConversationInput({
     const textarea = textareaRef.current;
 
     if (textarea) {
-      textarea.style.height = `70px`;
+      textarea.style.height = `72px`;
 
       // textarea.style.height = `${textarea.scrollHeight}px`;
 
@@ -56,7 +56,7 @@ export default function ConversationInput({
     >
       <textarea
         ref={textareaRef}
-        className={`w-full h-full box-border border-accent border bg-opacity-70 backdrop-blur-sm  bg-secondary  rounded-xl p-5 pr-16 aspect-none placeholder:text-lg text-accent text-lg
+        className={`w-full h-[72px] box-border border-accent border bg-opacity-70 backdrop-blur-sm  bg-secondary  rounded-xl p-5 pr-16 aspect-none placeholder:text-lg text-accent text-lg
            focus:outline-none focus:border-text resize-none max-h-[200px] overflow-y-auto  `}
         placeholder="Send a message"
         autoFocus
