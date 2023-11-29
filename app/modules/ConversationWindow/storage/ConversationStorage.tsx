@@ -64,7 +64,9 @@ const useConversationStorage = create<
     set({ conversation_id: id, tech_title: title });
     const conversation = (await getConversationData(id)) as Conversation;
     set({ conversation: conversation });
-    set({ isLocked: conversation?.messages.length ? false : true });
+    set({
+      isLocked: true,
+    });
     return conversation;
   },
 
