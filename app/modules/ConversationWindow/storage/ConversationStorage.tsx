@@ -79,9 +79,10 @@ const useConversationStorage = create<
     set({
       conversation: conversation,
     });
-    const res = await sendUserMessage(content, conversation_id);
+    const res = (await sendUserMessage(content, conversation_id)) as string;
     const callback = get().updateLastAssistantMessage;
-    listenToSse(conversation_id, res as string, callback);
+    set({ userInputData: "" });
+    listenToSse(conversation_id, res, callback, get().lock, () => {});
   },
 
   updateLastAssistantMessage(newValue) {
@@ -113,19 +114,19 @@ const useConversationStorage = create<
     });
     node_title = node_title.replaceAll("%20", " ");
 
-    const token = await initConversation(
+    const token = (await initConversation(
       conversation_id,
       user_roadmap_id,
       node_title
-    );
-    const callback = () => {
-      get().updateLastAssistantMessage;
-      set({
-        isLocked: true,
-      });
-    };
+    )) as string;
 
-    listenForUpdates(conversation_id, token as string, callback);
+    listenForUpdates(
+      conversation_id,
+      token,
+      get().updateLastAssistantMessage,
+      get().lock,
+      () => {}
+    );
   },
 }));
 
