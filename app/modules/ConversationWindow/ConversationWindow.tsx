@@ -55,7 +55,7 @@ export default function ConversationWindow({
   //   </div>
   // );
   return (
-    <div className="w-full min-w-fit flex items-center  flex-col h-full border-accent bg-secondary relative overflow-hidden ">
+    <div className="w-full min-w-fit flex items-center  flex-col h-screen max-h-full border-accent bg-secondary relative overflow-hidden ">
       <div className="w-full text-text tracking-widest h-[5%] flex items-center justify-center text-xl font-bold text-center bg-background">
         {conversation?.node_title}
       </div>
