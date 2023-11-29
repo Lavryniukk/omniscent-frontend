@@ -51,7 +51,7 @@ export default function ConversationInput({
 
   return (
     <form
-      className="w-full lg:w-3/4 relative  h-fit box-border min-h-[10%] max-h-[10%] px-3  bottom-0 z-10   rounded-xl flex items-center "
+      className="w-full lg:w-3/4 relative   h-fit box-border  px-5 mb-5  bottom-0 z-10   rounded-xl flex items-center "
       onSubmit={(e) => !isLocked && handleSubmit(e)}
     >
       <textarea
