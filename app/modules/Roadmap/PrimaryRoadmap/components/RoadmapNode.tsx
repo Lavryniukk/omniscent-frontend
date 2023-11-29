@@ -5,6 +5,7 @@ import SubroadmapInterface from "@/app/shared/entities/Subroadmap";
 import { BiTrashAlt } from "react-icons/bi";
 import { motion, Variants } from "framer-motion";
 import { useState } from "react";
+import useConversationStorage from "@/app/modules/ConversationWindow/storage/ConversationStorage";
 export default function RoadmapNode({
   id,
   current,
@@ -16,6 +17,9 @@ export default function RoadmapNode({
   subroadmap: SubroadmapInterface;
   isLast: boolean;
 }) {
+  const selectConversation = useConversationStorage(
+    (state) => state.selectConversation
+  );
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const itemVariants: Variants = {
     open: {
@@ -25,6 +29,7 @@ export default function RoadmapNode({
     },
     closed: { opacity: 0, y: 20, transition: { duration: 0.2 } },
   };
+
   return (
     <motion.li className="w-full flex relative items-center justify-center flex-col min-w-[200px]">
       <motion.div
@@ -84,7 +89,13 @@ export default function RoadmapNode({
             text="Start learning"
             width="100%"
             height="40px"
-            href={`/workspace/conversation/${id}/${subroadmap.title}/${subroadmap.node_list[0].conversation_id}/${subroadmap.node_list[0].title}`}
+            callbackFn={async () => {
+              await selectConversation(
+                subroadmap.node_list[0].conversation_id,
+                subroadmap.node_list[0].title
+              );
+            }}
+            href={`/workspace/conversation/${id}/${subroadmap.title}/`}
             classname=" text-md border "
           />
         </motion.div>

@@ -1,6 +1,8 @@
+"use client";
 import RoadmapNodeInterface from "@/app/shared/entities/RoadmapNode";
 import Node from "@/app/shared/entities/RoadmapNode";
 import Link from "next/link";
+import useConversationStorage from "../../ConversationWindow/storage/ConversationStorage";
 
 export default function RoadmapNode({
   tech,
@@ -17,18 +19,24 @@ export default function RoadmapNode({
   if (array[array.length - 1] == tech) {
     isLast = true;
   }
+  const selectConversation = useConversationStorage(
+    (state) => state.selectConversation
+  );
   current_tech_title = current_tech_title.replaceAll("%20", " ");
   return (
     <li className="w-full flex items-center  justify-center flex-col min-w-[200px]">
-      <a
-        href={href}
+      <div
+        // href={href}
+        onClick={() => {
+          selectConversation(tech.conversation_id, tech.title);
+        }}
         className={`conversation_roadmap__node ${
           tech.isCompleted && "roadmap__node--completed"
         } ${current_tech_title === tech.title && "bg-secondary"}
 		  `}
       >
         {tech.title}
-      </a>
+      </div>
 
       {!isLast && (
         <div

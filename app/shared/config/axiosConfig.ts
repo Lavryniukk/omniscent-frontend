@@ -5,7 +5,6 @@ import { config } from "dotenv";
 config();
 
 import axios from "axios";
-import { usePopupStore } from "../storage/popupStorage";
 import { redirect } from "next/navigation";
 
 if (!process.env.SERVER_URL) {
@@ -20,11 +19,7 @@ axiosWithAuth.interceptors.request.use(async (config) => {
   try {
     const { accessToken } = await getAccessToken();
     config.headers.Authorization = `Bearer ${accessToken}`;
-  } catch (error) {
-    console.error("Error getting access token:", error);
-    const openPopup = usePopupStore((state) => state.openPopup);
-    openPopup();
-    redirect("/api/auth/login");
-  }
+  } catch (error) {}
+
   return config;
 });
