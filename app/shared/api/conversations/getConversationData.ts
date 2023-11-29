@@ -10,9 +10,7 @@ export const getConversationData = async (
       method: "GET",
       url: `/users/me/conversations/${id}`,
     });
-    if ((response.status = 200)) {
-      return response.data as Conversation;
-    }
+    return response.data as Conversation;
   } catch (e) {
     console.log(`Error with GET /users/me/conversations/${id}`, e);
   }

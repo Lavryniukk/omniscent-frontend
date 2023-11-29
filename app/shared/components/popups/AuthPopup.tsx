@@ -2,9 +2,9 @@ import PrimaryBtn from "@/app/UI/buttons/primaryBtn/PrimaryBtn";
 import { usePopupStore } from "../../storage/popupStorage";
 import { JsxElement } from "typescript";
 
-export default function AuthPopup() {
-  const { isPopupOpen } = usePopupStore();
-  const popup: React.JSX.Element | null = isPopupOpen ? (
+export default function AuthPopup({ isOpen }: { isOpen: boolean }) {
+  // const { isPopupOpen } = usePopupStore();
+  const popup: React.JSX.Element | null = isOpen ? (
     <div
       className={`w-screen flex overflow-hidden absolute left-0 top-0 h-screen items-center z-50 justify-center bg-background`}
     >

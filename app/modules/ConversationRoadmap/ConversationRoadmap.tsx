@@ -6,29 +6,37 @@ import RoadmapNodeInterface from "@/app/shared/entities/RoadmapNode";
 import RoadmapNode from "./components/ConversationRoadmapNode";
 import Link from "next/link";
 import { MdOutlineArrowBack } from "react-icons/md";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
+import useConversationStorage from "../ConversationWindow/storage/ConversationStorage";
 
 export default function ConversationRoadmap({
   roadmap_id,
   subroadmap_title,
-  current_tech_title,
 }: {
   roadmap_id: string;
   subroadmap_title: string;
-  current_tech_title: string;
 }) {
-  const { data, error, isLoading } = useQuery(["subroadmap"], () => {
+  const { tech_title, conversation_id, selectConversation } =
+    useConversationStorage();
+
+  const { data, isLoading } = useQuery(["subroadmap"], () => {
     return fetchSubroadmap(roadmap_id, subroadmap_title);
   });
+  useEffect(() => {
+    if (conversation_id === "" && !isLoading) {
+      selectConversation(
+        data?.node_list[0].conversation_id as string,
+        data?.node_list[0].title as string
+      );
+    }
+  }, [isLoading]);
 
   const [isOpen, setIsOpen] = useState<boolean>(true);
-  const divRef = useRef<HTMLDivElement | null>(null);
 
   return (
     <>
       <div
-        ref={divRef}
         className={`w-[20%] min-w-[270px] max-w-[500px] space-y-5 py-4 bg-background border-r-2 px-3 border-accent flex-col h-screen z-20 ${
           isOpen ? "translate-x-0" : "translate-x-[-100%] lg:translate-x-0"
         } duration-500 transition absolute lg:relative`}
@@ -46,27 +54,33 @@ export default function ConversationRoadmap({
           </p>
         </Link>
 
-        <h1 className="text-text text-2xl text-center">{data?.title}</h1>
+        <h1 className="text-text text-2xl text-center">
+          {!isLoading && data?.title}
+        </h1>
 
-        <ul className="">
-          {data?.node_list.map(
-            (
-              tech: RoadmapNodeInterface,
-              index: number,
-              array: RoadmapNodeInterface[]
-            ) => {
-              return (
-                <RoadmapNode
-                  key={index}
-                  tech={tech}
-                  array={array}
-                  current_tech_title={current_tech_title}
-                  href={`/workspace/conversation/${roadmap_id}/${subroadmap_title}/${tech.conversation_id}/${tech.title}`}
-                />
-              );
-            }
-          )}
-        </ul>
+        {!isLoading ? (
+          <ul className="">
+            {data?.node_list.map(
+              (
+                tech: RoadmapNodeInterface,
+                index: number,
+                array: RoadmapNodeInterface[]
+              ) => {
+                return (
+                  <RoadmapNode
+                    key={index}
+                    tech={tech}
+                    array={array}
+                    current_tech_title={tech_title}
+                    href={`/workspace/conversation/${roadmap_id}/${subroadmap_title}/`}
+                  />
+                );
+              }
+            )}
+          </ul>
+        ) : (
+          <div className="mx-auto text-text">Loading</div>
+        )}
       </div>
 
       <BsChevronDown
