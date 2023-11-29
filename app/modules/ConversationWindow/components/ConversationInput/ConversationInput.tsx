@@ -62,7 +62,7 @@ export default function ConversationInput({
         autoFocus
         onChange={(e) => handleInput(e)}
         onKeyDown={(e) => {
-          if (e.key === "Enter" && !e.shiftKey) {
+          if (e.key === "Enter" && !e.shiftKey && !isLocked) {
             e.preventDefault();
             handleSubmit(e as unknown as React.FormEvent<HTMLFormElement>);
           }
