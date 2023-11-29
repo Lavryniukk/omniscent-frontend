@@ -9,7 +9,7 @@ export default function ConversationInput({
 }: {
   conversation_id: string;
 }) {
-  const { userInputData, setInputData, isLocked, setLocked, addUserMessage } =
+  const { userInputData, setInputData, isLocked, lock, addUserMessage } =
     useConversationStorage();
 
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
