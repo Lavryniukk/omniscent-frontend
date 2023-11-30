@@ -13,6 +13,7 @@ interface ConversationStorageState {
   conversation_id: string | undefined;
   isLocked: boolean;
   tech_title: string;
+  isStreaming: boolean;
 }
 
 interface ConversationStorageActions {
@@ -26,6 +27,7 @@ interface ConversationStorageActions {
   ) => void;
   lock: () => void;
   unlock: () => void;
+  setStreaming: (value: boolean) => void;
 
   updateLastAssistantMessage: (newValue: string) => void;
 }
@@ -56,18 +58,27 @@ const useConversationStorage = create<
     });
   },
 
+  isStreaming: false,
+  setStreaming(value) {
+    set({ isStreaming: value });
+  },
+
   tech_title: "",
 
   assistantData: "",
 
   async selectConversation(id, title) {
-    set({ conversation_id: id, tech_title: title });
-    const conversation = (await getConversationData(id)) as Conversation;
-    set({ conversation: conversation });
-    set({
-      isLocked: true,
-    });
-    return conversation;
+    if (!get().isStreaming) {
+      set({ conversation_id: id, tech_title: title });
+      const conversation = (await getConversationData(id)) as Conversation;
+      set({ conversation: conversation });
+      set({
+        isLocked: true,
+      });
+      return conversation;
+    } else {
+      return get().conversation as Conversation;
+    }
   },
 
   setInputData: (newInputData) => set({ userInputData: newInputData }),
@@ -126,8 +137,13 @@ const useConversationStorage = create<
       conversation_id,
       token,
       get().updateLastAssistantMessage,
-      get().lock,
-      () => {}
+      () => {
+        get().lock;
+        set({ isStreaming: true });
+      },
+      () => {
+        set({ isStreaming: false });
+      }
     );
   },
 }));

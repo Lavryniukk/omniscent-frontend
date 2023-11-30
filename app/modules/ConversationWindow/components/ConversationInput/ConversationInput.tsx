@@ -21,7 +21,7 @@ export default function ConversationInput({
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   useEffect(() => {
     !userInputData ? lock() : unlock();
-  }, [userInputData]);
+  }, [userInputData, lock, unlock]);
   const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const textarea = textareaRef.current;
     if (textarea) {

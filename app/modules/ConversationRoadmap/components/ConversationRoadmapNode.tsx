@@ -8,9 +8,11 @@ export default function RoadmapNode({
   tech,
   array,
   href,
+  isLocked,
   current_tech_title,
 }: {
   tech: Node;
+  isLocked: boolean;
   array: RoadmapNodeInterface[];
   href: string;
   current_tech_title: string;
@@ -31,8 +33,10 @@ export default function RoadmapNode({
           selectConversation(tech.conversation_id, tech.title);
         }}
         className={`conversation_roadmap__node ${
-          tech.isCompleted && "roadmap__node--completed"
-        } ${current_tech_title === tech.title && "bg-secondary"}
+          isLocked && "hover:cursor-not-allowed"
+        } ${tech.isCompleted && "roadmap__node--completed"} ${
+          current_tech_title === tech.title && "bg-secondary"
+        }
 		  `}
       >
         {tech.title}

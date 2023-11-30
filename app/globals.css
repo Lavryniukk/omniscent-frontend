@@ -163,6 +163,9 @@ body {
 .chat-output code {
   @apply bg-background inline-block border border-accent w-auto rounded-lg p-4;
 }
+.chat-output code h4 {
+  @apply text-primary;
+}
 
 .features-container {
   @apply md:w-full w-full sm:w-3/4 lg:w-full mx-auto border-accent border-opacity-50 rounded-lg border-[1.5px] transition-all delay-150 duration-500;

@@ -64,7 +64,6 @@ export default function ConversationWindow({
   //     )}
   //   </div>
   // );
-  console.log(vh * 100);
   return (
     <div
       className={`w-full min-w-fit flex items-center  flex-1  flex-col h-full  border-accent bg-secondary relative overflow-hidden `}
