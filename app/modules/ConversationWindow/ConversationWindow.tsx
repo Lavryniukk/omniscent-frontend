@@ -6,14 +6,14 @@ import InitConversationButton from "./components/InitConversationButton/InitConv
 import useConversationStorage from "./storage/ConversationStorage";
 import ConversationInput from "./components/ConversationInput/ConversationInput";
 import { useEffect } from "react";
+import SubroadmapNodeInterface from "@/app/shared/entities/SubroadmapNode";
 interface CoversationChatProps {
   roadmap_id: string;
 }
 export default function ConversationWindow({
   roadmap_id,
 }: CoversationChatProps) {
-  const { conversation, selectConversation, conversation_id, tech_title } =
-    useConversationStorage();
+  const { conversation, selectConversation, tech } = useConversationStorage();
   // const { isLoading, error } = useQuery(
   //   ["conversation"],
   //   async (): Promise<Conversation> => {
@@ -72,16 +72,20 @@ export default function ConversationWindow({
         {conversation?.node_title}
       </div>
       <div className="flex  w-full flex-col h-full max-h-full overflow-y-auto">
-        <Messages conversation={conversation as Conversation} />
+        <Messages
+          conversation={conversation as Conversation}
+          tech={tech as SubroadmapNodeInterface}
+          roadmapId={roadmap_id}
+        />
       </div>
       {!messages?.length && (
         <InitConversationButton
-          node_title={tech_title}
+          node_title={tech?.title as string}
           user_roadmap_id={roadmap_id}
-          conversation_id={conversation_id as string}
+          conversation_id={tech?.conversation_id as string}
         />
       )}
-      <ConversationInput conversation_id={conversation_id as string} />
+      <ConversationInput conversation_id={tech?.conversation_id as string} />
     </div>
   );
 }

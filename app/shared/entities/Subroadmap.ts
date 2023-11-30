@@ -1,7 +1,7 @@
-import Node from "./RoadmapNode";
+import SubroadmapNodeInterface from "./SubroadmapNode";
 
 export default interface SubroadmapInterface {
   title: string;
-  node_list: Node[];
+  node_list: SubroadmapNodeInterface[];
   isCompleted: boolean;
 }

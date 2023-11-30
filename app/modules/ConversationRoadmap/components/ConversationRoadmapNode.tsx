@@ -1,6 +1,6 @@
 "use client";
-import RoadmapNodeInterface from "@/app/shared/entities/RoadmapNode";
-import Node from "@/app/shared/entities/RoadmapNode";
+import RoadmapNodeInterface from "@/app/shared/entities/SubroadmapNode";
+import Node from "@/app/shared/entities/SubroadmapNode";
 import Link from "next/link";
 import useConversationStorage from "../../ConversationWindow/storage/ConversationStorage";
 
@@ -30,7 +30,7 @@ export default function RoadmapNode({
       <div
         // href={href}
         onClick={() => {
-          selectConversation(tech.conversation_id, tech.title);
+          selectConversation(tech);
         }}
         className={`conversation_roadmap__node ${
           isLocked && "hover:cursor-not-allowed"

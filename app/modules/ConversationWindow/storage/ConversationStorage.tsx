@@ -6,20 +6,21 @@ import initConversation from "../helpers/initConversationById";
 import listenForUpdates from "../helpers/listenToEvent";
 import sendUserMessage from "../api/sendUserMessage";
 import listenToSse from "../helpers/listenToEvent";
+import SubroadmapNodeInterface from "@/app/shared/entities/SubroadmapNode";
+import toggleIsCompleted from "@/app/shared/api/roadmaps/toggleIsCompleted";
 interface ConversationStorageState {
   userInputData: string;
   assistantData: string;
   conversation: Conversation | null;
-  conversation_id: string | undefined;
+  tech: SubroadmapNodeInterface | null;
   isLocked: boolean;
-  tech_title: string;
   isStreaming: boolean;
 }
 
 interface ConversationStorageActions {
   setInputData: (newInputData: string) => void;
   addUserMessage: (newMessage: string, conversation_id: string) => void;
-  selectConversation: (id: string, title: string) => Promise<Conversation>;
+  selectConversation: (tech: SubroadmapNodeInterface) => Promise<Conversation>;
   initConversation: (
     conversation_id: string,
     user_roadmap_id: string,
@@ -28,7 +29,7 @@ interface ConversationStorageActions {
   lock: () => void;
   unlock: () => void;
   setStreaming: (value: boolean) => void;
-
+  toggleIsCompleted: (roadmapId: string, tech_title: string) => void;
   updateLastAssistantMessage: (newValue: string) => void;
 }
 
@@ -44,7 +45,11 @@ const useConversationStorage = create<
   // },
   userInputData: "",
 
-  conversation_id: "",
+  tech: null,
+  async toggleIsCompleted(roadmapId, tech_title) {
+    await toggleIsCompleted(roadmapId, tech_title);
+    get().lock();
+  },
 
   isLocked: true,
   lock() {
@@ -63,14 +68,14 @@ const useConversationStorage = create<
     set({ isStreaming: value });
   },
 
-  tech_title: "",
-
   assistantData: "",
 
-  async selectConversation(id, title) {
+  async selectConversation(tech) {
     if (!get().isStreaming) {
-      set({ conversation_id: id, tech_title: title });
-      const conversation = (await getConversationData(id)) as Conversation;
+      set({ tech: tech });
+      const conversation = (await getConversationData(
+        tech.conversation_id
+      )) as Conversation;
       set({ conversation: conversation });
       set({
         isLocked: true,
