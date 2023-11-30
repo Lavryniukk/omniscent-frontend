@@ -51,12 +51,12 @@ export default function ConversationInput({
 
   return (
     <form
-      className="w-full lg:w-3/4 relative   h-fit box-border  px-5 mb-5  bottom-0 z-10   rounded-xl flex items-center "
+      className="w-full lg:w-3/4 relative justify-center h-fit box-border  px-5 mb-5  bottom-0 z-10   rounded-xl flex items-center "
       onSubmit={(e) => !isLocked && handleSubmit(e)}
     >
       <textarea
         ref={textareaRef}
-        className={`w-full  h-[72px] box-border border-accent border bg-opacity-70 backdrop-blur-sm  bg-secondary  rounded-xl p-5 pr-16 aspect-none placeholder:text-lg text-accent text-lg
+        className={`w-full flex items-center justify-center h-[72px] box-border border-accent border bg-opacity-70 backdrop-blur-sm  bg-secondary  rounded-xl p-5 pr-16 aspect-none placeholder:text-lg text-accent text-lg
            focus:outline-none focus:border-text resize-none max-h-[200px] overflow-y-auto  `}
         placeholder="Send a message"
         autoFocus

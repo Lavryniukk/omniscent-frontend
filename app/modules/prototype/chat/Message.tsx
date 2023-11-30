@@ -15,7 +15,7 @@ let Messages = () => {
             key={index}
             className="w-full text-sm md:text-base lg:text-lg border-accent bg-background h-fit rounded-lg pr-2 text-accent py-4 lg:pl-8 pl-3 "
           >
-            User: {message.content}{" "}
+            User: {message.content}
             {/* Render user messages with their content. */}
           </div>
         );
@@ -25,10 +25,10 @@ let Messages = () => {
             key={index}
             className="w-full text-sm md:text-base lg:text-lg rounded-lg h-fit border-secondary dark:bg-secondary pr-2 bg-secondary text-accent py-4 lg:pl-8 pl-3 border"
           >
-            Assistant:{" "}
+            Assistant:
             {chat[chat.length - 1] === message
               ? assistantData // Render assistant's response or assistantData if it's the last message in the chat.
-              : message.content}{" "}
+              : message.content}
             {/* Render assistant's message content. */}
           </div>
         );

@@ -1,17 +1,11 @@
 "use client";
-import checkToken from "../api/auth/[auth0]/healthCheck";
 import "@/app/globals.css";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
-import {
-  QueryClient,
-  QueryClientProvider,
-  useQuery,
-} from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Inter } from "next/font/google";
 
 import { ObserverProvider } from "../shared/providers/ObserverProvider";
-import AuthPopup from "../shared/components/popups/AuthPopup";
-import { useEffect } from "react";
+
 import { TokenCheckerProvider } from "../shared/providers/AuthCheckerProvider";
 const inter = Inter({
   variable: "--inter-font",
@@ -27,7 +21,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" className={`${inter.variable} bg-background`}>
-      <body>
+      <body className="font-inter">
         <UserProvider>
           <QueryClientProvider client={client}>
             <TokenCheckerProvider>

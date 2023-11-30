@@ -19,9 +19,11 @@ export default function Message({
       <div
         className={`max-w-[1000px] flex flex-col items-start  w-full space-y-3`}
       >
-        <div className="flex items-center justify-center ">
+        <div className="flex my-2 items-center justify-center ">
           <div className="w-[20px] lg:w-[32px] aspect-square border bg-accent rounded-full" />
-          <p className="ml-1 text-accent">{role === "user" ? "You" : "John"}</p>
+          <p className="ml-1 text-accent">
+            {role === "user" ? "You" : "AI Teacher"}
+          </p>
         </div>
         <article
           dangerouslySetInnerHTML={createMarkup(content)}
