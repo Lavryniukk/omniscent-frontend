@@ -161,7 +161,7 @@ body {
 }
 
 .chat-output code {
-  @apply bg-background inline-block border border-accent w-auto rounded-lg p-4;
+  @apply bg-background inline-block border border-accent w-auto rounded-lg p-1;
 }
 .chat-output code h4 {
   @apply text-primary;
