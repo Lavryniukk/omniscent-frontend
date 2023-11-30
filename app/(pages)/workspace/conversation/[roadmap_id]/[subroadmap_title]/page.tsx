@@ -14,7 +14,7 @@ export default withPageAuthRequired(
   function Conversation({ params }: ConversationPageProps) {
     return (
       <div
-        className={`select-none overflow-x-hidden overflow-auto  w-full h-full flex flex-row overflow-y-auto bg-transparent mx-auto box-border`}
+        className={`select-none overflow-x-hidden overflow-auto fullheight w-full h-full flex flex-row overflow-y-auto bg-transparent mx-auto box-border`}
       >
         <ConversationRoadmap
           roadmap_id={params.roadmap_id}
