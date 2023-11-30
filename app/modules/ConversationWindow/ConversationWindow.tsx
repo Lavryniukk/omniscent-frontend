@@ -22,9 +22,14 @@ export default function ConversationWindow({
   //   {}
   // );
   let vh = window.innerHeight * 0.01;
+  // Then we set the value in the --vh custom property to the root of the document
+  document.documentElement.style.setProperty("--vh", `${vh}px`);
+
+  // We listen to the resize event
   window.addEventListener("resize", () => {
     // We execute the same script as before
-    vh = window.innerHeight * 0.01;
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
   });
   const messages = conversation?.messages as ConversationMessage[];
   // return (
@@ -59,9 +64,10 @@ export default function ConversationWindow({
   //     )}
   //   </div>
   // );
+  console.log(vh * 100);
   return (
     <div
-      className={`w-full min-w-fit flex items-center flex-1  flex-col h-[${vh}px] max-h-screen border-accent bg-secondary relative overflow-hidden `}
+      className={`w-full min-w-fit flex items-center  flex-1  flex-col fullheight  border-accent bg-secondary relative overflow-hidden `}
     >
       <div className="w-full  top-0 left-0 text-text tracking-widest py-4 flex items-center justify-center text-xl font-bold text-center bg-background">
         {conversation?.node_title}

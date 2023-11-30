@@ -13,7 +13,10 @@
 ::root {
   --section-height: `100vh`;
 }
-
+.fullheight {
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+}
 .section {
   height: var(--section-height);
 }
