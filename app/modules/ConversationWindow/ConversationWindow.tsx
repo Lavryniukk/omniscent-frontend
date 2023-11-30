@@ -21,6 +21,11 @@ export default function ConversationWindow({
   //   },
   //   {}
   // );
+  let vh = window.innerHeight * 0.01;
+  window.addEventListener("resize", () => {
+    // We execute the same script as before
+    vh = window.innerHeight * 0.01;
+  });
   const messages = conversation?.messages as ConversationMessage[];
   // return (
   //   <div className="w-full min-w-fit flex items-center flex-col h-full border-accent bg-secondary relative overflow-hidden ">
@@ -55,7 +60,9 @@ export default function ConversationWindow({
   //   </div>
   // );
   return (
-    <div className="w-full min-w-fit flex items-center flex-1  flex-col h-screen  border-accent bg-secondary relative overflow-hidden ">
+    <div
+      className={`w-full min-w-fit flex items-center flex-1  flex-col h-[${vh}px] max-h-screen border-accent bg-secondary relative overflow-hidden `}
+    >
       <div className="w-full  top-0 left-0 text-text tracking-widest py-4 flex items-center justify-center text-xl font-bold text-center bg-background">
         {conversation?.node_title}
       </div>
