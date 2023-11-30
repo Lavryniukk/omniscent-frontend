@@ -18,11 +18,13 @@
     "@typescript-eslint/parser": "^6.10.0",
     "autoprefixer": "10.4.15",
     "axios": "^1.6.1",
+    "dompurify": "^3.0.6",
     "dotenv": "^16.3.1",
     "eslint": "8.47.0",
     "eslint-config-next": "^13.5.3",
     "eventsource": "^2.0.2",
     "framer-motion": "^10.16.5",
+    "highlight.js": "^11.9.0",
     "js-cookie": "^3.0.5",
     "next": "^14.0.1",
     "postcss": "^8.4.31",
@@ -34,6 +36,7 @@
     "zustand": "^4.4.1"
   },
   "devDependencies": {
+    "@types/dompurify": "^3.0.5",
     "@types/eventsource": "^1.1.15",
     "@types/js-cookie": "^3.0.4",
     "@types/prop-types": "^15.7.10",

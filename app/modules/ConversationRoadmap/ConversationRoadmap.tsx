@@ -6,7 +6,7 @@ import RoadmapNodeInterface from "@/app/shared/entities/RoadmapNode";
 import RoadmapNode from "./components/ConversationRoadmapNode";
 import Link from "next/link";
 import { MdOutlineArrowBack } from "react-icons/md";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
 import useConversationStorage from "../ConversationWindow/storage/ConversationStorage";
 
@@ -17,7 +17,7 @@ export default function ConversationRoadmap({
   roadmap_id: string;
   subroadmap_title: string;
 }) {
-  const { tech_title, conversation_id, selectConversation } =
+  const { tech_title, conversation_id, selectConversation, isStreaming } =
     useConversationStorage();
 
   const { data, isLoading } = useQuery(["subroadmap"], () => {
@@ -43,7 +43,7 @@ export default function ConversationRoadmap({
       >
         <Link
           href={`/workspace/roadmap/${roadmap_id}`}
-          className=" w-fit mx-auto relative h-[5%] group overflow-hidden before:w-0 before:left-0 before:-z-0  before:absolute before:bg-secondary before:h-full hover:before:w-full before:transition-all before:duration-200 before:bottom-0 before:ease-in-out hover:before:rounded-lg hover:text-text  text-accent space-x-2  rounded-lg flex items-center justify-center"
+          className=" w-fit mx-auto relative  group overflow-hidden before:w-0 before:left-0 before:-z-0  before:absolute before:bg-secondary before:h-full hover:before:w-full before:transition-all before:duration-200 before:bottom-0 before:ease-in-out hover:before:rounded-lg hover:text-text  text-accent space-x-2  rounded-lg flex items-center justify-center"
         >
           <MdOutlineArrowBack
             size={30}
@@ -68,6 +68,7 @@ export default function ConversationRoadmap({
               ) => {
                 return (
                   <RoadmapNode
+                    isLocked={isStreaming}
                     key={index}
                     tech={tech}
                     array={array}
@@ -86,7 +87,7 @@ export default function ConversationRoadmap({
       <BsChevronDown
         onClick={() => setIsOpen(!isOpen)}
         size={30}
-        className={`font-semibold text-text absolute left-2 block z-50 top-[17px] duration-500 rotate-90 transition-transform lg:hidden ${
+        className={`font-semibold text-text absolute left-2 block z-50 top-[15px] duration-500 rotate-90 transition-transform lg:hidden ${
           isOpen ? "translate-x-[220px]" : "translate-x-0 scale-y-[-1]"
         }`}
       />
