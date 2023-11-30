@@ -90,10 +90,7 @@ export default function RoadmapNode({
             width="100%"
             height="40px"
             callbackFn={() => {
-              selectConversation(
-                subroadmap.node_list[0].conversation_id,
-                subroadmap.node_list[0].title
-              );
+              selectConversation(subroadmap.node_list[0]);
             }}
             href={`/workspace/conversation/${id}/${subroadmap.title}/`}
             classname=" text-md border "

@@ -4,7 +4,7 @@ import Link from "next/link";
 import SubroadmapInterface from "@/app/shared/entities/Subroadmap";
 import SubroadmapNode from "./components/SubroadmapNode";
 import fetchSubroadmap from "../../ConversationRoadmap/api/fetchSubroadmap";
-import Node from "@/app/shared/entities/RoadmapNode";
+import Node from "@/app/shared/entities/SubroadmapNode";
 
 export default function Roadmap({ id, title }: { id: string; title: string }) {
   const { data, error } = useQuery(

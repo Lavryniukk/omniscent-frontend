@@ -1,4 +1,4 @@
-import Node from "@/app/shared/entities/RoadmapNode";
+import Node from "@/app/shared/entities/SubroadmapNode";
 import SubroadmapInterface from "@/app/shared/entities/Subroadmap";
 import Link from "next/link";
 

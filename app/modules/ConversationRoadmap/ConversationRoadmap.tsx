@@ -2,13 +2,14 @@
 
 import { useQuery } from "@tanstack/react-query";
 import fetchSubroadmap from "./api/fetchSubroadmap";
-import RoadmapNodeInterface from "@/app/shared/entities/RoadmapNode";
+import RoadmapNodeInterface from "@/app/shared/entities/SubroadmapNode";
 import RoadmapNode from "./components/ConversationRoadmapNode";
 import Link from "next/link";
 import { MdOutlineArrowBack } from "react-icons/md";
 import { useEffect, useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
 import useConversationStorage from "../ConversationWindow/storage/ConversationStorage";
+import SubroadmapNodeInterface from "@/app/shared/entities/SubroadmapNode";
 
 export default function ConversationRoadmap({
   roadmap_id,
@@ -17,19 +18,16 @@ export default function ConversationRoadmap({
   roadmap_id: string;
   subroadmap_title: string;
 }) {
-  const { tech_title, conversation_id, selectConversation, isStreaming } =
-    useConversationStorage();
+  const { tech, selectConversation, isStreaming } = useConversationStorage();
 
   const { data, isLoading } = useQuery(["subroadmap"], () => {
     return fetchSubroadmap(roadmap_id, subroadmap_title);
   });
   useEffect(() => {
-    if (conversation_id === "" && !isLoading) {
-      selectConversation(
-        data?.node_list[0].conversation_id as string,
-        data?.node_list[0].title as string
-      );
+    if (tech?.conversation_id === "" && !isLoading) {
+      selectConversation(data?.node_list[0] as SubroadmapNodeInterface);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading]);
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -80,17 +78,17 @@ export default function ConversationRoadmap({
           <ul className="">
             {data?.node_list.map(
               (
-                tech: RoadmapNodeInterface,
+                subroadmapNode: SubroadmapNodeInterface,
                 index: number,
-                array: RoadmapNodeInterface[]
+                array: SubroadmapNodeInterface[]
               ) => {
                 return (
                   <RoadmapNode
                     isLocked={isStreaming}
                     key={index}
-                    tech={tech}
+                    tech={subroadmapNode}
                     array={array}
-                    current_tech_title={tech_title}
+                    current_tech_title={tech?.title as string}
                     href={`/workspace/conversation/${roadmap_id}/${subroadmap_title}/`}
                   />
                 );
