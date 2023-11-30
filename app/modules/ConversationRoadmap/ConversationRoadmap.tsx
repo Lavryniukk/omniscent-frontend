@@ -33,11 +33,29 @@ export default function ConversationRoadmap({
   }, [isLoading]);
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  useEffect(() => {
+    const closeSidebar = (e: MouseEvent) => {
+      let target = e.target as Element;
+      if (isOpen && !target.closest(".sidebar") && !target.closest(".switch")) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      window.addEventListener("click", closeSidebar);
+    }
+
+    return () => {
+      if (isOpen) {
+        window.removeEventListener("click", closeSidebar);
+      }
+    };
+  }, [isOpen]);
 
   return (
     <>
-      <div
-        className={`w-[20%] min-w-[270px] max-w-[500px]  space-y-5 py-4 bg-background border-r-2 px-3 border-accent flex-col h-full z-20 ${
+      <aside
+        className={`sidebar w-[20%] min-w-[270px] max-w-[500px]  space-y-5 py-4 bg-background border-r-2 px-3 border-accent flex-col h-full z-20 ${
           isOpen ? "translate-x-0" : "translate-x-[-100%] lg:translate-x-0"
         } duration-500 transition absolute lg:relative`}
       >
@@ -82,12 +100,12 @@ export default function ConversationRoadmap({
         ) : (
           <div className="mx-auto text-text">Loading</div>
         )}
-      </div>
+      </aside>
 
       <BsChevronDown
         onClick={() => setIsOpen(!isOpen)}
         size={30}
-        className={`font-semibold text-text absolute left-2 block z-50 top-[15px] duration-500 rotate-90 transition-transform lg:hidden ${
+        className={`switch font-semibold text-text absolute left-2 block z-50 top-[15px] duration-500 rotate-90 transition-transform lg:hidden ${
           isOpen ? "translate-x-[220px]" : "translate-x-0 scale-y-[-1]"
         }`}
       />
