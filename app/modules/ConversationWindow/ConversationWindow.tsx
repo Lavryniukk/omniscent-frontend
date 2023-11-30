@@ -55,10 +55,10 @@ export default function ConversationWindow({
   //   </div>
   // );
   return (
-    <div className="w-full min-w-fit flex items-center flex-1  flex-col h-screen max-h-full border-accent bg-secondary relative overflow-hidden ">
-      {/* <div className="w-full absolute top-0 left-0 text-text tracking-widest py-4 flex items-center justify-center text-xl font-bold text-center bg-background">
+    <div className="w-full min-w-fit flex items-center flex-1  flex-col h-screen  border-accent bg-secondary relative overflow-hidden ">
+      <div className="w-full  top-0 left-0 text-text tracking-widest py-4 flex items-center justify-center text-xl font-bold text-center bg-background">
         {conversation?.node_title}
-      </div> */}
+      </div>
       <div className="flex  w-full flex-col h-full max-h-full overflow-y-auto">
         <Messages conversation={conversation as Conversation} />
       </div>

@@ -11,7 +11,7 @@ export default function Messages({
   return (
     <div
       role="presentation"
-      className=" overflow-y-auto  w-full  py-10   flex-col"
+      className=" overflow-y-auto  w-full  py-5 h-full  flex-col"
     >
       {messages?.map((message, index) => (
         <Message content={message.content} role={message.role} key={index} />
