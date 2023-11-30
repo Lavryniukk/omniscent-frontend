@@ -2,7 +2,7 @@
 import React, { useEffect, useRef } from "react";
 import DOMPurify from "dompurify";
 import hljs from "highlight.js";
-import "highlight.js/styles/github.css"; // Use the style you prefer
+import "highlight.js/styles/github-dark.css"; // Use the style you prefer
 
 export default function Message({
   role,
