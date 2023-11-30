@@ -67,7 +67,7 @@ export default function ConversationWindow({
   console.log(vh * 100);
   return (
     <div
-      className={`w-full min-w-fit flex items-center  flex-1  flex-col fullheight  border-accent bg-secondary relative overflow-hidden `}
+      className={`w-full min-w-fit flex items-center  flex-1  flex-col h-full  border-accent bg-secondary relative overflow-hidden `}
     >
       <div className="w-full  top-0 left-0 text-text tracking-widest py-4 flex items-center justify-center text-xl font-bold text-center bg-background">
         {conversation?.node_title}
