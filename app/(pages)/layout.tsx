@@ -7,6 +7,8 @@ import { Inter } from "next/font/google";
 import { ObserverProvider } from "../shared/providers/ObserverProvider";
 
 import { TokenCheckerProvider } from "../shared/providers/AuthCheckerProvider";
+import { useEffect } from "react";
+import { ThemeProvider } from "../shared/providers/ThemeProvider";
 const inter = Inter({
   variable: "--inter-font",
   subsets: ["latin"],
@@ -20,13 +22,15 @@ export default function RootLayout({
   const client = new QueryClient();
 
   return (
-    <html lang="en" className={`${inter.variable} bg-background`}>
-      <body className="font-inter">
+    <html lang="en" className={`${inter.variable}   `}>
+      <body className="font-inter  bg-background">
         <UserProvider>
           <QueryClientProvider client={client}>
-            <TokenCheckerProvider>
-              <ObserverProvider>{children}</ObserverProvider>
-            </TokenCheckerProvider>
+            <ThemeProvider>
+              <TokenCheckerProvider>
+                <ObserverProvider>{children}</ObserverProvider>
+              </TokenCheckerProvider>
+            </ThemeProvider>
           </QueryClientProvider>
         </UserProvider>
       </body>

@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 let ProCard = () => {
   const router = useRouter();
   return (
-    <div className=" -translate-x-5 z-20 shadow-[-2px_2px_40px_0px_white] border-t border-r observe duration-500 transition delay-75  w-[350px]  md:w-[450px] p-8  relative bg-background h-fit bg-opacity-90 rounded-xl border-secondary ">
+    <div className=" -translate-x-5 z-20 shadow-text shadow-xl border-t border-r observe duration-500 transition delay-75  w-[350px]  md:w-[450px] p-8  relative bg-background h-fit bg-opacity-90 rounded-xl border-secondary ">
       <h1 className="mb-2 text-2xl font-light text-left text-text">Advanced</h1>
       <h1 className="text-4xl font-bold text-left text-text">
         $14.99
