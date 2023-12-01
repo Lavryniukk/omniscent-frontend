@@ -2,9 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
-::root {
-  --section-height: `100vh`;
+.light {
+  --text: 10, 10, 10;
+  --background: 250, 250, 250;
+  --primary: 179, 249, 231;
+  --secondary: 217, 217, 217;
+  --accent: 92, 92, 92;
 }
+/* styles.css or tailwind.css */
+@layer utilities {
+  @keyframes shine {
+    from {
+      background-position: 200%;
+    }
+    to {
+      background-position: -200%;
+    }
+  }
+  .shiny-effect {
+    animation: shine 2s infinite;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.5) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+  }
+}
+
+.dark {
+  --text: 245, 245, 245;
+  --background: 5, 5, 5;
+  --primary: 6, 75, 58;
+  --secondary: 38, 38, 38;
+  --accent: 163, 163, 163;
+}
+
 .fullheight {
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
@@ -96,40 +130,6 @@
       0 0 5px var(--accent),
       0 0 10px var(--accent);
   }
-
-  .features {
-    display: grid;
-    grid-template-areas:
-      "one two two"
-      "one three four"
-      "six three five";
-    grid-template-columns: auto auto auto;
-    grid-template-rows: auto auto auto;
-  }
-
-  .features-container--1 {
-    grid-area: one;
-  }
-
-  .features-container--2 {
-    grid-area: two;
-  }
-
-  .features-container--3 {
-    grid-area: three;
-  }
-
-  .features-container--4 {
-    grid-area: four;
-  }
-
-  .features-container--5 {
-    grid-area: five;
-  }
-
-  .features-container--6 {
-    grid-area: six;
-  }
 }
 body {
   background: var(--background);
@@ -171,7 +171,7 @@ body {
 }
 
 .features-container {
-  @apply md:w-full w-full sm:w-3/4 lg:w-full mx-auto border-accent border-opacity-50 rounded-lg border-[1.5px] transition-all delay-150 duration-500;
+  @apply md:w-full w-full shadow-md shadow-text sm:w-3/4 lg:w-full mx-auto border-accent border-opacity-50 rounded-lg  transition-all delay-150 duration-500;
 }
 
 .roadmap__node {
@@ -197,7 +197,7 @@ body {
 }
 
 .conversation-hint {
-  @apply w-full text-left px-2 text-base sm:text-lg lg:text-base text-accent-300 py-3 bg-secondary rounded-md;
+  @apply w-full text-left px-2 text-base sm:text-lg lg:text-base text-accent py-3 bg-secondary rounded-md;
 }
 /* CSS class to reset basic input styles */
 .clear-input {
