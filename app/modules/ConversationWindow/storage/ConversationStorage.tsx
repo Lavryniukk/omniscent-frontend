@@ -8,6 +8,8 @@ import sendUserMessage from "../api/sendUserMessage";
 import listenToSse from "../helpers/listenToEvent";
 import SubroadmapNodeInterface from "@/app/shared/entities/SubroadmapNode";
 import toggleIsCompleted from "@/app/shared/api/roadmaps/toggleIsCompleted";
+import { getAccessToken } from "@auth0/nextjs-auth0";
+import getToken from "../api/getToken";
 interface ConversationStorageState {
   userInputData: string;
   assistantData: string;
@@ -31,6 +33,7 @@ interface ConversationStorageActions {
   setStreaming: (value: boolean) => void;
   toggleIsCompleted: (roadmapId: string, tech_title: string) => void;
   updateLastAssistantMessage: (newValue: string) => void;
+  getToken: () => Promise<string>;
 }
 
 const useConversationStorage = create<
@@ -62,7 +65,10 @@ const useConversationStorage = create<
       isLocked: false,
     });
   },
-
+  async getToken() {
+    const token = (await getAccessToken()) as string;
+    return token;
+  },
   isStreaming: false,
   setStreaming(value) {
     set({ isStreaming: value });
@@ -131,13 +137,7 @@ const useConversationStorage = create<
       conversation: newconversation,
     });
     node_title = node_title.replaceAll("%20", " ");
-
-    const token = (await initConversation(
-      conversation_id,
-      user_roadmap_id,
-      node_title
-    )) as string;
-
+    const token = await getToken();
     listenForUpdates(
       conversation_id,
       token,
@@ -150,6 +150,7 @@ const useConversationStorage = create<
         set({ isStreaming: false });
       }
     );
+    await initConversation(conversation_id, user_roadmap_id, node_title);
   },
 }));
 
