@@ -33,7 +33,6 @@ interface ConversationStorageActions {
   setStreaming: (value: boolean) => void;
   toggleIsCompleted: (roadmapId: string, tech_title: string) => void;
   updateLastAssistantMessage: (newValue: string) => void;
-  getToken: () => Promise<string>;
 }
 
 const useConversationStorage = create<
@@ -65,10 +64,7 @@ const useConversationStorage = create<
       isLocked: false,
     });
   },
-  async getToken() {
-    const token = (await getAccessToken()) as string;
-    return token;
-  },
+
   isStreaming: false,
   setStreaming(value) {
     set({ isStreaming: value });
