@@ -2,13 +2,13 @@ import { create } from "zustand";
 import { getConversationData } from "@/app/shared/api/conversations/getConversationData";
 import Conversation from "@/app/shared/entities/Conversation";
 import ConversationMessage from "@/app/shared/entities/ConversationMessage";
-import initConversation from "../helpers/initConversationById";
 import listenForUpdates from "../helpers/listenToEvent";
 import sendUserMessage from "../api/sendUserMessage";
 import listenToSse from "../helpers/listenToEvent";
 import SubroadmapNodeInterface from "@/app/shared/entities/SubroadmapNode";
 import toggleIsCompleted from "@/app/shared/api/roadmaps/toggleIsCompleted";
 import getToken from "../api/getToken";
+import fetchConversationInit from "../helpers/fetchConversationInit";
 interface ConversationStorageState {
   userInputData: string;
   assistantData: string;
@@ -145,7 +145,7 @@ const useConversationStorage = create<
         set({ isStreaming: false });
       }
     );
-    let res = await initConversation(
+    let res = await fetchConversationInit(
       conversation_id,
       user_roadmap_id,
       node_title
