@@ -15,8 +15,8 @@ export default async function initConversation(
       method: "POST",
       data: { user_roadmap_id: user_roadmap_id, node_title: node_title },
     });
-    console.log("Status", res.data);
-    return accessToken;
+    // console.log("Status", res.data);
+    return res.data;
   } catch (error) {
     console.error(
       `Error with POST /users/me/conversations/${conversation_id}/init`,
