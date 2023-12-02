@@ -16,7 +16,7 @@ export default function FetchedRoadmaps({
         ))}
       </div>
 
-      <p className="mx-auto text-center underline-offset-2 select-none underline text-accent-600">
+      <p className="mx-auto text-center underline-offset-2 select-none underline text-accent/75">
         <Link
           href="/workspace/create"
           className="hover:text-accent transition-colors duration-200"

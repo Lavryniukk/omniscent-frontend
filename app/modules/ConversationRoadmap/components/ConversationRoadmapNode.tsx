@@ -24,7 +24,9 @@ export default function RoadmapNode({
   const selectConversation = useConversationStorage(
     (state) => state.selectConversation
   );
-  current_tech_title = current_tech_title.replaceAll("%20", " ");
+
+  current_tech_title =
+    current_tech_title && current_tech_title.replaceAll("%20", " ");
   return (
     <li className="w-full flex items-center  justify-center flex-col min-w-[200px]">
       <div

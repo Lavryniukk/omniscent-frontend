@@ -13,12 +13,15 @@ const config: Config = {
       keyframes: {
         skeleton: {
           "0%": {
-            backgroundColor: "#262626",
+            backgroundColor: "rgb(var(--accent))",
             transform: "translateX(-100%)",
           },
-          "50%": { backgroundColor: "#404040", transform: "translateX(25%)" },
+          "50%": {
+            backgroundColor: "rgb(var(--secondary))",
+            transform: "translateX(25%)",
+          },
           "100%": {
-            backgroundColor: "#262626",
+            backgroundColor: "rgb(var(--accent))",
             transform: "translateX(100%)",
           },
         },

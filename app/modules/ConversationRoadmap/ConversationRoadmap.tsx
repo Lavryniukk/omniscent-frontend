@@ -24,7 +24,8 @@ export default function ConversationRoadmap({
     return fetchSubroadmap(roadmap_id, subroadmap_title);
   });
   useEffect(() => {
-    if (tech?.conversation_id === "" && !isLoading) {
+    if (tech === null && !isLoading) {
+      console.log("triggered");
       selectConversation(data?.node_list[0] as SubroadmapNodeInterface);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
