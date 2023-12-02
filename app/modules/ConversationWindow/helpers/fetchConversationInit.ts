@@ -20,8 +20,8 @@ export default async function fetchConversationInit(
         language: language,
       },
     });
-    console.log("Status", res.data);
-    return accessToken;
+    // console.log("Status", res.data);
+    return res.data;
   } catch (error) {
     console.error(
       `Error with POST /users/me/conversations/${conversation_id}/init`,
