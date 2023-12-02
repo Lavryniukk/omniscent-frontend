@@ -7,7 +7,6 @@ import { Inter } from "next/font/google";
 import { ObserverProvider } from "../shared/providers/ObserverProvider";
 
 import { TokenCheckerProvider } from "../shared/providers/AuthCheckerProvider";
-import { useEffect } from "react";
 import { ThemeProvider } from "../shared/providers/ThemeProvider";
 const inter = Inter({
   variable: "--inter-font",
