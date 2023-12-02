@@ -2,7 +2,6 @@
 import React, { useEffect, useRef } from "react";
 import DOMPurify from "dompurify";
 import hljs from "highlight.js";
-import "highlight.js/styles/github-dark.css"; // Use the style you prefer
 import { useTheme } from "@/app/shared/providers/ThemeProvider";
 
 export default function Message({
@@ -17,9 +16,9 @@ export default function Message({
   useEffect(() => {
     const loadHighlightStyles = async () => {
       if (theme === "dark") {
-        require("highlight.js/styles/github-dark.css");
-      } else {
         require("highlight.js/styles/github.css");
+      } else {
+        require("highlight.js/styles/github-dark.css");
       }
       if (contentRef.current) {
         contentRef.current.querySelectorAll("pre code").forEach((block) => {
