@@ -9,6 +9,7 @@ import ProfileButtons from "./components/ProfileButtons/ProfileButtons";
 import useProfileStorage from "./storage/ProfileStorage";
 export default function ProfilePage({ id }: { id: string }) {
   const { fetchData, setisEditMode, sendData } = useProfileStorage();
+
   const { isLoading } = useQuery({
     queryKey: ["profileData"],
     queryFn: async () => fetchData(id),

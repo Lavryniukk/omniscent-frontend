@@ -2,7 +2,6 @@
 
 import { useQuery } from "@tanstack/react-query";
 import fetchSubroadmap from "./api/fetchSubroadmap";
-import RoadmapNodeInterface from "@/app/shared/entities/SubroadmapNode";
 import RoadmapNode from "./components/ConversationRoadmapNode";
 import Link from "next/link";
 import { MdOutlineArrowBack } from "react-icons/md";

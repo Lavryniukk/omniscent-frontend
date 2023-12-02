@@ -2,12 +2,13 @@ import { create } from "zustand";
 import { getConversationData } from "@/app/shared/api/conversations/getConversationData";
 import Conversation from "@/app/shared/entities/Conversation";
 import ConversationMessage from "@/app/shared/entities/ConversationMessage";
-import initConversation from "../helpers/initConversationById";
+import fetchConversationInit from "../helpers/fetchConversationInit";
 import listenForUpdates from "../helpers/listenToEvent";
 import sendUserMessage from "../api/sendUserMessage";
 import listenToSse from "../helpers/listenToEvent";
 import SubroadmapNodeInterface from "@/app/shared/entities/SubroadmapNode";
 import toggleIsCompleted from "@/app/shared/api/roadmaps/toggleIsCompleted";
+
 interface ConversationStorageState {
   userInputData: string;
   assistantData: string;
@@ -46,17 +47,20 @@ const useConversationStorage = create<
   userInputData: "",
 
   tech: null,
+
   async toggleIsCompleted(roadmapId, tech_title) {
     await toggleIsCompleted(roadmapId, tech_title);
     get().lock();
   },
 
   isLocked: true,
+
   lock() {
     set({
       isLocked: true,
     });
   },
+
   unlock() {
     set({
       isLocked: false,
@@ -64,6 +68,7 @@ const useConversationStorage = create<
   },
 
   isStreaming: false,
+
   setStreaming(value) {
     set({ isStreaming: value });
   },
@@ -132,7 +137,7 @@ const useConversationStorage = create<
     });
     node_title = node_title.replaceAll("%20", " ");
 
-    const token = (await initConversation(
+    const token = (await fetchConversationInit(
       conversation_id,
       user_roadmap_id,
       node_title
