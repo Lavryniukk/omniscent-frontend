@@ -25,7 +25,8 @@ interface ConversationStorageActions {
   initConversation: (
     conversation_id: string,
     user_roadmap_id: string,
-    node_title: string
+    node_title: string,
+    language: string
   ) => void;
   lock: () => void;
   unlock: () => void;
@@ -126,7 +127,12 @@ const useConversationStorage = create<
     set({ conversation: conversation });
   },
 
-  initConversation: async (conversation_id, user_roadmap_id, node_title) => {
+  initConversation: async (
+    conversation_id,
+    user_roadmap_id,
+    node_title,
+    language
+  ) => {
     let newconversation = get().conversation as Conversation;
     newconversation.messages.push({
       role: "assistant",
@@ -140,7 +146,8 @@ const useConversationStorage = create<
     const token = (await fetchConversationInit(
       conversation_id,
       user_roadmap_id,
-      node_title
+      node_title,
+      language
     )) as string;
 
     listenForUpdates(
