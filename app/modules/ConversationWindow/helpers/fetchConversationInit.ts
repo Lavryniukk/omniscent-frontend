@@ -1,7 +1,7 @@
 "use server";
 import { axiosWithAuth } from "@/app/shared/config/axiosConfig";
 import { getAccessToken } from "@auth0/nextjs-auth0";
-export default async function initConversation(
+export default async function fetchConversationInit(
   conversation_id: string,
   user_roadmap_id: string,
   node_title: string

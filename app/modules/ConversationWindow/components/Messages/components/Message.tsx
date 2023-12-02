@@ -13,7 +13,9 @@ export default function Message({
   content: string;
 }) {
   const contentRef = useRef<HTMLDivElement>(null);
+
   const { theme } = useTheme();
+
   useEffect(() => {
     const loadHighlightStyles = async () => {
       if (theme === "dark") {

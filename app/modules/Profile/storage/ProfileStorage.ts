@@ -62,6 +62,7 @@ const useProfileStorage = create<profilePageStates & profilePageActions>(
 
       return data ? true : false;
     },
+
     sendData: async () => {
       const userDataName = get().userDataName;
       const userDataNickname = get().userDataNickname;
