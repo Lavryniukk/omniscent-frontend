@@ -8,7 +8,6 @@ import sendUserMessage from "../api/sendUserMessage";
 import listenToSse from "../helpers/listenToEvent";
 import SubroadmapNodeInterface from "@/app/shared/entities/SubroadmapNode";
 import toggleIsCompleted from "@/app/shared/api/roadmaps/toggleIsCompleted";
-import { getAccessToken } from "@auth0/nextjs-auth0";
 import getToken from "../api/getToken";
 interface ConversationStorageState {
   userInputData: string;
