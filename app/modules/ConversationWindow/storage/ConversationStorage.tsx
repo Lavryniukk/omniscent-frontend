@@ -146,7 +146,14 @@ const useConversationStorage = create<
         set({ isStreaming: false });
       }
     );
-    await initConversation(conversation_id, user_roadmap_id, node_title);
+    let res = await initConversation(
+      conversation_id,
+      user_roadmap_id,
+      node_title
+    );
+    if (!res) {
+      console.log("an error occured");
+    }
   },
 }));
 
