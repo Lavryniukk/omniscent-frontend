@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from "react";
 import DOMPurify from "dompurify";
 import hljs from "highlight.js";
 import "highlight.js/styles/github-dark.css"; // Use the style you prefer
+import { useTheme } from "@/app/shared/providers/ThemeProvider";
 
 export default function Message({
   role,
@@ -12,14 +13,23 @@ export default function Message({
   content: string;
 }) {
   const contentRef = useRef<HTMLDivElement>(null);
-
+  const { theme } = useTheme();
   useEffect(() => {
-    if (contentRef.current) {
-      contentRef.current.querySelectorAll("pre code").forEach((block) => {
-        hljs.highlightBlock(block as HTMLElement);
-      });
-    }
-  }, [content]);
+    const loadHighlightStyles = async () => {
+      if (theme === "dark") {
+        require("highlight.js/styles/github-dark.css");
+      } else {
+        require("highlight.js/styles/github.css");
+      }
+      if (contentRef.current) {
+        contentRef.current.querySelectorAll("pre code").forEach((block) => {
+          hljs.highlightBlock(block as HTMLElement);
+        });
+      }
+    };
+
+    loadHighlightStyles();
+  }, [content, theme]);
 
   const createMarkup = (htmlContent: string) => {
     // First highlight the code, then sanitize

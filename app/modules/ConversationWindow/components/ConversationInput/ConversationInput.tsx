@@ -23,12 +23,12 @@ export default function ConversationInput({
     !userInputData ? lock() : unlock();
   }, [userInputData, lock, unlock]);
   const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const textarea = textareaRef.current;
-    if (textarea) {
-      !e.target.value && (textarea.style.height = `72px`);
+    // const textarea = textareaRef.current;
+    // if (textarea) {
+    //   !e.target.value && (textarea.style.height = `72px`);
 
-      textarea.style.height = `${textarea.scrollHeight + 2}px`;
-    }
+    //   textarea.style.height = `${textarea.scrollHeight + 2}px`;
+    // }
 
     setInputData(e.target.value);
   };
@@ -60,7 +60,7 @@ export default function ConversationInput({
            focus:outline-none focus:border-text resize-none max-h-[200px] overflow-y-auto  `}
         placeholder="Send a message"
         autoFocus
-        onChange={(e) => handleInput(e)}
+        onChange={handleInput}
         onKeyDown={(e) => {
           if (e.key === "Enter" && !e.shiftKey && !isLocked) {
             e.preventDefault();

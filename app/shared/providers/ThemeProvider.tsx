@@ -18,7 +18,6 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
 
   // This effect runs once on mount, and anytime `setThemeState` function changes.
   useEffect(() => {
-    console.log(theme);
     const storedTheme = localStorage.getItem("theme");
     const prefersDark =
       window.matchMedia &&
