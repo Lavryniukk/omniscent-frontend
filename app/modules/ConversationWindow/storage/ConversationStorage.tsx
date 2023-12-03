@@ -107,7 +107,7 @@ const useConversationStorage = create<
 
     listenToSse(conversation._id, token, callback, get().lock, () => {});
 
-    const res = await sendUserMessage(
+    await sendUserMessage(
       message,
       conversation._id,
       roadmapId

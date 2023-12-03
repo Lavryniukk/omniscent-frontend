@@ -15,16 +15,17 @@ export default async function sendUserMessage(
       "content:",
       content
     );
-    const res = await axiosWithAuth({
+
+    await axiosWithAuth({
       url: `/users/me/conversations/${conversation_id}/messages`,
       method: "PUT",
       data: {
         role: "user",
         userRoadmapId,
-        content: content,
+        content,
       },
     });
-    return res.data;
+    return "sent";
   } catch (error) {
     console.error(
       `Error with PUT /users/me/conversations/${conversation_id}/messages`,
