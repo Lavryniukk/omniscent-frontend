@@ -16,14 +16,7 @@ export const TokenCheckerProvider = ({
   const { error, data, isLoading } = useQuery(["checkToken"], async () => {
     return await checkToken();
   });
-  if (error) {
-    console.log("Error occured, trying to breach");
-    if (!user) {
-      console.log("user does not exist, aborted");
-    } else {
-      console.log("displaying popup");
-    }
-  }
+
   return !isLoading && !error ? (
     <div>{children}</div>
   ) : !user ? (

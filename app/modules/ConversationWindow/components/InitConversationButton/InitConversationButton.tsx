@@ -21,7 +21,6 @@ export default function InitConversationButton({
     queryKey: ["initConversationUser"],
     queryFn: async () => await fetchUserData(user?.sub as string),
   });
-  console.log(data && data.user_metadata.bio.language);
   const initConversation = useConversationStorage(
     (state) => state.initConversation
   );
