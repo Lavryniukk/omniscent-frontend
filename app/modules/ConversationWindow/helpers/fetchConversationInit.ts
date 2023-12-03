@@ -1,22 +1,21 @@
 "use server";
 import { axiosWithAuth } from "@/app/shared/config/axiosConfig";
-import { getAccessToken } from "@auth0/nextjs-auth0";
 export default async function fetchConversationInit(
-  conversation_id: string,
-  user_roadmap_id: string,
-  node_title: string,
+  conversationId: string,
+  userRoadmapId: string,
+  noteTitle: string,
   language: string
 ) {
-  node_title = node_title.replaceAll("%26", "&");
-  const { accessToken } = await getAccessToken();
+  noteTitle = noteTitle.replaceAll("%26", "&");
 
   try {
     const res = await axiosWithAuth({
-      url: `/users/me/conversations/${conversation_id}/init`,
+      url: `/users/me/conversations/${conversationId}/init`,
       method: "POST",
       data: {
-        user_roadmap_id: user_roadmap_id,
-        node_title: node_title,
+        conversationId: conversationId,
+        userRoadmapId: userRoadmapId,
+        nodeTitle: noteTitle,
         language: language,
       },
     });
@@ -24,7 +23,7 @@ export default async function fetchConversationInit(
     return res.data;
   } catch (error) {
     console.error(
-      `Error with POST /users/me/conversations/${conversation_id}/init`,
+      `Error with POST /users/me/conversations/${conversationId}/init`,
       error
     );
   }

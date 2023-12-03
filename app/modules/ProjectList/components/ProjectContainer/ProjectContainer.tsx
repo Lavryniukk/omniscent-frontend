@@ -57,6 +57,7 @@ export default function ProjectContainer({
       window.removeEventListener("click", handleClick);
     };
   }, [isOpen]);
+
   return (
     <>
       <Link
@@ -83,14 +84,14 @@ export default function ProjectContainer({
         <div className="flex items-center justify-between mx-auto gap-4 w-11/12">
           <button
             onClick={() => setIsOpen(false)}
-            className={`block w-full mx-auto rounded box-border cursor-pointer text-sm font-medium py-1 h-fit text-text border bg-background pointer-events-auto hover:opacity-80 duration-300 transition `}
+            className={`block  w-full mx-auto rounded box-border cursor-pointer text-sm font-medium py-1 h-fit text-text border-2 bg-background pointer-events-auto hover:opacity-80 duration-300 transition `}
           >
             {`Cancel`}
           </button>
 
           <button
             onClick={async () => handleDelete({ id: _id })}
-            className={`block w-full mx-auto rounded box-border cursor-pointer text-sm font-medium py-1 h-fit bg-red-800 pointer-events-auto hover:opacity-80 duration-300 transition `}
+            className={`block text-text w-full mx-auto rounded box-border cursor-pointer text-sm font-medium py-1 h-fit bg-red-500 pointer-events-auto hover:opacity-80 duration-300 transition `}
           >
             {`Confirm`}
           </button>

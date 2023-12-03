@@ -7,7 +7,7 @@ export default function CreatingAnimation() {
   }, 20000);
   return (
     <div
-      className={`w-80 bg-secondary flex  text-accent space-y-5 text-xl  rounded-md border-secondary border-2 h-20`}
+      className={`w-80 bg-secondary flex  text-accent space-y-5 text-xl  rounded-md  h-20`}
     >
       <motion.div
         initial={{
