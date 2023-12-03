@@ -85,7 +85,10 @@ export default function ConversationWindow({
           conversation_id={tech?.conversation_id as string}
         />
       )}
-      <ConversationInput conversation_id={tech?.conversation_id as string} />
+      <ConversationInput
+        roadmapId={roadmap_id}
+        conversation_id={tech?.conversation_id as string}
+      />
     </div>
   );
 }
