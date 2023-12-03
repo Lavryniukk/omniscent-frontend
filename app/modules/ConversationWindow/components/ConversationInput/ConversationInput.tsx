@@ -25,12 +25,12 @@ export default function ConversationInput({
     !userInputData ? lock() : unlock();
   }, [userInputData, lock, unlock]);
   const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    // const textarea = textareaRef.current;
-    // if (textarea) {
-    //   !e.target.value && (textarea.style.height = `72px`);
+    const textarea = textareaRef.current;
+    if (textarea) {
+      !e.target.value && (textarea.style.height = `72px`);
 
-    //   textarea.style.height = `${textarea.scrollHeight + 2}px`;
-    // }
+      textarea.style.height = `${textarea.scrollHeight + 2}px`;
+    }
 
     setInputData(e.target.value);
   };
@@ -38,7 +38,7 @@ export default function ConversationInput({
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    addUserMessage(userInputData, conversation_id, roadmapId);
+    addUserMessage(roadmapId);
 
     const textarea = textareaRef.current;
 
@@ -46,6 +46,7 @@ export default function ConversationInput({
       textarea.style.height = `72px`;
 
       // textarea.style.height = `${textarea.scrollHeight}px`;
+      setInputData("");
 
       textarea.value = "";
     }
