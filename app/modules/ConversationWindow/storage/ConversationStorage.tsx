@@ -162,15 +162,13 @@ const useConversationStorage = create<
         set({ isStreaming: false });
       }
     );
-    let res = await fetchConversationInit(
+   await fetchConversationInit(
       conversationId,
       userRoadmapId,
       noteTitle,
       language
     );
-    if (!res) {
-      alert("an error occurred, please retry");
-    }
+
   },
 }));
 
