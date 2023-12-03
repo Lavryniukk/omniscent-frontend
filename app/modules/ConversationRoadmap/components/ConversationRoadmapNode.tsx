@@ -27,6 +27,7 @@ export default function RoadmapNode({
 
   current_tech_title =
     current_tech_title && current_tech_title.replaceAll("%20", " ");
+  console.log(tech);
   return (
     <li className="w-full flex items-center  justify-center flex-col min-w-[200px]">
       <div
