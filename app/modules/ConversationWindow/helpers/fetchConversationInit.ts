@@ -19,8 +19,8 @@ export default async function fetchConversationInit(
         language: language,
       },
     });
-    console.log("Status", res.data);  
-    return res.data;
+    console.log("Status", res.data);
+    return "inited";
   } catch (error) {
     console.error(
       `Error with POST /users/me/conversations/${conversationId}/init`,
