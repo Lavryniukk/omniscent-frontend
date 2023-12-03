@@ -149,7 +149,7 @@ body {
   @apply pt-6;
 }
 
-.chat-output pre code {
+.chat-output code {
   @apply bg-background inline-block border border-accent w-auto rounded-lg p-1;
 }
 
