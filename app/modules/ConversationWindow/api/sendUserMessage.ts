@@ -4,7 +4,8 @@ import { axiosWithAuth } from "@/app/shared/config/axiosConfig";
 import { getAccessToken } from "@auth0/nextjs-auth0";
 export default async function sendUserMessage(
   content: string,
-  conversation_id: string
+  conversation_id: string,
+  userRoadmapId: string
 ) {
   try {
     const { accessToken } = await getAccessToken();
@@ -13,6 +14,7 @@ export default async function sendUserMessage(
       method: "PUT",
       data: {
         role: "user",
+        userRoadmapId,
         content: content,
       },
     });

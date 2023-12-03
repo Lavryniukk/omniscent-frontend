@@ -6,8 +6,10 @@ import useConversationStorage from "../../storage/ConversationStorage";
 
 export default function ConversationInput({
   conversation_id,
+  roadmapId,
 }: {
   conversation_id: string;
+  roadmapId: string;
 }) {
   const {
     userInputData,
@@ -36,7 +38,7 @@ export default function ConversationInput({
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    addUserMessage(userInputData, conversation_id);
+    addUserMessage(userInputData, conversation_id, roadmapId);
 
     const textarea = textareaRef.current;
 
