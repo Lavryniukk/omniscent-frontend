@@ -56,24 +56,30 @@ export default function RoadmapNode({
       >
         <motion.div
           animate={isOpen ? "open" : "closed"}
+          onClick={() => {
+            alert("This feature is under development)");
+          }}
           variants={itemVariants}
           className="w-full py-1 rounded-sm z-10 after:-z-10 pl-1 text-md after:w-full after:h-0.5 after:absolute after:bottom-0 after:rounded-sm hover:after:h-full hover:text-background  transition-colors after:transition-all after:duration-200 after:ease-in-out  duration-200 after:left-0 after:bg-accent hover:after:bg-red-600 relative cursor-pointer text-text"
         >
           <div className="flex items-center">
             <BiTrashAlt className="mr-1" />
-            Remove technlogy
+            Remove technology
           </div>
         </motion.div>
         <motion.div
           animate={isOpen ? "open" : "closed"}
           variants={itemVariants}
+          onClick={() => {
+            alert("This feature is under development)");
+          }}
           className="w-full py-1 rounded-sm z-10 after:-z-10 pl-1 text-md after:w-full after:h-0.5 after:absolute after:bottom-0 after:rounded-sm hover:after:h-full hover:text-background  transition-colors after:transition-all after:duration-200 after:ease-in-out  duration-200 after:left-0 after:bg-accent relative cursor-pointer text-text"
         >
           <div className="flex items-center">
             <MdDone className="mr-1" />{" "}
             <p>
               {subroadmap.isCompleted
-                ? "Mark as uncomplited"
+                ? "Mark as uncompleted"
                 : "Mark as completed"}
             </p>
           </div>
