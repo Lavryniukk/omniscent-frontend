@@ -7,10 +7,10 @@ import { MdOutlineArrowBack } from "react-icons/md";
 import { motion } from "framer-motion";
 function WorkspacePage() {
   return (
-    <div className="flex h-screen border-accent items-center">
+    <div className="flex h-screen border-accent items-center pt-28 sm:pt-0">
       <a
         href="/"
-        className="flex items-center justify-center p-2  w-fit text-accent fixed left-10 top-10 hover:opacity-80"
+        className="flex items-center justify-center p-2 w-fit text-accent fixed left-10 top-10 hover:opacity-80"
       >
         <MdOutlineArrowBack />
         To home
