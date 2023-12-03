@@ -20,11 +20,7 @@ interface ConversationStorageState {
 
 interface ConversationStorageActions {
   setInputData: (newInputData: string) => void;
-  addUserMessage: (
-    newMessage: string,
-    conversation_id: string,
-    roadmapId: string
-  ) => void;
+  addUserMessage: (roadmapId: string) => void;
   selectConversation: (tech: SubroadmapNodeInterface) => Promise<Conversation>;
   initConversation: (
     conversation_id: string,
@@ -94,23 +90,30 @@ const useConversationStorage = create<
 
   setInputData: (newInputData) => set({ userInputData: newInputData }),
 
-  async addUserMessage(content, conversation_id, roadmapId) {
+  async addUserMessage(roadmapId) {
     let conversation = get().conversation as Conversation;
+    const message = get().userInputData;
+    
     conversation.messages.push({
       role: "user",
-      content: content,
+      content: message,
     });
     set({
       conversation: conversation,
     });
-    const res = (await sendUserMessage(
-      content,
-      conversation_id,
-      roadmapId
-    )) as string;
+    const token = await getToken()
+
     const callback = get().updateLastAssistantMessage;
+
+    listenToSse(conversation._id, token, callback, get().lock, () => {});
+
+    const res = await sendUserMessage(
+      message,
+      conversation._id,
+      roadmapId
+    )
     set({ userInputData: "" });
-    listenToSse(conversation_id, res, callback, get().lock, () => {});
+
   },
 
   updateLastAssistantMessage(newValue) {

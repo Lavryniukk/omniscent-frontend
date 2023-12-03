@@ -19,7 +19,7 @@ export default async function fetchConversationInit(
         language: language,
       },
     });
-    // console.log("Status", res.data);
+    console.log("Status", res.data);  
     return res.data;
   } catch (error) {
     console.error(
