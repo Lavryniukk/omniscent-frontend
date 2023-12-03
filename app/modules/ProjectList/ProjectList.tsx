@@ -32,7 +32,7 @@ export default function UserProjects() {
   }, [user]);
 
   return (
-    <div className="mx-auto w-full sm:w-1/3 max-w-[600px] sm:min-w-[500px] sm:px-5 sm:py-16 font-inter h-fit sm:border-2 border-accent rounded-lg relative">
+    <div className="mx-auto w-full min-w-[400px] py-16 sm:w-1/3 max-w-[600px] sm:min-w-[500px] sm:px-5 sm:py-16 font-inter h-fit sm:border-2 border-accent rounded-lg relative">
       <h1 className="text-4xl text-center font-bold mx-auto text-text  font-inter">
         {!isLoading && data?.length
           ? "Your learning projects"
