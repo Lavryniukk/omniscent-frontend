@@ -63,7 +63,7 @@ export default function Message({
         </div>
         <article
           dangerouslySetInnerHTML={createMarkup(content)}
-          className="mt-[5px] break-words text-lg w-full font-inter"
+          className="mt-[5px] break-words text-lg w-full font-inter chat-output"
           ref={contentRef}
         />
       </div>

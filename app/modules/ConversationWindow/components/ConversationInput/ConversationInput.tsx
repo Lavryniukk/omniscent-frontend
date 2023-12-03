@@ -17,6 +17,7 @@ export default function ConversationInput({
     isLocked,
     lock,
     unlock,
+    tech,
     addUserMessage,
   } = useConversationStorage();
 
@@ -25,30 +26,33 @@ export default function ConversationInput({
     !userInputData ? lock() : unlock();
   }, [userInputData, lock, unlock]);
   const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const textarea = textareaRef.current;
-    if (textarea) {
-      !e.target.value && (textarea.style.height = `72px`);
+    if (!tech?.isCompleted) {
+      const textarea = textareaRef.current;
+      if (textarea) {
+        !e.target.value && (textarea.style.height = `72px`);
 
-      textarea.style.height = `${textarea.scrollHeight + 2}px`;
+        textarea.style.height = `${textarea.scrollHeight + 2}px`;
+      }
+
+      setInputData(e.target.value);
     }
-
-    setInputData(e.target.value);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!tech?.isCompleted) {
+      addUserMessage(roadmapId);
 
-    addUserMessage(roadmapId);
+      const textarea = textareaRef.current;
 
-    const textarea = textareaRef.current;
+      if (textarea) {
+        textarea.style.height = `72px`;
 
-    if (textarea) {
-      textarea.style.height = `72px`;
+        // textarea.style.height = `${textarea.scrollHeight}px`;
+        setInputData("");
 
-      // textarea.style.height = `${textarea.scrollHeight}px`;
-      setInputData("");
-
-      textarea.value = "";
+        textarea.value = "";
+      }
     }
   };
 
