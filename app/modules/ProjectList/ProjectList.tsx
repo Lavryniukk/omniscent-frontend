@@ -27,7 +27,6 @@ export default function UserProjects() {
     const fetchData = async (id: string) => {
       const res = await fetchUserData(id);
       setUserData(res);
-      console.log(res);
     };
     user && fetchData(user.sub as string);
   }, []);

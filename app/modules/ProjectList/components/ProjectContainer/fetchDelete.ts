@@ -10,7 +10,7 @@ const fetchDelete = async (roadmapId: string) => {
       url: `/users/me/roadmaps/${roadmapId}`,
     });
   } catch (e) {
-    console.log(e);
+    console.log("Error with DELETE roadmap", e);
   }
 };
 

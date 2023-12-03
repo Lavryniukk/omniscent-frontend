@@ -24,7 +24,6 @@ export default function ConversationRoadmap({
   });
   useEffect(() => {
     if (tech === null && !isLoading) {
-      console.log("triggered");
       selectConversation(data?.node_list[0] as SubroadmapNodeInterface);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

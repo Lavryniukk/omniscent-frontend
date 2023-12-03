@@ -10,7 +10,6 @@ const sendData = async (data: FormState) => {
       data: { title: data.inputData },
       method: "POST",
     });
-    console.log(res.status);
   } catch (err) {
     console.log("Error POST /users/me/roadmaps", err);
     return false;

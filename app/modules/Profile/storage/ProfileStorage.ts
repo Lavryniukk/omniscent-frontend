@@ -86,7 +86,6 @@ const useProfileStorage = create<profilePageStates & profilePageActions>(
         body = { ...body, user_metadata: { bio: { bio: bioInputData } } };
       } else body = { ...body, user_metadata: { bio: { bio: userDataBio } } };
 
-      console.log(body);
 
       const res = await sendUserData(body);
     },
