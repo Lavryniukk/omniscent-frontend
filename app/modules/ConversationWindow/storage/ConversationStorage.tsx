@@ -124,23 +124,23 @@ const useConversationStorage = create<
   },
 
   initConversation: async (
-    conversation_id,
-    user_roadmap_id,
-    node_title,
+    conversationId,
+    userRoadmapId,
+    noteTitle,
     language
   ) => {
-    let newconversation = get().conversation as Conversation;
-    newconversation.messages.push({
+    let newConversation = get().conversation as Conversation;
+    newConversation.messages.push({
       role: "assistant",
       content: "",
     });
     set({
-      conversation: newconversation,
+      conversation: newConversation,
     });
-    node_title = node_title.replaceAll("%20", " ");
+    noteTitle = noteTitle.replaceAll("%20", " ");
     const token = await getToken();
     listenForUpdates(
-      conversation_id,
+      conversationId,
       token,
       get().updateLastAssistantMessage,
       () => {
@@ -152,13 +152,13 @@ const useConversationStorage = create<
       }
     );
     let res = await fetchConversationInit(
-      conversation_id,
-      user_roadmap_id,
-      node_title,
+      conversationId,
+      userRoadmapId,
+      noteTitle,
       language
     );
     if (!res) {
-      console.log("an error occured");
+      alert("an error occurred, please retry");
     }
   },
 }));
