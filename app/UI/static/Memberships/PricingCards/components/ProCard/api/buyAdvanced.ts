@@ -11,5 +11,4 @@ export default async function buyAdvanced() {
   } catch (e) {
     console.log(e);
   }
-  //   console.log(response);
 }
