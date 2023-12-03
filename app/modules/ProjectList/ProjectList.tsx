@@ -29,7 +29,7 @@ export default function UserProjects() {
       setUserData(res);
     };
     user && fetchData(user.sub as string);
-  }, []);
+  }, [user]);
 
   return (
     <div className="mx-auto w-full sm:w-1/3 max-w-[600px] sm:min-w-[500px] sm:px-5 sm:py-16 font-inter h-fit sm:border-2 border-accent rounded-lg relative">

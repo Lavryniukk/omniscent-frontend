@@ -149,11 +149,8 @@ body {
   @apply pt-6;
 }
 
-.chat-output code {
+.chat-output pre code {
   @apply bg-background inline-block border border-accent w-auto rounded-lg p-1;
-}
-.chat-output code h4 {
-  @apply text-primary;
 }
 
 .features-container {
