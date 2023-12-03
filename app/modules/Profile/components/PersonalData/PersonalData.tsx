@@ -15,7 +15,7 @@ export default function PersonalData() {
   } = useProfileStorage();
   const pic = user?.picture ?? ""; // Fallback to an empty string if picture is not available.
   return !isLoading ? (
-    <div className="flex flex-col items-start rounded-lg shadow-lg">
+    <div className="flex flex-col p-2 items-start rounded-lg ">
       <img
         src={pic}
         alt="User profile"

@@ -5,7 +5,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Inter } from "next/font/google";
 
 import { ObserverProvider } from "../shared/providers/ObserverProvider";
-
 import { TokenCheckerProvider } from "../shared/providers/AuthCheckerProvider";
 import { ThemeProvider } from "../shared/providers/ThemeProvider";
 const inter = Inter({
@@ -21,17 +20,17 @@ export default function RootLayout({
   const client = new QueryClient();
 
   return (
-    <html lang="en" className={`${inter.variable}   `}>
-      <body className="font-inter  bg-background">
-        <UserProvider>
-          <QueryClientProvider client={client}>
-            <ThemeProvider>
+    <html lang="en" className={`${inter.variable}`}>
+      <body className="font-inter  bg-background ">
+        <ThemeProvider>
+          <UserProvider>
+            <QueryClientProvider client={client}>
               <TokenCheckerProvider>
                 <ObserverProvider>{children}</ObserverProvider>
               </TokenCheckerProvider>
-            </ThemeProvider>
-          </QueryClientProvider>
-        </UserProvider>
+            </QueryClientProvider>
+          </UserProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
