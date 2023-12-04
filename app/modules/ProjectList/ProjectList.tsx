@@ -42,7 +42,7 @@ export default function UserProjects() {
       {userData && (
         <div className="absolute top-4 right-4 flex gap-1 justify-center items-center">
           <label className="text-sm text-text/60">
-            Prefered learning language
+            Preferred learning language
           </label>
           <select
             className="outline-none bg-transparent w-fit text-text/60"

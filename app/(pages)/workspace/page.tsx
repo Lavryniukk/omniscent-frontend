@@ -16,7 +16,7 @@ function WorkspacePage() {
         To home
       </a>
       <div className="flex flex-col w-min items-center min-w-[350px] gap-10 mx-auto">
-        <div className="border-2 p-5 gap-5 border-accent min-w-[350px] w-full rounded-lg flex flex-col items-start">
+        <div className="border-2 bg-secondary p-5 gap-5 border-accent min-w-[350px] w-full rounded-lg flex flex-col items-start">
           <h1 className="text-2xl text-text font-inter font-bold italic text-left">
             Hint
           </h1>

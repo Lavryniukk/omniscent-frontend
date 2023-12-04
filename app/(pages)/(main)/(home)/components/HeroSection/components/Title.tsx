@@ -35,8 +35,8 @@ let Title = () => {
 
       {/* Description text [max(40px,min(8vw,100px))] */}
       <p className="observe transition delay-100 duration-500 text-text hyphens-auto  mx-auto flex items-center justify-center w-10/12 md:w-3/4 lg:w-1/2 text-lg xs:text-xl 2xl:text-2xl text-center ">
-        Cleverize is online educational platform, that allows You to learn any
-        digital technology.
+        An educational platform, that allows You to learn any digital
+        technology.
       </p>
 
       {/* Get Started Button Component */}
@@ -45,7 +45,7 @@ let Title = () => {
         text="Get started"
         href="/workspace"
         observed={true}
-        classname="w-10/12 xs:w-2/3 mt-5  md:w-1/3 lg:w-[200px]"
+        classname="w-10/12 xs:w-2/3 mt-5  md:w-1/3  lg:w-[250px] border-2 text-xl"
       />
       {/* <PrimaryBlackBtn
         height="50px"

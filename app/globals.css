@@ -154,7 +154,7 @@ body {
 }
 
 .features-container {
-  @apply md:w-full w-full shadow-md shadow-text sm:w-3/4 lg:w-full mx-auto border-accent border-opacity-50 rounded-lg  transition-all delay-150 duration-500;
+  @apply md:w-full w-full shadow-md  border  sm:w-3/4 lg:w-full mx-auto border-accent/40 border-opacity-50 rounded-lg  transition-all delay-150 duration-500;
 }
 
 .roadmap__node {
