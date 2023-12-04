@@ -1,6 +1,5 @@
 import Link from "next/link";
 import ButtonProps from "../types/ButtonProps";
-import { animate, motion } from "framer-motion";
 
 export default function PrimaryBtn({
   text,
@@ -13,26 +12,24 @@ export default function PrimaryBtn({
   callbackFn,
 }: ButtonProps) {
   return (
-    <motion.div>
-      <Link
-        style={{
-          width: `${width}`,
+    <Link
+      style={{
+        width: `${width}`,
 
-          borderRadius: `${rounded}`,
-          height: `${height}`,
-        }}
-        onClick={(e) => {
-          !href && e.preventDefault();
-          callbackFn && callbackFn();
-        }}
-        // Styling for the button
-        className={`border ${
-          observed && ""
-        } m-2 overflow-visible hover:-translate-y-2 active:shadow-none  hover:shadow-[0px_8px_0px_-2px_rgba(var(--text),0.8)] active:-translate-y-0 border-primary text-md font-medium  transition-all duration-100 flex justify-center items-center  mx-auto text-text bg-primary rounded-md ${classname}`}
-        href={`${href ?? ""} `}
-      >
-        {text}
-      </Link>
-    </motion.div>
+        borderRadius: `${rounded}`,
+        height: `${height}`,
+      }}
+      onClick={(e) => {
+        !href && e.preventDefault();
+        callbackFn && callbackFn();
+      }}
+      // Styling for the button
+      className={`border ${
+        observed && "observe"
+      } m-2 overflow-visible hover:-translate-y-2 active:shadow-none  hover:shadow-[0px_8px_0px_-2px_rgba(var(--text),0.8)] active:-translate-y-0 border-primary text-md font-medium  transition-all duration-100 flex justify-center items-center  mx-auto text-text bg-primary rounded-md ${classname}`}
+      href={`${href ?? ""} `}
+    >
+      {text}
+    </Link>
   );
 }
