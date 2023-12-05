@@ -4,7 +4,7 @@ import hljs from 'highlight.js';
 import { useTheme } from '@/app/shared/providers/ThemeProvider';
 
 interface MessageProps {
-  role: 'user' | 'system';
+  role: 'user' | 'system' | 'assistant';
   content: string;
 }
 
