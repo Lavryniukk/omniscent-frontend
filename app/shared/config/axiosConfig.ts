@@ -18,6 +18,7 @@ async function refreshAccessToken(refreshToken: string | undefined) {
       grant_type: 'refresh_token',
       client_id: process.env.AUTH0_CLIENT_ID,
       refresh_token: refreshToken,
+      client_secret: process.env.AUTH0_CLIENT_SECRET
     });
 
     return response.data.access_token;
