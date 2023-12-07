@@ -13,6 +13,7 @@ if (!process.env.SERVER_URL) {
 }
 
 async function refreshAccessToken(refreshToken: string | undefined) {
+  
   try {
     const response = await axios.post(`${process.env.AUTH0_ISSUER_BASE_URL}/oauth/token`, {
       grant_type: 'refresh_token',
@@ -39,7 +40,8 @@ axiosWithAuth.interceptors.request.use(async (config) => {
     console.log(session?.accessTokenExpiresAt)
     // Check if the access token is expired
     if (isTokenExpired(session)) {
-      console.log('Token expired, refresh required')
+      console.log('Token expired, refresh required, token refresh:', session?.refreshToken)
+
       accessToken = await refreshAccessToken(session?.refreshToken);
       if(session){
       session.accessToken = accessToken;}
