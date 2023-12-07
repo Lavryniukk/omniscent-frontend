@@ -2,8 +2,6 @@
 
 import HeaderLink from "@/app/modules/Header/components/HeaderLink/HeaderLink";
 import ProfileLink from "@/app/modules/Header/components/ProfileLink/ProfileLink";
-import { Suspense } from "react";
-import ProfileLinkSkeleton from "../ProfileLinkSkeleton/ProfileLinkSkeleton";
 
 type Props = {
   isOpen: boolean; // Define a prop for the mobile menu open state.
@@ -27,9 +25,7 @@ let Popup = ({ isOpen }: Props) => {
       {/* Render a horizontal separator. */}
       <div className="mt-5 flex flex-col space-y-5 items-center">
         {/* Render user-related components based on user authentication state. */}
-        <Suspense fallback={ProfileLinkSkeleton()}>
-          <ProfileLink />
-        </Suspense>
+        <ProfileLink />
       </div>
     </div>
   );

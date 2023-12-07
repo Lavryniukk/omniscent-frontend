@@ -1,14 +1,9 @@
 import Conversation from "@/app/shared/entities/Conversation";
 import Message from "./components/Message";
-import { SubroadmapNode } from "@/app/shared/entities/Roadmap";
 export default function Messages({
   conversation,
-  roadmapId,
-  tech,
 }: {
-  roadmapId: string;
   conversation: Conversation;
-  tech: SubroadmapNode;
 }) {
   const messages = conversation && conversation.messages;
 

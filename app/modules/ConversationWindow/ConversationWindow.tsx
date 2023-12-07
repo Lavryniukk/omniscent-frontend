@@ -1,4 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
 import Conversation, {
   ConversationMessage,
 } from "@/app/shared/entities/Conversation";
@@ -6,8 +5,6 @@ import Messages from "./components/Messages/Messages";
 import InitConversationButton from "./components/InitConversationButton/InitConversationButton";
 import useConversationStorage from "./storage/ConversationStorage";
 import ConversationInput from "./components/ConversationInput/ConversationInput";
-import { useEffect } from "react";
-import { SubroadmapNode } from "@/app/shared/entities/Roadmap";
 interface CoversationChatProps {
   roadmap_id: string;
 }
@@ -33,11 +30,7 @@ export default function ConversationWindow({
         {conversation?.node_title}
       </div>
       <div className="flex  w-full flex-col h-full max-h-full overflow-y-auto">
-        <Messages
-          conversation={conversation as Conversation}
-          tech={tech as SubroadmapNode}
-          roadmapId={roadmap_id}
-        />
+        <Messages conversation={conversation as Conversation} />
       </div>
       {!messages?.length && (
         <InitConversationButton
