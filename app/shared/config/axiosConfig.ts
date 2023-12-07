@@ -14,7 +14,7 @@ if (!process.env.SERVER_URL) {
 
 async function refreshAccessToken(refreshToken: string | undefined) {
   try {
-    const response = await axios.post(`https://${process.env.AUTH0_DOMAIN}/oauth/token`, {
+    const response = await axios.post(`https://${process.env.AUTH0_ISSUER_BASE_URL}/oauth/token`, {
       grant_type: 'refresh_token',
       client_id: process.env.AUTH0_CLIENT_ID,
       refresh_token: refreshToken,
