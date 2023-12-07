@@ -14,7 +14,7 @@ if (!process.env.SERVER_URL) {
 
 async function refreshAccessToken(refreshToken: string | undefined) {
   try {
-    const response = await axios.post(`https://${process.env.AUTH0_ISSUER_BASE_URL}/oauth/token`, {
+    const response = await axios.post(`${process.env.AUTH0_ISSUER_BASE_URL}/oauth/token`, {
       grant_type: 'refresh_token',
       client_id: process.env.AUTH0_CLIENT_ID,
       refresh_token: refreshToken,
@@ -23,7 +23,7 @@ async function refreshAccessToken(refreshToken: string | undefined) {
     return response.data.access_token;
   } catch (error) {
     console.error('Error refreshing access token:', error);
-    throw error; // Re-throw the error for the interceptor to catch
+    throw error; // 
   }
 }
 
