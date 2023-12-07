@@ -12,7 +12,7 @@ if (!process.env.SERVER_URL) {
   throw new Error("Troubles with you SERVER_URL");
 }
 
-async function refreshAccessToken(refreshToken: string | undefined) {
+async function refreshAccessToken(refreshToken: string | undefined): Promise<string> {
   
   try {
     const response = await axios.post(`${process.env.AUTH0_ISSUER_BASE_URL}/oauth/token`, {
@@ -37,14 +37,14 @@ axiosWithAuth.interceptors.request.use(async (config) => {
   try {
     const session = await getSession();
     let accessToken = session?.accessToken
-    console.log(session?.accessTokenExpiresAt)
     // Check if the access token is expired
     if (isTokenExpired(session)) {
       console.log('Token expired, refresh required, token refresh:', session?.refreshToken)
 
       accessToken = await refreshAccessToken(session?.refreshToken);
       if(session){
-      session.accessToken = accessToken;}
+      session.accessToken = accessToken;
+    }
     }
 
     config.headers.Authorization = `Bearer ${accessToken}`;
@@ -56,14 +56,13 @@ axiosWithAuth.interceptors.request.use(async (config) => {
 });
 
 // Utility function to check if the token is expired
-function isTokenExpired(session: Session | undefined | null) {
+function isTokenExpired(session: Session | undefined | null): boolean {
   if (!session || !session.accessTokenExpiresAt) {
     return true; // No valid session or expiration information, handle as expired
   }
 
   const currentTime = Date.now();
   const expiresAtMs = session.accessTokenExpiresAt * 1000;
-  console.log(currentTime,'vs',expiresAtMs)
   // If the current time is greater than the expiration time, the token is expired
   return currentTime > expiresAtMs;
 }

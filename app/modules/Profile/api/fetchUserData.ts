@@ -10,6 +10,6 @@ export default async function fetchUserData(userId: string) {
     });
     return response.data;
   } catch (e) {
-    console.log(`Error with GET /users/${userId}`);
+    console.log(`Error with GET /users/${userId}`, e);
   }
 }
