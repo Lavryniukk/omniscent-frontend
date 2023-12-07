@@ -1,6 +1,4 @@
 import PrimaryBtn from "@/app/UI/buttons/primaryBtn/PrimaryBtn";
-import { usePopupStore } from "../../storage/popupStorage";
-import { JsxElement } from "typescript";
 
 export default function AuthPopup({ isOpen }: { isOpen: boolean }) {
   // const { isPopupOpen } = usePopupStore();
