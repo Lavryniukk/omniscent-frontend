@@ -17,7 +17,7 @@ interface profilePageStates {
 }
 
 interface profilePageActions {
-  setisEditMode: (newValue: profilePageStates["isEditMode"]) => void;
+  setIsEditMode: (newValue: profilePageStates["isEditMode"]) => void;
 
   setUserData: (
     newValue: string,
@@ -49,7 +49,7 @@ const useProfileStorage = create<profilePageStates & profilePageActions>(
 
     setInputData: (newValue, subject) => set({ [subject]: newValue }),
 
-    setisEditMode: (newValue) => set({ isEditMode: newValue }),
+    setIsEditMode: (newValue) => set({ isEditMode: newValue }),
 
     fetchData: async (userId: string) => {
       const setUserData = get().setUserData;

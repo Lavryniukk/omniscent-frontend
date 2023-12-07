@@ -7,5 +7,5 @@ export default async function checkToken() {
     method: "GET",
     url: `/health/protected`,
   });
-  return response.data;
+  return response.status;
 }

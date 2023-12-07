@@ -8,7 +8,7 @@ import PersonalData from "./components/PersonalData/PersonalData";
 import ProfileButtons from "./components/ProfileButtons/ProfileButtons";
 import useProfileStorage from "./storage/ProfileStorage";
 export default function ProfilePage({ id }: { id: string }) {
-  const { fetchData, setisEditMode, sendData } = useProfileStorage();
+  const { fetchData, setIsEditMode, sendData } = useProfileStorage();
 
   const { isLoading } = useQuery({
     queryKey: ["profileData"],
@@ -18,7 +18,7 @@ export default function ProfilePage({ id }: { id: string }) {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    setisEditMode(false);
+    setIsEditMode(false);
 
     sendData();
 
