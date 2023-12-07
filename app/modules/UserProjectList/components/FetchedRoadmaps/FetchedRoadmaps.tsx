@@ -1,17 +1,17 @@
 import Link from "next/link";
 import ProjectContainer from "../ProjectContainer/ProjectContainer";
-import RoadmapInterface from "@/app/shared/entities/Roadmap";
+import Roadmap from "@/app/shared/entities/Roadmap";
 
 export default function FetchedRoadmaps({
   roadmaps,
 }: {
-  roadmaps: Array<RoadmapInterface>;
+  roadmaps: Array<Roadmap>;
 }) {
   return (
     <>
       <div className="container xs:mx-auto space-y-5 p-5 h-fit py-20 flex flex-col items-center">
         {/* Map through the 'projects' array and render each project using the 'ProjectContainer' component. */}
-        {roadmaps.map((roadmap: RoadmapInterface) => (
+        {roadmaps.map((roadmap: Roadmap) => (
           <ProjectContainer key={roadmap._id} roadmap={roadmap} />
         ))}
       </div>

@@ -2,29 +2,29 @@
 
 import { useQuery } from "@tanstack/react-query";
 import fetchSubroadmap from "./api/fetchSubroadmap";
-import RoadmapNode from "./components/ConversationRoadmapNode";
 import Link from "next/link";
 import { MdOutlineArrowBack } from "react-icons/md";
 import { useEffect, useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
 import useConversationStorage from "../ConversationWindow/storage/ConversationStorage";
-import SubroadmapNodeInterface from "@/app/shared/entities/SubroadmapNode";
+import { Subroadmap, SubroadmapNode } from "@/app/shared/entities/Roadmap";
+import ConversationRoadmapNodeComponent from "./components/ConversationRoadmapNode";
 
 export default function ConversationRoadmap({
-  roadmap_id,
-  subroadmap_title,
+  roadmapId,
+  subroadmapTitle,
 }: {
-  roadmap_id: string;
-  subroadmap_title: string;
+  roadmapId: string;
+  subroadmapTitle: string;
 }) {
   const { tech, selectConversation, isStreaming } = useConversationStorage();
 
   const { data, isLoading } = useQuery(["subroadmap"], () => {
-    return fetchSubroadmap(roadmap_id, subroadmap_title);
+    return fetchSubroadmap(roadmapId, subroadmapTitle);
   });
   useEffect(() => {
     if (tech === null && !isLoading) {
-      selectConversation(data?.node_list[0] as SubroadmapNodeInterface);
+      selectConversation(data?.node_list[0] as SubroadmapNode);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading]);
@@ -57,7 +57,7 @@ export default function ConversationRoadmap({
         } duration-500 transition absolute lg:relative`}
       >
         <Link
-          href={`/workspace/roadmap/${roadmap_id}`}
+          href={`/workspace/roadmap/${roadmapId}`}
           className=" w-fit mx-auto relative  group overflow-hidden before:w-0 before:left-0 before:-z-0  before:absolute before:bg-secondary before:h-full hover:before:w-full before:transition-all before:duration-200 before:bottom-0 before:ease-in-out hover:before:rounded-lg hover:text-text  text-accent space-x-2  rounded-lg flex items-center justify-center"
         >
           <MdOutlineArrowBack
@@ -77,18 +77,17 @@ export default function ConversationRoadmap({
           <ul className="">
             {data?.node_list.map(
               (
-                subroadmapNode: SubroadmapNodeInterface,
+                subroadmapNode: SubroadmapNode,
                 index: number,
-                array: SubroadmapNodeInterface[]
+                array: SubroadmapNode[]
               ) => {
                 return (
-                  <RoadmapNode
+                  <ConversationRoadmapNodeComponent
                     isLocked={isStreaming}
                     key={index}
                     tech={subroadmapNode}
                     array={array}
                     current_tech_title={tech?.title as string}
-                    href={`/workspace/conversation/${roadmap_id}/${subroadmap_title}/`}
                   />
                 );
               }

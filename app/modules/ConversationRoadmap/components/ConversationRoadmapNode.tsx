@@ -1,20 +1,16 @@
 "use client";
-import RoadmapNodeInterface from "@/app/shared/entities/SubroadmapNode";
-import Node from "@/app/shared/entities/SubroadmapNode";
-import Link from "next/link";
+import { SubroadmapNode } from "@/app/shared/entities/Roadmap";
 import useConversationStorage from "../../ConversationWindow/storage/ConversationStorage";
 
-export default function RoadmapNode({
+export default function ConversationRoadmapNodeComponent({
   tech,
   array,
-  href,
   isLocked,
   current_tech_title,
 }: {
-  tech: Node;
+  tech: SubroadmapNode;
   isLocked: boolean;
-  array: RoadmapNodeInterface[];
-  href: string;
+  array: SubroadmapNode[];
   current_tech_title: string;
 }) {
   let isLast: boolean = false;

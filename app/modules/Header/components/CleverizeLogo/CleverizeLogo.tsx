@@ -1,7 +1,7 @@
 import Image from "next/image";
 let Logo = ({ picTheme }: { picTheme: string }) => {
   return (
-    <div className="flex mx-auto items-center  h-full ">
+    <a href="/" className="flex mx-auto items-center  h-full ">
       <Image
         src={`/images/logo-cleverize-${
           picTheme == "light" ? "dark" : "light"
@@ -11,7 +11,7 @@ let Logo = ({ picTheme }: { picTheme: string }) => {
         width={40}
         height={40}
       />
-    </div>
+    </a>
   );
 };
 export default Logo;

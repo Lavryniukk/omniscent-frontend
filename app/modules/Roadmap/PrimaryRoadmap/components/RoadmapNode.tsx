@@ -1,12 +1,12 @@
 "use client";
 import { MdDone } from "react-icons/md";
 import PrimaryBtn from "@/app/UI/buttons/primaryBtn/PrimaryBtn";
-import SubroadmapInterface from "@/app/shared/entities/Subroadmap";
 import { BiTrashAlt } from "react-icons/bi";
 import { motion, Variants } from "framer-motion";
 import { useState } from "react";
 import useConversationStorage from "@/app/modules/ConversationWindow/storage/ConversationStorage";
-export default function RoadmapNode({
+import { Subroadmap } from "@/app/shared/entities/Roadmap";
+export default function RoadmapNodeComponent({
   id,
   current,
   subroadmap,
@@ -14,7 +14,7 @@ export default function RoadmapNode({
 }: {
   id: string;
   current: boolean;
-  subroadmap: SubroadmapInterface;
+  subroadmap: Subroadmap;
   isLast: boolean;
 }) {
   const selectConversation = useConversationStorage(

@@ -1,9 +1,9 @@
-import ProfilePage from "@/app/modules/Profile/Profile";
+import { ProfileModule } from "@/app/modules";
 
 export default function Profile({ params }: { params: { id: string } }) {
   return (
     <>
-      <ProfilePage id={params.id} />
+      <ProfileModule id={params.id} />
     </>
   );
 }

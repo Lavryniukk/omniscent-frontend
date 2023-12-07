@@ -1,11 +1,22 @@
-import SubroadmapInterface from "./Subroadmap";
+export type SubroadmapNode = {
+  title: string;
+  isCompleted: boolean;
+  conversation_id: string;
+};
 
-export default interface RoadmapInterface {
+export type Subroadmap = {
+  title: string;
+  node_list: SubroadmapNode[];
+  isCompleted: boolean;
+};
+
+type Roadmap = {
   title: string;
   _id: string;
-  sub_roadmap_list: SubroadmapInterface[];
+  sub_roadmap_list: Subroadmap[];
   owner_id: string;
   isCompleted: boolean;
   created_at: Date;
-  // last_interaction_at: string;
-}
+};
+
+export default Roadmap;

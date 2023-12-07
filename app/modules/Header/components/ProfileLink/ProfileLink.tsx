@@ -1,5 +1,4 @@
 "use client"; // An environment-specific directive or comment, not part of the logic.
-import Image from "next/image";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import Link from "next/link";
 import Skeleton from "@/app/UI/loading/Skeleton/Skeleton";

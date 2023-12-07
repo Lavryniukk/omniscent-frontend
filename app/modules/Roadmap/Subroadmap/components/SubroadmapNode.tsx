@@ -1,8 +1,7 @@
-import Node from "@/app/shared/entities/SubroadmapNode";
-import SubroadmapInterface from "@/app/shared/entities/Subroadmap";
+import { SubroadmapNode } from "@/app/shared/entities/Roadmap";
 import Link from "next/link";
 
-export default function RoadmapNode({
+export default function SubroadmapNodeComponent({
   current,
   tech,
   isLast,
@@ -10,7 +9,7 @@ export default function RoadmapNode({
   subroadmap_title,
 }: {
   current: boolean;
-  tech: Node;
+  tech: SubroadmapNode;
   isLast: boolean;
   roadmap_id: string;
   subroadmap_title: string;

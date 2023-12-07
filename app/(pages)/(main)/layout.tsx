@@ -1,6 +1,5 @@
 import "@/app/globals.css";
-
-import Header from "@/app/modules/Header/Header";
+import { Header } from "@/app/modules";
 
 export default function LandingLayout({
   children,

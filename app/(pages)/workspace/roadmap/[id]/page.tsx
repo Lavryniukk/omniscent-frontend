@@ -1,19 +1,14 @@
 "use client";
 
 import Roadmap from "@/app/modules/Roadmap/PrimaryRoadmap/Roadmap";
-import Link from "next/link";
-import { MdOutlineArrowBack } from "react-icons/md";
-export default function RoadmapPage({ params }: { params: { id: string } }) {
+import { NavigationButton } from "@/app/shared/components/buttons";
+import { withPageAuthRequired } from "@auth0/nextjs-auth0/client";
+function RoadmapPage({ params }: { params: { id: string } }) {
   return (
     <div className="h-full min-h-screen w-auto">
-      <Link
-        href="/workspace"
-        className="flex items-center justify-center p-2  w-fit text-accent fixed left-10 top-10 hover:opacity-80"
-      >
-        <MdOutlineArrowBack />
-        To workspace
-      </Link>
+      <NavigationButton href={"/workspace"} title={"Workspace"} />
       <Roadmap id={params.id} />
     </div>
   );
 }
+export default withPageAuthRequired(RoadmapPage);

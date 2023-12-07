@@ -1,10 +1,8 @@
 import Skeleton from "@/app/UI/loading/Skeleton/Skeleton";
-import { useUser } from "@auth0/nextjs-auth0/client";
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 import { Fragment } from "react";
 import { fetchProjects } from "../../api/fetchProjects";
-import { Project } from "../../types/project";
 
 export default function OngoingProjects() {
   const { data, isLoading, error } = useQuery({
@@ -21,28 +19,28 @@ export default function OngoingProjects() {
       {!isLoading && !error ? (
         data && data.length > 0 ? (
           <div className="h-fit grid grid-cols-1 lg:grid-cols-2 p-4 gap-4">
-            {data.map((item, index, array) => {
+            {data.map((project, index, array) => {
               if (index !== array.length - 1) {
                 return (
                   <Link
-                    href={`/workspace/roadmap /${item._id}`}
-                    key={item._id}
+                    href={`/workspace/roadmap /${project._id}`}
+                    key={project._id}
                     className="border rounded border-accent p-4"
                   >
                     <div className="text-accent text-2xl text-center">
-                      {item.title}
+                      {project.title}
                     </div>
                   </Link>
                 );
               } else
                 return (
-                  <Fragment key={item._id}>
+                  <Fragment key={project._id}>
                     <Link
                       href={"/"}
                       className="border rounded border-accent p-4 hover:border-accent-300 transition duration-200"
                     >
                       <div className="text-accent text-2xl text-center">
-                        {item.title}
+                        {project.title}
                       </div>
                     </Link>
                     <Link

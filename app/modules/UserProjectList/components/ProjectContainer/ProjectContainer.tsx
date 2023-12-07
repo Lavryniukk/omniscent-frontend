@@ -5,14 +5,9 @@ import { useEffect, useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { BiTrashAlt } from "react-icons/bi";
 import fetchDelete from "./fetchDelete";
-import RoadmapInterface from "@/app/shared/entities/Roadmap";
-import PrimaryBlackBtn from "@/app/UI/buttons/PrimaryBlackBtn/PrimaryBlackBtn";
+import Roadmap from "@/app/shared/entities/Roadmap";
 
-export default function ProjectContainer({
-  roadmap,
-}: {
-  roadmap: RoadmapInterface;
-}) {
+export default function ProjectContainer({ roadmap }: { roadmap: Roadmap }) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const { title, _id, owner_id } = roadmap;
 

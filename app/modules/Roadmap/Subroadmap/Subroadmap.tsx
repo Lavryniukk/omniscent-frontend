@@ -1,10 +1,7 @@
-import fetchRoadmap from "@/app/modules/Roadmap/api/fetchRoadmap";
 import { useQuery } from "@tanstack/react-query";
-import Link from "next/link";
-import SubroadmapInterface from "@/app/shared/entities/Subroadmap";
-import SubroadmapNode from "./components/SubroadmapNode";
 import fetchSubroadmap from "../../ConversationRoadmap/api/fetchSubroadmap";
-import Node from "@/app/shared/entities/SubroadmapNode";
+import { SubroadmapNode } from "@/app/shared/entities/Roadmap";
+import SubroadmapNodeComponent from "./components/SubroadmapNode";
 
 export default function Roadmap({ id, title }: { id: string; title: string }) {
   const { data, error } = useQuery(
@@ -17,10 +14,10 @@ export default function Roadmap({ id, title }: { id: string; title: string }) {
         {!error && data ? (
           data.node_list.map(
             (
-              tech: Node,
+              tech: SubroadmapNode,
 
               index: number,
-              array: Node[]
+              array: SubroadmapNode[]
             ) => {
               let current;
               let isLast: boolean = false;
@@ -37,7 +34,7 @@ export default function Roadmap({ id, title }: { id: string; title: string }) {
                 } else current = false;
               }
               return (
-                <SubroadmapNode
+                <SubroadmapNodeComponent
                   key={index}
                   current={current}
                   tech={tech}

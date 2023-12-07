@@ -1,18 +1,18 @@
 import styles from "./Burger.module.css";
 type BurgerProps = {
-  toggleMenu: () => void; // Define a prop for the toggleMenu function.
+  callback: () => void; // Define a prop for the toggleMenu function.
   isOpen: boolean; // Define a prop to indicate whether the menu is open.
 };
 
-let Burger = ({ toggleMenu, isOpen }: BurgerProps) => {
+let Burger = ({ callback, isOpen }: BurgerProps) => {
   return (
-    <div className="md:hidden w-24 flex justify-end md:justify-center items-center">
+    <div className="md:hidden w-fit flex justify-end md:justify-center items-center">
       <label className={`${styles.container}`}>
         <input
           type="checkbox"
           checked={isOpen} // Set the checked state based on the isOpen prop.
           onChange={() => {}} // Provide an empty onChange function to prevent warnings.
-          onClick={toggleMenu} // Call the toggleMenu function on click.
+          onClick={callback} // Call the toggleMenu function on click.
         />
         <div className={`${styles.checkmark}`}>
           {/* Apply the CSS styles defined in Burger.module.css to the checkmark. */}

@@ -1,19 +1,20 @@
 import { create } from "zustand";
 import { getConversationData } from "@/app/shared/api/conversations/getConversationData";
-import Conversation from "@/app/shared/entities/Conversation";
-import ConversationMessage from "@/app/shared/entities/ConversationMessage";
+import Conversation, {
+  ConversationMessage,
+} from "@/app/shared/entities/Conversation";
 import listenForUpdates from "../helpers/listenToEvent";
 import sendUserMessage from "../api/sendUserMessage";
 import listenToSse from "../helpers/listenToEvent";
-import SubroadmapNodeInterface from "@/app/shared/entities/SubroadmapNode";
 import toggleIsCompleted from "@/app/shared/api/roadmaps/toggleIsCompleted";
 import getToken from "../api/getToken";
 import fetchConversationInit from "../helpers/fetchConversationInit";
+import { SubroadmapNode } from "@/app/shared/entities/Roadmap";
 interface ConversationStorageState {
   userInputData: string;
   assistantData: string;
   conversation: Conversation | null;
-  tech: SubroadmapNodeInterface | null;
+  tech: SubroadmapNode | null;
   isLocked: boolean;
   isStreaming: boolean;
 }
@@ -21,7 +22,7 @@ interface ConversationStorageState {
 interface ConversationStorageActions {
   setInputData: (newInputData: string) => void;
   addUserMessage: (roadmapId: string) => void;
-  selectConversation: (tech: SubroadmapNodeInterface) => Promise<Conversation>;
+  selectConversation: (tech: SubroadmapNode) => Promise<Conversation>;
   initConversation: (
     conversation_id: string,
     user_roadmap_id: string,
@@ -93,7 +94,7 @@ const useConversationStorage = create<
   async addUserMessage(roadmapId) {
     let conversation = get().conversation as Conversation;
     const message = get().userInputData;
-    
+
     conversation.messages.push({
       role: "user",
       content: message,
@@ -101,19 +102,14 @@ const useConversationStorage = create<
     set({
       conversation: conversation,
     });
-    const token = await getToken()
+    const token = await getToken();
 
     const callback = get().updateLastAssistantMessage;
 
     listenToSse(conversation._id, token, callback, get().lock, () => {});
 
-    await sendUserMessage(
-      message,
-      conversation._id,
-      roadmapId
-    )
+    await sendUserMessage(message, conversation._id, roadmapId);
     set({ userInputData: "" });
-
   },
 
   updateLastAssistantMessage(newValue) {
@@ -162,13 +158,12 @@ const useConversationStorage = create<
         set({ isStreaming: false });
       }
     );
-   await fetchConversationInit(
+    await fetchConversationInit(
       conversationId,
       userRoadmapId,
       noteTitle,
       language
     );
-
   },
 }));
 

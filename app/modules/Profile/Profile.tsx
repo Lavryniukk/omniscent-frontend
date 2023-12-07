@@ -1,13 +1,13 @@
 "use client";
 import Skeleton from "@/app/UI/loading/Skeleton/Skeleton";
 import { useQuery } from "@tanstack/react-query";
-import Achivements from "./components/Achivements/Achivements";
 import Bio from "./components/Bio/Bio";
 import OngoingProjects from "./components/OngoingProjects/OngoingProjects";
 import PersonalData from "./components/PersonalData/PersonalData";
 import ProfileButtons from "./components/ProfileButtons/ProfileButtons";
 import useProfileStorage from "./storage/ProfileStorage";
-export default function ProfilePage({ id }: { id: string }) {
+import Achievements from "./components/Achievements/Achievements";
+export default function ProfileModule({ id }: { id: string }) {
   const { fetchData, setIsEditMode, sendData } = useProfileStorage();
 
   const { isLoading } = useQuery({
@@ -38,7 +38,7 @@ export default function ProfilePage({ id }: { id: string }) {
 
           <Bio />
 
-          <Achivements />
+          <Achievements />
 
           <ProfileButtons />
         </form>

@@ -1,9 +1,6 @@
-import axios from "axios";
 import { create } from "zustand";
 import fetchUserData from "../api/fetchUserData";
-import { getAccessToken } from "@auth0/nextjs-auth0";
 import sendUserData from "../api/sendUserData";
-import { useUser } from "@auth0/nextjs-auth0/client";
 interface profilePageStates {
   isEditMode: boolean;
 
@@ -85,7 +82,6 @@ const useProfileStorage = create<profilePageStates & profilePageActions>(
       if (userDataBio !== bioInputData) {
         body = { ...body, user_metadata: { bio: { bio: bioInputData } } };
       } else body = { ...body, user_metadata: { bio: { bio: userDataBio } } };
-
 
       const res = await sendUserData(body);
     },

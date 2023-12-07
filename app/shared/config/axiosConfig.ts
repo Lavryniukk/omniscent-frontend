@@ -5,8 +5,6 @@ import { config } from "dotenv";
 config();
 
 import axios from "axios";
-import { redirect } from "next/navigation";
-
 if (!process.env.SERVER_URL) {
   console.log("This is your serverurl:", process.env.SERVER_URL);
   throw new Error("Troubles with you SERVER_URL");
@@ -38,10 +36,12 @@ axiosWithAuth.interceptors.request.use(async (config) => {
     const session = await getSession();
     let accessToken = session?.accessToken
     // Check if the access token is expired
+    console.log(session?.refreshToken)
     if (isTokenExpired(session)) {
       console.log('Token expired, refresh required, token refresh:', session?.refreshToken)
 
       accessToken = await refreshAccessToken(session?.refreshToken);
+      console.log(accessToken)
       if(session){
       session.accessToken = accessToken;
     }

@@ -1,8 +1,8 @@
 import fetchRoadmap from "@/app/modules/Roadmap/api/fetchRoadmap";
 import { useQuery } from "@tanstack/react-query";
-import SubroadmapInterface from "@/app/shared/entities/Subroadmap";
-import RoadmapNode from "./components/RoadmapNode";
 import Skeleton from "@/app/UI/loading/Skeleton/Skeleton";
+import { Subroadmap } from "@/app/shared/entities/Roadmap";
+import RoadmapNodeComponent from "./components/RoadmapNode";
 
 export default function Roadmap({ id }: { id: string }) {
   const { data, error, isLoading } = useQuery(
@@ -36,11 +36,7 @@ export default function Roadmap({ id }: { id: string }) {
         <ul className="text-text mx-auto w-fit py-20 h-fit flex items-center justify-center flex-col ">
           {!error && data ? (
             data.sub_roadmap_list.map(
-              (
-                tech: SubroadmapInterface,
-                index: number,
-                array: SubroadmapInterface[]
-              ) => {
+              (tech: Subroadmap, index: number, array: Subroadmap[]) => {
                 let current;
                 const prevTech = array[index - 1];
                 let isLast: boolean = false;
@@ -55,7 +51,7 @@ export default function Roadmap({ id }: { id: string }) {
                   } else current = false;
                 }
                 return (
-                  <RoadmapNode
+                  <RoadmapNodeComponent
                     id={data._id}
                     isLast={isLast}
                     key={index}
