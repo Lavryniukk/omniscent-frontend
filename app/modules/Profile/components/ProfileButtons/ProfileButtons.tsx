@@ -18,17 +18,17 @@ export default function ProfileButtons() {
     userDataName,
     userDataNickname,
     setInputData,
-    setisEditMode,
+    setIsEditMode,
   } = useProfileStorage();
   const handleEdit = () => {
-    setisEditMode(true);
+    setIsEditMode(true);
 
     setInputData(userDataBio as string, "bioInputData");
     setInputData(userDataName as string, "nameInputData");
     setInputData(userDataNickname as string, "nicknameInputData");
   };
   const handleCancel = () => {
-    setisEditMode(false);
+    setIsEditMode(false);
     setIsOpen(false);
     setIsDanger(false);
   };
