@@ -1,4 +1,4 @@
-"use effect";
+"use client";
 import React, { useEffect, useRef } from "react";
 import ReactMarkdown from "react-markdown";
 import hljs from "highlight.js";
