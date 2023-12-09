@@ -4,7 +4,7 @@ let Logo = ({ picTheme }: { picTheme: string }) => {
     <a href="/" className="flex mx-auto items-center  h-full ">
       <Image
         src={`/images/logo-cleverize-${
-          picTheme == "light" ? "dark" : "light"
+          !picTheme ? "dark" : picTheme == "light" ? "dark" : "light"
         }.webp`}
         className={`sm:mx-auto border-text ml-0 `}
         alt=""

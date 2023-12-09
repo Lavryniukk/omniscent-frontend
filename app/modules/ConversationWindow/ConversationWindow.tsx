@@ -16,7 +16,7 @@ export default function ConversationWindow({
   const { conversation } = useConversationStorage();
 
   let vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty("--vh", `${vh}px`); 
+  document.documentElement.style.setProperty("--vh", `${vh}px`);
 
   window.addEventListener("resize", () => {
     let vh = window.innerHeight * 0.01;
@@ -36,8 +36,8 @@ export default function ConversationWindow({
       </div>
       {!messages?.length && (
         <InitConversationButton
-          node_title={conversation?.node_title}
-          user_roadmap_id={roadmapId}
+          nodeTitle={conversation?.node_title}
+          roadmapId={roadmapId}
         />
       )}
       <ConversationInput roadmapId={roadmapId} />

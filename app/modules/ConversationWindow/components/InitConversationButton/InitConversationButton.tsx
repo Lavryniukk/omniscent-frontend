@@ -6,13 +6,13 @@ import fetchUserData from "../../api/fetchUserData";
 import useConversationStorage from "../../storage/ConversationStorage";
 
 interface InitConversationButtonProps {
-  user_roadmap_id: string;
-  node_title: string | undefined;
+  roadmapId: string;
+  nodeTitle: string | undefined;
 }
 
 export default function InitConversationButton({
-  user_roadmap_id,
-  node_title,
+  roadmapId,
+  nodeTitle,
 }: InitConversationButtonProps) {
   const { user } = useUser();
   const { data, isLoading } = useQuery({
@@ -25,11 +25,7 @@ export default function InitConversationButton({
   return !isLoading ? (
     <button
       onClick={async () => {
-        initConversation(
-          user_roadmap_id,
-          node_title,
-          data.user_metadata.bio.language
-        );
+        initConversation(roadmapId, nodeTitle, data.user_metadata.bio.language);
       }}
       className=" border-text bg-text hover:bg-background text-background absolute top-[calc(50%-62px)] left-[calc(50%-90px)]  hover:text-text py-4 rounded-md font-semibold px-7 text-xl text-center border transition-color duration-150"
     >

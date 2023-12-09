@@ -18,7 +18,7 @@ function Conversation({ params }: ConversationPageProps) {
         roadmapId={params.roadmap_id}
         subroadmapTitle={params.subroadmap_title}
       />
-      <ConversationWindow roadmap_id={params.roadmap_id} />
+      <ConversationWindow roadmapId={params.roadmap_id} />
     </div>
   );
 }
