@@ -46,7 +46,7 @@ let Title = () => {
         text="Get started"
         href="/workspace"
         observed={true}
-        classname=" w-3/4 xs:w-1/2 mt-5  sm:w-1/3  lg:w-[250px] border-2 text-xl"
+        classname="w-3/4 xs:w-1/2 mt-5 sm:w-1/3 lg:w-[250px] border-2 text-xl"
       />
       {/* <PrimaryBlackBtn
         height="50px"
