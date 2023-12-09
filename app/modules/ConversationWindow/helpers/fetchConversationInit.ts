@@ -1,12 +1,20 @@
 "use server";
 import { axiosWithAuth } from "@/app/shared/config/axiosConfig";
 export default async function fetchConversationInit(
-  conversationId: string,
-  userRoadmapId: string,
-  noteTitle: string,
-  language: string
+  conversationId: string | undefined,
+  userRoadmapId: string | undefined,
+  noteTitle: string | undefined,
+  language: string | undefined
 ) {
-  noteTitle = noteTitle.replaceAll("%26", "&");
+  if (
+    conversationId === undefined ||
+    userRoadmapId === undefined ||
+    noteTitle === undefined ||
+    language === undefined
+  ) {
+    throw new Error("Params cannot be undefined");
+  }
+  noteTitle?.replaceAll("%26", "&");
 
   try {
     const res = await axiosWithAuth({

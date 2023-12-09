@@ -6,13 +6,11 @@ import fetchUserData from "../../api/fetchUserData";
 import useConversationStorage from "../../storage/ConversationStorage";
 
 interface InitConversationButtonProps {
-  conversation_id: string;
   user_roadmap_id: string;
-  node_title: string;
+  node_title: string | undefined;
 }
 
 export default function InitConversationButton({
-  conversation_id,
   user_roadmap_id,
   node_title,
 }: InitConversationButtonProps) {
@@ -28,7 +26,6 @@ export default function InitConversationButton({
     <button
       onClick={async () => {
         initConversation(
-          conversation_id,
           user_roadmap_id,
           node_title,
           data.user_metadata.bio.language

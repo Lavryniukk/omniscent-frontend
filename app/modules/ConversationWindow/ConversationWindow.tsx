@@ -5,13 +5,15 @@ import Messages from "./components/Messages/Messages";
 import InitConversationButton from "./components/InitConversationButton/InitConversationButton";
 import useConversationStorage from "./storage/ConversationStorage";
 import ConversationInput from "./components/ConversationInput/ConversationInput";
-interface CoversationChatProps {
+interface ConversationChatProps {
   roadmap_id: string;
 }
 export default function ConversationWindow({
-  roadmap_id,
-}: CoversationChatProps) {
-  const { conversation, selectConversation, tech } = useConversationStorage();
+  roadmapId,
+}: {
+  roadmapId: string;
+}) {
+  const { conversation } = useConversationStorage();
 
   let vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty("--vh", `${vh}px`);
@@ -34,15 +36,11 @@ export default function ConversationWindow({
       </div>
       {!messages?.length && (
         <InitConversationButton
-          node_title={tech?.title as string}
-          user_roadmap_id={roadmap_id}
-          conversation_id={tech?.conversation_id as string}
+          node_title={conversation?.node_title}
+          user_roadmap_id={roadmapId}
         />
       )}
-      <ConversationInput
-        roadmapId={roadmap_id}
-        conversation_id={tech?.conversation_id as string}
-      />
+      <ConversationInput roadmapId={roadmapId} />
     </div>
   );
 }

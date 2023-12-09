@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { getConversationData } from "@/app/shared/api/conversations/getConversationData";
+import { getConversationData } from "@/app/shared/api/conversations/fetchConversationData";
 import Conversation, {
   ConversationMessage,
 } from "@/app/shared/entities/Conversation";
@@ -13,7 +13,7 @@ import { SubroadmapNode } from "@/app/shared/entities/Roadmap";
 interface ConversationStorageState {
   userInputData: string;
   assistantData: string;
-  conversation: Conversation | null;
+  conversation: Conversation | undefined;
   tech: SubroadmapNode | null;
   isLocked: boolean;
   isStreaming: boolean;
@@ -22,12 +22,13 @@ interface ConversationStorageState {
 interface ConversationStorageActions {
   setInputData: (newInputData: string) => void;
   addUserMessage: (roadmapId: string) => void;
-  selectConversation: (tech: SubroadmapNode) => Promise<Conversation>;
+  selectConversation: (
+    tech: SubroadmapNode
+  ) => Promise<Conversation | undefined>;
   initConversation: (
-    conversation_id: string,
-    user_roadmap_id: string,
-    node_title: string,
-    language: string
+    user_roadmap_id: string | undefined,
+    node_title: string | undefined,
+    language: string | undefined
   ) => void;
   lock: () => void;
   unlock: () => void;
@@ -39,7 +40,7 @@ interface ConversationStorageActions {
 const useConversationStorage = create<
   ConversationStorageActions & ConversationStorageState
 >((set, get) => ({
-  conversation: null,
+  conversation: undefined,
   // {
   //   _id: "d",
   //   owner_id: "dd",
@@ -75,17 +76,13 @@ const useConversationStorage = create<
 
   async selectConversation(tech) {
     if (!get().isStreaming) {
-      set({ tech: tech });
-      const conversation = (await getConversationData(
-        tech.conversation_id
-      )) as Conversation;
-      set({ conversation: conversation });
-      set({
-        isLocked: true,
-      });
+      set({ tech: tech, isLocked: true });
+      const conversation = await getConversationData(tech.conversation_id);
+      set({ conversation });
+
       return conversation;
     } else {
-      return get().conversation as Conversation;
+      return get().conversation;
     }
   },
 
@@ -130,25 +127,21 @@ const useConversationStorage = create<
     set({ conversation: conversation });
   },
 
-  initConversation: async (
-    conversationId,
-    userRoadmapId,
-    noteTitle,
-    language
-  ) => {
-    let newConversation = get().conversation as Conversation;
-    newConversation.messages.push({
+  initConversation: async (userRoadmapId, noteTitle, language) => {
+    let newConversation = get().conversation;
+    const conversationId = newConversation?._id;
+    newConversation?.messages.push({
       role: "assistant",
       content: "",
     });
     set({
       conversation: newConversation,
     });
-    noteTitle = noteTitle.replaceAll("%20", " ");
-    const token = await getToken();
+    noteTitle?.replaceAll("%20", " ");
+    const accessToken = await getToken();
     listenForUpdates(
       conversationId,
-      token,
+      accessToken,
       get().updateLastAssistantMessage,
       () => {
         get().lock;

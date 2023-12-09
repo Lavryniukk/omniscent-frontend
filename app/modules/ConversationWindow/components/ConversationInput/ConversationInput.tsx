@@ -3,12 +3,9 @@
 import { useEffect, useRef } from "react";
 import { BiSolidSend } from "react-icons/bi";
 import useConversationStorage from "../../storage/ConversationStorage";
-
 export default function ConversationInput({
-  conversation_id,
   roadmapId,
 }: {
-  conversation_id: string;
   roadmapId: string;
 }) {
   const {
@@ -20,7 +17,6 @@ export default function ConversationInput({
     tech,
     addUserMessage,
   } = useConversationStorage();
-
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   useEffect(() => {
     !userInputData ? lock() : unlock();

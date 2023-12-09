@@ -7,7 +7,7 @@ import { MdOutlineArrowBack } from "react-icons/md";
 import { useEffect, useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
 import useConversationStorage from "../ConversationWindow/storage/ConversationStorage";
-import { Subroadmap, SubroadmapNode } from "@/app/shared/entities/Roadmap";
+import { SubroadmapNode } from "@/app/shared/entities/Roadmap";
 import ConversationRoadmapNodeComponent from "./components/ConversationRoadmapNode";
 
 export default function ConversationRoadmap({
