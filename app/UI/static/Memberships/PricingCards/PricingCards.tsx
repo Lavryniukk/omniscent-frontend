@@ -4,13 +4,13 @@ import TrialCard from "./components/TrialCard/TrialCard";
 // PricingCards component represents the section of the page that displays different pricing options.
 let PricingCards = () => {
   return (
-    <div className="w-full h-fit  font-inter ">
+    <div className="w-full h-fit font-inter ">
       <div className="box-border items-end justify-around w-full lg:px-10 mx-auto my-10 md:my-20 xl:my-32 bg-transparent select-none max-w-10xl h-fit">
         <h2 className="mx-auto my-20 select-text observe duration-500 transition py-2 tracking-tighter h-fit font-bold text-center bg-gradient-to-t from-text to-accent text-transparent bg-clip-text text-4xl sm:text-5xl md:text-7xl font-inter">
           Choose a plan that
           <br /> fits your style
         </h2>
-        <div className=" container w-full  select-text flex overflow-visible justify-center  flex-col   md:flex-row relative items-end mx-auto">
+        <div className="container w-full select-text flex flex-col gap-4 sm:gap-0 overflow-visible justify-center md:flex-row relative items-end mx-auto">
           <TrialCard /> {/* Renders the trial pricing card. */}
           <ProCard /> {/* Renders the pro pricing card. */}
         </div>
