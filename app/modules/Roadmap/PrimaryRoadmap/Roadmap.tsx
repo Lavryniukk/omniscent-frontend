@@ -26,7 +26,7 @@ export default function Roadmap({ id }: { id: string }) {
   );
   return (
     <div className="w-fit mx-auto py-32">
-      <div className="border flex-col flex items-center p-3 w-80  rounded-lg bg-secondary border-accent">
+      <div className="border flex-col flex items-center p-3 w-80  rounded-lg bg-secondary border-accent mx-auto">
         <h1 className="text-2xl text-text font-inter font-bold">Hint</h1>
         <p className="text-lg text-text text-center font-light">
           Click on any technology to start learning it.
