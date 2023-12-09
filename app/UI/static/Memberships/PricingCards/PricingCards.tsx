@@ -1,4 +1,3 @@
-import EnterpriseCard from "./components/EnterpriceCard/EnterpriceCard";
 import ProCard from "./components/ProCard/ProCard";
 import TrialCard from "./components/TrialCard/TrialCard";
 

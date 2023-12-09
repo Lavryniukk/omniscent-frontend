@@ -40,6 +40,8 @@ axiosWithAuth.interceptors.request.use(async (config) => {
     const session = await getSession();
     let accessToken = session?.accessToken;
     // Check if the access token is expired
+    console.log(session?.refreshToken);
+    // await refreshAccessToken(session?.refreshToken);
     if (isTokenExpired(session)) {
       accessToken = await refreshAccessToken(session?.refreshToken);
       if (session) {

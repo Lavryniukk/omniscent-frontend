@@ -33,14 +33,14 @@ export default function UserProjects() {
 
   return (
     <div className="mx-auto w-full min-w-[400px] py-16 sm:w-1/3 max-w-[600px] sm:min-w-[500px] sm:px-5 sm:py-16 font-inter h-fit sm:border-2 border-accent rounded-lg relative">
-      <h1 className="text-4xl text-center font-bold mx-auto text-text  font-inter">
+      <h1 className="text-4xl text-center font-bold mx-auto text-text font-inter">
         {isLoading
           ? "Loading..."
           : error
-          ? "Whoops, troubles. If they persist, try resigning in."
-          : !data?.length
-          ? "Create your first project"
-          : "Your learning projects"}
+            ? "Whoops, troubles. If they persist, try resigning in."
+            : !data?.length
+              ? "Create your first project"
+              : "Your learning projects"}
       </h1>
 
       {userData && (

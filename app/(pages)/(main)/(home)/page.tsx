@@ -1,8 +1,5 @@
-"use client";
 import FeaturesSection from "@/app/(pages)/(main)/(home)/components/FeaturesSection/FeaturesSection";
 import HeroSection from "@/app/(pages)/(main)/(home)/components/HeroSection/HeroSection";
-import { useTheme } from "@/app/shared/providers/ThemeProvider";
-import { NextPage } from "next";
 // HomePage is a Next.js page component representing the main landing page of the application.
 // It includes the Title component, Featupres component, and Reviews component.
 

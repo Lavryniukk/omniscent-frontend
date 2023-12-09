@@ -1,4 +1,3 @@
-"use client";
 import Title from "./components/Title";
 
 let HeroSection = () => {
