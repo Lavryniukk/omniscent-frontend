@@ -1,6 +1,6 @@
 "use server";
 
-import { Session, getSession } from "@auth0/nextjs-auth0";
+import { Session, getSession, updateSession } from "@auth0/nextjs-auth0";
 import { config } from "dotenv";
 config();
 
@@ -10,8 +10,30 @@ if (!process.env.SERVER_URL) {
   throw new Error("Troubles with you SERVER_URL");
 }
 
+let getToken = async () => {
+  try {
+    var options = {
+      method: "POST",
+      url: "https://veritech.eu.auth0.com/oauth/token",
+      headers: { "content-type": "application/x-www-form-urlencoded" },
+      data: {
+        grant_type: "client_credentials",
+        client_id: process.env.AUTH0_CLIENT_ID,
+        client_secret: process.env.AUTH0_CLIENT_SECRET,
+        audience: process.env.AUTH0_AUDIENCE,
+        scope: "offline_access openid profile email", // Added offline_access scope here
+      },
+    };
+    return await axios(options);
+  } catch (e) {
+    console.log(e);
+    return { data: undefined };
+  }
+};
+
 async function refreshAccessToken(
-  refreshToken: string | undefined
+  refreshToken: string | undefined,
+  session: Session | undefined | null
 ): Promise<string> {
   try {
     const response = await axios.post(
@@ -23,11 +45,15 @@ async function refreshAccessToken(
         client_secret: process.env.AUTH0_CLIENT_SECRET,
       }
     );
-
+    if (session && response.data.access_token) {
+      session.accessToken = response.data.access_token;
+      await updateSession(session);
+    }
     return response.data.access_token;
   } catch (error) {
-    console.error("Error refreshing access token:", error);
-    throw error; //
+    // console.error("Error refreshing access token:", error);
+    // throw error; //
+    return "";
   }
 }
 
@@ -39,14 +65,8 @@ axiosWithAuth.interceptors.request.use(async (config) => {
   try {
     const session = await getSession();
     let accessToken = session?.accessToken;
-    // Check if the access token is expired
-    console.log(session?.refreshToken);
-    // await refreshAccessToken(session?.refreshToken);
     if (isTokenExpired(session)) {
-      accessToken = await refreshAccessToken(session?.refreshToken);
-      if (session) {
-        session.accessToken = accessToken;
-      }
+      accessToken = await refreshAccessToken(session?.refreshToken, session);
     }
 
     config.headers.Authorization = `Bearer ${accessToken}`;
