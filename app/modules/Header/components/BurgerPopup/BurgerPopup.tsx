@@ -10,7 +10,7 @@ type Props = {
 let Popup = ({ isOpen }: Props) => {
   return (
     <div
-      className={`top-14 md:hidden backdrop-blur-md ${
+      className={`top-14 md:hidden z-50 backdrop-blur-md ${
         isOpen ? "left-0" : "-left-full"
       } fixed h-full border-l w-full transition-all py-10 border-transparent duration-300 flex flex-col space-y-10 justify-start items-center z-10`}
     >
