@@ -158,10 +158,12 @@ body {
 .chat-output pre {
   @apply pt-6;
 }
-
-.chat-output code {
-  @apply bg-background inline-block border border-accent w-auto rounded-lg p-1;
+/* code {
+  @apply bg-neutral-950;
 }
+pre code {
+  @apply bg-neutral-950 inline-block border border-accent w-auto rounded-lg p-1;
+} */
 
 .features-container {
   @apply md:w-full w-full shadow-md  border  sm:w-3/4 lg:w-full mx-auto border-accent/40 border-opacity-50 rounded-lg  transition-all delay-150 duration-500;

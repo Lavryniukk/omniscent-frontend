@@ -4,7 +4,7 @@ export default function CreatingAnimation() {
   const router = useRouter();
   setTimeout(() => {
     router.push("/workspace");
-  }, 20000);
+  }, 25000);
   return (
     <div
       className={`w-80 bg-secondary flex  text-accent space-y-5 text-xl  rounded-md  h-20`}
@@ -17,7 +17,7 @@ export default function CreatingAnimation() {
           width: 320,
         }}
         transition={{
-          duration: 20,
+          duration: 25,
         }}
         className={`bg-gradient-to-r from-primary blur to-primary/90 h-20`}
       ></motion.div>

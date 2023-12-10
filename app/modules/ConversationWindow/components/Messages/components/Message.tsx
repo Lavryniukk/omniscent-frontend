@@ -1,9 +1,8 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef } from "react";
 import ReactMarkdown from "react-markdown";
 import hljs from "highlight.js";
-import { useTheme } from "@/app/shared/providers/ThemeProvider";
-
+import "highlight.js/styles/github-dark.css";
 interface MessageProps {
   role: "user" | "system" | "assistant";
   content: string;
@@ -11,26 +10,11 @@ interface MessageProps {
 
 export default function Message({ role, content }: MessageProps) {
   const contentRef = useRef<HTMLDivElement>(null);
-  const { theme } = useTheme();
 
-  // Dynamically load highlight.js styles based on the theme
-  useEffect(() => {
-    const loadHighlightStyles = async () => {
-      if (theme === "dark") {
-        require("highlight.js/styles/github.css");
-      } else {
-        require("highlight.js/styles/github-dark.css");
-      }
-    };
-
-    loadHighlightStyles();
-  }, [theme]);
-
-  // Apply syntax highlighting
   useEffect(() => {
     if (contentRef.current) {
       contentRef.current.querySelectorAll("pre code").forEach((block) => {
-        hljs.highlightBlock(block as HTMLElement);
+        hljs.highlightElement(block as HTMLElement);
       });
     }
   }, [content]);
@@ -58,7 +42,11 @@ export default function Message({ role, content }: MessageProps) {
           className="mt-[5px] break-words text-lg w-full font-inter chat-output"
           ref={contentRef}
         >
-          <ReactMarkdown>{content}</ReactMarkdown>
+          {role === "assistant" ? (
+            <ReactMarkdown>{content}</ReactMarkdown>
+          ) : (
+            <div>{content}</div>
+          )}
         </article>
       </div>
     </div>
