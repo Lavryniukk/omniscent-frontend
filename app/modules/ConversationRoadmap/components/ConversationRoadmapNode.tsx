@@ -26,11 +26,6 @@ export default function ConversationRoadmapNodeComponent({
   return (
     <li className="w-full flex items-center  justify-center flex-col min-w-[200px]">
       <Link
-        onClick={() =>
-          console.log(
-            `/workspace/conversation/${roadmapId}/${subroadmapTitle}/${tech.conversation_id}`
-          )
-        }
         href={`/workspace/conversation/${roadmapId}/${subroadmapTitle}/${tech.conversation_id}`}
         className={`conversation_roadmap__node ${
           isLocked && "hover:cursor-not-allowed"
