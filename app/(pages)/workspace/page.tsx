@@ -14,7 +14,7 @@ function WorkspacePage() {
           </h1>
           <p className="text-lg text-text font-normal">
             This is your workspace.
-          <br /> Here you will find all your existing projects. Project is
+            <br /> Here you will find all your existing projects. Project is
             goal, something you want to learn. It can be anything from simple
             framework (like Vue.js) to complex fields (like data science).
           </p>
@@ -25,4 +25,4 @@ function WorkspacePage() {
   );
 }
 
-export default withPageAuthRequired(WorkspacePage);
+export default WorkspacePage;

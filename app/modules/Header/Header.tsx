@@ -2,14 +2,26 @@
 
 import Burger from "@/app/modules/Header/components/BurgerMenuButton/BurgerNavigation";
 import Popup from "@/app/modules/Header/components/BurgerPopup/BurgerPopup";
-import ProfileLink from "./components/ProfileLink/ProfileLink";
 import Navigation from "./components/Navigation/Navigation";
 import { useTheme } from "@/app/shared/providers/ThemeProvider";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ThemeSwitcher from "./components/ThemeSwitcher/ThemeSwitcher";
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { axiosWithAuth } from "@/app/shared/config/axiosConfig";
 let Header = () => {
   let [isOpen, setIsOpen] = useState(false);
   const { theme, setTheme } = useTheme();
+  useEffect(() => {
+    const yes = async () => {
+      const res = await axiosWithAuth({
+        url: "/health",
+        method: "GET",
+      });
+      console.log(res.data);
+    };
+    // yes();
+  }, []);
+
   return (
     <>
       <Popup isOpen={isOpen} />
@@ -32,7 +44,12 @@ let Header = () => {
               }}
             />
             <div className="md:flex hidden">
-              <ProfileLink />
+              <SignedIn>
+                <UserButton showName />
+              </SignedIn>
+              <SignedOut>
+                <SignInButton />
+              </SignedOut>
             </div>
           </div>
         </div>
