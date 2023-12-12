@@ -1,3 +1,4 @@
+"use client";
 import Conversation, {
   ConversationMessage,
 } from "@/app/shared/entities/Conversation";
@@ -5,6 +6,7 @@ import Messages from "./components/Messages/Messages";
 import InitConversationButton from "./components/InitConversationButton/InitConversationButton";
 import useConversationStorage from "./storage/ConversationStorage";
 import ConversationInput from "./components/ConversationInput/ConversationInput";
+import { useEffect } from "react";
 interface ConversationChatProps {
   roadmap_id: string;
 }
@@ -15,13 +17,18 @@ export default function ConversationWindow({
 }) {
   const { conversation } = useConversationStorage();
 
-  let vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty("--vh", `${vh}px`);
+  useEffect(() => {
+    const handleResize = () => {
+      let vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty("--vh", `${vh}px`);
+    };
 
-  window.addEventListener("resize", () => {
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty("--vh", `${vh}px`);
-  });
+    handleResize(); // Set the initial value
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup function to remove the event listener
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   const messages = conversation?.messages as ConversationMessage[];
 
   return (

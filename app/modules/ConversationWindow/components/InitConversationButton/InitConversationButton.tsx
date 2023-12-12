@@ -13,18 +13,19 @@ export default function InitConversationButton({
   roadmapId,
   nodeTitle,
 }: InitConversationButtonProps) {
-  const { user } = useUser();
-  const { data, isLoading } = useQuery({
-    queryKey: ["initConversationUser"],
-    queryFn: async () => await fetchUserData(user?.id as string),
-  });
+  const { user, isLoaded } = useUser();
+
   const initConversation = useConversationStorage(
     (state) => state.initConversation
   );
-  return !isLoading ? (
+  return isLoaded ? (
     <button
       onClick={async () => {
-        initConversation(roadmapId, nodeTitle, data.user_metadata.bio.language);
+        initConversation(
+          roadmapId,
+          nodeTitle,
+          user?.unsafeMetadata.language as string
+        );
       }}
       className=" border-text bg-text hover:bg-background text-background absolute top-[calc(50%-62px)] left-[calc(50%-90px)]  hover:text-text py-4 rounded-md font-semibold px-7 text-xl text-center border transition-color duration-150"
     >

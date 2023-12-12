@@ -11,18 +11,15 @@ export default function UserRoadmapsLoading() {
         <div className="border border-secondary p-4 rounded min-h-[70px] flex items-center justify-center">
           <Skeleton width={"75%"} height={"24px"} rounded={"4px"} />
         </div>
-        <div className="border border-secondary p-4 rounded min-h-[70px] flex items-center justify-center">
-          <Skeleton width={"75%"} height={"24px"} rounded={"4px"} />
-        </div>
       </div>
-      <p className="mx-auto text-center underline-offset-2 select-none underline text-accent-600">
+      {/* <p className="mx-auto text-center underline-offset-2 select-none underline text-accent-600">
         <Link
           href="/workspace/create"
           className="hover:text-accent transition-colors duration-200"
         >
           Create new project
         </Link>
-      </p>
+      </p> */}
     </>
   );
 }

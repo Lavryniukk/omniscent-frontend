@@ -5,10 +5,8 @@ import { fetchProjects } from "./api/fetchProjects";
 import FetchedRoadmaps from "./components/FetchedRoadmaps/FetchedRoadmaps";
 import UserRoadmapsLoading from "./components/UserRoadmapsLoading/UserRoadmapsLoading";
 import ErrorAlert from "@/app/UI/alerts/ErrorAlert/ErrorAlert";
-import { useEffect, useState } from "react";
-import fetchUserData from "./api/fetchUserData";
-import sendUserData from "./api/sendUserData";
-import { useUser } from "@clerk/nextjs";
+
+import LanguageSelector from "./components/LanguageSelector/LanguageSelector";
 
 // Initialize an array 'arr' containing an example project.
 
@@ -17,19 +15,6 @@ export default function UserProjects() {
     queryKey: ["userProjects"],
     queryFn: async () => await fetchProjects(),
   });
-
-  // const [userData, setUserData] = useState<{
-  //   user_metadata: { bio: { language: string } };
-  // }>();
-  // const { user } = useUser();
-
-  // useEffect(() => {
-  //   const fetchData = async (id: string) => {
-  //     const res = await fetchUserData(id);
-  //     setUserData(res);
-  //   };
-  //   user && fetchData(user.id as string);
-  // }, [user]);
 
   return (
     <div className="mx-auto w-full min-w-[30px] py-16 sm:w-1/3 max-w-[600px] sm:min-w-[500px] sm:px-5 sm:py-16 font-inter h-fit border-2 border-accent rounded-lg relative">
@@ -42,37 +27,7 @@ export default function UserProjects() {
               ? "Create your first project"
               : "Your learning projects"}
       </h1>
-
-      {/* {userData && (
-        <div className="absolute top-4 right-4 flex gap-1 justify-center items-center">
-          <label className="text-sm text-text/60">
-            Preferred learning language
-          </label>
-          <select
-            className="outline-none bg-transparent w-fit text-text/60"
-            defaultValue={`${userData.user_metadata.bio.language}`}
-            onChange={async (e) => {
-              const body = {
-                user_metadata: {
-                  bio: {
-                    ...userData.user_metadata.bio,
-                    language: e.target.value,
-                  },
-                },
-              };
-              await sendUserData(body);
-            }}
-          >
-            <option value="english" className="bg-background text-text/60">
-              EN
-            </option>
-            <option value="russian" className="bg-background text-text/60">
-              RU
-            </option>
-          </select>
-        </div>
-      )} */}
-
+      <LanguageSelector />
       {error ? (
         <>
           <button
