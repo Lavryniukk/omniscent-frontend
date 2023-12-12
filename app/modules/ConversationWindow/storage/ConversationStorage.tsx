@@ -108,6 +108,7 @@ const useConversationStorage = create<
   },
 
   initConversation: async (userRoadmapId, noteTitle, language) => {
+    console.log("clicked on button");
     let newConversation = get().conversation;
     const conversationId = newConversation?._id;
     newConversation?.messages.push({
@@ -117,8 +118,11 @@ const useConversationStorage = create<
     set({
       conversation: newConversation,
     });
+    console.log("pushed new assitant message");
+
     noteTitle?.replaceAll("%20", " ");
     const accessToken = await getToken();
+    console.log("got token");
     listenForUpdates(
       conversationId,
       accessToken,
@@ -131,6 +135,7 @@ const useConversationStorage = create<
         set({ isStreaming: false });
       }
     );
+
     await fetchConversationInit(
       conversationId,
       userRoadmapId,
