@@ -84,16 +84,19 @@ const useConversationStorage = create<
     });
     const token = await getToken();
 
-    const callback = get().updateLastAssistantMessage;
-
-    listenToSse(conversation._id, token, callback, get().lock, () => {});
+    listenToSse(
+      conversation._id,
+      token,
+      get().updateLastAssistantMessage,
+      get().lock,
+      () => {}
+    );
 
     await sendUserMessage(message, conversation._id, roadmapId);
     set({ userInputData: "" });
   },
 
   updateLastAssistantMessage(newValue) {
-    console.log(newValue);
     let conversation = get().conversation;
     const lastMessage = conversation?.messages.pop();
     if (lastMessage?.role === "assistant") {
@@ -109,6 +112,7 @@ const useConversationStorage = create<
       });
     }
     set({ conversation: conversation });
+    console.log(conversation);
   },
 
   initConversation: async (userRoadmapId, noteTitle, language) => {

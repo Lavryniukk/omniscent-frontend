@@ -1,14 +1,11 @@
 "use client";
-import Conversation, {
-  ConversationMessage,
-} from "@/app/shared/entities/Conversation";
+
 import Messages from "./components/Messages/Messages";
 import InitConversationButton from "./components/InitConversationButton/InitConversationButton";
 import useConversationStorage from "./storage/ConversationStorage";
 import ConversationInput from "./components/ConversationInput/ConversationInput";
 import { useEffect } from "react";
-import { getConversationData } from "@/app/shared/api/conversations/fetchConversationData";
-import { useQuery } from "@tanstack/react-query";
+
 import Skeleton from "@/app/UI/loading/Skeleton/Skeleton";
 
 export default function ConversationWindow({
@@ -19,25 +16,18 @@ export default function ConversationWindow({
   conversationId: string;
 }) {
   const { conversation, setConversation } = useConversationStorage();
-
   useEffect(() => {
-    console.log("rednder");
-    try {
-      const handleResize = () => {
-        let vh = window.innerHeight * 0.01;
-        document.documentElement.style.setProperty("--vh", `${vh}px`);
-      };
-
-      handleResize(); // Set the initial value
-      window.addEventListener("resize", handleResize);
-
-      // Cleanup function to remove the event listener
-      return () => window.removeEventListener("resize", handleResize);
-    } catch (e) {
-      console.log(e);
-    }
+    setConversation(conversationId);
   }, []);
-  const messages = conversation?.messages as ConversationMessage[];
+  const handleResize = () => {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+  };
+
+  handleResize(); // Set the initial value
+  window.addEventListener("resize", handleResize);
+
+  // Cleanup function to remove the event listener
 
   return (
     <div
@@ -53,7 +43,7 @@ export default function ConversationWindow({
       <div className="flex  w-full flex-col h-full max-h-full overflow-y-auto">
         {true && <Messages conversation={conversation} />}
       </div>
-      {!messages?.length && (
+      {!conversation?.messages?.length && (
         <InitConversationButton
           nodeTitle={conversation?.node_title}
           roadmapId={roadmapId}
