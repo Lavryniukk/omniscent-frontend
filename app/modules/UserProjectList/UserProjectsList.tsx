@@ -7,8 +7,8 @@ import UserRoadmapsLoading from "./components/UserRoadmapsLoading/UserRoadmapsLo
 import ErrorAlert from "@/app/UI/alerts/ErrorAlert/ErrorAlert";
 import { useEffect, useState } from "react";
 import fetchUserData from "./api/fetchUserData";
-import { useUser } from "@auth0/nextjs-auth0/client";
 import sendUserData from "./api/sendUserData";
+import { useUser } from "@clerk/nextjs";
 
 // Initialize an array 'arr' containing an example project.
 
@@ -18,18 +18,18 @@ export default function UserProjects() {
     queryFn: async () => await fetchProjects(),
   });
 
-  const [userData, setUserData] = useState<{
-    user_metadata: { bio: { language: string } };
-  }>();
-  const { user } = useUser();
+  // const [userData, setUserData] = useState<{
+  //   user_metadata: { bio: { language: string } };
+  // }>();
+  // const { user } = useUser();
 
-  useEffect(() => {
-    const fetchData = async (id: string) => {
-      const res = await fetchUserData(id);
-      setUserData(res);
-    };
-    user && fetchData(user.sub as string);
-  }, [user]);
+  // useEffect(() => {
+  //   const fetchData = async (id: string) => {
+  //     const res = await fetchUserData(id);
+  //     setUserData(res);
+  //   };
+  //   user && fetchData(user.id as string);
+  // }, [user]);
 
   return (
     <div className="mx-auto w-full min-w-[30px] py-16 sm:w-1/3 max-w-[600px] sm:min-w-[500px] sm:px-5 sm:py-16 font-inter h-fit border-2 border-accent rounded-lg relative">
@@ -43,7 +43,7 @@ export default function UserProjects() {
               : "Your learning projects"}
       </h1>
 
-      {userData && (
+      {/* {userData && (
         <div className="absolute top-4 right-4 flex gap-1 justify-center items-center">
           <label className="text-sm text-text/60">
             Preferred learning language
@@ -71,7 +71,7 @@ export default function UserProjects() {
             </option>
           </select>
         </div>
-      )}
+      )} */}
 
       {error ? (
         <>

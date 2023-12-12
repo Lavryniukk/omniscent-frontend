@@ -1,22 +1,22 @@
 "use client";
-import { useUser } from "@auth0/nextjs-auth0/client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { BiTrashAlt } from "react-icons/bi";
 import fetchDelete from "./fetchDelete";
 import Roadmap from "@/app/shared/entities/Roadmap";
+import { useUser } from "@clerk/nextjs";
 
 export default function ProjectContainer({ roadmap }: { roadmap: Roadmap }) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const { title, _id, owner_id } = roadmap;
 
-  const { user, isLoading } = useUser();
+  const { user, isLoaded } = useUser();
 
   let url: string = "/";
 
-  if (!isLoading && user) {
-    if (user.sub === owner_id) {
+  if (isLoaded && user) {
+    if (user.id === owner_id) {
       url = `/workspace/roadmap/${_id}`;
     }
   } else {

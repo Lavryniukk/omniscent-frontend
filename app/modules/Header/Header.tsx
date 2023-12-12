@@ -4,23 +4,12 @@ import Burger from "@/app/modules/Header/components/BurgerMenuButton/BurgerNavig
 import Popup from "@/app/modules/Header/components/BurgerPopup/BurgerPopup";
 import Navigation from "./components/Navigation/Navigation";
 import { useTheme } from "@/app/shared/providers/ThemeProvider";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ThemeSwitcher from "./components/ThemeSwitcher/ThemeSwitcher";
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-import { axiosWithAuth } from "@/app/shared/config/axiosConfig";
 let Header = () => {
   let [isOpen, setIsOpen] = useState(false);
   const { theme, setTheme } = useTheme();
-  useEffect(() => {
-    const yes = async () => {
-      const res = await axiosWithAuth({
-        url: "/health",
-        method: "GET",
-      });
-      console.log(res.data);
-    };
-    // yes();
-  }, []);
 
   return (
     <>

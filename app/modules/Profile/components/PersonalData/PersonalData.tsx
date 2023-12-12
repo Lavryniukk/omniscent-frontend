@@ -1,10 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import Skeleton from "@/app/UI/loading/Skeleton/Skeleton";
-import { useUser } from "@auth0/nextjs-auth0/client";
 import useProfileStorage from "../../storage/ProfileStorage";
+import { useUser } from "@clerk/nextjs";
 
 export default function PersonalData() {
-  const { user, isLoading } = useUser();
+  const { user, isLoaded } = useUser();
   const {
     userDataName,
     userDataNickname,
@@ -13,8 +13,8 @@ export default function PersonalData() {
     nameInputData,
     nicknameInputData,
   } = useProfileStorage();
-  const pic = user?.picture ?? ""; // Fallback to an empty string if picture is not available.
-  return !isLoading ? (
+  const pic = user?.imageUrl ?? ""; // Fallback to an empty string if picture is not available.
+  return isLoaded ? (
     <div className="flex flex-col p-2 items-start rounded-lg ">
       <img
         src={pic}

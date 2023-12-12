@@ -1,10 +1,10 @@
 "use server";
-import { getAccessToken } from "@auth0/nextjs-auth0";
-
+import { auth } from "@clerk/nextjs";
 export default async function getToken(): Promise<string> {
   try {
-    const { accessToken } = await getAccessToken();
-    return accessToken as string;
+    const { getToken } = auth();
+    const token = await getToken();
+    return token as string;
   } catch (e) {
     throw new Error("Token error" + e);
   }

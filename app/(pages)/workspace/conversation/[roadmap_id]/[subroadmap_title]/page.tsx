@@ -1,7 +1,6 @@
 "use client";
 
 import { ConversationRoadmap, ConversationWindow } from "@/app/modules";
-import { withPageAuthRequired } from "@auth0/nextjs-auth0/client";
 type ConversationPageProps = {
   params: {
     roadmap_id: string;
@@ -23,4 +22,4 @@ function Conversation({ params }: ConversationPageProps) {
   );
 }
 
-export default withPageAuthRequired(Conversation);
+export default Conversation;

@@ -1,7 +1,6 @@
 "use client"; // An environment-specific directive or comment, not part of the logic.
 
 import NewProjectField from "@/app/modules/NewProjectField/NewProjectField";
-import { withPageAuthRequired } from "@auth0/nextjs-auth0/client";
 
 function NewProject() {
   return (
@@ -11,4 +10,4 @@ function NewProject() {
   );
 }
 
-export default withPageAuthRequired(NewProject);
+export default NewProject;

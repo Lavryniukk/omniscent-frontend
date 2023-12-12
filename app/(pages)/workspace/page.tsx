@@ -1,6 +1,5 @@
 "use client";
 
-import { withPageAuthRequired } from "@auth0/nextjs-auth0/client";
 import { NavigationButton } from "@/app/shared/components/buttons";
 import { UserProjects } from "@/app/modules";
 function WorkspacePage() {

@@ -1,9 +1,8 @@
 "use client";
-import { useUser } from "@auth0/nextjs-auth0/client";
 import { useQuery } from "@tanstack/react-query";
-import { useEffect } from "react";
 import fetchUserData from "../../api/fetchUserData";
 import useConversationStorage from "../../storage/ConversationStorage";
+import { useUser } from "@clerk/nextjs";
 
 interface InitConversationButtonProps {
   roadmapId: string;
@@ -17,7 +16,7 @@ export default function InitConversationButton({
   const { user } = useUser();
   const { data, isLoading } = useQuery({
     queryKey: ["initConversationUser"],
-    queryFn: async () => await fetchUserData(user?.sub as string),
+    queryFn: async () => await fetchUserData(user?.id as string),
   });
   const initConversation = useConversationStorage(
     (state) => state.initConversation

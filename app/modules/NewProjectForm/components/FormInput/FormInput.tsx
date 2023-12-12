@@ -11,6 +11,7 @@ export default function FormInput({
     <div className="flex space-y-1 rounded-xl justify-center items-center w-3/4 relative">
       <input
         required
+        autoFocus
         value={inputData}
         onChange={(e) => handleFunction(e)}
         type="text"

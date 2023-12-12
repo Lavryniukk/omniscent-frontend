@@ -1,7 +1,6 @@
 "use client";
 
 import HeaderLink from "@/app/modules/Header/components/HeaderLink/HeaderLink";
-import ProfileLink from "@/app/modules/Header/components/ProfileLink/ProfileLink";
 import { SignedIn, UserButton, SignedOut, SignInButton } from "@clerk/nextjs";
 
 type Props = {

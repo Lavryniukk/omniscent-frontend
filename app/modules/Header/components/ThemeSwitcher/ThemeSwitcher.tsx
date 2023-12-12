@@ -12,7 +12,6 @@ export default function ThemeSwitcher({
   return (
     <div
       onClick={() => {
-        console.log(theme);
         callback();
       }}
       className="w-[78px] p-1 relative cursor-pointer h-8 flex items-center justify-around   shadow-accent border-accent bg-secondary rounded-full"
