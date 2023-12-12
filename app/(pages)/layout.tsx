@@ -6,7 +6,6 @@ import { Inter } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 
 import { ObserverProvider } from "../shared/providers/ObserverProvider";
-import { TokenCheckerProvider } from "../shared/providers/AuthCheckerProvider";
 import { ThemeProvider } from "../shared/providers/ThemeProvider";
 const inter = Inter({
   variable: "--inter-font",
