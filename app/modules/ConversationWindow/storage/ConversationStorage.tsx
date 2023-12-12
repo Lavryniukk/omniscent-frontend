@@ -9,12 +9,10 @@ import listenToSse from "../helpers/listenToEvent";
 import toggleIsCompleted from "@/app/shared/api/roadmaps/toggleIsCompleted";
 import getToken from "../api/getToken";
 import fetchConversationInit from "../helpers/fetchConversationInit";
-import { SubroadmapNode } from "@/app/shared/entities/Roadmap";
 interface ConversationStorageState {
   userInputData: string;
   assistantData: string;
   conversation: Conversation | undefined;
-  tech: SubroadmapNode | null;
   isLocked: boolean;
   isStreaming: boolean;
 }
@@ -22,9 +20,7 @@ interface ConversationStorageState {
 interface ConversationStorageActions {
   setInputData: (newInputData: string) => void;
   addUserMessage: (roadmapId: string) => void;
-  selectConversation: (
-    tech: SubroadmapNode
-  ) => Promise<Conversation | undefined>;
+  setConversation: (newConversation: Conversation) => void;
   initConversation: (
     user_roadmap_id: string | undefined,
     node_title: string | undefined,
@@ -41,15 +37,11 @@ const useConversationStorage = create<
   ConversationStorageActions & ConversationStorageState
 >((set, get) => ({
   conversation: undefined,
-  // {
-  //   _id: "d",
-  //   owner_id: "dd",
-  //   messages: [{ role: "user", content: "ddddd" }],
-  //   node_title: "hi",
-  // },
+  setConversation(newConversation) {
+    set({ conversation: newConversation });
+  },
   userInputData: "",
 
-  tech: null,
   async toggleIsCompleted(roadmapId, tech_title) {
     await toggleIsCompleted(roadmapId, tech_title);
     get().lock();
@@ -73,18 +65,6 @@ const useConversationStorage = create<
   },
 
   assistantData: "",
-
-  async selectConversation(tech) {
-    if (!get().isStreaming) {
-      set({ tech: tech, isLocked: true });
-      const conversation = await getConversationData(tech.conversation_id);
-      set({ conversation });
-
-      return conversation;
-    } else {
-      return get().conversation;
-    }
-  },
 
   setInputData: (newInputData) => set({ userInputData: newInputData }),
 

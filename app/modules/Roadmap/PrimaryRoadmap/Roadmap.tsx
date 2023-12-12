@@ -36,17 +36,17 @@ export default function Roadmap({ id }: { id: string }) {
         <ul className="text-text mx-auto w-fit py-20 h-fit flex items-center justify-center flex-col ">
           {!error && data ? (
             data.sub_roadmap_list.map(
-              (tech: Subroadmap, index: number, array: Subroadmap[]) => {
+              (roadmapNode: Subroadmap, index: number, array: Subroadmap[]) => {
                 let current;
                 const prevTech = array[index - 1];
                 let isLast: boolean = false;
-                if (array[array.length - 1] == tech) {
+                if (array[array.length - 1] == roadmapNode) {
                   isLast = true;
                 }
-                if (index === 0 && !tech.isCompleted) {
+                if (index === 0 && !roadmapNode.isCompleted) {
                   current = true;
                 } else {
-                  if (prevTech?.isCompleted && !tech.isCompleted) {
+                  if (prevTech?.isCompleted && !roadmapNode.isCompleted) {
                     current = true;
                   } else current = false;
                 }
@@ -56,7 +56,7 @@ export default function Roadmap({ id }: { id: string }) {
                     isLast={isLast}
                     key={index}
                     current={current}
-                    subroadmap={tech}
+                    subroadmap={roadmapNode}
                   />
                 );
               }

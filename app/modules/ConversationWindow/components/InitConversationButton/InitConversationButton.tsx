@@ -1,6 +1,5 @@
 "use client";
-import { useQuery } from "@tanstack/react-query";
-import fetchUserData from "../../api/fetchUserData";
+
 import useConversationStorage from "../../storage/ConversationStorage";
 import { useUser } from "@clerk/nextjs";
 
@@ -21,11 +20,12 @@ export default function InitConversationButton({
   return isLoaded ? (
     <button
       onClick={async () => {
-        initConversation(
-          roadmapId,
-          nodeTitle,
-          user?.unsafeMetadata.language as string
-        );
+        isLoaded &&
+          initConversation(
+            roadmapId,
+            nodeTitle,
+            user?.unsafeMetadata.language as string
+          );
       }}
       className=" border-text bg-text hover:bg-background text-background absolute top-[calc(50%-62px)] left-[calc(50%-90px)]  hover:text-text py-4 rounded-md font-semibold px-7 text-xl text-center border transition-color duration-150"
     >

@@ -17,9 +17,6 @@ export default function RoadmapNodeComponent({
   subroadmap: Subroadmap;
   isLast: boolean;
 }) {
-  const selectConversation = useConversationStorage(
-    (state) => state.selectConversation
-  );
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const itemVariants: Variants = {
     open: {
@@ -95,10 +92,7 @@ export default function RoadmapNodeComponent({
             text="Start learning"
             width="100%"
             height="40px"
-            callbackFn={() => {
-              selectConversation(subroadmap.node_list[0]);
-            }}
-            href={`/workspace/conversation/${id}/${subroadmap.title}/`}
+            href={`/workspace/conversation/${id}/${subroadmap.title}/${subroadmap.node_list[0].conversation_id}`}
             classname=" text-md border "
           />
         </motion.div>

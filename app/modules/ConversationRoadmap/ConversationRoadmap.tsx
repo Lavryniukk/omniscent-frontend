@@ -13,21 +13,16 @@ import ConversationRoadmapNodeComponent from "./components/ConversationRoadmapNo
 export default function ConversationRoadmap({
   roadmapId,
   subroadmapTitle,
+  conversationId,
 }: {
   roadmapId: string;
   subroadmapTitle: string;
+  conversationId: string;
 }) {
-  const { tech, selectConversation, isStreaming } = useConversationStorage();
-
+  const isStreaming = useConversationStorage((state) => state.isStreaming);
   const { data, isLoading } = useQuery(["subroadmap"], () => {
     return fetchSubroadmap(roadmapId, subroadmapTitle);
   });
-  useEffect(() => {
-    if (tech === null && !isLoading) {
-      selectConversation(data?.node_list[0] as SubroadmapNode);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoading]);
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
   useEffect(() => {
@@ -83,11 +78,15 @@ export default function ConversationRoadmap({
               ) => {
                 return (
                   <ConversationRoadmapNodeComponent
+                    roadmapId={roadmapId}
                     isLocked={isStreaming}
                     key={index}
+                    subroadmapTitle={data.title}
                     tech={subroadmapNode}
                     array={array}
-                    current_tech_title={tech?.title as string}
+                    isCurrent={
+                      conversationId === subroadmapNode.conversation_id
+                    }
                   />
                 );
               }
