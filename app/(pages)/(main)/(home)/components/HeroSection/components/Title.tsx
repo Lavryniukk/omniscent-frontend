@@ -6,11 +6,11 @@ let Title = () => {
   let { theme } = useTheme();
   return (
     <div className="overflow-visible font-inter overflow-x-clip items-center relative flex-col gap-6 flex max-w-10xl mx-auto">
-      <div className=" top-20 mx-auto   p-4 backdrop-blur-md bg-opacity-50 border-text rounded-lg left-1/4 z-10 bg-secondary text-text">
+      {/* <div className=" top-20 mx-auto   p-4 backdrop-blur-md bg-opacity-50 border-text rounded-lg left-1/4 z-10 bg-secondary text-text">
         ! Attention: We`re making improvements! Our service is currently
         undergoing technical maintenance and will be back shortly. Thank you for
         your patience.
-      </div>
+      </div> */}
       <div className="mx-auto observe group duration-500 border relative xl:p-6 lg:p-5 p-4 w-fit h-fit flex items-center justify-center rounded-xl border-secondary bg-background">
         <Image
           src={`/images/logo-cleverize-${

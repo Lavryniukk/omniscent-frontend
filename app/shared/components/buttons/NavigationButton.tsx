@@ -4,13 +4,13 @@ import { MdOutlineArrowBack } from "react-icons/md";
 
 const NavigationButton = ({ href, title }: { href: string; title: string }) => {
   return (
-    <a
+    <Link
       href={href}
       className="flex items-center justify-center p-2  w-fit text-accent absolute left-10 top-10 hover:opacity-80"
     >
       <MdOutlineArrowBack />
       To {title}
-    </a>
+    </Link>
   );
 };
 

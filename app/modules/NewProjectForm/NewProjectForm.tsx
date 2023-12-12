@@ -35,7 +35,7 @@ export default function NewProjectForm() {
 
   return (
     <form
-      className="flex flex-col items-center space-y-10 xs:space-y-24 w-full h-fit max-w-[500px] container xs:border justify-center xs:mx-auto font-inter rounded-lg xs:border-secondary px-4 py-8 xs:px-8 xs:py-12 mx-3"
+      className="flex flex-col items-center space-y-10 xs:space-y-24 w-full h-fit max-w-[500px] container  justify-center xs:mx-auto font-inter rounded-lg xs:border-secondary px-4 py-8 xs:px-8 xs:py-12 mx-3"
       onSubmit={(e) => handleSubmit(e)}
     >
       {!isLoading ? (

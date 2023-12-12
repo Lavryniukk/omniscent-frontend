@@ -106,10 +106,7 @@
       0 0 10px primary,
       0 0 20px primary;
   }
-  .observe {
-    transform: translateY(24px);
-    opacity: 0;
-  }
+
   .observe-show {
     transform: none;
     opacity: 1;

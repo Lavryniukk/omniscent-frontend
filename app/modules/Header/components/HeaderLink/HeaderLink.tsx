@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { memo, useCallback, useEffect, useMemo, useState } from "react";
 
@@ -19,7 +20,7 @@ let HeaderLink = ({ url, name }: Props) => {
   }, [path, name]);
 
   return (
-    <a
+    <Link
       href={url} // Set the URL to navigate to based on the prop.
       className={`md:text-text text-text font-inter text-lg md:text-base tracking-wide relative 
       font-normal hover:text-text/80 transition duration-200 before:absolute before:-bottom-0.5 hover:before:w-[96%] 
@@ -29,7 +30,7 @@ let HeaderLink = ({ url, name }: Props) => {
       }%]`}
     >
       {name} {/* Display the link name or label as the link text. */}
-    </a>
+    </Link>
   );
 };
 

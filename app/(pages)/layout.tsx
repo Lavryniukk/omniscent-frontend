@@ -19,16 +19,14 @@ export default function RootLayout({
   const client = new QueryClient();
 
   return (
-    <ClerkProvider>
-      <QueryClientProvider client={client}>
-        <ThemeProvider>
+    <ThemeProvider>
+      <ClerkProvider>
+        <QueryClientProvider client={client}>
           <html lang="en" className={`${inter.variable}`}>
-            <body className="font-inter  bg-background ">
-              <ObserverProvider>{children}</ObserverProvider>
-            </body>
+            <body className="font-inter  bg-background ">{children}</body>
           </html>
-        </ThemeProvider>
-      </QueryClientProvider>
-    </ClerkProvider>
+        </QueryClientProvider>
+      </ClerkProvider>
+    </ThemeProvider>
   );
 }
