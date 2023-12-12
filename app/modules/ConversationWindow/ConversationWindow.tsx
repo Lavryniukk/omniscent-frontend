@@ -21,11 +21,15 @@ export default function ConversationWindow({
   const setConversation = useConversationStorage(
     (state) => state.setConversation
   );
-  const { data, isLoading } = useQuery(["conversation"], async () => {
-    const newConversation = await getConversationData(conversationId);
-    newConversation && setConversation(newConversation);
-    return newConversation;
-  });
+  const { data, isLoading } = useQuery(
+    ["conversation"],
+    async () => {
+      const newConversation = await getConversationData(conversationId);
+      newConversation && setConversation(newConversation);
+      return newConversation;
+    },
+    { refetchInterval: 20000 }
+  );
 
   useEffect(() => {
     try {
