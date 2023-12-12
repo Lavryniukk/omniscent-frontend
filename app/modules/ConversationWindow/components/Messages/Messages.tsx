@@ -3,10 +3,12 @@ import Message from "./components/Message";
 export default function Messages({
   conversation,
 }: {
-  conversation: Conversation;
+  conversation: Conversation | undefined;
 }) {
   const messages = conversation && conversation.messages;
-
+  // if (conversation) {
+  //   throw new Error("Conversation cannot be undefined");
+  // }
   return (
     <div
       role="presentation"

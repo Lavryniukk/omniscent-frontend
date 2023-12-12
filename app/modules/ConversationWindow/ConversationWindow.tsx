@@ -18,20 +18,10 @@ export default function ConversationWindow({
   roadmapId: string;
   conversationId: string;
 }) {
-  const setConversation = useConversationStorage(
-    (state) => state.setConversation
-  );
-  const { data, isLoading } = useQuery(
-    ["conversation"],
-    async () => {
-      const newConversation = await getConversationData(conversationId);
-      newConversation && setConversation(newConversation);
-      return newConversation;
-    },
-    { refetchInterval: 20000 }
-  );
+  const { conversation, setConversation } = useConversationStorage();
 
   useEffect(() => {
+    console.log("rednder");
     try {
       const handleResize = () => {
         let vh = window.innerHeight * 0.01;
@@ -47,21 +37,25 @@ export default function ConversationWindow({
       console.log(e);
     }
   }, []);
-  const messages = data?.messages as ConversationMessage[];
+  const messages = conversation?.messages as ConversationMessage[];
 
   return (
     <div
       className={`w-full flex items-center flex-1 flex-col h-full border-accent bg-secondary relative overflow-hidden `}
     >
       <div className="w-full rounded-b-lg top-0 left-0 text-text tracking-widest py-4 flex items-center justify-center text-xl font-bold text-center bg-background">
-        {!isLoading ? data?.node_title : <Skeleton width="50%" height="5px" />}
+        {true ? (
+          conversation?.node_title
+        ) : (
+          <Skeleton width="50%" height="5px" />
+        )}
       </div>
       <div className="flex  w-full flex-col h-full max-h-full overflow-y-auto">
-        <Messages conversation={data as Conversation} />
+        {true && <Messages conversation={conversation} />}
       </div>
       {!messages?.length && (
         <InitConversationButton
-          nodeTitle={data?.node_title}
+          nodeTitle={conversation?.node_title}
           roadmapId={roadmapId}
         />
       )}

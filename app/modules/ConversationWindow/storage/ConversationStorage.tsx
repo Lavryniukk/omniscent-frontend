@@ -20,7 +20,7 @@ interface ConversationStorageState {
 interface ConversationStorageActions {
   setInputData: (newInputData: string) => void;
   addUserMessage: (roadmapId: string) => void;
-  setConversation: (newConversation: Conversation) => void;
+  setConversation: (newConversationId: string) => void;
   initConversation: (
     user_roadmap_id: string | undefined,
     node_title: string | undefined,
@@ -37,8 +37,11 @@ const useConversationStorage = create<
   ConversationStorageActions & ConversationStorageState
 >((set, get) => ({
   conversation: undefined,
-  setConversation(newConversation) {
-    set({ conversation: newConversation });
+  async setConversation(newConversationId) {
+    const newConversation = await getConversationData(newConversationId);
+    set({
+      conversation: newConversation,
+    });
   },
   userInputData: "",
 
@@ -90,6 +93,7 @@ const useConversationStorage = create<
   },
 
   updateLastAssistantMessage(newValue) {
+    console.log(newValue);
     let conversation = get().conversation;
     const lastMessage = conversation?.messages.pop();
     if (lastMessage?.role === "assistant") {
@@ -109,9 +113,9 @@ const useConversationStorage = create<
 
   initConversation: async (userRoadmapId, noteTitle, language) => {
     console.log("clicked on button");
-    let newConversation = get().conversation;
-    const conversationId = newConversation?._id;
-    newConversation?.messages.push({
+    let newConversation = get().conversation as Conversation;
+    const conversationId = newConversation._id;
+    newConversation.messages.push({
       role: "assistant",
       content: "",
     });

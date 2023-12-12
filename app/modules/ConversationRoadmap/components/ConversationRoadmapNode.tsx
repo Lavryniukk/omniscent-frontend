@@ -22,10 +22,16 @@ export default function ConversationRoadmapNodeComponent({
   if (array[array.length - 1] == tech) {
     isLast = true;
   }
-
+  const setConversation = useConversationStorage(
+    (state) => state.setConversation
+  );
+  isCurrent && setConversation(tech.conversation_id);
   return (
     <li className="w-full flex items-center  justify-center flex-col min-w-[200px]">
       <Link
+        onClick={() => {
+          setConversation(tech.conversation_id);
+        }}
         href={`/workspace/conversation/${roadmapId}/${subroadmapTitle}/${tech.conversation_id}`}
         className={`conversation_roadmap__node ${
           isLocked && "hover:cursor-not-allowed"
