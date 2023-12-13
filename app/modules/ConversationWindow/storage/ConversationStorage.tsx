@@ -96,20 +96,21 @@ const useConversationStorage = create<
   },
 
   updateLastAssistantMessage(newValue) {
-    "update called";
-    const newConversation = get().conversation;
-
-    const lastMessage = newConversation?.messages?.pop();
+    let conversation = get().conversation;
+    const lastMessage = conversation?.messages.pop();
     if (lastMessage?.role === "assistant") {
-      newConversation?.messages.push({
+      conversation?.messages.push({
         role: "assistant",
         content: newValue,
       });
     } else {
-      newConversation?.messages.push(lastMessage as ConversationMessage);
-
-      set({ conversation: newConversation });
+      conversation?.messages.push(lastMessage as ConversationMessage);
+      conversation?.messages.push({
+        role: "assistant",
+        content: newValue,
+      });
     }
+    set({ conversation: conversation });
   },
 
   initConversation: async (userRoadmapId, language) => {
