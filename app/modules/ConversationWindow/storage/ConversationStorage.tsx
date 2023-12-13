@@ -137,11 +137,11 @@ const useConversationStorage = create<
       }
     );
 
-    await fetchConversationInit({
+    void (await fetchConversationInit({
       conversationId,
       userRoadmapId,
       language,
-    });
+    }));
   },
 }));
 

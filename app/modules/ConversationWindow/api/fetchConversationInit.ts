@@ -20,7 +20,7 @@ export default async function fetchConversationInit(body: {
       method: "POST",
       data: body,
     });
-    // return "inited";
+    return "inited";
   } catch (error) {
     console.error(
       `Error with POST /users/me/conversations/${conversationId}/init`,
