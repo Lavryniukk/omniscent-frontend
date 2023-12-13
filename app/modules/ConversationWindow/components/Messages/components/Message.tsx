@@ -4,8 +4,8 @@ import ReactMarkdown from "react-markdown";
 import DOMPurify from "dompurify";
 import Markdown from "react-markdown";
 import hljs from "highlight.js";
-import "highlight.js/styles/github-dark.css";
-import { error } from "console";
+import "highlight.js/styles/tokyo-night-dark.css";
+// import { error } from "console";
 interface MessageProps {
   role: "user" | "system" | "assistant";
   content: string;
@@ -20,9 +20,7 @@ export default function Message({ role, content }: MessageProps) {
         try {
           block && block.removeAttribute("data-highlighted"); // Remove the attribute
           block && hljs.highlightElement(block as HTMLElement);
-        } catch (e) {
-          console.log("this is operating block:", block, "this is eror,", e);
-        }
+        } catch (e) {}
       });
     }
   }, [content]);
