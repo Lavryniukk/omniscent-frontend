@@ -15,7 +15,7 @@ export default async function fetchConversationInit(body: {
   }
   console.log("sending init with body:", body);
   try {
-    axiosWithAuth({
+    await axiosWithAuth({
       url: `/users/me/conversations/${conversationId}/init`,
       method: "POST",
       data: body,

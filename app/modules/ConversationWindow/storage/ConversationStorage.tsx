@@ -8,7 +8,8 @@ import sendUserMessage from "../api/sendUserMessage";
 import listenToSse from "../helpers/listenToEvent";
 import toggleIsCompleted from "@/app/shared/api/roadmaps/toggleIsCompleted";
 import getToken from "../api/getToken";
-import fetchConversationInit from "../helpers/fetchConversationInit";
+import fetchConversationInit from "../api/fetchConversationInit";
+import changeLastMessage from "../helpers/changeLastMessageContent";
 interface ConversationStorageState {
   userInputData: string;
   assistantData: string;
@@ -23,7 +24,6 @@ interface ConversationStorageActions {
   setConversation: (newConversationId: string) => void;
   initConversation: (
     user_roadmap_id: string | undefined,
-    node_title: string | undefined,
     language: string | undefined
   ) => void;
   lock: () => void;
@@ -97,26 +97,11 @@ const useConversationStorage = create<
   },
 
   updateLastAssistantMessage(newValue) {
-    let conversation = get().conversation;
-    const lastMessage = conversation?.messages.pop();
-    if (lastMessage?.role === "assistant") {
-      conversation?.messages.push({
-        role: "assistant",
-        content: newValue,
-      });
-    } else {
-      conversation?.messages.push(lastMessage as ConversationMessage);
-      conversation?.messages.push({
-        role: "assistant",
-        content: newValue,
-      });
-    }
-    set({ conversation: conversation });
-    console.log(conversation);
+    const newConversation = changeLastMessage(newValue, get().conversation);
+    set({ conversation: newConversation });
   },
 
-  initConversation: async (userRoadmapId, nodeTitle, language) => {
-    console.log("clicked on button");
+  initConversation: async (userRoadmapId, language) => {
     let newConversation = get().conversation as Conversation;
     const conversationId = newConversation._id;
     newConversation.messages.push({
@@ -126,11 +111,8 @@ const useConversationStorage = create<
     set({
       conversation: newConversation,
     });
-    console.log("pushed new assitant message");
-    console.log("nodetitle", nodeTitle);
-    nodeTitle?.replaceAll("%20", " ");
+
     const accessToken = await getToken();
-    console.log("got token");
     listenForUpdates(
       conversationId,
       accessToken,
