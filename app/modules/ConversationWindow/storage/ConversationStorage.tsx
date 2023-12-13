@@ -96,23 +96,21 @@ const useConversationStorage = create<
   },
 
   updateLastAssistantMessage(newValue) {
-    const conversation = get().conversation;
-    if (!conversation) {
-      throw new Error("Conversation is undefined");
-    }
-    const lastMessage = conversation.messages?.pop();
+    const newConversation = get().conversation;
+
+    const lastMessage = newConversation?.messages?.pop();
     if (lastMessage?.role === "assistant") {
-      conversation.messages.push({
+      newConversation?.messages.push({
         role: "assistant",
         content: newValue,
       });
     } else {
-      conversation.messages.push(lastMessage as ConversationMessage);
-      conversation.messages.push({
+      newConversation?.messages.push(lastMessage as ConversationMessage);
+      newConversation?.messages.push({
         role: "assistant",
         content: newValue,
       });
-      set({ conversation });
+      set({ conversation: newConversation });
     }
   },
 
