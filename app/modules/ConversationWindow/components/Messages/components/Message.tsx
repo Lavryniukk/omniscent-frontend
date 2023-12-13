@@ -16,8 +16,12 @@ export default function Message({ role, content }: MessageProps) {
   useEffect(() => {
     if (contentRef.current) {
       contentRef.current.querySelectorAll("pre code").forEach((block) => {
-        block && block.removeAttribute("data-highlighted"); // Remove the attribute
-        block && hljs.highlightElement(block as HTMLElement);
+        try {
+          block && block.removeAttribute("data-highlighted"); // Remove the attribute
+          block && hljs.highlightElement(block as HTMLElement);
+        } catch (e) {
+          console.log(e);
+        }
       });
     }
   }, [content]);
