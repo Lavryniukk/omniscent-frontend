@@ -1,6 +1,8 @@
 "use client";
 import React, { useEffect, useLayoutEffect, useRef } from "react";
 import ReactMarkdown from "react-markdown";
+import DOMPurify from "dompurify";
+
 import hljs from "highlight.js";
 import "highlight.js/styles/github-dark.css";
 interface MessageProps {
@@ -19,6 +21,7 @@ export default function Message({ role, content }: MessageProps) {
       });
     }
   }, [content]);
+  const cleanContent = DOMPurify.sanitize(content);
 
   // Conditional classNames
   const wrapperClass = `text-text px-5 w-full mx-auto select-text flex-col text-md ${
@@ -44,7 +47,7 @@ export default function Message({ role, content }: MessageProps) {
           ref={contentRef}
         >
           {role === "assistant" ? (
-            <ReactMarkdown>{content}</ReactMarkdown>
+            <ReactMarkdown>{cleanContent}</ReactMarkdown>
           ) : (
             <div>{content}</div>
           )}
