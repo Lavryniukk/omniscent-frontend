@@ -2,7 +2,7 @@
 import React, { useEffect, useLayoutEffect, useRef } from "react";
 import ReactMarkdown from "react-markdown";
 import DOMPurify from "dompurify";
-
+import Markdown from "react-markdown";
 import hljs from "highlight.js";
 import "highlight.js/styles/github-dark.css";
 interface MessageProps {
@@ -13,14 +13,14 @@ interface MessageProps {
 export default function Message({ role, content }: MessageProps) {
   const contentRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (contentRef.current) {
-      contentRef.current.querySelectorAll("pre code").forEach((block) => {
-        block.removeAttribute("data-highlighted"); // Remove the attribute
-        hljs.highlightElement(block as HTMLElement);
-      });
-    }
-  }, [content]);
+  // useEffect(() => {
+  //   if (contentRef.current) {
+  //     contentRef.current.querySelectorAll("pre code").forEach((block) => {
+  //       block.removeAttribute("data-highlighted"); // Remove the attribute
+  //       hljs.highlightElement(block as HTMLElement);
+  //     });
+  //   }
+  // }, [content]);
   const cleanContent = DOMPurify.sanitize(content);
 
   // Conditional classNames
@@ -47,7 +47,7 @@ export default function Message({ role, content }: MessageProps) {
           ref={contentRef}
         >
           {role === "assistant" ? (
-            <ReactMarkdown>{cleanContent}</ReactMarkdown>
+            <Markdown>{cleanContent}</Markdown>
           ) : (
             <div>{content}</div>
           )}
