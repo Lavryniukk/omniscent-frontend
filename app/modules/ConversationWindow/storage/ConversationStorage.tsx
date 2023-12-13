@@ -147,7 +147,6 @@ const useConversationStorage = create<
     await fetchConversationInit({
       conversationId,
       userRoadmapId,
-      nodeTitle,
       language,
     });
   },
