@@ -19,13 +19,10 @@ export default function ConversationWindow({
   useEffect(() => {
     setConversation(conversationId);
   }, []);
-  const handleResize = () => {
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty("--vh", `${vh}px`);
-  };
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty("--vh", `${vh}px`);
 
-  handleResize(); // Set the initial value
-  window.addEventListener("resize", handleResize);
+  // window.addEventListener("resize", handleResize);
 
   // Cleanup function to remove the event listener
 
