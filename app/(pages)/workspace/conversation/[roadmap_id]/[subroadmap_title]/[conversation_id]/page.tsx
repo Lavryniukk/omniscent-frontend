@@ -10,9 +10,14 @@ type ConversationPageProps = {
 };
 
 function Conversation({ params }: ConversationPageProps) {
+  function handleResize() {
+    let vh = window && window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+  }
+  window && window.addEventListener("resize", handleResize);
   return (
     <div
-      className={`select-none overflow-x-hidden overflow-auto  w-full h-full flex flex-row overflow-y-auto bg-transparent mx-auto box-border`}
+      className={`select-none overflow-x-hidden overflow-auto fullheight  w-full h-full flex flex-row overflow-y-auto bg-transparent mx-auto box-border`}
     >
       <ConversationRoadmap
         conversationId={params.conversation_id}
