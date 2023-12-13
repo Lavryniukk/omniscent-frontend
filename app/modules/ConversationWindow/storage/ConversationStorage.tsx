@@ -96,6 +96,7 @@ const useConversationStorage = create<
   },
 
   updateLastAssistantMessage(newValue) {
+    "update called";
     const newConversation = get().conversation;
 
     const lastMessage = newConversation?.messages?.pop();
@@ -106,10 +107,7 @@ const useConversationStorage = create<
       });
     } else {
       newConversation?.messages.push(lastMessage as ConversationMessage);
-      newConversation?.messages.push({
-        role: "assistant",
-        content: newValue,
-      });
+
       set({ conversation: newConversation });
     }
   },

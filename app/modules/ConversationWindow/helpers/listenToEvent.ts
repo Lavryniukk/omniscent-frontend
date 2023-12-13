@@ -28,6 +28,7 @@ export default function listenToSse(
   eventSource.onmessage = (event) => {
     try {
       callback(event.data);
+      console.log("onmessage");
       eventSource.readyState === EventSource.CLOSED && console.log(100);
     } catch {}
   };
