@@ -1,31 +1,27 @@
 "use server";
 import { axiosWithAuth } from "@/app/shared/config/axiosConfig";
-export default async function fetchConversationInit(
-  conversationId: string | undefined,
-  userRoadmapId: string | undefined,
-  noteTitle: string | undefined,
-  language: string | undefined
-) {
+export default async function fetchConversationInit(body: {
+  conversationId: string | undefined;
+  userRoadmapId: string | undefined;
+  nodeTitle: string | undefined;
+  language: string | undefined;
+}) {
+  const { conversationId, userRoadmapId, nodeTitle, language } = body;
   if (
     conversationId === undefined ||
     userRoadmapId === undefined ||
-    noteTitle === undefined ||
+    nodeTitle === undefined ||
     language === undefined
   ) {
     throw new Error("Params cannot be undefined");
   }
-  noteTitle?.replaceAll("%26", "&");
-
+  nodeTitle?.replaceAll("%26", "&");
+  console.log("sending init with body:", body);
   try {
     axiosWithAuth({
       url: `/users/me/conversations/${conversationId}/init`,
       method: "POST",
-      data: {
-        conversationId: conversationId,
-        userRoadmapId: userRoadmapId,
-        nodeTitle: noteTitle,
-        language: language,
-      },
+      data: body,
     });
     // return "inited";
   } catch (error) {

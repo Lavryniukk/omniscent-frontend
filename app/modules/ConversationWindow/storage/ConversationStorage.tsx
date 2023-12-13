@@ -144,12 +144,12 @@ const useConversationStorage = create<
       }
     );
 
-    await fetchConversationInit(
+    await fetchConversationInit({
       conversationId,
       userRoadmapId,
       nodeTitle,
-      language
-    );
+      language,
+    });
   },
 }));
 
