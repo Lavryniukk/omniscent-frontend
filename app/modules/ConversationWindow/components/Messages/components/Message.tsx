@@ -13,12 +13,14 @@ interface MessageProps {
 export default function Message({ role, content }: MessageProps) {
   const contentRef = useRef<HTMLDivElement>(null);
 
-  if (contentRef.current) {
-    contentRef.current.querySelectorAll("pre code").forEach((block) => {
-      block && block.removeAttribute("data-highlighted"); // Remove the attribute
-      block && hljs.highlightElement(block as HTMLElement);
-    });
-  }
+  useEffect(() => {
+    if (contentRef.current) {
+      contentRef.current.querySelectorAll("pre code").forEach((block) => {
+        block && block.removeAttribute("data-highlighted"); // Remove the attribute
+        block && hljs.highlightElement(block as HTMLElement);
+      });
+    }
+  }, [content]);
   const cleanContent = DOMPurify.sanitize(content);
 
   // Conditional classNames
