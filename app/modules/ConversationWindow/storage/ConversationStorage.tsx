@@ -115,7 +115,7 @@ const useConversationStorage = create<
     console.log(conversation);
   },
 
-  initConversation: async (userRoadmapId, noteTitle, language) => {
+  initConversation: async (userRoadmapId, nodeTitle, language) => {
     console.log("clicked on button");
     let newConversation = get().conversation as Conversation;
     const conversationId = newConversation._id;
@@ -127,8 +127,8 @@ const useConversationStorage = create<
       conversation: newConversation,
     });
     console.log("pushed new assitant message");
-
-    noteTitle?.replaceAll("%20", " ");
+    console.log("nodetitle", nodeTitle);
+    nodeTitle?.replaceAll("%20", " ");
     const accessToken = await getToken();
     console.log("got token");
     listenForUpdates(
@@ -147,7 +147,7 @@ const useConversationStorage = create<
     await fetchConversationInit(
       conversationId,
       userRoadmapId,
-      noteTitle,
+      nodeTitle,
       language
     );
   },

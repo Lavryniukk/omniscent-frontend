@@ -26,17 +26,15 @@ export default function listenToSse(
   );
 
   eventSource.onmessage = (event) => {
-    callback(event.data);
-    eventSource.readyState === EventSource.CLOSED && console.log(100);
+    try {
+      callback(event.data);
+      eventSource.readyState === EventSource.CLOSED && console.log(100);
+    } catch {}
   };
-
-  eventSource.onerror = (error) => {
-    eventSource.close();
-    onCloseFn();
-
-    console.error(
-      `Event source listener failed on ${process.env.SERVER_URL}/api/users/me/conversations/${conversationId}/stream`,
-      error
-    );
-  };
+  try {
+    eventSource.onerror = () => {
+      eventSource.close();
+      onCloseFn();
+    };
+  } catch {}
 }

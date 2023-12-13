@@ -17,7 +17,7 @@ export default async function fetchConversationInit(
   noteTitle?.replaceAll("%26", "&");
 
   try {
-    const res = await axiosWithAuth({
+    axiosWithAuth({
       url: `/users/me/conversations/${conversationId}/init`,
       method: "POST",
       data: {
@@ -27,7 +27,7 @@ export default async function fetchConversationInit(
         language: language,
       },
     });
-    return "inited";
+    // return "inited";
   } catch (error) {
     console.error(
       `Error with POST /users/me/conversations/${conversationId}/init`,
