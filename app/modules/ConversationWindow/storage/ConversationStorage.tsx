@@ -9,7 +9,6 @@ import listenToSse from "../helpers/listenToEvent";
 import toggleIsCompleted from "@/app/shared/api/roadmaps/toggleIsCompleted";
 import getToken from "../api/getToken";
 import fetchConversationInit from "../api/fetchConversationInit";
-import changeLastMessage from "../helpers/changeLastMessageContent";
 interface ConversationStorageState {
   userInputData: string;
   assistantData: string;
@@ -97,8 +96,24 @@ const useConversationStorage = create<
   },
 
   updateLastAssistantMessage(newValue) {
-    const newConversation = changeLastMessage(newValue, get().conversation);
-    set({ conversation: newConversation });
+    const conversation = get().conversation;
+    if (!conversation) {
+      throw new Error("Conversation is undefined");
+    }
+    const lastMessage = conversation.messages?.pop();
+    if (lastMessage?.role === "assistant") {
+      conversation.messages.push({
+        role: "assistant",
+        content: newValue,
+      });
+    } else {
+      conversation.messages.push(lastMessage as ConversationMessage);
+      conversation.messages.push({
+        role: "assistant",
+        content: newValue,
+      });
+      set({ conversation });
+    }
   },
 
   initConversation: async (userRoadmapId, language) => {
@@ -106,7 +121,7 @@ const useConversationStorage = create<
     const conversationId = newConversation._id;
     newConversation.messages.push({
       role: "assistant",
-      content: "",
+      content: "Loading...",
     });
     set({
       conversation: newConversation,
