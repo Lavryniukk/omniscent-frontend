@@ -8,7 +8,7 @@ import { useState } from "react";
 import ThemeSwitcher from "./components/ThemeSwitcher/ThemeSwitcher";
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 let Header = () => {
-  let [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const { theme, setTheme } = useTheme();
 
   return (

@@ -14,7 +14,7 @@ export default function ThemeSwitcher({
       onClick={() => {
         callback();
       }}
-      className="w-[78px] p-1 relative cursor-pointer h-8 flex items-center justify-around   shadow-accent border-accent bg-secondary rounded-full"
+      className="w-[78px] p-1 relative cursor-pointer h-8 flex items-center justify-around   shadow-accent border-accent border rounded-full"
     >
       <BsSunFill className="h-full aspect-square text-accent" />
       <BsMoonFill className="h-full aspect-square  text-accent" />
@@ -22,7 +22,7 @@ export default function ThemeSwitcher({
         animate={{
           x: theme === "dark" ? 40 : 6,
         }}
-        className="h-6 aspect-square left-1 absolute bg-text/50 rounded-full text-accent"
+        className="h-6 aspect-square left-1 absolute bg-accent rounded-full text-accent"
       ></motion.div>
     </div>
   );
