@@ -70,6 +70,14 @@
   }
 }
 
+.cl-internal-fflmyf {
+  @apply text-text bg-text/10;
+}
+
+.cl-userButtonOuterIdentifier {
+  @apply text-accent text-base;
+}
+
 @layer components {
   .inset-shadow {
     box-shadow:

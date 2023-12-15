@@ -7,6 +7,7 @@ import Navigation from "./components/Navigation/Navigation";
 import { useState } from "react";
 // import ThemeSwitcher from "./components/ThemeSwitcher/ThemeSwitcher";
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import theme from "tailwindcss/defaultTheme";
 let Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   // const { theme, setTheme } = useTheme();
@@ -38,7 +39,11 @@ let Header = () => {
                 <UserButton showName />
               </SignedIn>
               <SignedOut>
-                <SignInButton />
+                <SignInButton>
+                  <button className="block text-text border-text px-4 py-1 border rounded hover:border-transparent hover:bg-text hover:text-background transition duration-300 font-semibold">
+                    Sign in
+                  </button>
+                </SignInButton>
               </SignedOut>
             </div>
           </div>
