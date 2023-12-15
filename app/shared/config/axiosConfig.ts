@@ -16,10 +16,18 @@ export const axiosWithAuth = axios.create({
 axiosWithAuth.interceptors.request.use(async (config) => {
   try {
     const { getToken } = auth();
+
     const accessToken = await getToken();
+    const credits: { data: number } = await axios({
+      url: `${process.env.SERVER_URL}/api/users/me/credits`,
+      headers: { Authorization: `Bearer ${accessToken}` },
+    });
+    if (credits.data === 0) {
+      throw new Error("Not enough credits");
+    }
     config.headers.Authorization = `Bearer ${accessToken}`;
   } catch (error) {
-    console.error("Error with token handling:", error);
+    console.error("Error with axios instance:", error);
   }
 
   return config;

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --text: 27, 28, 30;
+  --text: 9, 11, 9;
   --background: 238, 237, 235;
   --primary: 179, 249, 231;
   --secondary: 217, 217, 217;
@@ -13,7 +13,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --text: 245, 245, 245; /* Light text for dark background */
-    --background: 27, 28, 30; /* Dark background */
+    --background: 9, 11, 9; /* Dark background */
     --primary: 6, 75, 58; /* Primary color for dark theme */
     --secondary: 38, 38, 38; /* Secondary color for dark theme */
     --accent: 163, 163, 163; /* Accent color for dark theme */
@@ -21,7 +21,7 @@
   }
 }
 .light {
-  --text: 27, 28, 30;
+  --text: 9, 11, 9;
   --background: 238, 237, 235;
   --primary: 179, 249, 231;
   --secondary: 217, 217, 217;
@@ -31,7 +31,7 @@
 
 .dark {
   --text: 238, 237, 235;
-  --background: 27, 28, 30;
+  --background: 5, 5, 5;
   --primary: 6, 75, 58;
   --secondary: 38, 38, 38;
   --accent: 163, 163, 163;
