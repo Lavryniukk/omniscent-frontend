@@ -8,6 +8,7 @@
   --primary: 179, 249, 231;
   --secondary: 217, 217, 217;
   --accent: 92, 92, 92;
+  background-color: rgb(var(--background));
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -16,6 +17,7 @@
     --primary: 6, 75, 58; /* Primary color for dark theme */
     --secondary: 38, 38, 38; /* Secondary color for dark theme */
     --accent: 163, 163, 163; /* Accent color for dark theme */
+    background-color: rgb(var(--background));
   }
 }
 .light {

@@ -3,13 +3,13 @@
 import Burger from "@/app/modules/Header/components/BurgerMenuButton/BurgerNavigation";
 import Popup from "@/app/modules/Header/components/BurgerPopup/BurgerPopup";
 import Navigation from "./components/Navigation/Navigation";
-import { useTheme } from "@/app/shared/providers/ThemeProvider";
+// import { useTheme } from "@/app/shared/providers/ThemeProvider";
 import { useState } from "react";
-import ThemeSwitcher from "./components/ThemeSwitcher/ThemeSwitcher";
+// import ThemeSwitcher from "./components/ThemeSwitcher/ThemeSwitcher";
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 let Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
+  // const { theme, setTheme } = useTheme();
 
   return (
     <>
@@ -18,7 +18,8 @@ let Header = () => {
         className={` h-14 flex z-50 w-full justify-center items-center backdrop-blur-md fixed top-0  border-secondary box-border`}
       >
         <div className="w-full h-14 fixed top-0 flex items-center justify-between max-w-10xl z-0 px-10 sm:px-5 box-border">
-          <Navigation theme={theme} />
+          {/* <Navigation theme={theme} /> */}
+          <Navigation />
           <Burger
             isOpen={isOpen}
             callback={() => {
@@ -26,12 +27,12 @@ let Header = () => {
             }}
           />
           <div className="flex items-center space-x-5">
-            <ThemeSwitcher
+            {/* <ThemeSwitcher
               theme={theme}
               callback={() => {
                 setTheme(theme === "light" ? "dark" : "light");
               }}
-            />
+            /> */}
             <div className="md:flex hidden">
               <SignedIn>
                 <UserButton showName />
