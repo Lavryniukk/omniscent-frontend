@@ -118,7 +118,7 @@ const useConversationStorage = create<
     const conversationId = newConversation._id;
     newConversation.messages.push({
       role: "assistant",
-      content: "Loading...",
+      content: "isLoading",
     });
     set({
       conversation: newConversation,

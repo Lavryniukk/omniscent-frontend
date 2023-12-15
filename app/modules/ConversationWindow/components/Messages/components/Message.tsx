@@ -20,13 +20,13 @@ export default function Message({ role, content }: MessageProps) {
         try {
           block && block.removeAttribute("data-highlighted"); // Remove the attribute
           block && hljs.highlightElement(block as HTMLElement);
-        } catch (e) {}
+        } catch (e) {} // Very important error handling ;)
       });
     }
   }, [content]);
+
   const cleanContent = DOMPurify.sanitize(content);
 
-  // Conditional classNames
   const wrapperClass = `text-text px-5 w-full mx-auto select-text flex-col text-md ${
     role === "system" ? "hidden" : ""
   } flex justify-start items-center gap-3 p-2 ${
@@ -50,7 +50,11 @@ export default function Message({ role, content }: MessageProps) {
           ref={contentRef}
         >
           {role === "assistant" ? (
-            <Markdown>{cleanContent}</Markdown>
+            content === "isLoading" ? (
+              <div className="border-2 w-10 h-10 rounded-full border-accent border-t-text animate-spin aspect-square" />
+            ) : (
+              <Markdown>{cleanContent}</Markdown>
+            )
           ) : (
             <div>{content}</div>
           )}

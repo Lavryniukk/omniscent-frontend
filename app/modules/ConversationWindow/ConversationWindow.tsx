@@ -16,11 +16,10 @@ export default function ConversationWindow({
   conversationId: string;
 }) {
   const { conversation, setConversation } = useConversationStorage();
+
   useEffect(() => {
     setConversation(conversationId);
   }, []);
-
-  // Cleanup function to remove the event listener
 
   return (
     <div
