@@ -22,7 +22,7 @@ axiosWithAuth.interceptors.request.use(async (config) => {
       url: `${process.env.SERVER_URL}/api/users/me/credits`,
       headers: { Authorization: `Bearer ${accessToken}` },
     });
-    if (credits.data === 0) {
+    if (Number(credits.data) === 0) {
       throw new Error("Not enough credits");
     }
     config.headers.Authorization = `Bearer ${accessToken}`;
