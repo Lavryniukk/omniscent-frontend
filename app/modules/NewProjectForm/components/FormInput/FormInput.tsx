@@ -25,7 +25,7 @@ export default function FormInput({
           inputData ? "-translate-y-[87.7%] scale-90" : ""
         }`}
       >
-        Tech name
+        Language name (Java, Python, JavaScript, etc.)
       </label>
     </div>
   );

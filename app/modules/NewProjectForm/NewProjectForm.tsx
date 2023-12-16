@@ -52,8 +52,7 @@ export default function NewProjectForm() {
             <div className="w-full ml-auto  h-20">
               <h2 className="text-accent text-sm text-right">
                 <i>
-                  {`*Tech name is supposed to be any digital technology, for
-                  example:\n data scince, python, java, game dev and other. *Note: non-digital tech will cause a bug`}
+                  {`*The language name should be the name of any programming language. We do not recommend entering anything else.`}
                 </i>
               </h2>
             </div>
