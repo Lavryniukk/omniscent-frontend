@@ -30,7 +30,7 @@ let Popup = ({ isOpen }: Props) => {
         </SignedIn>
         <SignedOut>
           <SignInButton />
-        </SignedOut>{" "}
+        </SignedOut>
       </div>
     </div>
   );
