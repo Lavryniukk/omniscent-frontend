@@ -18,7 +18,7 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [theme, setThemeState] = useState("dark"); // default theme
 
   // This effect runs once on mount, and anytime `setThemeState` function changes.
-  useLayoutEffect(() => {
+  useEffect(() => {
     const storedTheme = localStorage.getItem("theme");
     const prefersDark =
       window.matchMedia &&

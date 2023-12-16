@@ -3,7 +3,6 @@
 import { axiosWithAuth } from "@/app/shared/config/axiosConfig";
 
 const fetchDelete = async (roadmapId: string) => {
-  console.log();
   try {
     await axiosWithAuth({
       method: "DELETE",

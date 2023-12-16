@@ -8,9 +8,7 @@ export default function listenToSse(
   onStartFn: () => void,
   onCloseFn: () => void
 ) {
-  console.log("listeting");
   onStartFn();
-  console.log("onstart func triggered");
 
   const url = "https://cleverize.onrender.com";
   if (!conversationId) {
@@ -28,7 +26,6 @@ export default function listenToSse(
   eventSource.onmessage = (event) => {
     try {
       callback(event.data);
-      console.log("onmessage");
       eventSource.readyState === EventSource.CLOSED && console.log(100);
     } catch {}
   };

@@ -5,7 +5,6 @@ config();
 import axios from "axios";
 import { auth } from "@clerk/nextjs";
 if (!process.env.SERVER_URL) {
-  console.log("This is your serverurl:", process.env.SERVER_URL);
   throw new Error("Troubles with you SERVER_URL");
 }
 

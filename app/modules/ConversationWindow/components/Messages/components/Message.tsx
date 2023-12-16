@@ -25,7 +25,7 @@ export default function Message({ role, content }: MessageProps) {
     }
   }, [content]);
 
-  const cleanContent = DOMPurify.sanitize(content);
+  // const cleanContent = DOMPurify.sanitize(content);
 
   const wrapperClass = `text-text px-5 w-full mx-auto select-text flex-col text-md ${
     role === "system" ? "hidden" : ""
@@ -53,7 +53,7 @@ export default function Message({ role, content }: MessageProps) {
             content === "isLoading" ? (
               <div className="border-2 w-10 h-10 rounded-full border-accent border-t-text animate-spin aspect-square" />
             ) : (
-              <Markdown>{cleanContent}</Markdown>
+              <Markdown>{content}</Markdown>
             )
           ) : (
             <div>{content}</div>

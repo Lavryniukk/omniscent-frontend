@@ -8,7 +8,7 @@ export default function FormInput({
   inputData: string;
 }) {
   return (
-    <div className="flex space-y-1 rounded-xl justify-center items-center w-3/4 relative">
+    <div className="flex space-y-1 rounded-xl justify-center items-center w-full sm:w-3/4 relative">
       <input
         required
         autoFocus

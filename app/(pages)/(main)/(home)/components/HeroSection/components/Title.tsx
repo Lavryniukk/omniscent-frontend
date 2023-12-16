@@ -1,9 +1,10 @@
 "use client";
 import PrimaryBtn from "@/app/UI/buttons/primaryBtn/PrimaryBtn";
+import { useTheme } from "@/app/shared/providers/ThemeProvider";
 // import { useTheme } from "@/app/shared/providers/ThemeProvider";
 import Image from "next/image";
 let Title = () => {
-  // let { theme } = useTheme();
+  let { theme } = useTheme();
   return (
     <div className="overflow-visible font-inter overflow-x-clip items-center relative flex-col gap-6 flex max-w-10xl mx-auto w-full">
       {/* <div className=" top-20 mx-auto   p-4 backdrop-blur-md bg-opacity-50 border-text rounded-lg left-1/4 z-10 bg-secondary text-text">
@@ -13,10 +14,10 @@ let Title = () => {
       </div> */}
       <div className="mx-auto observe group duration-500 border relative xl:p-6 lg:p-5 p-4 w-fit h-fit flex items-center justify-center rounded-xl border-secondary bg-background">
         <Image
-          // src={`/images/logo-cleverize-${
-          //   theme === "light" ? "dark" : "light"
-          // }.webp`}
-          src={`/images/logo-cleverize-light.webp`}
+          src={`/images/logo-cleverize-${
+            theme === "light" ? "dark" : "light"
+          }.webp`}
+          // src={`/images/logo-cleverize-light.webp`}
           alt="cleverize logo icon svg"
           className="aspect-square w-20"
           width={100}

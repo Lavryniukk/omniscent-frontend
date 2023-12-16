@@ -7,14 +7,7 @@ export default async function sendUserMessage(
   userRoadmapId: string
 ) {
   try {
-    console.log(
-      "id:",
-      conversation_id,
-      "rdid:",
-      userRoadmapId,
-      "content:",
-      content
-    );
+
 
     await axiosWithAuth({
       url: `/users/me/conversations/${conversation_id}/messages`,

@@ -13,7 +13,6 @@ export default async function fetchConversationInit(body: {
   ) {
     throw new Error("Params cannot be undefined");
   }
-  console.log("sending init with body:", body);
   try {
     await axiosWithAuth({
       url: `/users/me/conversations/${conversationId}/init`,
