@@ -1,8 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 // let Logo = ({ picTheme }: { picTheme: string }) => {
 const Logo = () => {
   return (
-    <a href="/" className="flex mx-auto items-center  h-full ">
+    <Link href="/" className="flex mx-auto items-center  h-full ">
       <Image
         // src={`/images/logo-cleverize-${
         //   !picTheme ? "dark" : picTheme == "light" ? "dark" : "light"
@@ -13,7 +14,7 @@ const Logo = () => {
         width={40}
         height={40}
       />
-    </a>
+    </Link>
   );
 };
 export default Logo;

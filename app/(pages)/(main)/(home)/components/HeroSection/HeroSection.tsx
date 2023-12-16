@@ -10,6 +10,7 @@ let HeroSection = () => {
         width={1920}
         height={1080}
         className="fixed top-0 min-w-[1280px] min-h-[720px]"
+        priority
       />
       <Title />
     </div>

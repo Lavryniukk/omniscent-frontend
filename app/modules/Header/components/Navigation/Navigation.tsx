@@ -4,10 +4,10 @@ import HeaderLink from "../HeaderLink/HeaderLink";
 // export default function Navigation({ theme }: { theme: string }) {
 export default function Navigation() {
   return (
-    <nav className="hidden md:flex h-full items-center">
+    <nav className="hidden md:flex h-full items-center space-x-12">
       {/* <Logo picTheme={theme} /> */}
       <Logo />
-      <div className="space-x-7 mx-10 hidden md:block">
+      <div className="space-x-6 hidden md:block">
         <HeaderLink url="/workspace" name="Workspace" />
         <HeaderLink url="/memberships" name="Memberships" />
         <HeaderLink url="/blog" name="Blog" />

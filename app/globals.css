@@ -74,11 +74,41 @@
   @apply text-text bg-text/10;
 }
 
+.cl-avatarBox {
+  @apply w-12 h-12 aspect-square md:w-8 md:h-8;
+}
+
 .cl-userButtonOuterIdentifier {
   @apply text-accent text-base;
 }
 
-@layer components {
+.cl-userButtonPopoverCard {
+  @apply bg-background;
+}
+
+.cl-userButtonPopoverMain {
+  @apply text-text;
+}
+
+.cl-userPreviewTextContainer,
+.cl-userButtonPopoverActionButtonIcon,
+.cl-userButtonPopoverActionButton {
+  @apply text-inherit;
+}
+
+.cl-userPreviewSecondaryIdentifier {
+  @apply text-accent;
+}
+
+.cl-userButtonPopoverActionButtonText {
+  @apply text-accent;
+}
+
+.cl-userButtonPopoverFooter {
+  @apply hidden;
+}
+
+. @layer components {
   .inset-shadow {
     box-shadow:
       inset 7px 7px 14px #020304,
