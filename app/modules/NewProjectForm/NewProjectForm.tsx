@@ -52,7 +52,7 @@ export default function NewProjectForm() {
             <div className="w-full ml-auto  h-20">
               <h2 className="text-accent text-sm text-right">
                 <i>
-                  {`*The language name should be the name of any programming language. We do not recommend entering anything else.`}
+                  {`*The language name should be the name of any programming language (e.g. Java, Python, JavaScript, etc.). We do not recommend entering anything else.`}
                 </i>
               </h2>
             </div>
