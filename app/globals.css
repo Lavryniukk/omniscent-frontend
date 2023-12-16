@@ -78,6 +78,32 @@
   @apply text-accent text-base;
 }
 
+.cl-userButtonPopoverCard {
+  @apply bg-background;
+}
+
+.cl-userButtonPopoverMain {
+  @apply text-text;
+}
+
+.cl-userPreviewTextContainer,
+.cl-userButtonPopoverActionButtonIcon,
+.cl-userButtonPopoverActionButton {
+  @apply text-inherit;
+}
+
+.cl-userPreviewSecondaryIdentifier {
+  @apply text-accent;
+}
+
+.cl-userButtonPopoverActionButtonText {
+  @apply text-accent;
+}
+
+.cl-userButtonPopoverFooter {
+  @apply hidden;
+}
+
 @layer components {
   .inset-shadow {
     box-shadow:
