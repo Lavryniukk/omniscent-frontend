@@ -5,7 +5,7 @@ import HeroSection from "@/app/(pages)/(main)/(home)/components/HeroSection/Hero
 
 function Home() {
   return (
-    <main className="mb-10 font-inter overflow-hidden h-fit bg-transparent mx-auto box-border w-full">
+    <main className="mb-10 font-inter overflow-hidden h-screen overflow-y-auto bg-transparent mx-auto box-border w-full">
       <HeroSection />
       <FeaturesSection />
     </main>
