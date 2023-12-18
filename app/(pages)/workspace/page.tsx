@@ -14,8 +14,8 @@ function WorkspacePage() {
           <p className="text-lg text-text font-normal">
             This is your workspace.
             <br /> Here you will find all your existing projects. Project is
-            goal, something you want to learn. It can be anything from simple
-            framework (like Vue.js) to complex fields (like data science).
+            goal, something you want to learn. It can be anything from assembly
+            to python!
           </p>
         </div>
         <UserProjects /> {/* Render the UserProjects component. */}
