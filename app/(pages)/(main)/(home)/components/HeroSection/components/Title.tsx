@@ -6,7 +6,7 @@ import Image from "next/image";
 let Title = () => {
   let { theme } = useTheme();
   return (
-    <div className="overflow-visible font-inter overflow-x-clip items-center relative flex-col gap-6 flex max-w-10xl mx-auto w-full">
+    <div className="overflow-visible font-inter overflow-x-clip items-center relative flex-col gap-6 flex mx-auto w-full">
       {/* <div className=" top-20 mx-auto   p-4 backdrop-blur-md bg-opacity-50 border-text rounded-lg left-1/4 z-10 bg-secondary text-text">
         ! Attention: We`re making improvements! Our service is currently
         undergoing technical maintenance and will be back shortly. Thank you for
@@ -23,7 +23,7 @@ let Title = () => {
           width={100}
           height={100}
         />
-        <div className="absolute group-hover:animate-pulse  rounded-full observe transition-all duration-500 delay-500 bg-gradient-to-r from-primary to-primary/80  aspect-square xl:w-40 lg:w-36 w-32 -z-10 blur-2xl"></div>
+        <div className="absolute group-hover:animate-pulse  rounded-full observe transition-all duration-500 delay-500 bg-gradient-to-r from-primary/80 to-primary/60  aspect-square xl:w-40 lg:w-36 w-32 -z-10 blur-2xl"></div>
       </div>
       <>
         <h2 className="text-xl text-center mx-auto sm:text-2xl text-accent pl-1 tracking-[5px] font-extrabold  flex justify-center observe duration-500 w-fit">
@@ -35,7 +35,7 @@ let Title = () => {
   				   font-inter relative tracking-tight hyphens-none drop-shadow-lg  bg-clip-text font-extrabold text-center text-[40px] xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl"
         >
           The{" "}
-          <span className="text-text  drop-shadow-[0_10px_10px_rgba(var(--primary),0.8)]">
+          <span className="text-text  drop-shadow-[0_5px_15px_rgba(var(--primary),0.6)]">
             AI solution
           </span>
           <br /> for self-education

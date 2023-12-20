@@ -14,15 +14,19 @@ export default function ThemeSwitcher({
       onClick={() => {
         callback();
       }}
-      className="w-[78px] p-1 relative cursor-pointer h-8 flex items-center justify-around   shadow-accent border-accent border rounded-full"
+      className="w-16 relative px-1 py-0.5 cursor-pointer h-8 flex items-center justify-around   shadow-accent border-accent border-2 box-content rounded-full"
     >
-      <BsSunFill className="h-full aspect-square text-accent" />
-      <BsMoonFill className="h-full aspect-square  text-accent" />
+      <BsSunFill className="h-full rounded-full aspect-square w-5  text-accent" />
+      <BsMoonFill className="h-full rounded-full aspect-square w-5  text-accent" />
       <motion.div
-        animate={{
-          x: theme === "dark" ? 40 : 6,
+        initial={{
+          x: 6,
         }}
-        className="h-6 aspect-square left-1 absolute bg-accent rounded-full text-accent"
+        animate={{
+          x: theme === "dark" ? 38 : 6,
+        }}
+        transition={{ type: "tween", duration: 0.2 }} // set animation to strict animation type, not spring
+        className="h-7 left-0 aspect-square absolute bg-accent rounded-full text-accent"
       ></motion.div>
     </div>
   );
