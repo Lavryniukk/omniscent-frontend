@@ -29,7 +29,11 @@ let Popup = ({ isOpen }: Props) => {
           <UserButton />
         </SignedIn>
         <SignedOut>
-          <SignInButton />
+          <SignInButton>
+            <button className="block text-text border-text px-4 py-1 border rounded hover:border-transparent hover:bg-text hover:text-background transition duration-300 font-semibold">
+              Sign in
+            </button>
+          </SignInButton>
         </SignedOut>
       </div>
     </div>
