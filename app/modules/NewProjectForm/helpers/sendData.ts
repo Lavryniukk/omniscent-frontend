@@ -5,7 +5,7 @@ import { axiosWithAuth } from "@/app/shared/config/axiosConfig";
 const sendData = async (data: FormState) => {
   try {
     await axiosWithAuth({
-      url: "/users/me/roadmaps",
+      url: "/roadmaps/",
       data: { title: data.inputData },
       method: "POST",
     });

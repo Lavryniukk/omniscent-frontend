@@ -1,5 +1,5 @@
 "use client";
-import { SubroadmapNode } from "@/app/shared/entities/Roadmap";
+import RoadmapNode from "@/app/shared/entities/Roadmap";
 import useConversationStorage from "../../ConversationWindow/storage/ConversationStorage";
 import Link from "next/link";
 
@@ -9,14 +9,14 @@ export default function ConversationRoadmapNodeComponent({
   isLocked,
   isCurrent,
   roadmapId,
-  subroadmapTitle,
+  subroadmapId,
 }: {
-  tech: SubroadmapNode;
+  tech: RoadmapNode;
   roadmapId: string;
   isLocked: boolean;
-  array: SubroadmapNode[];
+  array: RoadmapNode[];
   isCurrent: boolean;
-  subroadmapTitle: string;
+  subroadmapId: string;
 }) {
   let isLast: boolean = false;
   if (array[array.length - 1] == tech) {
@@ -26,10 +26,10 @@ export default function ConversationRoadmapNodeComponent({
   return (
     <li className="w-full flex items-center  justify-center flex-col min-w-[200px]">
       <Link
-        href={`/workspace/conversation/${roadmapId}/${subroadmapTitle}/${tech.conversation_id}`}
+        href={`/workspace/conversation/${roadmapId}/${subroadmapId}/${tech.conversation_id}`}
         className={`conversation_roadmap__node ${
           isLocked && "hover:cursor-not-allowed"
-        } ${tech.isCompleted && "roadmap__node--completed"} ${
+        } ${tech.is_completed && "roadmap__node--completed"} ${
           isCurrent && "bg-secondary"
         }
 		  `}
@@ -40,7 +40,7 @@ export default function ConversationRoadmapNodeComponent({
       {!isLast && (
         <div
           className={`block w-0.5 select-none h-8 bg-accent  ${
-            tech.isCompleted && "opacity-60"
+            tech.is_completed && "opacity-60"
           }`}
         />
       )}

@@ -6,7 +6,7 @@ const fetchDelete = async (roadmapId: string) => {
   try {
     await axiosWithAuth({
       method: "DELETE",
-      url: `/users/me/roadmaps/${roadmapId}`,
+      url: `/roadmaps/delete/${roadmapId}`,
     });
   } catch (e) {
     console.log("Error with DELETE roadmap", e);

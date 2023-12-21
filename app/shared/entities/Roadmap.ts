@@ -1,22 +1,12 @@
-export type SubroadmapNode = {
-  title: string;
-  isCompleted: boolean;
-  conversation_id: string;
-};
-
-export type Subroadmap = {
-  title: string;
-  node_list: SubroadmapNode[];
-  isCompleted: boolean;
-};
-
-type Roadmap = {
+type RoadmapNode = {
   title: string;
   _id: string;
-  sub_roadmap_list: Subroadmap[];
-  owner_id: string;
-  isCompleted: boolean;
+  children: RoadmapNode[];
+  owner_id?: string;
+  is_completed: boolean;
   created_at: Date;
+  conversation_id?: string;
+  updated_at: Date;
 };
 
-export default Roadmap;
+export default RoadmapNode;

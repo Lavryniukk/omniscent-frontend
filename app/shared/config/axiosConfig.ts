@@ -15,7 +15,6 @@ export const axiosWithAuth = axios.create({
 axiosWithAuth.interceptors.request.use(async (config) => {
   try {
     const { getToken } = auth();
-
     const accessToken = await getToken();
     const credits: { data: number } = await axios({
       url: `${process.env.SERVER_URL}/api/users/me/credits`,

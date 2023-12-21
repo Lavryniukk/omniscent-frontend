@@ -5,11 +5,11 @@ import Roadmap from "@/app/shared/entities/Roadmap";
 
 export let fetchProjects = async (): Promise<Roadmap[] | [] | undefined> => {
   try {
-    const response = await axiosWithAuth({
+    const response: { data: Array<Roadmap> } = await axiosWithAuth({
       method: "GET",
-      url: `/users/me/roadmaps`,
+      url: `/roadmaps/all`,
     });
-    return await response.data;
+    return response.data;
   } catch (e) {
     console.log("Error", e);
   }

@@ -31,10 +31,10 @@ export default function ProjectContainer({ roadmap }: { roadmap: Roadmap }) {
     setIsOpen((prev) => !prev);
   };
 
-  const handleDelete = async ({ id }: { id: string }) => {
+  const handleDelete = async () => {
     setIsOpen(false);
 
-    await fetchDelete(id);
+    await fetchDelete(_id);
 
     location.reload();
   };
@@ -63,7 +63,7 @@ export default function ProjectContainer({ roadmap }: { roadmap: Roadmap }) {
       >
         {title}
         <BiTrashAlt
-          onClick={(e) => handleClick(e)}
+          onClick={handleClick}
           className="absolute text-accent top-[25px] right-3"
         />
       </Link>
@@ -85,7 +85,7 @@ export default function ProjectContainer({ roadmap }: { roadmap: Roadmap }) {
           </button>
 
           <button
-            onClick={async () => handleDelete({ id: _id })}
+            onClick={handleDelete}
             className={`block text-text w-full mx-auto rounded box-border cursor-pointer text-sm font-medium py-1 h-fit bg-red-500 pointer-events-auto hover:opacity-80 duration-300 transition `}
           >
             {`Confirm`}

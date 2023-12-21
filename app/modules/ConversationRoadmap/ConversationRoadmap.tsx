@@ -1,28 +1,25 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
-import fetchSubroadmap from "./api/fetchSubroadmap";
 import Link from "next/link";
 import { MdOutlineArrowBack } from "react-icons/md";
 import { useEffect, useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
 import useConversationStorage from "../ConversationWindow/storage/ConversationStorage";
-import { SubroadmapNode } from "@/app/shared/entities/Roadmap";
 import ConversationRoadmapNodeComponent from "./components/ConversationRoadmapNode";
+import RoadmapNode from "@/app/shared/entities/Roadmap";
+import { useRoadmap } from "@/app/shared/hooks/useRoadmap";
 
 export default function ConversationRoadmap({
   roadmapId,
-  subroadmapTitle,
+  subroadmapId,
   conversationId,
 }: {
   roadmapId: string;
-  subroadmapTitle: string;
+  subroadmapId: string;
   conversationId: string;
 }) {
   const isStreaming = useConversationStorage((state) => state.isStreaming);
-  const { data, isLoading } = useQuery(["subroadmap"], () => {
-    return fetchSubroadmap(roadmapId, subroadmapTitle);
-  });
+  const { data, isLoading, error } = useRoadmap(subroadmapId);
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
   useEffect(() => {
@@ -70,18 +67,18 @@ export default function ConversationRoadmap({
 
         {!isLoading ? (
           <ul className="">
-            {data?.node_list.map(
+            {data?.children.map(
               (
-                subroadmapNode: SubroadmapNode,
+                subroadmapNode: RoadmapNode,
                 index: number,
-                array: SubroadmapNode[]
+                array: RoadmapNode[]
               ) => {
                 return (
                   <ConversationRoadmapNodeComponent
                     roadmapId={roadmapId}
                     isLocked={isStreaming}
                     key={index}
-                    subroadmapTitle={data.title}
+                    subroadmapId={subroadmapId}
                     tech={subroadmapNode}
                     array={array}
                     isCurrent={

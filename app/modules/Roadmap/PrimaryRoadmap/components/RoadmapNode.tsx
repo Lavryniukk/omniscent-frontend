@@ -5,7 +5,7 @@ import { BiTrashAlt } from "react-icons/bi";
 import { motion, Variants } from "framer-motion";
 import { useState } from "react";
 import useConversationStorage from "@/app/modules/ConversationWindow/storage/ConversationStorage";
-import { Subroadmap } from "@/app/shared/entities/Roadmap";
+import RoadmapNode from "@/app/shared/entities/Roadmap";
 export default function RoadmapNodeComponent({
   id,
   current,
@@ -14,7 +14,7 @@ export default function RoadmapNodeComponent({
 }: {
   id: string;
   current: boolean;
-  subroadmap: Subroadmap;
+  subroadmap: RoadmapNode;
   isLast: boolean;
 }) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -38,7 +38,7 @@ export default function RoadmapNodeComponent({
           setIsOpen((prev) => !prev);
         }}
         className={`roadmap__node ${
-          subroadmap.isCompleted && "roadmap__node--complete"
+          subroadmap.is_completed && "roadmap__node--complete"
         } ${current && "roadmap__node--current"}
 		  `}
       >
@@ -75,7 +75,7 @@ export default function RoadmapNodeComponent({
           <div className="flex items-center">
             <MdDone className="mr-1" />{" "}
             <p>
-              {subroadmap.isCompleted
+              {subroadmap.is_completed
                 ? "Mark as uncompleted"
                 : "Mark as completed"}
             </p>
@@ -92,14 +92,16 @@ export default function RoadmapNodeComponent({
             text="Start learning"
             width="100%"
             height="40px"
-            href={`/workspace/conversation/${id}/${subroadmap.title}/${subroadmap.node_list[0].conversation_id}`}
+            href={`/workspace/conversation/${id}/${subroadmap._id}/${subroadmap.children[0]?.conversation_id}`}
             classname=" text-md border "
           />
         </motion.div>
       </motion.div>
       {!isLast && (
         <div
-          className={`roadmap__arrow ${subroadmap.isCompleted && "opacity-60"}`}
+          className={`roadmap__arrow ${
+            subroadmap.is_completed && "opacity-60"
+          }`}
         />
       )}
     </motion.li>
