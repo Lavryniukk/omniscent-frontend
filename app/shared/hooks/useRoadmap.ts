@@ -2,9 +2,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchRoadmap } from "../api/roadmaps/fetchRoadmapById";
 
-export function useRoadmap(id: string) {
+export function useRoadmap(id: string, key: string) {
   const query = useQuery({
-    queryKey: ["roadmap"],
+    queryKey: [key],
     queryFn: async () => {
       return await fetchRoadmap(id);
     },

@@ -10,18 +10,15 @@ export default function listenToSse(
 ) {
   onStartFn();
 
-  const url = "https://cleverize.onrender.com";
+  const url = `https://cleverize.onrender.com/api/users/me/conversations/${conversationId}/stream`;
   if (!conversationId) {
     throw new Error("conversationId cannot be undefined");
   }
-  const eventSource = new EventSource(
-    `${url}/api/users/me/conversations/${conversationId}/stream`,
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
+  const eventSource = new EventSource(url, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
 
   eventSource.onmessage = (event) => {
     try {
@@ -29,6 +26,7 @@ export default function listenToSse(
       eventSource.readyState === EventSource.CLOSED && console.log(100);
     } catch {}
   };
+
   try {
     eventSource.onerror = () => {
       eventSource.close();

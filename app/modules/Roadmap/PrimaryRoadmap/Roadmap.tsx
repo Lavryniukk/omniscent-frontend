@@ -4,7 +4,7 @@ import RoadmapNode from "@/app/shared/entities/Roadmap";
 import { useRoadmap } from "../../../shared/hooks/useRoadmap";
 
 export default function Roadmap({ id }: { id: string }) {
-  const { data, isLoading, error } = useRoadmap(id);
+  const { data, isLoading, error } = useRoadmap(id, "roadmap");
 
   //TODO: Move this shit into another component
   const skeletonArray = Array.from({ length: 10 }).map((_, index) => (
