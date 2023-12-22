@@ -43,7 +43,7 @@ let Title = () => {
       </>
 
       {/* Description text [max(40px,min(8vw,100px))] */}
-      <p className="observe transition delay-100 duration-500 text-accent hyphens-manual  mx-auto flex items-center justify-center w-10/12 md:w-3/4 lg:w-1/2 text-md xs:text-xl  text-center ">
+      <p className="observe transition delay-100 duration-500 text-accent hyphens-manual  mx-auto flex items-center justify-center w-10/12 md:w-3/4 lg:w-1/2 text-md sm:text-xl  text-center ">
         Unleash your full potential with personalized AI-driven tech education.
       </p>
 
