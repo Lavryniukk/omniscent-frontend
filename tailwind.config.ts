@@ -30,7 +30,7 @@ const config: Config = {
             backgroundPosition: "0% 0%",
           },
           "100%": {
-            backgroundPosition: "100% 0%",
+            backgroundPosition: "85% 0%",
           },
         },
         movingBackgroundRight: {
@@ -38,13 +38,13 @@ const config: Config = {
             backgroundPosition: "0% 0%",
           },
           "100%": {
-            backgroundPosition: "-100% 0%",
+            backgroundPosition: "-85% 0%",
           },
         },
       },
       animation: {
-        movingBackgroundLeft: "movingBackgroundLeft 22s linear infinite",
-        movingBackgroundRight: "movingBackgroundRight 22s linear infinite",
+        movingBackgroundLeft: "movingBackgroundLeft 10s linear infinite",
+        movingBackgroundRight: "movingBackgroundRight 10s linear infinite",
         skeleton: "skeleton 1.5s linear infinite",
         "spin-slow": "spin 10s linear infinite",
       },

@@ -30,7 +30,7 @@ export default function Version010() {
         </div>
         <div className="h-0.5 w-full bg-secondary"></div>
       </div> */}
-      <div className="h-0.5 w-full bg-secondary"></div>
+      <div className="h-0.5 w-full bg-secondary" />
 
       <div>
         <h3 className="text-2xl font-semibold ">
