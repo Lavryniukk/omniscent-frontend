@@ -211,8 +211,8 @@ body {
   @apply ml-4 flex flex-col gap-4;
 }
 
-.chat-output pre {
-  @apply pt-6;
+.chat-output pre code {
+  @apply pt-6 rounded-lg;
 }
 /* code {
   @apply bg-neutral-950;
