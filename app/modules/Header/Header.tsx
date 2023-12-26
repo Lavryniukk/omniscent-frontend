@@ -11,6 +11,7 @@ import { useState } from "react";
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import ThemeSwitcher from "./components/ThemeSwitcher/ThemeSwitcher";
 import { useTheme } from "next-themes";
+import Button from "@/app/UI/buttons/Button";
 let Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { theme, setTheme } = useTheme();
@@ -54,9 +55,9 @@ let Header = () => {
                 </SignedIn>
                 <SignedOut>
                   <SignInButton>
-                    <button className="block text-text border-text px-4 py-1 border rounded hover:border-transparent hover:bg-text hover:text-background transition duration-300 font-semibold">
+                    <Button variant="outline" size="sm">
                       Sign in
-                    </button>
+                    </Button>
                   </SignInButton>
                 </SignedOut>
               </div>

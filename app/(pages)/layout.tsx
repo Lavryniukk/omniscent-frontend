@@ -19,10 +19,10 @@ export default function RootLayout({
 
   return (
     <html lang="en" className={`${inter.variable}`} suppressHydrationWarning>
-      <body className="font-inter bg-background">
+      <body className="font-inter antialiased bg-background">
         <ClerkProvider>
           <QueryClientProvider client={client}>
-            <ThemeProvider>{children}</ThemeProvider>
+            <ThemeProvider disableTransitionOnChange>{children}</ThemeProvider>
           </QueryClientProvider>
         </ClerkProvider>
       </body>

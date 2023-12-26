@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Line from "../FeatureLine/FeatureLine";
-import PrimaryBlackBtn from "@/app/UI/buttons/PrimaryBlackBtn/PrimaryBlackBtn";
+import Button from "@/app/UI/buttons/Button";
 
 // TrialCard component represents a pricing card for the trial plan.
 let TrialCard = () => {
@@ -17,7 +17,7 @@ let TrialCard = () => {
         <Line text={"1 roadmap slot"} />
         <Line text={"All basic features available"} />
       </ul>
-      <PrimaryBlackBtn text={"Activate trial"} height={"50px"} />
+      <Button variant="outline">Activate trial</Button>
     </div>
   );
 };

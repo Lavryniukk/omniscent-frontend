@@ -1,5 +1,5 @@
 "use client";
-import PrimaryBtn from "@/app/UI/buttons/primaryBtn/PrimaryBtn";
+import Button from "@/app/UI/buttons/Button";
 import { useTheme } from "next-themes";
 // import { useTheme } from "@/app/shared/providers/ThemeProvider";
 import Image from "next/image";
@@ -35,7 +35,7 @@ let Title = () => {
   				   font-inter relative tracking-tight hyphens-none drop-shadow-lg  bg-clip-text font-extrabold text-center text-[40px] xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl"
         >
           The{" "}
-          <span className="text-text  drop-shadow-[0_5px_15px_rgba(var(--primary),0.6)]">
+          <span className="text-text drop-shadow-[0_5px_15px_rgba(var(--primary),0.6)]">
             AI solution
           </span>
           <br /> for self-education
@@ -43,25 +43,16 @@ let Title = () => {
       </>
 
       {/* Description text [max(40px,min(8vw,100px))] */}
-      <p className="observe transition delay-100 duration-500 text-accent hyphens-manual  mx-auto flex items-center justify-center w-10/12 md:w-3/4 lg:w-1/2 text-md sm:text-xl  text-center ">
+      <p className="observe mb-6 transition delay-100 duration-500 text-accent hyphens-manual  mx-auto flex items-center justify-center w-10/12 md:w-3/4 lg:w-1/2 text-md sm:text-xl  text-center ">
         Unleash your full potential with personalized AI-driven tech education.
       </p>
 
-      {/* Get Started Button Component */}
-      <PrimaryBtn
-        height="50px"
-        text="Get started"
-        href="/workspace"
-        observed={true}
-        classname="w-3/4 xs:w-1/2 mt-5 sm:w-1/3 lg:w-[250px] border-2 text-xl"
-      />
-      {/* <PrimaryBlackBtn
-        height="50px"
-        text="Workspace"
-        href="/workspace"
-        observed
-        classname="w-10/12 xs:w-2/3 md:w-1/3 lg:w-[200px]"
-      /> */}
+      <div className="flex gap-5">
+        <Button href="/workspace">Get started</Button>
+        <Button variant="ghost" href="/workspace">
+          Workspace
+        </Button>
+      </div>
     </div>
   );
 };

@@ -7,6 +7,7 @@ import UserRoadmapsLoading from "./components/UserRoadmapsLoading/UserRoadmapsLo
 import ErrorAlert from "@/app/UI/alerts/ErrorAlert/ErrorAlert";
 
 import LanguageSelector from "./components/LanguageSelector/LanguageSelector";
+import Button from "@/app/UI/buttons/Button";
 
 // Initialize an array 'arr' containing an example project.
 
@@ -17,7 +18,7 @@ export default function UserProjects() {
   });
 
   return (
-    <div className="mx-auto w-full min-w-[30px] py-16 sm:w-1/3 max-w-[600px] sm:min-w-[500px] sm:px-5 sm:py-16 font-inter h-fit border-2 border-accent rounded-lg relative">
+    <div className="mx-auto flex items-center flex-col gap-5 w-full min-w-[30px] py-16 sm:w-1/3 max-w-[600px] sm:min-w-[500px] sm:px-5 sm:py-16 font-inter h-fit border-2 border-accent rounded-lg relative">
       <h1 className="text-4xl text-center font-bold mx-auto text-text  font-inter">
         {isLoading
           ? "Loading..."
@@ -30,12 +31,7 @@ export default function UserProjects() {
       <LanguageSelector />
       {error ? (
         <>
-          <button
-            onClick={() => location.reload()}
-            className="text-text bg-background border w-fit mx-auto px-12 py-3 block rounded lg hover:text-background hover:bg-text duration-200 transition-colors"
-          >
-            Retry
-          </button>
+          <Button callback={() => location.reload()}>Retry</Button>
           <ErrorAlert message="An error occurred while loading your projects. Please try again later." />
         </>
       ) : isLoading ? (

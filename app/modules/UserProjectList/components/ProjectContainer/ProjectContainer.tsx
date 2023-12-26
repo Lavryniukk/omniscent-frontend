@@ -6,6 +6,7 @@ import { BiTrashAlt } from "react-icons/bi";
 import fetchDelete from "./fetchDelete";
 import Roadmap from "@/app/shared/entities/Roadmap";
 import { useUser } from "@clerk/nextjs";
+import Button from "@/app/UI/buttons/Button";
 
 export default function ProjectContainer({ roadmap }: { roadmap: Roadmap }) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -71,25 +72,19 @@ export default function ProjectContainer({ roadmap }: { roadmap: Roadmap }) {
       <div
         className={`${
           isOpen ? "flex" : "hidden"
-        } absolute text-text border flex-col gap-4
+        } absolute text-text border flex-col gap-5
           border-accent top-[45%] h-fit p-5 rounded-lg z-10 w-fit backdrop-blur-lg popup`}
       >
-        <p className="text-accent text-base text-center">{`Are you sure you want to delete '${title}'?`}</p>
+        <p className="text-text text-lg text-center">{`Are you sure you want to delete '${title}'?`}</p>
 
-        <div className="flex items-center justify-between mx-auto gap-4 w-11/12">
-          <button
-            onClick={() => setIsOpen(false)}
-            className={`block  w-full mx-auto rounded box-border cursor-pointer text-sm font-medium py-1 h-fit text-text border-2 bg-background pointer-events-auto hover:opacity-80 duration-300 transition `}
-          >
+        <div className="flex items-center justify-center mx-auto gap-5 w-11/12">
+          <Button callback={() => setIsOpen(false)} size="sm" variant="outline">
             {`Cancel`}
-          </button>
+          </Button>
 
-          <button
-            onClick={handleDelete}
-            className={`block text-text w-full mx-auto rounded box-border cursor-pointer text-sm font-medium py-1 h-fit bg-red-500 pointer-events-auto hover:opacity-80 duration-300 transition `}
-          >
+          <Button callback={handleDelete} size="sm" variant="danger">
             {`Confirm`}
-          </button>
+          </Button>
         </div>
 
         <AiOutlineClose

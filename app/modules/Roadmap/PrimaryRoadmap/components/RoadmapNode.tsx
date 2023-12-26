@@ -1,11 +1,11 @@
 "use client";
 import { MdDone } from "react-icons/md";
-import PrimaryBtn from "@/app/UI/buttons/primaryBtn/PrimaryBtn";
 import { BiTrashAlt } from "react-icons/bi";
 import { motion, Variants } from "framer-motion";
 import { useState } from "react";
 import useConversationStorage from "@/app/modules/ConversationWindow/storage/ConversationStorage";
 import RoadmapNode from "@/app/shared/entities/Roadmap";
+import Button from "@/app/UI/buttons/Button";
 export default function RoadmapNodeComponent({
   id,
   current,
@@ -49,7 +49,7 @@ export default function RoadmapNodeComponent({
         animate={isOpen ? "open" : "closed"}
         className={`absolute  ${
           isOpen ? "block" : "hidden"
-        } lg:-right-[80%] min-w-[200px] right-0 w-full lg:w-3/4 bg-secondary  h-fit top-1/3 z-10 lg:top-0 border rounded-md border-secondary p-2   `}
+        } lg:-right-[80%] min-w-[200px] flex items-center flex-col gap-2 right-0 w-full lg:w-3/4 bg-secondary  h-fit top-1/3 z-10 lg:top-0 border rounded-md border-secondary p-2   `}
       >
         <motion.div
           animate={isOpen ? "open" : "closed"}
@@ -70,7 +70,7 @@ export default function RoadmapNodeComponent({
           onClick={() => {
             alert("This feature is under development)");
           }}
-          className="w-full py-1 rounded-sm z-10 after:-z-10 pl-1 text-md after:w-full after:h-0.5 after:absolute after:bottom-0 after:rounded-sm hover:after:h-full hover:text-background  transition-colors after:transition-all after:duration-200 after:ease-in-out  duration-200 after:left-0 after:bg-accent relative cursor-pointer text-text"
+          className="w-full py-1  rounded-sm z-10 after:-z-10 pl-1 text-md after:w-full after:h-0.5 after:absolute after:bottom-0 after:rounded-sm hover:after:h-full hover:text-background  transition-colors after:transition-all after:duration-200 after:ease-in-out  duration-200 after:left-0 after:bg-accent relative cursor-pointer text-text"
         >
           <div className="flex items-center">
             <MdDone className="mr-1" />{" "}
@@ -88,13 +88,12 @@ export default function RoadmapNodeComponent({
           }}
           variants={itemVariants}
         >
-          <PrimaryBtn
-            text="Start learning"
-            width="100%"
-            height="40px"
+          <Button
+            size="sm"
             href={`/workspace/conversation/${id}/${subroadmap._id}/${subroadmap.children[0]?.conversation_id}`}
-            classname=" text-md border "
-          />
+          >
+            Start learning
+          </Button>
         </motion.div>
       </motion.div>
       {!isLast && (

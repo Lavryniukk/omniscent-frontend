@@ -1,9 +1,9 @@
 "use client";
 import Link from "next/link";
 import Line from "../FeatureLine/FeatureLine";
-import PrimaryBtn from "@/app/UI/buttons/primaryBtn/PrimaryBtn";
 import buyAdvanced from "./api/buyAdvanced";
 import { useRouter } from "next/navigation";
+import Button from "@/app/UI/buttons/Button";
 
 // ProCard component
 let ProCard = () => {
@@ -25,15 +25,14 @@ let ProCard = () => {
         <Line text="" />
         <Line text={"All experimental features available"} />
       </ul>
-      <PrimaryBtn
-        callbackFn={async () => {
+      <Button
+        callback={async () => {
           const url = await buyAdvanced();
           router.push(url);
         }}
-        classname="text-xl"
-        text={"Upgrade"}
-        height={"50px"}
-      />
+      >
+        Upgrade
+      </Button>
     </div>
   );
 };
