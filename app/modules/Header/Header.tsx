@@ -9,9 +9,8 @@ import Link from "next/link";
 import { useState } from "react";
 // import ThemeSwitcher from "./components/ThemeSwitcher/ThemeSwitcher";
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-import theme from "tailwindcss/defaultTheme";
-import { useTheme } from "@/app/shared/providers/ThemeProvider";
 import ThemeSwitcher from "./components/ThemeSwitcher/ThemeSwitcher";
+import { useTheme } from "next-themes";
 let Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { theme, setTheme } = useTheme();
@@ -24,7 +23,7 @@ let Header = () => {
           className={`h-14 flex z-50 w-11/12 lg:w-3/4 justify-center items-center backdrop-blur-md fixed top-4 border-text/20 box-border border max-w-10xl rounded-full md:rounded-xl`}
         >
           <div className="w-full h-14 fixed flex items-center justify-between max-w-10xl z-0 px-6 box-border">
-            <Navigation theme={theme} />
+            <Navigation theme={theme as string} />
             {/* <Navigation /> */}
 
             <div className="md:hidden flex justify-between items-center w-full">
@@ -42,12 +41,7 @@ let Header = () => {
               </Link>
             </div>
             <div className="flex items-center space-x-6">
-              <ThemeSwitcher
-                theme={theme}
-                callback={() => {
-                  setTheme(theme === "light" ? "dark" : "light");
-                }}
-              />
+              <ThemeSwitcher />
               <Burger
                 isOpen={isOpen}
                 callback={() => {

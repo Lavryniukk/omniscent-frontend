@@ -3,38 +3,36 @@
 @tailwind utilities;
 
 :root {
-  --text: 9, 11, 9;
-  --background: 238, 237, 235;
+  --text: 12, 14, 12;
+  --background: 235, 233, 231;
   --primary: 179, 249, 231;
   --secondary: 217, 217, 217;
   --accent: 92, 92, 92;
 }
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: 245, 245, 245; /* Light text for dark background */
-    --background: 9, 11, 9; /* Dark background */
-    --primary: 6, 75, 58; /* Primary color for dark theme */
-    --secondary: 38, 38, 38; /* Secondary color for dark theme */
-    --accent: 163, 163, 163; /* Accent color for dark theme */
-  }
+[data-theme="dark"] {
+  --text: 235, 233, 231; /* Light text for dark background */
+  --background: 12, 14, 12; /* Dark background */
+  --primary: 6, 75, 58; /* Primary color for dark theme */
+  --secondary: 38, 38, 38; /* Secondary color for dark theme */
+  --accent: 163, 163, 163; /* Accent color for dark theme */
 }
 
-.light {
-  --text: 9, 11, 9;
-  --background: 238, 237, 235;
+/* .light {
+  --text: 12, 14, 12;
+  --background: 235, 233, 231;
   --primary: 179, 249, 231;
   --secondary: 217, 217, 217;
   --accent: 92, 92, 92;
 }
 /* styles.css or tailwind.css */
-
+/* 
 .dark {
-  --text: 238, 237, 235;
-  --background: 5, 5, 5;
+  --text: 235, 233, 231;
+  --background: 12, 14, 12;
   --primary: 0, 215, 215;
   --secondary: 38, 38, 38;
   --accent: 163, 163, 163;
-}
+} */
 
 .fullheight {
   height: 100vh;
@@ -127,7 +125,7 @@
   );
 }
 
-. @layer components {
+@layer components {
   .inset-shadow {
     box-shadow:
       inset 7px 7px 14px #020304,

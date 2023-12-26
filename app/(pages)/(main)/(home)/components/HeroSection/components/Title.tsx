@@ -1,6 +1,6 @@
 "use client";
 import PrimaryBtn from "@/app/UI/buttons/primaryBtn/PrimaryBtn";
-import { useTheme } from "@/app/shared/providers/ThemeProvider";
+import { useTheme } from "next-themes";
 // import { useTheme } from "@/app/shared/providers/ThemeProvider";
 import Image from "next/image";
 let Title = () => {

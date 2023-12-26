@@ -10,15 +10,12 @@ let TrialCard = () => {
         No credit card info required
       </div>
       <h1 className="mb-2 text-2xl font-light text-left text-text">Trial</h1>
-      <h1 className="text-4xl font-bold text-left text-text">
-        $0
-        <span className="text-xl text-accent-600">/month</span>
-      </h1>
+      <h1 className="text-4xl font-bold text-left text-text">Free</h1>
       <p className="text-accent text-right">Try everything for free</p>
       <ul className="mt-5 mb-10 text-accent space-y-1 xl:space-y-2">
-        <Line text={"1 free roadmap"} />
-        <Line text={"Every feature available"} />
-        <Line text={"Access to 'Monday' AI-mentor model(gpt-3.5 powered)"} />
+        <Line text={"50 credits"} />
+        <Line text={"1 roadmap slot"} />
+        <Line text={"All basic features available"} />
       </ul>
       <PrimaryBlackBtn text={"Activate trial"} height={"50px"} />
     </div>

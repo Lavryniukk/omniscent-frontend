@@ -1,18 +1,15 @@
 "use client";
 import { motion } from "framer-motion";
 import { BsMoonFill, BsSunFill } from "react-icons/bs";
+import { useTheme } from "next-themes";
 
-export default function ThemeSwitcher({
-  callback,
-  theme,
-}: {
-  callback: () => void;
-  theme: string;
-}) {
+export default function ThemeSwitcher({}: {}) {
+  const { theme, setTheme } = useTheme();
+  console.log(theme);
   return (
     <div
       onClick={() => {
-        callback();
+        setTheme(theme === "light" ? "dark" : "light");
       }}
       className="w-16 relative px-1 py-0.5 cursor-pointer h-8 flex items-center justify-around   shadow-accent border-accent border-2 box-content rounded-full"
     >
