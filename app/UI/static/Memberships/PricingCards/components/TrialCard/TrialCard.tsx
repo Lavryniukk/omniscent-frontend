@@ -1,3 +1,4 @@
+import { axiosWithAuth } from "@/app/shared/config/axiosConfig";
 import Line from "../FeatureLine/FeatureLine";
 import Button from "@/app/UI/buttons/Button";
 
@@ -16,7 +17,14 @@ let TrialCard = () => {
         <Line text={"1 roadmap slot"} />
         <Line text={"All basic features available"} />
       </ul>
-      <Button variant="outline">Activate trial</Button>
+      <Button
+        callback={async () => {
+          await axiosWithAuth("/subscriptions/subscription-data");
+        }}
+        variant="outline"
+      >
+        Activate trial
+      </Button>
     </div>
   );
 };
