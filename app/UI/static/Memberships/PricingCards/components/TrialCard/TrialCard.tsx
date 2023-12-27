@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Line from "../FeatureLine/FeatureLine";
 import Button from "@/app/UI/buttons/Button";
 

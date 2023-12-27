@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 import Line from "../FeatureLine/FeatureLine";
 import buyAdvanced from "./api/buyAdvanced";
 import { useRouter } from "next/navigation";

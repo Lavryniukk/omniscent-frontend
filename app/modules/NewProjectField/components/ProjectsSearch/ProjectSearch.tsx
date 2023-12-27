@@ -2,9 +2,9 @@
 
 import Skeleton from "@/app/UI/loading/Skeleton/Skeleton";
 import { useQuery } from "@tanstack/react-query";
+import { Search } from "lucide-react";
 import Link from "next/link";
 import { ReactNode, useState } from "react";
-import { AiOutlineSearch } from "react-icons/ai";
 function ProjectContainer({ title }: { title: string | ReactNode }) {
   return (
     <Link
@@ -80,7 +80,7 @@ export default function ProjectSearch() {
           }}
           className="bg-secondary focus:outline-none h-full focus:border-text w-full rounded-lg border-accent-600 text-accent pl-3 border mx-auto"
         />
-        <AiOutlineSearch
+        <Search
           size={20}
           className="absolute text-accent bg-secondary right-3"
         />

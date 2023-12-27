@@ -1,15 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { MdOutlineArrowBack } from "react-icons/md";
-import { useEffect, useState } from "react";
-import { BsChevronDown } from "react-icons/bs";
 import useConversationStorage from "../ConversationWindow/storage/ConversationStorage";
 import ConversationRoadmapNodeComponent from "./components/ConversationRoadmapNode";
 import RoadmapNode from "@/app/shared/entities/Roadmap";
 import { useRoadmap } from "@/app/shared/hooks/useRoadmap";
 import Skeleton from "@/app/UI/loading/Skeleton/Skeleton";
 import useSidebar from "./hooks/useSidebar";
+import { ChevronDown, MoveLeft } from "lucide-react";
 
 export default function ConversationRoadmap({
   roadmapId,
@@ -40,7 +38,7 @@ export default function ConversationRoadmap({
           href={`/workspace/roadmap/${roadmapId}`}
           className=" w-fit mx-auto relative  group overflow-hidden before:w-0 before:left-0 before:-z-0  before:absolute before:bg-secondary before:h-full hover:before:w-full before:transition-all before:duration-200 before:bottom-0 before:ease-in-out hover:before:rounded-lg hover:text-text  text-accent space-x-2  rounded-lg flex items-center justify-center"
         >
-          <MdOutlineArrowBack
+          <MoveLeft
             size={30}
             className="text-accent z-10 group-hover:translate-x-[67px] transition-transform duration-200 bg-secondary rounded-full p-1"
           />
@@ -76,7 +74,7 @@ export default function ConversationRoadmap({
         </ul>
       </aside>
 
-      <BsChevronDown
+      <ChevronDown
         onClick={toggleSidebar}
         size={30}
         className={`switch font-semibold cursor-pointer  text-text absolute left-2 block z-50 top-[15px] duration-500 rotate-90 transition-transform lg:hidden ${

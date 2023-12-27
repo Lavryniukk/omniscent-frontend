@@ -1,12 +1,11 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { AiOutlineClose } from "react-icons/ai";
-import { BiTrashAlt } from "react-icons/bi";
 import fetchDelete from "./fetchDelete";
 import Roadmap from "@/app/shared/entities/Roadmap";
 import { useUser } from "@clerk/nextjs";
 import Button from "@/app/UI/buttons/Button";
+import { Trash, X } from "lucide-react";
 
 export default function ProjectContainer({ roadmap }: { roadmap: Roadmap }) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -58,14 +57,15 @@ export default function ProjectContainer({ roadmap }: { roadmap: Roadmap }) {
     <>
       <Link
         href={url}
-        className={`py-5 hover:scale-105 transition-transform duration-100 hover:text-text border block border-accent bg-secondary rounded-lg text-base text-center text-accent px-7 relative w-full ${
+        className={`py-5  hover:scale-105 transition-transform duration-100 hover:text-text border block border-accent bg-secondary rounded-lg text-base text-center text-accent px-7 relative w-full ${
           isOpen ? "pointer-events-none" : "pointer-events-auto"
         }`}
       >
         {title}
-        <BiTrashAlt
+        <Trash
           onClick={handleClick}
-          className="absolute text-accent top-[25px] right-3"
+          size={22}
+          className="absolute text-accent top-5 right-5"
         />
       </Link>
 
@@ -73,7 +73,7 @@ export default function ProjectContainer({ roadmap }: { roadmap: Roadmap }) {
         className={`${
           isOpen ? "flex" : "hidden"
         } absolute text-text border flex-col gap-5
-          border-accent top-[45%] h-fit p-5 rounded-lg z-10 w-fit backdrop-blur-lg popup`}
+          border-accent top-[45%] mx-auto h-fit p-5 rounded-lg z-10 w-fit backdrop-blur-lg popup`}
       >
         <p className="text-text text-lg text-center">{`Are you sure you want to delete '${title}'?`}</p>
 
@@ -87,9 +87,9 @@ export default function ProjectContainer({ roadmap }: { roadmap: Roadmap }) {
           </Button>
         </div>
 
-        <AiOutlineClose
+        <X
           onClick={(e) => handleClick(e)}
-          className="absolute top-1 right-1 cursor-pointer"
+          className="absolute text-accent top-1 right-1 cursor-pointer"
         />
       </div>
     </>

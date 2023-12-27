@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { BiSolidSend } from "react-icons/bi";
 import useConversationStorage from "../../storage/ConversationStorage";
+import { SendHorizontal } from "lucide-react";
 export default function ConversationInput({
   roadmapId,
 }: {
@@ -72,7 +72,7 @@ export default function ConversationInput({
         } rounded-lg h-fit flex justify-center items-center right-7`}
         type="submit"
       >
-        <BiSolidSend
+        <SendHorizontal
           className={`w-[24px] h-[24px] ${
             isLocked ? "text-accent" : "text-secondary"
           }`}

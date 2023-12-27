@@ -2,9 +2,7 @@
 
 import Link from "next/link";
 import useProfileStorage from "../../storage/ProfileStorage";
-import { CgDanger } from "react-icons/cg";
 import { useState } from "react";
-import { BsChevronDown } from "react-icons/bs";
 import { fetchDeleteUser } from "../../api/fetchDeleteUser";
 import { useRouter } from "next/navigation";
 

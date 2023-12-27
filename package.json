@@ -26,6 +26,7 @@
     "framer-motion": "^10.16.5",
     "highlight.js": "^11.9.0",
     "js-cookie": "^3.0.5",
+    "lucide-react": "^0.302.0",
     "next": "^14.0.1",
     "next-themes": "^0.2.1",
     "postcss": "^8.4.31",

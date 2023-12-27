@@ -1,5 +1,5 @@
 import RoadmapNode from "@/app/shared/entities/Roadmap";
-import { MdOutlineCheck } from "react-icons/md";
+import { Check } from "lucide-react";
 type mockRoadmapNode = {
   title: string;
   _id: string;
@@ -44,7 +44,7 @@ function ProgressBar({ progress }: { progress: number }) {
   if (progress >= 100) {
     return (
       <div className="text-2xl items-center h-fit  justify-center flex w-fit font-light text-accent/50">
-        <MdOutlineCheck className="text-accent/50 mt-1 h-5 w-5" />
+        <Check className="text-accent/50 mt-1 h-5 w-5" />
         <p>Completed</p>
       </div>
     );

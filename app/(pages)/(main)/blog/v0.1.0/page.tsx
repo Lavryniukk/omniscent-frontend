@@ -1,5 +1,5 @@
+import { MoveLeft } from "lucide-react";
 import Link from "next/link";
-import { MdOutlineArrowBack } from "react-icons/md";
 
 export default function Version010() {
   return (
@@ -8,7 +8,7 @@ export default function Version010() {
         className="text-accent flex items-center space-x-2 decoration-accent underline-offset-4 hover:text-text"
         href="/blog"
       >
-        <MdOutlineArrowBack />
+        <MoveLeft />
         <p>Back to blog</p>
       </Link>
       <p className="text-accent ">Saturday, November 25th 2023</p>

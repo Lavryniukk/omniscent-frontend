@@ -1,6 +1,6 @@
-import { BsChevronDown } from "react-icons/bs";
 import { useState } from "react";
 import { FaqItem } from "../../types/FaqProps";
+import { ChevronDown } from "lucide-react";
 
 // Define the 'FAQItem' functional component that displays a FAQ item
 let FAQItem = ({ question, answer }: FaqItem) => {
@@ -26,7 +26,7 @@ let FAQItem = ({ question, answer }: FaqItem) => {
       >
         <div>{question}</div> {/* Display the question */}
         <div className={`${isOpen ? "rotate-180" : "rotate-0"}`}>
-          <BsChevronDown />{" "}
+          <ChevronDown />{" "}
           {/* Display the chevron-down icon, with rotation based on 'isOpen' state */}
         </div>
       </div>

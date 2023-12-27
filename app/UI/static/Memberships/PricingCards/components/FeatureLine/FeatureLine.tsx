@@ -1,4 +1,4 @@
-import { HiCheck } from "react-icons/hi";
+import { Check } from "lucide-react";
 
 // Props type definition for the Line component.
 type Props = {
@@ -10,7 +10,7 @@ let Line = ({ text }: Props) => {
   return (
     <li>
       <div className="flex font-inter items-center text-text space-x-2">
-        <HiCheck size={20} className="text-text" /> {/* Checkmark icon */}
+        <Check size={16} className="text-text" /> {/* Checkmark icon */}
         <p className="ml-2">{text}</p> {/* Text content */}
       </div>
     </li>

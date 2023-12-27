@@ -1,7 +1,8 @@
-import { AiFillStar, AiOutlineStar } from "react-icons/ai";
-
 // RatingAssembler is a component that generates star ratings based on the given 'amount'.
 // It creates filled stars (AiFillStar) and outlined stars (AiOutlineStar) to represent the rating.
+
+import { Star } from "lucide-react";
+
 // 'amount' should be a number between 0 and 5, indicating the rating score.
 let RatingAssembler: React.FC<{ amount: number }> = ({ amount }) => {
   if (amount <= 5) {
@@ -15,10 +16,10 @@ let RatingAssembler: React.FC<{ amount: number }> = ({ amount }) => {
         {stars.map((item, index) => {
           if (item === 0) {
             // Render filled star icon for a filled star.
-            return <AiFillStar key={index} className="text-primary" />;
+            return <Star key={index} className="text-primary" />;
           } else if (item === 1) {
             // Render outlined star icon for an outlined star.
-            return <AiOutlineStar key={index} className="text-accent-600" />;
+            return <Star key={index} className="text-accent-600" />;
           }
         })}
       </div>

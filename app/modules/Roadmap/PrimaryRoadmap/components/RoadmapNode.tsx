@@ -1,11 +1,10 @@
 "use client";
-import { MdDone } from "react-icons/md";
-import { BiTrashAlt } from "react-icons/bi";
 import { motion, Variants } from "framer-motion";
 import { useState } from "react";
 import useConversationStorage from "@/app/modules/ConversationWindow/storage/ConversationStorage";
 import RoadmapNode from "@/app/shared/entities/Roadmap";
 import Button from "@/app/UI/buttons/Button";
+import { Check, Trash } from "lucide-react";
 export default function RoadmapNodeComponent({
   id,
   current,
@@ -60,7 +59,7 @@ export default function RoadmapNodeComponent({
           className="w-full py-1 rounded-sm z-10 after:-z-10 pl-1 text-md after:w-full after:h-0.5 after:absolute after:bottom-0 after:rounded-sm hover:after:h-full hover:text-background  transition-colors after:transition-all after:duration-200 after:ease-in-out  duration-200 after:left-0 after:bg-accent hover:after:bg-red-600 relative cursor-pointer text-text"
         >
           <div className="flex items-center">
-            <BiTrashAlt className="mr-1" />
+            <Trash className="mr-1" size={20} />
             Remove technology
           </div>
         </motion.div>
@@ -73,7 +72,7 @@ export default function RoadmapNodeComponent({
           className="w-full py-1  rounded-sm z-10 after:-z-10 pl-1 text-md after:w-full after:h-0.5 after:absolute after:bottom-0 after:rounded-sm hover:after:h-full hover:text-background  transition-colors after:transition-all after:duration-200 after:ease-in-out  duration-200 after:left-0 after:bg-accent relative cursor-pointer text-text"
         >
           <div className="flex items-center">
-            <MdDone className="mr-1" />{" "}
+            <Check className="mr-1 " size={20} />{" "}
             <p>
               {subroadmap.is_completed
                 ? "Mark as uncompleted"

@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
-import { BsMoonFill, BsSunFill } from "react-icons/bs";
 import { useTheme } from "next-themes";
+import { Moon, Sun } from "lucide-react";
 
 export default function ThemeSwitcher({}: {}) {
   const { theme, setTheme } = useTheme();
@@ -13,8 +13,8 @@ export default function ThemeSwitcher({}: {}) {
       }}
       className="w-16 relative px-1 py-0.5 cursor-pointer h-8 flex items-center justify-around   shadow-accent border-accent border-2 box-content rounded-full"
     >
-      <BsSunFill className="h-full rounded-full aspect-square w-5  text-accent" />
-      <BsMoonFill className="h-full rounded-full aspect-square w-5  text-accent" />
+      <Sun className="h-full rounded-full aspect-square w-6  text-accent" />
+      <Moon className="h-full rounded-full aspect-square w-6  text-accent" />
       <motion.div
         initial={{
           x: 6,
