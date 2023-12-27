@@ -1,4 +1,3 @@
-"use client";
 import Link from "next/link";
 
 type ButtonProps = {
@@ -51,15 +50,25 @@ export default function Button({
       break;
   }
 
+  const handleClick = (e: React.MouseEvent) => {
+    if (disabled) {
+      e.preventDefault();
+      return;
+    }
+    callback?.();
+  };
+
   if (href) {
     return (
-      <Link onClick={callback} href={href as string} className={classKit}>
-        {children}
+      <Link href={href} passHref>
+        <a onClick={handleClick} className={classKit}>
+          {children}
+        </a>
       </Link>
     );
   } else {
     return (
-      <button onClick={callback} disabled={disabled} className={classKit}>
+      <button onClick={handleClick} disabled={disabled} className={classKit}>
         {children}
       </button>
     );
