@@ -1,4 +1,4 @@
-"use client";
+"use server";
 import Link from "next/link";
 
 type ButtonProps = {
@@ -10,7 +10,7 @@ type ButtonProps = {
   callback?: () => void;
 };
 
-export default function Button({
+export default async function Button({
   children,
   variant = "primary",
   disabled = false,
