@@ -272,7 +272,7 @@ pre code {
 }
 
 /* Hide the default checkbox */
-.container input {
+.burger .container input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -280,7 +280,7 @@ pre code {
   width: 0;
 }
 
-.container {
+.burger .container {
   display: block;
   position: relative;
   cursor: pointer;
@@ -288,7 +288,7 @@ pre code {
   user-select: none;
 }
 
-.checkmark {
+.burger .checkmark {
   position: relative;
   top: 0;
   left: 0;
@@ -296,7 +296,7 @@ pre code {
   width: 1.3em;
 }
 
-.checkmark span {
+.burger .checkmark span {
   width: 32px;
   height: 2px;
   position: absolute;
@@ -308,19 +308,19 @@ pre code {
   -o-transition: all 0.3s ease-in-out;
 }
 
-.checkmark span:nth-child(1) {
+.burger .checkmark span:nth-child(1) {
   top: 10%;
 }
 
-.checkmark span:nth-child(2) {
+.burger .checkmark span:nth-child(2) {
   top: 50%;
 }
 
-.checkmark span:nth-child(3) {
+.burger .checkmark span:nth-child(3) {
   top: 90%;
 }
 
-.container input:checked + .checkmark span:nth-child(1) {
+.burger .container input:checked + .checkmark span:nth-child(1) {
   top: 50%;
   transform: translateY(-50%) rotate(45deg);
   -webkit-transform: translateY(-50%) rotate(45deg);
@@ -329,7 +329,7 @@ pre code {
   -o-transform: translateY(-50%) rotate(45deg);
 }
 
-.container input:checked + .checkmark span:nth-child(2) {
+.burger .container input:checked + .checkmark span:nth-child(2) {
   top: 50%;
   transform: translateY(-50%) rotate(-45deg);
   -webkit-transform: translateY(-50%) rotate(-45deg);

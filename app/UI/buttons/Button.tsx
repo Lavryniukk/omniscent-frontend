@@ -1,4 +1,3 @@
-"use client";
 import Link from "next/link";
 
 type ButtonProps = {
@@ -66,6 +65,7 @@ export default function Button({
           !href || (disabled && e.preventDefault());
           callback && callback();
         }}
+        className={classKit}
         href={href}
       >
         {children}
