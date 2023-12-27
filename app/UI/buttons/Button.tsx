@@ -67,8 +67,9 @@ export default function Button({
           callback && callback();
         }}
         href={href}
-        passHref
-      ></Link>
+      >
+        {children}
+      </Link>
     );
   } else {
     return (

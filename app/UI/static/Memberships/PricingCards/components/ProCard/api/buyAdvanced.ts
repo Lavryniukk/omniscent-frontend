@@ -1,13 +1,13 @@
 "use server";
 import { axiosWithAuth } from "@/app/shared/config/axiosConfig";
-
+import { redirect } from "next/navigation";
 export default async function buyAdvanced() {
   try {
     const response = await axiosWithAuth({
       url: "/pay",
     });
 
-    return response.data.url;
+    redirect(response.data.url);
   } catch (e) {
     console.log(e);
   }
