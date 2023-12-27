@@ -1,4 +1,4 @@
-"use server";
+"use client";
 import Link from "next/link";
 
 type ButtonProps = {
@@ -10,7 +10,7 @@ type ButtonProps = {
   callback?: () => void;
 };
 
-export default async function Button({
+export default function Button({
   children,
   variant = "primary",
   disabled = false,
@@ -61,15 +61,25 @@ export default async function Button({
 
   if (href) {
     return (
-      <Link href={href} passHref>
-        <a onClick={handleClick} className={classKit}>
-          {children}
-        </a>
-      </Link>
+      <Link
+        onClick={(e) => {
+          !href || (disabled && e.preventDefault());
+          callback && callback();
+        }}
+        href={href}
+        passHref
+      ></Link>
     );
   } else {
     return (
-      <button onClick={handleClick} disabled={disabled} className={classKit}>
+      <button
+        onClick={(e) => {
+          !href || (disabled && e.preventDefault());
+          callback && callback();
+        }}
+        disabled={disabled}
+        className={classKit}
+      >
         {children}
       </button>
     );
