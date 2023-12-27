@@ -82,7 +82,7 @@ export default function ProjectContainer({ roadmap }: { roadmap: Roadmap }) {
             {`Cancel`}
           </Button>
 
-          <Button callback={handleDelete} size="sm" variant="danger">
+          <Button callback={() => handleDelete} size="sm" variant="danger">
             {`Confirm`}
           </Button>
         </div>
