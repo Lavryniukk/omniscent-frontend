@@ -196,7 +196,7 @@ body {
   @apply text-lg  text-text font-bold;
 }
 .chat-output ul {
-  @apply ml-4 flex flex-col gap-4;
+  @apply ml-4 flex flex-col gap-2;
 }
 
 .chat-output ul li {
@@ -212,7 +212,7 @@ body {
 }
 
 .chat-output ol {
-  @apply ml-4 flex flex-col gap-4 list-decimal;
+  @apply ml-4 flex flex-col gap-2 list-decimal;
 }
 
 .chat-output pre code {
