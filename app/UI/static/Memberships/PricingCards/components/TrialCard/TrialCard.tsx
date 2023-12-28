@@ -9,7 +9,7 @@ import { SignInButton, SignedIn, SignedOut } from "@clerk/nextjs";
 let TrialCard = () => {
   const { subscription, isLoading } = useSubscription();
   return (
-    <div className="mx-auto sm:m-0 font-inter shadow-sm observe duration-500 transition delay-0 shadow-white relative md:w-[350px] w-[350px] p-8 border-2 bg-background bg-opacity-90 h-fit rounded-xl border-secondary ">
+    <div className="mx-auto sm:m-0 font-inter shadow-sm observe duration-500 transition delay-0 shadow-white relative sm:w-[450px] w-[350px] md:w-[350px] p-8 border-2 bg-background bg-opacity-90 h-fit rounded-xl border-secondary ">
       <div className="absolute whitespace-nowrap -top-[5%] bg-background bg-opacity-70 backdrop-blur w-fit left-[calc(50%-125px)] p-2 px-5 rounded-full z-10 text-text">
         No credit card info required
       </div>
