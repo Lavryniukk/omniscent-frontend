@@ -23,7 +23,7 @@ export default function ThemeSwitcher({}: {}) {
           x: theme === "dark" ? 38 : 6,
         }}
         transition={{ type: "tween", duration: 0.2 }} // set animation to strict animation type, not spring
-        className="h-7 left-0 aspect-square absolute bg-accent rounded-full text-accent"
+        className="h-7 left-0 aspect-square absolute bg-accent/50 backdrop-blur rounded-full text-accent"
       ></motion.div>
     </div>
   );

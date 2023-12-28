@@ -1,6 +1,6 @@
 "use server";
 import { axiosWithAuth } from "../../config/axiosConfig";
-import Conversation from "../../entities/Conversation";
+import { Conversation } from "../../entities";
 
 type fetchConversationDataDto = {
   data: Conversation;

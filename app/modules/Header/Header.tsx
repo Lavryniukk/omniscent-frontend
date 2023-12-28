@@ -55,9 +55,9 @@ let Header = () => {
                 </SignedIn>
                 <SignedOut>
                   <SignInButton>
-                    <Button variant="outline" size="sm">
-                      Sign in
-                    </Button>
+                    {/* <Button variant="outline" size="sm"> */}
+                    Sign in
+                    {/* </Button> */}
                   </SignInButton>
                 </SignedOut>
               </div>

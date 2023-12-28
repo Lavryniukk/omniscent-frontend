@@ -1,7 +1,7 @@
 import Skeleton from "@/app/UI/loading/Skeleton/Skeleton";
 import RoadmapNodeComponent from "./components/RoadmapNode";
-import RoadmapNode from "@/app/shared/entities/Roadmap";
 import { useRoadmap } from "../../../shared/hooks/useRoadmap";
+import { RoadmapNode } from "@/app/shared/entities";
 
 export default function Roadmap({ id }: { id: string }) {
   const { data, isLoading, error } = useRoadmap(id, "roadmap");

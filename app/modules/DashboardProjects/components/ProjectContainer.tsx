@@ -1,4 +1,4 @@
-import RoadmapNode from "@/app/shared/entities/Roadmap";
+import { RoadmapNode } from "@/app/shared/entities";
 import { Check } from "lucide-react";
 type mockRoadmapNode = {
   title: string;

@@ -1,4 +1,4 @@
-import Conversation from "@/app/shared/entities/Conversation";
+import { Conversation } from "@/app/shared/entities";
 import Message from "./components/Message";
 export default function Messages({
   conversation,

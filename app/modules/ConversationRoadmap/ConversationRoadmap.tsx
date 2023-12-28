@@ -3,11 +3,11 @@
 import Link from "next/link";
 import useConversationStorage from "../ConversationWindow/storage/ConversationStorage";
 import ConversationRoadmapNodeComponent from "./components/ConversationRoadmapNode";
-import RoadmapNode from "@/app/shared/entities/Roadmap";
 import { useRoadmap } from "@/app/shared/hooks/useRoadmap";
 import Skeleton from "@/app/UI/loading/Skeleton/Skeleton";
 import useSidebar from "./hooks/useSidebar";
 import { ChevronDown, MoveLeft } from "lucide-react";
+import { RoadmapNode } from "@/app/shared/entities";
 
 export default function ConversationRoadmap({
   roadmapId,

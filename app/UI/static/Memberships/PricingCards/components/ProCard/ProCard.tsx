@@ -1,15 +1,8 @@
 "use client";
+import fetchActivateSubscription from "../../api/fetchActivateSubscription";
 import Line from "../FeatureLine/FeatureLine";
-import buyAdvanced from "./api/buyAdvanced";
 import Button from "@/app/UI/buttons/Button";
-
-// ProCard component
 let ProCard = () => {
-  const handleClick = async () => {
-    await buyAdvanced();
-  };
-  // write function handle click based on func below
-
   return (
     <div className="observe sm:-translate-x-5 mx-auto sm:m-0 z-20 shadow-[0px_0px_30px_0px_rgb(var(--text))] sm:shadow-[10px_10px_35px_0px_rgb(var(--text))] border-t border-r duration-500 transition delay-75 w-[350px] md:w-[450px] p-8 relative bg-background h-fit bg-opacity-90 rounded-xl border-secondary">
       <h1 className="mb-2 text-2xl font-light text-left text-text">Advanced</h1>
@@ -27,7 +20,13 @@ let ProCard = () => {
         <Line text="" />
         <Line text={"All experimental features available"} />
       </ul>
-      <Button callback={() => handleClick()}>Upgrade</Button>
+      <Button
+        callback={async () => {
+          await fetchActivateSubscription();
+        }}
+      >
+        Upgrade
+      </Button>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 "use server";
 
 import { axiosWithAuth } from "../../config/axiosConfig";
-import RoadmapNode from "../../entities/Roadmap";
+import { RoadmapNode } from "../../entities";
 
 export async function fetchRoadmap(id: string): Promise<RoadmapNode> {
   try {

@@ -2,12 +2,16 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import fetchDelete from "./fetchDelete";
-import Roadmap from "@/app/shared/entities/Roadmap";
 import { useUser } from "@clerk/nextjs";
 import Button from "@/app/UI/buttons/Button";
 import { Trash, X } from "lucide-react";
+import { RoadmapNode } from "@/app/shared/entities";
 
-export default function ProjectContainer({ roadmap }: { roadmap: Roadmap }) {
+export default function ProjectContainer({
+  roadmap,
+}: {
+  roadmap: RoadmapNode;
+}) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const { title, _id, owner_id } = roadmap;
 

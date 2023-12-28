@@ -2,9 +2,9 @@
 import { motion, Variants } from "framer-motion";
 import { useState } from "react";
 import useConversationStorage from "@/app/modules/ConversationWindow/storage/ConversationStorage";
-import RoadmapNode from "@/app/shared/entities/Roadmap";
 import Button from "@/app/UI/buttons/Button";
 import { Check, Trash } from "lucide-react";
+import { RoadmapNode } from "@/app/shared/entities";
 export default function RoadmapNodeComponent({
   id,
   current,

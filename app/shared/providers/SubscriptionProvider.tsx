@@ -1,17 +1,31 @@
-import React, { createContext, useState } from "react";
-
+"use client";
+import { useQuery } from "@tanstack/react-query";
+import React, { createContext, useContext, useEffect, useState } from "react";
+import fetchSubscription from "../api/fetchSubscription";
+import { Subscription } from "../entities";
 // Create a new context
 const SubscriptionContext = createContext<any>(null);
+export const useSubscription = (): {
+  subscription: Subscription;
+  isLoading: boolean;
+} => {
+  return useContext(SubscriptionContext);
+};
 
-// Create a provider component
 const SubscriptionProvider = ({ children }: { children: React.ReactNode }) => {
-  // Define state variables or any other necessary data
-  const [subscription, setSubscription] = useState<string>("");
+  const {
+    data: subscription,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["subscription"],
+    queryFn: async () => {
+      return await fetchSubscription();
+    },
+  });
 
-  //How do i manage the state of subscription? I use nest js backend and stripe
-	  //I want to be able to access the subscription state in the whole app/
   return (
-    <SubscriptionContext.Provider value={{ subscription, setSubscription }}>
+    <SubscriptionContext.Provider value={{ subscription, isLoading }}>
       {children}
     </SubscriptionContext.Provider>
   );

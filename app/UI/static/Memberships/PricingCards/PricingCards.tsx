@@ -11,8 +11,8 @@ let PricingCards = () => {
           <br /> fits your style
         </h2>
         <div className="container w-full select-text flex flex-col gap-4 sm:gap-0 overflow-visible justify-center md:flex-row relative items-end mx-auto">
-          <TrialCard /> {/* Renders the trial pricing card. */}
-          <ProCard /> {/* Renders the pro pricing card. */}
+          <TrialCard />
+          <ProCard />
         </div>
       </div>
     </div>

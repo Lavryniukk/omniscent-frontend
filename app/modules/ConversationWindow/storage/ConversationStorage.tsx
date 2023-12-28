@@ -1,14 +1,13 @@
 import { create } from "zustand";
 import { getConversationData } from "@/app/shared/api/conversations/fetchConversationData";
-import Conversation, {
-  ConversationMessage,
-} from "@/app/shared/entities/Conversation";
+
 import listenForUpdates from "../helpers/listenToEvent";
 import sendUserMessage from "../api/sendUserMessage";
 import listenToSse from "../helpers/listenToEvent";
 import toggleIsCompleted from "@/app/shared/api/roadmaps/toggleIsCompleted";
 import getToken from "../api/getToken";
 import fetchConversationInit from "../api/fetchConversationInit";
+import { Conversation, ConversationMessage } from "@/app/shared/entities";
 interface ConversationStorageState {
   userInputData: string;
   assistantData: string;
