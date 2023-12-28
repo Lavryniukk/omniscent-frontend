@@ -190,7 +190,7 @@ body {
 }
 
 .chat-output h3 {
-  @apply text-2xl text-text font-bold;
+  @apply text-xl md:text-2xl text-text font-bold;
 }
 .chat-output h4 {
   @apply text-lg  text-text font-bold;
