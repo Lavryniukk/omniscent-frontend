@@ -34,7 +34,7 @@ export default function Message({ role, content }: MessageProps) {
   }`;
 
   const contentClass =
-    "max-w-[750px] flex flex-col items-start w-[93%] md:w-[80%] space-y-3";
+    "max-w-[750px] flex flex-col items-start w-[98%] sm:w-[90%] md:w-[80%] space-y-3";
   const avatarClass = "flex my-2 items-center justify-center";
   const roleText = role === "user" ? "You" : "AI Teacher";
 
