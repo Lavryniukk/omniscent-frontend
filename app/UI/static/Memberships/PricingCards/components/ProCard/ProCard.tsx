@@ -14,10 +14,9 @@ let ProCard = () => {
         Best choice for consistent learners
       </p>
       <ul className="mt-5 mb-10 text-accent space-y-1 xl:space-y-2">
-        <Line text={"200 credits monthly"} />
+        <Line text={"2000 credits monthly"} />
         <Line text={"Up to 4 roadmap slots available"} />
         <Line text="Technical support 24/7" />
-        <Line text="" />
         <Line text={"All experimental features available"} />
       </ul>
       <Button

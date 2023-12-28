@@ -17,7 +17,7 @@ let TrialCard = () => {
       <h1 className="text-4xl font-bold text-left text-text">Free</h1>
       <p className="text-accent text-right">Try everything for free</p>
       <ul className="mt-5 mb-10 text-accent space-y-1 xl:space-y-2">
-        <Line text={"50 credits"} />
+        <Line text={"250 credits"} />
         <Line text={"1 roadmap slot"} />
         <Line text={"All basic features available"} />
       </ul>
