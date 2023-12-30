@@ -14,7 +14,7 @@ export default function Blog() {
           >
             Read more
           </Link>
-          <p className="text-accent ">Decembre 20th 2023</p>
+          <p className="text-accent ">December 20th 2023</p>
           <h1 className="text-2xl text-text ">Cleverize v0.2.0</h1>
           <p className="text-accent mt-4">
             {`We are excited to introduce Cleverize, version V0.2.0, 
@@ -22,8 +22,8 @@ export default function Blog() {
           </p>
           <ul className="text-text mt-4">
             <li>-Gradually improved programming language support</li>
-            <li>-Cutted out framework support (temporarily)</li>
-            <li>-Cutted out professions support (temporarily)</li>
+            <li>-Cut out framework support (temporarily)</li>
+            <li>-Cut out professions support (temporarily)</li>
           </ul>
         </div>
 

@@ -7,7 +7,7 @@ export default async function fetchActivateSubscription() {
       url: "/pay",
     });
 
-    redirect(response.data.url);
+    return response.data.url;
   } catch (e) {
     console.log(e);
   }

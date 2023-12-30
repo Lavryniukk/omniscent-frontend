@@ -1,5 +1,4 @@
 "use server";
-
 import { axiosWithAuth } from "@/app/shared/config/axiosConfig";
 export default async function sendUserMessage(
   content: string,
@@ -7,8 +6,6 @@ export default async function sendUserMessage(
   userRoadmapId: string
 ) {
   try {
-
-
     await axiosWithAuth({
       url: `/users/me/conversations/${conversation_id}/messages`,
       method: "PUT",

@@ -95,13 +95,23 @@ export default function RoadmapNodeComponent({
           </Button>
         </motion.div>
       </motion.div>
-      {!isLast && (
-        <div
-          className={`roadmap__arrow ${
-            subroadmap.is_completed && "opacity-60"
-          }`}
-        />
-      )}
+      <AFuckingRoadmapStick
+        isLast={isLast}
+        isCompleted={subroadmap.is_completed}
+      />
     </motion.li>
+  );
+}
+function AFuckingRoadmapStick({
+  isLast,
+  isCompleted,
+}: {
+  isLast: boolean;
+  isCompleted: boolean;
+}) {
+  return (
+    !isLast && (
+      <div className={`roadmap__arrow ${isCompleted && "opacity-60"}`} />
+    )
   );
 }
