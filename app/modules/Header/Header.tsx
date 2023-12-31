@@ -18,7 +18,7 @@ let Header = () => {
 
   return (
     <>
-      <Popup isOpen={isOpen} />
+      <Popup isOpen={isOpen} setIsOpen={setIsOpen} />
       <div className="flex items-center justify-center">
         <div
           className={`h-14 flex z-50 w-11/12 lg:w-3/4 justify-center items-center backdrop-blur-md fixed top-4 border-text/20 box-border border max-w-10xl rounded-full md:rounded-xl`}
@@ -28,7 +28,7 @@ let Header = () => {
             {/* <Navigation /> */}
 
             <div className="md:hidden flex justify-between items-center w-full">
-              <Link href="/" className="flex items-center h-full ">
+              <Link href="/" className="flex items-center h-full">
                 <Image
                   src={`/images/logo-cleverize-${
                     !theme ? "dark" : theme == "light" ? "dark" : "light"

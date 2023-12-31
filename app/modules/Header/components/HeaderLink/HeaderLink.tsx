@@ -1,13 +1,14 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { memo, useCallback, useEffect, useMemo, useState } from "react";
+import React, { memo, useCallback, useEffect, useMemo, useState } from "react";
 
 type Props = {
   url: string; // Define a prop for the URL to navigate to.
   name: string; // Define a prop for the link name or label.
+  callbackfn?: () => void;
 };
 
-let HeaderLink = ({ url, name }: Props) => {
+let HeaderLink = ({ url, name, callbackfn }: Props) => {
   const [isActive, setIsActive] = useState<boolean>(false);
   const path = usePathname();
 
@@ -21,6 +22,7 @@ let HeaderLink = ({ url, name }: Props) => {
 
   return (
     <Link
+      onClick={() => callbackfn && callbackfn()}
       href={url} // Set the URL to navigate to based on the prop.
       className={`md:text-text text-text font-inter text-lg md:text-base tracking-wide relative 
       font-normal hover:text-text/80 transition duration-200 before:absolute before:-bottom-0.5 hover:before:w-[96%] 
