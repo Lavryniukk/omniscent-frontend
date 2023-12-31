@@ -2,9 +2,9 @@
 import { motion, Variants } from "framer-motion";
 import { useState } from "react";
 import useConversationStorage from "@/app/modules/ConversationWindow/storage/ConversationStorage";
-import RoadmapNode from "@/app/shared/entities/Roadmap";
 import Button from "@/app/UI/buttons/Button";
 import { Check, Trash } from "lucide-react";
+import { RoadmapNode } from "@/app/shared/entities";
 export default function RoadmapNodeComponent({
   id,
   current,
@@ -95,13 +95,23 @@ export default function RoadmapNodeComponent({
           </Button>
         </motion.div>
       </motion.div>
-      {!isLast && (
-        <div
-          className={`roadmap__arrow ${
-            subroadmap.is_completed && "opacity-60"
-          }`}
-        />
-      )}
+      <AFuckingRoadmapStick
+        isLast={isLast}
+        isCompleted={subroadmap.is_completed}
+      />
     </motion.li>
+  );
+}
+function AFuckingRoadmapStick({
+  isLast,
+  isCompleted,
+}: {
+  isLast: boolean;
+  isCompleted: boolean;
+}) {
+  return (
+    !isLast && (
+      <div className={`roadmap__arrow ${isCompleted && "opacity-60"}`} />
+    )
   );
 }

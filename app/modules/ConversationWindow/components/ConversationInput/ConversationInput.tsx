@@ -1,8 +1,7 @@
-"use client";
-
 import { useEffect, useRef } from "react";
 import useConversationStorage from "../../storage/ConversationStorage";
 import { SendHorizontal } from "lucide-react";
+
 export default function ConversationInput({
   roadmapId,
 }: {
@@ -16,55 +15,44 @@ export default function ConversationInput({
     unlock,
     addUserMessage,
   } = useConversationStorage();
-  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
+
   useEffect(() => {
     !userInputData ? lock() : unlock();
   }, [userInputData, lock, unlock]);
+
   const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const textarea = textareaRef.current;
-    if (textarea) {
-      !e.target.value && (textarea.style.height = `72px`);
-
-      textarea.style.height = `${textarea.scrollHeight + 2}px`;
-    }
-
+    e.target.style.height = "auto";
+    e.target.style.height = `${e.target.scrollHeight + 1.5}px`;
     setInputData(e.target.value);
   };
 
+  let handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === "Enter" && !e.shiftKey && !isLocked) {
+      e.preventDefault();
+      handleSubmit(e as unknown as React.FormEvent<HTMLFormElement>);
+    }
+  };
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    addUserMessage(roadmapId);
-
-    const textarea = textareaRef.current;
-
-    if (textarea) {
-      textarea.style.height = `72px`;
-
-      // textarea.style.height = `${textarea.scrollHeight}px`;
+    if (!isLocked) {
+      e.preventDefault();
+      addUserMessage(roadmapId);
       setInputData("");
-
-      textarea.value = "";
     }
   };
 
   return (
     <form
-      className="w-full lg:w-3/4 relative justify-center h-fit box-border  px-5 mb-5  bottom-0 z-10   rounded-xl flex items-center "
-      onSubmit={(e) => !isLocked && handleSubmit(e)}
+      className="w-3/4 xl:w-1/2 relative justify-center max-w-[850px] max-h-60 h-fit box-border  mb-5 bottom-0 z-10 flex items-center"
+      onSubmit={handleSubmit}
     >
       <textarea
-        ref={textareaRef}
-        className={`w-full flex items-center justify-center h-[72px] box-border border-accent border bg-opacity-70 backdrop-blur-sm  bg-secondary  rounded-xl p-5 pr-16 aspect-none placeholder:text-lg text-accent text-lg
-           focus:outline-none focus:border-text resize-none max-h-[200px] overflow-y-auto  `}
+        className="w-full flex items-center overflow-y-auto max-h-60 min-h-[60px] justify-center border box-border border-accent/70 bg-opacity-70 backdrop-blur-sm bg-secondary rounded-2xl p-4 pr-16 aspect-none placeholder:text-lg text-text text-lg focus:ring-0 focus:outline-none focus:border-accent resize-none "
         placeholder="Send a message"
-        autoFocus
+        rows={1}
+        value={userInputData}
         onChange={handleInput}
-        onKeyDown={(e) => {
-          if (e.key === "Enter" && !e.shiftKey && !isLocked) {
-            e.preventDefault();
-            handleSubmit(e as unknown as React.FormEvent<HTMLFormElement>);
-          }
-        }}
+        onKeyDown={handleKeyDown}
       />
       <button
         className={`p-2 absolute ${

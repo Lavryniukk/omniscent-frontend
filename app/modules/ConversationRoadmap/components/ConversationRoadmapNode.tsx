@@ -1,6 +1,5 @@
 "use client";
-import RoadmapNode from "@/app/shared/entities/Roadmap";
-import useConversationStorage from "../../ConversationWindow/storage/ConversationStorage";
+import { RoadmapNode } from "@/app/shared/entities";
 import Link from "next/link";
 
 export default function ConversationRoadmapNodeComponent({

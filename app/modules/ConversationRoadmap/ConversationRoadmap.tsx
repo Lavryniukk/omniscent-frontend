@@ -3,11 +3,11 @@
 import Link from "next/link";
 import useConversationStorage from "../ConversationWindow/storage/ConversationStorage";
 import ConversationRoadmapNodeComponent from "./components/ConversationRoadmapNode";
-import RoadmapNode from "@/app/shared/entities/Roadmap";
 import { useRoadmap } from "@/app/shared/hooks/useRoadmap";
 import Skeleton from "@/app/UI/loading/Skeleton/Skeleton";
 import useSidebar from "./hooks/useSidebar";
 import { ChevronDown, MoveLeft } from "lucide-react";
+import { RoadmapNode } from "@/app/shared/entities";
 
 export default function ConversationRoadmap({
   roadmapId,
@@ -30,7 +30,7 @@ export default function ConversationRoadmap({
   return (
     <>
       <aside
-        className={`sidebar w-[20%] min-w-[270px] max-w-[500px] space-y-5 py-4 bg-background border-r-2 px-3 border-accent flex-col h-full z-20 ${
+        className={`sidebar w-[15%] min-w-[270px] max-w-[500px] space-y-5 py-4 bg-background  px-3 flex-col h-full z-20 ${
           isOpen ? "translate-x-0" : "translate-x-[-100%] lg:translate-x-0"
         } duration-500 transition absolute lg:relative overflow-auto`}
       >

@@ -190,34 +190,37 @@ body {
 }
 
 .chat-output h3 {
-  @apply text-lg font-bold;
+  @apply text-xl md:text-2xl text-text font-bold;
 }
-
+.chat-output h4 {
+  @apply text-lg  text-text font-bold;
+}
 .chat-output ul {
-  @apply ml-4 flex flex-col gap-4;
+  @apply ml-4 flex flex-col gap-2;
 }
 
 .chat-output ul li {
-  @apply gap-1 break-keep;
+  @apply gap-1 break-keep list-disc;
 }
 
 .chat-output ul li strong {
   @apply whitespace-nowrap inline;
 }
 
+.chat-output strong {
+  @apply text-text font-bold;
+}
+
 .chat-output ol {
-  @apply ml-4 flex flex-col gap-4;
+  @apply ml-4 flex flex-col gap-2 list-decimal;
 }
 
 .chat-output pre code {
-  @apply pt-6 rounded-lg;
+  @apply pt-6 rounded-lg font-medium after:hidden before:hidden;
 }
-/* code {
-  @apply bg-neutral-950;
+:not(pre) code {
+  @apply dark:text-text font-semibold after:content-['`'] before:content-['`'];
 }
-pre code {
-  @apply bg-neutral-950 inline-block border border-accent w-auto rounded-lg p-1;
-} */
 
 .features-container {
   @apply md:w-full w-full shadow-md  border  sm:w-3/4 lg:w-full mx-auto border-accent/40 border-opacity-50 rounded-lg  transition-all delay-150 duration-500;
@@ -247,28 +250,6 @@ pre code {
 
 .conversation-hint {
   @apply w-full text-left px-2 text-base sm:text-lg lg:text-base text-accent py-3 bg-secondary rounded-md;
-}
-/* CSS class to reset basic input styles */
-.clear-input {
-  /* Reset padding and margin */
-  margin: 0;
-
-  /* Reset border */
-
-  /* Reset outline (removes the default blue outline when focused) */
-  outline: none;
-
-  /* Reset background color */
-
-  /* Reset font styles */
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  line-height: inherit;
-
-  /* Reset text color */
-
-  /* Reset box-shadow (removes any box shadows) */
 }
 
 /* Hide the default checkbox */

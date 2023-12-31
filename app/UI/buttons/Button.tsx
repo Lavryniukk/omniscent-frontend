@@ -32,37 +32,40 @@ export default function Button({
   }
   switch (variant) {
     case "primary":
-      classKit = `inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-text text-background hover:bg-text/90 ${sizeKit}`;
+      classKit = `inline-flex ${
+        disabled && "disabled"
+      } items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-text text-background hover:bg-text/90 ${sizeKit}`;
       break;
     case "secondary":
-      classKit = `inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-secondary text-accent hover:bg-secondary/80 ${sizeKit}`;
+      classKit = `inline-flex ${
+        disabled && "disabled"
+      } items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-secondary text-accent hover:bg-secondary/80 ${sizeKit}`;
       break;
     case "outline":
-      classKit = `inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border-text bg-background hover:bg-text hover:text-background ${
+      classKit = `inline-flex ${
+        disabled && "disabled"
+      } items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border-text bg-background hover:bg-text hover:text-background ${
         size == "sm" ? "border" : "border-2"
       } ${sizeKit}`;
       break;
     case "ghost":
-      classKit = `inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-secondary text-text ${sizeKit}`;
+      classKit = `inline-flex ${
+        disabled && "disabled"
+      } items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-secondary text-text ${sizeKit}`;
       break;
     case "danger":
-      classKit = `inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-red-700 text-text hover:bg-red-700/90 ${sizeKit}`;
+      classKit = `inline-flex ${
+        disabled && "disabled"
+      } items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-red-700 text-text hover:bg-red-700/90 ${sizeKit}`;
       break;
   }
-
-  const handleClick = (e: React.MouseEvent) => {
-    if (disabled) {
-      e.preventDefault();
-      return;
-    }
-    callback?.();
-  };
 
   if (href) {
     return (
       <Link
         onClick={(e) => {
           !href || (disabled && e.preventDefault());
+
           callback && callback();
         }}
         className={classKit}

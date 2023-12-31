@@ -34,7 +34,7 @@ export default function Message({ role, content }: MessageProps) {
   }`;
 
   const contentClass =
-    "max-w-[1000px] flex flex-col items-start w-full space-y-3";
+    "max-w-[750px] flex flex-col items-start w-[98%] sm:w-[90%] md:w-[80%] space-y-3";
   const avatarClass = "flex my-2 items-center justify-center";
   const roleText = role === "user" ? "You" : "AI Teacher";
 
@@ -46,7 +46,7 @@ export default function Message({ role, content }: MessageProps) {
           <p className="ml-1 text-accent">{roleText}</p>
         </div>
         <article
-          className="mt-[5px] break-words text-lg w-full font-inter chat-output"
+          className="mt-[5px] break-words  font-medium text-text/80 text-base leading-[28px] w-full font-inter chat-output"
           ref={contentRef}
         >
           {role === "assistant" ? (

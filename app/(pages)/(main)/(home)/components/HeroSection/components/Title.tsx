@@ -1,7 +1,6 @@
 "use client";
 import Button from "@/app/UI/buttons/Button";
 import { useTheme } from "next-themes";
-// import { useTheme } from "@/app/shared/providers/ThemeProvider";
 import Image from "next/image";
 let Title = () => {
   let { theme } = useTheme();
@@ -15,11 +14,11 @@ let Title = () => {
       <div className="mx-auto observe group duration-500 border relative xl:p-6 lg:p-5 p-4 w-fit h-fit flex items-center justify-center rounded-xl border-secondary bg-background">
         <Image
           src={`/images/logo-cleverize-${
-            theme === "light" ? "dark" : "light"
+            theme && theme === "light" ? "dark" : "light"
           }.webp`}
           // src={`/images/logo-cleverize-light.webp`}
           alt="cleverize logo icon svg"
-          className="aspect-square w-20"
+          className="aspect-square w-16 lg:w-20"
           width={100}
           height={100}
         />

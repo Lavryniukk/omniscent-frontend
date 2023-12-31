@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Inter } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "next-themes";
+import SubscriptionProvider from "../shared/providers/SubscriptionProvider";
 
 const inter = Inter({
   variable: "--inter-font",
@@ -22,7 +23,11 @@ export default function RootLayout({
       <body className="font-inter antialiased bg-background">
         <ClerkProvider>
           <QueryClientProvider client={client}>
-            <ThemeProvider disableTransitionOnChange>{children}</ThemeProvider>
+            <SubscriptionProvider>
+              <ThemeProvider disableTransitionOnChange>
+                {children}
+              </ThemeProvider>
+            </SubscriptionProvider>
           </QueryClientProvider>
         </ClerkProvider>
       </body>
