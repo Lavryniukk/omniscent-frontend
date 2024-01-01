@@ -23,13 +23,11 @@ export default function NewProjectForm() {
 
     setResponseStatus(FormStatusEnum.LOADING);
     console.log(formData);
-    sendData(formData).then((data) => {
-      if (data) {
-        router.push("/workspace");
-      } else {
-        setResponseStatus(FormStatusEnum.ERROR);
-      }
-    });
+    await sendData(formData);
+
+    setTimeout(() => {
+      router.push("/workspace");
+    }, 60000);
   };
   const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setFormData((prev) => ({
