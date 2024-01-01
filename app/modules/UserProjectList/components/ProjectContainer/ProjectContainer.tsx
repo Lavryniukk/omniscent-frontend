@@ -86,7 +86,11 @@ export default function ProjectContainer({
             {`Cancel`}
           </Button>
 
-          <Button callback={() => handleDelete} size="sm" variant="danger">
+          <Button
+            callback={async () => await handleDelete()}
+            size="sm"
+            variant="danger"
+          >
             {`Confirm`}
           </Button>
         </div>

@@ -4,11 +4,12 @@ import { axiosWithAuth } from "@/app/shared/config/axiosConfig";
 
 const sendData = async (data: FormState) => {
   try {
-    await axiosWithAuth({
+    const response = await axiosWithAuth({
       url: "/roadmaps/",
-      data: { title: data.inputData },
+      data: { title: data.inputData, size: data.selectData },
       method: "POST",
     });
+    return response.data;
   } catch (err) {
     console.log("Error POST /users/me/roadmaps", err);
     return false;

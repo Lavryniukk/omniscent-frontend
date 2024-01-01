@@ -3,14 +3,13 @@ let CardSection = () => {
   return (
     <div>
       {/* Laptop */}
-      <div className="container px-2 xl:flex h-fit hidden items-start justify-center gap-2 mx-auto">
+      <div className="container px-2 xl:flex h-fit hidden items-start justify-center mx-auto gap-2">
         <div className="flex gap-2 flex-col">
           {/* Feature 1: Strong foundation */}
           <div className="features-container observe h-fit p-6">
             <p className="text-text text-2xl whitespace-nowrap font-bold ">
               Strong foundation
             </p>
-            {/* Image representing the feature */}
             <Image
               alt="foundation"
               className=" border-secondary saturate-0 opacity-70 mx-auto mt-3"
@@ -36,7 +35,6 @@ let CardSection = () => {
             <p className="text-text text-2xl whitespace-nowrap font-bold ">
               Any topic, anytime. Dive in.
             </p>
-            {/* Image representing the feature */}
             <Image
               alt="foundation"
               className=" rounded-lg border-secondary saturate-0 opacity-70 mx-auto mt-3"
@@ -62,7 +60,6 @@ let CardSection = () => {
             <p className="text-text text-2xl whitespace-nowrap font-bold ">
               Real-world Application
             </p>
-            {/* Image representing the feature */}
             <Image
               alt="foundation"
               className=" rounded-lg border-secondary saturate-0 opacity-70 mx-auto mt-3"

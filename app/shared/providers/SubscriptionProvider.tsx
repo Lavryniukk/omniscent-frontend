@@ -8,6 +8,7 @@ const SubscriptionContext = createContext<any>(null);
 export const useSubscription = (): {
   subscription: Subscription;
   isLoading: boolean;
+  error: unknown;
 } => {
   return useContext(SubscriptionContext);
 };
@@ -25,7 +26,7 @@ const SubscriptionProvider = ({ children }: { children: React.ReactNode }) => {
   });
 
   return (
-    <SubscriptionContext.Provider value={{ subscription, isLoading }}>
+    <SubscriptionContext.Provider value={{ subscription, isLoading, error }}>
       {children}
     </SubscriptionContext.Provider>
   );

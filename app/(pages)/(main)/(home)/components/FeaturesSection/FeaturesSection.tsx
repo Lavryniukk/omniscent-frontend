@@ -8,11 +8,8 @@ let FeaturesSection = () => {
         <h2 className="mx-auto text-4xl text-center font-semibold transition-all duration-500 text-text font-inter">
           What do you obtain?
         </h2>
-        {/* <p className="text-lg text-accent w-full text-center  transition-all duration-500">
-          Cleverize is online educational platform, that allows You to learn any
-          digital technology.
-        </p> */}
-        <CardSection /> {/* Render the CardSection component */}
+
+        <CardSection />
       </div>
     </div>
   );
