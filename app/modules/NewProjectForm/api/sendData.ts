@@ -3,6 +3,7 @@ import { FormState } from "../types/FormProps";
 import { axiosWithAuth } from "@/app/shared/config/axiosConfig";
 
 const sendData = async (data: FormState) => {
+  console.log({ title: data.inputData, size: data.selectData });
   try {
     const response = await axiosWithAuth({
       url: "/roadmaps/",
