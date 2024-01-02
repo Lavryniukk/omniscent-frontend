@@ -29,8 +29,6 @@ let TrialCard = () => {
         }}
         variant="outline"
       >
-        {error !== undefined && "Error occurred("}
-
         <SignedIn>
           {isLoading && (
             <div className="border-2 rounded-full border-secondary w-8 h-8 border-t-accent animate-spin " />
