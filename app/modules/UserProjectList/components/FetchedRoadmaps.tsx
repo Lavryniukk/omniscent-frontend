@@ -1,5 +1,5 @@
 import Link from "next/link";
-import ProjectContainer from "../ProjectContainer/ProjectContainer";
+import ProjectContainer from "./ProjectContainer";
 import { RoadmapNode } from "@/app/shared/entities";
 
 export default function FetchedRoadmaps({

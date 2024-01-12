@@ -1,10 +1,8 @@
-import ProjectsNotFound from "./components/ProjectsNotFound/ProjectsNotFound";
+import ProjectsNotFound from "./components/ProjectsNotFound";
 import { fetchProjects } from "./api/fetchProjects";
-import FetchedRoadmaps from "./components/FetchedRoadmaps/FetchedRoadmaps";
-import ErrorAlert from "@/app/UI/alerts/ErrorAlert/ErrorAlert";
-import LanguageSelector from "./components/LanguageSelector/LanguageSelector";
-import Button from "@/app/UI/buttons/Button";
-
+import FetchedRoadmaps from "./components/FetchedRoadmaps";
+import LanguageSelector from "./components/LanguageSelector";
+import RoadmapsFetchErrorComponent from "./components/RoadmapsFetchErrorComponent";
 export default async function UserProjects() {
   try {
     let roadmaps = await fetchProjects();
@@ -21,14 +19,6 @@ export default async function UserProjects() {
     );
   } catch (err) {
     console.log(err);
-    return (
-      <>
-        <h1 className="text-2xl text-center font-bold mx-auto text-text  font-inter">
-          Whoops, error occurred! If this error persists, please contact us.
-        </h1>
-        <Button callback={() => location.reload()}>Retry</Button>
-        <ErrorAlert message="An error occurred while loading your projects. Please try again later." />
-      </>
-    );
+    return <RoadmapsFetchErrorComponent />;
   }
 }

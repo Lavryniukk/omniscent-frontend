@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import fetchDelete from "./fetchDelete";
+import fetchDelete from "../api/fetchDelete";
 import Button from "@/app/UI/buttons/Button";
 import { Trash, X } from "lucide-react";
 import { RoadmapNode } from "@/app/shared/entities";
