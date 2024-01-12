@@ -1,7 +1,27 @@
-"use client";
-
 import { NavigationButton } from "@/app/shared/components/buttons";
 import { UserProjects } from "@/app/modules";
+import { Suspense } from "react";
+import Skeleton from "@/app/UI/loading/Skeleton/Skeleton";
+
+function UserRoadmapsLoading() {
+  return (
+    <div className="w-full mx-auto space-y-10 p-5 h-fit py-20">
+      <Skeleton height="40px" width="150px" rounded="6px" />
+      <div className="space-y-5">
+        {Array.from({ length: 3 }).map((_, i) => (
+          <div
+            key={i}
+            className="border border-secondary p-4 rounded min-h-[70px] flex items-center justify-center"
+          >
+            <Skeleton width={"75%"} height={"24px"} rounded={"4px"} />
+          </div>
+        ))}
+      </div>
+      <Skeleton height="20px" width="100px" />
+    </div>
+  );
+}
+
 function WorkspacePage() {
   return (
     <div className="flex flex-col h-screen border-accent items-center justify-between mt-20">
@@ -18,7 +38,10 @@ function WorkspacePage() {
             to python!
           </p>
         </div>
-        <UserProjects /> {/* Render the UserProjects component. */}
+
+        <Suspense fallback={<UserRoadmapsLoading />}>
+          <UserProjects />
+        </Suspense>
       </div>
     </div>
   );

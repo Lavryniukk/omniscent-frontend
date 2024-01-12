@@ -5,25 +5,24 @@ import { Moon, Sun } from "lucide-react";
 
 export default function ThemeSwitcher({}: {}) {
   const { theme, setTheme } = useTheme();
-  console.log(theme);
   return (
     <div
       onClick={() => {
         setTheme(theme === "light" ? "dark" : "light");
       }}
-      className="w-16 relative px-1 py-0.5 cursor-pointer h-8 flex items-center justify-around   shadow-accent border-accent border-2 box-content rounded-full"
+      className="w-14 relative p-0.5 cursor-pointer h-6 flex items-center justify-around   shadow-accent border-accent  box-content rounded-full"
     >
-      <Sun className="h-full rounded-full aspect-square w-6  text-accent" />
-      <Moon className="h-full rounded-full aspect-square w-6  text-accent" />
+      <Sun className="h-full rounded-full aspect-square w-5  text-accent" />
+      <Moon className="h-full rounded-full aspect-square w-5  text-accent" />
       <motion.div
         initial={{
           x: 6,
         }}
         animate={{
-          x: theme === "dark" ? 38 : 6,
+          x: theme === "dark" ? 32 : 4.5,
         }}
         transition={{ type: "tween", duration: 0.2 }} // set animation to strict animation type, not spring
-        className="h-7 left-0 aspect-square absolute bg-accent/50 backdrop-blur rounded-full text-accent"
+        className="w-6 left-0 -bottom-0.5 h-0.5 absolute bg-accent/50 backdrop-blur rounded-full text-accent"
       ></motion.div>
     </div>
   );

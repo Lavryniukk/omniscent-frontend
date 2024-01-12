@@ -22,18 +22,11 @@ export default function ProjectContainer({
       <div className="w-full h-3/4  flex items-center justify-center"></div>
       <div className="w-[100%] h-1/4 p-5 font-inter box-border  transition-colors duration-300 group-hover:bg-accent/30 bg-secondary ">
         <section className=" justify-between h-fit flex items-center w-full">
-          <article className="text-2xl font-semibold text-text">
-            {title}
-          </article>
+          <article className="text-xl font-semibold text-text">{title}</article>
           <ProgressBar progress={progress} />
         </section>
-        <section className=" h-1/2 w-full flex items-end justify-center">
-          <div className="w-full h-5 border-accent/50 overflow-hidden border rounded-full">
-            <div
-              style={{ width: `${progress}%` }}
-              className={`h-full w-[${progress}%] bg-primary blur`}
-            ></div>
-          </div>
+        <section className=" mt-5  p-1">
+          <div className="h-1 w-full bg-accent"></div>
         </section>
       </div>
     </div>
@@ -43,15 +36,15 @@ export default function ProjectContainer({
 function ProgressBar({ progress }: { progress: number }) {
   if (progress >= 100) {
     return (
-      <div className="text-2xl items-center h-fit  justify-center flex w-fit font-light text-accent/50">
-        <Check className="text-accent/50 mt-1 h-5 w-5" />
+      <div className="text-base items-center h-fit  justify-center flex w-fit font-light text-accent/50">
+        <Check className="text-accent/50 mt-1 h-4 w-4" />
         <p>Completed</p>
       </div>
     );
   }
 
   return (
-    <div className="text-2xl font-light text-accent/50">
+    <div className="text-base font-light text-accent/50">
       Progress: {progress}%
     </div>
   );

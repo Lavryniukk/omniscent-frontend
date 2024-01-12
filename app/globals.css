@@ -108,13 +108,13 @@
 .background-left {
   background-image: url("/images/grid.svg");
   background-repeat: repeat;
-  transform: perspective(1000px) rotateY(40deg);
+  transform: perspective(1500px) rotateY(30deg);
 }
 
 .background-right {
   background-image: url("/images/grid.svg");
   background-repeat: repeat;
-  transform: perspective(1000px) rotateY(-40deg);
+  transform: perspective(1500px) rotateY(-30deg);
 }
 
 .blob {

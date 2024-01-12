@@ -1,30 +1,22 @@
-"use client";
-
 import Link from "next/link";
-import useConversationStorage from "../ConversationWindow/storage/ConversationStorage";
 import ConversationRoadmapNodeComponent from "./components/ConversationRoadmapNode";
 import { useRoadmap } from "@/app/shared/hooks/useRoadmap";
 import Skeleton from "@/app/UI/loading/Skeleton/Skeleton";
 import useSidebar from "./hooks/useSidebar";
 import { ChevronDown, MoveLeft } from "lucide-react";
 import { RoadmapNode } from "@/app/shared/entities";
+type QueryParams = {
+  queryParams: {
+    roadmapId: string;
+    subroadmapId: string;
+    conversationId: string;
+  };
+};
 
-export default function ConversationRoadmap({
-  roadmapId,
-  subroadmapId,
-  conversationId,
-}: {
-  roadmapId: string;
-  subroadmapId: string;
-  conversationId: string;
-}) {
-  const isStreaming = useConversationStorage((state) => state.isStreaming);
-  const {
-    data: roadmap,
-    isLoading,
-    error,
-  } = useRoadmap(subroadmapId, "subroadmap");
-
+export default function ConversationRoadmap({ queryParams }: QueryParams) {
+  const { roadmapId, subroadmapId, conversationId } = queryParams;
+  const { data: roadmap } = useRoadmap(subroadmapId, "subroadmap");
+  let isLoading = false;
   const { isOpen, toggleSidebar } = useSidebar();
 
   return (
@@ -61,7 +53,6 @@ export default function ConversationRoadmap({
               return (
                 <ConversationRoadmapNodeComponent
                   roadmapId={roadmapId}
-                  isLocked={isStreaming}
                   key={index}
                   subroadmapId={subroadmapId}
                   tech={subroadmapNode}
@@ -77,7 +68,7 @@ export default function ConversationRoadmap({
       <ChevronDown
         onClick={toggleSidebar}
         size={30}
-        className={`switch font-semibold cursor-pointer  text-text absolute left-2 block z-50 top-[15px] duration-500 rotate-90 transition-transform lg:hidden ${
+        className={`switch font-semibold cursor-pointer  text-text absolute left-2 block z-50 top-[calc(50%-15px)] duration-500 rotate-90 transition-transform lg:hidden ${
           isOpen ? "translate-x-[220px]" : "translate-x-0 scale-y-[-1]"
         }`}
       />

@@ -1,11 +1,11 @@
 "use client";
-
 import { ConversationRoadmap, ConversationWindow } from "@/app/modules";
+
 type ConversationPageProps = {
   params: {
-    roadmap_id: string;
-    subroadmap_id: string;
-    conversation_id: string;
+    roadmapId: string;
+    subroadmapId: string;
+    conversationId: string;
   };
 };
 
@@ -17,18 +17,17 @@ function Conversation({ params }: ConversationPageProps) {
     }
     window && window.addEventListener("resize", handleResize);
   } catch {}
+
   return (
     <div
       className={`select-none overflow-x-hidden overflow-auto fullheight  w-full h-full flex flex-row overflow-y-auto bg-transparent mx-auto box-border`}
     >
-      <ConversationRoadmap
-        conversationId={params.conversation_id}
-        roadmapId={params.roadmap_id}
-        subroadmapId={params.subroadmap_id}
-      />
+      <ConversationRoadmap queryParams={params} />
       <ConversationWindow
-        roadmapId={params.roadmap_id}
-        conversationId={params.conversation_id}
+        queryParams={{
+          conversationId: params.conversationId,
+          roadmapId: params.roadmapId,
+        }}
       />
     </div>
   );

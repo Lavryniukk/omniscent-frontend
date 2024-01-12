@@ -6,7 +6,7 @@ type ButtonProps = {
   disabled?: boolean;
   href?: string;
   size?: "sm" | "md" | "lg";
-  callback?: () => void;
+  callback?: (e: React.MouseEvent) => void;
 };
 
 export default function Button({
@@ -66,7 +66,7 @@ export default function Button({
         onClick={(e) => {
           !href || (disabled && e.preventDefault());
 
-          callback && callback();
+          callback && callback(e);
         }}
         className={classKit}
         href={href}
@@ -79,7 +79,7 @@ export default function Button({
       <button
         onClick={(e) => {
           !href || (disabled && e.preventDefault());
-          callback && callback();
+          callback && callback(e);
         }}
         disabled={disabled}
         className={classKit}

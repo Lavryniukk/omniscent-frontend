@@ -9,14 +9,12 @@ let Burger = ({ callback, isOpen }: BurgerProps) => {
       <label className={`container`}>
         <input
           type="checkbox"
-          checked={isOpen} // Set the checked state based on the isOpen prop.
-          onChange={() => {}} // Provide an empty onChange function to prevent warnings.
-          onClick={callback} // Call the toggleMenu function on click.
+          checked={isOpen} 
+          onChange={() => {}} 
+          onClick={callback} 
         />
         <div className={`checkmark`}>
-          {/* Apply the CSS styles defined in Burger.module.css to the checkmark. */}
           <span className="bg-text"></span>
-          {/* Display three spans as background elements. */}
           <span className="bg-text"></span>
           <span className="bg-text"></span>
         </div>
