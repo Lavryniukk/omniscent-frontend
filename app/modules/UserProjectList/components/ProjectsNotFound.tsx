@@ -1,3 +1,4 @@
+"use client";
 import Button from "@/app/UI/buttons/Button";
 
 export default function ProjectsNotFound() {
