@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ProjectContainer from "./ProjectContainer";
 import { RoadmapNode } from "@/app/shared/entities";
+import Button from "@/app/UI/buttons/Button";
 
 export default function FetchedRoadmaps({
   roadmaps,
@@ -15,14 +16,7 @@ export default function FetchedRoadmaps({
         ))}
       </div>
 
-      <p className="mx-auto text-center underline-offset-2 select-none underline text-accent/75">
-        <Link
-          href="/workspace/create"
-          className="hover:text-accent transition-colors duration-200"
-        >
-          Create new project
-        </Link>
-      </p>
+      <Button variant="ghost" href="/workspace/create">Create new</Button>
     </>
   );
 }

@@ -15,7 +15,7 @@ const Header = () => {
   return (
     <>
       <Popup isOpen={isOpen} setIsOpen={setIsOpen} />
-      <div className="flex items-center justify-center">
+      <header className="flex items-center justify-center">
         <div className="h-14 flex z-50 w-11/12 lg:w-3/4 justify-center items-center backdrop-blur-md fixed top-4 border-text/20 box-border border max-w-10xl rounded-full md:rounded-xl">
           <div className="w-full h-14 fixed flex items-center justify-between max-w-10xl z-0 px-6 box-border">
             <Navigation />
@@ -34,7 +34,7 @@ const Header = () => {
             </div>
           </div>
         </div>
-      </div>
+      </header>
     </>
   );
 };

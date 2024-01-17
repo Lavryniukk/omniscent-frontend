@@ -6,16 +6,23 @@ let Logo = () => {
 
   return (
     <Link href="/" className="flex mx-auto items-center h-full ">
-      <Image
-        src={`/images/logo-cleverize-${
-          !theme ? "dark" : theme == "light" ? "dark" : "light"
-        }.webp`}
-        // src={`/images/logo-cleverize-light.webp`}
-        className={`sm:mx-auto border-text ml-0 `}
-        alt=""
-        width={32}
-        height={32}
-      />
+      {theme && theme == "light" ? (
+        <Image
+          src="/images/cleverize-dark.webp"
+          className={`sm:mx-auto border-text ml-0 `}
+          alt="Cleverize logo dark"
+          width={32}
+          height={32}
+        />
+      ) : (
+        <Image
+          src="/images/cleverize.webp"
+          className={`sm:mx-auto border-text ml-0 `}
+          alt="Cleverize logo dark"
+          width={32}
+          height={32}
+        />
+      )}
     </Link>
   );
 };

@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import ConversationRoadmapNodeComponent from "./components/ConversationRoadmapNode";
 import { useRoadmap } from "@/app/shared/hooks/useRoadmap";

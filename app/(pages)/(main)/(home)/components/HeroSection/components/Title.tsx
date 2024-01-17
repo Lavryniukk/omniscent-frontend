@@ -5,23 +5,32 @@ import Image from "next/image";
 let Title = () => {
   let { theme } = useTheme();
   return (
-    <div className="overflow-visible font-inter overflow-x-clip items-center relative flex-col gap-6 flex mx-auto w-full">
+    <div className="overflow-visible max-w-10xl font-inter overflow-x-clip items-center relative flex-col gap-6 flex mx-auto w-full">
       {/* <div className=" top-20 mx-auto   p-4 backdrop-blur-md bg-opacity-50 border-text rounded-lg left-1/4 z-10 bg-secondary text-text">
         ! Attention: We`re making improvements! Our service is currently
         undergoing technical maintenance and will be back shortly. Thank you for
         your patience.
       </div> */}
       <div className="mx-auto observe group duration-500 border relative xl:p-6 lg:p-5 p-4 w-fit h-fit flex items-center justify-center rounded-xl border-secondary bg-background">
-        <Image
-          src={`/images/logo-cleverize-${
-            theme && theme === "light" ? "dark" : "light"
-          }.webp`}
-          // src={`/images/logo-cleverize-light.webp`}
-          alt="cleverize logo icon svg"
-          className="aspect-square w-16 lg:w-20"
-          width={100}
-          height={100}
-        />
+        {theme && theme == "light" ? (
+          <Image
+            src="/images/cleverize-dark.webp"
+            // src={`/images/logo-cleverize-light.webp`}
+            alt="cleverize logo icon svg"
+            className="aspect-square w-16 lg:w-20"
+            width={100}
+            height={100}
+          />
+        ) : (
+          <Image
+            src="/images/cleverize.webp"
+            // src={`/images/logo-cleverize-light.webp`}
+            alt="cleverize logo icon svg"
+            className="aspect-square w-16 lg:w-20"
+            width={100}
+            height={100}
+          />
+        )}
         <div className="absolute group-hover:animate-pulse  rounded-full observe transition-all duration-500 delay-500 bg-gradient-to-r from-primary/80 to-primary/60  aspect-square xl:w-40 lg:w-36 w-32 -z-10 blur-2xl"></div>
       </div>
       <>

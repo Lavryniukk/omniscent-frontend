@@ -2,7 +2,12 @@ import { NavigationButton } from "@/app/shared/components/buttons";
 import { UserProjects } from "@/app/modules";
 import { Suspense } from "react";
 import Skeleton from "@/app/UI/loading/Skeleton/Skeleton";
-
+import { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "Workspace • Cleverize",
+  description:
+    "This is your workspace. Here you will find all your existing projects. Project is goal, something you want to learn. It can be anything from assembly to python!",
+};
 function UserRoadmapsLoading() {
   return (
     <div className="w-full mx-auto space-y-10 p-5 h-fit py-20">

@@ -1,7 +1,11 @@
 import FeaturesSection from "@/app/(pages)/(main)/(home)/components/FeaturesSection/FeaturesSection";
 import HeroSection from "@/app/(pages)/(main)/(home)/components/HeroSection/HeroSection";
-// HomePage is a Next.js page component representing the main landing page of the application.
-// It includes the Title component, Featupres component, and Reviews component.
+import { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "Cleverize",
+  description:
+    "Cleverize is a learning platform that allows you to learn any coding technology, whether it`s a web framework like React.js or a complex programming language like C++.",
+};
 
 function Home() {
   return (

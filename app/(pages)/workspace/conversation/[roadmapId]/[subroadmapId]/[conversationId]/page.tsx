@@ -1,5 +1,5 @@
-"use client";
 import { ConversationRoadmap, ConversationWindow } from "@/app/modules";
+import { Metadata } from "next";
 
 type ConversationPageProps = {
   params: {
@@ -8,7 +8,11 @@ type ConversationPageProps = {
     conversationId: string;
   };
 };
-
+export const metadata: Metadata = {
+  title: "Workspace • Conversation",
+  description:
+    "This page is where all learning is. AI mentor will guide you through your learning journey.",
+};
 function Conversation({ params }: ConversationPageProps) {
   try {
     function handleResize() {

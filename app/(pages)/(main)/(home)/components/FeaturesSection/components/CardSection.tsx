@@ -1,245 +1,125 @@
+"use client";
+import { useTheme } from "next-themes";
 import Image from "next/image";
-let CardSection = () => {
+const CardSection = () => {
+  const { theme } = useTheme();
   return (
-    <div>
-      {/* Laptop */}
-      <div className="container px-2 xl:flex h-fit hidden items-start justify-center mx-auto gap-2">
-        <div className="flex gap-2 flex-col">
-          {/* Feature 1: Strong foundation */}
-          <div className="features-container observe h-fit p-6">
-            <p className="text-text text-2xl whitespace-nowrap font-bold ">
-              Strong foundation
-            </p>
+    <div className="grid grid-cols-2 gap-2 w-fit mx-auto">
+      {/* <div className="h-full col-span-1"></div> */}
+      <div className="big-features-container">
+        <div className="w-full first-features-container grid grid-cols-2 grid-rows-3 bg-white-500 justify-items-center h-full justify-center items-center rounded-xl p-16 bg-clip-content">
+          <figure>
             <Image
-              alt="foundation"
-              className=" border-secondary saturate-0 opacity-70 mx-auto mt-3"
-              src="/images/features-foundation.png"
-              width={300}
-              height={300}
+              src="/images/vue.png"
+              alt="Vue.js logo"
+              height={84}
+              width={84}
             />
-          </div>
-          {/* Feature 2: Engaging Knowledge */}
-          <div className="features-container observe h-fit  p-6">
-            <p className="text-text text-2xl whitespace-nowrap font-bold ">
-              Engaging Knowledge
-            </p>
-            <p className="text-accent font-normal mt-3 text-xl ">
-              We prioritize presenting knowledge in an engaging and intriguing
-              manner, ensuring users remain interested and absorbed.
-            </p>
-          </div>
-        </div>
-        <div className="flex gap-2 flex-col">
-          {/* Feature 3: Any topic, anytime. Dive in. */}
-          <div className="features-container observe h-fit p-6">
-            <p className="text-text text-2xl whitespace-nowrap font-bold ">
-              Any topic, anytime. Dive in.
-            </p>
+          </figure>
+          <figure>
             <Image
-              alt="foundation"
-              className=" rounded-lg border-secondary saturate-0 opacity-70 mx-auto mt-3"
-              src="/images/features-range.png"
-              width={300}
-              height={300}
+              src="/images/c++.png"
+              alt="C++ logo"
+              height={84}
+              width={84}
             />
-          </div>
-          <div className="features-container observe h-fit p-6">
-            {/* Feature 4: Personalized Pathways */}
-            <p className="text-text text-2xl whitespace-nowrap font-bold ">
-              Personalized Pathways
-            </p>
-            <p className="text-accent font-normal mt-3 text-xl ">
-              Experience tailor-made learning journeys designed specifically
-              around individual goals and preferred learning styles.
-            </p>
-          </div>
-        </div>
-        <div className="flex gap-2 flex-col">
-          {/* Feature 5: Real-world Application */}
-          <div className="features-container observe h-fit p-6">
-            <p className="text-text text-2xl whitespace-nowrap font-bold ">
-              Real-world Application
-            </p>
+          </figure>
+          <figure>
             <Image
-              alt="foundation"
-              className=" rounded-lg border-secondary saturate-0 opacity-70 mx-auto mt-3"
-              src="/images/features-practical.png"
-              width={300}
-              height={300}
+              src="/images/python.png"
+              alt="Python logo"
+              height={84}
+              width={84}
             />
-          </div>
-          {/* Feature 6: Access to Artificial Mentor */}
-          <div className="features-container observe h-fit p-6">
-            <p className="text-text text-2xl whitespace-nowrap font-bold ">
-              Access to Artificial Mentor
-            </p>
-            <p className="text-accent font-normal mt-3 text-xl ">
-              We provide a virtual mentor for personalized guidance, feedback,
-              and support throughout the learning journey.
-            </p>
-          </div>
+          </figure>
+          <figure>
+            <Image
+              src="/images/react.png"
+              alt="React.js logo"
+              height={84}
+              width={84}
+            />
+          </figure>
+          <figure>
+            <Image
+              src="/images/rust.png"
+              alt="Rust logo"
+              height={84}
+              width={84}
+            />
+          </figure>
+          <figure>
+            <Image
+              src="/images/java.png"
+              alt="Java logo"
+              height={84}
+              width={84}
+            />
+          </figure>
         </div>
       </div>
-      {/* Tablet */}
-      <div className="container px-2 xl:hidden h-fit md:flex hidden items-start justify-evenly gap-2  mx-auto">
-        <div className="flex gap-2 flex-col">
-          {/* Feature 1: Strong foundation */}
-          <div className="features-container observe h-fit p-6">
-            <p className="text-text text-2xl whitespace-nowrap font-bold ">
-              Strong foundation
-            </p>
-            {/* Image representing the feature */}
-            <Image
-              alt="foundation"
-              className=" border-secondary saturate-0 opacity-70 mx-auto mt-3"
-              src="/images/features-foundation.png"
-              width={300}
-              height={300}
-            />
-          </div>
-          {/* Feature 2: Engaging Knowledge */}
-          <div className="features-container observe h-fit p-6">
-            <p className="text-text text-2xl whitespace-nowrap font-bold ">
-              Engaging Knowledge
-            </p>
-            <p className="text-accent font-normal mt-3 text-xl ">
-              We prioritize presenting knowledge in an engaging and intriguing
-              manner, ensuring users remain interested and absorbed.
-            </p>
-          </div>
-          {/* Feature 3: Real-world Application */}
-          <div className="features-container observe h-fit p-6">
-            <p className="text-text text-2xl whitespace-nowrap font-bold ">
-              Real-world Application
-            </p>
-            {/* Image representing the feature */}
-            <Image
-              alt="foundation"
-              className=" rounded-lg border-secondary saturate-0 opacity-70 mx-auto mt-3"
-              src="/images/features-practical.png"
-              width={300}
-              height={300}
-            />
-          </div>
-        </div>
-
-        <div className="flex gap-2 flex-col">
-          {/* Feature 4: Personalized Pathways */}
-          <div className="features-container observe h-fit p-6">
-            <p className="text-text text-2xl whitespace-nowrap font-bold ">
-              Personalized Pathways
-            </p>
-            <p className="text-accent font-normal mt-3 text-xl ">
-              Experience tailor-made learning journeys designed specifically
-              around individual goals and preferred learning styles.
-            </p>
-          </div>
-          {/* Feature 5: Any topic, anytime. Dive in. */}
-          <div className="features-container observe h-fit p-6">
-            <p className="text-text text-2xl whitespace-nowrap font-bold ">
-              Any topic, anytime. Dive in.
-            </p>
-            {/* Image representing the feature */}
-            <Image
-              alt="foundation"
-              className=" rounded-lg border-secondary saturate-0 opacity-70 mx-auto mt-3"
-              src="/images/features-range.png"
-              width={300}
-              height={300}
-            />
-          </div>
-          {/* Feature 6: Access to Artificial Mentor */}
-          <div className="features-container observe h-fit p-6">
-            <p className="text-text text-2xl whitespace-nowrap font-bold ">
-              Access to Artificial Mentor
-            </p>
-            <p className="text-accent font-normal mt-3 text-xl ">
-              We provide a virtual mentor for personalized guidance, feedback,
-              and support throughout the learning journey.
-            </p>
-          </div>
-        </div>
+      <div className="small-features-container text-left items-start">
+        <h1>Anything.Anytime.</h1>
+        <p>
+          Cleverize allows you to learn any coding technology, whether it`s a
+          web framework like React.js or a complex programming language like
+          C++.
+        </p>
       </div>
-      {/* Phone */}
-      <div className="container px-2 md:hidden h-fit flex items-start justify-center gap-3 mx-auto">
-        <div className="flex gap-3 flex-col">
-          {/* Feature 1: Strong foundation */}
-          <div className="features-container observe h-fit p-6 w-full">
-            <p className="text-text text-2xl whitespace-nowrap font-bold ">
-              Strong foundation
-            </p>
-            {/* Image representing the feature */}
-            <Image
-              alt="foundation"
-              className=" border-secondary saturate-0 opacity-70 mx-auto mt-3"
-              src="/images/features-foundation.png"
-              width={300}
-              height={300}
-            />
-          </div>
-          <div className="features-container observe h-fit p-6">
-            <p className="text-text text-2xl whitespace-nowrap font-bold ">
-              Engaging Knowledge
-            </p>
-            <p className="text-accent font-normal mt-3 text-xl ">
-              We prioritize presenting knowledge in an engaging and intriguing
-              manner, ensuring users remain interested and absorbed.
-            </p>
-          </div>
-          {/* Feature 2: Any topic, anytime. Dive in. */}
-          <div className="features-container observe h-fit p-6">
-            <p className="text-text text-2xl whitespace-nowrap font-bold ">
-              Any topic, anytime. Dive in.
-            </p>
-            {/* Image representing the feature */}
-            <Image
-              alt="foundation"
-              className=" rounded-lg border-secondary saturate-0 opacity-70 mx-auto mt-3"
-              src="/images/features-range.png"
-              width={300}
-              height={300}
-            />
-          </div>
-          {/* Feature 4: Engaging Knowledge */}
-
-          <div className="features-container observe h-fit p-6">
-            <p className="text-text text-2xl whitespace-nowrap font-bold ">
-              Personalized Pathways
-            </p>
-            <p className="text-accent font-normal mt-3 text-xl ">
-              Experience tailor-made learning journeys designed specifically
-              around individual goals and preferred learning styles.
-            </p>
-          </div>
-          {/* Feature 3: Real-world Application */}
-          <div className="features-container observe h-fit p-6">
-            <p className="text-text text-2xl whitespace-nowrap font-bold ">
-              Real-world Application
-            </p>
-            {/* Image representing the feature */}
-            <Image
-              alt="foundation"
-              className=" rounded-lg border-secondary saturate-0 opacity-70 mx-auto mt-3"
-              src="/images/features-practical.png"
-              width={300}
-              height={300}
-            />
-          </div>
-
-          {/* Feature 5: Personalized Pathways */}
-
-          {/* Feature 6: Access to Artificial Mentor */}
-          <div className="features-container observe h-fit p-6">
-            <p className="text-text text-2xl whitespace-nowrap font-bold ">
-              Access to Artificial Mentor
-            </p>
-            <p className="text-accent font-normal mt-3 text-xl ">
-              We provide a virtual mentor for personalized guidance, feedback,
-              and support throughout the learning journey.
-            </p>
-          </div>
-        </div>
+      <div className="big-features-container">
+        <h4>example from Rust roadmap*</h4>
+        {theme == "dark" ? (
+          <Image
+            src="/images/roadmap-dark.png"
+            alt="Roadmap example"
+            width={400}
+            height={550}
+          />
+        ) : (
+          <Image
+            src="/images/roadmap.png"
+            alt="Roadmap example"
+            width={400}
+            height={550}
+          />
+        )}
+        <div className="absolute rounded-2xl w-full h-full bg-gradient-to-t from-background" />
       </div>
+      <div className="small-features-container text-right items-end">
+        <h1>Personalized learning path.</h1>
+        <p>
+          Learn what you need/want to learn. The choice is yours. You can
+          customize your learning path to fit your needs.
+        </p>
+      </div>
+      <div className="big-features-container ">
+        <h4>example from Rust functions lesson*</h4>
+        {theme == "dark" ? (
+          <Image
+            src="/images/conversation-dark.png"
+            alt="Roadmap example"
+            width={450}
+            height={600}
+          />
+        ) : (
+          <Image
+            src="/images/conversation.png"
+            alt="Roadmap example"
+            width={450}
+            height={600}
+          />
+        )}
+        <div className="absolute rounded-2xl w-full h-full bg-gradient-to-t from-background" />
+      </div>
+      <div className="small-features-container text-left items-start">
+        <h1>Your experienced AI mentor.</h1>
+        <p>
+          Cleverize provides you with well-tuned teacher that can be whatever
+          you want it to be.
+        </p>
+      </div>
+      <div className="big-features-container"></div>
+      <div className="small-features-container"></div>
     </div>
   );
 };

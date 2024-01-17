@@ -1,6 +1,11 @@
 import FAQ from "@/app/UI/static/Memberships/Faq/Faq";
 import PricingCards from "@/app/UI/static/Memberships/PricingCards/PricingCards";
-
+import { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "Cleverize • Memberships",
+  description:
+    "Cleverize offers a trial version, that gives you a certain amount of credits to spend, after which you can upgrade to a paid membership with monthly credit refill.",
+};
 let MembershipsPage = () => {
   return (
     <>
