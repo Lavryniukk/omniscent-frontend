@@ -1,11 +1,38 @@
 "use client";
+import { motion, useScroll } from "framer-motion";
 import { useTheme } from "next-themes";
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 const CardSection = () => {
   const { theme } = useTheme();
+  const ref = useRef<HTMLDivElement | null>(null);
+
+  const { scrollY } = useScroll({ smooth: 0 });
+  const [pxVisible, setPxVisible] = useState(0);
+
+  useEffect(() => {
+    const element = ref.current;
+
+    const onScroll = () => {
+      if (!element) {
+        return;
+      }
+      const rect = element.getBoundingClientRect();
+      const height = Math.max(0, window.innerHeight - rect.top);
+      setPxVisible(height * 2.3);
+    };
+
+    const unsubscirbe = scrollY.on("change", onScroll);
+
+    return () => unsubscirbe();
+  }, [scrollY]);
+  console.log(pxVisible);
   return (
-    <div className="grid grid-cols-2 gap-2 w-fit mx-auto">
-      {/* <div className="h-full col-span-1"></div> */}
+    <div className="grid grid-cols-2 gap-6 w-fit mx-auto relative overflow-hidden">
+      <motion.div
+        className="absolute w-1 top-0 left-[calc(50%-2px)] bg-accent transition-all duration-700"
+        style={{ height: pxVisible }}
+      />
       <div className="big-features-container">
         <div className="w-full first-features-container grid grid-cols-2 grid-rows-3 bg-white-500 justify-items-center h-full justify-center items-center rounded-xl p-16 bg-clip-content">
           <figure>
@@ -92,7 +119,7 @@ const CardSection = () => {
           customize your learning path to fit your needs.
         </p>
       </div>
-      <div className="big-features-container ">
+      <div className="big-features-container" ref={ref}>
         <h4>example from Rust functions lesson*</h4>
         {theme == "dark" ? (
           <Image
