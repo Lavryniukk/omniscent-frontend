@@ -30,9 +30,12 @@ const CardSection = () => {
   return (
     <div className="grid grid-cols-2 gap-6 w-fit mx-auto relative overflow-hidden">
       <motion.div
-        className="absolute w-1 top-0 left-[calc(50%-2px)] bg-accent transition-all duration-700"
+        className="absolute w-1 top-0 left-[calc(50%-2px)] blur-sm transition-all duration-700 shadow-primary flex flex-col items-center justify-center"
         style={{ height: pxVisible }}
-      />
+      >
+        <div className="bg-gradient-to-b from-background via-accent via-[20%] to-accent h-[50%] w-full"></div>
+        <div className="bg-gradient-to-b from-accent via-background via-[45%] to-background h-[50%] w-full"></div>
+      </motion.div>
       <div className="big-features-container">
         <div className="w-full first-features-container grid grid-cols-2 grid-rows-3 bg-white-500 justify-items-center h-full justify-center items-center rounded-xl p-16 bg-clip-content">
           <figure>
