@@ -34,8 +34,8 @@ let BannerLogo = () => {
     <div className="md:hidden flex justify-between items-center w-full">
       <Link href="/" className="flex items-center h-full">
         <Image
-          src={`/images/logo-cleverize-${
-            !theme ? "dark" : theme == "light" ? "dark" : "light"
+          src={`/images/cleverize${
+            !theme ? "-dark" : theme == "light" ? "-dark" : ""
           }.webp`}
           className={`border-text ml-0 `}
           alt=""

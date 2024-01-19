@@ -258,7 +258,7 @@ body {
 }
 
 .small-features-container {
-  @apply w-[450px] relative h-48 row-span-1 flex flex-col p-2 justify-center gap-5;
+  @apply w-[400px] lg:w-[450px] relative h-48 row-span-1 flex flex-col p-2 justify-center gap-5;
 }
 .small-features-container h1 {
   @apply text-2xl font-bold text-text;
@@ -267,7 +267,7 @@ body {
   @apply text-lg  text-text/80;
 }
 .big-features-container {
-  @apply w-[450px] relative rounded-xl flex flex-col items-center  border-2 border-secondary h-[600px] row-span-2;
+  @apply w-[400px] lg:w-[450px] relative transition-shadow duration-300 rounded-xl flex flex-col items-center  border-2 border-secondary h-[600px] row-span-2;
 }
 .big-features-container h4 {
   @apply absolute -top-6 right-0 text-xs italic text-accent font-light p-1;
