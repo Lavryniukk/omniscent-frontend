@@ -28,7 +28,7 @@ export default function NewProjectForm() {
 
     setTimeout(() => {
       router.push("/workspace");
-    }, 60000);
+    }, 80000);
   };
   const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setFormData((prev) => ({
