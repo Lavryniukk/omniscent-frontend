@@ -16,7 +16,9 @@ export default function FormSelect({
 				 text-accent outline-none cursor-pointer w-full "
       >
         <option value={RoadmapSize.MEDIUM}>Programming language</option>
-        <option value={RoadmapSize.SMALL}>Framework / Library</option>
+        <option value={RoadmapSize.SMALL}>
+          Framework / Library <i>(beta)</i>
+        </option>
       </select>
       <div className=" divide-x hidden xs:flex divide-secondary/90 items-center px-3 py-2 hover:bg-text/90  bg-text text-primary absolute sm:max-lg:-translate-x-[12%] max-lg:translate-y-[150%] lg:translate-x-[85%] rounded-full">
         <div className="flex mr-2 gap-2">
@@ -24,7 +26,7 @@ export default function FormSelect({
           <h1>New</h1>
         </div>
         <p className="text-secondary/90 pl-2 text-sm whitespace-nowrap">
-          Frameworks and libraries are now supported
+          Frameworks and libraries are now supported!
         </p>
       </div>
       <ChevronDown
