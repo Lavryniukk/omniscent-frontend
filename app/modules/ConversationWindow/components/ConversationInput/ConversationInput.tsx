@@ -36,7 +36,7 @@ export default function ConversationInput({
     if (!isLocked) {
       e.preventDefault();
       addUserMessage(roadmapId);
-      setInputData("");
+      setInputData(" ");
     }
   };
 
@@ -46,7 +46,7 @@ export default function ConversationInput({
       onSubmit={handleSubmit}
     >
       <textarea
-        className="w-full flex items-center overflow-y-auto max-h-60 min-h-[60px] justify-center border box-border border-accent/70 bg-opacity-70 backdrop-blur-sm bg-secondary rounded-2xl p-4 pr-16 aspect-none placeholder:text-lg text-text text-lg focus:ring-0 focus:outline-none focus:border-accent resize-none "
+        className="w-full flex items-center overflow-y-auto max-h-[60px] min-h-[60px] justify-center border box-border border-accent/70 bg-opacity-70 backdrop-blur-sm bg-secondary rounded-2xl p-4 pr-16 aspect-none placeholder:text-lg text-text text-lg focus:ring-0 focus:outline-none focus:border-accent resize-none "
         placeholder="Send a message"
         rows={1}
         value={userInputData}
