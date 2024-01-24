@@ -1,70 +1,42 @@
-type SlideInAnimation = {
-  initial: {
-    y: number;
-    opacity: number;
-    transition: { type: string; delay: 0 };
-  };
-  animate: {
-    y: number;
-    opacity: number;
-    transition: { type: string; delay: 0.3 };
-  };
-};
+type SlideInAnimation = {};
 
-type ParentSlideInAnimation = {
-  initial: {
-    y: number;
-    opacity: number;
-    transition: { type: string; delay: 0; staggerChildren: number };
-  };
-  animate: {
-    y: number;
-    opacity: number;
-    transition: { type: string; delay: 0.3; staggerChildren: number };
-  };
-};
+type ParentSlideInAnimation = {};
 
 export const useSlideIn = (): [SlideInAnimation, ParentSlideInAnimation] => {
   const transition = { type: "spring", duration: 0.8 };
 
-  return [
-    {
-      initial: {
-        y: 30,
-        opacity: 0,
-        transition: {
-          ...transition,
-          delay: 0,
-        },
-      },
-      animate: {
-        y: 0,
-        opacity: 1,
-        transition: {
-          ...transition,
-          delay: 0.3,
-        },
+  const parentVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.05,
       },
     },
+  };
+
+  const childVariants = {
+    hidden: {
+      y: 30,
+      opacity: 0,
+    },
+    show: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        ...transition,
+      },
+    },
+  };
+
+  return [
     {
-      initial: {
-        y: 30,
-        opacity: 0,
-        transition: {
-          ...transition,
-          delay: 0,
-          staggerChildren: 0.3,
-        },
-      },
-      animate: {
-        y: 0,
-        opacity: 1,
-        transition: {
-          ...transition,
-          delay: 0.3,
-          staggerChildren: 0.3,
-        },
-      },
+      variants: { ...childVariants },
+    },
+    {
+      variants: { ...parentVariants },
+      initial: "hidden",
+      animate: "show",
     },
   ];
 };
