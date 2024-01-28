@@ -51,12 +51,12 @@ let Title = () => {
       </>
 
       {/* Description text [max(40px,min(8vw,100px))] */}
-      <p className="observe mb-6 transition delay-100 duration-500 text-accent hyphens-manual  mx-auto flex items-center justify-center w-10/12 md:w-3/4 lg:w-1/2 text-md sm:text-xl  text-center ">
+      <p className="observe mb-6 transition delay-100 duration-500 text-accent hyphens-manual mx-auto flex items-center justify-center w-10/12 md:w-3/4 lg:w-1/2 text-md sm:text-xl  text-center ">
         Unleash your full potential with personalized AI-driven tech education.
       </p>
 
       <div className="flex gap-5">
-        <Button href="/workspace">Get started</Button>
+        <Button href="/memberships">Get started</Button>
         <Button variant="ghost" href="/workspace">
           Workspace
         </Button>
