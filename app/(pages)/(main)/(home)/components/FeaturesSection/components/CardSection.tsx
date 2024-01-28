@@ -17,7 +17,6 @@ const CardSection = () => {
 
       const rect = element.getBoundingClientRect();
       const height = Math.max(0, window.innerHeight - rect.top);
-      console.log(height);
       if (height > 0 && height < 230) {
         setHighlightedElement(1);
       } else if (height > 230 && height < 450) {
