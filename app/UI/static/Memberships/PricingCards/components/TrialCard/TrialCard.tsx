@@ -22,7 +22,7 @@ let TrialCard = () => {
         <Line text={"All basic features available"} />
       </ul>
       <Button
-        disabled={isLoading ? true : subscription.is_trial_activated}
+        disabled={isLoading ? true : subscription.is_trial_activated ?? false}
         callback={async () => {
           const res = await fetchActivateTrial();
           location.reload();
