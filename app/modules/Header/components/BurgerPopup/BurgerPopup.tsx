@@ -23,11 +23,7 @@ let Popup = ({ isOpen, setIsOpen }: Props) => {
           name="Workspace"
           callbackfn={() => setIsOpen(false)}
         />
-        <HeaderLink
-          url="/memberships"
-          name="Memberships"
-          callbackfn={() => setIsOpen(false)}
-        />
+
         <HeaderLink
           url="/blog"
           name="Blog"

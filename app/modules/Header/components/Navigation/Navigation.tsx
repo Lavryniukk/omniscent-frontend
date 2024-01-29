@@ -7,7 +7,6 @@ export default function Navigation() {
       <Logo />
       <div className="space-x-6 hidden md:block">
         <HeaderLink url="/workspace" name="Workspace" />
-        <HeaderLink url="/memberships" name="Memberships" />
         <HeaderLink url="/blog" name="Blog" />
       </div>
     </nav>
