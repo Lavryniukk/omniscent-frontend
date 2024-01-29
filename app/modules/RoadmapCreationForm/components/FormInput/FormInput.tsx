@@ -8,14 +8,14 @@ export default function FormInput({
   inputData: string;
 }) {
   return (
-    <div className="flex space-y-1 rounded-xl justify-center items-center w-full sm:w-3/4 relative">
+    <div className="flex space-y-1 rounded-xl justify-center items-center w-full relative">
       <input
         required
         value={inputData}
         onChange={handleFunction}
         type="text"
         className={`relative overflow-visible 
-          bg-transparent box-border border-2 pl-2 rounded-md border-accent transition-all duration-200 p-3 text-base
+          bg-transparent box-border border pl-2 rounded-md border-secondary transition-all duration-200 p-3 text-base
 				 text-accent placeholder:text-accent outline-none focus:border-accent w-full peer `}
       />
       <label

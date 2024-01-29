@@ -1,13 +1,20 @@
-"use client"; // An environment-specific directive or comment, not part of the logic.
+"use client";
 
-import NewProjectField from "@/app/modules/NewProjectField/NewProjectField";
+import { RoadmapCreationForm, RoadmapTemplates } from "@/app/modules";
+import { NavigationButton } from "@/app/shared/components/buttons";
 
-function NewProject() {
+function New() {
   return (
-    <div className="max-w-7xl select-none flex items-center justify-center h-screen mx-auto">
-      <NewProjectField />{" "}
+    <div className="max-w-10xl select-none flex items-center justify-around h-screen mx-auto">
+      <NavigationButton href="/workspace" title="Workspace" />
+
+      <RoadmapTemplates />
+
+      <p className="text-xl text-accent ">or</p>
+
+      <RoadmapCreationForm />
     </div>
   );
 }
 
-export default NewProject;
+export default New;

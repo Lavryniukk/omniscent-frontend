@@ -16,7 +16,7 @@ function ProjectContainer({ title }: { title: string | ReactNode }) {
   );
 }
 
-// Create an array of project objects for search.
+
 let arr = [
   { title: "React front-end developer", _id: "1" },
   { title: "Nest.js back-end developer", _id: "2" },
@@ -27,19 +27,17 @@ let arr = [
 ];
 
 export default function ProjectSearch() {
-  const [text, setText] = useState(""); // Initialize state variable for user input text.
-  const [filteredArray, setFilteredArray] = useState(arr); // Initialize state variable for the filtered array.
+  const [text, setText] = useState(""); 
+  const [filteredArray, setFilteredArray] = useState(arr); 
 
   const { data, isLoading } = useQuery({
     queryKey: ["communityRoadmaps"],
     queryFn: () => fetch("/api/"),
   });
 
-  // Handler function for input change.
   let handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value); // Update the 'text' state with the input value.
 
-    // Create a regex pattern for case-insensitive text matching.
     const regex = new RegExp(e.target.value, "i");
 
     // Filter the 'arr' based on the input text and set the 'filteredArray' state.
@@ -49,24 +47,18 @@ export default function ProjectSearch() {
 
   // Function to highlight the matching text within a string.
   const highlightText = (str: string, term: string) => {
-    // Split the input string 'str' using a regular expression to find and split at the 'term', with global and case-insensitive flags.
     const splitText = str.split(new RegExp(`(${term})`, "gi"));
 
-    // Map through the split chunks and create a new array with highlighted spans.
     return splitText.map((chunk, index) =>
-      // Check if the current 'chunk' matches the 'term' (case-insensitive).
       chunk.toLowerCase() === term.toLowerCase() ? (
-        // If it matches, wrap it in a <span> element with a background color.
         <span key={index} className="bg-primary-800">
           {chunk}
         </span>
       ) : (
-        // If it doesn't match, keep the 'chunk' as is.
         chunk
       )
     );
 
-    // Return the array of highlighted chunks.
   };
 
   return (
