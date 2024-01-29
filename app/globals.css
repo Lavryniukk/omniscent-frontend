@@ -38,9 +38,7 @@
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
 }
-.section {
-  height: var(--section-height);
-}
+
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -117,26 +115,7 @@
   transform: perspective(1500px) rotateY(-30deg);
 }
 
-.blob {
-  background: radial-gradient(
-    circle,
-    rgba(0, 255, 255, 1) 0%,
-    rgba(0, 0, 0, 0) 70%
-  );
-}
-
 @layer components {
-  .inset-shadow {
-    box-shadow:
-      inset 7px 7px 14px #020304,
-      inset -7px -7px 14px #0a0b0e;
-  }
-  .font-title {
-    font-size: max(32px, min(5vw, 76px));
-  }
-  .spinner {
-    animation: spiner 4s linear alternate infinite 1.2s;
-  }
   .gradient {
     background: radial-gradient(
       circle at center,
@@ -147,38 +126,6 @@
 
   .project {
     @apply w-full flex items-center relative justify-around px-2 text-xl  text-accent select-none border h-20 rounded-lg border-dashed border-accent;
-  }
-
-  .center-align {
-    left: calc(50% - 200px);
-  }
-
-  .right-align {
-    left: calc(72% - 250px);
-  }
-
-  .glow-effect {
-    box-shadow:
-      0 0 5px primary,
-      0 0 10px primary,
-      0 0 20px primary;
-  }
-
-  .observe-show {
-    transform: none;
-    opacity: 1;
-  }
-  .pt-box-shadow {
-    box-shadow:
-      0 0 1px var(--accent),
-      0 0 3px var(--accent),
-      0 0 5px var(--accent);
-  }
-  .pt-box-shadow:hover {
-    box-shadow:
-      0 0 2px var(--accent),
-      0 0 5px var(--accent),
-      0 0 10px var(--accent);
   }
 }
 body {
