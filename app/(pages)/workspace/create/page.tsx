@@ -1,4 +1,4 @@
-import { NewProjectForm } from "@/app/modules";
+import { RoadmapCreationForm } from "@/app/modules";
 import { NavigationButton } from "@/app/shared/components/buttons";
 import { Metadata } from "next";
 export const metadata: Metadata = {
@@ -10,7 +10,7 @@ const Create = () => {
   return (
     <div className="flex h-screen border-accent items-center px-3">
       <NavigationButton href="/workspace" title="Workspace" />
-      <NewProjectForm />
+      <RoadmapCreationForm />
     </div>
   );
 };
