@@ -17,7 +17,7 @@ export default function FormSelect({
       >
         <option value={RoadmapSize.MEDIUM}>Programming language</option>
         <option value={RoadmapSize.SMALL}>
-          Framework / Library <i>(beta)</i>
+          Framework / Library (beta)
         </option>
       </select>
       <ChevronDown

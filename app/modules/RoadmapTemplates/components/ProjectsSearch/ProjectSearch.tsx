@@ -9,13 +9,12 @@ function ProjectContainer({ title }: { title: string | ReactNode }) {
   return (
     <Link
       href={"/"}
-      className="py-5 border block border-secondary rounded-lg text-lg text-center text-accent px-3"
+      className="py-5 border block w-full border-secondary rounded-lg text-lg text-center text-accent"
     >
       {title}
     </Link>
   );
 }
-
 
 let arr = [
   { title: "React front-end developer", _id: "1" },
@@ -27,8 +26,8 @@ let arr = [
 ];
 
 export default function ProjectSearch() {
-  const [text, setText] = useState(""); 
-  const [filteredArray, setFilteredArray] = useState(arr); 
+  const [text, setText] = useState("");
+  const [filteredArray, setFilteredArray] = useState(arr);
 
   const { data, isLoading } = useQuery({
     queryKey: ["communityRoadmaps"],
@@ -51,70 +50,69 @@ export default function ProjectSearch() {
 
     return splitText.map((chunk, index) =>
       chunk.toLowerCase() === term.toLowerCase() ? (
-        <span key={index} className="bg-primary-800">
+        <span key={index} className="bg-primary">
           {chunk}
         </span>
       ) : (
         chunk
       )
     );
-
   };
 
   return (
-    <div className="py-20">
-      <div className="relative h-10 w-full mx-auto items-center flex">
+    <>
+      <div className="relative h-12 w-full  items-center flex">
         <input
           type="text"
           value={text}
           onChange={(e) => {
             handleChange(e);
           }}
-          className="bg-secondary focus:outline-none h-full focus:border-text w-full rounded-lg border-accent-600 text-accent pl-3 border mx-auto"
+          className="bg-secondary/40 focus:outline-none h-full focus:border-text w-full rounded-lg border-secondary text-accent pl-3 border "
         />
-        <Search
-          size={20}
-          className="absolute text-accent bg-secondary right-3"
-        />
+        <Search size={20} className="absolute text-accent right-3" />
       </div>
-      <div className="w-full h-fit space-y-3 overflow-hidden mt-10">
-        {!isLoading ? (
-          filteredArray.length ? (
-            // Map and display the filtered projects with highlighted text.
-            filteredArray.map(
-              (item, index) =>
-                index <= 4 && (
-                  <ProjectContainer
-                    title={highlightText(item.title, text)}
-                    key={item._id}
-                  />
-                )
-            )
-          ) : (
-            // Display a message if no results were found.
-            <div className="text-accent text-lg mx-auto text-center">
-              Whoops, seems like nothing was found
-            </div>
-          )
-        ) : (
-          <div className="w-full h-fit space-y-3 overflow-hidden">
-            <div className="border border-secondary p-4 rounded min-h-[70px] flex items-center justify-center">
-              <Skeleton width="75%" height="24px" rounded="4px" />
-            </div>
-            <div className="border border-secondary p-4 rounded min-h-[70px] flex items-center justify-center">
-              <Skeleton width="75%" height="24px" rounded="4px" />
-            </div>
-            <div className="border border-secondary p-4 rounded min-h-[70px] flex items-center justify-center">
-              <Skeleton width="75%" height="24px" rounded="4px" />
-            </div>
-            <div className="border border-secondary p-4 rounded min-h-[70px] flex items-center justify-center">
-              <Skeleton width="75%" height="24px" rounded="4px" />
-            </div>
-            <div className="border border-secondary p-4 rounded min-h-[70px] flex items-center justify-center">
-              <Skeleton width="75%" height="24px" rounded="4px" />
-            </div>
+      <div className="w-full h-fit gap-3 items-center flex flex-col overflow-hidden ">
+        {filteredArray.length !== 0 &&
+          filteredArray.map(
+            (item, index) =>
+              index <= 4 && (
+                <ProjectContainer
+                  title={highlightText(item.title, text)}
+                  key={item._id}
+                />
+              )
+          )}
+
+        {filteredArray.length === 0 && (
+          <div className="text-accent text-lg  text-center">
+            Whoops, seems like nothing was found
           </div>
         )}
+
+        {isLoading && <LoadingTemplates />}
+      </div>
+    </>
+  );
+}
+
+function LoadingTemplates() {
+  return (
+    <div className="w-full h-fit space-y-3 overflow-hidden">
+      <div className="border border-secondary p-4 rounded min-h-[70px] flex items-center justify-center">
+        <Skeleton width="75%" height="24px" rounded="4px" />
+      </div>
+      <div className="border border-secondary p-4 rounded min-h-[70px] flex items-center justify-center">
+        <Skeleton width="75%" height="24px" rounded="4px" />
+      </div>
+      <div className="border border-secondary p-4 rounded min-h-[70px] flex items-center justify-center">
+        <Skeleton width="75%" height="24px" rounded="4px" />
+      </div>
+      <div className="border border-secondary p-4 rounded min-h-[70px] flex items-center justify-center">
+        <Skeleton width="75%" height="24px" rounded="4px" />
+      </div>
+      <div className="border border-secondary p-4 rounded min-h-[70px] flex items-center justify-center">
+        <Skeleton width="75%" height="24px" rounded="4px" />
       </div>
     </div>
   );

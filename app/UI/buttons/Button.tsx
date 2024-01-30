@@ -6,6 +6,7 @@ type ButtonProps = {
   variant?: "primary" | "secondary" | "outline" | "ghost" | "danger";
   disabled?: boolean;
   href?: string;
+  type?: "submit" | "button";
   size?: "sm" | "md" | "lg";
   callback?: (e: React.MouseEvent) => void;
 };
@@ -17,6 +18,7 @@ export default function Button({
   href,
   size = "md",
   callback,
+  type = "button",
 }: ButtonProps) {
   let classKit: string = "";
   let sizeKit: string = "";
@@ -78,6 +80,7 @@ export default function Button({
   } else {
     return (
       <button
+        type={type}
         onClick={(e) => {
           !href || (disabled && e.preventDefault());
           callback && callback(e);
