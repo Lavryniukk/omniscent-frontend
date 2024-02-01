@@ -1,5 +1,3 @@
-"use client";
-
 import { RoadmapCreationForm, RoadmapTemplates } from "@/app/modules";
 import { NavigationButton } from "@/app/shared/components/buttons";
 

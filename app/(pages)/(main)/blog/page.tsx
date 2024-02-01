@@ -1,10 +1,5 @@
 import Link from "next/link";
-import { Metadata } from "next";
-export const metadata: Metadata = {
-  title: "Cleverize • Blog",
-  description:
-    "Cleverize is a learning platform that allows you to learn any coding technology, whether it`s a web framework like React.js or a complex programming language like C++.",
-};
+
 export default function Blog() {
   return (
     <div className="w-full max-w-10xl items-center text-azure-950 dark:text-azure-100 flex flex-col h-screen pt-14 mx-auto">

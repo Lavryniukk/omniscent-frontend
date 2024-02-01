@@ -1,13 +1,8 @@
 import Skeleton from "@/app/UI/loading/Skeleton/Skeleton";
 import Roadmap from "@/app/modules/Roadmap/PrimaryRoadmap/Roadmap";
 import { NavigationButton } from "@/app/shared/components/buttons";
-import { Metadata } from "next";
 import { Suspense } from "react";
-export const metadata: Metadata = {
-  title: "Workspace • Roadmap",
-  description:
-    "This is a page where a learning path for one of your projects is displayed. You can see all the technologies you need to learn to complete your project.",
-};
+
 const RoadmapSkeleton = () => (
   <div className="mt-32 flex-col flex items-center justify-center  ">
     {Array.from({ length: 10 }).map((_, index) => (
