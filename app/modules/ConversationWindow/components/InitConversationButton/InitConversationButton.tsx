@@ -17,9 +17,11 @@ export default function InitConversationButton({
   const initConversation = useConversationStorage(
     (state) => state.initConversation
   );
-  return isLoaded ? (
+
+  return (
     <div className="absolute top-[45%]">
       <Button
+        disabled={!isLoaded}
         callback={async () => {
           isLoaded &&
             initConversation(
@@ -31,10 +33,6 @@ export default function InitConversationButton({
       >
         Start learning
       </Button>
-    </div>
-  ) : (
-    <div className="border-text w-[180px] bg-text text-background absolute top-[calc(50%-62px)] left-[calc(50%-90px)] py-4 rounded-md px-7 text-xl border flex items-center justify-center">
-      <div className="h-[40px] aspect-square border-2 border-background/60 border-t-background animate-spin rounded-full py-2" />
     </div>
   );
 }

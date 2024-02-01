@@ -1,14 +1,20 @@
-import Logo from "../CleverizeLogo/CleverizeLogo";
-import HeaderLink from "../HeaderLink/HeaderLink";
+import Link from "next/link";
 
 export default function Navigation() {
   return (
-    <nav className="hidden md:flex h-full items-center space-x-12">
-      <Logo />
-      <div className="space-x-6 hidden md:block">
-        <HeaderLink url="/workspace" name="Workspace" />
-        <HeaderLink url="/blog" name="Blog" />
-      </div>
+    <nav className="hidden md:flex h-full items-center gap-5">
+      <Link
+        href={"/workspace"}
+        className={`text-azure-950 dark:text-azure-50 hover:opacity-80 transition-opacity duration-100`}
+      >
+        Workspace
+      </Link>
+      <Link
+        href={"/blog"}
+        className={`text-azure-950 dark:text-azure-50 hover:opacity-80 transition-opacity duration-100`}
+      >
+        Blog
+      </Link>
     </nav>
   );
 }

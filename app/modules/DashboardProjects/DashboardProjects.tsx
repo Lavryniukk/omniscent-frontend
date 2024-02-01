@@ -42,11 +42,11 @@ export default function DashboardProjects() {
 
 function NewProjectContainer() {
   return (
-    <div className="h-[500px] min-w-[350px] mx-auto lg:mx-0  items-center z-0 box-content group hover:shadow-[0px_15px_25px_0px_rgba(var(--secondary),1)] overflow-hidden hover:border-accent/30 hover:scale-[105%] transition-all duration-200 cursor-pointer border-secondary flex-col rounded-2xl w-1/4 max-w-[360px] flex border-4">
+    <div className="h-[500px] min-w-[350px] mx-auto lg:mx-0  items-center z-0 box-content group hover:shadow-[0px_15px_25px_0px_rgba(var(--secondary),1)] overflow-hidden hover: hover:scale-[105%] transition-all duration-200 cursor-pointer border-secondary flex-col rounded-2xl w-1/4 max-w-[360px] flex border-4">
       <div className="w-full h-[375px] flex items-center justify-center">
-        <PlusCircle className="text-secondary group-hover:animate-spin-slow w-1/3 h-1/3 transition-colors duration-300 group-hover:text-accent/30 bg-background" />
+        <PlusCircle className="text-secondary group-hover:animate-spin-slow w-1/3 h-1/3 transition-colors duration-300 group-hover: bg-background" />
       </div>
-      <div className="w-[100%] h-1/4 z-[1]  box-content  transition-colors duration-300 group-hover:bg-accent/30 bg-secondary "></div>
+      <div className="w-[100%] h-1/4 z-[1]  box-content  transition-colors duration-300 group-hover: bg-secondary "></div>
     </div>
   );
 }

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 function Home() {
   return (
-    <main className="mb-10 font-inter overflow-hidden h-fit overflow-y-auto bg-transparent mx-auto box-border w-full">
+    <main className="mb-10 mt-16 max-w-10xl font-inter overflow-hidden flex flex-col justify-start h-fit overflow-y-auto bg-transparent mx-auto box-border w-full">
       <HeroSection />
       <FeaturesSection />
     </main>

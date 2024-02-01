@@ -1,50 +1,27 @@
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
-let Logo = () => {
-  const { theme } = useTheme();
+const Logo = () => {
+  const { resolvedTheme } = useTheme();
+  let src;
 
+  switch (resolvedTheme) {
+    case "light":
+      src = "/images/cleverize-dark.webp";
+      break;
+    case "dark":
+      src = "/images/cleverize.webp";
+      break;
+    default:
+      src =
+        "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+      break;
+  }
   return (
     <Link href="/" className="flex mx-auto items-center h-full ">
-      {theme && theme == "light" ? (
-        <Image
-          src="/images/cleverize-dark.webp"
-          className={`sm:mx-auto border-text ml-0 `}
-          alt="Cleverize logo dark"
-          width={32}
-          height={32}
-        />
-      ) : (
-        <Image
-          src="/images/cleverize.webp"
-          className={`sm:mx-auto border-text ml-0 `}
-          alt="Cleverize logo dark"
-          width={32}
-          height={32}
-        />
-      )}
+      <Image src={src} alt="Cleverize logo" width={32} height={32} />
     </Link>
   );
 };
 
-let BannerLogo = () => {
-  const { theme } = useTheme();
-
-  return (
-    <div className="md:hidden flex justify-between items-center w-full">
-      <Link href="/" className="flex items-center h-full">
-        <Image
-          src={`/images/cleverize${
-            !theme ? "-dark" : theme == "light" ? "-dark" : ""
-          }.webp`}
-          className={`border-text ml-0 `}
-          alt=""
-          width={40}
-          height={40}
-        />
-      </Link>
-    </div>
-  );
-};
-export { BannerLogo };
 export default Logo;

@@ -6,9 +6,7 @@ export default function Messages({
   conversation: Conversation | undefined;
 }) {
   const messages = conversation && conversation.messages;
-  // if (conversation) {
-  //   throw new Error("Conversation cannot be undefined");
-  // }
+
   return (
     <div
       role="presentation"
@@ -16,7 +14,13 @@ export default function Messages({
     >
       {messages?.map((message, index) => {
         return (
-          <Message content={message.content} role={message.role} key={index} />
+          message.role !== "system" && (
+            <Message
+              content={message.content}
+              role={message.role}
+              key={index}
+            />
+          )
         );
       })}
     </div>

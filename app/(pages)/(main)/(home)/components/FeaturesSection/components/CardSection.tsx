@@ -4,56 +4,33 @@ import { useTheme } from "next-themes";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 const CardSection = () => {
-  const { theme } = useTheme();
-  const ref = useRef<HTMLDivElement>(null);
-  const [highlightedElement, setHighlightedElement] = useState<number>(1);
-  const { scrollY } = useScroll({ smooth: 0 });
-  const [pxVisible, setPxVisible] = useState(1);
+  const { resolvedTheme } = useTheme();
+  let srcRoadmap;
+  let srcConversation;
+  let srcQuestion;
+  switch (resolvedTheme) {
+    case "light":
+      srcRoadmap = "/images/roadmap.png";
+      srcConversation = "/images/conversation.png";
+      srcQuestion = "/images/conversation-question.png";
+      break;
+    case "dark":
+      srcRoadmap = "/images/roadmap-dark.png";
+      srcConversation = "/images/conversation-dark.png";
+      srcQuestion = "/images/conversation-question-dark.png";
 
-  useEffect(() => {
-    const element = ref.current;
-    const onScroll = () => {
-      if (!element) return;
-
-      const rect = element.getBoundingClientRect();
-      const height = Math.max(0, window.innerHeight - rect.top);
-      if (height > 0 && height < 230) {
-        setHighlightedElement(1);
-      } else if (height > 230 && height < 450) {
-        setHighlightedElement(2);
-      } else if (height > 450 && height < 750) {
-        setHighlightedElement(3);
-      } else if (height > 750) {
-        setHighlightedElement(4);
-      } else {
-        setHighlightedElement(1);
-      }
-      setPxVisible(height * 2);
-    };
-
-    const unsubscribe = scrollY.on("change", onScroll);
-
-    return () => unsubscribe();
-  }, [scrollY]);
+      break;
+    default:
+      srcRoadmap =
+        "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+      srcConversation = srcRoadmap;
+      srcQuestion = srcRoadmap;
+      break;
+  }
   return (
     <div className="grid grid- grid-cols-1 lg:grid-cols-2 gap-6 w-fit mx-auto relative ">
-      <div className="absolute hidden lg:block left-[calc(50%-2px)] top-0 h-full w-1 bg-secondary">
-        <div
-          style={{ height: pxVisible }}
-          className="absolute w-1 max-h-[100%] left-[calc(50%-2px)] 
-            transition-all bg-accent/50 blur-[1px] duration-500 rounded-full flex flex-col items-center justify-center"
-        ></div>
-      </div>
       <div className="big-features-container">
-        <div
-          style={{
-            boxShadow:
-              highlightedElement == 1
-                ? "0px 0px 20px 0px rgba(var(--accent),0.5)"
-                : "",
-          }}
-          className="w-full  first-features-container grid grid-cols-2 grid-rows-3 bg-white-500 justify-items-center h-full justify-center items-center rounded-xl p-16 bg-clip-content"
-        >
+        <div className="w-full  first-features-container grid grid-cols-2 grid-rows-3 bg-white-500 justify-items-center h-full justify-center items-center rounded-xl p-16 bg-clip-content">
           <figure>
             <Image
               src="/images/vue.png"
@@ -112,32 +89,18 @@ const CardSection = () => {
           C++.
         </p>
       </div>
-      <div
-        style={{
-          boxShadow:
-            highlightedElement == 2
-              ? "0px 0px 20px 0px rgba(var(--accent),0.5)"
-              : "",
-        }}
-        className="big-features-container"
-      >
+      <div className="big-features-container">
         <h4>example from Rust roadmap*</h4>
-        {theme == "dark" ? (
-          <Image
-            src="/images/roadmap-dark.png"
-            alt="Roadmap example"
-            width={400}
-            height={550}
-          />
-        ) : (
-          <Image
-            src="/images/roadmap.png"
-            alt="Roadmap example"
-            width={400}
-            height={550}
-          />
-        )}
-        <div className="absolute rounded-2xl w-full h-full bg-gradient-to-t from-background" />
+
+        <Image
+          src={srcRoadmap}
+          alt="Roadmap example"
+          className="left-0 top-10 scale-150 absolute "
+          width={604}
+          height={738}
+        />
+
+        <div className="absolute rounded-2xl w-full h-1/2 bottom-0 bg-gradient-to-t from-azure-50 dark:from-azure-950" />
       </div>
       <div className="small-features-container text-left items-start lg:text-right lg:items-end">
         <h1>Personalized learning path.</h1>
@@ -148,33 +111,21 @@ const CardSection = () => {
       </div>
       <div
         style={{
-          boxShadow:
-            highlightedElement == 3
-              ? "0px 0px 20px 0px rgba(var(--accent),0.5)"
-              : "",
+          height: "fit-content",
         }}
         className="big-features-container"
-        ref={ref}
       >
         <h4>example from Rust functions lesson*</h4>
-        {theme == "dark" ? (
-          <Image
-            src="/images/conversation-dark.png"
-            className="rounded-xl"
-            alt="Roadmap example"
-            width={450}
-            height={600}
-          />
-        ) : (
-          <Image
-            className="rounded-xl"
-            src="/images/conversation.png"
-            alt="Roadmap example"
-            width={450}
-            height={600}
-          />
-        )}
-        <div className="absolute rounded-2xl w-full h-full bg-gradient-to-t from-background" />
+
+        <Image
+          src={srcConversation}
+          className="rounded-xl"
+          alt="Roadmap example"
+          width={450}
+          height={600}
+        />
+
+        <div className="absolute rounded-2xl w-full h-1/2 bottom-0 bg-gradient-to-t from-azure-50 dark:from-azure-950" />
       </div>
       <div className="small-features-container text-left items-start">
         <h1>Your experienced AI mentor.</h1>
@@ -185,32 +136,21 @@ const CardSection = () => {
       </div>
       <div
         style={{
-          boxShadow:
-            highlightedElement == 4
-              ? "0px 0px 20px 0px rgba(var(--accent),0.5)"
-              : "",
+          height: "fit-content",
         }}
-        className="big-features-container"
+        className="big-features-container "
       >
         <h4>example from Rust functions lesson*</h4>
-        {theme == "dark" ? (
-          <Image
-            src="/images/conversation-question-dark.png"
-            className="rounded-xl"
-            alt="Roadmap example"
-            width={450}
-            height={600}
-          />
-        ) : (
-          <Image
-            className="rounded-xl"
-            src="/images/conversation-question.png"
-            alt="Roadmap example"
-            width={450}
-            height={600}
-          />
-        )}
-        <div className="absolute rounded-2xl w-full h-1/2 bottom-0 bg-gradient-to-t from-background" />
+
+        <Image
+          src={srcQuestion}
+          className="rounded-xl"
+          alt="Roadmap example"
+          width={450}
+          height={600}
+        />
+
+        <div className="absolute rounded-2xl w-full  bottom-0 bg-gradient-to-t from-azure-50 h-1/2 dark:from-azure-950" />
       </div>
       <div className="small-features-container text-left items-start lg:text-right lg:items-end">
         <h1>Be free to ask questions!</h1>

@@ -99,19 +99,19 @@ export default function ProjectSearch() {
         ) : (
           <div className="w-full h-fit space-y-3 overflow-hidden">
             <div className="border border-secondary p-4 rounded min-h-[70px] flex items-center justify-center">
-              <Skeleton width="75%" height="24px" rounded="4px" />
+              <Skeleton width="75%" height="24px"  />
             </div>
             <div className="border border-secondary p-4 rounded min-h-[70px] flex items-center justify-center">
-              <Skeleton width="75%" height="24px" rounded="4px" />
+              <Skeleton width="75%" height="24px" />
             </div>
             <div className="border border-secondary p-4 rounded min-h-[70px] flex items-center justify-center">
-              <Skeleton width="75%" height="24px" rounded="4px" />
+              <Skeleton width="75%" height="24px" />
             </div>
             <div className="border border-secondary p-4 rounded min-h-[70px] flex items-center justify-center">
-              <Skeleton width="75%" height="24px" rounded="4px" />
+              <Skeleton width="75%" height="24px" />
             </div>
             <div className="border border-secondary p-4 rounded min-h-[70px] flex items-center justify-center">
-              <Skeleton width="75%" height="24px" rounded="4px" />
+              <Skeleton width="75%" height="24px" />
             </div>
           </div>
         )}

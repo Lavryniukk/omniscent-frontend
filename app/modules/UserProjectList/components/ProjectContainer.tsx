@@ -33,7 +33,7 @@ export default function ProjectContainer({
     <>
       <Link
         href={`/workspace/roadmap/${_id}`}
-        className={`py-5 hover:scale-105 transition-transform duration-100 hover:text-accent border block border-accent bg-secondary rounded-lg text-base text-center text-text px-7 relative w-full ${
+        className={`py-5 hover:scale-105 transition-transform duration-100 hover:opacity-80 dark:border block dark:bg-azure-900 dark:border-azure-700 hover:bg-azure-50 bg-azure-100 shadow-xl rounded-lg font-semibold text-lg   text-center text-azure-950  dark:text-azure-50 px-7 relative w-full ${
           isOpen ? "pointer-events-none" : "pointer-events-auto"
         }`}
       >
@@ -41,7 +41,7 @@ export default function ProjectContainer({
         <Trash
           onClick={togglePopup}
           size={22}
-          className="absolute text-accent top-5 right-5"
+          className="absolute dark:text-azure-300 text-azure-950/70  top-5 right-5"
         />
       </Link>
 
