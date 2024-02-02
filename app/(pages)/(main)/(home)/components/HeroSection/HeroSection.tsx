@@ -22,7 +22,7 @@ let HeroSection = () => {
   return (
     <div className="  h-fit py-20  relative overflow-hidden flex flex-col items-center">
       <Title />
-      <picture className="w-[90%] p-0.5 relative flex items-center overflow-hidden justify-center  border-azure-950  rounded-2xl  md:w-[80%] ">
+      <picture className="w-full  p-0.5 relative flex items-center overflow-hidden justify-center  border-azure-950 rounded md:rounded-2xl  md:w-[80%] ">
         <Image
           src={src}
           alt="A cleverize conversation example"
