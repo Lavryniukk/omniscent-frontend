@@ -47,7 +47,7 @@ export default function ConversationInput({
     >
       <textarea
         className="w-full flex items-center overflow-y-auto max-h-60 dark:border-azure-700  dark:bg-azure-900/50 min-h-[60px] justify-center shadow-xl dark:border box-border  bg-opacity-70 backdrop-blur-sm  rounded-2xl p-4 pr-16 aspect-none placeholder:text-lg dark:text-azure-200 text-lg focus:ring-0 focus:outline-none transition-all duration-300 dark:shadow-none dark:focus:shadow-azure-700 dark:focus:shadow-lg  resize-none "
-        placeholder="Send a message"
+        placeholder="Ask a question..."
         rows={1}
         value={userInputData}
         onChange={handleInput}

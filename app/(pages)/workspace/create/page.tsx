@@ -1,6 +1,5 @@
 import { RoadmapCreationForm } from "@/app/modules";
 import { NavigationButton } from "@/app/shared/components/buttons";
-import { Metadata } from "next";
 
 const Create = () => {
   return (
