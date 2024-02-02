@@ -24,12 +24,11 @@ export default function ConversationRoadmapNodeComponent({
   return (
     <li className="w-full flex items-center  justify-center flex-col min-w-[200px]">
       <Link
+        aria-disabled={isStreaming}
         href={`/workspace/conversation/${roadmapId}/${subroadmapId}/${tech.conversation_id}`}
-        className={`conversation_roadmap__node ${
+        className={`conversation-roadmap-node ${
           isStreaming && "hover:cursor-not-allowed"
-        } ${tech.is_completed && "roadmap__node--completed"} ${
-          isCurrent && "bg-secondary"
-        }
+        } ${tech.is_completed && "line-through"} ${isCurrent && " bg-azure-800"}
 		  `}
       >
         {tech.title}
@@ -37,7 +36,7 @@ export default function ConversationRoadmapNodeComponent({
 
       {!isLast && (
         <div
-          className={`block w-0.5 select-none h-8 bg-accent  ${
+          className={`block w-0.5 select-none h-8 bg-azure-700  ${
             tech.is_completed && "opacity-60"
           }`}
         />

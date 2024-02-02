@@ -40,8 +40,8 @@ export default function Version010() {
           <li>
             <strong>AI-Generated Learning Roadmaps:</strong> Cleverize stands
             out with its capability to generate personalized learning roadmaps.
-            By simply inputting their desired programming language focus – C++,
-            Rust, Java, Python and other – users receive a custom-designed
+            By simply inputting their desired programming language focus - C++,
+            Rust, Java, Python and other - users receive a custom-designed
             learning pathway. This roadmap is visually presented as a series of
             interconnected nodes, each representing a specific technology or
             topic, akin to a journey map guiding learners through the complex

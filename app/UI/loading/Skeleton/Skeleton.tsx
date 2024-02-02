@@ -1,20 +1,18 @@
 export default function Skeleton({
   width,
   height,
-  rounded,
   noMargin = false,
 }: {
   width: string;
   height: string;
-  rounded?: string;
   noMargin?: boolean;
 }) {
   return (
     <div
-      style={{ width: width, height: height, borderRadius: rounded }}
-      className={`${noMargin ? "" : "mx-auto"} bg-secondary overflow-hidden`}
+      style={{ width: width, height: height }}
+      className={`${noMargin ? "" : "mx-auto"} rounded-lg overflow-hidden`}
     >
-      <div className="animate-skeleton h-full w-full blur-[20px]" />
+      <div className=" animate-pulse dark:bg-azure-50/50 bg-azure-950/40  h-full w-full blur-[20px]" />
     </div>
   );
 }

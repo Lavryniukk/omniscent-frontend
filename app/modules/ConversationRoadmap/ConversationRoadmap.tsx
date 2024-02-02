@@ -1,5 +1,5 @@
 "use client";
-
+import { NavigationButton } from "@/app/shared/components/buttons";
 import Link from "next/link";
 import ConversationRoadmapNodeComponent from "./components/ConversationRoadmapNode";
 import { useRoadmap } from "@/app/shared/hooks/useRoadmap";
@@ -24,25 +24,22 @@ export default function ConversationRoadmap({ queryParams }: QueryParams) {
   return (
     <>
       <aside
-        className={`sidebar w-[15%] min-w-[270px] max-w-[500px] space-y-5 py-4 bg-background  px-3 flex-col h-full z-20 ${
+        className={`sidebar w-[15%] min-w-[270px] max-w-[500px] gap-10 flex  py-5 bg-azure-950 px-3 flex-col h-full z-20 ${
           isOpen ? "translate-x-0" : "translate-x-[-100%] lg:translate-x-0"
         } duration-500 transition absolute lg:relative overflow-auto`}
       >
         <Link
           href={`/workspace/roadmap/${roadmapId}`}
-          className=" w-fit mx-auto relative  group overflow-hidden before:w-0 before:left-0 before:-z-0  before:absolute before:bg-secondary before:h-full hover:before:w-full before:transition-all before:duration-200 before:bottom-0 before:ease-in-out hover:before:rounded-lg hover:text-text  text-accent space-x-2  rounded-lg flex items-center justify-center"
+          className=" w-fit mx-auto relative  group overflow-hidden  hover:opacity-80  text-azure-50/50  space-x-2  rounded-lg flex items-center justify-center"
         >
-          <MoveLeft
-            size={30}
-            className="text-accent z-10 group-hover:translate-x-[67px] transition-transform duration-200 bg-secondary rounded-full p-1"
-          />
-          <p className="z-10 transition-transform duration-200 group-hover:translate-x-[200px]">
-            Back to roadmap
-          </p>
+          <MoveLeft size={20} className="rounded-full " />
+          <p className="">Back to roadmap</p>
         </Link>
 
-        <h1 className="text-text text-2xl text-center">{roadmap?.title}</h1>
-        {isLoading && <Skeleton height="40px" rounded="6px" width="50%" />}
+        <h1 className="text-azure-50 text-2xl text-center">
+          {roadmap?.title}
+        </h1>
+        {isLoading && <Skeleton height="40px" width="50%" />}
         {isLoading && <div className="mx-auto text-text">Loading</div>}
 
         <ul>

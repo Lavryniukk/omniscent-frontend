@@ -20,11 +20,11 @@ export default function RootLayout({
 
   return (
     <html lang="en" className={`${inter.variable}`} suppressHydrationWarning>
-      <body className="font-inter antialiased bg-background">
+      <body className="font-inter antialiased bg-azure-50 dark:bg-azure-950">
         <ClerkProvider>
           <QueryClientProvider client={client}>
             <SubscriptionProvider>
-              <ThemeProvider disableTransitionOnChange>
+              <ThemeProvider attribute="class" disableTransitionOnChange>
                 {children}
               </ThemeProvider>
             </SubscriptionProvider>

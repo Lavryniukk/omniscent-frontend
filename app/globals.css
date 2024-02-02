@@ -2,39 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --text: 12, 14, 12;
-  --background: 235, 233, 231;
-  --primary: 179, 249, 231;
-  --secondary: 217, 217, 217;
-  --accent: 92, 92, 92;
-}
-[data-theme="dark"] {
-  --text: 235, 233, 231; /* Light text for dark background */
-  --background: 12, 14, 12; /* Dark background */
-  --primary: 6, 75, 58; /* Primary color for dark theme */
-  --secondary: 38, 38, 38; /* Secondary color for dark theme */
-  --accent: 163, 163, 163; /* Accent color for dark theme */
-}
-
-/* .light {
-  --text: 12, 14, 12;
-  --background: 235, 233, 231;
-  --primary: 179, 249, 231;
-  --secondary: 217, 217, 217;
-  --accent: 92, 92, 92;
-}
-/* styles.css or tailwind.css */
-/* 
-.dark {
-  --text: 235, 233, 231;
-  --background: 12, 14, 12;
-  --primary: 0, 215, 215;
-  --secondary: 38, 38, 38;
-  --accent: 163, 163, 163;
-} */
-
-.fullheight {
+.full-height {
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
 }
@@ -65,24 +33,20 @@
   }
 }
 
-.cl-internal-fflmyf {
-  @apply text-text bg-text/10;
-}
-
 .cl-avatarBox {
   @apply w-12 h-12 aspect-square md:w-8 md:h-8;
 }
 
 .cl-userButtonOuterIdentifier {
-  @apply text-accent text-base;
+  @apply text-azure-950 dark:text-azure-50 text-base;
 }
 
 .cl-userButtonPopoverCard {
-  @apply bg-background;
+  @apply bg-azure-100/50 dark:bg-azure-900/50 backdrop-blur-md border md:border-t-0 dark:border-azure-700 border-azure-300;
 }
 
 .cl-userButtonPopoverMain {
-  @apply text-text;
+  @apply text-azure-950 dark:text-azure-50;
 }
 
 .cl-userPreviewTextContainer,
@@ -92,11 +56,11 @@
 }
 
 .cl-userPreviewSecondaryIdentifier {
-  @apply text-accent;
+  @apply text-azure-400;
 }
 
 .cl-userButtonPopoverActionButtonText {
-  @apply text-accent;
+  @apply text-azure-400;
 }
 
 .cl-userButtonPopoverFooter {
@@ -125,27 +89,21 @@
   }
 
   .project {
-    @apply w-full flex items-center relative justify-around px-2 text-xl  text-accent select-none border h-20 rounded-lg border-dashed border-accent;
+    @apply w-full flex items-center relative justify-around px-2 text-xl  text-azure-400 select-none border h-20 rounded-lg border-dashed border-azure-400;
   }
 }
-body {
-  background: var(--background);
-}
 
-.chat-output {
-  @apply flex flex-col gap-4;
-}
 .chat-output h1 {
-  @apply text-2xl md:text-3xl mt-10  text-text font-bold;
+  @apply text-2xl md:text-3xl mt-10  text-azure-950 dark:text-azure-50 font-bold;
 }
 .chat-output h2 {
-  @apply text-xl md:text-2xl mt-8  text-text font-bold;
+  @apply text-xl md:text-2xl mt-8  text-azure-950 dark:text-azure-50 font-bold;
 }
 .chat-output h3 {
-  @apply text-lg md:text-xl mt-6 text-text font-bold;
+  @apply text-lg md:text-xl mt-6 text-azure-900 dark:text-azure-100 font-semibold;
 }
 .chat-output h4 {
-  @apply text-lg  text-text font-bold;
+  @apply text-lg  text-azure-900 dark:text-azure-100 font-semibold;
 }
 .chat-output ul {
   @apply ml-4 flex flex-col gap-2;
@@ -160,7 +118,7 @@ body {
 }
 
 .chat-output strong {
-  @apply text-text font-bold;
+  @apply text-azure-950 dark:text-azure-50 font-bold;
 }
 
 .chat-output ol {
@@ -168,99 +126,63 @@ body {
 }
 
 .chat-output pre code {
-  @apply pt-6 rounded-lg font-medium after:hidden before:hidden;
+  @apply pt-6 rounded-lg font-medium shadow-xl dark:border-azure-700 dark:border bg-azure-900 after:hidden before:hidden;
 }
 :not(pre) code {
-  @apply dark:text-text font-semibold after:content-['`'] before:content-['`'];
-}
-
-.features-container {
-  @apply md:w-full w-full shadow-xl  border  sm:w-3/4 lg:w-full mx-auto border-accent/40 border-opacity-50 rounded-lg  transition-all delay-150 duration-500;
-}
-
-.roadmap__node {
-  @apply text-center px-5 text-text w-full cursor-pointer relative hover:text-background hover:bg-text duration-200 transition-colors font-semibold flex items-center justify-center border h-12 bg-background border-accent rounded-lg;
-}
-
-.conversation_roadmap__node {
-  @apply text-center py-2 text-accent w-full cursor-pointer relative  duration-200 transition-colors font-semibold flex items-center justify-center  text-sm rounded-lg;
-}
-
-.roadmap__node--completed {
-  @apply line-through;
-}
-
-.roadmap__node--current {
-  @apply shadow-[0px_0px_15px_0px_#f5f5f5];
+  @apply dark:text-azure-50 text-azure-950 font-semibold after:content-['`'] before:content-['`'];
 }
 .chat-output {
-  @apply tracking-normal;
+  @apply flex flex-col gap-4 dark:text-azure-100/90 dark:font-light text-azure-950 font-[400];
 }
-.roadmap__arrow {
-  @apply block w-0.5 select-none h-20 bg-accent;
+.roadmap-node {
+  @apply text-center px-5 w-full active:scale-90 cursor-pointer relative shadow-xl dark:bg-azure-900 dark:text-azure-50/80 text-azure-950 hover:bg-azure-50 hover:dark:bg-azure-800 font-semibold flex items-center justify-center h-12 bg-azure-100 rounded-lg;
 }
 
-.conversation-hint {
-  @apply w-full text-left px-2 text-base sm:text-lg lg:text-base text-accent py-3 bg-secondary rounded-md;
+.conversation-roadmap-node {
+  @apply text-center py-2 text-azure-100 w-full cursor-pointer relative duration-200 transition-colors flex items-center justify-center text-sm rounded-lg;
+}
+
+.chat-output {
+  @apply tracking-normal;
 }
 
 .small-features-container {
   @apply w-[400px] lg:w-[450px] relative h-48 row-span-1 flex flex-col p-2 justify-center gap-5;
 }
 .small-features-container h1 {
-  @apply text-2xl font-bold text-text;
+  @apply text-2xl font-bold text-azure-950 dark:text-azure-50;
 }
 .small-features-container p {
-  @apply text-lg  text-text/80;
+  @apply text-lg  text-azure-950/80 dark:text-azure-50/80;
 }
 .big-features-container {
-  @apply w-[400px] lg:w-[450px] relative transition-shadow duration-300 rounded-xl flex flex-col items-center  border-2 border-secondary h-[600px] row-span-2;
+  @apply w-[400px] lg:w-[450px] relative overflow-hidden transition-shadow duration-300 rounded-xl flex flex-col items-center  border-2 border-azure-200 dark:border-azure-800 h-[600px] row-span-2;
 }
 .big-features-container h4 {
-  @apply absolute -top-6 right-0 text-xs italic text-accent font-light p-1;
+  @apply absolute -top-6 right-0 text-xs italic text-azure-950 dark:text-azure-50 font-light p-1;
 }
 .big-features-container Image {
   @apply rounded-2xl border-white;
 }
 .big-features-container div.first-features-container figure {
-  @apply w-[100px] h-[100px] rounded-lg shadow-xl shadow-secondary  aspect-square  p-4 flex items-center justify-center;
+  @apply w-[100px] h-[100px] rounded-lg shadow-xl aspect-square dark:border dark:border-azure-800 dark:shadow-azure-800 p-4 flex items-center justify-center;
 }
 
 /* Hide the default checkbox */
 .burger .container input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
+  @apply absolute  opacity-0 cursor-pointer h-0 w-0;
 }
 
 .burger .container {
-  display: block;
-  position: relative;
-  cursor: pointer;
-  font-size: 20px;
-  user-select: none;
+  @apply text-lg block cursor-pointer select-none relative;
 }
 
 .burger .checkmark {
-  position: relative;
-  top: 0;
-  left: 0;
-  height: 1.3em;
-  width: 1.3em;
+  @apply relative top-0  left-0 h-[1.3em] w-[1.3em];
 }
 
 .burger .checkmark span {
-  width: 32px;
-  height: 2px;
-  position: absolute;
-  right: 0;
-  transition: all 0.3s ease-in-out;
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
+  @apply absolute right-0 h-[2px] bg-azure-950 dark:bg-azure-50 rounded w-8 transition-all duration-300;
 }
 
 .burger .checkmark span:nth-child(1) {
