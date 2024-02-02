@@ -7,13 +7,13 @@ export default function FormSelect({
   handleFunction: HandleFunctionProps["selectHandleFunction"];
 }) {
   return (
-    <div className="flex relative p-3  rounded-lg border w-full border-secondary  justify-between items-center">
+    <div className="flex relative p-3  rounded-lg border w-full border-azure-800 dark:border-azure-300   justify-between items-center">
       <select
         required
         defaultValue={RoadmapSize.MEDIUM}
         onChange={(e) => handleFunction(e)}
-        className="bg-background peer appearance-none box-border transition-all duration-200 text-base
-				 text-accent outline-none cursor-pointer w-full "
+        className="bg-azure-100 dark:bg-azure-900 peer appearance-none box-border transition-all duration-200 text-base
+				 text-azure-950/70 dark:text-azure-50/70 outline-none cursor-pointer w-full "
       >
         <option value={RoadmapSize.MEDIUM}>Programming language</option>
         <option value={RoadmapSize.SMALL}>
@@ -21,7 +21,7 @@ export default function FormSelect({
         </option>
       </select>
       <ChevronDown
-        className={` w-[24px] h-[24px] absolute cursor-pointer right-3  text-accent pointer-events-none `}
+        className={` w-[24px] h-[24px] absolute cursor-pointer right-3  text-azure-950/70 dark:text-azure-50/70 pointer-events-none `}
       />
     </div>
   );

@@ -43,10 +43,10 @@ export default function NewProjectForm() {
 
   return (
     <form
-      className="flex flex-col items-center border space-y-10 min-w-[350px]  w-1/3 h-fit justify-center xs:mx-auto  rounded-lg  border-secondary gap-4 px-4 py-8 xs:px-8 xs:py-12 mx-3"
+      className="flex flex-col items-center border-2 space-y-10 xs:space-y-24 w-1/3 min-w-[350px] h-fit justify-center xs:mx-auto border-transparent bg-azure-100 dark:bg-azure-900 rounded-lg xs:border-azure-950/40 xs:dark:border-azure-50/20 px-4 py-8 xs:px-8 xs:py-12 mx-3"
       onSubmit={(e) => handleSubmit(e)}
     >
-      <h2 className="text-text text-center text-2xl  font-bold">
+      <h2 className="text-azure-950 dark:text-azure-50 text-center text-2xl  font-bold">
         Create project
       </h2>
       <div className="w-full gap-5 flex items-center flex-col justify-center">

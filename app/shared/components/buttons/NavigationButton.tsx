@@ -1,16 +1,25 @@
 import { MoveLeft } from "lucide-react";
 import Link from "next/link";
 import React from "react";
-
-const NavigationButton = ({ href, title }: { href: string; title: string }) => {
+import ThemeSwitcher from "@/app/modules/Header/components/ThemeSwitcher/ThemeSwitcher";
+const NavigationButton = ({
+  href,
+  title,
+}: {
+  href: string;
+  title: string;
+}): React.ReactNode => {
   return (
-    <Link
-      href={href}
-      className="flex items-center gap-1 justify-center p-2  w-fit text-accent absolute left-10 top-10 hover:opacity-80"
-    >
-      <MoveLeft className="text-accent font-light" strokeWidth={1} />
-      To {title}
-    </Link>
+    <div className="flex items-center absolute left-10 top-10 gap-2">
+      <Link
+        href={href}
+        className="flex items-center gap-1 justify-center p-2  w-fit dark:text-azure-50/80 text-azure-950/80   hover:opacity-80"
+      >
+        <MoveLeft className="font-light" strokeWidth={1} />
+        To {title}
+      </Link>
+      <ThemeSwitcher />
+    </div>
   );
 };
 

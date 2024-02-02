@@ -1,21 +1,18 @@
 import Skeleton from "@/app/UI/loading/Skeleton/Skeleton";
 import Roadmap from "@/app/modules/Roadmap/PrimaryRoadmap/Roadmap";
 import { NavigationButton } from "@/app/shared/components/buttons";
-import { Metadata } from "next";
 import { Suspense } from "react";
-export const metadata: Metadata = {
-  title: "Workspace • Roadmap",
-  description:
-    "This is a page where a learning path for one of your projects is displayed. You can see all the technologies you need to learn to complete your project.",
-};
+
 const RoadmapSkeleton = () => (
-  <div className="mt-32">
+  <div className="mt-32 flex-col flex items-center justify-center  ">
     {Array.from({ length: 10 }).map((_, index) => (
       <div key={index}>
-        <div className="min-w-[200px] max-w-[400px] mx-auto w-full h-8 roadmap__node pointer-events-none">
-          <Skeleton width="80%" height="20px" rounded="4px" />
+        <div className="min-w-[200px] max-w-[300px] mx-auto w-full h-8 roadmap-node pointer-events-none">
+          <Skeleton width="80%" height="20px" />
         </div>
-        {index !== 9 && <div className="roadmap__arrow mx-auto" />}
+        {index !== 9 && (
+          <div className="block w-0.5 select-none h-20 bg-azure-400 dark:bg-azure-600 mx-auto" />
+        )}
       </div>
     ))}
   </div>
@@ -25,12 +22,13 @@ function RoadmapPage({ params }: { params: { id: string } }) {
   return (
     <div className="h-full py-20 min-h-screen bg-background w-auto">
       <NavigationButton href={"/workspace"} title={"Workspace"} />
-      <div className="border flex-col flex items-center p-3 w-80  rounded-lg bg-secondary border-accent mx-auto">
-        <h1 className="text-2xl text-text font-inter font-bold">Hint</h1>
-        <p className="text-lg text-text text-center font-light">
+      <div className=" flex-col flex items-center p-3 w-80  rounded-lg border-2 text-azure-950 dark:text-azure-50 bg-azure-100 dark:bg-azure-900 border-azure-200 dark:border-azure-800 border-accent mx-auto">
+        <h1 className="text-2xl font-inter font-bold">Hint</h1>
+        <p className="text-lg text-center font-light">
           Click on any technology to start learning it.
         </p>
       </div>
+
       <Suspense fallback={<RoadmapSkeleton />}>
         <Roadmap id={params.id} />
       </Suspense>

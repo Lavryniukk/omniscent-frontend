@@ -2,24 +2,7 @@
 const nextConfig = {};
 module.exports = nextConfig;
 module.exports = {
-  reactStrictMode: true,
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "**",
-      },
-    ],
+  experimental: {
+    missingSuspenseWithCSRBailout: false,
   },
-  headers: () => [
-    {
-      source: "/",
-      headers: [
-        {
-          key: "Cache-Control",
-          value: "no-store",
-        },
-      ],
-    },
-  ],
 };

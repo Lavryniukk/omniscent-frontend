@@ -42,12 +42,12 @@ export default function ConversationInput({
 
   return (
     <form
-      className="w-3/4 xl:w-1/2 relative justify-center max-w-[850px] max-h-60 h-fit box-border  mb-5 bottom-0 z-10 flex items-center"
+      className="w-3/4 xl:w-1/2 relative justify-center dark:bg-transparent max-w-[850px] max-h-60 h-fit box-border  mb-5 bottom-0 z-10 flex items-center"
       onSubmit={handleSubmit}
     >
       <textarea
-        className="w-full flex items-center overflow-y-auto max-h-[60px] min-h-[60px] justify-center border box-border border-accent/70 bg-opacity-70 backdrop-blur-sm bg-secondary rounded-2xl p-4 pr-16 aspect-none placeholder:text-lg text-text text-lg focus:ring-0 focus:outline-none focus:border-accent resize-none "
-        placeholder="Send a message"
+        className="w-full flex items-center overflow-y-auto max-h-60 dark:border-azure-700  dark:bg-azure-900/50 min-h-[60px] justify-center shadow-xl dark:border box-border  bg-opacity-70 backdrop-blur-sm  rounded-2xl p-4 pr-16 aspect-none placeholder:text-lg dark:text-azure-200 text-lg focus:ring-0 focus:outline-none transition-all duration-300 dark:shadow-none dark:focus:shadow-azure-700 dark:focus:shadow-lg  resize-none "
+        placeholder="Ask a question..."
         rows={1}
         value={userInputData}
         onChange={handleInput}

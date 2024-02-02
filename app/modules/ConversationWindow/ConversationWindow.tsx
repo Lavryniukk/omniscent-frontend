@@ -21,7 +21,7 @@ export default function ConversationWindow({ queryParams }: QueryParams) {
 
   return (
     <div
-      className={`w-full flex items-center flex-1 flex-col h-full border-accent bg-secondary relative overflow-hidden `}
+      className={`w-full flex items-center flex-1 flex-col h-full border-accent bg-azure-50/80 dark:bg-azure-50/10 relative overflow-hidden `}
     >
       <div className="w-full rounded-b-lg top-0 left-0 text-text tracking-widest py-4 flex items-center justify-center text-xl font-bold text-center">
         {true ? (

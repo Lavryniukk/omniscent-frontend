@@ -8,6 +8,7 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: "class",
   theme: {
     extend: {
       keyframes: {
@@ -48,12 +49,7 @@ const config: Config = {
         skeleton: "skeleton 1.5s linear infinite",
         "spin-slow": "spin 10s linear infinite",
       },
-      width: {
-        "10lg": "1000px",
-      },
-      height: {
-        "10lg": "1000px",
-      },
+
       maxWidth: {
         "10xl": "1600px",
       },
@@ -63,22 +59,25 @@ const config: Config = {
         lg: "340px",
       },
       colors: {
-        primary: "rgba(var(--primary))",
-        secondary: "rgba(var(--secondary))",
-        accent: "rgba(var(--accent))",
-        text: "rgba(var(--text))",
-        background: "rgba(var(--background))",
+        azure: {
+          "50": "#f1f7fe",
+          "100": "#e3edfd",
+          "200": "#bdd8f9",
+          "300": "#84b7f5",
+          "400": "#4493ee",
+          "500": "#1a74db",
+          "600": "#0d5bba",
+          "700": "#15509e",
+          "800": "#0b274c",
+          "900": "#0b203c",
+          "950": "#050d1a",
+        },
       },
       fontFamily: {
         inter: "var(--inter-font)",
       },
       fontSize: {
         xxs: "6px",
-      },
-      backgroundImage: {
-        masha: "url('/images/masha.png')",
-        kauch: "url('/images/nikolauchuk.jpg')",
-        kros: "url('/images/legend.png')",
       },
     },
     screens: {
