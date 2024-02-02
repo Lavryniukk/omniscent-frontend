@@ -9,8 +9,6 @@ import { FormStatusEnum } from "./types/formStatusEnum";
 import FormSelect from "./components/FormSelect/FormSelect";
 
 export default function NewProjectForm() {
-  const router = useRouter();
-
   const [formData, setFormData] = useState<FormState>({
     inputData: "",
     selectData: RoadmapSize.MEDIUM,
@@ -23,11 +21,14 @@ export default function NewProjectForm() {
     e.preventDefault();
 
     setResponseStatus(FormStatusEnum.LOADING);
-    console.log(formData);
-    await sendData(formData);
+    // await sendData(formData);
 
     setTimeout(() => {
-      router.push("/workspace");
+      setResponseStatus(FormStatusEnum.DONE);
+
+      setTimeout(() => {
+        setResponseStatus(FormStatusEnum.NULL);
+      }, 5000);
     }, 80000);
   };
   const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -43,13 +44,10 @@ export default function NewProjectForm() {
 
   return (
     <form
-      className="flex flex-col items-center border-2 space-y-10 xs:space-y-24 w-1/3 min-w-[350px] h-fit justify-center xs:mx-auto border-transparent bg-azure-100 dark:bg-azure-900 rounded-lg xs:border-azure-950/40 xs:dark:border-azure-50/20 px-4 py-8 xs:px-8 xs:py-12 mx-3"
+      className="flex flex-col items-center  dark:border shadow-xl gap-12 w-3/4 lg:w-1/3 min-w-[350px] h-fit justify-center xs:mx-auto border-transparent bg-azure-100/60 dark:bg-azure-900 rounded-lg xs:border-azure-950/40 xs:dark:border-azure-700 px-4 py-8 xs:px-8 xs:py-12 mx-3"
       onSubmit={(e) => handleSubmit(e)}
     >
-      <h2 className="text-azure-950 dark:text-azure-50 text-center text-2xl  font-bold">
-        Create project
-      </h2>
-      <div className="w-full gap-5 flex items-center flex-col justify-center">
+      <div className="w-full gap-3 flex items-center flex-col justify-center">
         <FormInput
           handleFunction={handleInput}
           inputData={formData.inputData}
