@@ -126,7 +126,7 @@
 }
 
 .chat-output pre code {
-  @apply pt-6 rounded-lg font-medium shadow-xl dark:border-azure-700 dark:border bg-azure-900 after:hidden before:hidden;
+  @apply pt-6 rounded-lg font-medium shadow-xl  dark:border-azure-700 dark:border bg-azure-900 after:hidden before:hidden;
 }
 :not(pre) code {
   @apply dark:text-azure-50 text-azure-950 font-semibold after:content-['`'] before:content-['`'];
