@@ -223,3 +223,20 @@
   -o-transform: translateX(-50px);
   opacity: 0;
 }
+
+.home-image {
+  perspective: 1000px;
+}
+
+.home-image picture {
+  transform-style: preserve-3d;
+  @apply origin-top transition-transform duration-1000 w-full shadow-2xl rounded-[14px];
+}
+
+.home-image .isShown {
+  transform: rotateX(0deg) translateZ(0px);
+}
+
+.home-image .isHidden {
+  transform: rotateX(-5deg) translateZ(-200px);
+}
