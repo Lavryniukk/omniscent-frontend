@@ -1,7 +1,7 @@
 import Link from "next/link";
 import ProjectSearch from "./components/ProjectsSearch/ProjectSearch"; // Importing the ProjectSearch component.
 
-export default function NewProjectField() {
+export default function RoadmapTemplates() {
   return (
     <div className="mx-auto w-1/3  h-fit min-h-[800px] px-5 py-20 border border-secondary rounded-xl">
       <h1 className="text-4xl text-center font-bold mx-auto text-text tracking-tight mt-10 font-inter">
