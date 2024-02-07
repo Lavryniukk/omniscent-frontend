@@ -26,7 +26,7 @@ const Header = () => {
           <Burger isOpen={isOpen} callback={toggleOpen} />
           <div className="md:flex hidden">
             <SignedIn>
-              <UserButton showName />
+              <UserButton afterSignOutUrl="/" showName />
             </SignedIn>
             <SignedOut>
               <SignInButton>Sign in</SignInButton>

@@ -19,9 +19,9 @@ export default function RootLayout({
   const client = new QueryClient();
 
   return (
-    <html lang="en" className={`${inter.variable}`} suppressHydrationWarning>
-      <body className="font-inter antialiased bg-azure-50 dark:bg-azure-950">
-        <ClerkProvider>
+    <ClerkProvider>
+      <html lang="en" className={`${inter.variable}`} suppressHydrationWarning>
+        <body className="font-inter antialiased bg-azure-50 dark:bg-azure-950">
           <QueryClientProvider client={client}>
             {/* <SubscriptionProvider> */}
             <ThemeProvider attribute="class" disableTransitionOnChange>
@@ -29,8 +29,8 @@ export default function RootLayout({
             </ThemeProvider>
             {/* </SubscriptionProvider> */}
           </QueryClientProvider>
-        </ClerkProvider>
-      </body>
-    </html>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

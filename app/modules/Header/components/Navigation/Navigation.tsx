@@ -15,6 +15,16 @@ export default function Navigation() {
       >
         Blog
       </Link>
+      <button
+        onClick={() => {
+          const windowHeight = document.body.scrollHeight;
+          console.log(windowHeight);
+          window.scrollTo({ top: windowHeight, behavior: "smooth" });
+        }}
+        className={`text-azure-950 dark:text-azure-50 hover:opacity-80 transition-opacity duration-100`}
+      >
+        Feedback
+      </button>
     </nav>
   );
 }
