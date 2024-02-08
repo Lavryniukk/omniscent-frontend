@@ -2,6 +2,7 @@ import { NavigationButton } from "@/app/shared/components/buttons";
 import { UserProjects } from "@/app/modules";
 import { Suspense } from "react";
 import Skeleton from "@/app/UI/loading/Skeleton/Skeleton";
+import { redirect } from "next/navigation";
 
 function UserRoadmapsLoading() {
   return (
@@ -22,7 +23,7 @@ function UserRoadmapsLoading() {
   );
 }
 
-function WorkspacePage() {
+function WorkspacePage({}) {
   return (
     <div className="flex flex-col h-screen  items-center justify-between mt-20">
       <NavigationButton href={"/"} title={"Home"} />
