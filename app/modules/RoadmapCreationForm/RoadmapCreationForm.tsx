@@ -21,7 +21,7 @@ export default function NewProjectForm() {
     e.preventDefault();
 
     setResponseStatus(FormStatusEnum.LOADING);
-    // await sendData(formData);
+    await sendData(formData);
 
     setTimeout(() => {
       setResponseStatus(FormStatusEnum.DONE);
