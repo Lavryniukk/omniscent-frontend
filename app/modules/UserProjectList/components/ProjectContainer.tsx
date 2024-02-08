@@ -41,7 +41,7 @@ export default function ProjectContainer({
         <Trash
           onClick={togglePopup}
           size={22}
-          className="absolute dark:text-azure-300 text-azure-950/70  top-5 right-5"
+          className="absolute hover:opacity-80 dark:text-azure-300 text-azure-950/70  top-5 right-5"
         />
       </Link>
 

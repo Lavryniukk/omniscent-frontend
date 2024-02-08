@@ -16,7 +16,9 @@ export default function FetchedRoadmaps({
         ))}
       </div>
 
-      <Button variant="ghost" href="/workspace/create">Create new</Button>
+      <Button variant="ghost" href="/workspace/new">
+        Create new
+      </Button>
     </>
   );
 }

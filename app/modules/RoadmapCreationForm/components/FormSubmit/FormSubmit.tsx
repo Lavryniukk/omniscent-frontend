@@ -18,12 +18,19 @@ export default function FormSubmit({ status }: { status: FormStatusEnum }) {
       return (
         <button
           type="submit"
-          className={`text-azure-950 dark:text-azure-50  text-xl w-full font-medium px-5 py-4 box-border border-azure-700 dark:border-azure-300  transition-colors duration-200 border sm:w-3/4 mx-auto rounded-md 
-         hover:bg-azure-700 dark:hover:bg-azure-300 hover:text-azure-50 dark:hover:text-azure-950
+          className={`text-azure-950 dark:text-azure-50 text-xl w-full font-medium px-5 py-4 box-border border-azure-700 dark:border-azure-700 dark:bg-azure-800 transition-colors duration-200 shadow-md dark:border sm:w-3/4 mx-auto rounded-md 
+         hover:bg-azure-200  dark:hover:bg-azure-700 
      `}
         >
           Create
         </button>
+      );
+    case FormStatusEnum.DONE:
+      return (
+        <div className="mx-auto  flex items-start text-left gap-2 text-base text-azure-950 dark:text-azure-50 font-semibold">
+          <AlertCircle className=" text-green-700 dark:text-green-400" />
+          <p>Project created successfully! Visit your workspace;)</p>
+        </div>
       );
   }
 }
