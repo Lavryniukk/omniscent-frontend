@@ -225,18 +225,102 @@
 }
 
 .home-image {
-  perspective: 1000px;
-}
-
-.home-image picture {
+  perspective: 2000px;
   transform-style: preserve-3d;
-  @apply origin-top transition-transform duration-1000 w-full shadow-2xl rounded-[14px];
 }
 
 .home-image .isShown {
-  transform: rotateX(0deg) translateZ(0px);
+  animation-duration: 1400ms;
+  animation-timing-function: ease;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+  animation-name: slideIn;
+  animation-timeline: auto;
+  animation-range: normal;
+  animation-delay: 400ms;
 }
 
 .home-image .isHidden {
-  transform: rotateX(-5deg) translateZ(-200px);
+  transform: rotateX(25deg);
+}
+
+.home-image .gradient {
+  background: conic-gradient(
+    from 230.29deg at 51.63% 52.16%,
+    rgb(36, 0, 255) 0deg,
+    rgb(0, 135, 255) 67.5deg,
+    rgb(108, 39, 157) 198.75deg,
+    rgb(24, 38, 163) 251.25deg,
+    rgb(54, 103, 196) 301.88deg,
+    rgb(105, 30, 255) 360deg
+  );
+  filter: blur(160px);
+}
+
+.home-image .gradient.isShown {
+  animation-duration: 4.1s;
+  animation-timing-function: ease-out;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+  animation-name: fadeIn;
+  animation-timeline: auto;
+  animation-range: normal;
+  animation-delay: 600ms;
+}
+
+.home-image img.isHidden {
+  opacity: 0;
+}
+
+.home-image img.isShown {
+  animation-duration: 400ms;
+  animation-timing-function: ease;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+  animation-name: opacityChange;
+  animation-timeline: auto;
+  animation-range: normal;
+  animation-delay: 680ms;
+}
+
+@keyframes opacityChange {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    animation-timing-function: cubic-bezier(0.74, 0.25, 0.76, 1);
+  }
+  10% {
+    opacity: 1;
+    animation-timing-function: cubic-bezier(0.12, 0.01, 0.08, 0.99);
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: rotateX(25deg);
+  }
+  25% {
+    transform: rotateX(25deg) scale(0.9);
+  }
+  60%,
+  100% {
+    transform: none;
+  }
 }
