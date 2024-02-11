@@ -126,13 +126,16 @@
 }
 
 .chat-output pre code {
-  @apply pt-6 rounded-lg font-medium shadow-xl  dark:border-azure-700 dark:border bg-azure-900 after:hidden before:hidden;
+  @apply font-medium  dark:bg-transparent p-2 text-azure-50  after:hidden before:hidden;
+}
+.chat-output pre {
+  @apply dark:border dark:border-azure-700 shadow-xl rounded-lg  p-2  bg-azure-900  dark:bg-azure-800;
 }
 :not(pre) code {
   @apply dark:text-azure-50 text-azure-950 font-semibold after:content-['`'] before:content-['`'];
 }
 .chat-output {
-  @apply flex flex-col gap-4 dark:text-azure-100/90 dark:font-light text-azure-950 font-[400];
+  @apply flex flex-col gap-4 dark:text-azure-100/90 dark:font-normal text-azure-950 font-normal;
 }
 .roadmap-node {
   @apply text-center px-5 w-full active:scale-90 cursor-pointer relative shadow-xl dark:bg-azure-900 dark:text-azure-50/80 text-azure-950 hover:bg-azure-50 hover:dark:bg-azure-800 font-semibold flex items-center justify-center h-12 bg-azure-100 rounded-lg;
