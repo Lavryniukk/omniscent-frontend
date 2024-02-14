@@ -28,7 +28,7 @@ const CardSection = () => {
       break;
   }
   return (
-    <div className="grid grid- grid-cols-1 lg:grid-cols-2 gap-6 w-fit mx-auto relative ">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-fit mx-auto relative">
       <div className="big-features-container">
         <div className="w-full  first-features-container grid grid-cols-2 grid-rows-3 bg-white-500 justify-items-center h-full justify-center items-center rounded-xl p-16 bg-clip-content">
           <figure>

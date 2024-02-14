@@ -9,7 +9,7 @@ let HeroSection = () => {
   const { resolvedTheme } = useTheme();
 
   const imageRef = useRef(null);
-  const imageIsInView = useInView(imageRef, { amount: 0.9 });
+  const imageIsInView = useInView(imageRef, { amount: 0.9, once: true });
 
   let src;
 
