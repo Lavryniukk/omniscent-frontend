@@ -6,7 +6,7 @@ export default async function Roadmap({ id }: { id: string }) {
   try {
     const roadmap = await fetchRoadmap(id);
     return (
-      <div className="w-fit mx-auto py-32">
+      <div className="w-fit mx-auto pt-32 pb-48">
         <ul className="text-text mx-auto w-fit h-fit flex items-center justify-center flex-col">
           {roadmap.children.map(
             (roadmapNode: RoadmapNode, index: number, array: RoadmapNode[]) => {

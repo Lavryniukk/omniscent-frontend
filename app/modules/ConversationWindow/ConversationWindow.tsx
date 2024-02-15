@@ -6,6 +6,7 @@ import ConversationInput from "./components/ConversationInput/ConversationInput"
 import { useEffect } from "react";
 
 import Skeleton from "@/app/UI/loading/Skeleton/Skeleton";
+import FeedbackForm from "@/app/components/FeedbackForm,tsx/FeedbackForm";
 type QueryParams = {
   queryParams: {
     roadmapId: string;
@@ -18,7 +19,7 @@ export default function ConversationWindow({ queryParams }: QueryParams) {
   useEffect(() => {
     setConversation(conversationId);
   }, []);
-
+  const isEmpty = !conversation?.messages?.length;
   return (
     <div
       className={`w-full flex items-center flex-1 flex-col h-full border-accent bg-azure-50/80 dark:bg-azure-50/10 relative overflow-hidden `}
@@ -33,13 +34,14 @@ export default function ConversationWindow({ queryParams }: QueryParams) {
       <div className="flex w-full flex-col h-full max-h-full overflow-y-auto">
         {true && <Messages conversation={conversation} />}
       </div>
-      {!conversation?.messages?.length && (
+      {isEmpty && (
         <InitConversationButton
           nodeTitle={conversation?.node_title}
           roadmapId={roadmapId}
         />
       )}
-      <ConversationInput roadmapId={roadmapId} />
+      {!isEmpty && <FeedbackForm  conversationId={conversationId} />}
+      {!isEmpty && <ConversationInput roadmapId={roadmapId} />}
     </div>
   );
 }

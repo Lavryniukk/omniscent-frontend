@@ -142,7 +142,7 @@
 }
 
 .conversation-roadmap-node {
-  @apply text-center py-2 text-azure-100 w-full cursor-pointer relative duration-200 transition-colors flex items-center justify-center text-sm rounded-lg;
+  @apply text-center py-2 text-azure-800 hover:animate-pulse dark:text-azure-100 w-full cursor-pointer relative duration-200 transition-colors flex items-center justify-center text-sm rounded-lg;
 }
 
 .chat-output {
