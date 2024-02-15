@@ -47,14 +47,14 @@ export default function Button({
     case "outline":
       classKit = `inline-flex ${
         disabled && "disabled"
-      } items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border-azure-500 text-azure-500 dark:text-azure-300 dark:border-azure-700 dark:hover:bg-azure-700 dark:hover:text-azure-100 bg-azure-50 dark:bg-azure-950 hover:bg-azure-500  hover:text-azure-50 ${
+      } items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border-azure-500 text-azure-500 dark:text-azure-300 dark:border-azure-700 dark:hover:bg-azure-700 dark:hover:text-azure-100 bg-azure-50 dark:bg-transparent hover:bg-azure-500  hover:text-azure-50 ${
         size == "sm" ? "border" : "border-2"
       } ${sizeKit}`;
       break;
     case "ghost":
       classKit = `inline-flex ${
         disabled && "disabled"
-      } items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-azure-100 hover:dark:bg-azure-900 dark:bg-azure-950 text-azure-950 dark:text-azure-50 ${sizeKit}`;
+      } items-center justify-center whitespace-nowrap rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-azure-100 hover:dark:bg-azure-800 dark:bg-transparent text-azure-950 dark:text-azure-50 ${sizeKit}`;
       break;
     case "danger":
       classKit = `inline-flex ${
