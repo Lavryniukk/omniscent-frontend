@@ -1,6 +1,8 @@
 import Skeleton from "@/app/UI/loading/Skeleton/Skeleton";
+import FeedbackForm from "@/app/components/FeedbackForm,tsx/FeedbackForm";
 import Roadmap from "@/app/modules/Roadmap/PrimaryRoadmap/Roadmap";
 import { NavigationButton } from "@/app/shared/components/buttons";
+
 import { Suspense } from "react";
 
 const RoadmapSkeleton = () => (
@@ -28,6 +30,8 @@ function RoadmapPage({ params }: { params: { id: string } }) {
           Click on any technology to start learning it.
         </p>
       </div>
+
+      <FeedbackForm roadmapId={params.id} />
 
       <Suspense fallback={<RoadmapSkeleton />}>
         <Roadmap id={params.id} />
