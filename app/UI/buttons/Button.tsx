@@ -6,6 +6,7 @@ type ButtonProps = {
   variant?: "primary" | "secondary" | "outline" | "ghost" | "danger";
   disabled?: boolean;
   href?: string;
+  className?: string;
   type?: "submit" | "button";
   size?: "sm" | "md" | "lg";
   callback?: (e: React.MouseEvent) => void;
@@ -19,6 +20,7 @@ export default function Button({
   size = "md",
   callback,
   type = "button",
+  className,
 }: ButtonProps) {
   let classKit: string = "";
   let sizeKit: string = "";
@@ -71,7 +73,7 @@ export default function Button({
 
           callback && callback(e);
         }}
-        className={classKit}
+        className={classKit + " " + className}
         href={href}
       >
         {children}
@@ -86,7 +88,7 @@ export default function Button({
           callback && callback(e);
         }}
         disabled={disabled}
-        className={classKit}
+        className={classKit + " " + className}
       >
         {children}
       </button>

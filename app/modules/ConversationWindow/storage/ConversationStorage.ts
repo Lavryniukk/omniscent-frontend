@@ -4,7 +4,6 @@ import { getConversationData } from "@/app/shared/api/conversations/fetchConvers
 import listenForUpdates from "../helpers/listenToEvent";
 import sendUserMessage from "../api/sendUserMessage";
 import listenToSse from "../helpers/listenToEvent";
-import toggleIsCompleted from "@/app/shared/api/roadmaps/toggleIsCompleted";
 import getToken from "../api/getToken";
 import fetchConversationInit from "../api/fetchConversationInit";
 import { Conversation, ConversationMessage } from "@/app/shared/entities";
@@ -27,7 +26,6 @@ interface ConversationStorageActions {
   lock: () => void;
   unlock: () => void;
   setStreaming: (value: boolean) => void;
-  toggleIsCompleted: (roadmapId: string, tech_title: string) => void;
   updateLastAssistantMessage: (newValue: string) => void;
 }
 
@@ -43,10 +41,7 @@ const useConversationStorage = create<
   },
   userInputData: "",
 
-  async toggleIsCompleted(roadmapId, tech_title) {
-    await toggleIsCompleted(roadmapId, tech_title);
-    get().lock();
-  },
+
 
   isLocked: true,
   lock() {
