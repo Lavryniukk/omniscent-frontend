@@ -42,7 +42,7 @@ export default function Blog() {
           </p>
           <ul className="text-text mt-4">
             <li>-Roadmaps (customizable learning path)</li>
-            <li>-Conversations (learning chat with ai)</li>
+            <li>-Lessons (learning chat with ai)</li>
           </ul>
         </div>
       </div>

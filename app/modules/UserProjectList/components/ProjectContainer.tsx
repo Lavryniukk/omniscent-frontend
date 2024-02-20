@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import fetchDelete from "../api/fetchDelete";
+import fetchDelete from "../api/fetchDeleteProject";
 import Button from "@/app/UI/buttons/Button";
 import { Trash, X } from "lucide-react";
 import { RoadmapNode } from "@/app/shared/entities";
@@ -32,7 +32,7 @@ export default function ProjectContainer({
   return (
     <>
       <Link
-        href={`/workspace/roadmap/${_id}`}
+        href={`/workspace/r/${_id}`}
         className={`py-5 hover:scale-105 transition-transform duration-100 hover:opacity-80 dark:border block dark:bg-azure-900 dark:border-azure-700 hover:bg-azure-50 bg-azure-100 shadow-xl rounded-lg font-semibold text-lg   text-center text-azure-950  dark:text-azure-50 px-7 relative w-full ${
           isOpen ? "pointer-events-none" : "pointer-events-auto"
         }`}

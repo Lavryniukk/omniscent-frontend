@@ -141,7 +141,7 @@
   @apply text-center px-5 w-full active:scale-90 cursor-pointer relative shadow-xl dark:bg-azure-900 dark:text-azure-50/80 text-azure-950 hover:bg-azure-50 hover:dark:bg-azure-800 font-semibold flex items-center justify-center h-12 bg-azure-100 rounded-lg;
 }
 
-.conversation-roadmap-node {
+.lesson-roadmap-node {
   @apply text-center py-2 text-azure-800 hover:animate-pulse dark:text-azure-100 w-full cursor-pointer relative duration-200 transition-colors flex items-center justify-center text-sm rounded-lg;
 }
 

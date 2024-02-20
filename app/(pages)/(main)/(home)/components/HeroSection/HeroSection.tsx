@@ -9,10 +9,10 @@ let HeroSection = () => {
 
   switch (resolvedTheme) {
     case "light":
-      src = "/images/conversation-banner.png";
+      src = "/images/lesson-banner.png";
       break;
     case "dark":
-      src = "/images/conversation-banner-dark.png";
+      src = "/images/lesson-banner-dark.png";
       break;
     default:
       src =
@@ -25,7 +25,7 @@ let HeroSection = () => {
       <picture className="w-[98%]  p-0.5 relative flex items-center overflow-hidden justify-center  border-azure-950 rounded md:rounded-2xl  md:w-[80%] ">
         <Image
           src={src}
-          alt="A cleverize conversation example"
+          alt="A cleverize lesson example"
           className="w-full   shadow-2xl rounded-[14px] "
           width={1920}
           height={1040}

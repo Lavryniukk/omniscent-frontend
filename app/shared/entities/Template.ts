@@ -6,7 +6,7 @@ type TemplateNode = {
   size: RoadmapSize;
   children: string[];
   created_at: Date;
-  conversation_id?: string;
+  lesson_id?: string;
 };
 
 type TemplateNodeWithChildren = TemplateNode & {

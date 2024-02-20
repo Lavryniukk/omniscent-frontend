@@ -6,24 +6,24 @@ import { useEffect, useRef, useState } from "react";
 const CardSection = () => {
   const { resolvedTheme } = useTheme();
   let srcRoadmap;
-  let srcConversation;
+  let srcLesson;
   let srcQuestion;
   switch (resolvedTheme) {
     case "light":
       srcRoadmap = "/images/roadmap.png";
-      srcConversation = "/images/conversation.png";
-      srcQuestion = "/images/conversation-question.png";
+      srcLesson = "/images/lesson.png";
+      srcQuestion = "/images/lesson-question.png";
       break;
     case "dark":
       srcRoadmap = "/images/roadmap-dark.png";
-      srcConversation = "/images/conversation-dark.png";
-      srcQuestion = "/images/conversation-question-dark.png";
+      srcLesson = "/images/lesson-dark.png";
+      srcQuestion = "/images/lesson-question-dark.png";
 
       break;
     default:
       srcRoadmap =
         "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
-      srcConversation = srcRoadmap;
+      srcLesson = srcRoadmap;
       srcQuestion = srcRoadmap;
       break;
   }
@@ -118,7 +118,7 @@ const CardSection = () => {
         <h4>example from Rust functions lesson*</h4>
 
         <Image
-          src={srcConversation}
+          src={srcLesson}
           className="rounded-xl"
           alt="Roadmap example"
           width={450}

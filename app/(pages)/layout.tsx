@@ -31,6 +31,6 @@ export default function RootLayout({
           </QueryClientProvider>
         </body>
       </html>
-    </ClerkProvider>
+  </ClerkProvider>
   );
 }

@@ -6,13 +6,13 @@ const sendData = async (data: FormState) => {
   console.log({ title: data.inputData, size: data.selectData });
   try {
     const response = await axiosWithAuth({
-      url: "/roadmaps/",
+      url: "/roadmaps",
       data: { title: data.inputData, size: data.selectData },
       method: "POST",
     });
     return response.data;
   } catch (err) {
-    console.log("Error POST /users/me/roadmaps", err);
+    console.log("Error POST /roadmaps", err);
     return false;
   }
 };

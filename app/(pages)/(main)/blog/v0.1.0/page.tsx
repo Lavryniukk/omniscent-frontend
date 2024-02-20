@@ -48,14 +48,14 @@ export default function Version010() {
             terrain of programming language.
           </li>
           <li>
-            <strong>Conversations Release:</strong> The heart of Cleverize`s
-            learning process is its AI-powered chat interface. Initiated by
-            clicking the `<i>start conversation</i>` button, this feature
-            immerses learners in an engaging, conversational learning
-            experience. Each node in the learning roadmap becomes a dynamic
-            interaction, enabling users to delve deep into their chosen topics.
-            The platform`s interactive nature ensures a hands-on learning
-            experience that adapts to each user`s pace and style.
+            <strong>Lessons Release:</strong> The heart of Cleverize`s learning
+            process is its AI-powered chat interface. Initiated by clicking the
+            `<i>start lesson</i>` button, this feature immerses learners in an
+            engaging, lessonal learning experience. Each node in the learning
+            roadmap becomes a dynamic interaction, enabling users to delve deep
+            into their chosen topics. The platform`s interactive nature ensures
+            a hands-on learning experience that adapts to each user`s pace and
+            style.
           </li>
         </ul>
       </div>
