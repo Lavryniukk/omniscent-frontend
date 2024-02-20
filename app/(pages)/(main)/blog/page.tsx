@@ -6,8 +6,8 @@ export default function Blog() {
       <h1 className="text-5xl mt-20 font-inter text-center font-bold ">
         Here you will find our latest updates
       </h1>
-      <div className="w-full flex items-center  justify-center mt-20 gap-4">
-        <div className="w-[400px] p-5 relative  h-[400px] shadow-xl dark:border dark:border-azure-800 rounded-lg">
+      <div className="w-full flex flex-col md:flex-row items-center justify-center mt-20 gap-4">
+        <div className="w-full sm:w-[400px] p-5 relative h-[400px] shadow-xl dark:border dark:border-azure-800 rounded-lg">
           <Link
             href="/blog/v0.2.0"
             className="bottom-5 hover:opacity-70 left-1/4 rounded-lg border absolute  flex items-center justify-center w-1/2 py-2"
@@ -27,7 +27,7 @@ export default function Blog() {
           </ul>
         </div>
 
-        <div className="w-[400px] p-5 relative  h-[400px] shadow-xl dark:border dark:border-azure-800 rounded-lg">
+        <div className="w-full sm:w-[400px] p-5 relative  h-[400px] shadow-xl dark:border dark:border-azure-800 rounded-lg">
           <Link
             href="/blog/v0.1.0"
             className="bottom-5 hover:opacity-70 left-1/4 rounded-lg  border absolute  flex items-center justify-center w-1/2 py-2"
