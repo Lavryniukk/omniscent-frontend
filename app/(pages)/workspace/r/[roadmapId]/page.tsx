@@ -7,7 +7,6 @@ import { Suspense } from "react";
 
 function RoadmapPage({ params }: { params: { roadmapId: string } }) {
   return (
-    // <RoadmapProvider lessonId={''} roadmapId={params.roadmapId}>
       <div className="h-full py-20 min-h-screen bg-background w-auto">
         <NavigationButton href={"/workspace"} title={"Workspace"} />
         <div className=" flex-col flex items-center p-3 w-80  rounded-lg border-2 text-azure-950 dark:text-azure-50 bg-azure-100 dark:bg-azure-900 border-azure-200 dark:border-azure-800 border-accent mx-auto">
@@ -23,7 +22,6 @@ function RoadmapPage({ params }: { params: { roadmapId: string } }) {
           <Roadmap id={params.roadmapId} />
         </Suspense>
       </div>
-    // </RoadmapProvider>
   );
 }
 export default RoadmapPage;
