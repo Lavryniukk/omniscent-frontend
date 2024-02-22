@@ -1,19 +1,19 @@
 "use client";
 import Link from "next/link";
 import LessonRoadmapNodeComponent from "./components/RoadmapSidebarNode";
-import { useRoadmap } from "@/app/shared/hooks/useRoadmap";
+
 import Skeleton from "@/app/UI/loading/Skeleton/Skeleton";
 import useSidebar from "./hooks/useSidebar";
 import { ChevronDown, MoveLeft } from "lucide-react";
 import { RoadmapNode } from "@/app/shared/entities";
 import { LessonPageParams } from "@/app/(pages)/workspace/r/[roadmapId]/l/[lessonId]/page";
+import { UseQueryResult } from "@tanstack/react-query";
+import { useRoadmap } from "@/app/(pages)/workspace/r/[roadmapId]/RoadmapProvider";
 
-export default function RoadmapSidebar({ params }: LessonPageParams) {
-  const { roadmapId, lessonId } = params;
-  const { data: roadmap } = useRoadmap(roadmapId, "subroadmap");
-  let isLoading = false;
+export default function RoadmapSidebar() {
+  const { roadmap, lesson, isLoading } = useRoadmap();
   const { isOpen, toggleSidebar } = useSidebar();
-
+  console.log(roadmap);
   return (
     <>
       <aside
@@ -44,11 +44,11 @@ export default function RoadmapSidebar({ params }: LessonPageParams) {
             ) => {
               return (
                 <LessonRoadmapNodeComponent
-                  roadmapId={roadmapId}
+                  roadmapId={roadmap._id}
                   key={index}
                   tech={subroadmapNode}
                   array={array}
-                  isCurrent={lessonId === subroadmapNode.lesson_id}
+                  isCurrent={lesson?._id === subroadmapNode.lesson_id}
                 />
               );
             }

@@ -7,21 +7,23 @@ import { Suspense } from "react";
 
 function RoadmapPage({ params }: { params: { roadmapId: string } }) {
   return (
-    <div className="h-full py-20 min-h-screen bg-background w-auto">
-      <NavigationButton href={"/workspace"} title={"Workspace"} />
-      <div className=" flex-col flex items-center p-3 w-80  rounded-lg border-2 text-azure-950 dark:text-azure-50 bg-azure-100 dark:bg-azure-900 border-azure-200 dark:border-azure-800 border-accent mx-auto">
-        <h1 className="text-2xl font-inter font-bold">Hint</h1>
-        <p className="text-lg text-center font-light">
-          Click on any technology to start learning it.
-        </p>
+    // <RoadmapProvider lessonId={''} roadmapId={params.roadmapId}>
+      <div className="h-full py-20 min-h-screen bg-background w-auto">
+        <NavigationButton href={"/workspace"} title={"Workspace"} />
+        <div className=" flex-col flex items-center p-3 w-80  rounded-lg border-2 text-azure-950 dark:text-azure-50 bg-azure-100 dark:bg-azure-900 border-azure-200 dark:border-azure-800 border-accent mx-auto">
+          <h1 className="text-2xl font-inter font-bold">Hint</h1>
+          <p className="text-lg text-center font-light">
+            Click on any technology to start learning it.
+          </p>
+        </div>
+
+        <FeedbackForm roadmapId={params.roadmapId} />
+
+        <Suspense fallback={<RoadmapSkeleton />}>
+          <Roadmap id={params.roadmapId} />
+        </Suspense>
       </div>
-
-      <FeedbackForm roadmapId={params.roadmapId} />
-
-      <Suspense fallback={<RoadmapSkeleton />}>
-        <Roadmap id={params.roadmapId} />
-      </Suspense>
-    </div>
+    // </RoadmapProvider>
   );
 }
 export default RoadmapPage;

@@ -139,7 +139,7 @@ const useLessonStorage = create<LessonStorageActions & LessonStorageState>(
 
       await fetchLessonInit({
         lessonId,
-        userRoadmapId,
+        roadmapId: userRoadmapId,
         language,
       });
     },

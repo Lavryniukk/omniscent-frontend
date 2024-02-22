@@ -1,6 +1,6 @@
 "use client";
 import Button from "@/app/UI/buttons/Button";
-import { Star, CheckCircle2, Cross, X } from "lucide-react";
+import { Star, CheckCircle2, X } from "lucide-react";
 import { useRef, useState } from "react";
 import fetchFeedback from "./api/fetchFeedback";
 

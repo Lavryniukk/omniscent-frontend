@@ -3,24 +3,6 @@ import { UserProjects } from "@/app/modules";
 import { Suspense } from "react";
 import Skeleton from "@/app/UI/loading/Skeleton/Skeleton";
 
-function UserRoadmapsLoading() {
-  return (
-    <div className="w-full mx-auto space-y-10 p-5 h-fit py-20">
-      <Skeleton height="40px" width="150px" />
-      <div className="space-y-5">
-        {Array.from({ length: 3 }).map((_, i) => (
-          <div
-            key={i}
-            className="dark:border bg-azure-100 shadow-xl rounded-lg dark:bg-azure-900 dark:border-azure-700 p-5  min-h-[60px] flex items-center justify-center"
-          >
-            <Skeleton width={"75%"} height={"24px"} />
-          </div>
-        ))}
-      </div>
-      <Skeleton height="20px" width="100px" />
-    </div>
-  );
-}
 
 function WorkspacePage({}) {
   return (
@@ -47,3 +29,22 @@ function WorkspacePage({}) {
 }
 
 export default WorkspacePage;
+
+function UserRoadmapsLoading() {
+  return (
+    <div className="w-full mx-auto space-y-10 p-5 h-fit py-20">
+      <Skeleton height="40px" width="150px" />
+      <div className="space-y-5">
+        {Array.from({ length: 3 }).map((_, i) => (
+          <div
+            key={i}
+            className="dark:border bg-azure-100 shadow-xl rounded-lg dark:bg-azure-900 dark:border-azure-700 p-5  min-h-[60px] flex items-center justify-center"
+          >
+            <Skeleton width={"75%"} height={"24px"} />
+          </div>
+        ))}
+      </div>
+      <Skeleton height="20px" width="100px" />
+    </div>
+  );
+}

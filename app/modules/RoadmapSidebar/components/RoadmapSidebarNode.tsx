@@ -23,10 +23,10 @@ export default function LessonRoadmapNodeComponent({
     <li className="w-full flex items-center justify-center flex-col min-w-[200px]">
       <Link
         aria-disabled={isStreaming}
-        href={`/workspace/r/${roadmapId}/c/${tech.lesson_id}`}
+        href={`/workspace/r/${roadmapId}/l/${tech.lesson_id}`}
         className={`lesson-roadmap-node ${
           isStreaming && "hover:cursor-not-allowed"
-        } ${tech.is_completed && "line-through"} ${isCurrent && " bg-azure-300 font-semibold dark:bg-azure-800"}
+        } ${tech.is_completed && "line-through"} ${isCurrent && " bg-azure-300 font-semibold after:w-0.5 after:h-full after:absolute after:-left-2 relative dark:after:bg-azure-400 after:bg-azure-700 dark:bg-azure-800"}
 		  `}
       >
         {tech.title}

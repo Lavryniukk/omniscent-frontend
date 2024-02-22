@@ -13,13 +13,15 @@ import useLessonStorage from "@/app/shared/stores/lessonStorage";
 export default function LessonWindow({ params }: LessonPageParams) {
   const { lesson, setLesson } = useLessonStorage();
   const { roadmapId, lessonId } = params;
-  //FIXME - The lesson cannot be found, smthing with id, check it.
   useEffect(() => {
     setLesson(lessonId);
   }, [lessonId, setLesson]);
+
+
   if (!lesson) return null;
 
   const isEmpty = !lesson.messages?.length;
+
   return (
     <div
       className={`w-full flex items-center flex-1 flex-col h-full border-accent bg-azure-50/80 dark:bg-azure-50/10 relative overflow-hidden `}
