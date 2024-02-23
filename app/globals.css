@@ -142,7 +142,7 @@
 }
 
 .lesson-roadmap-node {
-  @apply text-center py-2 text-azure-800 hover:animate-pulse dark:text-azure-100 w-full cursor-pointer relative duration-200 transition-colors flex items-center justify-center text-sm rounded-md;
+  @apply text-azure-800 p-2 hover:opacity-80 dark:text-azure-100 w-full cursor-pointer relative duration-200 transition-colors flex flex-col  justify-center text-sm rounded;
 }
 
 .chat-output {

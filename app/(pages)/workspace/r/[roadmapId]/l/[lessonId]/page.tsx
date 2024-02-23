@@ -8,7 +8,7 @@ export type LessonPageParams = {
     lessonId: string;
   };
 };
-
+//TODO - I have to think of a navigation between lesson and quiz.
 function LessonPage({ params }: LessonPageParams) {
   try {
     function handleResize() {

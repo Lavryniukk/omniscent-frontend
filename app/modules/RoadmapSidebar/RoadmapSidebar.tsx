@@ -9,7 +9,13 @@ import { RoadmapNode } from "@/app/shared/entities";
 import { LessonPageParams } from "@/app/(pages)/workspace/r/[roadmapId]/l/[lessonId]/page";
 import { UseQueryResult } from "@tanstack/react-query";
 
-export default function RoadmapSidebar({ query, lessonId }: { query: UseQueryResult<RoadmapNode, unknown>, lessonId: string}) {
+export default function RoadmapSidebar({
+  query,
+  lessonId,
+}: {
+  query: UseQueryResult<RoadmapNode, unknown>;
+  lessonId: string;
+}) {
   const { isOpen, toggleSidebar } = useSidebar();
   const { data: roadmap, isLoading } = query;
   return (
@@ -28,12 +34,13 @@ export default function RoadmapSidebar({ query, lessonId }: { query: UseQueryRes
         </Link>
 
         <h1 className="dark:text-azure-50 text-azure-950 text-2xl text-center">
+          {isLoading && <Skeleton width="70%" height="25px" />}
           {roadmap?.title}
         </h1>
-        {isLoading && <Skeleton height="40px" width="50%" />}
-        {isLoading && <div className="mx-auto text-text">Loading</div>}
 
-        <ul>
+        <ul className=" after:absolute relative after:right-[5px]  after:h-[calc(100%-32px)]  after:w-0.5 after:bg-azure-500 after:top-[16px] flex flex-col gap-6 ">
+          {isLoading && <RoadmapSidebarSkeleton />}
+
           {roadmap?.children.map(
             (
               subroadmapNode: RoadmapNode,
@@ -63,4 +70,18 @@ export default function RoadmapSidebar({ query, lessonId }: { query: UseQueryRes
       />
     </>
   );
+}
+
+function RoadmapSidebarSkeleton() {
+  const arr = Array.from({ length: 5 }).map((_, index) => (
+    <li key={index} className="relative flex flex-col items-start  gap-0">
+      <p className="min-w-[200px] max-w-[300px] flex justify-start  w-full p-2  pointer-events-none">
+        <Skeleton width="80%" height="20px" />
+      </p>
+      <div
+        className={`rounded-full absolute  w-2 h-2 bg-azure-500 z-10  right-0.5 top-[calc(50%-4px)]`}
+      />
+    </li>
+  ));
+  return arr;
 }
