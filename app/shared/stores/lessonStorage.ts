@@ -5,7 +5,7 @@ import listenForUpdates from "../../modules/Lesson/helpers/listenToEvent";
 import sendUserMessage from "../../modules/Lesson/api/sendUserMessage";
 import listenToSse from "../../modules/Lesson/helpers/listenToEvent";
 import getToken from "../../modules/Lesson/api/getToken";
-import { Lesson, LessonMessage } from "@/app/shared/entities";
+import { Lesson, Message } from "@/app/shared/entities";
 import fetchLessonInit from "@/app/modules/Lesson/api/fetchLessonInit";
 import { fetchLesson } from "../api/lessons/fetchLesson";
 
@@ -101,7 +101,7 @@ const useLessonStorage = create<LessonStorageActions & LessonStorageState>(
           content: newValue,
         });
       } else {
-        lesson?.messages.push(lastMessage as LessonMessage);
+        lesson?.messages.push(lastMessage as Message);
         lesson?.messages.push({
           role: "assistant",
           content: newValue,
@@ -114,7 +114,6 @@ const useLessonStorage = create<LessonStorageActions & LessonStorageState>(
       let lesson = get().lesson;
       if (!lesson) return;
       const lessonId = lesson._id;
-      console.log(lesson.test_id);
       lesson.messages.push({
         role: "assistant",
         content: "isLoading",

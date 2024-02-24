@@ -21,7 +21,7 @@ export default function RoadmapSidebar({
   return (
     <>
       <aside
-        className={`sidebar w-[15%] min-w-[270px] max-w-[500px] gap-10 flex  py-5 bg-azure-200 dark:bg-azure-950 px-3 flex-col h-full z-20 ${
+        className={`sidebar w-[270px] gap-10 flex  py-5 bg-azure-200 dark:bg-azure-950 px-3 flex-col h-full z-20 ${
           isOpen ? "translate-x-0" : "translate-x-[-100%] lg:translate-x-0"
         } duration-500 transition absolute lg:relative overflow-auto`}
       >
@@ -38,26 +38,16 @@ export default function RoadmapSidebar({
           {roadmap?.title}
         </h1>
 
-        <ul className=" after:absolute relative after:right-[5px]  after:h-[calc(100%-32px)]  after:w-0.5 after:bg-azure-500 after:top-[16px] flex flex-col gap-6 ">
+        <ul className=" after:absolute relative after:-right-[1px]  after:h-[calc(100%-32px)]  after:w-0.5 after:bg-azure-500 after:top-[16px]  flex flex-col gap-6 ">
           {isLoading && <RoadmapSidebarSkeleton />}
-
-          {roadmap?.children.map(
-            (
-              subroadmapNode: RoadmapNode,
-              index: number,
-              array: RoadmapNode[]
-            ) => {
-              return (
-                <LessonRoadmapNodeComponent
-                  roadmapId={roadmap._id}
-                  key={index}
-                  tech={subroadmapNode}
-                  array={array}
-                  isCurrent={lessonId === subroadmapNode.lesson_id}
-                />
-              );
-            }
-          )}
+          {roadmap?.children.map((subroadmapNode) => (
+            <LessonRoadmapNodeComponent
+              roadmapId={roadmap._id}
+              key={roadmap._id}
+              tech={subroadmapNode}
+              isCurrent={lessonId === subroadmapNode.lesson_id}
+            />
+          ))}
         </ul>
       </aside>
 
@@ -65,7 +55,7 @@ export default function RoadmapSidebar({
         onClick={toggleSidebar}
         size={30}
         className={`switch font-semibold cursor-pointer  text-text absolute left-2 block z-50 top-[calc(50%-15px)] duration-500 rotate-90 transition-transform lg:hidden ${
-          isOpen ? "translate-x-[220px]" : "translate-x-0 scale-y-[-1]"
+          isOpen ? "translate-x-[250px]" : "translate-x-0 scale-y-[-1]"
         }`}
       />
     </>
@@ -79,7 +69,7 @@ function RoadmapSidebarSkeleton() {
         <Skeleton width="80%" height="20px" />
       </p>
       <div
-        className={`rounded-full absolute  w-2 h-2 bg-azure-500 z-10  right-0.5 top-[calc(50%-4px)]`}
+        className={`rounded-full absolute  w-2 h-2 bg-azure-500 z-10  -right-0.5 top-[calc(50%-4px)]`}
       />
     </li>
   ));

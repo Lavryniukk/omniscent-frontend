@@ -1,14 +1,12 @@
-export type LessonMessage = {
+export type Message = {
   role: "user" | "assistant" | "system";
   content: string;
 };
 
 type Lesson = {
   _id: string;
-  owner_id: string;
-  node_title: string;
-  test_id?: string;
-  node_id?: string;
-  messages: LessonMessage[];
+  title: string;
+  node_id: string;
+  messages: Message[];
 };
 export default Lesson;

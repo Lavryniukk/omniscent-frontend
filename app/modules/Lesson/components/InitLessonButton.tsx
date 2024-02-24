@@ -2,6 +2,7 @@
 import Button from "@/app/UI/buttons/Button";
 import useLessonStorage from "@/app/shared/stores/lessonStorage";
 import { useUser } from "@clerk/nextjs";
+import { Power } from "lucide-react";
 
 interface InitLessonButtonProps {
   roadmapId: string;
@@ -13,17 +14,17 @@ export default function InitLessonButton({ roadmapId }: InitLessonButtonProps) {
   const initLesson = useLessonStorage((state) => state.initLesson);
 
   return (
-    <div className="absolute top-[45%]">
-      <Button
-        disabled={!isLoaded}
-        callback={async () => {
-          isLoaded &&
-            initLesson(roadmapId, user?.unsafeMetadata.language as string);
-        }}
-        size="lg"
-      >
-        Start learning
-      </Button>
-    </div>
+    <Button
+      disabled={!isLoaded}
+      className="absolute top-[45%] gap-2 flex"
+      callback={() => {
+        isLoaded &&
+          void initLesson(roadmapId, user?.unsafeMetadata.language as string);
+      }}
+      size="lg"
+    >
+      <Power strokeWidth={3} />
+      <p>Start this lesson</p>
+    </Button>
   );
 }
