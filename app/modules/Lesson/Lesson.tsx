@@ -10,12 +10,12 @@ import Button from "@/app/UI/buttons/Button";
 import { LessonPageParams } from "@/app/(pages)/workspace/r/[roadmapId]/l/[lessonId]/page";
 import useLessonStorage from "@/app/shared/stores/lessonStorage";
 
-export default function LessonWindow({ params }: LessonPageParams) {
+export default function LessonWindow({ params }: {params: {roadmapId: string, id: string}}) {
   const { lesson, setLesson } = useLessonStorage();
-  const { roadmapId, lessonId } = params;
+  const { roadmapId, id } = params;
   useEffect(() => {
-    setLesson(lessonId);
-  }, [lessonId, setLesson]);
+    setLesson(id);
+  }, [id, setLesson]);
 
   const isEmpty = !lesson?.messages?.length;
 
@@ -31,7 +31,7 @@ export default function LessonWindow({ params }: LessonPageParams) {
       </div>
       {isEmpty && <InitLessonButton roadmapId={roadmapId} />}
 
-      {!isEmpty && <FeedbackForm lessonId={lessonId} /> && (
+      {!isEmpty && <FeedbackForm lessonId={id} /> && (
         <LessonInput roadmapId={roadmapId} />
       )}
     </div>

@@ -1,6 +1,6 @@
-import FeaturesSection from "@/app/(pages)/(main)/(home)/components/FeaturesSection/FeaturesSection";
-import HeroSection from "@/app/(pages)/(main)/(home)/components/HeroSection/HeroSection";
-import FeedbackSection from "./components/FeedbackSection/FeedbackSection";
+import FeaturesSection from "./ui/FeaturesSection";
+import FeedbackSection from "./ui/FeedbackSection";
+import HeroSection from "./ui/HeroSection";
 
 
 function Home() {

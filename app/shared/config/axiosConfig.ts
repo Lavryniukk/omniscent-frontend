@@ -1,9 +1,9 @@
-"use server";
-
 import { config } from "dotenv";
-config();
 import axios from "axios";
 import { auth } from "@clerk/nextjs";
+
+config();
+
 if (!process.env.SERVER_URL) {
   throw new Error("Troubles with you SERVER_URL");
 }

@@ -1,7 +1,8 @@
 "use client";
+import Button from "@/app/UI/buttons/Button";
 import { RoadmapNode } from "@/app/shared/entities";
 import useLessonStorage from "@/app/shared/stores/lessonStorage";
-import { ChevronDownIcon } from "lucide-react";
+import { BookOpen, ChevronDownIcon, Milestone } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -29,7 +30,7 @@ export default function LessonRoadmapNodeComponent({
           } ${tech.is_completed && "line-through"} 
   		  `}
         >
-          <p className="hover:opacity-80">{tech.title}</p>
+          <p className="hover:opacity-80 font-semibold">{tech.title}</p>
         </Link>
 
         <form className="relative">
@@ -46,9 +47,27 @@ export default function LessonRoadmapNodeComponent({
         />
       </section>
       <section
-        className={`w-full flex flex-col items-center justify-center  transition-all duration-200 h-20 ${isOpened ? " opacity-100" : "opacity-0"}  `}
+        className={`w-full flex flex-col items-center gap-2 justify-center  transition-all duration-200 h-28 ${isOpened ? " opacity-100" : "opacity-0"}  `}
       >
-        <p>You are already on this</p>
+        {isCurrent ? (
+          <Button
+            size="sm"
+            disabled
+            className="flex gap-2 w-full"
+            variant="ghost"
+          >
+            You are already on this lesson
+          </Button>
+        ) : (
+          <Button href={`/workspace/r/${roadmapId}/l/${tech.lesson_id}`} size="sm" className="flex gap-2 w-full" variant="outline">
+            <Milestone size={20} />
+            <p className=" text-ellipsis truncate">Go to {tech.title}</p>
+          </Button>
+        )}
+        <Button href={`/workspace/r/${roadmapId}/l/${tech.quiz_id}`} size="sm" className="flex gap-2 w-full" variant="outline">
+          <BookOpen size={20} />
+          <p>Test your knowledge</p>
+        </Button>
       </section>
     </li>
   );

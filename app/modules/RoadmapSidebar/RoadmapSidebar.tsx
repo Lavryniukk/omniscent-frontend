@@ -6,15 +6,14 @@ import Skeleton from "@/app/UI/loading/Skeleton/Skeleton";
 import useSidebar from "./hooks/useSidebar";
 import { ChevronDown, MoveLeft } from "lucide-react";
 import { RoadmapNode } from "@/app/shared/entities";
-import { LessonPageParams } from "@/app/(pages)/workspace/r/[roadmapId]/l/[lessonId]/page";
 import { UseQueryResult } from "@tanstack/react-query";
 
 export default function RoadmapSidebar({
   query,
-  lessonId,
+  id,
 }: {
   query: UseQueryResult<RoadmapNode, unknown>;
-  lessonId: string;
+  id: string;
 }) {
   const { isOpen, toggleSidebar } = useSidebar();
   const { data: roadmap, isLoading } = query;
@@ -45,7 +44,7 @@ export default function RoadmapSidebar({
               roadmapId={roadmap._id}
               key={roadmap._id}
               tech={subroadmapNode}
-              isCurrent={lessonId === subroadmapNode.lesson_id}
+              isCurrent={id === subroadmapNode.lesson_id || id === subroadmapNode.quiz_id}
             />
           ))}
         </ul>

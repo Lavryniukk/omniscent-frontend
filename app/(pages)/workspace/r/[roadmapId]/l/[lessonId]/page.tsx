@@ -25,8 +25,8 @@ function LessonPage({ params }: LessonPageParams) {
     <div
       className={`select-none overflow-x-hidden overflow-auto full-height w-full h-full flex flex-row overflow-y-auto  mx-auto box-border`}
     >
-      <RoadmapSidebar query={query} lessonId={params.lessonId} />
-      <Lesson params={params} />
+      <RoadmapSidebar query={query} id={params.lessonId} />
+      <Lesson params={{ id: params.lessonId, roadmapId: params.roadmapId }} />
     </div>
   );
 }

@@ -142,7 +142,7 @@
 }
 
 .lesson-roadmap-node {
-  @apply text-azure-800 flex-col items-start text-left  justify-between py-2  after:w-0.5  after:transition-all after:duration-200 after:bottom-0 after:absolute after:-left-2 max-w-[230px] after:h-0 hover:after:h-full dark:after:bg-azure-400 after:bg-azure-700  dark:text-azure-100 w-full relative duration-200 transition-all flex text-sm rounded;
+  @apply text-azure-800 flex-col items-start text-left  justify-between py-2 gap-2  after:w-0.5  after:transition-all after:duration-200 after:bottom-0 after:absolute after:-left-2 max-w-[230px] after:h-0 hover:after:h-full dark:after:bg-azure-400 after:bg-azure-700  dark:text-azure-100 w-full relative duration-200 transition-all flex text-sm rounded;
 }
 
 .chat-output {

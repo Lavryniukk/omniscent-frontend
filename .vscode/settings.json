@@ -1,4 +1,11 @@
 {
-  "cSpell.words": ["cleverize", "nextjs", "roadmaps", "Subroadmap", "webp"],
+  "cSpell.words": [
+    "cleverize",
+    "lucide",
+    "nextjs",
+    "roadmaps",
+    "Subroadmap",
+    "webp"
+  ],
   "typescript.tsdk": "node_modules\\typescript\\lib"
 }
