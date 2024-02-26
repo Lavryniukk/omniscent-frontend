@@ -1,5 +1,5 @@
 "use client";
-import Button from "@/app/UI/buttons/Button";
+import Button from "@/app/shared/ui/buttons/Button";
 import useLessonStorage from "@/app/shared/stores/lessonStorage";
 import { useUser } from "@clerk/nextjs";
 import { Power } from "lucide-react";

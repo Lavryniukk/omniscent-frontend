@@ -1,5 +1,5 @@
 "use client";
-import Button from "@/app/UI/buttons/Button";
+import Button from "@/app/shared/ui/buttons/Button";
 import { useSlideIn } from "@/app/shared/hooks/useSlideIn";
 import { motion } from "framer-motion";
 let Title = () => {

@@ -1,28 +1,30 @@
+"use server";
 import { NavigationButton } from "@/app/shared/components/buttons";
-import { UserProjects } from "@/app/modules";
-import { Suspense } from "react";
 import Skeleton from "@/app/UI/loading/Skeleton/Skeleton";
+import { fetchRoadmaps } from "@/app/entities/roadmap-node/api";
+import RoadmapsNotFound from "./ui/RoadmapsNotFound";
+import Hint from "./ui/Hint";
+import RoadmapList from "./ui/RoadmapList";
 
-
-function WorkspacePage({}) {
+async function WorkspacePage() {
+  const roadmaps = await fetchRoadmaps();
+  const isEmpty = roadmaps.length === 0;
   return (
     <div className="flex flex-col h-screen  items-center justify-between mt-20">
       <NavigationButton href={"/"} title={"Home"} />
       <div className="flex flex-col pt-10 w-min items-center min-w-[350px] gap-10 mx-auto h-fit">
-        <div className="border-2 text-azure-950 dark:text-azure-50 bg-azure-100 dark:bg-azure-900 border-azure-200 dark:border-azure-800  p-5 gap-5 min-w-[350px] w-8/12 sm:w-full rounded-lg flex flex-col items-start">
-          <h1 className="text-2xl font-inter font-bold italic text-left">
-            Hint
+        <Hint />
+        <div className="mx-auto flex items-center flex-col gap-5 w-full min-w-[30px] py-16 sm:w-1/3 max-w-[600px] sm:min-w-[500px] sm:px-5 sm:py-16 font-inter h-fit dark:border-azure-800/70 dark:border-2 shadow-xl rounded-lg relative">
+          <h1 className="text-4xl text-center font-bold mx-auto text-azure-950 dark:text-azure-50 font-inter">
+            Your projects
           </h1>
-          <p className="text-lg font-normal">
-            This is your workspace.
-            <br /> Here you will find all your existing projects. Project is
-            goal, something you want to learn. It can be anything from assembly
-            to python!
-          </p>
+
+          {!isEmpty ? (
+            <RoadmapList roadmaps={roadmaps} />
+          ) : (
+            <RoadmapsNotFound />
+          )}
         </div>
-        <Suspense fallback={<UserRoadmapsLoading />}>
-          <UserProjects />
-        </Suspense>
       </div>
     </div>
   );
@@ -30,7 +32,7 @@ function WorkspacePage({}) {
 
 export default WorkspacePage;
 
-function UserRoadmapsLoading() {
+function Loading() {
   return (
     <div className="w-full mx-auto space-y-10 p-5 h-fit py-20">
       <Skeleton height="40px" width="150px" />

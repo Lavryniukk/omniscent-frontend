@@ -6,11 +6,15 @@ import { useEffect } from "react";
 
 import Skeleton from "@/app/UI/loading/Skeleton/Skeleton";
 import FeedbackForm from "@/app/components/FeedbackForm/FeedbackForm";
-import Button from "@/app/UI/buttons/Button";
+import Button from "@/app/shared/ui/buttons/Button";
 import { LessonPageParams } from "@/app/(pages)/workspace/r/[roadmapId]/l/[lessonId]/page";
 import useLessonStorage from "@/app/shared/stores/lessonStorage";
 
-export default function LessonWindow({ params }: {params: {roadmapId: string, id: string}}) {
+export default function LessonWindow({
+  params,
+}: {
+  params: { roadmapId: string; id: string };
+}) {
   const { lesson, setLesson } = useLessonStorage();
   const { roadmapId, id } = params;
   useEffect(() => {

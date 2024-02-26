@@ -4,10 +4,6 @@ import { auth } from "@clerk/nextjs";
 
 config();
 
-if (!process.env.SERVER_URL) {
-  throw new Error("Troubles with you SERVER_URL");
-}
-
 export const axiosWithAuth = axios.create({
   baseURL: `${process.env.SERVER_URL}/api`,
 });

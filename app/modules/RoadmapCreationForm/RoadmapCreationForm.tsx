@@ -3,7 +3,6 @@ import { useState } from "react";
 import FormInput from "./components/FormInput/FormInput";
 import FormSubmit from "./components/FormSubmit/FormSubmit";
 import { FormState, RoadmapSize } from "./types/FormProps";
-import sendData from "./api/sendData";
 import { FormStatusEnum } from "./types/formStatusEnum";
 import FormSelect from "./components/FormSelect/FormSelect";
 
@@ -16,11 +15,10 @@ export default function NewProjectForm() {
     FormStatusEnum.NULL
   );
 
-  const handleSubmit =  (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     setResponseStatus(FormStatusEnum.LOADING);
-    void sendData(formData);
 
     setTimeout(() => {
       setResponseStatus(FormStatusEnum.DONE);

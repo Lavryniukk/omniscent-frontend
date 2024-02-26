@@ -1,8 +1,8 @@
 "use client";
 import ErrorAlert from "@/app/UI/alerts/ErrorAlert/ErrorAlert";
-import Button from "@/app/UI/buttons/Button";
+import Button from "@/app/shared/ui/buttons/Button";
 
-const RoadmapsFetchErrorComponent = () => {
+const RoadmapsFetchError = () => {
   return (
     <>
       <h1 className="text-2xl text-center font-bold mx-auto text-text  font-inter">
@@ -19,4 +19,4 @@ const RoadmapsFetchErrorComponent = () => {
     </>
   );
 };
-export default RoadmapsFetchErrorComponent;
+export default RoadmapsFetchError;

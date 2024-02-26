@@ -1,8 +1,6 @@
-"use server";
-
 import { axiosWithAuth } from "@/app/shared/config/axiosConfig";
 
-export default function fetchCopyTemplate(id: string): void {
+export function fetchCopyTemplate(id: string): void {
   try {
     void axiosWithAuth({
       method: "POST",

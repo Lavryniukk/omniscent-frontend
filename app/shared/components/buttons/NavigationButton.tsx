@@ -1,7 +1,7 @@
+import { ThemeSwitcher } from "@/app/features";
 import { MoveLeft } from "lucide-react";
 import Link from "next/link";
 import React from "react";
-import ThemeSwitcher from "@/app/widgets/header/ui/ThemeSwitcher";
 const NavigationButton = ({
   href,
   title,

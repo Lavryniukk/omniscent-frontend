@@ -8,12 +8,12 @@ type RoadmapNodeResponse = {
 };
 
 export const fetchRoadmaps = async (): Promise<RoadmapNode[]> => {
-	try{
-  const response: RoadmapNodeResponse = await axiosWithAuth(`/roadmaps/all`);
+  try {
+    const response: RoadmapNodeResponse = await axiosWithAuth(`/roadmaps/all`);
 
-  return response.data;
-	} catch (err) {
-		console.log(err);
-		throw err
-	}
+    return response.data;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
 };

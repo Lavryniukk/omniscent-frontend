@@ -4,10 +4,12 @@ import Skeleton from "@/app/UI/loading/Skeleton/Skeleton";
 import { useQuery } from "@tanstack/react-query";
 import { Check, Search, X } from "lucide-react";
 import { ReactNode, useEffect, useState } from "react";
-import fetchTemplates from "../../api/fetchTemplates";
-import { TemplateNode } from "@/app/shared/entities";
-import fetchCopyTemplate from "../../api/fetchCopyTemplate";
+import { TemplateNode } from "@/app/entities";
 import { useRouter } from "next/navigation";
+import {
+  fetchCopyTemplate,
+  fetchTemplates,
+} from "@/app/entities/roadmap-template/api";
 
 export default function ProjectSearch() {
   const {

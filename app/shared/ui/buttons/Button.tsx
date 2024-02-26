@@ -7,7 +7,6 @@ type ButtonProps = {
   disabled?: boolean;
   href?: string;
   className?: string;
-  type?: "submit" | "button";
   size?: "sm" | "md" | "lg";
   callback?: (e: React.MouseEvent) => void;
 };
@@ -19,9 +18,12 @@ export default function Button({
   href,
   size = "md",
   callback,
-  type = "button",
   className,
-}: ButtonProps) {
+  ...props
+}: ButtonProps &
+  React.ButtonHTMLAttributes<HTMLButtonElement> & {
+    // Add additional props here
+  }) {
   let classKit: string = "";
   let sizeKit: string = "";
   switch (size) {
@@ -82,7 +84,7 @@ export default function Button({
   } else {
     return (
       <button
-        type={type}
+        {...props}
         onClick={(e) => {
           !href || (disabled && e.preventDefault());
           callback && callback(e);

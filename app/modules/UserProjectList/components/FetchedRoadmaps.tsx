@@ -1,7 +1,7 @@
 import Link from "next/link";
 import ProjectContainer from "./ProjectContainer";
 import { RoadmapNode } from "@/app/shared/entities";
-import Button from "@/app/UI/buttons/Button";
+import Button from "@/app/shared/ui/buttons/Button";
 
 export default function FetchedRoadmaps({
   roadmaps,

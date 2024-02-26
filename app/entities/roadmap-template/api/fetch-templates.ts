@@ -7,7 +7,7 @@ type TemplateNodeDto = {
   data: TemplateNode[];
 };
 
-export default async function fetchTemplates(): Promise<TemplateNode[]> {
+export async function fetchTemplates(): Promise<TemplateNode[]> {
   try {
     let response: TemplateNodeDto = await axiosWithAuth({
       method: "GET",

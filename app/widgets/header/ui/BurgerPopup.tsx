@@ -1,11 +1,11 @@
 "use client";
 
-import Button from "@/app/UI/buttons/Button";
+import Button from "@/app/shared/ui/buttons/Button";
 import { SignedIn, UserButton, SignedOut, SignInButton } from "@clerk/nextjs";
 import Link from "next/link";
 
 type Props = {
-  isOpen: boolean
+  isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 

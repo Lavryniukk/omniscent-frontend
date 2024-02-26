@@ -1,5 +1,5 @@
 "use client";
-import Button from "@/app/UI/buttons/Button";
+import Button from "@/app/shared/ui/buttons/Button";
 import { RoadmapNode } from "@/app/shared/entities";
 import useLessonStorage from "@/app/shared/stores/lessonStorage";
 import { BookOpen, ChevronDownIcon, Milestone } from "lucide-react";
@@ -59,12 +59,22 @@ export default function LessonRoadmapNodeComponent({
             You are already on this lesson
           </Button>
         ) : (
-          <Button href={`/workspace/r/${roadmapId}/l/${tech.lesson_id}`} size="sm" className="flex gap-2 w-full" variant="outline">
+          <Button
+            href={`/workspace/r/${roadmapId}/l/${tech.lesson_id}`}
+            size="sm"
+            className="flex gap-2 w-full"
+            variant="outline"
+          >
             <Milestone size={20} />
             <p className=" text-ellipsis truncate">Go to {tech.title}</p>
           </Button>
         )}
-        <Button href={`/workspace/r/${roadmapId}/l/${tech.quiz_id}`} size="sm" className="flex gap-2 w-full" variant="outline">
+        <Button
+          href={`/workspace/r/${roadmapId}/l/${tech.quiz_id}`}
+          size="sm"
+          className="flex gap-2 w-full"
+          variant="outline"
+        >
           <BookOpen size={20} />
           <p>Test your knowledge</p>
         </Button>

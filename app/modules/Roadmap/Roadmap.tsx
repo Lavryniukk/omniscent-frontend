@@ -1,6 +1,5 @@
+import { fetchRoadmap } from "@/app/entities/roadmap-node/api";
 import RoadmapNodeComponent from "./components/RoadmapNode";
-import { RoadmapNode } from "@/app/shared/entities";
-import { fetchRoadmap } from "@/app/shared/api/roadmaps/fetchRoadmapById";
 
 export default async function Roadmap({ id }: { id: string }) {
   try {
