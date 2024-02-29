@@ -7,5 +7,6 @@
     "Subroadmap",
     "webp"
   ],
+
   "typescript.tsdk": "node_modules\\typescript\\lib"
 }

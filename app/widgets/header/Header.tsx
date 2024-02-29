@@ -6,6 +6,9 @@ import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { ThemeSwitcher } from "@/app/features";
 import Navigation from "./ui/Navigation";
 import Logo from "./ui/Logo";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { Spotlight } from "@/components/ui/spotlight";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,7 +18,11 @@ const Header = () => {
   return (
     <>
       <Popup isOpen={isOpen} setIsOpen={setIsOpen} />
-      <header className="h-12 flex z-50 w-11/12 lg:w-3/4 mx-auto bg-azure-100/50 dark:bg-azure-900/50 justify-between px-10 items-center backdrop-blur-md fixed top-4 border-azure-300 dark:border-azure-700 box-border border max-w-10xl rounded-full md:rounded-xl">
+      <Spotlight
+        fill="hsl(var(--primary))"
+        className="-top-40  left-0 md:left-60 md:-top-20"
+      />
+      <header className="h-14 p-4 flex z-50 w-11/12 lg:w-3/4  border   justify-between px-10 items-center backdrop-blur-md fixed top-4 right-4  box-border bg-background/50  max-w-2xl rounded-full md:rounded-xl">
         <div className="gap-10 flex items-center">
           <Logo />
           <Navigation />
@@ -26,7 +33,9 @@ const Header = () => {
           <Burger isOpen={isOpen} callback={toggleOpen} />
           <div className="md:flex hidden">
             <SignedIn>
-              <UserButton afterSignOutUrl="/" showName />
+              <Link href={"/workspace"}>
+                <Button>To workspace</Button>
+              </Link>
             </SignedIn>
             <SignedOut>
               <SignInButton>Sign in</SignInButton>

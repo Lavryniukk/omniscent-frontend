@@ -1,29 +1,37 @@
 "use client";
-import { motion } from "framer-motion";
+
+import * as React from "react";
 import { useTheme } from "next-themes";
+
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Moon, Sun } from "lucide-react";
 
 export default function ThemeSwitcher() {
-  const { theme, setTheme } = useTheme();
+  const { setTheme } = useTheme();
+
   return (
-    <div
-      onClick={() => {
-        setTheme(theme === "light" ? "dark" : "light");
-      }}
-      className="w-14 relative p-0.5 cursor-pointer h-6 flex items-center justify-around box-content rounded-full"
-    >
-      <Sun className="h-full rounded-full aspect-square w-5  text-azure-950 dark:text-azure-50" />
-      <Moon className="h-full rounded-full aspect-square w-5 text-azure-950 dark:text-azure-50" />
-      <motion.div
-        initial={{
-          x: 6,
-        }}
-        animate={{
-          x: theme === "dark" ? 32 : 4.5,
-        }}
-        transition={{ type: "tween", duration: 0.2 }} // set animation to strict animation type, not spring
-        className="w-6 left-0 -bottom-0.5 h-0.5 absolute  backdrop-blur rounded-full bg-azure-950 dark:bg-azure-50"
-      ></motion.div>
-    </div>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline" size="icon">
+          <Sun className="h-6 w-6  scale-100 transition-all  dark:scale-0" />
+          <Moon className="absolute h-8w-8  scale-0 transition-all  dark:scale-100" />
+          <span className="sr-only">Toggle theme</span>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+        <DropdownMenuItem onClick={() => setTheme("light")}>
+          Light
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("dark")}>
+          Dark
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }

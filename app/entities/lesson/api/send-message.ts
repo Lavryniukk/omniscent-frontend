@@ -1,21 +1,21 @@
-"use server";
+'use server'
 import { axiosWithAuth } from "@/app/shared/config/";
 
 type fetchSendMessageArgs = {
   content: string;
   lesson_id: string;
-  userRoadmapId: string;
+  roadmapId: string;
 };
 
-export function fetchSendMessage(data: fetchSendMessageArgs): void {
-  const { content, lesson_id, userRoadmapId } = data;
+export async function fetchSendMessage(data: fetchSendMessageArgs): Promise<unknown> {
+  const { content, lesson_id, roadmapId } = data;
   try {
-    void axiosWithAuth({
+    return await axiosWithAuth({
       url: `/lessons/${lesson_id}/messages`,
       method: "PUT",
       data: {
         role: "user",
-        userRoadmapId,
+        roadmapId,
         content,
       },
     });

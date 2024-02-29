@@ -1,4 +1,3 @@
-"use server";
 import { axiosWithAuth } from "@/app/shared/config/";
 
 type fetchLessonInitArgs = {
@@ -7,11 +6,11 @@ type fetchLessonInitArgs = {
   language: string;
 };
 
-export function fetchInitLesson(data: fetchLessonInitArgs): void {
+export async function fetchInitLesson(data: fetchLessonInitArgs): Promise<unknown> {
   const { lessonId, roadmapId: roadmap_id, language } = data;
 
   try {
-    void axiosWithAuth({
+    return await axiosWithAuth({
       url: `/lessons/${lessonId}/init`,
       method: "POST",
       data: {

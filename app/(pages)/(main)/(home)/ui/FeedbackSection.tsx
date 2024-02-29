@@ -8,7 +8,7 @@ const FeedbackSection = () => {
         Loved it? Hated it? Please leave your feedback!
       </h1>
       <ArrowDown size={30} />
-      <p className="text-gray-600 dark:text-gray-300 drop-shadow-xl  text-xl lg:text-3xl">
+      <p className=" drop-shadow-xl  text-xl lg:text-3xl">
         cleverize@proton.me
       </p>
     </div>

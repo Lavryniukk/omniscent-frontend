@@ -5,13 +5,13 @@ export default function Navigation() {
     <nav className="hidden md:flex h-full items-center gap-5">
       <Link
         href={"/workspace"}
-        className={`text-azure-950 dark:text-azure-50 hover:opacity-80 transition-opacity duration-100`}
+        className={`textblack 950 dark:text-foreground hover:opacity-80 transition-opacity duration-100`}
       >
         Workspace
       </Link>
       <Link
         href={"/blog"}
-        className={`text-azure-950 dark:text-azure-50 hover:opacity-80 transition-opacity duration-100`}
+        className={`textblack 950 dark:text-foreground hover:opacity-80 transition-opacity duration-100`}
       >
         Blog
       </Link>
@@ -21,7 +21,7 @@ export default function Navigation() {
           console.log(windowHeight);
           window.scrollTo({ top: windowHeight, behavior: "smooth" });
         }}
-        className={`text-azure-950 dark:text-azure-50 hover:opacity-80 transition-opacity duration-100`}
+        className={`textblack 950 dark:text-foreground hover:opacity-80 transition-opacity duration-100`}
       >
         Feedback
       </button>

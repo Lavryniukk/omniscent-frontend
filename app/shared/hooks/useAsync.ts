@@ -5,6 +5,7 @@ type UseAsyncReturnType<T> = {
   data: T | null;
   error: Error | null;
 };
+
 //This is almost the same as useQuery, but without rerenders.
 
 function useAsync<T>(asyncCallback: () => Promise<T>): UseAsyncReturnType<T> {

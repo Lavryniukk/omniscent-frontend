@@ -2,29 +2,79 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 346.8 77.2% 49.8%;
+    --primary-foreground: 355.7 100% 97.3%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 346.8 77.2% 49.8%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 20 14.3% 4.1%;
+    --foreground: 0 0% 95%;
+    --card: 24 9.8% 10%;
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 9%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 346.8 77.2% 49.8%;
+    --primary-foreground: 355.7 100% 97.3%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 12 6.5% 15.1%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 85.7% 97.3%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 346.8 77.2% 49.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #a1a1a1;
+    border-radius: 5px;
+  }
+}
+
 .full-height {
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
-}
-
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background-color: transparent;
-}
-::-webkit-scrollbar {
-  width: 6px; /* For vertical scrollbar */
-  height: 6px; /* For horizontal scrollbar */
-}
-::-webkit-scrollbar-thumb {
-  background-color: #a1a1a1;
-  border-radius: 5px;
-}
-/* styles.css */
-.no-blink-cursor {
-  cursor: default;
 }
 
 @keyframes spiner {
@@ -33,38 +83,40 @@
   }
 }
 
-.cl-avatarBox {
-  @apply w-12 h-12 aspect-square md:w-8 md:h-8;
-}
+@layer components {
+  .cl-avatarBox {
+    @apply w-12 h-12 aspect-square md:w-8 md:h-8;
+  }
 
-.cl-userButtonOuterIdentifier {
-  @apply text-azure-950 dark:text-azure-50 text-base;
-}
+  .cl-userButtonOuterIdentifier {
+    @apply text-base;
+  }
 
-.cl-userButtonPopoverCard {
-  @apply bg-azure-100/50 dark:bg-azure-900/50 backdrop-blur-md border md:border-t-0 dark:border-azure-700 border-azure-300;
-}
+  .cl-userButtonPopoverCard {
+    @apply backdrop-blur-md border md:border-t-0;
+  }
 
-.cl-userButtonPopoverMain {
-  @apply text-azure-950 dark:text-azure-50;
-}
+  .cl-userButtonPopoverMain {
+    @apply block;
+  }
 
-.cl-userPreviewTextContainer,
-.cl-userButtonPopoverActionButtonIcon,
-.cl-userButtonPopoverActionButton {
-  @apply text-inherit;
-}
+  .cl-userPreviewTextContainer,
+  .cl-userButtonPopoverActionButtonIcon,
+  .cl-userButtonPopoverActionButton {
+    @apply text-inherit;
+  }
 
-.cl-userPreviewSecondaryIdentifier {
-  @apply text-azure-400;
-}
+  .cl-userPreviewSecondaryIdentifier {
+    @apply block;
+  }
 
-.cl-userButtonPopoverActionButtonText {
-  @apply text-azure-400;
-}
+  .cl-userButtonPopoverActionButtonText {
+    @apply block;
+  }
 
-.cl-userButtonPopoverFooter {
-  @apply hidden;
+  .cl-userButtonPopoverFooter {
+    @apply hidden;
+  }
 }
 
 .background-left {
@@ -79,150 +131,135 @@
   transform: perspective(1500px) rotateY(-30deg);
 }
 
+.project {
+  @apply w-full flex items-center relative justify-around px-2 text-xl  select-none border h-20 rounded-lg border-dashed;
+}
 @layer components {
-  .gradient {
-    background: radial-gradient(
-      circle at center,
-      var(--primary) 0,
-      transparent 100%
-    );
+  .chat-output h1 {
+    @apply text-2xl md:text-3xl mt-10 font-bold;
+  }
+  .chat-output h2 {
+    @apply text-xl md:text-2xl mt-8 font-bold;
+  }
+  .chat-output h3 {
+    @apply text-lg md:text-xl mt-6 font-semibold;
+  }
+  .chat-output h4 {
+    @apply text-lg font-semibold;
+  }
+  .chat-output ul {
+    @apply ml-4 flex flex-col gap-2;
   }
 
-  .project {
-    @apply w-full flex items-center relative justify-around px-2 text-xl  text-azure-400 select-none border h-20 rounded-lg border-dashed border-azure-400;
+  .chat-output ul li {
+    @apply gap-1 break-keep list-disc;
+  }
+  .chat-output ul li strong {
+    @apply whitespace-nowrap inline;
+  }
+  .chat-output strong {
+    @apply font-bold;
+  }
+  .chat-output ol {
+    @apply ml-4 flex flex-col gap-2 list-decimal;
+  }
+  .chat-output pre code {
+    @apply font-medium   p-2  after:hidden before:hidden;
+  }
+  .chat-output pre {
+    @apply dark:border  shadow-xl rounded-lg  p-2;
+  }
+  .chat-output :not(pre) code {
+    @apply font-semibold after:content-['`'] before:content-['`'];
+  }
+  .chat-output {
+    @apply flex flex-col gap-4 tracking-normal dark:font-normal  font-normal;
   }
 }
 
-.chat-output h1 {
-  @apply text-2xl md:text-3xl mt-10  text-azure-950 dark:text-azure-50 font-bold;
-}
-.chat-output h2 {
-  @apply text-xl md:text-2xl mt-8  text-azure-950 dark:text-azure-50 font-bold;
-}
-.chat-output h3 {
-  @apply text-lg md:text-xl mt-6 text-azure-900 dark:text-azure-100 font-semibold;
-}
-.chat-output h4 {
-  @apply text-lg  text-azure-900 dark:text-azure-100 font-semibold;
-}
-.chat-output ul {
-  @apply ml-4 flex flex-col gap-2;
-}
-
-.chat-output ul li {
-  @apply gap-1 break-keep list-disc;
-}
-
-.chat-output ul li strong {
-  @apply whitespace-nowrap inline;
-}
-
-.chat-output strong {
-  @apply text-azure-950 dark:text-azure-50 font-bold;
-}
-
-.chat-output ol {
-  @apply ml-4 flex flex-col gap-2 list-decimal;
-}
-
-.chat-output pre code {
-  @apply font-medium  dark:bg-transparent p-2 text-azure-50  after:hidden before:hidden;
-}
-.chat-output pre {
-  @apply dark:border dark:border-azure-700 shadow-xl rounded-lg  p-2  bg-azure-900  dark:bg-azure-800;
-}
-:not(pre) code {
-  @apply dark:text-azure-50 text-azure-950 font-semibold after:content-['`'] before:content-['`'];
-}
-.chat-output {
-  @apply flex flex-col gap-4 dark:text-azure-100/90 dark:font-normal text-azure-950 font-normal;
-}
 .roadmap-node {
-  @apply text-center px-5 w-full active:scale-90 cursor-pointer relative shadow-xl dark:bg-azure-900 dark:text-azure-50/80 text-azure-950 hover:bg-azure-50 hover:dark:bg-azure-800 font-semibold flex items-center justify-center h-12 bg-azure-100 rounded-lg;
+  @apply text-center px-5 w-full border-t-2 font-semibold active:scale-90 cursor-pointer relative shadow-muted-foreground shadow-lg flex items-center justify-center h-12 rounded-b-lg;
 }
 
 .lesson-roadmap-node {
-  @apply text-azure-800 flex-col items-start text-left  justify-between py-2 gap-2  after:w-0.5  after:transition-all after:duration-200 after:bottom-0 after:absolute after:-left-2 max-w-[230px] after:h-0 hover:after:h-full dark:after:bg-azure-400 after:bg-azure-700  dark:text-azure-100 w-full relative duration-200 transition-all flex text-sm rounded;
-}
-
-.chat-output {
-  @apply tracking-normal;
+  @apply flex-col items-start text-left  justify-between py-2 gap-2  after:w-0.5  after:transition-all after:duration-200 after:bottom-0 after:absolute after:-left-2 max-w-[230px] after:h-0 hover:after:h-full  w-full relative duration-200 transition-all flex text-sm rounded;
 }
 
 .small-features-container {
-  @apply w-[400px] lg:w-[450px] relative h-48 row-span-1 flex flex-col p-2 justify-center gap-5;
+  @apply w-[400px] lg:w-[450px]  relative h-48 row-span-1 flex flex-col p-2 justify-center gap-5;
 }
 .small-features-container h1 {
-  @apply text-2xl font-bold text-azure-950 dark:text-azure-50;
+  @apply text-2xl font-bold;
 }
 .small-features-container p {
-  @apply text-lg  text-azure-950/80 dark:text-azure-50/80;
+  @apply text-lg text-muted-foreground;
 }
 .big-features-container {
-  @apply w-[400px] lg:w-[450px] relative overflow-hidden transition-shadow duration-300 rounded-xl flex flex-col items-center  border-2 border-azure-200 dark:border-azure-800 h-[600px] row-span-2;
+  @apply w-[400px] lg:w-[450px] relative overflow-hidden transition-shadow duration-300 rounded-xl flex flex-col items-center  border-2  h-[600px] row-span-2;
 }
 .big-features-container h4 {
-  @apply absolute -top-6 right-0 text-xs italic text-azure-950 dark:text-azure-50 font-light p-1;
+  @apply absolute -top-6 right-0 text-xs italic  font-light p-1;
 }
 .big-features-container Image {
   @apply rounded-2xl border-white;
 }
 .big-features-container div.first-features-container figure {
-  @apply w-[100px] h-[100px] rounded-lg shadow-xl aspect-square dark:border dark:border-azure-800 dark:shadow-azure-800 p-4 flex items-center justify-center;
+  @apply w-[100px] h-[100px] rounded-lg shadow-xl aspect-square dark:border  p-4 flex items-center justify-center;
 }
 
-/* Hide the default checkbox */
-.burger .container input {
-  @apply absolute  opacity-0 cursor-pointer h-0 w-0;
-}
+@layer components {
+  .burger .container input {
+    @apply absolute  opacity-0 cursor-pointer h-0 w-0;
+  }
 
-.burger .container {
-  @apply text-lg block cursor-pointer select-none relative;
-}
+  .burger .container {
+    @apply text-lg block cursor-pointer select-none relative;
+  }
 
-.burger .checkmark {
-  @apply relative top-0  left-0 h-[1.3em] w-[1.3em];
-}
+  .burger .checkmark {
+    @apply relative top-0  left-0 h-[1.3em] w-[1.3em];
+  }
 
-.burger .checkmark span {
-  @apply absolute right-0 h-[2px] bg-azure-950 dark:bg-azure-50 rounded w-8 transition-all duration-300;
-}
+  .burger .checkmark span {
+    @apply absolute right-0 h-[2px]  rounded w-8 transition-all duration-300;
+  }
 
-.burger .checkmark span:nth-child(1) {
-  top: 10%;
-}
+  .burger .checkmark span:nth-child(1) {
+    top: 10%;
+  }
 
-.burger .checkmark span:nth-child(2) {
-  top: 50%;
-}
+  .burger .checkmark span:nth-child(2) {
+    top: 50%;
+  }
 
-.burger .checkmark span:nth-child(3) {
-  top: 90%;
-}
+  .burger .checkmark span:nth-child(3) {
+    top: 90%;
+  }
 
-.burger .container input:checked + .checkmark span:nth-child(1) {
-  top: 50%;
-  transform: translateY(-50%) rotate(45deg);
-  -webkit-transform: translateY(-50%) rotate(45deg);
-  -moz-transform: translateY(-50%) rotate(45deg);
-  -ms-transform: translateY(-50%) rotate(45deg);
-  -o-transform: translateY(-50%) rotate(45deg);
-}
+  .burger .container input:checked + .checkmark span:nth-child(1) {
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    -webkit-transform: translateY(-50%) rotate(45deg);
+    -moz-transform: translateY(-50%) rotate(45deg);
+    -ms-transform: translateY(-50%) rotate(45deg);
+    -o-transform: translateY(-50%) rotate(45deg);
+  }
 
-.burger .container input:checked + .checkmark span:nth-child(2) {
-  top: 50%;
-  transform: translateY(-50%) rotate(-45deg);
-  -webkit-transform: translateY(-50%) rotate(-45deg);
-  -moz-transform: translateY(-50%) rotate(-45deg);
-  -ms-transform: translateY(-50%) rotate(-45deg);
-  -o-transform: translateY(-50%) rotate(-45deg);
-}
+  .burger .container input:checked + .checkmark span:nth-child(2) {
+    top: 50%;
+    transform: translateY(-50%) rotate(-45deg);
+    -webkit-transform: translateY(-50%) rotate(-45deg);
+    -moz-transform: translateY(-50%) rotate(-45deg);
+    -ms-transform: translateY(-50%) rotate(-45deg);
+    -o-transform: translateY(-50%) rotate(-45deg);
+  }
 
-.container input:checked + .checkmark span:nth-child(3) {
-  transform: translateX(-50px);
-  -webkit-transform: translateX(-50px);
-  -moz-transform: translateX(-50px);
-  -ms-transform: translateX(-50px);
-  -o-transform: translateX(-50px);
-  opacity: 0;
+  .container input:checked + .checkmark span:nth-child(3) {
+    transform: translateX(-50px);
+    -webkit-transform: translateX(-50px);
+    -moz-transform: translateX(-50px);
+    -ms-transform: translateX(-50px);
+    -o-transform: translateX(-50px);
+    opacity: 0;
+  }
 }

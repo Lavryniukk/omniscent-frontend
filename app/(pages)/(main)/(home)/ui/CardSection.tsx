@@ -98,7 +98,7 @@ const CardSection = () => {
           height={738}
         />
 
-        <div className="absolute rounded-2xl w-full h-1/2 bottom-0 bg-gradient-to-t from-azure-50 dark:from-azure-950" />
+        <div className="absolute rounded-2xl w-full h-1/2 bottom-0 bg-gradient-to-t from-background " />
       </div>
       <div className="small-features-container text-left items-start lg:text-right lg:items-end">
         <h1>Personalized learning path.</h1>
@@ -123,7 +123,7 @@ const CardSection = () => {
           height={600}
         />
 
-        <div className="absolute rounded-2xl w-full h-1/2 bottom-0 bg-gradient-to-t from-azure-50 dark:from-azure-950" />
+        <div className="absolute rounded-2xl w-full h-1/2 bottom-0 bg-gradient-to-t from-background  " />
       </div>
       <div className="small-features-container text-left items-start">
         <h1>Your experienced AI mentor.</h1>
@@ -143,12 +143,12 @@ const CardSection = () => {
         <Image
           src={srcQuestion}
           className="rounded-xl"
-          alt="Roadmap example"
+          alt="Lesson question example"
           width={450}
           height={600}
         />
 
-        <div className="absolute rounded-2xl w-full  bottom-0 bg-gradient-to-t from-azure-50 h-1/2 dark:from-azure-950" />
+        <div className="absolute rounded-2xl w-full  bottom-0 bg-gradient-to-t from-background" />
       </div>
       <div className="small-features-container text-left items-start lg:text-right lg:items-end">
         <h1>Be free to ask questions!</h1>

@@ -1,13 +1,16 @@
+'use server'
 import { axiosWithAuth } from "@/app/shared/config/axiosConfig";
 
-export function fetchCopyTemplate(id: string): void {
+export async function fetchCopyTemplate(id: string): Promise<string> {
   try {
-    void axiosWithAuth({
+     await axiosWithAuth({
       method: "POST",
       url: `/templates/copy/${id}`,
     });
+    return "Success! Template copied."
+
   } catch (error) {
     console.error(error);
-    throw error;
+    return "Error! Could't copy template."
   }
 }

@@ -1,6 +1,6 @@
 "use client";
+import { fetchRoadmap } from "@/app/entities/roadmap-node/api";
 import { Lesson, RoadmapSidebar } from "@/app/modules";
-import { fetchRoadmap } from "@/app/shared/api/roadmaps/fetchRoadmapById";
 import { useQuery } from "@tanstack/react-query";
 export type LessonPageParams = {
   params: {
@@ -8,7 +8,6 @@ export type LessonPageParams = {
     quizId: string;
   };
 };
-//TODO - I have to think of a navigation between lesson and quiz.
 function LessonPage({ params }: LessonPageParams) {
   const { quizId, roadmapId } = params;
   try {

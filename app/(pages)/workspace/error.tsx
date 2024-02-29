@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/app/shared/ui";
+import { Button } from "@/components/ui/button";
 import { useEffect } from "react";
 
 export default function Error({
@@ -15,11 +15,17 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="bg-azure-200 gap-10 dark:bg-azure-950 flex flex-col items-center justify-center w-screen h-screen ">
-      <h2 className="text-azure-950 text-4xl font-bold text-center">
+    <div className="bgblack 200 gap-10 dark:bgblack 950 flex flex-col items-center justify-center w-screen h-screen ">
+      <h2 className="textblack 950 dark:text-foreground text-4xl font-bold text-center">
         Whoops, something went wrong! If the error persists, please contact us.
       </h2>
-      <Button callback={reset}>Try again</Button>
+      <Button
+        onClick={() => {
+          location.reload();
+        }}
+      >
+        Try again
+      </Button>
     </div>
   );
 }

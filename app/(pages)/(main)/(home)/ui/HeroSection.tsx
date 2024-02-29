@@ -2,6 +2,7 @@
 import { useTheme } from "next-themes";
 import Title from "./Title";
 import Image from "next/image";
+import { Spotlight } from "@/components/ui/spotlight";
 
 let HeroSection = () => {
   const { resolvedTheme } = useTheme();
@@ -20,21 +21,21 @@ let HeroSection = () => {
       break;
   }
   return (
-    <div className="  h-fit py-20  relative overflow-hidden flex flex-col items-center">
+    <div className="  h-fit bg-background bg-grid-small-black/[0.3] dark:bg-grid-small-[hsl(0,0%,95%)]/[0.3]  relative flex flex-col items-center">
+      <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+
       <Title />
-      <picture className="w-[98%]  p-0.5 relative flex items-center overflow-hidden justify-center  border-azure-950 rounded md:rounded-2xl  md:w-[80%] ">
+      <picture className="w-[98%] x-10  p-0.5 relative flex items-center  justify-center   rounded md:rounded-2xl  md:w-[80%] ">
         <Image
           src={src}
           alt="A cleverize lesson example"
-          className="w-full   shadow-2xl rounded-[14px] "
+          className="w-full  rounded-[14px] "
           width={1920}
           height={1040}
         />
-        <div className=" w-[50%] h-[15%] absolute  bg-azure-300 dark:bg-azure-700 left-0  -bottom-[15%] rounded-full blur-[120px]" />
-        <div className=" w-[50%] h-[15%]  absolute bg-azure-300 dark:bg-azure-700 right-0 -bottom-[15%] rounded-full blur-[120px]" />
-
-        <div className="absolute  bg-gradient-to-b from-transparent rounded-2xl to-azure-200 dark:to-azure-800 -z-10 w-full h-full" />
       </picture>
+      <div className="absolute  bg-gradient-to-b from-transparent  via-80%  via-transparent to-background rounded-2xl   w-full h-full" />
+
       {/* <div className="absolute bottom-0 bg-gradient-to-t from-background  to-transparent w-full h-32 z-[20]" /> */}
       {/* <MovingGradients /> */}
     </div>

@@ -10,13 +10,13 @@ const NavigationButton = ({
   title: string;
 }): React.ReactNode => {
   return (
-    <div className="flex items-center absolute left-10 top-10 gap-2">
+    <div className="fixed left-5 top-5 gap-4 flex items-center">
       <Link
         href={href}
-        className="flex items-center gap-1 justify-center p-2  w-fit dark:text-azure-50/80 text-azure-950/80   hover:opacity-80"
+        className="flex items-center  gap-2 justify-center p-2  w-fit   hover:opacity-80"
       >
         <MoveLeft className="font-light" strokeWidth={1} />
-        To {title}
+        <p>To {title}</p>
       </Link>
       <ThemeSwitcher />
     </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import Button from "@/app/shared/ui/buttons/Button";
+import { Button } from "@/components/ui/button";
 import { SignedIn, UserButton, SignedOut, SignInButton } from "@clerk/nextjs";
 import Link from "next/link";
 
@@ -17,21 +17,21 @@ let Popup = ({ isOpen, setIsOpen }: Props) => {
       <Link
         href={"/"}
         onClick={() => setIsOpen(false)}
-        className={`text-azure-950 dark:text-azure-50 hover:opacity-80 transition-opacity duration-100`}
+        className={` 950 dark:text-foreground hover:opacity-80 transition-opacity duration-100`}
       >
         Home
       </Link>
       <Link
         href={"/workspace"}
         onClick={() => setIsOpen(false)}
-        className={`text-azure-950 dark:text-azure-50 hover:opacity-80 transition-opacity duration-100`}
+        className={` 950 dark:text-foreground hover:opacity-80 transition-opacity duration-100`}
       >
         Workspace
       </Link>
       <Link
         href={"/blog"}
         onClick={() => setIsOpen(false)}
-        className={`text-azure-950 dark:text-azure-50 hover:opacity-80 transition-opacity duration-100`}
+        className={` 950 dark:text-foreground hover:opacity-80 transition-opacity duration-100`}
       >
         Blog
       </Link>
@@ -39,7 +39,7 @@ let Popup = ({ isOpen, setIsOpen }: Props) => {
         <UserButton />
       </SignedIn>
       <SignedOut>
-        <Button variant="primary">
+        <Button>
           <SignInButton>Sign in</SignInButton>
         </Button>
       </SignedOut>
