@@ -4,18 +4,18 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 346.8 77.2% 49.8%;
-    --primary-foreground: 355.7 100% 97.3%;
+    --background: 0 0% 100%; //Background color
+    --foreground: 240 10% 3.9%;//White text color
+    --card: 0 0% 100%; //idk
+    --card-foreground: 240 10% 3.9%;//idk
+    --popover: 0 0% 100%;//idk
+    --popover-foreground: 240 10% 3.9%;//idk
+    --primary: 346.8 77.2% 49.8%;//currenlty red, can be modified
+    --primary-foreground: 355.7 100% 97.3%;//white
     --secondary: 240 4.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;
     --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
+    --muted-foreground: 240 3.8% 46.1%;//gray
     --accent: 240 4.8% 95.9%;
     --accent-foreground: 240 5.9% 10%;
     --destructive: 0 84.2% 60.2%;
