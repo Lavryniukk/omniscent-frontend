@@ -29,7 +29,8 @@ export default async function signUpAction(
   const res = await fetchSignUp({ email, password });
 
   if (res.ok) {
-    redirect("/");
+    // redirect("/");
+    return { toast: {  title: "Success!", description: "You have successfully signed up." }, email: [], password: []}
   } else {
     const status = res.data.response.status;
 
