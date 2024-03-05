@@ -1,6 +1,7 @@
 "use client";
 import { fetchRoadmap } from "@/app/entities/roadmap-node/api";
-import { Lesson, RoadmapSidebar } from "@/app/modules";
+import { Lesson } from "@/app/modules";
+import { RoadmapSidebar } from "@/app/widgets";
 import { useQuery } from "@tanstack/react-query";
 export type LessonPageParams = {
   params: {
@@ -25,7 +26,7 @@ function LessonPage({ params }: LessonPageParams) {
     <div
       className={`select-none overflow-x-hidden overflow-auto full-height w-full h-full flex flex-row overflow-y-auto  mx-auto box-border`}
     >
-      <RoadmapSidebar query={query} id={params.quizId} />
+      <RoadmapSidebar roadmapId={roadmapId} id={params.quizId} />
       <Lesson params={{ id: quizId, roadmapId }} />
     </div>
   );
