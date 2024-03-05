@@ -2,9 +2,9 @@
 import "@/app/globals.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Inter } from "next/font/google";
-import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "next-themes";
-// import SubscriptionProvider from "../shared/providers/SubscriptionProvider";
+import { AuthProvider } from "../processes/auth";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({
   variable: "--inter-font",
@@ -19,16 +19,17 @@ export default function RootLayout({
   const client = new QueryClient();
 
   return (
-    <ClerkProvider>
-      <html lang="en" className={`${inter.variable}`} suppressHydrationWarning>
-        <body className="font-inter antialiased ">
-          <QueryClientProvider client={client}>
+    <html lang="en" className={`${inter.variable}`} suppressHydrationWarning>
+      <body className="font-inter antialiased ">
+        <QueryClientProvider client={client}>
+          <AuthProvider>
             <ThemeProvider attribute="class" disableTransitionOnChange>
               {children}
+              <Toaster />
             </ThemeProvider>
-          </QueryClientProvider>
-        </body>
-      </html>
-    </ClerkProvider>
+          </AuthProvider>
+        </QueryClientProvider>
+      </body>
+    </html>
   );
 }

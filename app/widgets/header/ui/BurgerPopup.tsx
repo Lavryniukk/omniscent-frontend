@@ -1,7 +1,7 @@
 "use client";
 
+import { SignedIn, SignedOut } from "@/app/processes/auth";
 import { Button } from "@/components/ui/button";
-import { SignedIn, UserButton, SignedOut, SignInButton } from "@clerk/nextjs";
 import Link from "next/link";
 
 type Props = {
@@ -35,12 +35,15 @@ let Popup = ({ isOpen, setIsOpen }: Props) => {
       >
         Blog
       </Link>
-      <SignedIn>
-        <UserButton />
-      </SignedIn>
+      <SignedIn>Profile</SignedIn>
       <SignedOut>
         <Button>
-          <SignInButton>Sign in</SignInButton>
+          <Link href={"/sign-in"}>
+            <Button variant={"ghost"}>Sign in</Button>
+          </Link>
+          <Link href={"/sign-up"}>
+            <Button>Sign up</Button>
+          </Link>
         </Button>
       </SignedOut>
     </div>

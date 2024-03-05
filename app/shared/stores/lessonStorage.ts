@@ -6,8 +6,13 @@ import {
   fetchLesson,
   fetchSendMessage,
 } from "@/app/entities/lesson/api";
-import getToken from "../helpers/getToken";
+
 import { Message } from "../entities";
+import Cookies from "js-cookie";
+
+const getToken = () => {
+  return Cookies.get("access_token") as string;
+};
 
 interface LessonStorageState {
   userInputData: string;
@@ -62,7 +67,7 @@ const useLessonStorage = create<LessonStorageActions & LessonStorageState>(
       });
 
       try {
-        const token = await getToken();
+        const token = getToken();
 
         const url = `${process.env.SERVER_URL}}/api/lesson/${lesson._id}/stream`;
 
@@ -110,7 +115,7 @@ const useLessonStorage = create<LessonStorageActions & LessonStorageState>(
       if (!lesson) return;
 
       try {
-        const token = await getToken();
+        const token = getToken();
 
         const url = `${process.env.SERVER_URL}}/api/lesson/${lesson._id}/stream`;
 
