@@ -1,8 +1,7 @@
 "use server";
 import { config } from "dotenv";
 import axios from "axios";
-import Cookies from "js-cookie";
-
+import { cookies } from "next/headers";
 config();
 
 axios.defaults.withCredentials = true;
@@ -24,10 +23,10 @@ export const axiosWithoutAuth = axios.create({
 });
 
 axiosWithAuth.interceptors.request.use(async (config) => {
-  try {
-    const accessToken = Cookies.get("access_token");
 
-    config.headers.Authorization = `Bearer ${accessToken}`;
+  try {
+    // const accessToken = Cookies.get("access_token");
+    // config.headers.Authorization = `Bearer ${accessToken}`;
   } catch (error) {
     console.error("Could not get token:", error);
   }
@@ -39,14 +38,14 @@ axiosWithAuth.interceptors.response.use(
   (response) => response,
 
   async (error) => {
-    console.log("Erorr :", error.url);
+    console.log("Error :", error.url);
 
-    if (error.response.status === 401) {
-      const res = await axiosWithAuth.post("/auth/refresh-token");
+    // if (error.response.status === 401) {
+    //   const res = await axiosWithAuth.post("/auth/refresh-token");
 
-      Cookies.set("access_token", res.data.access_token);
-      return axiosWithAuth.request(error.config);
-    }
+    //   Cookies.set("access_token", res.data.access_token);
+    //   return axiosWithAuth.request(error.config);
+    // }
     return Promise.reject(error);
   }
 );
