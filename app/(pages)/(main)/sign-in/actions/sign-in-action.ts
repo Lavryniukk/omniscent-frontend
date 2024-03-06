@@ -4,19 +4,19 @@ import validateForm from "../helpers/validate-form";
 import AuthFormValidationErrorType from "../types/auth-form-validation-error";
 import { redirect } from "next/navigation";
 
-type ToastType = {
+type AuthActionReturnType = {
   toast?: {
     variant?: "destructive";
     title: string;
     description: string;
     action?: any;
   };
-};
+} & AuthFormValidationErrorType;
 
 export default async function signInAction(
   _: AuthFormValidationErrorType,
   data: FormData
-): Promise<AuthFormValidationErrorType & ToastType> {
+): Promise<AuthActionReturnType> {
   const email = data.get("email") as string;
   const password = data.get("password") as string;
 
@@ -29,7 +29,15 @@ export default async function signInAction(
   const res = await fetchSignIn({ email, password });
 
   if (res.ok) {
-    redirect("/");
+    return {
+      email: [],
+      password: [],
+      toast: {
+        title: "Success",
+        description:
+          "You should probably tell owners to fire their developers.",
+      },
+    };
   } else {
     const status = res.data.response.status;
 
