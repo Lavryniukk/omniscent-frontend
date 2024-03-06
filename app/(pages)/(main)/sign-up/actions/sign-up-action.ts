@@ -3,6 +3,8 @@ import { fetchSignUp } from "@/app/shared/api/auth";
 import validateForm from "../helpers/validate-form";
 import AuthFormValidationErrorType from "../types/auth-form-validation-error";
 import { redirect } from "next/navigation";
+import Cookies from "js-cookie";
+import { axiosWithoutAuth } from "@/app/shared/config";
 
 type AuthActionReturnType = {
   toast?: {
@@ -20,8 +22,13 @@ export default async function signUpAction(
   const email = data.get("email") as string;
   const password = data.get("password") as string;
 
-  const newErrors = validateForm(email, password);
+  Cookies.set("email", email, {
+    expires: 365,
+  });
+  axiosWithoutAuth("/cookie", { withCredentials: true });
 
+  const newErrors = validateForm(email, password);
+  console.log(newErrors);
   if (newErrors.email.length !== 0 && newErrors.password.length !== 0) {
     return newErrors;
   }
@@ -39,7 +46,7 @@ export default async function signUpAction(
       password: [],
     };
   } else {
-    const status = res.data.response.status;
+    const status = res?.data?.response?.status;
 
     if (status === 409) {
       return {

@@ -9,12 +9,18 @@ axios.defaults.withCredentials = true;
 
 export const axiosWithAuth = axios.create({
   baseURL: `${process.env.SERVER_URL}/api`,
-  withCredentials: true,
+  withCredentials: true, // Include cookies in the request (equivalent to credentials: 'include')
+  headers: {
+    "Content-Type": "application/json",
+  },
 });
 
 export const axiosWithoutAuth = axios.create({
   baseURL: `${process.env.SERVER_URL}/api`,
-  withCredentials: true,
+  withCredentials: true, // Include cookies in the request (equivalent to credentials: 'include')
+  headers: {
+    "Content-Type": "application/json",
+  },
 });
 
 axiosWithAuth.interceptors.request.use(async (config) => {

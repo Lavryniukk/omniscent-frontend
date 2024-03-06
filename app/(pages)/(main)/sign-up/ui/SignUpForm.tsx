@@ -26,8 +26,8 @@ export default function SignUpForm() {
   }, [state, toast]);
 
   return (
-    <div className="w-[clamp(350px,20vw,500px)] mt-60 h-full bg-background/50 z-50 p-6 rounded-lg backdrop-blur-sm flex flex-col gap-8">
-      <h1 className="text-3xl font-bold">Create new account</h1>
+    <div className="w-[350px] mt-60 h-full  z-50  rounded-lg backdrop-blur-sm flex flex-col gap-8">
+      <h1 className="text-3xl mb-4 font-bold">Create new free account</h1>
       <form action={action} className="flex flex-col gap-8">
         <div className="flex flex-col gap-2">
           <Label htmlFor="email">

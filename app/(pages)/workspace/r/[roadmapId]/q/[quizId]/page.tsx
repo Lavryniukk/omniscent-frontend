@@ -22,6 +22,8 @@ function LessonPage({ params }: LessonPageParams) {
     queryKey: ["roadmap", params.roadmapId],
     queryFn: () => fetchRoadmap(params.roadmapId),
   });
+
+  
   return (
     <div
       className={`select-none overflow-x-hidden overflow-auto full-height w-full h-full flex flex-row overflow-y-auto  mx-auto box-border`}
