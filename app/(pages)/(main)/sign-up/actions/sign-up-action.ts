@@ -1,10 +1,6 @@
-"use server";
 import { fetchSignUp } from "@/app/shared/api/auth";
 import validateForm from "../helpers/validate-form";
 import AuthFormValidationErrorType from "../types/auth-form-validation-error";
-import { redirect } from "next/navigation";
-import { axiosWithoutAuth } from "@/app/shared/config";
-import { cookies } from "next/headers";
 
 type AuthActionReturnType = {
   toast?: {
@@ -29,6 +25,8 @@ export default async function signUpAction(
 
   const res = await fetchSignUp({ email, password });
 
+  const status = res.data.statusCode;
+
   if (res.ok) {
     // redirect("/");
     return {
@@ -40,8 +38,6 @@ export default async function signUpAction(
       password: [],
     };
   } else {
-    const status = res?.data?.response?.status;
-
     if (status === 409) {
       return {
         email: [],

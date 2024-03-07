@@ -1,8 +1,6 @@
-"use server";
 import { fetchSignIn } from "@/app/shared/api/auth";
 import validateForm from "../helpers/validate-form";
 import AuthFormValidationErrorType from "../types/auth-form-validation-error";
-import { redirect } from "next/navigation";
 
 type AuthActionReturnType = {
   toast?: {
@@ -20,10 +18,10 @@ export default async function signInAction(
   const email = data.get("email") as string;
   const password = data.get("password") as string;
 
-  const newErrors = validateForm(email, password);
+  const errors = validateForm(email, password);
 
-  if (newErrors.email.length !== 0 && newErrors.password.length !== 0) {
-    return newErrors;
+  if (errors.email.length !== 0 && errors.password.length !== 0) {
+    return errors;
   }
 
   const res = await fetchSignIn({ email, password });
@@ -39,8 +37,6 @@ export default async function signInAction(
       },
     };
   } else {
-    const status = res.data.response.status;
-
     return {
       email: [],
       password: [],

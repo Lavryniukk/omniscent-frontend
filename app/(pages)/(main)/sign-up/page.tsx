@@ -1,5 +1,7 @@
 import SignUpForm from "./ui/SignUpForm";
 
-export default function SignUp() {
+function SignUp() {
   return <SignUpForm />;
 }
+
+export default SignUp;

@@ -6,8 +6,6 @@ config();
 
 axios.defaults.withCredentials = true;
 
-
-
 export const axiosWithAuth = axios.create({
   baseURL: `${process.env.SERVER_URL}/api`,
   withCredentials: true, // Include cookies in the request (equivalent to credentials: 'include')
@@ -25,13 +23,44 @@ export const axiosWithoutAuth = axios.create({
 });
 
 axiosWithAuth.interceptors.request.use(async (config) => {
+  console.log("Axios with auth interceptor fired");
+  const accessToken: { value: string } | undefined = cookies().get("_at");
+  const refreshToken: { value: string } | undefined = cookies().get("_rt");
 
-  try {
-    // const accessToken = Cookies.get("access_token");
-    // config.headers.Authorization = `Bearer ${accessToken}`;
-  } catch (error) {
-    console.error("Could not get token:", error);
+  if (!accessToken && !refreshToken) {
+    console.log("Access token and refresh token are missing");
+    throw new Error("Access token and refresh token are missing");
+  } else if (!accessToken && refreshToken) {
+    try {
+      console.log("Refreshing token");
+      const res = await axiosWithoutAuth.post("/auth/refresh-token", {
+        refresh_token: refreshToken.value,
+      });
+
+      console.log("Refresh token response:", res.data);
+
+      cookies().set("_at", res.data._at, {
+        httpOnly: false,
+        secure: true,
+        maxAge: Number(process.env.ACCESS_TOKEN_MAX_AGE),
+      });
+      cookies().set("_rt", res.data._rt, {
+        httpOnly: true,
+        secure: true,
+        maxAge: Number(process.env.REFRESH_TOKEN_MAX_AGE),
+      });
+
+      config.headers.Authorization = `Bearer ${res.data._at}`;
+
+      return config;
+    } catch (error) {
+      console.log("Error with refresh token fetch", error);
+    }
+  } else {
+    console.log("Nothing triggered, this means all tokens are present");
   }
+
+  config.headers.Authorization = `Bearer ${accessToken?.value}`;
 
   return config;
 });
