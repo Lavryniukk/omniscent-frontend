@@ -6,6 +6,8 @@ config();
 
 axios.defaults.withCredentials = true;
 
+
+
 export const axiosWithAuth = axios.create({
   baseURL: `${process.env.SERVER_URL}/api`,
   withCredentials: true, // Include cookies in the request (equivalent to credentials: 'include')

@@ -8,10 +8,8 @@ const AuthContext = createContext<UseQueryResult<User>>(
 );
 
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const user = useQuery(["user"], fetchUser);
-
-  console.log("user", user);
-
+  // const user = useQuery(["user"], fetchUser, { refetchInterval: false });
+  let user = {} as UseQueryResult<User>
   return (
     <AuthContext.Provider value={{ ...user }}>{children}</AuthContext.Provider>
   );

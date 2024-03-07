@@ -22,12 +22,9 @@ export default async function signUpAction(
   const email = data.get("email") as string;
   const password = data.get("password") as string;
 
-  const cookiess = cookies().getAll();
-  console.log(cookiess);
-  const newErrors = validateForm(email, password);
-  console.log(newErrors);
-  if (newErrors.email.length !== 0 && newErrors.password.length !== 0) {
-    return newErrors;
+  const errors = validateForm(email, password);
+  if (errors.email.length !== 0 || errors.password.length !== 0) {
+    return errors;
   }
 
   const res = await fetchSignUp({ email, password });

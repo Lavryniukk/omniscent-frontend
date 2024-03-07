@@ -28,6 +28,7 @@
     "axios": "^1.6.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "cookie": "^0.6.0",
     "dompurify": "^3.0.6",
     "dotenv": "^16.3.1",
     "eslint": "8.47.0",
@@ -54,6 +55,7 @@
     "zustand": "^4.4.1"
   },
   "devDependencies": {
+    "@types/cookie": "^0.6.0",
     "@types/dompurify": "^3.0.5",
     "@types/eventsource": "^1.1.15",
     "@types/js-cookie": "^3.0.4",
