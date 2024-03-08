@@ -39,4 +39,4 @@ function WorkspacePage() {
   );
 }
 
-export default withAuthRequired(WorkspacePage);
+export default WorkspacePage;

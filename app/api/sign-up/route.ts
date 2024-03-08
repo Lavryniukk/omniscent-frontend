@@ -27,14 +27,14 @@ export const POST = async (req: Request, res: Response) => {
       httpOnly: true,
       secure: true,
       sameSite: "none",
-      maxAge: 7 * 24 * 60 * 60 * 1000,
+      maxAge: Number(process.env.REFRESH_TOKEN_MAX_AGE),
     });
 
     cookies().set("_at", tokens._at, {
       httpOnly: false,
       secure: true,
       sameSite: "none",
-      maxAge: 60 * 60 * 1000,
+      maxAge: Number(process.env.ACCESS_TOKEN_MAX_AGE),
     });
 
     return Response.json({ ok: true });
