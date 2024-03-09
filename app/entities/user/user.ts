@@ -7,14 +7,15 @@ type Metadata = {
 
 type User = {
   email: string;
-  id: string;
+  _id: string;
   name: string;
   password: string;
   roadmaps: string[];
   subscription: Subscription;
   metadata: Metadata;
-  createdAt: Date;
-  updatedAt: Date;
+  created_at: Date;
+  updated_at: Date;
+  last_signed_in: Date
 };
 
 export type { User };

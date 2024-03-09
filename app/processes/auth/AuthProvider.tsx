@@ -1,32 +1,58 @@
+"use client";
 import { User } from "@/app/entities";
 import { fetchUser } from "@/app/entities/user/api";
 import { UseQueryResult, useQuery } from "@tanstack/react-query";
-import { createContext, useContext } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
+import isAuthorized from "./api/fetch-is-authorized";
 
-const AuthContext = createContext<UseQueryResult<User>>(
-  {} as UseQueryResult<User>
-);
+type AuthContextType = {
+  auth: UseQueryResult<User>;
+  isAuth: boolean;
+};
+const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const user = useQuery({
-    queryKey: ["user"],
+  const [isAuth, setIsAuth] = useState(false);
+  const auth = useQuery({
+    queryKey: ["auth"],
     queryFn: () => {
       return fetchUser();
     },
   });
+  const handleAuthData = useCallback(() => {
+    if (auth.data) {
+      setIsAuth(true);
+    } else {
+      setIsAuth(false);
+    }
+  }, [auth.data]);
+
+  useEffect(() => {
+    handleAuthData();
+    console.log(auth.data);
+  }, [auth.data, handleAuthData]);
+
   return (
-    <AuthContext.Provider value={{ ...user }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ auth, isAuth }}>
+      {children}
+    </AuthContext.Provider>
   );
 };
 
-const useUser = () => {
+const useAuth = () => {
   const context = useContext(AuthContext);
 
   if (!context) {
     throw new Error("useAuth must be used within an AuthProvider");
   }
 
-  return context;
+  return { ...context.auth, isAuth: context.isAuth };
 };
 
-export { useUser, AuthProvider };
+export { useAuth, AuthProvider };

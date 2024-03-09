@@ -26,7 +26,7 @@ interface LessonStorageActions {
   setInputData: (newInputData: string) => void;
   addUserMessage: (roadmapId: string) => Promise<void>;
   setLesson: (newLessonId: string) => Promise<void>;
-  initLesson: (user_roadmap_id: string, language: string) => Promise<void>;
+  initLesson: (user_roadmap_id: string) => Promise<void>;
   lock: () => void;
   unlock: () => void;
   setStreaming: (value: boolean) => void;
@@ -110,7 +110,7 @@ const useLessonStorage = create<LessonStorageActions & LessonStorageState>(
       });
     },
 
-    initLesson: async (roadmapId, language) => {
+    initLesson: async (roadmapId) => {
       const { lesson, updateLastAssistantMessage } = get();
       if (!lesson) return;
 
@@ -133,7 +133,7 @@ const useLessonStorage = create<LessonStorageActions & LessonStorageState>(
             ],
           },
         });
-        void fetchInitLesson({ lessonId: lesson._id, roadmapId, language });
+        void fetchInitLesson({ lessonId: lesson._id, roadmapId});
       } catch (error) {
         console.error("Failed to initialize lesson", error);
         set({ isStreaming: false });

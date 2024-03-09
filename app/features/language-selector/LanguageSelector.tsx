@@ -1,7 +1,5 @@
-"use client";
 import Skeleton from "@/app/UI/loading/Skeleton/Skeleton";
-import { fetchUserUpdate } from "@/app/entities/user/api";
-import { useUser } from "@/app/processes/auth";
+import { fetchUser, fetchUserUpdate } from "@/app/entities/user/api";
 import { LANGUAGE } from "@/app/shared/constants";
 import { Button } from "@/components/ui/button";
 import {
@@ -15,55 +13,59 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Languages } from "lucide-react";
-import { useCallback, useEffect, useState } from "react";
-
+import { useQuery } from "@tanstack/react-query";
+import { useCallback } from "react";
 export default function LanguageSelector() {
-  const { data: user, isLoading } = useUser();
+  const handleSubmit = useCallback((language: string) => {
+    fetchUserUpdate({ metadata: { language: language as LANGUAGE } });
+  }, []);
 
-  const [language, setLanguage] = useState("english");
+  const {
+    data: user,
+    isLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ["user"],
+    queryFn: () => {
+      return fetchUser();
+    },
+  });
+  if (!isLoading && !user) return null;
 
-  const handleAction = async (data: FormData) => {
-    console.log("Form submitted");
-    const formLangauge = data.get("language") as string;
-    console.log(formLangauge);
-  };
+  const language = user?.metadata.language;
 
   return (
     <div className="absolute top-4 right-4 flex gap-1 justify-center items-center">
       <label className="text-sm text-muted-foreground">
-        {language?.charAt(0).toUpperCase() + language?.slice(1)}
+        {language && language?.charAt(0).toUpperCase() + language?.slice(1)}
+        {isLoading && <Skeleton className="w-10 h-4" />}
       </label>
-      {!isLoading ? (
-        <form action={handleAction}>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant={"outline"} size="icon">
-                <Languages />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent>
-              <DropdownMenuLabel>Languages</DropdownMenuLabel>
-              <DropdownMenuRadioGroup
-                value={language}
-                onValueChange={setLanguage}
-              >
-                <DropdownMenuRadioItem value="russian">
-                  <Button type="submit" variant={"ghost"}>
-                    Russian
-                  </Button>
-                </DropdownMenuRadioItem>
-                <DropdownMenuRadioItem value="english">
-                  <Button type="submit" variant={"ghost"}>
-                    English
-                  </Button>
-                </DropdownMenuRadioItem>
-              </DropdownMenuRadioGroup>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </form>
-      ) : (
-        <Skeleton width="42px" height="20px" />
-      )}
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant={"outline"} size="icon">
+            {isLoading && <Skeleton className="w-6 h-6" />}
+            {!isLoading && <Languages />}
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent>
+          <DropdownMenuLabel>Languages</DropdownMenuLabel>
+          <DropdownMenuSeparator />
+          <DropdownMenuRadioGroup
+            onValueChange={(value) => {
+              handleSubmit(value);
+              refetch();
+            }}
+            value={language}
+          >
+            <DropdownMenuRadioItem value="russian">
+              Russian
+            </DropdownMenuRadioItem>
+            <DropdownMenuRadioItem value="english">
+              English
+            </DropdownMenuRadioItem>
+          </DropdownMenuRadioGroup>
+        </DropdownMenuContent>
+      </DropdownMenu>
     </div>
   );
 }

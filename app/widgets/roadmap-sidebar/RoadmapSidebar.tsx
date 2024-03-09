@@ -40,7 +40,7 @@ export default function RoadmapSidebar({
         </section>
 
         <h1 className="text-2xl text-center">
-          {isLoading && <Skeleton width="70%" height="25px" />}
+          {isLoading && <Skeleton className="w-[70%] h-6" />}
           {roadmap?.title}
         </h1>
 
@@ -74,7 +74,7 @@ function RoadmapSidebarSkeleton() {
   const arr = Array.from({ length: 5 }).map((_, index) => (
     <li key={index} className="relative flex flex-col items-start  gap-0">
       <p className="min-w-[200px] max-w-[300px] flex justify-start  w-full p-2  pointer-events-none">
-        <Skeleton width="80%" height="20px" />
+        <Skeleton className="w-4/5 h-5"  />
       </p>
       <div
         className={`rounded-full absolute  w-2 h-2  z-10  -right-0.5 top-[calc(50%-4px)]`}

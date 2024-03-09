@@ -3,11 +3,12 @@ import { axiosWithAuth } from "@/app/shared/config/";
 type fetchLessonInitArgs = {
   lessonId: string;
   roadmapId: string;
-  language: string;
 };
 
-export async function fetchInitLesson(data: fetchLessonInitArgs): Promise<unknown> {
-  const { lessonId, roadmapId: roadmap_id, language } = data;
+export async function fetchInitLesson(
+  data: fetchLessonInitArgs
+): Promise<unknown> {
+  const { lessonId, roadmapId: roadmap_id } = data;
 
   try {
     return await axiosWithAuth({
@@ -15,7 +16,6 @@ export async function fetchInitLesson(data: fetchLessonInitArgs): Promise<unknow
       method: "POST",
       data: {
         roadmap_id,
-        language,
       },
     });
   } catch (error) {

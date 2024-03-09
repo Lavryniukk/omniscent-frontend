@@ -130,7 +130,7 @@ function LoadingTemplates() {
           key={index}
           className="w-full dark:border dark:borderblack 700 py-7 rounded-md"
         >
-          <Skeleton width="75%" height="24px" />
+          <Skeleton className="w-3/4 h-6"  />
         </div>
       ))}
     </div>

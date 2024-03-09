@@ -5,4 +5,6 @@ export type Lesson = {
   title: string;
   node_id: string;
   messages: Message[];
+  created_at: Date;
+  updated_at: Date;
 };

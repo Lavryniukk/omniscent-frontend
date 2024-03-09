@@ -68,7 +68,7 @@ const config: Config = {
         },
       },
       dropShadow: {
-        primary: "0 2px 4px hsl(var(--primary))",
+        primary: "0 1px 3px hsl(var(--primary))",
       },
       borderRadius: {
         lg: "var(--radius)",

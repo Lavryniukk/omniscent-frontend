@@ -15,7 +15,7 @@ let Title = () => {
         <motion.h1
           {...slidingAnimation}
           className="bg-gradient-to-br to-70% from-foreground to-foreground/80 text-transparent w-full  antialiased mx-auto leading-none
-      				  font-inter relative tracking-tight hyphens-none drop-shadow-lg bg-clip-text text-center  text-[clamp(40px,4vw,84px)] font-semibold"
+      				  font-inter relative tracking-tight hyphens-none drop-shadow-lg bg-clip-text text-center  text-[clamp(40px,4vw,84px)] font-bold"
         >
           Cleverize - the
           <br className="xs:hidden" /> AI solution
@@ -41,7 +41,7 @@ let Title = () => {
           variant="ghost"
           size={"lg"}
           onClick={() => {
-            router.push("/workspace");
+            router.push("/sign-up");
           }}
         >
           Workspace

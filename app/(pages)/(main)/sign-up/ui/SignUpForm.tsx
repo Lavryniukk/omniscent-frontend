@@ -8,6 +8,8 @@ import { Eye, EyeOff } from "lucide-react";
 import { useEffect, useState } from "react";
 import signUpAction from "../actions/sign-up-action";
 import { useToast } from "@/components/ui/use-toast";
+import { redirect } from "next/dist/server/api-utils";
+import { useRouter } from "next/navigation";
 
 export default function SignUpForm() {
   const [isPasswordShown, setIsPasswordShown] = useState(false);
@@ -93,8 +95,11 @@ export default function SignUpForm() {
   );
 }
 const SubmitButton = () => {
-  const { pending } = useFormStatus();
-
+  const router = useRouter();
+  const { pending, data } = useFormStatus();
+  if(data) {
+    router.push("/");
+  }
   return (
     <>
       {pending && (

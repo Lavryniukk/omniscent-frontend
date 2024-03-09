@@ -1,6 +1,6 @@
-import { useUser } from "..";
+import { useAuth } from "..";
 
 export function SignedOut({ children }: { children: React.ReactNode }) {
-  const { data: user } = useUser();
-  return !user && children;
+  const { isAuth } = useAuth();
+  return !isAuth && children;
 }
