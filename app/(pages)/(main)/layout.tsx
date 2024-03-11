@@ -1,5 +1,5 @@
 import "@/app/globals.css";
-import { Header } from "@/app/modules";
+import { Header } from "@/app/widgets";
 
 export default function LandingLayout({
   children,
@@ -8,9 +8,8 @@ export default function LandingLayout({
 }) {
   return (
     <div className="flex  flex-col items-center">
-      <Header /> {/* Render the Header component. */}
-      {children} {/* Render the children components passed as props. */}
-      {/* <Footer /> */}
+      <Header />
+      {children}
     </div>
   );
 }

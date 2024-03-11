@@ -1,12 +1,11 @@
-"use client";
-import { Lesson, RoadmapSidebar } from "@/app/modules";
+import { Lesson } from "@/app/modules";
+import { RoadmapSidebar } from "@/app/widgets";
 export type LessonPageParams = {
   params: {
     roadmapId: string;
     lessonId: string;
   };
 };
-
 function LessonPage({ params }: LessonPageParams) {
   try {
     function handleResize() {
@@ -15,12 +14,13 @@ function LessonPage({ params }: LessonPageParams) {
     }
     window && window.addEventListener("resize", handleResize);
   } catch {}
+
   return (
     <div
-      className={`select-none overflow-x-hidden overflow-auto full-height w-full h-full flex flex-row overflow-y-auto  mx-auto box-border`}
+      className={`select-none overflow-x-hidden  overflow-auto full-height w-full h-full flex flex-row overflow-y-auto  mx-auto box-border`}
     >
-      <RoadmapSidebar  />
-      <Lesson params={params} />
+      <RoadmapSidebar roadmapId={params.roadmapId} id={params.lessonId} />
+      <Lesson params={{ id: params.lessonId, roadmapId: params.roadmapId }} />
     </div>
   );
 }

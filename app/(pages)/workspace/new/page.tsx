@@ -1,40 +1,18 @@
-import { RoadmapCreationForm, RoadmapTemplates } from "@/app/modules";
 import { NavigationButton } from "@/app/shared/components/buttons";
-import {
-  ArrowDown,
-  ArrowUp,
-  CornerDownRight,
-  CornerUpLeft,
-} from "lucide-react";
+
+import Or from "./ui/OrSection";
+import { RoadmapCreationForm, TemplateRoadmapsSearch } from "@/app/widgets";
 
 function New() {
   return (
     <div className="max-w-10xl select-none flex lg:flex-row flex-col py-32 max-lg:gap-3  items-center min-h-screen justify-around  mx-auto">
       <NavigationButton href="/workspace" title="Workspace" />
 
-      <RoadmapTemplates />
+      <div className="mx-auto w-3/4 dark:bgblack 900 dark:borderblack 700 dark:border bgblack 100/60 shadow-lg min-h-[600px] lg:w-1/3 h-fit min-w-[350px] p-2 lg:p-5 gap-12 flex flex-col rounded-lg">
+        <TemplateRoadmapsSearch />
+      </div>
 
-      <article className="text-xl flex flex-col items-center text-center justify-center gap-12 text-azure-950 dark:text-azure-50">
-        <section className="flex flex-col items-center justify-center gap-5">
-          <CornerUpLeft size={50} className="hidden lg:block" />
-          <ArrowUp className="max-lg:block hidden" />
-          <h2 className="text-2xl font-semibold">
-            Choose from existing templates
-          </h2>
-        </section>
-
-        <p>
-          <i>or</i>
-        </p>
-
-        <section className="flex flex-col items-center justify-center gap-5">
-          <h2 className="text-2xl font-semibold">
-            Create your own custom roadmap
-          </h2>
-          <ArrowDown className="max-lg:block hidden" />
-          <CornerDownRight size={50} className="hidden lg:block" />
-        </section>
-      </article>
+      <Or />
 
       <RoadmapCreationForm />
     </div>

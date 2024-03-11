@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en" className={`${inter.variable}`} suppressHydrationWarning>
-        <body className="font-inter antialiased bg-azure-50 dark:bg-azure-950">
+        <body className="font-inter antialiased ">
           <QueryClientProvider client={client}>
             <ThemeProvider attribute="class" disableTransitionOnChange>
               {children}
@@ -29,6 +29,6 @@ export default function RootLayout({
           </QueryClientProvider>
         </body>
       </html>
-  </ClerkProvider>
+    </ClerkProvider>
   );
 }

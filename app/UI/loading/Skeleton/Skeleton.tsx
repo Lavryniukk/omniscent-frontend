@@ -12,7 +12,7 @@ export default function Skeleton({
       style={{ width: width, height: height }}
       className={`${noMargin ? "" : "mx-auto"} rounded-lg overflow-hidden`}
     >
-      <div className=" animate-pulse dark:bg-azure-50/50 bg-azure-950/40  h-full w-full blur-[20px]" />
+      <div className=" animate-pulse bg-muted-foreground h-full w-full blur-[20px]" />
     </div>
   );
 }

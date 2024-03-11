@@ -1,17 +1,13 @@
 "use server";
-
 import { config } from "dotenv";
-config();
 import axios from "axios";
 import { auth } from "@clerk/nextjs";
-if (!process.env.SERVER_URL) {
-  throw new Error("Troubles with you SERVER_URL");
-}
+
+config();
 
 export const axiosWithAuth = axios.create({
   baseURL: `${process.env.SERVER_URL}/api`,
 });
-
 axiosWithAuth.interceptors.request.use(async (config) => {
   try {
     const { getToken } = auth();
@@ -19,10 +15,8 @@ axiosWithAuth.interceptors.request.use(async (config) => {
 
     config.headers.Authorization = `Bearer ${accessToken}`;
   } catch (error) {
-    console.error("Error with axios instance:", error);
+    console.error("Could not get token:", error);
   }
 
   return config;
 });
-
-// Utility function to check if the token is expired
