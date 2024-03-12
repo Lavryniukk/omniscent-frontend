@@ -28,16 +28,16 @@ export const POST = async (req: Request, res: Response) => {
       sameSite: "strict",
       maxAge: Number(process.env.ACCESS_TOKEN_MAX_AGE),
     });
-
-    return Response.json(JSON.stringify({ ok: true }), {
+    const response = new Response(JSON.stringify({ ok: true }), {
       status: 200,
       headers: {
         "Content-Type": "application/json",
       },
     });
+
+    return response.json();
   } catch (error) {
-    console.log("error:", (error as AxiosError).response?.data);
-    return Response.json(
+    const response = new Response(
       JSON.stringify({
         ...((error as AxiosError).response?.data as {
           message: string;
@@ -45,8 +45,15 @@ export const POST = async (req: Request, res: Response) => {
           statusCode: number;
         }),
         ok: false,
-      })
+      }),
+      {
+        status: (error as AxiosError).response?.status || 500,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
     );
+    return response.json();
   }
 };
 export const GET = async (req: Request, res: NextApiResponse) => {
