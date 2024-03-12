@@ -15,40 +15,39 @@ export default function RoadmapList({
   const { data: roadmaps, isLoading } = useQuery(["roadmaps"], () => {
     return fetchRoadmaps();
   });
-  if (!isLoading && (roadmaps?.length === 0 || !roadmaps)) {
-    return <RoadmapsNotFound />;
-  } else {
-    return (
-      <div className="mx-auto flex items-center border gap-10 flex-col py-10 w-full min-w-[350px]  sm:w-1/3 max-w-[600px] sm:min-w-[500px]  font-inter h-fit  dark:border shadow-xl rounded-lg relative">
-        <h1 className="text-4xl text-center font-bold mx-auto   font-inter">
-          Your projects
-        </h1>
+  const isEmpty = roadmaps?.length === 0 || !roadmaps;
 
-        <LanguageSelector />
-        <>
-          <div className="container xs:mx-auto gap-5 h-fit  flex flex-col items-center">
-            {!isLoading &&
-              roadmaps.map((roadmap) => (
-                <CryptoCard
-                  className="border-2 text-foreground font-semibold cursor-pointer rounded-lg w-full text-xl h-[100px]"
-                  text={roadmap.title}
-                  key={roadmap._id}
-                  onClick={() => onChildClick(roadmap._id)}
-                />
-              ))}
-            {isLoading && <Loading />}
+  return (
+    <div className="mx-auto flex items-center border gap-10 flex-col py-10 w-full min-w-[350px]  sm:w-1/3 max-w-[600px] sm:min-w-[500px]  font-inter h-fit  dark:border shadow-xl rounded-lg relative">
+      <h1 className="text-4xl text-center font-bold mx-auto   font-inter">
+        Your projects
+      </h1>
 
-            <Link href="workspace/new" className="w-full">
+      <LanguageSelector />
+      <>
+        <div className="container xs:mx-auto gap-5 h-fit  flex flex-col items-center">
+          {!isLoading &&
+            roadmaps &&
+            roadmaps.map((roadmap) => (
               <CryptoCard
-                className="border-2 text-muted-foreground font-semibold  rounded-lg w-full text-xl h-[100px]"
-                text={"Create new"}
+                className="border-2 text-foreground font-semibold cursor-pointer rounded-lg w-full text-xl h-[100px]"
+                text={roadmap.title}
+                key={roadmap._id}
+                onClick={() => onChildClick(roadmap._id)}
               />
-            </Link>
-          </div>
-        </>
-      </div>
-    );
-  }
+            ))}
+          {isLoading && <Loading />}
+
+          <Link href="workspace/new" className="w-full">
+            <CryptoCard
+              className="border-2 text-muted-foreground font-semibold  rounded-lg w-full text-xl h-[100px]"
+              text={"Create new"}
+            />
+          </Link>
+        </div>
+      </>
+    </div>
+  );
 }
 function Loading() {
   return (

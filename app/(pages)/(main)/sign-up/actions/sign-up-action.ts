@@ -1,3 +1,4 @@
+"use server";
 import { fetchSignUp } from "@/app/shared/api/auth";
 import validateForm from "../helpers/validate-form";
 import AuthFormValidationErrorType from "../types/auth-form-validation-error";
@@ -28,7 +29,6 @@ export default async function signUpAction(
   const status = res.data.statusCode;
 
   if (res.ok) {
-    // redirect("/");
     return {
       toast: {
         title: "Success!",

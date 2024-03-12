@@ -1,3 +1,4 @@
+"use server";
 import { axiosWithAuth } from "@/app/shared/config/";
 
 type fetchLessonInitArgs = {
@@ -11,13 +12,15 @@ export async function fetchInitLesson(
   const { lessonId, roadmapId: roadmap_id } = data;
 
   try {
-    return await axiosWithAuth({
+    const res = await axiosWithAuth({
       url: `/lessons/${lessonId}/init`,
       method: "POST",
       data: {
         roadmap_id,
       },
     });
+    console.log(res);
+    return res;
   } catch (error) {
     console.error(`Error with POST /lessons/${lessonId}/init`, error);
     throw error;

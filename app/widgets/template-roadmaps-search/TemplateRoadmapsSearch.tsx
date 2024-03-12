@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Check, Search, X } from "lucide-react";
 import { ReactNode, useEffect, useState } from "react";
 import { TemplateNode } from "@/app/entities";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import {
   fetchCopyTemplate,
   fetchTemplates,
@@ -49,7 +49,7 @@ export default function TemplateRoadmapsSearch() {
           onChange={(e) => {
             handleChange(e);
           }}
-          className="focus:outline-none h-full  w-full rounded-lg textblack 800/80 bgblack 200  dark:borderblack 700 dark:bgblack 800 shadow-md  dark:textblack 200/70 pl-3 dark:border mx-auto"
+          className="focus:outline-none h-full  w-full rounded-lg shadow-md pl-3 dark:border mx-auto"
         />
         <Search
           size={20}
@@ -83,10 +83,9 @@ function ProjectContainer({
   id: string;
 }) {
   const copyTemplateAction = fetchCopyTemplate.bind(null, id);
-  const state = useFormState(copyTemplateAction, "message");
 
   return (
-    <div className="py-5 dark:border overflow-hidden flex justify-between items-center  dark:borderblack 400 dark:shadow-none font-semibold bgblack 200  dark:bgblack 700 rounded-lg text-lg text-center px-3">
+    <div className="py-5 dark:border overflow-hidden flex justify-between items-center  dark:shadow-none font-semibold rounded-lg text-lg text-center px-3">
       <p>{title}</p>
       <form
         action={copyTemplateAction}
@@ -108,16 +107,13 @@ function SubmitButton() {
       className="font-normal overflow-hidden z-10 bg-inherit group  relative rounded-full  p-0.5"
     >
       {!status.pending && (
-        <div className="z-50 bgblack 200 textblack 800 dark:textblack 200 dark:bgblack 700 flex rounded-full p-1">
-          Copy roadmap
-        </div>
+        <div className="z-50 flex rounded-full p-1">Copy roadmap</div>
       )}
       {status.pending && (
-        <div className="z-50 bgblack 200 textblack 800 dark:textblack 200 dark:bgblack 700 flex rounded-full p-1">
-          Copying...
-        </div>
+        <div className="z-50 flex rounded-full p-1">Copying...</div>
       )}
-      <div className="w-full rounded-full -z-10 top-0 group-hover:left-0 transition-all duration-500 -left-full bg-gradient-to-tr dark:from-foreground0 dark:toblack 400 fromblack 400 toblack 700 h-full absolute" />
+      {status.data && <Link href="workspace">View in workspace</Link>}
+      <div className="w-full rounded-full -z-10 top-0 group-hover:left-0 transition-all duration-500 -left-full  h-full absolute" />
     </button>
   );
 }
@@ -126,11 +122,8 @@ function LoadingTemplates() {
   return (
     <div className="w-full h-fit space-y-3 overflow-hidden">
       {Array.from({ length: 4 }).map((_, index) => (
-        <div
-          key={index}
-          className="w-full dark:border dark:borderblack 700 py-7 rounded-md"
-        >
-          <Skeleton className="w-3/4 h-6"  />
+        <div key={index} className="w-full py-7 rounded-md">
+          <Skeleton className="w-3/4 h-6" />
         </div>
       ))}
     </div>

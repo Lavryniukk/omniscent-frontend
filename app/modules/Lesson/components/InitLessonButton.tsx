@@ -13,8 +13,8 @@ export default function InitLessonButton({ roadmapId }: InitLessonButtonProps) {
   return (
     <Button
       className="absolute top-[45%] gap-2 flex"
-      onClick={() => {
-        initLesson(roadmapId);
+      onClick={async () => {
+        await initLesson(roadmapId);
       }}
       size="lg"
     >
