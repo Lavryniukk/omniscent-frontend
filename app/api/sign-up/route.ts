@@ -30,7 +30,7 @@ export const POST = async (req: Request, res: Response) => {
       maxAge: Number(process.env.ACCESS_TOKEN_MAX_AGE),
     });
 
-    return Response.json({ ok: true });
+    return Response.json(true);
   } catch (error) {
     
     console.log("error:", (error as AxiosError).response?.data);
