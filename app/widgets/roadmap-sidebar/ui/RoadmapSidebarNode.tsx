@@ -1,6 +1,6 @@
 "use client";
 import { RoadmapNode } from "@/app/entities";
-import useLessonStorage from "@/app/shared/stores/lessonStorage";
+import useLessonStorage from "@/app/widgets/lesson/storage/lesson-storage";
 import { Button } from "@/components/ui/button";
 import { BookOpen, ChevronDownIcon, Milestone } from "lucide-react";
 import Link from "next/link";
@@ -76,7 +76,7 @@ export default function LessonRoadmapNodeComponent({
         )}
         <Button
           onClick={() => {
-            router.push(`/workspace/r/${roadmapId}/l/${tech.quiz_id}`);
+            router.push(`/workspace/r/${roadmapId}/q/${tech.quiz_id}`);
           }}
           size="sm"
           className="flex justify-start gap-2 text-left w-full"

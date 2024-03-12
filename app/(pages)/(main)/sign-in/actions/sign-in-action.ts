@@ -1,7 +1,7 @@
 import { fetchSignIn } from "@/app/shared/api/auth";
 import validateForm from "../helpers/validate-form";
 import AuthFormValidationErrorType from "../types/auth-form-validation-error";
-
+//FIXME this shit must be refactored @lariniv
 type AuthActionReturnType = {
   toast?: {
     variant?: "destructive";
@@ -23,7 +23,7 @@ export default async function signInAction(
   if (errors.email.length !== 0 && errors.password.length !== 0) {
     return errors;
   }
-
+//NOTE 
   const res = await fetchSignIn({ email, password });
 
   if (res.ok) {

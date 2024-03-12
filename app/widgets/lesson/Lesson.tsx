@@ -1,22 +1,33 @@
 "use client";
-import InitLessonButton from "./components/InitLessonButton";
-import LessonInput from "./components/LessonInput";
+import InitLessonButton from "./ui/InitLessonButton";
+import LessonInput from "./ui/LessonInput";
 import { useEffect } from "react";
 
 import FeedbackForm from "@/app/shared/modals/FeedbackForm/FeedbackForm";
-import useLessonStorage from "@/app/shared/stores/lessonStorage";
-import Message from "./components/Messages/components/Message";
+import useLessonStorage from "@/app/widgets/lesson/storage/lesson-storage";
+import Message from "./ui/Message";
+import { useQuery } from "@tanstack/react-query";
+import { fetchLesson } from "@/app/entities/lesson/api";
+import Skeleton from "@/app/UI/loading/Skeleton/Skeleton";
 
-export default function LessonWindow({
+export function Lesson({
   params,
 }: {
   params: { roadmapId: string; id: string };
 }) {
   const { lesson, setLesson } = useLessonStorage();
+  const { data, isLoading, error } = useQuery({
+    queryFn: () => {
+      return fetchLesson(params.id);
+    },
+    queryKey: ["lesson", params.id],
+  });
   const { roadmapId, id } = params;
   useEffect(() => {
-    setLesson(id);
-  }, [id, setLesson]);
+    if (data) {
+      setLesson(data);
+    }
+  }, [params.id, data, setLesson]);
 
   const isEmpty = !lesson?.messages?.length;
 
@@ -25,7 +36,7 @@ export default function LessonWindow({
       className={`w-full flex items-center  flex-1 flex-col h-full bg-foreground/[0.10]  relative overflow-hidden `}
     >
       <div className="w-full rounded-b-lg top-0 left-0 text-text tracking-widest py-4 flex items-center justify-center text-xl font-bold text-center">
-        <p>{lesson?.title}</p>
+        {isLoading ? <Skeleton className="w-28 h-6" /> : <p>{lesson?.title}</p>}
       </div>
       <div className="flex w-full flex-col h-full max-h-full overflow-y-auto">
         <div

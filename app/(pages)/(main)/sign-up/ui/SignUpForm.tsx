@@ -8,10 +8,9 @@ import { Eye, EyeOff } from "lucide-react";
 import { useEffect, useState } from "react";
 import signUpAction from "../actions/sign-up-action";
 import { useToast } from "@/components/ui/use-toast";
-import { useRouter } from "next/navigation";
 
 export default function SignUpForm() {
-  const [isPasswordShown, setIsPasswordShown] = useState(false);
+  const [isPasswordShown, setIsPasswordShown] = useState(true);
 
   const { toast } = useToast();
 
@@ -21,7 +20,7 @@ export default function SignUpForm() {
   });
 
   useEffect(() => {
-    if (state.toast) {
+    if ("toast" in state && state.toast) {
       toast(state.toast);
     }
   }, [state, toast]);
@@ -46,14 +45,15 @@ export default function SignUpForm() {
             placeholder="luke.skywalker@gmail.com"
           />
           <ul>
-            {state.email.map((error, index) => (
-              <li
-                key={index}
-                className="before:w-1 before:h-1 before:rounded-full before:bg-red-500 before:mr-2 flex items-center"
-              >
-                <p className="text-red-500 text-sm font-normal">{error}</p>
-              </li>
-            ))}
+            {"email" in state &&
+              state.email.map((error, index) => (
+                <li
+                  key={index}
+                  className="before:w-1 before:h-1 before:rounded-full before:bg-red-500 before:mr-2 flex items-center"
+                >
+                  <p className="text-red-500 text-sm font-normal">{error}</p>
+                </li>
+              ))}
           </ul>
         </div>
 
@@ -75,14 +75,15 @@ export default function SignUpForm() {
             </div>
           </div>
           <ul>
-            {state.password.map((error, index) => (
-              <li
-                key={index}
-                className="before:w-1 before:h-1 before:rounded-full before:bg-red-500 before:mr-2 flex items-center"
-              >
-                <p className="text-red-500 text-sm font-normal">{error}</p>
-              </li>
-            ))}
+            {"password" in state &&
+              state.password?.map((error, index) => (
+                <li
+                  key={index}
+                  className="before:w-1 before:h-1 before:rounded-full before:bg-red-500 before:mr-2 flex items-center"
+                >
+                  <p className="text-red-500 text-sm font-normal">{error}</p>
+                </li>
+              ))}
           </ul>
         </div>
 

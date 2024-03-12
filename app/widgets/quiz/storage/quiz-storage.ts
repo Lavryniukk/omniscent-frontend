@@ -1,42 +1,42 @@
 import { create } from "zustand";
-import listenToSse from "../../modules/Lesson/helpers/listenForUpdates";
-import type { Lesson } from "@/app/entities";
+import type { Quiz } from "@/app/entities";
+import listenForSse from "../helpers/listen-to-sse";
 import {
-  fetchInitLesson,
-  fetchLesson,
+  fetchInitQuiz,
+  fetchQuiz,
   fetchSendMessage,
-} from "@/app/entities/lesson/api";
+} from "@/app/entities/quiz/api";
 
-import { Message } from "../entities";
+import { Message } from "../../../shared/entities";
 import Cookies from "js-cookie";
 
 const getToken = () => {
   return Cookies.get("access_token") as string;
 };
 
-interface LessonStorageState {
+interface QuizStorageState {
   userInputData: string;
   assistantData: string;
-  lesson?: Lesson;
+  quiz?: Quiz;
   isLocked: boolean;
   isStreaming: boolean;
 }
 
-interface LessonStorageActions {
+interface QuizStorageActions {
   setInputData: (newInputData: string) => void;
   addUserMessage: (roadmapId: string) => Promise<void>;
-  setLesson: (newLessonId: string) => Promise<void>;
-  initLesson: (user_roadmap_id: string) => Promise<void>;
+  setQuiz: (quiz: Quiz) => void;
+  initQuiz: (user_roadmap_id: string) => Promise<void>;
   lock: () => void;
   unlock: () => void;
   setStreaming: (value: boolean) => void;
   updateLastAssistantMessage: (newValue: string) => void;
 }
 
-const useLessonStorage = create<LessonStorageActions & LessonStorageState>(
+const useQuizStorage = create<QuizStorageActions & QuizStorageState>(
   (set, get) => ({
     // Initial state
-    lesson: undefined,
+    quiz: undefined,
     userInputData: "",
     assistantData: "",
     isLocked: true,
@@ -45,33 +45,29 @@ const useLessonStorage = create<LessonStorageActions & LessonStorageState>(
     // Actions
     setInputData: (newInputData) => set({ userInputData: newInputData }),
 
-    setLesson: async (newLessonId) => {
-      try {
-        const newLesson = await fetchLesson(newLessonId);
-        set({ lesson: newLesson });
-      } catch (error) {
-        console.error("Failed to set lesson", error);
-      }
-    },
+    setQuiz: (quiz) =>
+      set({
+        quiz,
+      }),
 
     addUserMessage: async (roadmapId) => {
-      const { lesson, userInputData, updateLastAssistantMessage } = get();
-      if (!lesson) return;
+      const { quiz, userInputData, updateLastAssistantMessage } = get();
+      if (!quiz) return;
 
       const updatedMessages: Message[] = [
-        ...lesson.messages,
+        ...quiz.messages,
         { role: "user", content: userInputData },
       ];
       set({
-        lesson: { ...lesson, messages: updatedMessages },
+        quiz: { ...quiz, messages: updatedMessages },
       });
 
       try {
         const token = getToken();
 
-        const url = `${process.env.SERVER_URL}}/api/lesson/${lesson._id}/stream`;
+        const url = `${process.env.SERVER_URL}}/api/quiz/${quiz._id}/stream`;
 
-        listenToSse(url, token, updateLastAssistantMessage, () => {
+        listenForSse(url, token, updateLastAssistantMessage, () => {
           set({
             isStreaming: true,
           });
@@ -79,7 +75,7 @@ const useLessonStorage = create<LessonStorageActions & LessonStorageState>(
 
         await fetchSendMessage({
           content: userInputData,
-          lesson_id: lesson._id,
+          quizId: quiz._id,
           roadmapId,
         });
         set({ userInputData: "" });
@@ -90,52 +86,51 @@ const useLessonStorage = create<LessonStorageActions & LessonStorageState>(
 
     updateLastAssistantMessage: (newValue) => {
       set((state) => {
-        if (!state.lesson) return {};
-        const lastMessage =
-          state.lesson.messages[state.lesson.messages.length - 1];
+        if (!state.quiz) return {};
+        const lastMessage = state.quiz.messages[state.quiz.messages.length - 1];
         const updatedMessages =
           lastMessage?.role === "assistant"
             ? [
-                ...state.lesson.messages.slice(0, -1),
+                ...state.quiz.messages.slice(0, -1),
                 { ...lastMessage, content: newValue },
               ]
             : [
-                ...state.lesson.messages,
+                ...state.quiz.messages,
                 { role: "assistant", content: newValue },
               ];
         return {
           ...state,
-          lesson: { ...state.lesson, messages: updatedMessages },
+          quiz: { ...state.quiz, messages: updatedMessages },
         };
       });
     },
 
-    initLesson: async (roadmapId) => {
-      const { lesson, updateLastAssistantMessage } = get();
-      if (!lesson) return;
+    initQuiz: async (roadmapId) => {
+      const { quiz, updateLastAssistantMessage } = get();
+      if (!quiz) return;
 
       try {
         const token = getToken();
 
-        const url = `${process.env.SERVER_URL}}/api/lesson/${lesson._id}/stream`;
+        const url = `${process.env.SERVER_URL}}/api/quiz/${quiz._id}/stream`;
 
-        listenToSse(url, token, updateLastAssistantMessage, () => {
+        listenForSse(url, token, updateLastAssistantMessage, () => {
           set({ isStreaming: false });
         });
 
         set({
           isStreaming: true,
-          lesson: {
-            ...lesson,
+          quiz: {
+            ...quiz,
             messages: [
-              ...lesson.messages,
+              ...quiz.messages,
               { role: "assistant", content: "isLoading" },
             ],
           },
         });
-        void fetchInitLesson({ lessonId: lesson._id, roadmapId});
+        void fetchInitQuiz({ quizId: quiz._id, roadmapId });
       } catch (error) {
-        console.error("Failed to initialize lesson", error);
+        console.error("Failed to initialize quiz", error);
         set({ isStreaming: false });
       }
     },
@@ -145,4 +140,4 @@ const useLessonStorage = create<LessonStorageActions & LessonStorageState>(
     setStreaming: (value) => set({ isStreaming: value }),
   })
 );
-export default useLessonStorage;
+export default useQuizStorage;

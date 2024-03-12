@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { SendHorizontal } from "lucide-react";
-import useLessonStorage from "@/app/shared/stores/lessonStorage";
+import useLessonStorage from "@/app/widgets/lesson/storage/lesson-storage";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 

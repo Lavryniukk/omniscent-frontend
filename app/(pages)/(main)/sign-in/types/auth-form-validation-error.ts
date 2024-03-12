@@ -1,3 +1,4 @@
+//
 type AuthFormValidationErrorType = {
   email: string[];
   password: string[];

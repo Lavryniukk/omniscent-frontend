@@ -8,7 +8,7 @@ axios.defaults.withCredentials = true;
 
 export const axiosWithAuth = axios.create({
   baseURL: `${process.env.SERVER_URL}/api`,
-  withCredentials: true, // Include cookies in the request (equivalent to credentials: 'include')
+  withCredentials: true, 
   headers: {
     "Content-Type": "application/json",
   },
@@ -27,32 +27,35 @@ axiosWithAuth.interceptors.request.use(async (config) => {
     controller.abort({ message: "Abort due to missing tokens" });
   } else if (!accessToken && refreshToken) {
     console.log("Refreshing token");
-    try{
-    const { data: tokens }: AxiosResponse<JwtTokenPair> =
-      await axiosWithoutAuth.post("/auth/refresh-token", {
-        refresh_token: refreshToken?.value,
+    try {
+      const { data: tokens }: AxiosResponse<JwtTokenPair> =
+        await axiosWithoutAuth.post("/auth/refresh-token", {
+          refresh_token: refreshToken?.value,
+        });
+
+      cookies().set("_rt", tokens._rt, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "strict",
+        maxAge: Number(process.env.REFRESH_TOKEN_MAX_AGE),
       });
 
-    cookies().set("_rt", tokens._rt, {
-      httpOnly: true,
-      secure: true,
-      sameSite: "strict",
-      maxAge: Number(process.env.REFRESH_TOKEN_MAX_AGE),
-    });
+      cookies().set("_at", tokens._at, {
+        httpOnly: false,
+        secure: true,
+        sameSite: "strict",
+        maxAge: Number(process.env.ACCESS_TOKEN_MAX_AGE),
+      });
 
-    cookies().set("_at", tokens._at, {
-      httpOnly: false,
-      secure: true,
-      sameSite: "strict",
-      maxAge: Number(process.env.ACCESS_TOKEN_MAX_AGE),
-    });
-
-    console.log("Refresh token response: ", tokens);
-    config.headers.Authorization = `Bearer ${tokens._at}`;
-  } catch (error) {
-    console.log("Error refreshing token: ", (error as AxiosError).response?.data);
-    controller.abort({ message: "Abort due to error refreshing tokens" });
-  }
+      console.log("Refresh token response: ", tokens);
+      config.headers.Authorization = `Bearer ${tokens._at}`;
+    } catch (error) {
+      console.log(
+        "Error refreshing token: ",
+        (error as AxiosError).response?.data
+      );
+      controller.abort({ message: "Abort due to error refreshing tokens" });
+    }
   } else {
     console.log("Nothing triggered, this means all tokens are present");
     config.headers.Authorization = `Bearer ${accessToken?.value}`;

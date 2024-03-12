@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Spotlight } from "@/components/ui/spotlight";
 import { SignedIn, SignedOut } from "@/app/processes/auth";
+import { LogoutButton } from "@/app/processes/auth/ui/";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,6 +34,7 @@ const Header = () => {
           <Burger isOpen={isOpen} callback={toggleOpen} />
           <div className="md:flex hidden">
             <SignedIn>
+              <LogoutButton />
               <Link href={"/workspace"}>
                 <Button>To workspace</Button>
               </Link>

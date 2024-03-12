@@ -7,9 +7,10 @@ type fetchLessonDto = {
   data: Lesson;
 };
 
-export const fetchLesson = async (id: string): Promise<Lesson | undefined> => {
+export const fetchLesson = async (id: string): Promise<Lesson> => {
   try {
     const response: fetchLessonDto = await axiosWithAuth(`/lessons/${id}`);
+    console.log(response.data);
     return response.data;
   } catch (e) {
     console.log(`Error with GET /lessons/${id}`, e);

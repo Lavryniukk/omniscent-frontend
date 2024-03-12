@@ -1,5 +1,5 @@
 "use client";
-import useLessonStorage from "@/app/shared/stores/lessonStorage";
+import useLessonStorage from "@/app/widgets/lesson/storage/lesson-storage";
 import { Button } from "@/components/ui/button";
 import { Power } from "lucide-react";
 

@@ -1,13 +1,11 @@
 import EventSource from "eventsource";
 
-export default function listenForUpdates(
+export default function listenToSse(
   url: string,
   token: string,
   callback: (value: string) => void,
   onCloseFn: () => void
 ) {
-
-
   const eventSource = new EventSource(url, {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -21,12 +19,12 @@ export default function listenForUpdates(
     } catch {}
   };
 
-    eventSource.onerror = () => {
-      eventSource.close();
-      onCloseFn();
-    };
-    return () => {
-      eventSource.close();
-      onCloseFn();
-    }
+  eventSource.onerror = () => {
+    eventSource.close();
+    onCloseFn();
+  };
+  return () => {
+    eventSource.close();
+    onCloseFn();
+  };
 }

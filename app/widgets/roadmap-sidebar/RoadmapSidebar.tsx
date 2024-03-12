@@ -28,18 +28,11 @@ export default function RoadmapSidebar({
           isOpen ? "translate-x-0" : "translate-x-[-100%] lg:translate-x-0"
         } duration-500 transition absolute lg:relative overflow-auto`}
       >
-        <section className="flex gap-2">
-          <Link
-            href={`/workspace/?roadmapId=${roadmap?.parent_node_id}`}
-            className=" w-fit mx-auto relative  group overflow-hidden  hover:opacity-80    space-x-2  rounded-lg flex items-center justify-center"
-          >
-            <MoveLeft size={20} className="rounded-full " />
-            <p className="">Back to workspace</p>
-          </Link>
-          <ThemeSwitcher />
-        </section>
+        <NavigationButton
+          href={`/workspace/?roadmapId=${roadmap?.parent_node_id}`}
+        />
 
-        <h1 className="text-2xl text-center">
+        <h1 className="text-2xl mx-auto text-center">
           {isLoading && <Skeleton className="w-[70%] h-6" />}
           {roadmap?.title}
         </h1>
@@ -70,11 +63,26 @@ export default function RoadmapSidebar({
   );
 }
 
+function NavigationButton({ href }: { href: string }) {
+  return (
+    <section className="flex gap-2">
+      <Link
+        href={href}
+        className=" w-fit mx-auto relative  group overflow-hidden  hover:opacity-80    space-x-2  rounded-lg flex items-center justify-center"
+      >
+        <MoveLeft size={20} className="rounded-full " />
+        <p className="">Back to workspace</p>
+      </Link>
+      <ThemeSwitcher />
+    </section>
+  );
+}
+
 function RoadmapSidebarSkeleton() {
   const arr = Array.from({ length: 5 }).map((_, index) => (
     <li key={index} className="relative flex flex-col items-start  gap-0">
       <p className="min-w-[200px] max-w-[300px] flex justify-start  w-full p-2  pointer-events-none">
-        <Skeleton className="w-4/5 h-5"  />
+        <Skeleton className="w-4/5 h-5" />
       </p>
       <div
         className={`rounded-full absolute  w-2 h-2  z-10  -right-0.5 top-[calc(50%-4px)]`}

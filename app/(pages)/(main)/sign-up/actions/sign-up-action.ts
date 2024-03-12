@@ -1,64 +1,81 @@
 "use server";
-import { fetchSignUp } from "@/app/shared/api/auth";
+import axios, { AxiosResponse } from "axios";
+import { cookies } from "next/headers";
+import { axiosWithoutAuth } from "@/app/shared/config";
+import { JwtTokenPair } from "@/app/shared/types";
 import validateForm from "../helpers/validate-form";
-import AuthFormValidationErrorType from "../types/auth-form-validation-error";
-
-type AuthActionReturnType = {
-  toast?: {
-    variant?: "destructive";
-    title: string;
-    description: string;
-    action?: any;
-  };
-} & AuthFormValidationErrorType;
+import { AuthActionReturnType } from "../types/auth-form-validation-error";
+import { redirect } from "next/navigation";
 
 export default async function signUpAction(
-  _: AuthFormValidationErrorType,
-  data: FormData
+  _: AuthActionReturnType,
+  formData: FormData
 ): Promise<AuthActionReturnType> {
-  const email = data.get("email") as string;
-  const password = data.get("password") as string;
+  const email = formData.get("email") as string;
+  const password = formData.get("password") as string;
 
   const errors = validateForm(email, password);
   if (errors.email.length !== 0 || errors.password.length !== 0) {
     return errors;
   }
 
-  const res = await fetchSignUp({ email, password });
+  try {
+    const { data: tokens }: AxiosResponse<JwtTokenPair> =
+      await axiosWithoutAuth.post("/auth/sign-up", { email, password });
 
-  const status = res.data.statusCode;
+    const refreshTokenMaxAge = Number(process.env.REFRESH_TOKEN_MAX_AGE);
+    const accessTokenMaxAge = Number(process.env.ACCESS_TOKEN_MAX_AGE);
 
-  if (res.ok) {
-    return {
-      toast: {
-        title: "Success!",
-        description: "You have successfully signed up.",
-      },
-      email: [],
-      password: [],
-    };
-  } else {
-    if (status === 409) {
-      return {
-        email: [],
-        password: [],
-        toast: {
-          variant: "destructive",
-          title: "Whoops! Looks like this email is already in use.",
-          description: "Dementia 🤔? Anyway, try signing in.",
-        },
-      };
-    } else {
-      return {
-        email: [],
-        password: [],
-        toast: {
-          variant: "destructive",
-          title: "Whoops! Looks like something went wrong.",
-          description:
-            "You should probably tell owners to fire their developers.",
-        },
-      };
-    }
+    cookies().set("_rt", tokens._rt, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "strict",
+      maxAge: refreshTokenMaxAge,
+    });
+
+    cookies().set("_at", tokens._at, {
+      httpOnly: false,
+      secure: true,
+      sameSite: "strict",
+      maxAge: accessTokenMaxAge,
+    });
+
+    redirect("/");
+  } catch (error) {
+    return handleAxiosError(error);
   }
 }
+
+const handleAxiosError = (error: any): AuthActionReturnType => {
+  if (axios.isAxiosError(error)) {
+    const status = error.response?.status;
+    switch (status) {
+      case 409:
+        return {
+          toast: {
+            variant: "destructive",
+            title: "Whoops! Looks like this email is already in use.",
+            description: "Dementia 🤔? Anyway, try signing in.",
+          },
+        };
+      default:
+        return {
+          toast: {
+            variant: "destructive",
+            title: "Error",
+            description:
+              "An unexpected error occurred. Please try again later.",
+          },
+        };
+    }
+  } else {
+    // Non-Axios error
+    return {
+      toast: {
+        variant: "destructive",
+        title: "Error",
+        description: "An unexpected error occurred. Please try again later.",
+      },
+    };
+  }
+};

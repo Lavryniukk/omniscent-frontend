@@ -1,4 +1,4 @@
-import AuthFormValidationErrorType from "../types/auth-form-validation-error";
+import { AuthFormValidationErrorType } from "../types/auth-form-validation-error";
 
 const VALIDATION_REG_EXP = {
   EMAIL: /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}/,

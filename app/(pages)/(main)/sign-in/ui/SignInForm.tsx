@@ -96,7 +96,7 @@ const SubmitButton = () => {
           Loading...
         </Button>
       )}
-      {!pending && <Button type="submit">Sign up</Button>}
+      {!pending && <Button type="submit">Sign in</Button>}
     </>
   );
 };
