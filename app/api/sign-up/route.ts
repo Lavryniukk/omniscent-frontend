@@ -12,7 +12,6 @@ type SignUpDto = {
 export const POST = async (req: Request, res: Response) => {
   try {
     const data: SignUpDto = await req.json();
-
     const { data: tokens }: AxiosResponse<JwtTokenPair> =
       await axiosWithoutAuth.post("/auth/sign-up", data);
 
@@ -30,18 +29,24 @@ export const POST = async (req: Request, res: Response) => {
       maxAge: Number(process.env.ACCESS_TOKEN_MAX_AGE),
     });
 
-    return Response.json(true);
-  } catch (error) {
-    
-    console.log("error:", (error as AxiosError).response?.data);
-    return Response.json({
-      ...((error as AxiosError).response?.data as {
-        message: string;
-        error: string;
-        statusCode: number;
-      }),
-      ok: false,
+    return Response.json(JSON.stringify({ ok: true }), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
+  } catch (error) {
+    console.log("error:", (error as AxiosError).response?.data);
+    return Response.json(
+      JSON.stringify({
+        ...((error as AxiosError).response?.data as {
+          message: string;
+          error: string;
+          statusCode: number;
+        }),
+        ok: false,
+      })
+    );
   }
 };
 export const GET = async (req: Request, res: NextApiResponse) => {
