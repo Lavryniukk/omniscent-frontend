@@ -56,8 +56,3 @@ export const POST = async (req: Request, res: Response) => {
     return response.json();
   }
 };
-export const GET = async (req: Request, res: NextApiResponse) => {
-  return Response.json({
-    message: "Hello World",
-  });
-};
