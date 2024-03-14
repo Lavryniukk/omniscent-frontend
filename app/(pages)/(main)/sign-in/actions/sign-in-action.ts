@@ -1,18 +1,14 @@
-import { fetchSignIn } from "@/app/shared/api/auth";
+"use server";
 import validateForm from "../helpers/validate-form";
-import AuthFormValidationErrorType from "../types/auth-form-validation-error";
-//FIXME this shit must be refactored @lariniv
-type AuthActionReturnType = {
-  toast?: {
-    variant?: "destructive";
-    title: string;
-    description: string;
-    action?: any;
-  };
-} & AuthFormValidationErrorType;
+import { AuthActionReturnType } from "../../sign-up/types/auth-form-validation-error";
+import axios, { AxiosResponse } from "axios";
+import { JwtTokenPair } from "@/app/shared/types";
+import { axiosWithoutAuth } from "@/app/shared/config";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 export default async function signInAction(
-  _: AuthFormValidationErrorType,
+  _: AuthActionReturnType,
   data: FormData
 ): Promise<AuthActionReturnType> {
   const email = data.get("email") as string;
@@ -23,29 +19,64 @@ export default async function signInAction(
   if (errors.email.length !== 0 && errors.password.length !== 0) {
     return errors;
   }
-//NOTE 
-  const res = await fetchSignIn({ email, password });
 
-  if (res.ok) {
-    return {
-      email: [],
-      password: [],
-      toast: {
-        title: "Success",
-        description:
-          "You should probably tell owners to fire their developers.",
-      },
-    };
+  try {
+    const { data: tokens }: AxiosResponse<JwtTokenPair> =
+      await axiosWithoutAuth.post("/auth/sign-in", { email, password });
+
+    const refreshTokenMaxAge = Number(process.env.REFRESH_TOKEN_MAX_AGE);
+    const accessTokenMaxAge = Number(process.env.ACCESS_TOKEN_MAX_AGE);
+
+    cookies().set("_rt", tokens._rt, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "strict",
+      maxAge: refreshTokenMaxAge,
+    });
+
+    cookies().set("_at", tokens._at, {
+      httpOnly: false,
+      secure: true,
+      sameSite: "strict",
+      maxAge: accessTokenMaxAge,
+    });
+
+    redirect("/");
+  } catch (error) {
+    return handleAxiosError(error);
+  }
+}
+
+const handleAxiosError = (error: any): AuthActionReturnType => {
+  if (axios.isAxiosError(error)) {
+    const status = error.response?.status;
+    switch (status) {
+      case 409:
+        return {
+          toast: {
+            variant: "destructive",
+            title: "Whoops! Looks like this email is already in use.",
+            description: "Dementia 🤔? Anyway, try signing in.",
+          },
+        };
+      default:
+        return {
+          toast: {
+            variant: "destructive",
+            title: "Error",
+            description:
+              "An unexpected error occurred. Please try again later.",
+          },
+        };
+    }
   } else {
+    // Non-Axios error
     return {
-      email: [],
-      password: [],
       toast: {
         variant: "destructive",
-        title: "Whoops! Looks like something went wrong.",
-        description:
-          "You should probably tell owners to fire their developers.",
+        title: "Error",
+        description: "An unexpected error occurred. Please try again later.",
       },
     };
   }
-}
+};

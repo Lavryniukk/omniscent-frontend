@@ -1,5 +1,7 @@
 import SignInForm from "./ui/SignInForm";
 
-export default function SignIn() {
+function SignIn() {
   return <SignInForm />;
 }
+
+export default SignIn;
