@@ -40,11 +40,12 @@ export default async function signInAction(
       sameSite: "strict",
       maxAge: accessTokenMaxAge,
     });
-
-    redirect("/");
   } catch (error) {
     return handleAxiosError(error);
   }
+
+  //INFO: See sign-up-actions.ts INFO
+  redirect("/");
 }
 
 const handleAxiosError = (error: any): AuthActionReturnType => {

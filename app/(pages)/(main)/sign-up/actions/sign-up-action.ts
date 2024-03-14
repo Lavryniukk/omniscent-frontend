@@ -39,11 +39,12 @@ export default async function signUpAction(
       sameSite: "strict",
       maxAge: accessTokenMaxAge,
     });
-
-    redirect("/");
   } catch (error) {
+    console.log("error: ", error);
     return handleAxiosError(error);
   }
+  //INFO: I moved redirect, so it happens after try-catch block and works as expected
+  redirect("/");
 }
 
 const handleAxiosError = (error: any): AuthActionReturnType => {
