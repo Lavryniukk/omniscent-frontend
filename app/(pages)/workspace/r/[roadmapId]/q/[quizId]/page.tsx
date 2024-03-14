@@ -17,17 +17,13 @@ function LessonPage({ params }: LessonPageParams) {
     }
     window && window.addEventListener("resize", handleResize);
   } catch {}
-  const query = useQuery({
-    queryKey: ["roadmap", params.roadmapId],
-    queryFn: () => fetchRoadmap(params.roadmapId),
-  });
 
   return (
     <div
       className={`select-none overflow-x-hidden overflow-auto full-height w-full h-full flex flex-row overflow-y-auto  mx-auto box-border`}
     >
       <RoadmapSidebar roadmapId={roadmapId} id={params.quizId} />
-      <Quiz params={{ id: quizId, roadmapId }} />
+      <Quiz params={params} />
     </div>
   );
 }

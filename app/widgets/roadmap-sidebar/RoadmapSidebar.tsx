@@ -44,9 +44,8 @@ export default function RoadmapSidebar({
               roadmapId={roadmap._id}
               key={roadmap._id + index}
               tech={subroadmapNode}
-              isCurrent={
-                id === subroadmapNode.lesson_id || id === subroadmapNode.quiz_id
-              }
+              isCurrentLesson={id === subroadmapNode.lesson_id}
+              isCurrentQuiz={id === subroadmapNode.quiz_id}
             />
           ))}
         </ul>

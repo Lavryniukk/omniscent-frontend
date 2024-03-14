@@ -10,7 +10,7 @@ import signUpAction from "../actions/sign-up-action";
 import { useToast } from "@/components/ui/use-toast";
 
 export default function SignUpForm() {
-  const [isPasswordShown, setIsPasswordShown] = useState(true);
+  const [isPasswordShown, setIsPasswordShown] = useState(false);
 
   const { toast } = useToast();
 
@@ -71,7 +71,7 @@ export default function SignUpForm() {
               className="absolute top-1/2 -translate-y-1/2 right-2 cursor-pointer"
               onClick={() => setIsPasswordShown(!isPasswordShown)}
             >
-              {isPasswordShown ? <EyeOff size={20} /> : <Eye size={20} />}
+              {isPasswordShown ? <Eye size={20} /> : <EyeOff size={20} />}
             </div>
           </div>
           <ul>
@@ -99,12 +99,9 @@ const SubmitButton = () => {
 
   return (
     <>
-      {pending && (
-        <Button type="submit" disabled>
-          Loading...
-        </Button>
-      )}
-      {!pending && <Button type="submit">Sign up</Button>}
+      <Button disabled={pending} type="submit">
+        Sign up
+      </Button>
     </>
   );
 };

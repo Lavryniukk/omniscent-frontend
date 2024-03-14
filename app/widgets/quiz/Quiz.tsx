@@ -12,21 +12,22 @@ import QuizInput from "./ui/QuizInput";
 export function Quiz({
   params,
 }: {
-  params: { roadmapId: string; id: string };
+  params: { roadmapId: string; quizId: string };
 }) {
+  const { roadmapId, quizId } = params;
+
   const { quiz, setQuiz } = useQuizStorage();
   const { data, isLoading, error } = useQuery({
     queryFn: () => {
-      return fetchQuiz(params.id);
+      return fetchQuiz(quizId);
     },
-    queryKey: ["quiz", params.id],
+    queryKey: ["quiz", quizId],
   });
-  const { roadmapId, id } = params;
   useEffect(() => {
     if (data) {
       setQuiz(data);
     }
-  }, [params.id, data, setQuiz]);
+  }, [quizId, data, setQuiz]);
 
   const isEmpty = !quiz?.messages?.length;
 
@@ -59,7 +60,7 @@ export function Quiz({
         <InitQuizButton isLoading={isLoading} roadmapId={roadmapId} />
       )}
 
-      {!isEmpty && <FeedbackForm lessonId={id} /> && (
+      {!isEmpty && <FeedbackForm lessonId={quizId} /> && (
         <QuizInput roadmapId={roadmapId} />
       )}
     </div>
