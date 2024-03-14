@@ -56,8 +56,8 @@ const handleAxiosError = (error: any): AuthActionReturnType => {
         return {
           toast: {
             variant: "destructive",
-            title: "Whoops! Looks like this email is already in use.",
-            description: "Dementia 🤔? Anyway, try signing in.",
+            title: "Whoops! Looks like we don't know you. 🤔",
+            description: "Try signing up.",
           },
         };
       default:
