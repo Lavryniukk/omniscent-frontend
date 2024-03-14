@@ -75,7 +75,7 @@ const useLessonStorage = create<LessonStorageActions & LessonStorageState>(
 
         await fetchSendMessage({
           content: userInputData,
-          lesson_id: lesson._id,
+          lessonId: lesson._id,
           roadmapId,
         });
         set({ userInputData: "" });
