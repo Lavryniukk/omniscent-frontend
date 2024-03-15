@@ -5,7 +5,7 @@ import { axiosWithoutAuth } from "@/app/shared/config";
 import { JwtTokenPair } from "@/app/shared/types";
 import validateForm from "../helpers/validate-form";
 import { AuthActionReturnType } from "../types/auth-form-validation-error";
-import { redirect } from "next/navigation";
+import { RedirectType, redirect } from "next/navigation";
 
 export default async function signUpAction(
   _: AuthActionReturnType,
@@ -44,7 +44,7 @@ export default async function signUpAction(
     return handleAxiosError(error);
   }
   //INFO: I moved redirect, so it happens after try-catch block and works as expected
-  redirect("/");
+  redirect("/", RedirectType.replace);
 }
 
 const handleAxiosError = (error: any): AuthActionReturnType => {

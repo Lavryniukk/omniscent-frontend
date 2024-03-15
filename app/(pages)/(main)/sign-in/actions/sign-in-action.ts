@@ -5,7 +5,7 @@ import axios, { AxiosResponse } from "axios";
 import { JwtTokenPair } from "@/app/shared/types";
 import { axiosWithoutAuth } from "@/app/shared/config";
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
+import { RedirectType, redirect } from "next/navigation";
 
 export default async function signInAction(
   _: AuthActionReturnType,
@@ -45,7 +45,7 @@ export default async function signInAction(
   }
 
   //INFO: See sign-up-actions.ts INFO
-  redirect("/");
+  redirect("/", RedirectType.replace);
 }
 
 const handleAxiosError = (error: any): AuthActionReturnType => {
