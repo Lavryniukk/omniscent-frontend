@@ -45,7 +45,7 @@ export default async function signInAction(
   }
 
   //INFO: See sign-up-actions.ts INFO
-  redirect("/", RedirectType.push);
+  redirect("/", RedirectType.replace);
 }
 
 const handleAxiosError = (error: any): AuthActionReturnType => {
