@@ -7,15 +7,14 @@ type fetchCreateRoadmapArgs = {
   size: RoadmapSize;
 };
 
-export const fetchCreateRoadmap = (data: fetchCreateRoadmapArgs) => {
-  try {
-    void axiosWithAuth({
-      url: "/roadmaps",
-      data,
-      method: "POST",
-    });
-  } catch (err: unknown) {
-    console.log("Error POST /roadmaps", err);
-    throw err;
+export const fetchCreateRoadmap = async (data: fetchCreateRoadmapArgs) => {
+  try{
+  return await axiosWithAuth({
+    url: "/health",
+    data,
+    method: "GET",
+  });
+  }catch(e){
+    console.error(e);
   }
 };

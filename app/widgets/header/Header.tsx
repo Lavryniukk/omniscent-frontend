@@ -15,7 +15,7 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleOpen = () => setIsOpen(!isOpen);
-
+  //TODO burger does not display on mobile, probably related to styles?
   return (
     <>
       <Popup isOpen={isOpen} setIsOpen={setIsOpen} />

@@ -17,7 +17,6 @@ function WorkspacePage() {
       setSelectedRoadmap(roadmapId);
     }
   }, [roadmapId]);
-  console.log("roadmapId", selectedRoadmap);
 
   return (
     <div className="flex min-h-screen max-md:flex-col gap-6 py-10 max-md:items-center items-start justify-center mt-32">

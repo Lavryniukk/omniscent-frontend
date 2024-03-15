@@ -40,7 +40,10 @@ export default function TemplateRoadmapsSearch() {
   };
 
   return (
-    <div className="py-20">
+    <div className="pt-10 pb-20">
+      <h1 className="text-2xl text-center mb-10 font-semibold">
+        Search for roadmaps
+      </h1>
       <div className="relative h-10 w-full mx-auto items-center flex">
         <input
           type="text"
@@ -51,10 +54,7 @@ export default function TemplateRoadmapsSearch() {
           }}
           className="focus:outline-none h-full  w-full rounded-lg shadow-md pl-3 dark:border mx-auto"
         />
-        <Search
-          size={20}
-          className="absolute text-accent bg-secondary right-3"
-        />
+        <Search size={20} className="absolute text-fore right-3" />
       </div>
       <div className="w-full h-fit space-y-3 overflow-hidden mt-10">
         {isLoading && <LoadingTemplates />}
@@ -85,7 +85,7 @@ function ProjectContainer({
   const copyTemplateAction = fetchCopyTemplate.bind(null, id);
 
   return (
-    <div className="py-5 dark:border overflow-hidden flex justify-between items-center  dark:shadow-none font-semibold rounded-lg text-lg text-center px-3">
+    <div className="py-2  border overflow-hidden flex justify-between items-center  dark:shadow-none font-semibold rounded-lg text-lg text-center px-3">
       <p>{title}</p>
       <form
         action={copyTemplateAction}
@@ -99,20 +99,22 @@ function ProjectContainer({
 
 function SubmitButton() {
   const status = useFormStatus();
-  console.log(status);
+
   return (
     <button
       type="submit"
       aria-disabled={status.pending}
       className="font-normal overflow-hidden z-10 bg-inherit group  relative rounded-full  p-0.5"
     >
-      {!status.pending && (
+      {!status.pending && !status.data && (
         <div className="z-50 flex rounded-full p-1">Copy roadmap</div>
       )}
       {status.pending && (
         <div className="z-50 flex rounded-full p-1">Copying...</div>
       )}
-      {status.data && <Link href="workspace">View in workspace</Link>}
+      {status.data && !status.pending && (
+        <Link href="workspace">View in workspace</Link>
+      )}
       <div className="w-full rounded-full -z-10 top-0 group-hover:left-0 transition-all duration-500 -left-full  h-full absolute" />
     </button>
   );
@@ -135,7 +137,7 @@ const highlightText = (str: string, term: string) => {
 
   return splitText.map((chunk, index) =>
     chunk.toLowerCase() === term.toLowerCase() ? (
-      <span key={index} className="dark:bgblack 400 bgblack 100">
+      <span key={index} className=" text-primary-foreground bg-foreground/70">
         {chunk}
       </span>
     ) : (

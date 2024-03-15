@@ -1,17 +1,17 @@
-import { useEffect } from "react";
-import { redirect, useRouter } from "next/navigation";
+"use client";
+import { useLayoutEffect } from "react";
+import { useRouter } from "next/navigation";
 import { useAuth } from "./AuthProvider";
 
 export default function withClientAuth(Component: any) {
   return function WithAuth(props: any) {
-    // const { isAuth } = useAuth();
-    // useEffect(() => {
-    //   console.log("Effect", isAuth);
-    //   if (!isAuth) {
-    //     console.log("Redirecting");
-    //     redirect("/sign-in");
-    //   }
-    // }, []);
+    const { data: user } = useAuth();
+    const router = useRouter();
+    useLayoutEffect(() => {
+      if (!user) {
+        router.push("/sign-in");
+      }
+    }, []);
 
     return <Component {...props} />;
   };

@@ -12,16 +12,12 @@ export async function fetchInitQuiz(
 ): Promise<AxiosResponse<unknown>> {
   const { quizId, roadmapId } = data;
 
-  try {
-    return await axiosWithAuth({
-      url: `/quizzes/${quizId}/init`,
-      method: "POST",
-      data: {
-        roadmapId,
-      },
-    });
-  } catch (error) {
-    console.error(`Error with POST /quizzes/${quizId}/init`, error);
-    throw error;
-  }
+  return await axiosWithAuth({
+    url: `/quizzes/${quizId}/init`,
+    method: "POST",
+    data: {
+      roadmapId,
+    },
+  });
 }
+("65f1cd7c7c94ac29a2d7e34a lesson");

@@ -11,18 +11,13 @@ export async function fetchInitLesson(
 ): Promise<unknown> {
   const { lessonId, roadmapId: roadmap_id } = data;
 
-  try {
-    const res = await axiosWithAuth({
-      url: `/lessons/${lessonId}/init`,
-      method: "POST",
-      data: {
-        roadmap_id,
-      },
-    });
-    console.log(res);
-    return res;
-  } catch (error) {
-    console.error(`Error with POST /lessons/${lessonId}/init`, error);
-    throw error;
-  }
+  const res = await axiosWithAuth({
+    url: `/lessons/${lessonId}/init`,
+    method: "POST",
+    data: {
+      roadmap_id,
+    },
+  });
+  console.log(res);
+  return res;
 }

@@ -28,6 +28,7 @@ let HeroSection = () => {
       <picture className="w-[98%] x-10  p-0.5 relative flex items-center  justify-center   rounded md:rounded-2xl  md:w-[80%] ">
         <Image
           src={src}
+          priority
           alt="A cleverize lesson example"
           className="w-full  rounded-[14px] "
           width={1920}
