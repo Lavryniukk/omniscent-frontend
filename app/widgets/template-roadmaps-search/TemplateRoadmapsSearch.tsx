@@ -11,6 +11,7 @@ import {
   fetchTemplates,
 } from "@/app/entities/roadmap-template/api";
 import { useFormState, useFormStatus } from "react-dom";
+import { Input } from "@/components/ui/input";
 
 export default function TemplateRoadmapsSearch() {
   const {
@@ -45,14 +46,13 @@ export default function TemplateRoadmapsSearch() {
         Search for roadmaps
       </h1>
       <div className="relative h-10 w-full mx-auto items-center flex">
-        <input
+        <Input
           type="text"
           value={text}
           placeholder="Type in library or language"
           onChange={(e) => {
             handleChange(e);
           }}
-          className="focus:outline-none h-full  w-full rounded-lg shadow-md pl-3 dark:border mx-auto"
         />
         <Search size={20} className="absolute text-fore right-3" />
       </div>
@@ -85,8 +85,8 @@ function ProjectContainer({
   const copyTemplateAction = fetchCopyTemplate.bind(null, id);
 
   return (
-    <div className="py-2  border overflow-hidden flex justify-between items-center  dark:shadow-none font-semibold rounded-lg text-lg text-center px-3">
-      <p>{title}</p>
+    <div className="py-2  border overflow-hidden flex justify-between items-center  dark:shadow-none font-semibold rounded-lg text-center px-3">
+      <p className="text-lg">{title}</p>
       <form
         action={copyTemplateAction}
         className="min-w-[25%]  h-full flex items-center justify-center"
@@ -104,7 +104,7 @@ function SubmitButton() {
     <button
       type="submit"
       aria-disabled={status.pending}
-      className="font-normal overflow-hidden z-10 bg-inherit group  relative rounded-full  p-0.5"
+      className="font-normal overflow-hidden z-10 bg-inherit group text-sm  relative rounded-full  p-0.5"
     >
       {!status.pending && !status.data && (
         <div className="z-50 flex rounded-full p-1">Copy roadmap</div>

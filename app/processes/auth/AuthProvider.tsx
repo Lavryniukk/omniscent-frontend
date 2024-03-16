@@ -10,7 +10,6 @@ import {
   useState,
 } from "react";
 
-
 type AuthContextType = {
   auth: UseQueryResult<User>;
   isAuth: boolean;
@@ -24,7 +23,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     queryFn: () => {
       return fetchUser();
     },
-    refetchOnMount: true
+    refetchOnMount: true,
   });
   const handleAuthData = useCallback(() => {
     if (auth.data) {
@@ -35,8 +34,9 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   }, [auth.data]);
 
   useEffect(() => {
+    
     handleAuthData();
-  }, [auth.data, handleAuthData]);
+  }, [auth.data, auth.error, handleAuthData]);
 
   return (
     <AuthContext.Provider value={{ auth, isAuth }}>

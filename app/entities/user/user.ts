@@ -19,4 +19,4 @@ type User = {
 };
 
 export type { User };
-//TODO time has come. Remake this thingy using OOP. 
+
