@@ -1,8 +1,7 @@
 "use server";
 import { fetchCreateRoadmap } from "@/app/entities/roadmap-node/api";
 import { RoadmapSize } from "@/app/shared/types";
-import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
+import { RedirectType, redirect } from "next/navigation";
 
 export async function createRoadmapAction(
   _: boolean,
@@ -18,7 +17,5 @@ export async function createRoadmapAction(
     console.error("Error in createRoadmapAction", err);
     return false;
   }
-  //INFO: revalidatePath is used to delete the cache of the given path, so Next doesn't store it, and we can rerender it
-  revalidatePath("/workspace");
-  redirect("/workspace");
+  redirect("/workspace", RedirectType.replace);
 }

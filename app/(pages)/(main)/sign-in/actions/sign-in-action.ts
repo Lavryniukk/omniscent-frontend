@@ -6,7 +6,6 @@ import { JwtTokenPair } from "@/app/shared/types";
 import { axiosWithoutAuth } from "@/app/shared/config";
 import { cookies } from "next/headers";
 import { RedirectType, redirect } from "next/navigation";
-import { revalidatePath } from "next/cache";
 
 export default async function signInAction(
   _: AuthActionReturnType,
@@ -45,9 +44,7 @@ export default async function signInAction(
     return handleAxiosError(error);
   }
 
-  //INFO: See sign-up-actions.ts INFO
-  revalidatePath("/");
-  redirect("/");
+  redirect("/", RedirectType.replace);
 }
 
 const handleAxiosError = (error: any): AuthActionReturnType => {
