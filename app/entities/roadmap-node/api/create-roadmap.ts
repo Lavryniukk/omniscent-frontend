@@ -8,13 +8,13 @@ type fetchCreateRoadmapArgs = {
 };
 
 export const fetchCreateRoadmap = async (data: fetchCreateRoadmapArgs) => {
-  try{
-  return await axiosWithAuth({
-    url: "/health",
-    data,
-    method: "GET",
-  });
-  }catch(e){
-    console.error(e);
+  try {
+    return await axiosWithAuth({
+      url: "/roadmaps",
+      data,
+      method: "POST",
+    });
+  } catch (e) {
+    console.error("Error in /roadmaps POST", e);
   }
 };
