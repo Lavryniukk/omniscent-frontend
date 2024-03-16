@@ -15,6 +15,6 @@ export const fetchCreateRoadmap = async (data: fetchCreateRoadmapArgs) => {
       method: "POST",
     });
   } catch (e) {
-    console.log(e);
+    console.error("Error in /roadmaps POST", e);
   }
 };

@@ -1,3 +1,4 @@
+"use client";
 import { RoadmapSize } from "@/app/shared/types/roadmap-size";
 import { createRoadmapAction } from "./actions/create-roadmap-action";
 import { Input } from "@/components/ui/input";
@@ -10,16 +11,20 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { SubmitButton } from "./ui/SubmitButton";
-//FIXME Action throws a client error? WTF is that?
+import { useFormState } from "react-dom";
+
 export default function NewProjectForm() {
+  //INFO: added useFormState, it removed issue with maximum call stack exceeded.
+  //TODO: figure out return type of this hook, so we either use bool ,it returns or just leave it be.
+  const [_, action] = useFormState(createRoadmapAction, false);
   return (
     <form
-      className="flex flex-col items-start border rounded-lg shadow-xl gap-8 w-3/4 lg:w-1/3 min-w-[350px] h-fit justify-center xs:mx-auto  p-5 xs:py-12 mx-3"
-      action={createRoadmapAction}
+      className="flex flex-col items-start  shadow-xl gap-8 w-3/4 lg:w-1/3 min-w-[350px] h-fit justify-center xs:mx-auto  p-5 xs:py-12 mx-3"
+      action={action}
     >
       <h1 className="text-center font-semibold text-2xl ">
-        Generate your own roadmap
-        <span className="italic text-base text-primary/60 ">(AI)</span>
+        Generate your own roadmap{" "}
+        <span className="italic text-base text-primary/80 ">(AI)</span>
       </h1>
       <section className="gap-2 flex flex-col w-full">
         <Label htmlFor="roadmap-title">Name of technology</Label>
