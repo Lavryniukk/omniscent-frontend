@@ -6,7 +6,7 @@ import { Inter } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { AuthProvider } from "../processes/auth";
 import { Toaster } from "@/components/ui/toaster";
-
+import { Analytics } from "@vercel/analytics/react";
 const inter = Inter({
   variable: "--inter-font",
   subsets: ["latin"],
@@ -32,6 +32,7 @@ export default function RootLayout({
         </QueryClientProvider>
       </body>
       <GoogleAnalytics gaId="GTM-WDLXTQ6Q" />
+      <Analytics />
     </html>
   );
 }
