@@ -13,6 +13,7 @@ import {
 import { useFormState, useFormStatus } from "react-dom";
 import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
+import { RedirectType, redirect } from "next/navigation";
 
 export default function TemplateRoadmapsSearch() {
   const {
@@ -92,6 +93,7 @@ function ProjectContainer({
         description:
           "Hmmm, You just have to sign here and there and you are done! Joking! If only you saw your face). View it in workspace.",
       });
+    state && redirect("/workspace", RedirectType.replace);
   }, [state]);
   return (
     <div className="py-2  border overflow-hidden flex justify-between items-center  dark:shadow-none font-semibold rounded-lg text-center px-3">
