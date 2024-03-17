@@ -8,6 +8,8 @@ import { useQuery } from "@tanstack/react-query";
 import useQuizStorage from "./storage/quiz-storage";
 import InitQuizButton from "./ui/InitQuizButton";
 import QuizInput from "./ui/QuizInput";
+import { Badge } from "@/components/ui/badge";
+import { FlaskConical, Sparkles } from "lucide-react";
 
 export function Quiz({
   params,
@@ -35,6 +37,16 @@ export function Quiz({
     <div
       className={`w-full flex items-center  flex-1 flex-col h-full bg-foreground/[0.10]  relative overflow-hidden `}
     >
+      <section className="absolute flex gap-2 max-md:hidden left-2 top-2">
+        <Badge className="flex gap-1">
+          <FlaskConical size={15} />
+          Experimental
+        </Badge>
+        <Badge className="flex gap-1">
+          <Sparkles size={15} />
+          New
+        </Badge>
+      </section>
       <div className="w-full rounded-b-lg top-0 left-0 text-text tracking-widest py-4 flex items-center justify-center text-xl font-bold text-center">
         <p>{quiz?.title}</p>
       </div>

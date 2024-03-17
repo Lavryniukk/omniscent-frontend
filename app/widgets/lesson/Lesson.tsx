@@ -58,9 +58,14 @@ export function Lesson({
       </div>
       {isEmpty && <InitLessonButton roadmapId={roadmapId} />}
 
-      {!isEmpty && <FeedbackForm lessonId={id} /> && (
-        <LessonInput roadmapId={roadmapId} />
+      {!isEmpty && (
+        <FeedbackForm
+          placeholder="This AI-teacher is out of his mind. He told me that..."
+          lessonId={id}
+        />
       )}
+
+      {!isEmpty && <LessonInput roadmapId={roadmapId} />}
     </div>
   );
 }

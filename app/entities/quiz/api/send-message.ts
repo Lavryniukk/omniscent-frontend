@@ -12,11 +12,11 @@ export async function fetchSendMessage(
   data: fetchSendMessageArgs
 ): Promise<AxiosResponse<unknown>> {
   const { content, quizId, roadmapId } = data;
+  console.log("dick", data);
   return await axiosWithAuth({
     url: `/quizzes/${quizId}/messages`,
     method: "PUT",
     data: {
-      role: "user",
       roadmapId,
       content,
     },

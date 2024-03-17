@@ -1,7 +1,12 @@
 "use client";
 import { useSlideIn } from "@/app/shared/hooks/useSlideIn";
 import { Button } from "@/components/ui/button";
+import {
+  ButtonWithMovingBorder,
+  MovingBorder,
+} from "@/components/ui/moving-border";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 let Title = () => {
   const [slidingAnimation, parentSlidingAnimation] = useSlideIn();
@@ -11,6 +16,7 @@ let Title = () => {
       {...parentSlidingAnimation}
       className="overflow-visible py-24 mt-40 z-10 max-w-10xl font-inter overflow-x-clip justify-start items-center relative flex-col gap-16 flex mx-auto w-full"
     >
+      <AttentionBanner />
       <article className="flex flex-col w-full gap-8">
         <motion.h1
           {...slidingAnimation}
@@ -36,16 +42,18 @@ let Title = () => {
       </article>
 
       <motion.div {...slidingAnimation} className="flex gap-4 ">
-        <Button size={"lg"}>Get started</Button>
-        <Button
+        <Link href="workspace">
+          <Button size={"lg"}>Get started</Button>
+        </Link>
+        {/* <Button
           variant="ghost"
           size={"lg"}
           onClick={() => {
             router.push("/sign-up");
           }}
         >
-          Workspace
-        </Button>
+          Sign up
+        </Button> */}
       </motion.div>
     </motion.div>
   );
@@ -53,11 +61,16 @@ let Title = () => {
 
 function AttentionBanner() {
   return (
-    <div className=" top-20 mx-auto  p-4 backdrop-blur-md bg-opacity-50  rounded-lg left-1/4 z-10 ">
-      ! Attention: We`re making improvements! Our service is currently
-      undergoing technical maintenance and will be back shortly. Thank you for
-      your patience.
-    </div>
+    <ButtonWithMovingBorder
+      containerClassName="w-fit top-0 absolute "
+      borderRadius="0.5rem"
+      duration={6000}
+      borderClassName=" bg-red-700 dark:bg-red-300 "
+      className=" text-base cursor-default select-text  border-0 text-popover-foreground bg-popover  w-full whitespace-nowrap p-2"
+    >
+      ! Attention: New version of Cleverize is out! It might have some bugs
+      though, please report them to us through email or any other way you find.
+    </ButtonWithMovingBorder>
   );
 }
 

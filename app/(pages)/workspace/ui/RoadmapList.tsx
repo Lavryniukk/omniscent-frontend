@@ -9,13 +9,14 @@ import Skeleton from "@/app/UI/loading/Skeleton/Skeleton";
 
 export default function RoadmapList({
   onChildClick,
+  selectedRoadmap,
 }: {
   onChildClick: (id: string) => void;
+  selectedRoadmap?: string;
 }) {
   const { data: roadmaps, isLoading } = useQuery(["roadmaps"], () => {
     return fetchRoadmaps();
   });
-  const isEmpty = roadmaps?.length === 0 || !roadmaps;
 
   return (
     <div className="mx-auto flex items-center border gap-10 flex-col py-10 w-full min-w-[350px]  sm:w-1/3 max-w-[600px] sm:min-w-[500px]  font-inter h-fit  dark:border shadow-xl rounded-lg relative">
@@ -30,7 +31,7 @@ export default function RoadmapList({
             roadmaps &&
             roadmaps.map((roadmap) => (
               <CryptoCard
-                className="border-2 text-foreground font-semibold cursor-pointer rounded-lg w-full text-xl h-[100px]"
+                className={`border-2 ${selectedRoadmap == roadmap._id && "shadow-primary shadow-lg "} text-foreground font-semibold cursor-pointer rounded-lg w-full text-xl h-[100px]`}
                 text={roadmap.title}
                 key={roadmap._id}
                 onClick={() => onChildClick(roadmap._id)}

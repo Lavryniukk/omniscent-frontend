@@ -23,7 +23,6 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     queryFn: () => {
       return fetchUser();
     },
-    refetchOnMount: true,
   });
   const handleAuthData = useCallback(() => {
     if (auth.data) {
@@ -34,7 +33,6 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   }, [auth.data]);
 
   useEffect(() => {
-    
     handleAuthData();
   }, [auth.data, auth.error, handleAuthData]);
 

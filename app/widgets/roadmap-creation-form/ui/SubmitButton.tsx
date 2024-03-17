@@ -7,7 +7,7 @@ export function SubmitButton() {
   const { data: isSubmitted, pending: isOrdering } = useFormStatus();
 
   const BUTTON_TEXTS = {
-    create: "Create roadmap",
+    create: "Create roadmap (~30s)",
     ordering: "Ordering...",
     ordered: "Ordered!",
   };

@@ -20,11 +20,13 @@ export default function RoadmapSidebar({
     queryKey: ["roadmap", roadmapId],
     queryFn: () => fetchRoadmap(roadmapId),
   });
+
+  //FIXME help me
   const { isOpen, toggleSidebar } = useSidebar();
   return (
     <>
       <aside
-        className={`sidebar w-[270px] gap-10 flex  py-5 bg- px-3 flex-col h-full z-20 ${
+        className={` w-[270px] gap-10 flex  py-5 bg-background px-3 flex-col h-full z-20 ${
           isOpen ? "translate-x-0" : "translate-x-[-100%] lg:translate-x-0"
         } duration-500 transition absolute lg:relative overflow-auto`}
       >
@@ -55,7 +57,7 @@ export default function RoadmapSidebar({
         onClick={toggleSidebar}
         size={30}
         className={`switch font-semibold cursor-pointer  text-text absolute left-2 block z-50 top-[calc(50%-15px)] duration-500 rotate-90 transition-transform lg:hidden ${
-          isOpen ? "translate-x-[250px]" : "translate-x-0 scale-y-[-1]"
+          isOpen ? "translate-x-[225px]" : "translate-x-0 scale-y-[-1]"
         }`}
       />
     </>

@@ -40,7 +40,7 @@ export default function LessonInput({ roadmapId }: { roadmapId: string }) {
 
   return (
     <form
-      className="border rounded-lg  mb-5 w-[clamp(300px,30vw,800px)] relative h-fit flex justify-center items-center "
+      className=" rounded-lg  mb-5 w-[clamp(300px,30vw,800px)] relative h-fit flex justify-center items-center "
       onSubmit={handleSubmit}
     >
       <Textarea

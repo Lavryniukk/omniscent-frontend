@@ -12,6 +12,7 @@ import {
 } from "@/app/entities/roadmap-template/api";
 import { useFormState, useFormStatus } from "react-dom";
 import { Input } from "@/components/ui/input";
+import { toast } from "@/components/ui/use-toast";
 
 export default function TemplateRoadmapsSearch() {
   const {
@@ -83,12 +84,20 @@ function ProjectContainer({
   id: string;
 }) {
   const copyTemplateAction = fetchCopyTemplate.bind(null, id);
-
+  const [state, action] = useFormState(copyTemplateAction, false);
+  useEffect(() => {
+    state &&
+      toast({
+        title: "✅ Copied!",
+        description:
+          "Hmmm, You just have to sign here and there and you are done! Joking! If only you saw your face). View it in workspace.",
+      });
+  }, [state]);
   return (
     <div className="py-2  border overflow-hidden flex justify-between items-center  dark:shadow-none font-semibold rounded-lg text-center px-3">
       <p className="text-lg">{title}</p>
       <form
-        action={copyTemplateAction}
+        action={action}
         className="min-w-[25%]  h-full flex items-center justify-center"
       >
         <SubmitButton />
@@ -107,7 +116,7 @@ function SubmitButton() {
       className="font-normal overflow-hidden z-10 bg-inherit group text-sm  relative rounded-full  p-0.5"
     >
       {!status.pending && !status.data && (
-        <div className="z-50 flex rounded-full p-1">Copy roadmap</div>
+        <div className="z-50 flex rounded-full p-1">Copy roadmap (~5s)</div>
       )}
       {status.pending && (
         <div className="z-50 flex rounded-full p-1">Copying...</div>

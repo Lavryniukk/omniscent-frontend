@@ -2,7 +2,6 @@
 import { useTheme } from "next-themes";
 import Title from "./Title";
 import Image from "next/image";
-import { Spotlight } from "@/components/ui/spotlight";
 
 let HeroSection = () => {
   const { resolvedTheme } = useTheme();
@@ -10,10 +9,10 @@ let HeroSection = () => {
 
   switch (resolvedTheme) {
     case "light":
-      src = "/images/lesson-banner.png";
+      src = "/images/lesson-light.png";
       break;
     case "dark":
-      src = "/images/lesson-banner-dark.png";
+      src = "/images/lesson-dark.png";
       break;
     default:
       src =

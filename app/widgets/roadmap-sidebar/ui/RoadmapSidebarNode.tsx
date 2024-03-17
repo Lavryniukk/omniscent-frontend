@@ -66,8 +66,8 @@ export default function LessonRoadmapNodeComponent({
               router.push(`/workspace/r/${roadmapId}/l/${tech.lesson_id}`);
             }}
             size="sm"
-            className="flex justify-start  gap-2 w-full"
-            variant="outline"
+            variant={"outline"}
+            className="flex justify-start shadow-md shadow-primary  gap-2 w-full"
           >
             <Milestone size={20} />
             <p className=" text-ellipsis text-left truncate">
@@ -89,9 +89,9 @@ export default function LessonRoadmapNodeComponent({
             onClick={() => {
               router.push(`/workspace/r/${roadmapId}/q/${tech.quiz_id}`);
             }}
-            size="sm"
-            className="flex justify-start gap-2 text-left w-full"
             variant="outline"
+            size="sm"
+            className="flex shadow-md shadow-primary justify-start gap-2 text-left w-full"
           >
             <BookOpen size={20} />
             <p>Test your knowledge</p>
