@@ -9,14 +9,14 @@ let Burger = ({ callback, isOpen }: BurgerProps) => {
       <label className={`container`}>
         <input
           type="checkbox"
-          checked={isOpen} 
-          onChange={() => {}} 
-          onClick={callback} 
+          checked={isOpen}
+          onChange={() => {}}
+          onClick={callback}
         />
         <div className={`checkmark`}>
-          <span className="bg-text"></span>
-          <span className="bg-text"></span>
-          <span className="bg-text"></span>
+          <span className="bg-muted-foreground"></span>
+          <span className="bg-muted-foreground"></span>
+          <span className="bg-muted-foreground"></span>
         </div>
       </label>
     </div>
