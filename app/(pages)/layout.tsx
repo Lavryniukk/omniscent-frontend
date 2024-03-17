@@ -31,7 +31,10 @@ export default function RootLayout({
           </AuthProvider>
         </QueryClientProvider>
       </body>
-      <GoogleAnalytics gaId="GTM-WDLXTQ6Q" />
+      <GoogleAnalytics
+        gaId="G-Q44R5VLX87
+"
+      />
       <Analytics />
     </html>
   );
