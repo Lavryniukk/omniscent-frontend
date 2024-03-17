@@ -1,21 +1,25 @@
 import EventSource from "eventsource";
 
 export default function listenToSse(
-  url: string,
-  token: string,
+  lessonId: string,
   callback: (value: string) => void,
   onCloseFn: () => void
 ) {
-  const eventSource = new EventSource(url, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  let url: string;
+  const node_env = process.env.NODE_ENV; //FIXME this is not cool. Frontend cannot reach SERVER_URL, so we have to find a way.
+
+  if (node_env === "development") {
+    url = `http://localhost:8000/api/lessons/${lessonId}/stream`;
+  } else if (node_env === "production") {
+    url = `https://cleverize.onrender.com/api/lessons/${lessonId}/stream`;
+  } else {
+    throw new Error("NODE_ENV is not set");
+  }
+  const eventSource = new EventSource(url);
 
   eventSource.onmessage = (event) => {
     try {
       callback(event.data);
-      eventSource.readyState === EventSource.CLOSED && console.log(100);
     } catch {}
   };
 

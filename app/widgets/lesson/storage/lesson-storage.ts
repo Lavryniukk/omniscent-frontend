@@ -63,11 +63,7 @@ const useLessonStorage = create<LessonStorageActions & LessonStorageState>(
       });
 
       try {
-        const token = getToken();
-
-        const url = `${process.env.SERVER_URL}}/api/lesson/${lesson._id}/stream`;
-
-        listenForUpdates(url, token, updateLastAssistantMessage, () => {
+        listenForUpdates(lesson._id, updateLastAssistantMessage, () => {
           set({
             isStreaming: true,
           });
@@ -111,11 +107,7 @@ const useLessonStorage = create<LessonStorageActions & LessonStorageState>(
       if (!lesson) return;
 
       try {
-        const token = getToken();
-
-        const url = `${process.env.SERVER_URL}}/api/lesson/${lesson._id}/stream`;
-
-        listenForUpdates(url, token, updateLastAssistantMessage, () => {
+        listenForUpdates(lesson._id, updateLastAssistantMessage, () => {
           set({ isStreaming: false });
         });
 

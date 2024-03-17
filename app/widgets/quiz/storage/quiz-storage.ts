@@ -1,18 +1,9 @@
 import { create } from "zustand";
 import type { Quiz } from "@/app/entities";
 import listenForSse from "../helpers/listen-to-sse";
-import {
-  fetchInitQuiz,
-  fetchQuiz,
-  fetchSendMessage,
-} from "@/app/entities/quiz/api";
+import { fetchInitQuiz, fetchSendMessage } from "@/app/entities/quiz/api";
 
 import { Message } from "../../../shared/entities";
-import Cookies from "js-cookie";
-
-const getToken = () => {
-  return Cookies.get("access_token") as string;
-};
 
 interface QuizStorageState {
   userInputData: string;
@@ -63,11 +54,7 @@ const useQuizStorage = create<QuizStorageActions & QuizStorageState>(
       });
 
       try {
-        const token = getToken();
-
-        const url = `${process.env.SERVER_URL}}/api/quiz/${quiz._id}/stream`;
-
-        listenForSse(url, token, updateLastAssistantMessage, () => {
+        listenForSse(quiz._id, updateLastAssistantMessage, () => {
           set({
             isStreaming: true,
           });
@@ -110,11 +97,7 @@ const useQuizStorage = create<QuizStorageActions & QuizStorageState>(
       if (!quiz) return;
 
       try {
-        const token = getToken();
-
-        const url = `${process.env.SERVER_URL}}/api/quiz/${quiz._id}/stream`;
-
-        listenForSse(url, token, updateLastAssistantMessage, () => {
+        listenForSse(quiz._id, updateLastAssistantMessage, () => {
           set({ isStreaming: false });
         });
 
