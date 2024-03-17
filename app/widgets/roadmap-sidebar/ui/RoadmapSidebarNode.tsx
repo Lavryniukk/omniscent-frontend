@@ -19,7 +19,7 @@ export default function LessonRoadmapNodeComponent({
 }) {
   const router = useRouter();
   const { isStreaming } = useLessonStorage();
-  const [isOpened, setIsOpened] = useState(false);
+  const [isOpened, setIsOpened] = useState(isCurrentLesson || isCurrentQuiz);
   return (
     <li
       className={`lesson-roadmap-node  transition-all duration-200  ${isOpened ? "h-40" : "h-10"}  group`}
