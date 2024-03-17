@@ -38,7 +38,6 @@
     "eventsource": "^2.0.2",
     "framer-motion": "^10.16.5",
     "highlight.js": "^11.9.0",
-    "js-cookie": "^3.0.5",
     "lucide-react": "^0.341.0",
     "mini-svg-data-uri": "^1.4.4",
     "next": "^14.1.0",
@@ -55,13 +54,13 @@
     "tailwindcss-animate": "^1.0.7",
     "typescript": "5.1.6",
     "zod": "^3.22.4",
+    "@types/cookie": "^0.6.0",
+    "@types/dompurify": "^3.0.5",
+    "@types/prop-types": "^15.7.10",
     "zustand": "^4.4.1"
   },
   "devDependencies": {
-    "@types/cookie": "^0.6.0",
-    "@types/dompurify": "^3.0.5",
-    "@types/js-cookie": "^3.0.4",
-    "@types/prop-types": "^15.7.10",
+    
     "prettier": "^3.0.2"
   }
 }

@@ -8,11 +8,6 @@ import {
 } from "@/app/entities/lesson/api";
 
 import { Message } from "../../../shared/entities";
-import Cookies from "js-cookie";
-
-const getToken = () => {
-  return Cookies.get("access_token") as string;
-};
 
 interface LessonStorageState {
   userInputData: string;
