@@ -1,6 +1,5 @@
 "use client";
 import "@/app/globals.css";
-import { GoogleAnalytics } from "@next/third-parties/google";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "next-themes";
@@ -31,10 +30,7 @@ export default function RootLayout({
           </AuthProvider>
         </QueryClientProvider>
       </body>
-      <GoogleAnalytics
-        gaId="G-Q44R5VLX87
-"
-      />
+
       <Analytics />
     </html>
   );
