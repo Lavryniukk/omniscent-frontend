@@ -44,8 +44,8 @@ export default async function signUpAction(
     console.log("error: ", error);
     return handleAxiosError(error);
   }
-  revalidatePath("/", 'page');
-  redirect("/", RedirectType.replace);
+
+  redirect("/?authorized=true", RedirectType.replace);
 }
 
 const handleAxiosError = (error: any): AuthActionReturnType => {
