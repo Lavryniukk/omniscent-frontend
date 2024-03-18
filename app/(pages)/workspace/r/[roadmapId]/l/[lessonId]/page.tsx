@@ -1,5 +1,4 @@
-import { Lesson } from "@/app/modules";
-import { RoadmapSidebar } from "@/app/widgets";
+import { Lesson, RoadmapSidebar } from "@/app/widgets";
 export type LessonPageParams = {
   params: {
     roadmapId: string;

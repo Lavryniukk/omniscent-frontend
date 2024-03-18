@@ -5,12 +5,15 @@ import { useQuery } from "@tanstack/react-query";
 import { Check, Search, X } from "lucide-react";
 import { ReactNode, useEffect, useState } from "react";
 import { TemplateNode } from "@/app/entities";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import {
   fetchCopyTemplate,
   fetchTemplates,
 } from "@/app/entities/roadmap-template/api";
 import { useFormState, useFormStatus } from "react-dom";
+import { Input } from "@/components/ui/input";
+import { toast } from "@/components/ui/use-toast";
+import { RedirectType, redirect } from "next/navigation";
 
 export default function TemplateRoadmapsSearch() {
   const {
@@ -40,21 +43,20 @@ export default function TemplateRoadmapsSearch() {
   };
 
   return (
-    <div className="py-20">
+    <div className="pt-10 pb-20">
+      <h1 className="text-2xl text-center mb-10 font-semibold">
+        Search for roadmaps
+      </h1>
       <div className="relative h-10 w-full mx-auto items-center flex">
-        <input
+        <Input
           type="text"
           value={text}
           placeholder="Type in library or language"
           onChange={(e) => {
             handleChange(e);
           }}
-          className="focus:outline-none h-full  w-full rounded-lg textblack 800/80 bgblack 200  dark:borderblack 700 dark:bgblack 800 shadow-md  dark:textblack 200/70 pl-3 dark:border mx-auto"
         />
-        <Search
-          size={20}
-          className="absolute text-accent bg-secondary right-3"
-        />
+        <Search size={20} className="absolute text-fore right-3" />
       </div>
       <div className="w-full h-fit space-y-3 overflow-hidden mt-10">
         {isLoading && <LoadingTemplates />}
@@ -83,13 +85,21 @@ function ProjectContainer({
   id: string;
 }) {
   const copyTemplateAction = fetchCopyTemplate.bind(null, id);
-  const state = useFormState(copyTemplateAction, "message");
-
+  const [state, action] = useFormState(copyTemplateAction, false);
+  useEffect(() => {
+    state &&
+      toast({
+        title: "✅ Copied!",
+        description:
+          "Hmmm, You just have to sign here and there and you are done! Joking! If only you saw your face). View it in workspace.",
+      });
+    state && redirect("/workspace", RedirectType.replace);
+  }, [state]);
   return (
-    <div className="py-5 dark:border overflow-hidden flex justify-between items-center  dark:borderblack 400 dark:shadow-none font-semibold bgblack 200  dark:bgblack 700 rounded-lg text-lg text-center px-3">
-      <p>{title}</p>
+    <div className="py-2  border overflow-hidden flex justify-between items-center  dark:shadow-none font-semibold rounded-lg text-center px-3">
+      <p className="text-lg">{title}</p>
       <form
-        action={copyTemplateAction}
+        action={action}
         className="min-w-[25%]  h-full flex items-center justify-center"
       >
         <SubmitButton />
@@ -100,24 +110,23 @@ function ProjectContainer({
 
 function SubmitButton() {
   const status = useFormStatus();
-  console.log(status);
+
   return (
     <button
       type="submit"
       aria-disabled={status.pending}
-      className="font-normal overflow-hidden z-10 bg-inherit group  relative rounded-full  p-0.5"
+      className="font-normal overflow-hidden z-10 bg-inherit group text-sm  relative rounded-full  p-0.5"
     >
-      {!status.pending && (
-        <div className="z-50 bgblack 200 textblack 800 dark:textblack 200 dark:bgblack 700 flex rounded-full p-1">
-          Copy roadmap
-        </div>
+      {!status.pending && !status.data && (
+        <div className="z-50 flex rounded-full p-1">Copy roadmap (~5s)</div>
       )}
       {status.pending && (
-        <div className="z-50 bgblack 200 textblack 800 dark:textblack 200 dark:bgblack 700 flex rounded-full p-1">
-          Copying...
-        </div>
+        <div className="z-50 flex rounded-full p-1">Copying...</div>
       )}
-      <div className="w-full rounded-full -z-10 top-0 group-hover:left-0 transition-all duration-500 -left-full bg-gradient-to-tr dark:from-foreground0 dark:toblack 400 fromblack 400 toblack 700 h-full absolute" />
+      {status.data && !status.pending && (
+        <Link href="workspace">View in workspace</Link>
+      )}
+      <div className="w-full rounded-full -z-10 top-0 group-hover:left-0 transition-all duration-500 -left-full  h-full absolute" />
     </button>
   );
 }
@@ -126,11 +135,8 @@ function LoadingTemplates() {
   return (
     <div className="w-full h-fit space-y-3 overflow-hidden">
       {Array.from({ length: 4 }).map((_, index) => (
-        <div
-          key={index}
-          className="w-full dark:border dark:borderblack 700 py-7 rounded-md"
-        >
-          <Skeleton width="75%" height="24px" />
+        <div key={index} className="w-full py-7 rounded-md">
+          <Skeleton className="w-3/4 h-6" />
         </div>
       ))}
     </div>
@@ -142,7 +148,7 @@ const highlightText = (str: string, term: string) => {
 
   return splitText.map((chunk, index) =>
     chunk.toLowerCase() === term.toLowerCase() ? (
-      <span key={index} className="dark:bgblack 400 bgblack 100">
+      <span key={index} className=" text-primary-foreground bg-foreground/70">
         {chunk}
       </span>
     ) : (

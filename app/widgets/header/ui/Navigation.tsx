@@ -1,3 +1,4 @@
+'use client'
 import Link from "next/link";
 
 export default function Navigation() {
@@ -5,13 +6,13 @@ export default function Navigation() {
     <nav className="hidden md:flex h-full items-center gap-5">
       <Link
         href={"/workspace"}
-        className={`textblack 950 dark:text-foreground hover:opacity-80 transition-opacity duration-100`}
+        className={` hover:opacity-80 transition-opacity duration-100`}
       >
         Workspace
       </Link>
       <Link
         href={"/blog"}
-        className={`textblack 950 dark:text-foreground hover:opacity-80 transition-opacity duration-100`}
+        className={`hover:opacity-80 transition-opacity duration-100`}
       >
         Blog
       </Link>
@@ -21,7 +22,7 @@ export default function Navigation() {
           console.log(windowHeight);
           window.scrollTo({ top: windowHeight, behavior: "smooth" });
         }}
-        className={`textblack 950 dark:text-foreground hover:opacity-80 transition-opacity duration-100`}
+        className={` hover:opacity-80 transition-opacity duration-100`}
       >
         Feedback
       </button>

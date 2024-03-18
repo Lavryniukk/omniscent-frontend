@@ -1,27 +1,23 @@
 "use server";
 import { axiosWithAuth } from "@/app/shared/config/";
-import { LANGUAGE } from "@/app/shared/constants";
+import { AxiosResponse } from "axios";
 
-type fetchLessonInitArgs = {
+type fetchQuizInitArgs = {
   quizId: string;
   roadmapId: string;
-  language: LANGUAGE;
 };
 
-export default function fetchQuizInit(data: fetchLessonInitArgs): void {
-  const { quizId, roadmapId: roadmap_id, language } = data;
+export async function fetchInitQuiz(
+  data: fetchQuizInitArgs
+): Promise<AxiosResponse<unknown>> {
+  const { quizId, roadmapId } = data;
 
-  try {
-    void axiosWithAuth({
-      url: `/quizzes/${quizId}/init`,
-      method: "POST",
-      data: {
-        roadmap_id,
-        language,
-      },
-    });
-  } catch (error) {
-    console.error(`Error with POST /quizzes/${quizId}/init`, error);
-    throw error
-  }
+  return await axiosWithAuth({
+    url: `/quizzes/${quizId}/init`,
+    method: "POST",
+    data: {
+      roadmapId,
+    },
+  });
 }
+("65f1cd7c7c94ac29a2d7e34a lesson");

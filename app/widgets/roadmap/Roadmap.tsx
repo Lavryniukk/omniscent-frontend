@@ -17,7 +17,7 @@ export default function Roadmap({ id }: { id: string }) {
     },
   });
   if (isLoading) return <LoadingAnimation />;
-  if (error || !roadmap) return <div>Not found</div>;
+  if (error || !roadmap || !roadmap.children) return <div>Not found</div>;
   return (
     <div className="w-fit mx-auto relative space-y-8">
       <article className="text-2xl text-center font-bold flex justify-between items-center ">

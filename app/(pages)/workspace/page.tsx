@@ -5,7 +5,7 @@ import RoadmapList from "./ui/RoadmapList";
 import { Roadmap } from "@/app/widgets/";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { ThemeSwitcher } from "@/app/features";
+import withClientAuth from "@/app/processes/auth/withAuthClient";
 
 function WorkspacePage() {
   const [selectedRoadmap, setSelectedRoadmap] = useState<string | undefined>();
@@ -24,7 +24,16 @@ function WorkspacePage() {
 
       <section className="flex max-w-min flex-col items-end gap-6">
         <Hint />
+        <div className=" bg-destructive p-5 text-destructive-foreground rounded-md">
+          <p>
+            Sadly, the developers of this website are completely insane, so all
+            old roadmaps are gone. You can create a new one, though. <br />
+            sad emoji here :(
+          </p>
+        </div>
+
         <RoadmapList
+          selectedRoadmap={selectedRoadmap}
           onChildClick={(id) => {
             setSelectedRoadmap(id);
           }}
@@ -39,4 +48,4 @@ function WorkspacePage() {
   );
 }
 
-export default WorkspacePage;
+export default withClientAuth(WorkspacePage);

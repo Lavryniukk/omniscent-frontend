@@ -1,21 +1,20 @@
 "use client";
 import { useSlideIn } from "@/app/shared/hooks/useSlideIn";
-import { Button } from "@/components/ui/button";
+import { ButtonWithMovingBorder } from "@/components/ui/moving-border";
 import { motion } from "framer-motion";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 let Title = () => {
   const [slidingAnimation, parentSlidingAnimation] = useSlideIn();
-  const router = useRouter();
   return (
     <motion.div
       {...parentSlidingAnimation}
-      className="overflow-visible py-24 mt-40 z-10 max-w-10xl font-inter overflow-x-clip justify-start items-center relative flex-col gap-16 flex mx-auto w-full"
+      className="overflow-visible py-16 md:py-24 mt-40 z-10 max-w-10xl font-inter overflow-x-clip justify-start items-center relative flex-col gap-16 flex mx-auto w-full"
     >
       <article className="flex flex-col w-full gap-8">
         <motion.h1
           {...slidingAnimation}
           className="bg-gradient-to-br to-70% from-foreground to-foreground/80 text-transparent w-full  antialiased mx-auto leading-none
-      				  font-inter relative tracking-tight hyphens-none drop-shadow-lg bg-clip-text text-center  text-[clamp(40px,4vw,84px)] font-semibold"
+      				  font-inter relative tracking-tight hyphens-none drop-shadow-lg bg-clip-text text-center  text-[clamp(40px,4vw,84px)] font-bold"
         >
           Cleverize - the
           <br className="xs:hidden" /> AI solution
@@ -36,16 +35,9 @@ let Title = () => {
       </article>
 
       <motion.div {...slidingAnimation} className="flex gap-4 ">
-        <Button size={"lg"}>Get started</Button>
-        <Button
-          variant="ghost"
-          size={"lg"}
-          onClick={() => {
-            router.push("/workspace");
-          }}
-        >
-          Workspace
-        </Button>
+        <Link className="link link-primary link-size-lg" href="workspace">
+          Get started
+        </Link>
       </motion.div>
     </motion.div>
   );
@@ -53,11 +45,16 @@ let Title = () => {
 
 function AttentionBanner() {
   return (
-    <div className=" top-20 mx-auto  p-4 backdrop-blur-md bg-opacity-50  rounded-lg left-1/4 z-10 ">
-      ! Attention: We`re making improvements! Our service is currently
-      undergoing technical maintenance and will be back shortly. Thank you for
-      your patience.
-    </div>
+    <ButtonWithMovingBorder
+      containerClassName="w-[clamp(350px,70vw,1200px)] h-fit top-0 absolute "
+      borderRadius="0.5rem"
+      duration={6000}
+      borderClassName=" bg-red-700 dark:bg-red-300 "
+      className=" text-base cursor-default select-text  border-0 text-popover-foreground bg-popover  w-full  p-2"
+    >
+      ! Attention: New version of Cleverize is out! It might have some bugs
+      though, please report them to us through email or any other way you find.
+    </ButtonWithMovingBorder>
   );
 }
 

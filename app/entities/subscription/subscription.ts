@@ -9,4 +9,4 @@ type Subscription = {
   last_credits_update: Date;
   stripe_customer_id: string;
 };
-export default Subscription;
+export type { Subscription };

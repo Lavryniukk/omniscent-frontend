@@ -37,7 +37,7 @@ export function DeleteRoadmapButton({ id }: { id: string }) {
           <AlertDialogAction
             onClick={() => {
               void fetchDeleteRoadmap(id);
-              location.reload();
+              location.replace("/workspace");
             }}
           >
             Continue
