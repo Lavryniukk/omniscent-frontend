@@ -1,16 +1,10 @@
 "use client";
 import { useSlideIn } from "@/app/shared/hooks/useSlideIn";
-import { Button } from "@/components/ui/button";
-import {
-  ButtonWithMovingBorder,
-  MovingBorder,
-} from "@/components/ui/moving-border";
+import { ButtonWithMovingBorder } from "@/components/ui/moving-border";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 let Title = () => {
   const [slidingAnimation, parentSlidingAnimation] = useSlideIn();
-  const router = useRouter();
   return (
     <motion.div
       {...parentSlidingAnimation}
@@ -42,18 +36,9 @@ let Title = () => {
       </article>
 
       <motion.div {...slidingAnimation} className="flex gap-4 ">
-        <Link href="workspace">
-          <Button size={"lg"}>Get started</Button>
+        <Link className="link link-primary link-size-lg" href="workspace">
+          Get started
         </Link>
-        {/* <Button
-          variant="ghost"
-          size={"lg"}
-          onClick={() => {
-            router.push("/sign-up");
-          }}
-        >
-          Sign up
-        </Button> */}
       </motion.div>
     </motion.div>
   );
@@ -62,11 +47,11 @@ let Title = () => {
 function AttentionBanner() {
   return (
     <ButtonWithMovingBorder
-      containerClassName="w-fit top-0 absolute "
+      containerClassName="w-[clamp(350px,70vw,1200px)] h-fit top-0 absolute "
       borderRadius="0.5rem"
       duration={6000}
       borderClassName=" bg-red-700 dark:bg-red-300 "
-      className=" text-base cursor-default select-text  border-0 text-popover-foreground bg-popover  w-full whitespace-nowrap p-2"
+      className=" text-base cursor-default select-text  border-0 text-popover-foreground bg-popover  w-full  p-2"
     >
       ! Attention: New version of Cleverize is out! It might have some bugs
       though, please report them to us through email or any other way you find.
