@@ -19,10 +19,7 @@ const Header = () => {
   return (
     <>
       <Popup isOpen={isOpen} setIsOpen={setIsOpen} />
-      <Spotlight
-        fill="hsl(var(--primary))"
-        className="-top-40  left-0 md:left-60 md:-top-20"
-      />
+      
       <header className="h-12 p-4 flex z-50 w-11/12 lg:w-3/4 border left-1/2 -translate-x-1/2 justify-between px-10 items-center backdrop-blur-md fixed top-4 right-4 box-border bg-background/50 rounded-full md:rounded-xl">
         <div className="gap-10 flex items-center">
           <Logo />
