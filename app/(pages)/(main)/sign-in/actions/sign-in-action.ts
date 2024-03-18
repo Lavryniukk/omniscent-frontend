@@ -44,7 +44,7 @@ export default async function signInAction(
     return handleAxiosError(error);
   }
 
-  redirect("/", RedirectType.replace);
+  redirect("/?authorized=true", RedirectType.push);
 }
 
 const handleAxiosError = (error: any): AuthActionReturnType => {

@@ -1,3 +1,4 @@
+'use client'
 import { fetchLogout } from "@/app/shared/api/auth";
 import { Button } from "@/components/ui/button";
 import { useEffect } from "react";

@@ -1,46 +1,39 @@
 "use client";
 import { User } from "@/app/entities";
-import { fetchUser } from "@/app/entities/user/api";
+import useAsync, { UseAsyncReturnType } from "@/app/shared/hooks/useAsync";
 import { UseQueryResult, useQuery } from "@tanstack/react-query";
 import {
   createContext,
   useCallback,
   useContext,
   useEffect,
+  useLayoutEffect,
   useState,
 } from "react";
+import isAuthorized from "./api/fetch-is-authorized";
+import { useRouter, useSearchParams } from "next/navigation";
 
-type AuthContextType = {
-  auth: UseQueryResult<User>;
-  isAuth: boolean;
-};
+type AuthContextType = UseAsyncReturnType<boolean>;
+
 const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [isAuth, setIsAuth] = useState(false);
-  const auth = useQuery({
-    queryKey: ["auth"],
-    queryFn: () => {
-      return fetchUser();
-    },
-  });
-  const handleAuthData = useCallback(() => {
-    if (auth.data) {
-      setIsAuth(true);
-    } else {
-      setIsAuth(false);
-    }
-  }, [auth.data]);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const authorized = searchParams.get("authorized");
+
+  const auth = useAsync(isAuthorized);
 
   useEffect(() => {
-    handleAuthData();
-  }, [auth.data, auth.error, handleAuthData]);
+    if (authorized) {
+      auth.refetch();
+      router.replace("/");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [authorized]);
 
-  return (
-    <AuthContext.Provider value={{ auth, isAuth }}>
-      {children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>;
 };
 
 const useAuth = () => {
@@ -50,7 +43,7 @@ const useAuth = () => {
     throw new Error("useAuth must be used within an AuthProvider");
   }
 
-  return { ...context.auth, isAuth: context.isAuth };
+  return context;
 };
 
 export { useAuth, AuthProvider };

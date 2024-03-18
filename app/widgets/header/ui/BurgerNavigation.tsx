@@ -5,7 +5,7 @@ type BurgerProps = {
 
 let Burger = ({ callback, isOpen }: BurgerProps) => {
   return (
-    <div className="md:hidden burger w-10 border flex justify-end md:justify-center items-center">
+    <div className="md:hidden burger w-10  flex justify-end md:justify-center items-center">
       <label className={`container`}>
         <input
           type="checkbox"

@@ -23,7 +23,11 @@ export default function RootLayout({
       <body className="font-inter antialiased ">
         <QueryClientProvider client={client}>
           <AuthProvider>
-            <ThemeProvider attribute="class" disableTransitionOnChange>
+            <ThemeProvider
+              attribute="class"
+              enableSystem={true}
+              disableTransitionOnChange
+            >
               {children}
               <Toaster />
             </ThemeProvider>

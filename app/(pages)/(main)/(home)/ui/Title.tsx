@@ -8,9 +8,8 @@ let Title = () => {
   return (
     <motion.div
       {...parentSlidingAnimation}
-      className="overflow-visible py-24 mt-40 z-10 max-w-10xl font-inter overflow-x-clip justify-start items-center relative flex-col gap-16 flex mx-auto w-full"
+      className="overflow-visible py-16 md:py-24 mt-40 z-10 max-w-10xl font-inter overflow-x-clip justify-start items-center relative flex-col gap-16 flex mx-auto w-full"
     >
-      <AttentionBanner />
       <article className="flex flex-col w-full gap-8">
         <motion.h1
           {...slidingAnimation}

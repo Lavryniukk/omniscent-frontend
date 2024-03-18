@@ -14,7 +14,6 @@ import { LogoutButton } from "@/app/processes/auth/ui/";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleOpen = () => setIsOpen(!isOpen);
   //TODO burger does not display on mobile, probably related to styles?
   return (
     <>
@@ -30,13 +29,16 @@ const Header = () => {
           <div className="max-md:hidden">
             <ThemeSwitcher />
           </div>
-          <Burger isOpen={isOpen} callback={toggleOpen} />
+          <Burger isOpen={isOpen} callback={()=>{setIsOpen(!isOpen)}} />
           <div className="md:flex hidden">
             <SignedIn>
               <div className="flex gap-2">
                 <LogoutButton />
-                <Link href={"/workspace"}>
-                  <Button>To workspace</Button>
+                <Link
+                  className="link link-primary link-size-md"
+                  href={"/workspace"}
+                >
+                  To workspace
                 </Link>
               </div>
             </SignedIn>
