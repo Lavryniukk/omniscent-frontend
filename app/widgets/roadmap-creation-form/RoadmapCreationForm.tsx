@@ -14,8 +14,9 @@ import { SubmitButton } from "./ui/SubmitButton";
 import { useFormState } from "react-dom";
 
 export default function NewProjectForm() {
-  //INFO: added useFormState, it removed issue with maximum call stack exceeded.
-  //TODO: figure out return type of this hook, so we either use bool (red?) ,it returns or just leave it be.
+  //TODO-  figure out return type of this hook, so we either use bool (red?) ,it returns or just leave it be.
+  //TODO - add step-by-step loading animation https://ui.aceternity.com/components/multi-step-loader so user can be entertained while waiting for the result.
+  //info - we use bool return type to display error alert / loading animation.
   const [_, action] = useFormState(createRoadmapAction, false);
   return (
     <form
