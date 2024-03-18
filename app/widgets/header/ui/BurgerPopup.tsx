@@ -28,8 +28,8 @@ let Popup = ({ isOpen, setIsOpen }: Props) => {
           </div>
         </SignedIn>
         <SignedOut>
-          <div>
-            <Link className="link link-primary link-size-lg" href={"/sign-in"}>
+          <div className="flex gap-2">
+            <Link className="link link-ghost link-size-lg" href={"/sign-in"}>
               Log in
             </Link>
             <Link className="link link-primary link-size-lg" href={"/sign-up"}>
