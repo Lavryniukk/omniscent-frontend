@@ -27,7 +27,9 @@ const Header = () => {
         </div>
 
         <div className="flex items-center gap-5">
-          <ThemeSwitcher />
+          <div className="max-md:hidden">
+            <ThemeSwitcher />
+          </div>
           <Burger isOpen={isOpen} callback={toggleOpen} />
           <div className="md:flex hidden">
             <SignedIn>
@@ -46,7 +48,10 @@ const Header = () => {
                 >
                   Sign in
                 </Link>
-                <Link className="link link-primary link-size-md" href={"/sign-up"}>
+                <Link
+                  className="link link-primary link-size-md"
+                  href={"/sign-up"}
+                >
                   Sign up
                 </Link>
               </div>
