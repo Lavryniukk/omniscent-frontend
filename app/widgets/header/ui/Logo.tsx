@@ -1,9 +1,12 @@
+"use client";
 import { useTheme } from "next-themes";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 const Logo = () => {
   const { resolvedTheme } = useTheme();
   let src;
+  const router = useRouter();
 
   switch (resolvedTheme) {
     case "light":
@@ -18,9 +21,18 @@ const Logo = () => {
       break;
   }
   return (
-    <Link href="/" className="flex mx-auto items-center h-full ">
-      <Image src={src} alt="Cleverize logo" width={32} height={32} />
-    </Link>
+    resolvedTheme && (
+      <Image
+        onClick={() => {
+          router.push("/");
+        }}
+        priority
+        src={src}
+        alt="Cleverize logo"
+        width={32}
+        height={32}
+      />
+    )
   );
 };
 

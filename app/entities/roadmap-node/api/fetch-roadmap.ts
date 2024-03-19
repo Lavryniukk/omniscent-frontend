@@ -2,14 +2,11 @@
 
 import { axiosWithAuth } from "@/app/shared/config";
 import { RoadmapNode } from "..";
-
-type fetchRoadmapDto = {
-  data: RoadmapNode;
-};
+import { AxiosResponse } from "axios";
 
 export async function fetchRoadmap(id: string): Promise<RoadmapNode> {
   try {
-    const response: fetchRoadmapDto = await axiosWithAuth(
+    const response: AxiosResponse<RoadmapNode> = await axiosWithAuth(
       `/roadmaps/subtree/${id}`
     );
     return response.data;

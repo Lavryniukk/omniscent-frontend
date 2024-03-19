@@ -4,43 +4,43 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%; //Background color
-    --foreground: 240 10% 3.9%;//White text color
-    --card: 0 0% 100%; //idk
-    --card-foreground: 240 10% 3.9%;//idk
-    --popover: 0 0% 100%;//idk
-    --popover-foreground: 240 10% 3.9%;//idk
-    --primary: 346.8 77.2% 49.8%;//currenlty red, can be modified
-    --primary-foreground: 355.7 100% 97.3%;//white
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;//gray
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
+    --background: 0 0% 100%;
+    --foreground: 224 71.4% 4.1%;
+    --card: 0 0% 100%;
+    --card-foreground: 224 71.4% 4.1%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71.4% 4.1%;
+    --primary: 262.1 83.3% 57.8%;
+    --primary-foreground: 210 20% 98%;
+    --secondary: 220 14.3% 95.9%;
+    --secondary-foreground: 220.9 39.3% 11%;
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
+    --accent: 220 14.3% 95.9%;
+    --accent-foreground: 220.9 39.3% 11%;
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 346.8 77.2% 49.8%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 262.1 83.3% 57.8%;
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 20 14.3% 4.1%;
-    --foreground: 0 0% 95%;
-    --card: 24 9.8% 10%;
-    --card-foreground: 0 0% 95%;
-    --popover: 0 0% 9%;
-    --popover-foreground: 0 0% 95%;
-    --primary: 346.8 77.2% 49.8%;
-    --primary-foreground: 355.7 100% 97.3%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 12 6.5% 15.1%;
-    --accent-foreground: 0 0% 98%;
+    --background: 224 71.4% 4.1%;
+    --foreground: 210 20% 98%;
+    --card: 224 71.4% 4.1%;
+    --card-foreground: 210 20% 98%;
+    --popover: 224 71.4% 4.1%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 263.4 70% 50.4%;
+    --primary-foreground: 210 20% 98%;
+    --secondary: 215 27.9% 16.9%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 215 27.9% 16.9%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+    --accent: 215 27.9% 16.9%;
+    --accent-foreground: 210 20% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 20% 98%;
     --border: 215 27.9% 16.9%;
@@ -249,36 +249,36 @@
   .chat-output {
     @apply flex flex-col gap-4 tracking-normal dark:font-normal  font-normal;
   }
-}
 
-.roadmap-node {
-  @apply text-center px-5 w-full border-t-2 font-semibold active:scale-90 cursor-pointer relative shadow-muted-foreground shadow-lg flex items-center justify-center h-12 rounded-b-lg;
-}
+  .roadmap-node {
+    @apply text-center px-5 w-full border-t-2 font-semibold active:scale-90 cursor-pointer relative shadow-muted-foreground shadow-lg flex items-center justify-center h-12 rounded-b-lg;
+  }
 
-.lesson-roadmap-node {
-  @apply flex-col items-start text-left  justify-between py-2 gap-2  after:w-0.5  after:transition-all after:duration-200 after:bottom-0 after:absolute after:-left-2 max-w-[230px] after:h-0 hover:after:h-full  w-full relative duration-200 transition-all flex text-sm rounded;
-}
+  .lesson-roadmap-node {
+    @apply flex-col items-start text-left  justify-between py-2 gap-2  after:w-0.5  after:transition-all after:duration-200 after:bottom-0 after:absolute after:-left-2 max-w-[230px] after:h-0 hover:after:h-full  w-full relative duration-200 transition-all flex text-sm rounded;
+  }
 
-.small-features-container {
-  @apply w-[400px] lg:w-[450px]  relative h-48 row-span-1 flex flex-col p-2 justify-center gap-5;
-}
-.small-features-container h1 {
-  @apply text-2xl font-bold;
-}
-.small-features-container p {
-  @apply text-lg text-muted-foreground;
-}
-.big-features-container {
-  @apply w-[400px] lg:w-[450px] relative overflow-hidden transition-shadow duration-300 rounded-xl flex flex-col items-center  border-2  h-[600px] row-span-2;
-}
-.big-features-container h4 {
-  @apply absolute -top-6 right-0 text-xs italic  font-light p-1;
-}
-.big-features-container Image {
-  @apply rounded-2xl border-white;
-}
-.big-features-container div.first-features-container figure {
-  @apply w-[100px] h-[100px] rounded-lg shadow-xl aspect-square dark:border  p-4 flex items-center justify-center;
+  .small-features-container {
+    @apply w-[400px] lg:w-[450px]  relative h-48 row-span-1 flex flex-col p-2 justify-center gap-5;
+  }
+  .small-features-container h1 {
+    @apply text-2xl font-bold;
+  }
+  .small-features-container p {
+    @apply text-lg text-muted-foreground;
+  }
+  .big-features-container {
+    @apply w-[400px] lg:w-[450px] relative overflow-hidden transition-shadow duration-300 rounded-xl flex flex-col items-center  border-2  h-[600px] row-span-2;
+  }
+  .big-features-container h4 {
+    @apply absolute -top-6 right-0 text-xs italic  font-light p-1;
+  }
+  .big-features-container Image {
+    @apply rounded-2xl border-white;
+  }
+  .big-features-container div.first-features-container figure {
+    @apply w-[100px] h-[100px] rounded-lg shadow-xl aspect-square dark:border  p-4 flex items-center justify-center;
+  }
 }
 
 @layer components {
@@ -335,5 +335,11 @@
     -ms-transform: translateX(-50px);
     -o-transform: translateX(-50px);
     opacity: 0;
+  }
+}
+
+@layer utilities {
+  .spinner {
+    @apply w-6 h-6 border-2 border-t-2 border-muted-foreground border-t-foreground rounded-full animate-spin;
   }
 }

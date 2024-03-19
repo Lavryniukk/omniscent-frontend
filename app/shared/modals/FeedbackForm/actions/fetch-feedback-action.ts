@@ -10,9 +10,10 @@ type fetchFeedbackDto = {
 
 export default async function fetchFeedbackAction(
   rating: number,
-  id: FeedbackFormProps,
+  props: FeedbackFormProps,
   formData: FormData
 ): Promise<void> {
+  
   const feedback = formData.get("feedback") as string;
 
   try {
@@ -21,11 +22,11 @@ export default async function fetchFeedbackAction(
       rating,
     };
 
-    if (id.lessonId) {
-      data["lesson_id"] = id.lessonId;
+    if ('lessonId' in props) {
+      data["lesson_id"] = props.lessonId;
     }
-    if (id.roadmapId) {
-      data["roadmap_id"] = id.roadmapId;
+    if ('roadmapId' in props) {
+      data["roadmap_id"] = props.roadmapId;
     }
 
     const res = await axiosWithAuth({

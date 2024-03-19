@@ -5,18 +5,18 @@ type BurgerProps = {
 
 let Burger = ({ callback, isOpen }: BurgerProps) => {
   return (
-    <div className="md:hidden burger w-fit flex justify-end md:justify-center items-center">
+    <div className="md:hidden burger w-10  flex justify-end md:justify-center items-center">
       <label className={`container`}>
         <input
           type="checkbox"
-          checked={isOpen} 
-          onChange={() => {}} 
-          onClick={callback} 
+          checked={isOpen}
+          onChange={() => {}}
+          onClick={callback}
         />
         <div className={`checkmark`}>
-          <span className="bg-text"></span>
-          <span className="bg-text"></span>
-          <span className="bg-text"></span>
+          <span className="bg-muted-foreground"></span>
+          <span className="bg-muted-foreground"></span>
+          <span className="bg-muted-foreground"></span>
         </div>
       </label>
     </div>

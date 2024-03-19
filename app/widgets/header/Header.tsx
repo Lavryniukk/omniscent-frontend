@@ -2,19 +2,19 @@
 import { useState } from "react";
 import Burger from "@/app/widgets/header/ui/BurgerNavigation";
 import Popup from "@/app/widgets/header/ui/BurgerPopup";
-import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { ThemeSwitcher } from "@/app/features";
 import Navigation from "./ui/Navigation";
 import Logo from "./ui/Logo";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Spotlight } from "@/components/ui/spotlight";
+import { SignedIn, SignedOut } from "@/app/processes/auth";
+import { LogoutButton } from "@/app/processes/auth/ui/";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleOpen = () => setIsOpen(!isOpen);
-
+  //TODO burger does not display on mobile, probably related to styles?
   return (
     <>
       <Popup isOpen={isOpen} setIsOpen={setIsOpen} />
@@ -37,12 +37,31 @@ const Header = () => {
           />
           <div className="md:flex hidden">
             <SignedIn>
-              <Link href={"/workspace"}>
-                <Button>To workspace</Button>
-              </Link>
+              <div className="flex gap-2">
+                <LogoutButton />
+                <Link
+                  className="link link-primary link-size-md"
+                  href={"/workspace"}
+                >
+                  To workspace
+                </Link>
+              </div>
             </SignedIn>
             <SignedOut>
-              <SignInButton>Sign in</SignInButton>
+              <div className="flex gap-5">
+                <Link
+                  className="link link-ghost link-size-md"
+                  href={"/sign-in"}
+                >
+                  Sign in
+                </Link>
+                <Link
+                  className="link link-primary link-size-md"
+                  href={"/sign-up"}
+                >
+                  Sign up
+                </Link>
+              </div>
             </SignedOut>
           </div>
         </div>

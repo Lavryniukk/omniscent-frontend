@@ -1,21 +1,20 @@
 "use server";
-import { axiosWithAuth } from "@/app/shared/config/axiosConfig";
-import { ROADMAP_SIZE } from "@/app/shared/constants";
+import { axiosWithAuth } from "@/app/shared/config/axios-with-auth";
+import { RoadmapSize } from "@/app/shared/types";
 
 type fetchCreateRoadmapArgs = {
   title: string;
-  size: ROADMAP_SIZE;
+  size: RoadmapSize;
 };
 
-export const fetchCreateRoadmap = (data: fetchCreateRoadmapArgs) => {
+export const fetchCreateRoadmap = async (data: fetchCreateRoadmapArgs) => {
   try {
-    void axiosWithAuth({
+    return await axiosWithAuth({
       url: "/roadmaps",
       data,
       method: "POST",
     });
-  } catch (err) {
-    console.log("Error POST /roadmaps", err);
-    throw err;
+  } catch (e) {
+    console.error("Error in /roadmaps POST", e);
   }
 };

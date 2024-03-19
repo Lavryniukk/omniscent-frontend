@@ -1,27 +1,28 @@
 "use client";
 import { RoadmapNode } from "@/app/entities";
-import useLessonStorage from "@/app/shared/stores/lessonStorage";
+import useLessonStorage from "@/app/widgets/lesson/storage/lesson-storage";
 import { Button } from "@/components/ui/button";
 import { BookOpen, ChevronDownIcon, Milestone } from "lucide-react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function LessonRoadmapNodeComponent({
   tech,
-  isCurrent,
+  isCurrentQuiz,
   roadmapId,
+  isCurrentLesson,
 }: {
   tech: RoadmapNode;
   roadmapId: string;
-  isCurrent: boolean;
+  isCurrentQuiz: boolean;
+  isCurrentLesson: boolean;
 }) {
   const router = useRouter();
   const { isStreaming } = useLessonStorage();
-  const [isOpened, setIsOpened] = useState(false);
+  const [isOpened, setIsOpened] = useState(isCurrentLesson || isCurrentQuiz);
   return (
     <li
-      className={`lesson-roadmap-node ${isCurrent && "after:h-full"} transition-all duration-200  ${isOpened ? "h-40" : "h-10"}  group`}
+      className={`lesson-roadmap-node  transition-all duration-200  ${isOpened ? "h-40" : "h-10"}  group`}
     >
       <section className="flex relative justify-between  items-center  w-full">
         <p
@@ -44,13 +45,13 @@ export default function LessonRoadmapNodeComponent({
           />
         </div>
         <div
-          className={`rounded-full absolute group-hover:scale-150 transition-transform duration-200 w-2 h-2 bg-foreground0 ${isCurrent && "dark:bgblack 400 bgblack 700 scale-150"} z-10  -right-5 top-[calc(50%-4px)]`}
+          className={`rounded-full absolute group-hover:scale-150 transition-transform duration-200 w-2 h-2  z-10  -right-5 top-[calc(50%-4px)]`}
         />
       </section>
       <section
         className={`w-full flex flex-col items-center gap-2 justify-center  transition-all duration-200 h-28 ${isOpened ? " opacity-100" : "opacity-0"}  `}
       >
-        {isCurrent ? (
+        {isCurrentLesson ? (
           <Button
             size="sm"
             disabled
@@ -65,8 +66,8 @@ export default function LessonRoadmapNodeComponent({
               router.push(`/workspace/r/${roadmapId}/l/${tech.lesson_id}`);
             }}
             size="sm"
-            className="flex justify-start  gap-2 w-full"
-            variant="outline"
+            variant={"outline"}
+            className="flex justify-start shadow-md shadow-primary  gap-2 w-full"
           >
             <Milestone size={20} />
             <p className=" text-ellipsis text-left truncate">
@@ -74,17 +75,28 @@ export default function LessonRoadmapNodeComponent({
             </p>
           </Button>
         )}
-        <Button
-          onClick={() => {
-            router.push(`/workspace/r/${roadmapId}/l/${tech.quiz_id}`);
-          }}
-          size="sm"
-          className="flex justify-start gap-2 text-left w-full"
-          variant="outline"
-        >
-          <BookOpen size={20} />
-          <p>Test your knowledge</p>
-        </Button>
+        {isCurrentQuiz ? (
+          <Button
+            size="sm"
+            disabled
+            className="flex justify-start  gap-2 w-full"
+            variant="ghost"
+          >
+            You are already on this quiz
+          </Button>
+        ) : (
+          <Button
+            onClick={() => {
+              router.push(`/workspace/r/${roadmapId}/q/${tech.quiz_id}`);
+            }}
+            variant="outline"
+            size="sm"
+            className="flex shadow-md shadow-primary justify-start gap-2 text-left w-full"
+          >
+            <BookOpen size={20} />
+            <p>Test your knowledge</p>
+          </Button>
+        )}
       </section>
     </li>
   );

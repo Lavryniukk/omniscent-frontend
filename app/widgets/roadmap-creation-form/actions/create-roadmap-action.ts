@@ -1,10 +1,21 @@
 "use server";
 import { fetchCreateRoadmap } from "@/app/entities/roadmap-node/api";
-import { ROADMAP_SIZE } from "@/app/shared/constants";
+import { RoadmapSize } from "@/app/shared/types";
+import { RedirectType, redirect } from "next/navigation";
 
-export async function createRoadmapAction(formData: FormData) {
-  const title = formData.get("title") as string;
-  const size = formData.get("size") as ROADMAP_SIZE;
-  console.log(title, size);
-  return  fetchCreateRoadmap({ title, size });
+export async function createRoadmapAction(
+  _: boolean,
+  formData: FormData
+): Promise<boolean> {
+  try {
+    const title = formData.get("title") as string;
+    const size = formData.get("size") as RoadmapSize;
+    console.log(title, size);
+
+    await fetchCreateRoadmap({ title, size });
+  } catch (err) {
+    console.error("Error in createRoadmapAction", err);
+    return false;
+  }
+  redirect("/workspace", RedirectType.replace);
 }
