@@ -49,54 +49,75 @@
   }
 }
 
-@layer components{
- /* Base styles for all buttons */
-.link {
-  @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+@layer components {
+  #feature-section {
+    @apply mx-auto w-full flex flex-col  items-start;
+  }
+
+  #feature-section div {
+    h2 {
+      @apply md:text-4xl text-3xl font-extrabold mt-4;
+    }
+    h3 {
+      @apply md:text-lg text-base  mt-8 font-semibold;
+    }
+    p {
+      @apply text-base md:text-lg max-w-3xl text-muted-foreground mt-4;
+    }
+  }
+
+  .plates-section {
+    @apply [perspective:1700px] gap-7 w-fit h-fit flex;
+  }
 }
 
-/* Variant styles */
-.link-primary {
-  @apply bg-primary text-primary-foreground hover:bg-primary/90;
-}
+@layer components {
+  /* Base styles for all buttons */
+  .link {
+    @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+  }
 
-.link-destructive {
-  @apply bg-destructive text-destructive-foreground hover:bg-destructive/90;
-}
+  /* Variant styles */
+  .link-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90;
+  }
 
-.link-outline {
-  @apply border border-input bg-background hover:bg-accent hover:text-accent-foreground;
-}
+  .link-destructive {
+    @apply bg-destructive text-destructive-foreground hover:bg-destructive/90;
+  }
 
-.link-secondary {
-  @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
-}
+  .link-outline {
+    @apply border border-input bg-background hover:bg-accent hover:text-accent-foreground;
+  }
 
-.link-ghost {
-  @apply hover:bg-accent hover:text-accent-foreground;
-}
+  .link-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+  }
 
-.link-link {
-  @apply text-primary underline-offset-4 hover:underline;
-}
+  .link-ghost {
+    @apply hover:bg-accent hover:text-accent-foreground;
+  }
 
-/* Size styles */
-.link-size-md {
-  @apply h-10 px-4 py-2;
-}
+  .link-link {
+    @apply text-primary underline-offset-4 hover:underline;
+  }
 
-.link-size-sm {
-  @apply h-9 rounded-md px-3;
-}
+  /* Size styles */
+  .link-size-md {
+    @apply h-10 px-4 py-2;
+  }
 
-.link-size-lg {
-  @apply h-11 rounded-md px-8;
-}
+  .link-size-sm {
+    @apply h-9 rounded-md px-3;
+  }
 
-.link-size-icon {
-  @apply h-10 w-10;
-}
+  .link-size-lg {
+    @apply h-11 rounded-md px-8;
+  }
 
+  .link-size-icon {
+    @apply h-10 w-10;
+  }
 }
 
 @layer base {
