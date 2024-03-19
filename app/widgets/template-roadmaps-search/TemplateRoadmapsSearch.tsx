@@ -14,6 +14,7 @@ import { useFormState, useFormStatus } from "react-dom";
 import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
 import { RedirectType, redirect } from "next/navigation";
+import { Button } from "@/components/ui/button";
 
 export default function TemplateRoadmapsSearch() {
   const {
@@ -118,10 +119,20 @@ function SubmitButton() {
       className="font-normal overflow-hidden z-10 bg-inherit group text-sm  relative rounded-full  p-0.5"
     >
       {!status.pending && !status.data && (
-        <div className="z-50 flex rounded-full p-1">Copy roadmap (~5s)</div>
+        <Button
+          variant={"secondary"}
+          className="z-50 flex rounded-full px-3 py-1"
+        >
+          Copy roadmap (~5s)
+        </Button>
       )}
       {status.pending && (
-        <div className="z-50 flex rounded-full p-1">Copying...</div>
+        <Button
+          variant={"secondary"}
+          className="z-50 flex rounded-full px-3 py-1"
+        >
+          Copying...
+        </Button>
       )}
       {status.data && !status.pending && (
         <Link href="workspace">View in workspace</Link>
