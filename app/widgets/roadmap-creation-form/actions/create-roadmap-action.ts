@@ -3,7 +3,7 @@ import { fetchCreateRoadmap } from "@/app/entities/roadmap-node/api";
 import { RoadmapSize } from "@/app/shared/types";
 
 export async function createRoadmapAction(
-  _: boolean | null,
+  state: boolean,
   formData: FormData
 ): Promise<boolean> {
   try {
