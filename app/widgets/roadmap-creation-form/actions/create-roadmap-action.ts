@@ -11,13 +11,12 @@ export async function createRoadmapAction(
     const size = formData.get("size") as RoadmapSize;
     console.log(title, size);
 
-    void fetchCreateRoadmap({ title, size });
-    // void new Promise((res) =>
+    await fetchCreateRoadmap({ title, size });
+    // await new Promise((res) =>
     //   setTimeout(() => {
     //     return res(true);
     //   }, 10000)
     // );
-    // console.log("returntning");
     return true;
   } catch (err) {
     console.error("Error in createRoadmapAction", err);
