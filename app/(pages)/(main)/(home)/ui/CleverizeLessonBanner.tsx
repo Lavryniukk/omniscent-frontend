@@ -17,18 +17,19 @@ const CleverizeLessonBanner = () => {
   }, [resolvedTheme]);
 
   return resolvedTheme ? (
-    <div className=" flex-col  w-[98%] mx-auto p-0.5 relative  flex items-center justify-center md:rounded-2xl md:w-[80%] rounded-[14px]">
+    <div className="relative">
       <Image
         src={src}
         priority
         alt="A cleverize lesson example"
-        className="rounded-lg"
+        className="rounded-lg max-w-7xl w-full z-[30]"
         width={1913}
         height={990}
       />
+      <div className="bg-gradient-to-b from-transparent via-transparent to-background w-full h-full absolute top-0 left-0" />
     </div>
   ) : (
-    <div className="w-[98%] aspect-video bg-background mx-auto  p-0.5 relative flex items-center justify-center md:rounded-2xl md:w-[80%] rounded-[14px]" />
+    <div className="w-full aspect-video max-w-7xl bg-background mx-auto  p-0.5 relative flex items-center justify-center md:rounded-2xl md:w-[80%] rounded-[14px]" />
   );
 };
 
