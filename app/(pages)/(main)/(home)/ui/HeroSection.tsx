@@ -21,9 +21,12 @@ let HeroSection = () => {
       break;
   }
   return (
-    <div className="  h-fit bg-background bg-grid-small-black/[0.3] dark:bg-grid-small-[hsl(0,0%,95%)]/[0.3]  relative flex flex-col items-center">
-      <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
-
+    <div className=" mx-auto  h-fit bg-background bg-grid-small-[hsl(0,0%,100%)]/[0.3] w-full  relative flex flex-col items-center">
+      {/* <div className="absolute pointer-events-none inset-0 flex items-center justify-center  [mask-image:radial-gradient(ellipse_at_center,transparent_20%,hsl(var(--background)))]"></div> */}
+      <Spotlight
+        fill="hsl(var(--primary))"
+        className="-top-40  left-0 md:left-60 md:-top-20"
+      />
       <Title />
       <picture className="w-[98%] x-10  p-0.5 relative flex items-center  justify-center   rounded md:rounded-2xl  md:w-[80%] ">
         <Image

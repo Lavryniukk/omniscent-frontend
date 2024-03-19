@@ -42,10 +42,84 @@
     --accent: 12 6.5% 15.1%;
     --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 85.7% 97.3%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 346.8 77.2% 49.8%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    --ring: 263.4 70% 50.4%;
+  }
+}
+
+@layer components {
+  #feature-section {
+    @apply mx-auto w-full flex flex-col  items-start;
+  }
+
+  #feature-section div {
+    figure {
+      @apply p-2 rounded-full bg-primary/30 shadow-xl shadow-primary/50 w-fit;
+    }
+    h2 {
+      @apply md:text-4xl text-3xl font-extrabold mt-4;
+    }
+    h3 {
+      @apply md:text-lg text-base  text-primary mt-8 font-semibold;
+    }
+    p {
+      @apply text-base md:text-lg max-w-3xl text-muted-foreground mt-4;
+    }
+  }
+
+  .plates-section {
+    @apply [perspective:1700px] gap-7 w-fit h-fit flex;
+  }
+}
+
+@layer components {
+  /* Base styles for all buttons */
+  .link {
+    @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  /* Variant styles */
+  .link-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90;
+  }
+
+  .link-destructive {
+    @apply bg-destructive text-destructive-foreground hover:bg-destructive/90;
+  }
+
+  .link-outline {
+    @apply border border-input bg-background hover:bg-accent hover:text-accent-foreground;
+  }
+
+  .link-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+  }
+
+  .link-ghost {
+    @apply hover:bg-accent hover:text-accent-foreground;
+  }
+
+  .link-link {
+    @apply text-primary underline-offset-4 hover:underline;
+  }
+
+  /* Size styles */
+  .link-size-md {
+    @apply h-10 px-4 py-2;
+  }
+
+  .link-size-sm {
+    @apply h-9 rounded-md px-3;
+  }
+
+  .link-size-lg {
+    @apply h-11 rounded-md px-8;
+  }
+
+  .link-size-icon {
+    @apply h-10 w-10;
   }
 }
 
