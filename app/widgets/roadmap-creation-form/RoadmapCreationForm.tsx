@@ -14,12 +14,24 @@ import { SubmitButton } from "./ui/SubmitButton";
 import { useFormState } from "react-dom";
 
 import RoadmapGeneratingLoader from "./ui/RoadmapGeneratingLoader";
+import { useEffect } from "react";
+import { toast } from "@/components/ui/use-toast";
 
 export default function NewProjectForm() {
   //TODO - add step-by-step loading animation https://ui.aceternity.com/components/multi-step-loader so user can be entertained while waiting for the result.
   //info - we use bool return type to display error alert / loading animation.
 
-  const [state, action] = useFormState(createRoadmapAction, false);
+  const [state, action] = useFormState(createRoadmapAction, null);
+
+  useEffect(() => {
+    console.log(state);
+    if (!state)
+      toast({
+        title: "Error",
+        description: "Failed to create roadmap",
+        variant: "destructive",
+      });
+  }, [state]);
 
   return (
     <form
@@ -30,7 +42,7 @@ export default function NewProjectForm() {
         Generate your own roadmap
         <span className="italic text-base text-primary/80 ">(AI)</span>
       </h1>
-      <RoadmapGeneratingLoader />
+      <RoadmapGeneratingLoader isCorrect={state ?? false} />
       <section className="gap-2 flex flex-col w-full">
         <Label htmlFor="roadmap-title">Name of technology</Label>
         <Input

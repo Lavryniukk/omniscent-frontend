@@ -16,19 +16,19 @@ const duration = 4000;
 
 const totalDuration = duration * loadingStates.length + 1000;
 
-export default function Loader() {
+export default function Loader({ isCorrect }: { isCorrect: boolean }) {
   const [isLoading, setIsLoading] = useState(false);
 
   const { pending } = useFormStatus();
 
   useEffect(() => {
-    if (pending) {
+    if (isCorrect && pending) {
       setIsLoading(true);
       setTimeout(() => {
         setIsLoading(false);
       }, totalDuration);
     }
-  }, [pending]);
+  }, [pending, isCorrect]);
 
   return (
     <>

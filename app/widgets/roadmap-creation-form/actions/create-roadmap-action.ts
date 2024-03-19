@@ -3,7 +3,7 @@ import { fetchCreateRoadmap } from "@/app/entities/roadmap-node/api";
 import { RoadmapSize } from "@/app/shared/types";
 
 export async function createRoadmapAction(
-  _: boolean,
+  _: boolean | null,
   formData: FormData
 ): Promise<boolean> {
   try {
@@ -11,8 +11,10 @@ export async function createRoadmapAction(
     const size = formData.get("size") as RoadmapSize;
     console.log(title, size);
 
+    // throw new Error();
+
     await fetchCreateRoadmap({ title, size });
-    // await new Promise((res) =>
+    // await new Promise((res, rej) =>
     //   setTimeout(() => {
     //     return res(true);
     //   }, 10000)
