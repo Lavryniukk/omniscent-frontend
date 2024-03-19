@@ -2,14 +2,14 @@ import { cn } from "@/lib/utils";
 import { GraduationCap } from "lucide-react";
 import Link from "next/link";
 
-export default function FeaturesSection() {
+export default function FlexibilitySection() {
   return (
-    <section id="feature-section" className="max-w-7xl mx-auto">
-      <div className=" h-fit max-w-7xl w-full px-8 mx-auto flex flex-col">
-        <figure>
-          <GraduationCap size={60} className=" text-primary" />
+    <section id="feature-section" className="max-w-7xl px-2 md:px-8  mx-auto">
+      <div className=" h-fit max-w-7xl w-full  mx-auto flex flex-col">
+        <figure className="p-2 bg-primary/30 w-fit shadow-primary/40 shadow-xl rounded-full text-primary">
+          <GraduationCap size={60} />
         </figure>
-        <h3>Flexibility</h3>
+        <h3 className="text-primary ">Flexibility</h3>
         <h2>Learn whatever You want, whenever You want</h2>
         <p>
           Since all learning material comes from well-trained AI-models, you can
@@ -25,7 +25,7 @@ export default function FeaturesSection() {
           Start learning
         </Link>
       </div>
-      <div className="max-w-5xl flex flex-wrap gap-6 ml-auto md:items-end justify-center md:justify-end mt-8 relative ">
+      <div className="max-w-6xl flex flex-wrap gap-6 ml-auto md:items-end justify-center md:justify-end mt-8 relative ">
         {/* <div className="absolute w-1/2 h-full bg-gradient-to-l pointer-events-none top-0   from-background  z-50 "></div> */}
         <Key
           label={"Python"}
@@ -134,7 +134,7 @@ const Key = ({ label, className }: { label: string; className: string }) => {
       <div
         className={cn(
           className,
-          ` transform peer transition-all duration-300 text-foreground h-fit -skew-x-[25deg] hover:border-primary group-active:translate-x-[4px] box-border border-4 border-transparent group-hover:shadow-none group-active:shadow-none group-hover:translate-x-[4px] group-active:translate-y-[4px] group-hover:translate-y-[4px] md:px-8 px-2 py-1 md:py-4 w-fit text-xs sm:text-sm md:text-xl  rounded-md `
+          `  peer transition-all transform duration-300 text-foreground font-semibold h-fit -skew-x-[20deg] hover:border-primary group-active:translate-x-[4px] box-border border-4 border-transparent group-hover:shadow-none group-active:shadow-none group-hover:translate-x-[4px] group-active:translate-y-[4px] group-hover:translate-y-[4px] md:px-8 px-2 py-1 md:py-4 w-fit text-xs sm:text-sm md:text-xl  rounded-md `
         )}
       >
         {label}
