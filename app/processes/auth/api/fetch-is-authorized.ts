@@ -7,5 +7,5 @@ export default async function isAuthorized(): Promise<boolean> {
   const accessToken = cookieStore.get("_at");
   if (!accessToken) return false;
   const res = await axiosWithAuth.get("/auth");
-  return res.status === 200;
+  return !!res
 }
