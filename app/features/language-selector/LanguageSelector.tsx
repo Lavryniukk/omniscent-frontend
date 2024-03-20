@@ -48,7 +48,7 @@ export default function LanguageSelector() {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuLabel>Languages</DropdownMenuLabel>
+          <DropdownMenuLabel>Lessons language</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuRadioGroup
             onValueChange={(value) => {
