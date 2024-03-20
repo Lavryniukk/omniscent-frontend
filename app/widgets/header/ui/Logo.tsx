@@ -23,6 +23,7 @@ const Logo = () => {
   return (
     resolvedTheme && (
       <Image
+        className="cursor-pointer"
         onClick={() => {
           router.push("/");
         }}

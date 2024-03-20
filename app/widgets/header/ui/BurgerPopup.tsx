@@ -60,6 +60,13 @@ let Popup = ({ isOpen, setIsOpen }: Props) => {
         >
           Blog
         </Link>
+        <Link
+          href={"/support-us"}
+          onClick={() => setIsOpen(false)}
+          className={`  hover:opacity-80 transition-opacity duration-100`}
+        >
+          Support us
+        </Link>
       </nav>
     </div>
   );
