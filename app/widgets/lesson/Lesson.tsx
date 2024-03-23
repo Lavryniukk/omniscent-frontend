@@ -35,7 +35,7 @@ export function Lesson({
     <div
       className={`w-full flex items-center  flex-1 flex-col h-full bg-foreground/[0.10]  relative overflow-hidden `}
     >
-      <div className="w-full rounded-b-lg top-0 left-0 text-text tracking-widest py-4 flex items-center justify-center text-xl font-bold text-center">
+    <div className="w-full rounded-b-lg top-0 left-0 text-text tracking-widest py-4 flex items-center justify-center text-xl font-bold text-center">
         {isLoading ? <Skeleton className="w-28 h-6" /> : <p>{lesson?.title}</p>}
       </div>
       <div className="flex w-full flex-col h-full max-h-full overflow-y-auto">

@@ -19,7 +19,7 @@ function WorkspacePage() {
   }, [roadmapId]);
 
   return (
-    <div className="flex min-h-screen max-md:flex-col gap-6 py-10 max-md:items-center items-start justify-center mt-32">
+    <div className="flex min-h-screen max-md:flex-col gap-6 md:py-10 max-md:items-center items-start justify-center mt-32">
       <NavigationButton href={"/"} title={"Home"} />
 
       <section className="flex max-w-min flex-col items-end gap-6">
