@@ -1,11 +1,14 @@
 import { RoadmapNode } from "@/app/entities";
 import Link from "next/link";
-export default function RoadmapNodeComponent({
+import CreateNode from "./CreateNode";
+export default function RoadmapNode({
   node,
   isLast,
+  action,
 }: {
   node: RoadmapNode;
   isLast: boolean;
+  action: (data: FormData) => Promise<boolean>;
 }) {
   const { title, children, is_completed, _id } = node;
 
@@ -17,14 +20,17 @@ export default function RoadmapNodeComponent({
       >
         {title}
       </Link>
-      {!isLast && <ArrowDown isCompleted={is_completed} />}
+      {!isLast && (
+        <>
+          <div
+            className={`block w-0.5 bg-muted-foreground select-none h-8 ${is_completed && "opacity-60"}`}
+          />
+          <CreateNode action={action} />
+          <div
+            className={`block w-0.5 bg-muted-foreground select-none h-8 ${is_completed && "opacity-60"}`}
+          />
+        </>
+      )}
     </>
-  );
-}
-function ArrowDown({ isCompleted }: { isCompleted: boolean }) {
-  return (
-    <div
-      className={`block w-0.5 divider bg-muted-foreground select-none h-20  ${isCompleted && "opacity-60"}`}
-    />
   );
 }
