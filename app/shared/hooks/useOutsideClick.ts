@@ -14,5 +14,5 @@ export default function useOutsideClick(target: string, callback: () => void) {
     return () => {
       window.removeEventListener("click", handleClick);
     };
-  }, []);
+  }, [target, callback]);
 }
