@@ -16,8 +16,7 @@ export default async function createSectionAction(
   };
   console.log(body);
 
-  // const res = await fetchCreateSection(body);
+  const res = await fetchCreateSection(body);
 
-  // return res.status === 200;
-  return true;
+  return res.status === 200;
 }

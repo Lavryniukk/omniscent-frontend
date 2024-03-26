@@ -20,27 +20,17 @@ export default function RoadmapNode({
       >
         {title}
       </Link>
-      {!isLast && <ArrowDown isCompleted={is_completed} action={action} />}
-    </>
-  );
-}
-
-function ArrowDown({
-  isCompleted,
-  action,
-}: {
-  isCompleted: boolean;
-  action: (data: FormData) => Promise<boolean>;
-}) {
-  return (
-    <>
-      <div
-        className={`block w-0.5 bg-muted-foreground select-none h-8 ${isCompleted && "opacity-60"}`}
-      />
-      <CreateNode action={action} />
-      <div
-        className={`block w-0.5 bg-muted-foreground select-none h-8 ${isCompleted && "opacity-60"}`}
-      />
+      {!isLast && (
+        <>
+          <div
+            className={`block w-0.5 bg-muted-foreground select-none h-8 ${is_completed && "opacity-60"}`}
+          />
+          <CreateNode action={action} />
+          <div
+            className={`block w-0.5 bg-muted-foreground select-none h-8 ${is_completed && "opacity-60"}`}
+          />
+        </>
+      )}
     </>
   );
 }

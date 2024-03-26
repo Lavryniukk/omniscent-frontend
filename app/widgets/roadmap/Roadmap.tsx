@@ -33,7 +33,7 @@ export default function Roadmap({ id }: { id: string }) {
             null,
             id
           );
-          const createSectionActionWithSectionId =
+          const action =
             createSectionActionWithRoadmapId.bind(null, node._id);
           return (
             <motion.li
@@ -49,10 +49,9 @@ export default function Roadmap({ id }: { id: string }) {
               <RoadmapNode
                 isLast={isLast}
                 node={node}
-                action={createSectionActionWithSectionId}
+                action={action}
               />
-            </motion.li>
-          );
+            </motion.li>          );
         })}
       </ul>
     </div>
