@@ -69,6 +69,36 @@
   .plates-section {
     @apply [perspective:1700px] gap-7 w-fit h-fit flex;
   }
+
+  .pricing-description-card {
+    @apply w-[350px] h-fit lg:w-[500px]  flex p-2 border-l-2   flex-col items-start gap-4;
+
+    h2 {
+      @apply text-2xl font-bold;
+    }
+    p {
+      @apply text-base text-muted-foreground w-full;
+    }
+  }
+  .price-description-article {
+    @apply flex items-start max-w-lg transition-all duration-300  justify-center gap-5 flex-col px-2;
+    h2 {
+      @apply text-2xl text-center font-bold;
+    }
+    p {
+      @apply text-base;
+    }
+  }
+  .cost-table {
+    @apply w-full rounded-lg max-w-3xl border-2;
+
+    td {
+      @apply w-fit  p-2 px-4 h-fit font-semibold text-center  border-2;
+    }
+    th {
+      @apply border-2;
+    }
+  }
 }
 
 @layer components {

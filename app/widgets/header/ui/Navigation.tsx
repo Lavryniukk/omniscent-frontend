@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import Link from "next/link";
 
 export default function Navigation() {
@@ -15,6 +15,12 @@ export default function Navigation() {
         className={`hover:opacity-80 transition-opacity duration-100`}
       >
         Blog
+      </Link>
+      <Link
+        href={"/pricing"}
+        className={`hover:opacity-80 transition-opacity duration-100`}
+      >
+        Pricing
       </Link>
       <button
         onClick={() => {
