@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import Link from "next/link";
 import { ReactNode, useEffect, useState } from "react";
+import { fetchPaymentAction } from "../actions/fetch-payment-action";
+import { useFormState } from "react-dom";
 
 export default function PricingCostSelector() {
   const [price, setPrice] = useState(20);
@@ -67,7 +69,7 @@ export default function PricingCostSelector() {
       description:
         "The kit name says it all. This is for those who want to learn everything. Something i would do if i had a load of time. ",
     };
-
+  const [state, action] = useFormState(fetchPaymentAction, null);
   return (
     <section className="flex transition-all flex-col py-10 mt-10 gap-10 items-center w-full max-w-7xl">
       <h1 className="text-5xl text-center font-bold">
@@ -88,7 +90,9 @@ export default function PricingCostSelector() {
       </div>
       <PriceDescription {...currentCard} />
       <SignedIn>
-        <Button size={"lg"}>Purchase {price * 12} credits</Button>
+        <form action={action}>
+          <Button size={"lg"}>Purchase {price * 12} credits</Button>
+        </form>
       </SignedIn>
       <SignedOut>
         <Link className="link link-primary link-size-md" href="sign-in">

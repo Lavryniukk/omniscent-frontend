@@ -1,15 +1,12 @@
 "use server";
 
 import { axiosWithAuth } from "@/app/shared/config";
+import { redirect } from "next/navigation";
 
-export async function fetchPaymentAction(price: number) {
-  const response = await axiosWithAuth("/api/pay", {
+export async function fetchPaymentAction() {
+  const response = await axiosWithAuth("/pay", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    data: { price },
   });
- 
-  return response.data;
+
+  redirect(response.data.url);
 }
