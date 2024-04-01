@@ -7,7 +7,7 @@ type fetchQuizDto = {
   data: Quiz;
 };
 
-export const fetchQuiz = async (id: string): Promise<Quiz> => {
+export  const fetchQuiz = async (id: string): Promise<Quiz> => {
   try {
     const response: fetchQuizDto = await axiosWithAuth(`/quizzes/${id}`);
     return response.data;

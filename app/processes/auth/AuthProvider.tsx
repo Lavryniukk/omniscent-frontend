@@ -1,15 +1,6 @@
 "use client";
-import { User } from "@/app/entities";
 import useAsync, { UseAsyncReturnType } from "@/app/shared/hooks/useAsync";
-import { UseQueryResult, useQuery } from "@tanstack/react-query";
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useLayoutEffect,
-  useState,
-} from "react";
+import { createContext, useContext, useEffect } from "react";
 import isAuthorized from "./api/fetch-is-authorized";
 import { useRouter, useSearchParams } from "next/navigation";
 

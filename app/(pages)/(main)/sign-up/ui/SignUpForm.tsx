@@ -8,21 +8,15 @@ import { Eye, EyeOff } from "lucide-react";
 import { useEffect, useState } from "react";
 import signUpAction from "../actions/sign-up-action";
 import { useToast } from "@/components/ui/use-toast";
-import { useAuth } from "@/app/processes/auth";
 
 export default function SignUpForm() {
   const [isPasswordShown, setIsPasswordShown] = useState(false);
-  const { refetch } = useAuth();
   const { toast } = useToast();
 
   const [state, action] = useFormState(signUpAction, {
     email: [],
     password: [],
   });
-
-  function handleSubmit(){
-    refetch()
-  }
 
   useEffect(() => {
     if ("toast" in state && state.toast) {
@@ -33,7 +27,7 @@ export default function SignUpForm() {
   return (
     <div className="w-[350px] mt-60 h-full  z-50  rounded-lg backdrop-blur-sm flex flex-col gap-8">
       <h1 className="text-3xl mb-4 font-bold">Create new free account</h1>
-      <form action={action} onSubmit={handleSubmit} className="flex flex-col gap-8">
+      <form action={action} className="flex flex-col gap-8">
         <div className="flex flex-col gap-2">
           <Label htmlFor="email">
             Your{" "}

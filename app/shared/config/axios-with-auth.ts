@@ -1,8 +1,7 @@
-"use server";
 import axios, { AxiosError, AxiosResponse } from "axios";
-import { cookies } from "next/headers";
 import { JwtTokenPair } from "../types";
 import { axiosWithoutAuth } from "./axios-without-auth";
+import { cookies as cookiesStore } from "./cookies";
 axios.defaults.withCredentials = true;
 
 export const axiosWithAuth = axios.create({
@@ -14,8 +13,9 @@ export const axiosWithAuth = axios.create({
 });
 
 axiosWithAuth.interceptors.request.use(async (config) => {
-  const accessToken: { value: string } | undefined = cookies().get("_at");
-  const refreshToken: { value: string } | undefined = cookies().get("_rt");
+  const cookies = await cookiesStore();
+  const accessToken: { value: string } | undefined = cookies.get("_at");
+  const refreshToken: { value: string } | undefined = cookies.get("_rt");
   const controller = new AbortController();
 
   if (!accessToken && !refreshToken) {
@@ -27,14 +27,14 @@ axiosWithAuth.interceptors.request.use(async (config) => {
           refresh_token: refreshToken?.value,
         });
 
-      cookies().set("_rt", tokens._rt, {
+      cookies.set("_rt", tokens._rt, {
         httpOnly: true,
         secure: true,
         sameSite: "strict",
         maxAge: Number(process.env.REFRESH_TOKEN_MAX_AGE),
       });
 
-      cookies().set("_at", tokens._at, {
+      cookies.set("_at", tokens._at, {
         httpOnly: false,
         secure: true,
         sameSite: "strict",
