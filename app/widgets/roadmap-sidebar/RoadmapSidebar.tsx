@@ -8,6 +8,7 @@ import { ChevronDown, MoveLeft } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchRoadmap } from "@/app/entities/roadmap-node/api";
 import { ThemeSwitcher } from "@/app/features";
+import CreditsCounter from "@/app/features/credits-counter/CreditsCounter";
 
 export default function RoadmapSidebar({
   roadmapId,
@@ -21,7 +22,6 @@ export default function RoadmapSidebar({
     queryFn: () => fetchRoadmap(roadmapId),
   });
 
-  //FIXME help me
   const { isOpen, toggleSidebar } = useSidebar();
   return (
     <>
@@ -33,6 +33,7 @@ export default function RoadmapSidebar({
         <NavigationButton
           href={`/workspace/?roadmapId=${roadmap?.parent_node_id}`}
         />
+        <CreditsCounter className="md:hidden" />
 
         <h1 className="text-2xl mx-auto text-center">
           {isLoading && <Skeleton className="w-[70%] h-6" />}

@@ -9,6 +9,8 @@ import Message from "./ui/Message";
 import { useQuery } from "@tanstack/react-query";
 import { fetchLesson } from "@/app/entities/lesson/api";
 import Skeleton from "@/app/UI/loading/Skeleton/Skeleton";
+import CreditCostBadge from "@/app/features/credit-cost-badge/CreditCostBadge";
+import CreditsCounter from "@/app/features/credits-counter/CreditsCounter";
 
 export function Lesson({
   params,
@@ -35,7 +37,11 @@ export function Lesson({
     <div
       className={`w-full flex items-center  flex-1 flex-col h-full bg-foreground/[0.10]  relative overflow-hidden `}
     >
-    <div className="w-full rounded-b-lg top-0 left-0 text-text tracking-widest py-4 flex items-center justify-center text-xl font-bold text-center">
+      <div className="absolute max-md:hidden left-2 top-2  flex gap-2">
+        <CreditsCounter />
+        <CreditCostBadge cost={2} />
+      </div>
+      <div className="w-full rounded-b-lg top-0 left-0 text-text tracking-widest py-4 flex items-center justify-center text-xl font-bold text-center">
         {isLoading ? <Skeleton className="w-28 h-6" /> : <p>{lesson?.title}</p>}
       </div>
       <div className="flex w-full flex-col h-full max-h-full overflow-y-auto">

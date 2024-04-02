@@ -6,6 +6,7 @@ import { ThemeProvider } from "next-themes";
 import { AuthProvider } from "../processes/auth";
 import { Toaster } from "@/components/ui/toaster";
 import { Analytics } from "@vercel/analytics/react";
+import CreditsProvider from "../processes/credits/CreditsProvider";
 const inter = Inter({
   variable: "--inter-font",
   subsets: ["latin"],
@@ -23,14 +24,16 @@ export default function RootLayout({
       <body className="font-inter antialiased ">
         <QueryClientProvider client={client}>
           <AuthProvider>
-            <ThemeProvider
-              attribute="class"
-              enableSystem={true}
-              disableTransitionOnChange
-            >
-              {children}
-              <Toaster />
-            </ThemeProvider>
+            <CreditsProvider>
+              <ThemeProvider
+                attribute="class"
+                enableSystem={true}
+                disableTransitionOnChange
+              >
+                {children}
+                <Toaster />
+              </ThemeProvider>
+            </CreditsProvider>
           </AuthProvider>
         </QueryClientProvider>
       </body>

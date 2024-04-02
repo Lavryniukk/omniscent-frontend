@@ -6,6 +6,7 @@ import Link from "next/link";
 import RoadmapsNotFound from "./RoadmapsNotFound";
 import { CryptoCard } from "@/components/ui/crypto-card";
 import Skeleton from "@/app/UI/loading/Skeleton/Skeleton";
+import CreditsCounter from "@/app/features/credits-counter/CreditsCounter";
 
 export default function RoadmapList({
   onChildClick,
@@ -23,7 +24,6 @@ export default function RoadmapList({
       <h1 className="text-4xl text-center font-bold mx-auto   font-inter">
         Your projects
       </h1>
-
       <LanguageSelector />
       <>
         <div className="container xs:mx-auto gap-5 h-fit  flex flex-col items-center">

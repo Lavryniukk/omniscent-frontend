@@ -44,7 +44,7 @@ export default function TemplateRoadmapsSearch() {
   };
 
   return (
-    <div className="pt-10 pb-20">
+    <div className="pt-10 pb-20 relative">
       <h1 className="text-2xl text-center mb-10 font-semibold">
         Search for roadmaps
       </h1>

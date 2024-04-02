@@ -1,4 +1,5 @@
 import { ThemeSwitcher } from "@/app/features";
+import CreditsCounter from "@/app/features/credits-counter/CreditsCounter";
 import { MoveLeft } from "lucide-react";
 import Link from "next/link";
 import React from "react";
@@ -19,6 +20,7 @@ const NavigationButton = ({
         <p>To {title}</p>
       </Link>
       <ThemeSwitcher />
+      <CreditsCounter />
     </div>
   );
 };

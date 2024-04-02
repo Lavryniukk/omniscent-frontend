@@ -16,6 +16,7 @@ import { toast } from "@/components/ui/use-toast";
 import { MultiStepLoader } from "@/components/ui/multi-step-loader";
 import { X } from "lucide-react";
 import { useEffect, useState } from "react";
+import CreditCostBadge from "@/app/features/credit-cost-badge/CreditCostBadge";
 
 const loadingStates = [
   { text: "Waking up our backend developer" },
@@ -51,7 +52,7 @@ export default function NewProjectForm() {
 
   return (
     <form
-      className="flex flex-col items-start border rounded-lg  shadow-xl gap-8 w-3/4 lg:w-1/3 min-w-[350px] h-fit justify-center xs:mx-auto  p-5 xs:py-12 mx-3"
+      className="flex flex-col items-start border rounded-lg relative shadow-xl gap-8 w-3/4 lg:w-1/3 min-w-[350px] h-fit justify-center xs:mx-auto  p-5 xs:py-12 mx-3"
       action={action}
       onSubmit={() => {
         setIsLoading(true);
@@ -61,6 +62,7 @@ export default function NewProjectForm() {
         }, totalDuration);
       }}
     >
+      <CreditCostBadge cost={30} className="absolute top-2 right-2" />
       <h1 className="text-center font-semibold text-2xl">
         Generate your own roadmap
         <span className="italic text-base text-primary/80 ">(AI)</span>

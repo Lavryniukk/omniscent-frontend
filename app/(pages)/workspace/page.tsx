@@ -6,6 +6,7 @@ import { Roadmap } from "@/app/widgets/";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import withClientAuth from "@/app/processes/auth/withAuthClient";
+import CreditsCounter from "@/app/features/credits-counter/CreditsCounter";
 
 function WorkspacePage() {
   const [selectedRoadmap, setSelectedRoadmap] = useState<string | undefined>();
@@ -24,7 +25,6 @@ function WorkspacePage() {
 
       <section className="flex max-w-min flex-col items-end gap-6">
         <Hint />
-        
 
         <RoadmapList
           selectedRoadmap={selectedRoadmap}
