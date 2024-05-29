@@ -14,10 +14,10 @@ function WorkspacePage() {
   const searchParams = useSearchParams();
   const roadmapId = searchParams.get("roadmapId");
   useEffect(() => {
-    if (roadmapId) {
+    if (roadmapId && !selectedRoadmap) {
       setSelectedRoadmap(roadmapId);
     }
-  }, [roadmapId]);
+  }, [roadmapId, selectedRoadmap]);
 
   return (
     <div className="flex min-h-screen max-md:flex-col-reverse gap-6 md:py-10 max-md:items-center items-start justify-center mt-32">

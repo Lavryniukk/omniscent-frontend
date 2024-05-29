@@ -1,23 +1,13 @@
 "use client";
-import { fetchRoadmap } from "@/app/entities/roadmap-node/api";
 import { DeleteRoadmapButton } from "@/app/features";
 import RoadmapNode from "@/app/widgets/roadmap/ui/RoadmapNode";
-import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import createSectionAction from "./actions/create-section";
+import useRoadmap from "./hooks/use-roadmap";
 
 export default function Roadmap({ id }: { id: string }) {
-  const {
-    data: roadmap,
-    isLoading,
-    error,
-  } = useQuery({
-    queryKey: ["roadmap", id],
-    queryFn: () => {
-      return fetchRoadmap(id);
-    },
-  });
-
+  const { data: roadmap, isLoading, error } = useRoadmap(id);
+  console.log(roadmap);
   if (isLoading) return <LoadingAnimation />;
   if (error || !roadmap || !roadmap.children) return <div>Not found</div>;
   return (
@@ -29,12 +19,9 @@ export default function Roadmap({ id }: { id: string }) {
       <ul className="mx-auto  w-fit h-fit flex items-center justify-center flex-col">
         {roadmap.children.map((node, index, arr) => {
           const isLast = index === arr.length - 1;
-          const createSectionActionWithRoadmapId = createSectionAction.bind(
-            null,
-            id
-          );
-          const action =
-            createSectionActionWithRoadmapId.bind(null, node._id);
+          const action = createSectionAction
+            .bind(null, id)
+            .bind(null, node._id);
           return (
             <motion.li
               animate={{
@@ -44,14 +31,11 @@ export default function Roadmap({ id }: { id: string }) {
               initial={{ opacity: 0, y: 20 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="items-center justify-center w-full flex flex-col"
-              key={roadmap._id}
+              key={roadmap._id + index}
             >
-              <RoadmapNode
-                isLast={isLast}
-                node={node}
-                action={action}
-              />
-            </motion.li>          );
+              <RoadmapNode isLast={isLast} node={node} action={action} />
+            </motion.li>
+          );
         })}
       </ul>
     </div>

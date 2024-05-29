@@ -1,4 +1,4 @@
-import { RoadmapNode } from "@/app/entities";
+import { type RoadmapNode } from "@/app/entities";
 import Link from "next/link";
 import CreateNode from "./CreateNode";
 export default function RoadmapNode({
