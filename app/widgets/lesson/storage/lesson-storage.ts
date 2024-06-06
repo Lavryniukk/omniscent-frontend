@@ -81,15 +81,12 @@ const useLessonStorage = create<LessonStorageActions & LessonStorageState>(
         const lastMessage =
           state.lesson.messages[state.lesson.messages.length - 1];
         const updatedMessages =
-          lastMessage?.role === "assistant"
+          lastMessage?.role === "model"
             ? [
                 ...state.lesson.messages.slice(0, -1),
                 { ...lastMessage, content: newValue },
               ]
-            : [
-                ...state.lesson.messages,
-                { role: "assistant", content: newValue },
-              ];
+            : [...state.lesson.messages, { role: "model", content: newValue }];
         return {
           ...state,
           lesson: { ...state.lesson, messages: updatedMessages },
@@ -112,7 +109,7 @@ const useLessonStorage = create<LessonStorageActions & LessonStorageState>(
             ...lesson,
             messages: [
               ...lesson.messages,
-              { role: "assistant", content: "isLoading" },
+              { role: "model", content: "isLoading" },
             ],
           },
         });
