@@ -1,4 +1,3 @@
-//TODO properties must be renamed, to be more descriptive.
 type AuthFormValidationErrorType = {
   email: string[];
   password: string[];

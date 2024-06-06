@@ -4,7 +4,6 @@ import { useTheme } from "next-themes";
 import HeroSection from "./ui/HeroSection";
 import FlexibilitySection from "./ui/FlexibilitySection";
 import MentoringSection from "./ui/MentoringSection";
-//TODO - we have to remake the features section to be more like  https://tailwindcss.com/
 function Home() {
   return (
     <main className="  overflow-hidden pb-20 gap-20 flex flex-col justify-start  h-fit overflow-y-auto  mx-auto box-border w-full">

@@ -32,9 +32,6 @@ const duration = 4000;
 const totalDuration = duration * loadingStates.length + 1000;
 
 export default function NewProjectForm() {
-  //TODO - add step-by-step loading animation https://ui.aceternity.com/components/multi-step-loader so user can be entertained while waiting for the result.
-  //info - we use bool return type to display error alert / loading animation.
-
   const [state, action] = useFormState(createRoadmapAction, true);
   const [isLoading, setIsLoading] = useState(false);
 

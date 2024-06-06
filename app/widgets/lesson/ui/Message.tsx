@@ -12,7 +12,6 @@ interface MessageProps {
 
 export default function Message({ role, content }: MessageProps) {
   const contentRef = useRef<HTMLDivElement>(null);
-  //TODO - markdown and hljs does not seem to work during streaming, but after refreshing the page it works
   useEffect(() => {
     console.log("effect triggered with contenxt", content);
     if (contentRef.current) {
