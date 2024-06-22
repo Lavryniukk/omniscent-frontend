@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Version010() {
   return (
-    <div className="max-w-4xl font-inter  space-y-20 text-text mx-auto p-6 mt-20">
+    <div className="max-w-4xl   space-y-20 text-text mx-auto p-6 mt-20">
       <Link
         className="text-accent flex items-center space-x-2 decoration-accent underline-offset-4 hover:text-text"
         href="/blog"

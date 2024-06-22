@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Navigation() {
   return (
-    <nav className="hidden md:flex h-full items-center gap-5">
+    <nav className="hidden md:flex font-mono h-full items-center gap-5">
       <Link
         href={"/workspace"}
         className={` hover:opacity-80 transition-opacity duration-100`}

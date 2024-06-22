@@ -4,8 +4,8 @@ import Link from "next/link";
 
 export default function FlexibilitySection() {
   return (
-    <section id="feature-section" className="max-w-7xl px-2 md:px-8  mx-auto">
-      <div className=" h-fit max-w-7xl w-full  mx-auto flex flex-col">
+    <section id="feature-section" className=" px-2 md:px-8  mx-auto">
+      <div className=" h-fit w-full  mx-auto flex flex-col">
         <figure className="p-2 bg-primary/30 w-fit shadow-primary/40 shadow-xl rounded-full text-primary">
           <GraduationCap size={60} />
         </figure>

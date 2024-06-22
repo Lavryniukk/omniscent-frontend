@@ -8,33 +8,26 @@ let Title = () => {
   return (
     <motion.div
       {...parentSlidingAnimation}
-      className="overflow-visible py-12 md:py-20 mt-40 z-10 font-inter max-w-7xl overflow-x-clip justify-start items-center relative flex-col gap-16 flex mx-auto w-full"
+      className="overflow-visible flex w-x flex-col items-start  justify-center z-10  text-left overflow-x-clip relative gap-8 w-full"
     >
-      <article className="flex flex-col w-full gap-8">
+      <article className="space-y-4 max-w-2xl ">
         <motion.h1
           {...slidingAnimation}
-          className="bg-gradient-to-br to-70% from-foreground to-foreground/80 text-transparent w-full  antialiased mx-auto leading-none
-      				  font-inter relative tracking-tight hyphens-none drop-shadow-lg bg-clip-text text-center  text-[clamp(40px,4vw,84px)] font-bold"
+          className=" antialiased leading-none
+      				   relative  hyphens-none drop-shadow-lg text-4xl font-semibold"
         >
-          Cleverize - the
-          <br className="xs:hidden" /> AI solution
-          <br className=" max-xs:hidden" /> for <br className="xs:hidden" />
-          <span className=" whitespace-nowrap text-foreground drop-shadow-primary shadow-primary">
-            self-education
-          </span>
+          Cleverize - education for developers powered by AI
         </motion.h1>
-
         <motion.h2
           {...slidingAnimation}
-          className=" text-muted-foreground hyphens-manual mx-auto flex items-center justify-center w-full text-base md:text-[22px] text-center "
+          className=" text-muted-foreground hyphens-manual max-w-xl  text-base md:text-lg  "
         >
-          Unleash your full potential with <br className="sm:hidden" />{" "}
-          personalized <br className="max-sm:hidden" /> AI-driven tech{" "}
-          <br className="sm:hidden" /> education.
+          Unleash your full potential with personalized AI-driven tech
+          education.
         </motion.h2>
       </article>
 
-      <motion.div {...slidingAnimation} className="flex gap-4 ">
+      <motion.div {...slidingAnimation} className="flex  ">
         <Link className="link link-primary link-size-lg" href="workspace">
           Get started
         </Link>

@@ -20,8 +20,8 @@ export default function RoadmapList({
   });
 
   return (
-    <div className="mx-auto flex items-center border gap-10 flex-col py-10 w-full min-w-[350px]  sm:w-1/3 max-w-[600px] sm:min-w-[500px]  font-inter h-fit  dark:border shadow-xl rounded-lg relative">
-      <h1 className="text-4xl text-center font-bold mx-auto   font-inter">
+    <div className="mx-auto flex items-center border gap-10 flex-col py-10 w-full min-w-[350px]  sm:w-1/3 max-w-[600px] sm:min-w-[500px]   h-fit  dark:border shadow-xl rounded-lg relative">
+      <h1 className="text-4xl text-center font-bold mx-auto   ">
         Your projects
       </h1>
       <LanguageSelector />

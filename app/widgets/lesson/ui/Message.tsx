@@ -38,7 +38,7 @@ export default function Message({ role, content }: MessageProps) {
           <p className="ml-1 ">{role === "user" ? "You" : "AI Teacher"}</p>
         </div>
         <article
-          className="mt-[5px] break-words  font-medium  text-base leading-[28px] w-full font-inter chat-output"
+          className="mt-[5px] break-words  font-medium  text-base leading-[28px] w-full  chat-output"
           ref={contentRef}
         >
           {role === "model" ? (

@@ -64,7 +64,7 @@ axiosWithAuth.interceptors.response.use(
 
   async (error: AxiosError) => {
     if (error.config?.signal?.aborted) {
-      console.log("Request was aborted, request: ", error.config);
+      console.log("Request was aborted, request: ");
     } else {
       console.log(
         "AXIOS INTERCEPTOR CAUGHT AN ERROR: \n",

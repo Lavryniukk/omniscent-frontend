@@ -29,13 +29,7 @@ export default function SignUpForm() {
       <h1 className="text-3xl mb-4 font-bold">Create new free account</h1>
       <form action={action} className="flex flex-col gap-8">
         <div className="flex flex-col gap-2">
-          <Label htmlFor="email">
-            Your{" "}
-            <span className="italic line-through text-muted-foreground decoration-2">
-              spam box
-            </span>{" "}
-            email
-          </Label>
+          <Label htmlFor="email">Your email</Label>
           <Input
             className="invalid:ring-red-500"
             type="text"

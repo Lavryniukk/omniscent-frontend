@@ -2,9 +2,11 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { ReactNode, createContext, useState } from "react";
 import fetchCredits from "./api/fetch-credits";
+import useAsync from "@/app/shared/hooks/useAsync";
+import { useAuth } from "../auth";
 
 interface CreditsContextType {
-  credits: number | undefined;
+  credits: number | null;
   isLoading: boolean;
   error: unknown;
 }
@@ -16,11 +18,13 @@ export const CreditsContext = createContext<CreditsContextType>({
 });
 
 const CreditsProvider = ({ children }: { children: ReactNode }) => {
+  const {data: isAuthorized} = useAuth();
+  if (!isAuthorized) return children;
   const {
     data: credits,
     error,
     isLoading,
-  } = useQuery(["credits"], () => fetchCredits());
+  } = useAsync( () => fetchCredits());
   return (
     <CreditsContext.Provider value={{ credits, error, isLoading }}>
       {children}

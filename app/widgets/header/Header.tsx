@@ -19,16 +19,13 @@ const Header = () => {
     <>
       <Popup isOpen={isOpen} setIsOpen={setIsOpen} />
 
-      <header className="h-12 p-4 flex z-50 w-11/12 lg:w-3/4 border left-1/2 -translate-x-1/2 justify-between px-10 items-center max-w-7xl backdrop-blur-md fixed top-4 right-4 box-border bg-background/50 rounded-full md:rounded-xl">
+      <header className="h-12 flex z-50 w-full left-1/2 max-w-8xl -translate-x-1/2 justify-between px-2 md:px-8 items-center  backdrop-blur-md fixed top-2  box-border  ">
         <div className="gap-10 flex items-center">
           <Logo />
           <Navigation />
         </div>
 
         <div className="flex items-center gap-5">
-          <div className="max-md:hidden">
-            <ThemeSwitcher />
-          </div>
           <Burger
             isOpen={isOpen}
             callback={() => {
@@ -63,6 +60,9 @@ const Header = () => {
                 </Link>
               </div>
             </SignedOut>
+          </div>
+          <div className="max-md:hidden">
+            <ThemeSwitcher />
           </div>
         </div>
       </header>

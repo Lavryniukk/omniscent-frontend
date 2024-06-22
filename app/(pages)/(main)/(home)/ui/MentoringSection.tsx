@@ -3,8 +3,8 @@ import Link from "next/link";
 
 export default function MentoringSection() {
   return (
-    <section id="feature-section" className="max-w-7xl px-2 md:px-8 mx-auto">
-      <div className=" h-fit max-w-7xl w-full   mx-auto flex flex-col">
+    <section id="feature-section" className=" px-2 md:px-8 mx-auto">
+      <div className=" h-fit  w-full   mx-auto flex flex-col">
         <figure className="bg-green-200 text-green-700 shadow-green-400/70 p-2 rounded-full shadow-xl  w-fit  dark:bg-green-800 dark:text-green-400  dark:shadow-green-800">
           <Handshake size={60} />
         </figure>

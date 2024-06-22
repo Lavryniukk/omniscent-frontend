@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Blog() {
   return (
     <div className="w-full max-w-10xl items-center textblack 950 dark:textblack 100 flex flex-col h-screen pt-14 mx-auto">
-      <h1 className="text-5xl mt-20 font-inter text-center font-bold ">
+      <h1 className="text-5xl mt-20  text-center font-bold ">
         Here you will find our latest updates
       </h1>
       <div className="w-full flex flex-col md:flex-row items-center justify-center mt-20 gap-4">

@@ -59,6 +59,15 @@ const handleAxiosError = (error: any): AuthActionReturnType => {
             description: "Dementia 🤔? Anyway, try signing in.",
           },
         };
+      case 400:
+        console.log(error.response?.data);
+        return {
+          toast: {
+            variant: "destructive",
+            title: "Something went wrong, and it's not you fault",
+            description: "Please try again later, or contact support.",
+          },
+        };
       default:
         return {
           toast: {

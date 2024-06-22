@@ -26,6 +26,7 @@ const config: Config = {
     extend: {
       maxWidth: {
         "10xl": "1600px",
+        "8xl": "1360px",
       },
       minHeight: {
         sm: "100px",
@@ -110,6 +111,19 @@ const config: Config = {
             transform: "translate(-50%,-40%) scale(1)",
           },
         },
+      },
+      fontFamily: {
+        heading: ["var(--font-heading)"],
+        body: ["var(--font-body)"],
+      },
+      fontSize: {
+        sm: "0.750rem",
+        base: "1rem",
+        xl: "1.333rem",
+        "2xl": "1.777rem",
+        "3xl": "2.369rem",
+        "4xl": "3.158rem",
+        "5xl": "4.210rem",
       },
       animation: {
         spotlight: "spotlight 2s ease .75s 1 forwards",
