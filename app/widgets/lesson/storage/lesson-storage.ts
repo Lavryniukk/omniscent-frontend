@@ -60,7 +60,7 @@ const useLessonStorage = create<LessonStorageActions & LessonStorageState>(
       try {
         listenForUpdates(lesson._id, updateLastAssistantMessage, () => {
           set({
-            isStreaming: true,
+            isStreaming: false,
           });
         });
 

@@ -104,7 +104,7 @@
 @layer components {
   /* Base styles for all buttons */
   .link {
-    @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+    @apply inline-flex items-center justify-center whitespace-nowrap rounded-sm text-base font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
   }
 
   /* Variant styles */
@@ -138,11 +138,11 @@
   }
 
   .link-size-sm {
-    @apply h-9 rounded-md px-3;
+    @apply h-9 rounded-sm px-3;
   }
 
   .link-size-lg {
-    @apply h-11 rounded-md px-7;
+    @apply h-11 rounded-sm px-7;
   }
 
   .link-size-icon {
@@ -229,11 +229,9 @@
     @apply ml-4 flex flex-col gap-2 list-decimal;
   }
   .chat-output pre code {
-    @apply font-medium   p-2  after:hidden before:hidden;
+    @apply font-medium  rounded-lg  p-2  after:hidden before:hidden;
   }
-  .chat-output pre {
-    @apply dark:border  shadow-xl rounded-lg  p-2;
-  }
+
   .chat-output :not(pre) code {
     @apply font-semibold after:content-['`'] before:content-['`'];
   }
@@ -242,11 +240,11 @@
   }
 
   .roadmap-node {
-    @apply text-center px-5 w-full border-t-2 font-semibold active:scale-90 cursor-pointer relative shadow-muted-foreground shadow-lg flex items-center justify-center h-12 rounded-b-lg;
+    @apply text-center px-3 w-full border-t-2 font-semibold active:scale-90 cursor-pointer relative shadow-muted-foreground shadow-lg flex items-center justify-center h-10 rounded-b-lg;
   }
 
   .lesson-roadmap-node {
-    @apply flex-col items-start text-left  justify-between py-2 gap-2  after:w-0.5  after:transition-all after:duration-200 after:bottom-0 after:absolute after:-left-2 max-w-[230px] after:h-0 hover:after:h-full  w-full relative duration-200 transition-all flex text-sm rounded;
+    @apply flex-col items-start text-left  justify-between py-2 gap-2 text-base after:w-0.5  after:transition-all after:duration-200 after:bottom-0 after:absolute after:-left-2 max-w-[230px] after:h-0 hover:after:h-full  w-full relative duration-200 transition-all flex  rounded;
   }
 
   .small-features-container {

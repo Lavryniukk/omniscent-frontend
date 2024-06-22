@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 import Markdown from "react-markdown";
 import hljs from "highlight.js";
 import "highlight.js/styles/tokyo-night-dark.css";
+import Logo from "../../header/ui/Logo";
 
 interface MessageProps {
   role: "user" | "system" | "model";
@@ -23,22 +24,24 @@ export default function Message({ role, content }: MessageProps) {
       });
     }
   }, [content]);
-
+  const isUser = role === "user";
   return (
     <div
-      className={`px-5 w-full mx-auto select-text flex-col text-md  flex justify-start items-center gap-3 p-2 ${
-        role === "user" && ""
-      }`}
+      className={`px-5 w-full mx-auto select-text flex-col text-md  flex justify-start items-center gap-3 p-2 `}
     >
-      <div className="max-w-[750px] flex flex-col items-start w-[98%] sm:w-[90%] md:w-[80%] space-y-3">
-        <div className="flex my-2  items-center justify-center">
-          <div
-            className={`w-[20px] lg:w-[32px] shadow-xl aspect-square border ${role == "user" ? "" : ""}  rounded-full`}
-          />
+      <div className="max-w-[750px] flex flex-col items-start w-[98%] sm:w-[90%] md:w-[80%]">
+        <div className="flex my-2 space-x-2 items-center justify-center">
+          {isUser ? (
+            <div
+              className={`w-8 bg-primary shadow-xl aspect-square border rounded-full`}
+            />
+          ) : (
+            <Logo />
+          )}
           <p className="ml-1 ">{role === "user" ? "You" : "AI Teacher"}</p>
         </div>
         <article
-          className="mt-[5px] break-words  font-medium  text-base leading-[28px] w-full  chat-output"
+          className=" break-words  font-medium  text-base leading-[28px] w-full  chat-output"
           ref={contentRef}
         >
           {role === "model" ? (

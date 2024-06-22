@@ -23,11 +23,11 @@ export default function RoadmapNode({
       {!isLast && (
         <>
           <div
-            className={`block w-0.5 bg-muted-foreground select-none h-8 ${is_completed && "opacity-60"}`}
+            className={`block w-0.5 bg-muted-foreground select-none h-4 ${is_completed && "opacity-60"}`}
           />
-          <CreateNode action={action} />
+          <CreateNode action={action} prevNodeTitle={title} />
           <div
-            className={`block w-0.5 bg-muted-foreground select-none h-8 ${is_completed && "opacity-60"}`}
+            className={`block w-0.5 bg-muted-foreground select-none h-4 ${is_completed && "opacity-60"}`}
           />
         </>
       )}

@@ -19,7 +19,7 @@ export default function LessonRoadmapNodeComponent({
 }) {
   const { isStreaming } = useLessonStorage();
   return (
-    <li className={`lesson-roadmap-node  transition-all duration-200    group`}>
+    <li className={`lesson-roadmap-node transition-all duration-200 group`}>
       <Link
         href={`/workspace/r/${roadmapId}/l/${tech.lesson_id}`}
         aria-disabled={isStreaming}

@@ -3,7 +3,7 @@ import { NavigationButton } from "@/app/shared/components/buttons";
 import Hint from "./ui/Hint";
 import RoadmapList from "./ui/RoadmapList";
 import { Roadmap } from "@/app/widgets/";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import withClientAuth from "@/app/processes/auth/withAuthClient";
 import CreditsCounter from "@/app/features/credits-counter/CreditsCounter";

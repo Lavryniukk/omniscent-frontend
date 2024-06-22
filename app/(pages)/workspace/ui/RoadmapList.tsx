@@ -31,7 +31,7 @@ export default function RoadmapList({
             roadmaps &&
             roadmaps.map((roadmap) => (
               <CryptoCard
-                className={`border-2 ${selectedRoadmap == roadmap._id && "shadow-primary shadow-lg "} text-foreground font-semibold cursor-pointer rounded-lg w-full text-xl h-[100px]`}
+                className={`border-2 ${selectedRoadmap == roadmap._id && "shadow-primary/50 shadow-lg "} text-foreground font-semibold cursor-pointer rounded-lg w-full text-xl h-[100px]`}
                 text={roadmap.title}
                 key={roadmap._id}
                 onClick={() => onChildClick(roadmap._id)}
