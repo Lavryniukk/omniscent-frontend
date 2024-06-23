@@ -18,13 +18,10 @@ export const CreditsContext = createContext<CreditsContextType>({
 });
 
 const CreditsProvider = ({ children }: { children: ReactNode }) => {
-  const {data: isAuthorized} = useAuth();
-  if (!isAuthorized) return children;
-  const {
-    data: credits,
-    error,
-    isLoading,
-  } = useAsync( () => fetchCredits());
+  const { data: isAuthorized } = useAuth();
+  const { data: credits, error, isLoading } = useAsync(fetchCredits);
+
+  // if (!isAuthorized) return children;
   return (
     <CreditsContext.Provider value={{ credits, error, isLoading }}>
       {children}

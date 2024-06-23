@@ -7,7 +7,7 @@ import MentoringSection from "./ui/MentoringSection";
 import FeaturesSection from "./ui/FeaturesSection";
 function Home() {
   return (
-    <main className="  overflow-hidden pb-20 gap-20 flex flex-col justify-start  h-fit overflow-y-auto max-w-8xl mx-auto box-border w-full">
+    <main className="  pb-20 gap-20 flex flex-col justify-start  h-fit  max-w-8xl mx-auto box-border w-full">
       <HeroSection />
       <FlexibilitySection />
       <MentoringSection />

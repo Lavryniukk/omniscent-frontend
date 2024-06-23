@@ -14,12 +14,11 @@ import { LogoutButton } from "@/app/processes/auth/ui/";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  //TODO burger does not display on mobile, probably related to styles?
   return (
     <>
       <Popup isOpen={isOpen} setIsOpen={setIsOpen} />
 
-      <header className="h-12 flex z-50 w-full left-1/2 max-w-8xl -translate-x-1/2 justify-between px-2 md:px-8 items-center  backdrop-blur-md fixed top-2  box-border  ">
+      <header className="h-12 flex z-50 w-full left-1/2 max-w-8xl -translate-x-1/2 justify-between px-2 md:px-8 items-center  backdrop-blur-md fixed rounded-lg box-border  ">
         <div className="gap-10 flex items-center">
           <Logo />
           <Navigation />
