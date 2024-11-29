@@ -32,6 +32,12 @@ export default function Navigation() {
       >
         Feedback
       </button>
+      <Link
+        href={"/support-us"}
+        className={`hover:opacity-80 transition-opacity duration-100`}
+      >
+        Support us
+      </Link>
     </nav>
   );
 }

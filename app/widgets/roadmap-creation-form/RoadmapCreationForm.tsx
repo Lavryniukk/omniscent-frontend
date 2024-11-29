@@ -36,7 +36,6 @@ export default function NewProjectForm() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    console.log("bam");
     if (!state)
       toast({
         title: "Error",
